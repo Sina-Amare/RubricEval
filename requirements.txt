@@ -1,0 +1,10 @@
+python-telegram-bot
+openai
+gitpython
+sqlalchemy
+python-dotenv
+aiohttp
+tiktoken
+pydantic
+pytest
+pytest-asyncio

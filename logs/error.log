@@ -1,0 +1,5 @@
+[2025-08-24T14:26:40.903512] [ERROR] [github:_clone_repository:356] - Git command error during clone: Cmd('git') failed due to: exit code(128)
+  cmdline: git clone -v --depth=1 --single-branch -- https://github.com/this-does-not/exist-at-all-12345.git /tmp/repos/cv_review_github_b7n8iqva
+  stderr: 'Cloning into '/tmp/repos/cv_review_github_b7n8iqva'...
+fatal: could not read Username for 'https://github.com': terminal prompts disabled
+'
