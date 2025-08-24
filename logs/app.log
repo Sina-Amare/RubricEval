@@ -1,0 +1,342 @@
+[2025-08-24T18:48:09.332896] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-24T18:48:12.845714] [INFO] [validators:validate_github_url:105] - Successfully validated GitHub URL: user/repo
+[2025-08-24T18:48:12.846614] [INFO] [validators:validate_github_url:105] - Successfully validated GitHub URL: user/repo
+[2025-08-24T18:48:12.847405] [WARNING] [validators:validate_github_url:72] - Validation failed: URL must be from github.com
+[2025-08-24T18:48:12.848307] [WARNING] [validators:validate_github_url:66] - Validation failed: URL must start with http:// or https://
+[2025-08-24T18:48:12.849021] [WARNING] [validators:validate_github_url:49] - Validation failed: URL is required and must be a string
+[2025-08-24T18:48:13.092135] [INFO] [github:__init__:83] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-24T18:48:14.936206] [INFO] [github:_get_repository_structure:882] - Repository structure: 29 files in 7 directories
+[2025-08-24T18:48:14.939091] [INFO] [github:cleanup:298] - GitHub adapter cleanup completed
+[2025-08-24T18:48:14.943450] [INFO] [github:__init__:83] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-24T18:48:16.688959] [INFO] [github:_get_repository_structure:882] - Repository structure: 29 files in 7 directories
+[2025-08-24T18:48:16.711333] [INFO] [github:_extract_files:482] - Extracted files - Critical: 19, Important: 0, Useful: 0, Total unique: 19
+[2025-08-24T18:48:16.715237] [INFO] [github:cleanup:298] - GitHub adapter cleanup completed
+[2025-08-24T18:48:16.721028] [INFO] [github:__init__:83] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-24T18:48:16.723563] [INFO] [github:fetch_repository:139] - Fetching GitHub repository: https://github.com/mmdbazooka/auth-dashboard for role: frontend
+[2025-08-24T18:48:16.725263] [INFO] [github:_clone_repository:346] - Cloning repository: https://github.com/mmdbazooka/auth-dashboard (attempt 1/3)
+[2025-08-24T18:48:18.434655] [INFO] [github:_clone_repository:358] - Repository cloned successfully
+[2025-08-24T18:48:18.436370] [INFO] [github:fetch_repository:154] - Repository size: 0.69MB
+[2025-08-24T18:48:18.437449] [INFO] [github:fetch_repository:161] - Extracting files based on patterns
+[2025-08-24T18:48:18.448582] [INFO] [github:_extract_files:482] - Extracted files - Critical: 19, Important: 0, Useful: 0, Total unique: 19
+[2025-08-24T18:48:18.449810] [INFO] [github:fetch_repository:163] - Extracted 19 files using patterns
+[2025-08-24T18:48:18.450920] [INFO] [github:fetch_repository:170] - Raw content: 4449 tokens
+[2025-08-24T18:48:18.459428] [INFO] [github:fetch_repository:193] - Successfully processed repository: 19 files, 4449 tokens
+[2025-08-24T18:48:18.463077] [INFO] [github:cleanup:298] - GitHub adapter cleanup completed
+[2025-08-24T18:48:18.468980] [INFO] [github:__init__:83] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-24T18:48:18.471079] [INFO] [github:fetch_repository:139] - Fetching GitHub repository: https://github.com/mmdbazooka/auth-dashboard for role: frontend
+[2025-08-24T18:48:18.472414] [INFO] [github:_clone_repository:346] - Cloning repository: https://github.com/mmdbazooka/auth-dashboard (attempt 1/3)
+[2025-08-24T18:48:20.169229] [INFO] [github:_clone_repository:358] - Repository cloned successfully
+[2025-08-24T18:48:20.170880] [INFO] [github:fetch_repository:154] - Repository size: 0.69MB
+[2025-08-24T18:48:20.172140] [INFO] [github:fetch_repository:161] - Extracting files based on patterns
+[2025-08-24T18:48:20.184296] [INFO] [github:_extract_files:482] - Extracted files - Critical: 19, Important: 0, Useful: 0, Total unique: 19
+[2025-08-24T18:48:20.185628] [INFO] [github:fetch_repository:163] - Extracted 19 files using patterns
+[2025-08-24T18:48:20.186704] [INFO] [github:fetch_repository:170] - Raw content: 4449 tokens
+[2025-08-24T18:48:20.195294] [INFO] [github:fetch_repository:193] - Successfully processed repository: 19 files, 4449 tokens
+[2025-08-24T18:48:20.200642] [INFO] [openrouter:__init__:97] - OpenRouter adapter initialized with 3 models
+[2025-08-24T18:48:20.201868] [INFO] [openrouter:__init__:98] - Primary model: google/gemini-2.5-flash
+[2025-08-24T18:48:20.203248] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-24T18:48:20.214383] [INFO] [github:cleanup:298] - GitHub adapter cleanup completed
+[2025-08-24T18:48:20.219871] [INFO] [github:__init__:83] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-24T18:48:20.222167] [INFO] [github:fetch_repository:139] - Fetching GitHub repository: https://github.com/mmdbazooka/auth-dashboard for role: frontend
+[2025-08-24T18:48:20.223463] [INFO] [github:_clone_repository:346] - Cloning repository: https://github.com/mmdbazooka/auth-dashboard (attempt 1/3)
+[2025-08-24T18:48:21.847022] [INFO] [github:_clone_repository:358] - Repository cloned successfully
+[2025-08-24T18:48:21.848773] [INFO] [github:fetch_repository:154] - Repository size: 0.69MB
+[2025-08-24T18:48:21.849943] [INFO] [github:fetch_repository:161] - Extracting files based on patterns
+[2025-08-24T18:48:21.864408] [INFO] [github:_extract_files:482] - Extracted files - Critical: 19, Important: 0, Useful: 0, Total unique: 19
+[2025-08-24T18:48:21.865777] [INFO] [github:fetch_repository:163] - Extracted 19 files using patterns
+[2025-08-24T18:48:21.866947] [INFO] [github:fetch_repository:170] - Raw content: 4449 tokens
+[2025-08-24T18:48:21.875698] [INFO] [github:fetch_repository:193] - Successfully processed repository: 19 files, 4449 tokens
+[2025-08-24T18:48:21.881845] [INFO] [openrouter:__init__:97] - OpenRouter adapter initialized with 3 models
+[2025-08-24T18:48:21.883189] [INFO] [openrouter:__init__:98] - Primary model: google/gemini-2.5-flash
+[2025-08-24T18:48:21.885515] [INFO] [openrouter:analyze_code:122] - Starting code analysis for frontend submission (repo: https://github.com/mmdbazooka/auth-dashboard)
+[2025-08-24T18:48:21.886468] [INFO] [openrouter:analyze_code:134] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-24T18:48:21.887673] [INFO] [openrouter:_build_user_prompt:613] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-24T18:48:21.894430] [INFO] [openrouter:_analyze_with_model:448] - Total content size: 18344 characters, 19 files
+[2025-08-24T18:48:37.215509] [INFO] [openrouter:_analyze_with_model:492] - LLM Response length: 10700 characters
+[2025-08-24T18:48:37.217212] [INFO] [openrouter:analyze_code:150] - Analysis successful with google/gemini-2.5-flash
+[2025-08-24T18:48:37.223440] [INFO] [github:cleanup:298] - GitHub adapter cleanup completed
+[2025-08-24T18:48:37.228236] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-24T18:48:37.234935] [INFO] [sqlite:_init:543] - Database tables created/verified
+[2025-08-24T18:48:37.283123] [INFO] [sqlite:create_submission:109] - Created submission 14 for user test_user_123
+[2025-08-24T18:48:37.306439] [INFO] [sqlite:update_submission:194] - Updated submission 14: status=SubmissionStatus.ANALYZING
+[2025-08-24T18:55:10.812767] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-24T18:55:19.522712] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-24T18:55:24.817527] [INFO] [validators:validate_github_url:105] - Successfully validated GitHub URL: user/repo
+[2025-08-24T18:55:24.818568] [INFO] [validators:validate_github_url:105] - Successfully validated GitHub URL: user/repo
+[2025-08-24T18:55:24.819520] [WARNING] [validators:validate_github_url:72] - Validation failed: URL must be from github.com
+[2025-08-24T18:55:24.820576] [WARNING] [validators:validate_github_url:66] - Validation failed: URL must start with http:// or https://
+[2025-08-24T18:55:24.821603] [WARNING] [validators:validate_github_url:49] - Validation failed: URL is required and must be a string
+[2025-08-24T18:55:25.083786] [INFO] [github:__init__:83] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-24T18:55:26.938565] [INFO] [github:_get_repository_structure:882] - Repository structure: 39 files in 15 directories
+[2025-08-24T18:55:26.941625] [INFO] [github:cleanup:298] - GitHub adapter cleanup completed
+[2025-08-24T18:55:26.946237] [INFO] [github:__init__:83] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-24T18:55:28.438039] [INFO] [github:_get_repository_structure:882] - Repository structure: 39 files in 15 directories
+[2025-08-24T18:55:28.477895] [INFO] [github:_extract_files:482] - Extracted files - Critical: 25, Important: 0, Useful: 0, Total unique: 25
+[2025-08-24T18:55:28.486206] [INFO] [github:cleanup:298] - GitHub adapter cleanup completed
+[2025-08-24T18:55:28.492803] [INFO] [github:__init__:83] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-24T18:55:28.495228] [INFO] [github:fetch_repository:139] - Fetching GitHub repository: https://github.com/shahrzad98/kaleri-ai for role: frontend
+[2025-08-24T18:55:28.496783] [INFO] [github:_clone_repository:346] - Cloning repository: https://github.com/shahrzad98/kaleri-ai (attempt 1/3)
+[2025-08-24T18:55:30.076913] [INFO] [github:_clone_repository:358] - Repository cloned successfully
+[2025-08-24T18:55:30.078968] [INFO] [github:fetch_repository:154] - Repository size: 0.26MB
+[2025-08-24T18:55:30.080040] [INFO] [github:fetch_repository:161] - Extracting files based on patterns
+[2025-08-24T18:55:30.094478] [INFO] [github:_extract_files:482] - Extracted files - Critical: 25, Important: 0, Useful: 0, Total unique: 25
+[2025-08-24T18:55:30.096000] [INFO] [github:fetch_repository:163] - Extracted 25 files using patterns
+[2025-08-24T18:55:30.097159] [INFO] [github:fetch_repository:170] - Raw content: 4913 tokens
+[2025-08-24T18:55:30.107237] [INFO] [github:fetch_repository:193] - Successfully processed repository: 25 files, 4913 tokens
+[2025-08-24T18:55:30.111634] [INFO] [github:cleanup:298] - GitHub adapter cleanup completed
+[2025-08-24T18:55:30.116884] [INFO] [github:__init__:83] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-24T18:55:30.119255] [INFO] [github:fetch_repository:139] - Fetching GitHub repository: https://github.com/shahrzad98/kaleri-ai for role: frontend
+[2025-08-24T18:55:30.120944] [INFO] [github:_clone_repository:346] - Cloning repository: https://github.com/shahrzad98/kaleri-ai (attempt 1/3)
+[2025-08-24T18:55:31.628844] [INFO] [github:_clone_repository:358] - Repository cloned successfully
+[2025-08-24T18:55:31.631205] [INFO] [github:fetch_repository:154] - Repository size: 0.26MB
+[2025-08-24T18:55:31.632368] [INFO] [github:fetch_repository:161] - Extracting files based on patterns
+[2025-08-24T18:55:31.648924] [INFO] [github:_extract_files:482] - Extracted files - Critical: 25, Important: 0, Useful: 0, Total unique: 25
+[2025-08-24T18:55:31.650091] [INFO] [github:fetch_repository:163] - Extracted 25 files using patterns
+[2025-08-24T18:55:31.651120] [INFO] [github:fetch_repository:170] - Raw content: 4913 tokens
+[2025-08-24T18:55:31.660033] [INFO] [github:fetch_repository:193] - Successfully processed repository: 25 files, 4913 tokens
+[2025-08-24T18:55:31.665405] [INFO] [openrouter:__init__:97] - OpenRouter adapter initialized with 3 models
+[2025-08-24T18:55:31.666468] [INFO] [openrouter:__init__:98] - Primary model: google/gemini-2.5-flash
+[2025-08-24T18:55:31.668113] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-24T18:55:31.680311] [INFO] [github:cleanup:298] - GitHub adapter cleanup completed
+[2025-08-24T18:55:31.687745] [INFO] [github:__init__:83] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-24T18:55:31.690127] [INFO] [github:fetch_repository:139] - Fetching GitHub repository: https://github.com/shahrzad98/kaleri-ai for role: frontend
+[2025-08-24T18:55:31.691414] [INFO] [github:_clone_repository:346] - Cloning repository: https://github.com/shahrzad98/kaleri-ai (attempt 1/3)
+[2025-08-24T18:55:33.288343] [INFO] [github:_clone_repository:358] - Repository cloned successfully
+[2025-08-24T18:55:33.290390] [INFO] [github:fetch_repository:154] - Repository size: 0.26MB
+[2025-08-24T18:55:33.291773] [INFO] [github:fetch_repository:161] - Extracting files based on patterns
+[2025-08-24T18:55:33.307281] [INFO] [github:_extract_files:482] - Extracted files - Critical: 25, Important: 0, Useful: 0, Total unique: 25
+[2025-08-24T18:55:33.309320] [INFO] [github:fetch_repository:163] - Extracted 25 files using patterns
+[2025-08-24T18:55:33.311033] [INFO] [github:fetch_repository:170] - Raw content: 4913 tokens
+[2025-08-24T18:55:33.321679] [INFO] [github:fetch_repository:193] - Successfully processed repository: 25 files, 4913 tokens
+[2025-08-24T18:55:33.328057] [INFO] [openrouter:__init__:97] - OpenRouter adapter initialized with 3 models
+[2025-08-24T18:55:33.329672] [INFO] [openrouter:__init__:98] - Primary model: google/gemini-2.5-flash
+[2025-08-24T18:55:33.332268] [INFO] [openrouter:analyze_code:122] - Starting code analysis for frontend submission (repo: https://github.com/shahrzad98/kaleri-ai)
+[2025-08-24T18:55:33.333796] [INFO] [openrouter:analyze_code:134] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-24T18:55:33.335447] [INFO] [openrouter:_build_user_prompt:613] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-24T18:55:33.346631] [INFO] [openrouter:_analyze_with_model:448] - Total content size: 22549 characters, 25 files
+[2025-08-24T18:55:51.648051] [INFO] [openrouter:_analyze_with_model:492] - LLM Response length: 13298 characters
+[2025-08-24T18:55:51.650125] [INFO] [openrouter:analyze_code:150] - Analysis successful with google/gemini-2.5-flash
+[2025-08-24T18:55:51.659230] [INFO] [github:cleanup:298] - GitHub adapter cleanup completed
+[2025-08-24T18:55:51.669925] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-24T18:55:51.676864] [INFO] [sqlite:_init:543] - Database tables created/verified
+[2025-08-24T18:55:51.727925] [INFO] [sqlite:create_submission:109] - Created submission 15 for user test_user_123
+[2025-08-24T18:55:51.752929] [INFO] [sqlite:update_submission:194] - Updated submission 15: status=SubmissionStatus.ANALYZING
+[2025-08-24T19:00:24.053930] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-24T19:00:29.249263] [INFO] [validators:validate_github_url:105] - Successfully validated GitHub URL: user/repo
+[2025-08-24T19:00:29.250582] [INFO] [validators:validate_github_url:105] - Successfully validated GitHub URL: user/repo
+[2025-08-24T19:00:29.251636] [WARNING] [validators:validate_github_url:72] - Validation failed: URL must be from github.com
+[2025-08-24T19:00:29.252805] [WARNING] [validators:validate_github_url:66] - Validation failed: URL must start with http:// or https://
+[2025-08-24T19:00:29.253566] [WARNING] [validators:validate_github_url:49] - Validation failed: URL is required and must be a string
+[2025-08-24T19:00:29.665808] [INFO] [github:__init__:83] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-24T19:00:32.071894] [INFO] [github:_get_repository_structure:882] - Repository structure: 71 files in 20 directories
+[2025-08-24T19:00:32.077227] [INFO] [github:cleanup:298] - GitHub adapter cleanup completed
+[2025-08-24T19:00:32.082955] [INFO] [github:__init__:83] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-24T19:00:33.986595] [INFO] [github:_get_repository_structure:882] - Repository structure: 71 files in 20 directories
+[2025-08-24T19:00:34.026612] [INFO] [github:_extract_files:482] - Extracted files - Critical: 41, Important: 0, Useful: 0, Total unique: 41
+[2025-08-24T19:00:34.031231] [INFO] [github:cleanup:298] - GitHub adapter cleanup completed
+[2025-08-24T19:00:34.038083] [INFO] [github:__init__:83] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-24T19:00:34.040784] [INFO] [github:fetch_repository:139] - Fetching GitHub repository: https://github.com/mohammad-hdr/auth-me-test-project for role: frontend
+[2025-08-24T19:00:34.042266] [INFO] [github:_clone_repository:346] - Cloning repository: https://github.com/mohammad-hdr/auth-me-test-project (attempt 1/3)
+[2025-08-24T19:00:36.304233] [INFO] [github:_clone_repository:358] - Repository cloned successfully
+[2025-08-24T19:00:36.306214] [INFO] [github:fetch_repository:154] - Repository size: 1.37MB
+[2025-08-24T19:00:36.307470] [INFO] [github:fetch_repository:161] - Extracting files based on patterns
+[2025-08-24T19:00:36.332101] [INFO] [github:_extract_files:482] - Extracted files - Critical: 41, Important: 0, Useful: 0, Total unique: 41
+[2025-08-24T19:00:36.333549] [INFO] [github:fetch_repository:163] - Extracted 41 files using patterns
+[2025-08-24T19:00:36.335032] [INFO] [github:fetch_repository:170] - Raw content: 13967 tokens
+[2025-08-24T19:00:36.345493] [INFO] [github:fetch_repository:193] - Successfully processed repository: 41 files, 13967 tokens
+[2025-08-24T19:00:36.350729] [INFO] [github:cleanup:298] - GitHub adapter cleanup completed
+[2025-08-24T19:00:36.357995] [INFO] [github:__init__:83] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-24T19:00:36.360451] [INFO] [github:fetch_repository:139] - Fetching GitHub repository: https://github.com/mohammad-hdr/auth-me-test-project for role: frontend
+[2025-08-24T19:00:36.361702] [INFO] [github:_clone_repository:346] - Cloning repository: https://github.com/mohammad-hdr/auth-me-test-project (attempt 1/3)
+[2025-08-24T19:00:38.553389] [INFO] [github:_clone_repository:358] - Repository cloned successfully
+[2025-08-24T19:00:38.555799] [INFO] [github:fetch_repository:154] - Repository size: 1.37MB
+[2025-08-24T19:00:38.557581] [INFO] [github:fetch_repository:161] - Extracting files based on patterns
+[2025-08-24T19:00:38.582138] [INFO] [github:_extract_files:482] - Extracted files - Critical: 41, Important: 0, Useful: 0, Total unique: 41
+[2025-08-24T19:00:38.583396] [INFO] [github:fetch_repository:163] - Extracted 41 files using patterns
+[2025-08-24T19:00:38.584826] [INFO] [github:fetch_repository:170] - Raw content: 13967 tokens
+[2025-08-24T19:00:38.596045] [INFO] [github:fetch_repository:193] - Successfully processed repository: 41 files, 13967 tokens
+[2025-08-24T19:00:38.603061] [INFO] [openrouter:__init__:97] - OpenRouter adapter initialized with 3 models
+[2025-08-24T19:00:38.604127] [INFO] [openrouter:__init__:98] - Primary model: google/gemini-2.5-flash
+[2025-08-24T19:00:38.605591] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-24T19:00:38.618731] [INFO] [github:cleanup:298] - GitHub adapter cleanup completed
+[2025-08-24T19:00:38.624006] [INFO] [github:__init__:83] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-24T19:00:38.626168] [INFO] [github:fetch_repository:139] - Fetching GitHub repository: https://github.com/mohammad-hdr/auth-me-test-project for role: frontend
+[2025-08-24T19:00:38.627378] [INFO] [github:_clone_repository:346] - Cloning repository: https://github.com/mohammad-hdr/auth-me-test-project (attempt 1/3)
+[2025-08-24T19:00:40.713850] [INFO] [github:_clone_repository:358] - Repository cloned successfully
+[2025-08-24T19:00:40.716105] [INFO] [github:fetch_repository:154] - Repository size: 1.37MB
+[2025-08-24T19:00:40.717057] [INFO] [github:fetch_repository:161] - Extracting files based on patterns
+[2025-08-24T19:00:40.747536] [INFO] [github:_extract_files:482] - Extracted files - Critical: 41, Important: 0, Useful: 0, Total unique: 41
+[2025-08-24T19:00:40.748945] [INFO] [github:fetch_repository:163] - Extracted 41 files using patterns
+[2025-08-24T19:00:40.750150] [INFO] [github:fetch_repository:170] - Raw content: 13967 tokens
+[2025-08-24T19:00:40.759465] [INFO] [github:fetch_repository:193] - Successfully processed repository: 41 files, 13967 tokens
+[2025-08-24T19:00:40.763783] [INFO] [openrouter:__init__:97] - OpenRouter adapter initialized with 3 models
+[2025-08-24T19:00:40.764960] [INFO] [openrouter:__init__:98] - Primary model: google/gemini-2.5-flash
+[2025-08-24T19:00:40.767033] [INFO] [openrouter:analyze_code:122] - Starting code analysis for frontend submission (repo: https://github.com/mohammad-hdr/auth-me-test-project)
+[2025-08-24T19:00:40.768254] [INFO] [openrouter:analyze_code:134] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-24T19:00:40.769406] [INFO] [openrouter:_build_user_prompt:613] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-24T19:00:40.780099] [INFO] [openrouter:_analyze_with_model:448] - Total content size: 61304 characters, 41 files
+[2025-08-24T19:00:58.300848] [INFO] [openrouter:_analyze_with_model:492] - LLM Response length: 12488 characters
+[2025-08-24T19:00:58.302869] [INFO] [openrouter:analyze_code:150] - Analysis successful with google/gemini-2.5-flash
+[2025-08-24T19:00:58.317814] [INFO] [github:cleanup:298] - GitHub adapter cleanup completed
+[2025-08-24T19:00:58.322767] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-24T19:00:58.328513] [INFO] [sqlite:_init:543] - Database tables created/verified
+[2025-08-24T19:00:58.377654] [INFO] [sqlite:create_submission:109] - Created submission 16 for user test_user_123
+[2025-08-24T19:00:58.401692] [INFO] [sqlite:update_submission:194] - Updated submission 16: status=SubmissionStatus.ANALYZING
+[2025-08-24T19:01:37.665859] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-24T19:01:40.335038] [INFO] [bot:main:566] - Starting CV Review Bot...
+[2025-08-24T19:01:41.624297] [INFO] [bot:initialize_adapters:543] - Initializing adapters...
+[2025-08-24T19:01:41.625596] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-24T19:01:41.632481] [INFO] [sqlite:_init:543] - Database tables created/verified
+[2025-08-24T19:01:41.633976] [INFO] [bot:initialize_adapters:548] - Storage adapter initialized
+[2025-08-24T19:01:41.956226] [INFO] [github:__init__:83] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-24T19:01:41.957634] [INFO] [bot:initialize_adapters:552] - Repository adapter initialized
+[2025-08-24T19:01:41.958740] [INFO] [openrouter:__init__:97] - OpenRouter adapter initialized with 3 models
+[2025-08-24T19:01:41.960275] [INFO] [openrouter:__init__:98] - Primary model: google/gemini-2.5-flash
+[2025-08-24T19:01:41.961270] [INFO] [bot:initialize_adapters:556] - Analyzer adapter initialized
+[2025-08-24T19:01:41.962216] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-24T19:01:43.295509] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-24T19:01:43.296791] [INFO] [bot:initialize_adapters:561] - Notification adapter initialized
+[2025-08-24T19:01:43.298094] [INFO] [bot:main:597] - Bot is ready! Starting polling...
+[2025-08-24T19:07:13.151559] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-24T19:07:15.395381] [INFO] [bot:main:566] - Starting CV Review Bot...
+[2025-08-24T19:07:16.516299] [INFO] [bot:initialize_adapters:543] - Initializing adapters...
+[2025-08-24T19:07:16.517239] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-24T19:07:16.522064] [INFO] [sqlite:_init:543] - Database tables created/verified
+[2025-08-24T19:07:16.523284] [INFO] [bot:initialize_adapters:548] - Storage adapter initialized
+[2025-08-24T19:07:16.762431] [INFO] [github:__init__:83] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-24T19:07:16.763687] [INFO] [bot:initialize_adapters:552] - Repository adapter initialized
+[2025-08-24T19:07:16.764832] [INFO] [openrouter:__init__:97] - OpenRouter adapter initialized with 3 models
+[2025-08-24T19:07:16.765693] [INFO] [openrouter:__init__:98] - Primary model: google/gemini-2.5-flash
+[2025-08-24T19:07:16.766591] [INFO] [bot:initialize_adapters:556] - Analyzer adapter initialized
+[2025-08-24T19:07:16.767572] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-24T19:07:18.052618] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-24T19:07:18.053763] [INFO] [bot:initialize_adapters:561] - Notification adapter initialized
+[2025-08-24T19:07:18.054653] [INFO] [bot:main:597] - Bot is ready! Starting polling...
+[2025-08-24T19:07:19.489883] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:07:23.668441] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:07:24.885590] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:07:29.608562] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:07:31.302003] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:07:34.852387] [INFO] [bot:start_command:59] - Start command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-24T19:07:36.733346] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:07:39.189154] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:07:43.368335] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:07:43.764887] [INFO] [bot:analyze_command:94] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-24T19:07:46.971881] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:07:51.317442] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:07:56.990683] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:08:01.708893] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:08:02.788097] [INFO] [bot:receive_url:125] - Received URL from Sinaam_00: https://github.com/mohammad-hdr/auth-me-test-project
+[2025-08-24T19:08:02.790527] [INFO] [validators:validate_github_url:105] - Successfully validated GitHub URL: mohammad-hdr/auth-me-test-project
+[2025-08-24T19:08:09.982069] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:08:14.243393] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:08:26.427562] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:08:30.647452] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:08:43.003048] [INFO] [bot:role_callback:236] - Starting analysis for https://github.com/mohammad-hdr/auth-me-test-project as frontend
+[2025-08-24T19:08:43.244581] [INFO] [sqlite:create_submission:109] - Created submission 17 for user ***ID_MASKED***
+[2025-08-24T19:08:43.245818] [INFO] [bot:process_analysis:287] - Created submission 17
+[2025-08-24T19:08:43.272241] [INFO] [sqlite:update_submission:194] - Updated submission 17: status=SubmissionStatus.ANALYZING
+[2025-08-24T19:08:43.500819] [INFO] [github:fetch_repository:139] - Fetching GitHub repository: https://github.com/mohammad-hdr/auth-me-test-project for role: frontend
+[2025-08-24T19:08:43.502292] [INFO] [github:_clone_repository:346] - Cloning repository: https://github.com/mohammad-hdr/auth-me-test-project (attempt 1/3)
+[2025-08-24T19:08:45.707282] [INFO] [github:_clone_repository:358] - Repository cloned successfully
+[2025-08-24T19:08:45.709285] [INFO] [github:fetch_repository:154] - Repository size: 1.37MB
+[2025-08-24T19:08:45.710352] [INFO] [github:fetch_repository:161] - Extracting files based on patterns
+[2025-08-24T19:08:45.752537] [INFO] [github:_extract_files:482] - Extracted files - Critical: 41, Important: 0, Useful: 0, Total unique: 41
+[2025-08-24T19:08:45.753712] [INFO] [github:fetch_repository:163] - Extracted 41 files using patterns
+[2025-08-24T19:08:45.754688] [INFO] [github:fetch_repository:170] - Raw content: 13967 tokens
+[2025-08-24T19:08:45.766006] [INFO] [github:fetch_repository:193] - Successfully processed repository: 41 files, 13967 tokens
+[2025-08-24T19:08:45.767004] [INFO] [bot:process_analysis:304] - Fetched repository: 41 files
+[2025-08-24T19:08:45.977589] [INFO] [openrouter:analyze_code:122] - Starting code analysis for frontend submission (repo: https://github.com/mohammad-hdr/auth-me-test-project)
+[2025-08-24T19:08:45.978678] [INFO] [openrouter:analyze_code:134] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-24T19:08:45.979859] [INFO] [openrouter:_build_user_prompt:613] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-24T19:08:45.981016] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-24T19:08:45.989924] [INFO] [openrouter:_analyze_with_model:448] - Total content size: 61304 characters, 41 files
+[2025-08-24T19:08:48.549802] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:08:52.746381] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:09:02.710665] [INFO] [openrouter:_analyze_with_model:492] - LLM Response length: 11882 characters
+[2025-08-24T19:09:02.713196] [INFO] [openrouter:analyze_code:150] - Analysis successful with google/gemini-2.5-flash
+[2025-08-24T19:09:02.777308] [INFO] [bot:process_analysis:338] - Analysis complete for submission 17
+[2025-08-24T19:09:02.824855] [INFO] [sqlite:create_report:348] - Created report 2 for submission 17
+[2025-08-24T19:09:02.826212] [INFO] [bot:process_analysis:355] - Created report 2
+[2025-08-24T19:09:02.845448] [INFO] [sqlite:update_submission:194] - Updated submission 17: status=SubmissionStatus.COMPLETED
+[2025-08-24T19:09:03.689720] [INFO] [telegram:send_analysis_complete:278] - Analysis report sent for submission 17
+[2025-08-24T19:09:03.694190] [INFO] [github:cleanup:298] - GitHub adapter cleanup completed
+[2025-08-24T19:09:19.078907] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:09:23.301053] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:09:54.151229] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:09:58.383672] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:10:29.031328] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:10:33.222967] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:11:04.012789] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:11:08.211604] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:11:38.838471] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:11:43.043637] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:12:13.774416] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:12:17.949057] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:12:48.678922] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:12:52.858732] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:13:23.395464] [ERROR] [bot:error_handler:526] - Update None caused error httpx.ConnectError: 
+[2025-08-24T19:13:54.126327] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:13:58.333403] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:14:28.967418] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:14:33.145398] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:15:03.977647] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:15:08.198648] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:15:38.968759] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:15:43.174143] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:16:25.483965] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:16:29.678692] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:16:30.869357] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:16:35.579418] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:16:37.290434] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:16:43.163889] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:16:45.588897] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:16:49.191856] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:16:52.743042] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:16:58.400563] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:17:04.231347] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:17:12.680276] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:17:20.869456] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:17:32.862417] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:17:37.078093] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:17:54.911965] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:17:59.123542] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:18:25.628691] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:18:29.823019] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:19:00.722859] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:19:04.921504] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:19:36.010614] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:19:40.209597] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:20:11.038462] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:20:15.197387] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:20:45.963443] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:20:50.162669] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:21:20.966068] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:21:25.183697] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:21:55.876256] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:22:00.035526] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:22:30.837890] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:22:35.030980] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:23:05.661703] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:23:09.841851] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:23:40.736719] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:23:44.900902] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:24:15.710373] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:24:19.896399] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:24:50.721246] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:24:54.935005] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:25:16.263008] [INFO] [bot:stats_command:463] - Stats command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-24T19:25:16.983380] [ERROR] [bot:stats_command:501] - Error in stats command: Can't parse entities: can't find end of the entity starting at byte offset 263
+[2025-08-24T19:25:21.585496] [INFO] [bot:recent_command:400] - Recent command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-24T19:25:21.598395] [ERROR] [bot:recent_command:453] - Error in recent command: can't subtract offset-naive and offset-aware datetimes
+[2025-08-24T19:25:25.612899] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:25:25.857850] [INFO] [bot:cancel_command:511] - Cancel command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-24T19:25:29.785977] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:25:30.975066] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:25:35.725478] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:25:37.424266] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:25:42.868139] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:25:45.325047] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:25:48.883857] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:25:52.458658] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:25:58.286682] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running

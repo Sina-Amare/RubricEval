@@ -6,7 +6,7 @@ This module implements the manager-only bot for analyzing candidate repositories
 
 import asyncio
 import sys
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Optional
 
 # Apply network fixes BEFORE importing telegram
@@ -94,7 +94,7 @@ async def analyze_command(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
     logger.info(f"Analyze command from user {user.username} ({user.id})")
     
     # Check if user is authorized (optional - remove if all users should have access)
-    if MANAGER_IDS and str(user.id) not in MANAGER_IDS.split(','):
+    if MANAGER_IDS and str(user.id) not in MANAGER_IDS:
         await update.message.reply_text(
             "❌ You are not authorized to use this bot.\n"
             "Please contact the administrator."
@@ -328,6 +328,7 @@ async def process_analysis(
             repository_content=repo_content,
             role=role,
             task_requirements=task_requirements,
+            github_url=github_url,
             submission_id=submission.id
         )
         
@@ -357,7 +358,7 @@ async def process_analysis(
         await storage_adapter.update_submission(
             submission.id,
             status=SubmissionStatus.COMPLETED,
-            completed_at=datetime.utcnow()
+            completed_at=datetime.now(timezone.utc)
         )
         
         # Send results
@@ -378,7 +379,7 @@ async def process_analysis(
                 submission.id,
                 status=SubmissionStatus.FAILED,
                 error_message=error_msg[:500],  # Truncate long errors
-                completed_at=datetime.utcnow()
+                completed_at=datetime.now(timezone.utc)
             )
         
         # Send error message
@@ -427,7 +428,7 @@ async def recent_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
             
             # Format time
             if report.created_at:
-                time_diff = datetime.utcnow() - report.created_at
+                time_diff = datetime.now(timezone.utc) - report.created_at
                 if time_diff.days > 0:
                     time_str = f"{time_diff.days}d ago"
                 elif time_diff.seconds > 3600:

@@ -7,7 +7,7 @@ This module provides SQLite storage implementation using SQLAlchemy.
 import asyncio
 import json
 from concurrent.futures import ThreadPoolExecutor
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import List, Optional, Dict, Any
 from functools import partial
 
@@ -92,7 +92,7 @@ class SQLiteAdapter(StorageAdapter):
                         github_url=submission.github_url,
                         role=submission.role.value,
                         status=submission.status.value,
-                        created_at=submission.created_at or datetime.utcnow()
+                        created_at=submission.created_at or datetime.now(timezone.utc)
                     )
                     
                     session.add(db_submission)
@@ -303,19 +303,35 @@ class SQLiteAdapter(StorageAdapter):
                     # Extract individual scores
                     scores = report.analysis_result.scores
                     
+                    # Map LLM recommendation to database format
+                    # LLM returns: strong_yes, yes, maybe, no, strong_no
+                    # We map to: STRONGLY_ACCEPT, ACCEPT, REVIEW_REQUIRED, REJECT, STRONGLY_REJECT
+                    llm_rec = analysis_dict.get('recommendation', 'maybe')
+                    if llm_rec == 'strong_yes':
+                        db_recommendation = 'STRONGLY_ACCEPT'
+                    elif llm_rec == 'yes':
+                        db_recommendation = 'ACCEPT'
+                    elif llm_rec == 'maybe':
+                        db_recommendation = 'REVIEW_REQUIRED'
+                    elif llm_rec == 'no':
+                        db_recommendation = 'REJECT'
+                    elif llm_rec == 'strong_no':
+                        db_recommendation = 'STRONGLY_REJECT'
+                    else:
+                        # Fallback for any unexpected values
+                        db_recommendation = 'REVIEW_REQUIRED'
+                    
                     # Create database report
                     db_report = DBReport(
                         submission_id=report.submission_id,
                         analysis_result=analysis_json,  # Full analysis as JSON
-                        recommendation=report.analysis_result.recommendation.value.upper()
-                        if 'accept' in report.analysis_result.recommendation.value.lower()
-                        else 'REJECT',
+                        recommendation=db_recommendation,
                         confidence=report.analysis_result.confidence,
                         completeness_score=scores.get('completeness', 0),
                         quality_score=scores.get('quality', 0),
                         architecture_score=scores.get('architecture', 0),
                         testing_score=scores.get('testing', 0),
-                        created_at=report.created_at or datetime.utcnow()
+                        created_at=report.created_at or datetime.now(timezone.utc)
                     )
                     
                     session.add(db_report)
@@ -484,7 +500,7 @@ class SQLiteAdapter(StorageAdapter):
                     avg_confidence = session.query(func.avg(DBReport.confidence)).scalar()
                     
                     # Recent activity (last 24 hours)
-                    yesterday = datetime.utcnow() - timedelta(days=1)
+                    yesterday = datetime.now(timezone.utc) - timedelta(days=1)
                     recent_submissions = session.query(func.count(DBSubmission.id))\
                         .filter(DBSubmission.created_at >= yesterday).scalar()
                     
@@ -550,7 +566,7 @@ class SQLiteAdapter(StorageAdapter):
             def _cleanup():
                 session = self.SessionFactory()
                 try:
-                    cutoff_date = datetime.utcnow() - timedelta(days=days)
+                    cutoff_date = datetime.now(timezone.utc) - timedelta(days=days)
                     
                     # First get IDs of old submissions
                     old_submission_ids = session.query(DBSubmission.id)\
@@ -619,7 +635,7 @@ class SQLiteAdapter(StorageAdapter):
             def _check_duplicate():
                 session = self.SessionFactory()
                 try:
-                    cutoff_time = datetime.utcnow() - timedelta(hours=hours)
+                    cutoff_time = datetime.now(timezone.utc) - timedelta(hours=hours)
                     
                     duplicate = session.query(DBSubmission).filter(
                         and_(
@@ -663,16 +679,39 @@ class SQLiteAdapter(StorageAdapter):
         if db_report.analysis_result:
             analysis_dict = json.loads(db_report.analysis_result)
             
-            # Convert recommendation string back to enum
-            recommendation_str = analysis_dict.get('recommendation', db_report.recommendation or 'review_required')
-            try:
-                recommendation = RecommendationLevel(recommendation_str)
-            except ValueError:
-                # Handle old format or invalid values
-                if 'ACCEPT' in str(recommendation_str).upper():
+            # Map database recommendation back to enum
+            # Database stores: STRONGLY_ACCEPT, ACCEPT, REVIEW_REQUIRED, REJECT, STRONGLY_REJECT
+            # LLM provides: strong_yes, yes, maybe, no, strong_no
+            llm_rec = analysis_dict.get('recommendation')  # This is what LLM returned
+            db_rec = db_report.recommendation  # This is what's stored in DB
+            
+            # Use LLM recommendation if available, otherwise map from DB format
+            if llm_rec in ['strong_yes', 'yes', 'maybe', 'no', 'strong_no']:
+                # Map LLM format to our enum
+                if llm_rec == 'strong_yes':
+                    recommendation = RecommendationLevel.STRONGLY_ACCEPT
+                elif llm_rec == 'yes':
                     recommendation = RecommendationLevel.ACCEPT
-                elif 'REJECT' in str(recommendation_str).upper():
+                elif llm_rec == 'maybe':
+                    recommendation = RecommendationLevel.REVIEW_REQUIRED
+                elif llm_rec == 'no':
                     recommendation = RecommendationLevel.REJECT
+                elif llm_rec == 'strong_no':
+                    recommendation = RecommendationLevel.STRONGLY_REJECT
+                else:
+                    recommendation = RecommendationLevel.REVIEW_REQUIRED
+            else:
+                # Map from database format
+                if db_rec == 'STRONGLY_ACCEPT':
+                    recommendation = RecommendationLevel.STRONGLY_ACCEPT
+                elif db_rec == 'ACCEPT':
+                    recommendation = RecommendationLevel.ACCEPT
+                elif db_rec == 'REVIEW_REQUIRED':
+                    recommendation = RecommendationLevel.REVIEW_REQUIRED
+                elif db_rec == 'REJECT':
+                    recommendation = RecommendationLevel.REJECT
+                elif db_rec == 'STRONGLY_REJECT':
+                    recommendation = RecommendationLevel.STRONGLY_REJECT
                 else:
                     recommendation = RecommendationLevel.REVIEW_REQUIRED
             

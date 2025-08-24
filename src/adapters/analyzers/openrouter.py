@@ -24,6 +24,7 @@ from core.exceptions import (
 from utils.logger import setup_logger, log_performance
 from utils.token_counter import TokenCounter
 from utils.validators import validate_analysis_result
+from utils.prompts import load_prompt
 from config import (
     OPENROUTER_KEY, PRIMARY_MODEL, FALLBACK_MODEL,
     TEMPERATURE, ANALYSIS_TIMEOUT, MAX_TOKENS
@@ -265,6 +266,55 @@ class OpenRouterAdapter(AnalyzerAdapter):
         primary_model = self.models[0]
         return TokenCounter.estimate_tokens(text, primary_model["family"])
     
+    async def call_llm_for_selection(self, prompt: str, model_name: str = None) -> str:
+        """
+        Call LLM for file selection or other auxiliary tasks.
+        
+        Args:
+            prompt: The prompt to send to the LLM
+            model_name: Optional specific model to use
+            
+        Returns:
+            Raw LLM response text
+            
+        Raises:
+            AnalysisError: If LLM call fails
+        """
+        if not model_name:
+            model_name = self.models[0]["name"]  # Use primary model
+        
+        payload = {
+            "model": model_name,
+            "messages": [
+                {"role": "system", "content": "You are a code analysis assistant. Respond with valid JSON only."},
+                {"role": "user", "content": prompt}
+            ],
+            "temperature": 0.2,
+            "max_tokens": 2000
+        }
+        
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.post(
+                    self.api_url,
+                    headers=self.headers,
+                    json=payload,
+                    timeout=aiohttp.ClientTimeout(total=30)
+                ) as response:
+                    if response.status == 200:
+                        data = await response.json()
+                        return data['choices'][0]['message']['content']
+                    else:
+                        error_text = await response.text()
+                        raise AnalysisError(f"LLM call failed: {response.status} {error_text}")
+                        
+        except aiohttp.ClientError as e:
+            logger.error(f"Network error in LLM call: {e}")
+            raise AnalysisError(f"Network error calling LLM: {str(e)}")
+        except Exception as e:
+            logger.error(f"LLM call error: {e}")
+            raise AnalysisError(f"Failed to call LLM: {str(e)}")
+    
     async def validate_response(self, response: Dict[str, Any]) -> bool:
         """
         Validate that LLM response has expected structure.
@@ -393,6 +443,10 @@ class OpenRouterAdapter(AnalyzerAdapter):
         system_prompt = self._build_system_prompt()
         user_prompt = self._build_user_prompt(request, content)
         
+        # Log the actual content being sent (first 1000 chars for debugging)
+        logger.debug(f"Content preview being sent to LLM: {content[:1000]}...")
+        logger.info(f"Total content size: {len(content)} characters, {len(request.repository_content.files)} files")
+        
         # Prepare API payload
         payload = {
             "model": model_config["name"],
@@ -432,6 +486,10 @@ class OpenRouterAdapter(AnalyzerAdapter):
                             
                             # Extract response content
                             response_content = data['choices'][0]['message']['content']
+                            
+                            # Log the response for debugging
+                            logger.debug(f"LLM Response preview: {response_content[:500]}...")
+                            logger.info(f"LLM Response length: {len(response_content)} characters")
                             
                             # Parse and validate response
                             parsed_result = self._parse_llm_response(response_content)
@@ -527,7 +585,7 @@ Provide your analysis in the specified JSON format with detailed, specific feedb
     
     def _build_user_prompt(self, request: AnalysisRequest, content: str) -> str:
         """
-        Build the user prompt for analysis.
+        Build the user prompt for analysis using external prompt template.
         
         Args:
             request: Analysis request with requirements and role
@@ -536,7 +594,37 @@ Provide your analysis in the specified JSON format with detailed, specific feedb
         Returns:
             Complete user prompt for analysis
         """
-        return f"""Analyze this {request.role.value} developer code submission against the provided requirements.
+        # Count files and tokens
+        file_count = content.count('\n---\n')  # Rough count based on separators
+        total_tokens = TokenCounter.estimate_tokens(content, "openai")
+        
+        # Load and format the prompt from external file
+        # Use role-specific senior-level prompts for more rigorous evaluation
+        try:
+            # Determine which prompt file to use based on role
+            if request.role.value == "frontend":
+                prompt_file = "analysis/senior_frontend_analysis.md"
+            elif request.role.value == "backend":
+                prompt_file = "analysis/senior_backend_analysis.md"
+            else:
+                # Fallback to generic prompt for other roles
+                prompt_file = "analysis/code_review.md"
+            
+            logger.info(f"Using prompt: {prompt_file} for {request.role.value} analysis")
+            prompt = load_prompt(
+                prompt_file,
+                role=request.role.value,
+                task_requirements=request.task_requirements,
+                github_url=request.github_url,
+                file_count=file_count,
+                total_tokens=total_tokens,
+                code_content=content
+            )
+            return prompt
+        except Exception as e:
+            logger.warning(f"Failed to load external prompt, using fallback: {e}")
+            # Fallback to inline prompt if loading fails
+            return f"""Analyze this {request.role.value} developer code submission against the provided requirements.
 
 # Job Requirements
 {request.task_requirements}
@@ -545,36 +633,14 @@ Provide your analysis in the specified JSON format with detailed, specific feedb
 {content}
 
 # Analysis Instructions
-Evaluate the submission thoroughly and provide your analysis in this exact JSON format:
-
-{{
-    "requirements_met": {{
-        "requirement_1": true/false,
-        "requirement_2": true/false
-        // List each requirement and whether it's satisfied
-    }},
-    "scores": {{
-        "completeness": 0-100,  // How complete is the implementation?
-        "quality": 0-100,       // Code quality and best practices
-        "architecture": 0-100,  // Design and structure quality
-        "testing": 0-100        // Test coverage and quality
-    }},
-    "strengths": [
-        "List specific strong points in the implementation"
-    ],
-    "weaknesses": [
-        "List specific areas needing improvement"
-    ],
-    "critical_issues": [
-        "Any blocking problems that prevent the solution from working"
-    ],
-    "security_concerns": [
-        "Any security vulnerabilities or risky patterns found"
-    ],
-    "recommendation": "ACCEPT" or "REJECT",
-    "confidence": 0-100,  // How confident are you in this assessment?
-    "detailed_feedback": "Comprehensive explanation of your decision with specific examples and suggestions for improvement"
-}}
+Evaluate the submission thoroughly and provide your analysis in JSON format with these fields:
+- requirements_met: Object mapping each requirement to true/false
+- scores: Object with completeness, quality, architecture, testing (0-100)
+- strengths: Array of strong points
+- weaknesses: Array of areas needing improvement
+- recommendation: "strong_yes", "yes", "maybe", "no", or "strong_no"
+- confidence: 0.0-1.0
+- detailed_feedback: Comprehensive explanation
 
 Be thorough but fair. Focus on demonstrating technical competency for the {request.role.value} role."""
     
@@ -658,18 +724,26 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
         Returns:
             Structured AnalysisResult object
         """
-        # Map recommendation string to enum
-        recommendation_str = parsed_response.get('recommendation', 'REJECT').upper()
-        if recommendation_str == 'ACCEPT':
-            recommendation = RecommendationLevel.ACCEPT
-        elif recommendation_str == 'STRONGLY_ACCEPT':
+        # Map LLM recommendation string to enum
+        # LLM should return: strong_yes, yes, maybe, no, strong_no
+        # But sometimes returns: strongly_accept, accept, review_required, reject, strongly_reject
+        recommendation_str = parsed_response.get('recommendation', 'maybe').lower().strip()
+        
+        # Handle both formats
+        if recommendation_str in ['strong_yes', 'strongly_accept']:
             recommendation = RecommendationLevel.STRONGLY_ACCEPT
-        elif recommendation_str == 'REVIEW_REQUIRED':
+        elif recommendation_str in ['yes', 'accept']:
+            recommendation = RecommendationLevel.ACCEPT
+        elif recommendation_str in ['maybe', 'review_required']:
             recommendation = RecommendationLevel.REVIEW_REQUIRED
-        elif recommendation_str == 'STRONGLY_REJECT':
+        elif recommendation_str in ['no', 'reject']:
+            recommendation = RecommendationLevel.REJECT
+        elif recommendation_str in ['strong_no', 'strongly_reject']:
             recommendation = RecommendationLevel.STRONGLY_REJECT
         else:
-            recommendation = RecommendationLevel.REJECT
+            # Fallback for unexpected values
+            logger.warning(f"Unexpected recommendation value: {recommendation_str}, defaulting to REVIEW_REQUIRED")
+            recommendation = RecommendationLevel.REVIEW_REQUIRED
         
         # Convert confidence to 0-1 scale if it's 0-100
         confidence = parsed_response.get('confidence', 0)

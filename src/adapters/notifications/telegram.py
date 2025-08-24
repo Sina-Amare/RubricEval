@@ -7,7 +7,7 @@ Manager-only bot for analyzing candidate GitHub repositories.
 
 import asyncio
 from typing import List, Optional, Dict, Any
-from datetime import datetime
+from datetime import datetime, timezone
 
 # Apply network fixes BEFORE importing telegram
 from utils.network_fix import install_network_fixes
@@ -34,6 +34,7 @@ from interfaces.notification import NotificationAdapter
 from core.models import Submission, Report, AnalysisResult
 from core.exceptions import NotificationError
 from utils.logger import setup_logger, log_error_with_context
+from utils.prompts import escape_markdown
 from config import BOT_TOKEN, MANAGER_IDS
 
 # Initialize logger
@@ -486,11 +487,11 @@ Recommendations:
         requirements_text = ""
         for req, met in result.requirements_met.items():
             symbol = "✓" if met else "✗"
-            requirements_text += f"{symbol} {req}\n"
+            requirements_text += f"{symbol} {escape_markdown(req)}\n"
         
-        # Format strengths and weaknesses
-        strengths_text = "\n".join(f"• {s}" for s in result.strengths[:5])
-        weaknesses_text = "\n".join(f"• {w}" for w in result.weaknesses[:5])
+        # Format strengths and weaknesses with escaped markdown
+        strengths_text = "\n".join(f"• {escape_markdown(s)}" for s in result.strengths[:5])
+        weaknesses_text = "\n".join(f"• {escape_markdown(w)}" for w in result.weaknesses[:5])
         
         # Build the report
         report_text = f"""
@@ -526,7 +527,7 @@ Recommendations:
 {requirements_text}
 
 💡 **DETAILED FEEDBACK**
-{result.detailed_feedback}
+{escape_markdown(result.detailed_feedback)}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Analysis ID: #{report.id}
@@ -580,7 +581,7 @@ _Full report follows..._
         if not dt:
             return "unknown time"
         
-        diff = datetime.utcnow() - dt
+        diff = datetime.now(timezone.utc) - dt
         
         if diff.days > 0:
             return f"{diff.days} day{'s' if diff.days > 1 else ''} ago"

@@ -190,21 +190,26 @@ def validate_analysis_result(result: Dict[str, Any]) -> Tuple[bool, Optional[str
     if not isinstance(result.get('scores'), dict):
         return False, "Scores must be a dictionary"
     
-    required_scores = ['completeness', 'quality', 'architecture', 'testing']
-    for score in required_scores:
-        if score not in result['scores']:
-            return False, f"Missing score: {score}"
-        
-        # Validate score range (0-100)
-        score_value = result['scores'][score]
-        if not isinstance(score_value, (int, float)):
-            return False, f"Score '{score}' must be numeric"
-        if not 0 <= score_value <= 100:
-            return False, f"Score '{score}' must be between 0 and 100"
+    # Be flexible with score names - accept any scores as long as they're numeric
+    # The senior prompts use different score names like 'code_quality', 'seniority', etc.
+    if not result['scores']:
+        return False, "Scores dictionary cannot be empty"
     
-    # Validate recommendation
-    if result['recommendation'] not in ['ACCEPT', 'REJECT']:
-        return False, "Recommendation must be either 'ACCEPT' or 'REJECT'"
+    # Just validate that all scores are numeric and in range
+    for score_name, score_value in result['scores'].items():
+        if not isinstance(score_value, (int, float)):
+            return False, f"Score '{score_name}' must be numeric"
+        if not 0 <= score_value <= 100:
+            return False, f"Score '{score_name}' must be between 0 and 100"
+    
+    # Validate recommendation (LLM may return different formats)
+    valid_recommendations = [
+        'strong_yes', 'yes', 'maybe', 'no', 'strong_no',  # Expected format
+        'strongly_accept', 'accept', 'review_required', 'reject', 'strongly_reject'  # Alternative format
+    ]
+    recommendation = str(result.get('recommendation', '')).lower().strip()
+    if recommendation not in valid_recommendations:
+        return False, f"Recommendation must be one of: strong_yes, yes, maybe, no, strong_no"
     
     # Validate confidence
     confidence = result.get('confidence')

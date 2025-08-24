@@ -4,7 +4,7 @@ import os
 from sqlalchemy import create_engine, Column, Integer, String, DateTime, Text, Float, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
-from datetime import datetime
+from datetime import datetime, timezone
 import json
 from config import DATABASE_PATH
 
@@ -130,7 +130,7 @@ def update_submission_status(submission_id: int, status: str,
         if submission:
             submission.status = status
             if status == 'completed':
-                submission.completed_at = datetime.utcnow()
+                submission.completed_at = datetime.now(timezone.utc)
             if error_message:
                 submission.error_message = error_message
             session.commit()

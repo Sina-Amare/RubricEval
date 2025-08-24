@@ -17,9 +17,17 @@
       "Bash(chmod:*)",
       "Read(//mnt/wsl/**)",
       "Bash(host:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Read(//tmp/**)",
+      "Read(//tmp/test_repo/**)",
+      "Read(//tmp/test_repo/**)",
+      "Read(//tmp/test_repo/**)",
+      "Bash(grep:*)"
     ],
     "deny": [],
-    "ask": []
+    "ask": [],
+    "additionalDirectories": [
+      "/tmp/test_repo"
+    ]
   }
 }

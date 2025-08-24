@@ -9,6 +9,8 @@ import os
 import re
 import tempfile
 import shutil
+import subprocess
+import asyncio
 from typing import Dict, List, Optional, Any
 from pathlib import Path
 import tiktoken
@@ -28,6 +30,7 @@ from config import (
     MAX_TOKENS
 )
 from utils.logger import setup_logger, log_performance, log_error_with_context
+from utils.prompts import load_prompt
 
 # Initialize logger for this module
 logger = setup_logger(__name__)
@@ -154,9 +157,10 @@ class GitHubAdapter(RepositoryAdapter):
                 logger.warning(f"Repository large: {size_mb:.2f}MB (max: {MAX_REPO_SIZE_MB}MB)")
                 # Continue with processing but log warning
             
-            # Extract relevant files based on role
+            # Use pattern-based file extraction (no LLM needed)
+            logger.info("Extracting files based on patterns")
             files = self._extract_files(temp_dir, role)
-            logger.info(f"Extracted {len(files)} files from repository")
+            logger.info(f"Extracted {len(files)} files using patterns")
             
             if not files:
                 raise RepositoryError(f"No relevant files found in repository: {url}")
@@ -324,7 +328,7 @@ class GitHubAdapter(RepositoryAdapter):
     
     async def _clone_repository(self, url: str, target_dir: str) -> Optional[Repo]:
         """
-        Clone a GitHub repository with timeout and error handling.
+        Clone a GitHub repository with retry logic and timeout handling.
         
         Args:
             url: GitHub repository URL
@@ -333,31 +337,55 @@ class GitHubAdapter(RepositoryAdapter):
         Returns:
             Git Repo object if successful, None otherwise
         """
-        try:
-            logger.info(f"Cloning repository: {url}")
-            
-            # Normalize URL for cloning
-            clone_url = self._normalize_clone_url(url)
-            
-            # Use shallow clone for speed and bandwidth efficiency
-            repo = Repo.clone_from(
-                clone_url,
-                target_dir,
-                depth=1,  # Shallow clone - only latest commit
-                single_branch=True,  # Only default branch
-                progress=None,
-                env={'GIT_TERMINAL_PROMPT': '0'}  # Disable password prompts
-            )
-            
-            logger.info("Repository cloned successfully")
-            return repo
-            
-        except GitCommandError as e:
-            logger.error(f"Git command error during clone: {e}")
-            return None
-        except Exception as e:
-            logger.error(f"Clone failed with error: {e}")
-            return None
+        clone_url = self._normalize_clone_url(url)
+        max_retries = 3
+        retry_delays = [2, 4, 8]  # Exponential backoff
+        
+        for attempt in range(max_retries):
+            try:
+                logger.info(f"Cloning repository: {url} (attempt {attempt + 1}/{max_retries})")
+                
+                # Use shallow clone for speed and bandwidth efficiency
+                repo = Repo.clone_from(
+                    clone_url,
+                    target_dir,
+                    depth=1,  # Shallow clone - only latest commit
+                    single_branch=True,  # Only default branch
+                    progress=None,
+                    env={'GIT_TERMINAL_PROMPT': '0'}  # Disable password prompts
+                )
+                
+                logger.info("Repository cloned successfully")
+                return repo
+                
+            except GitCommandError as e:
+                error_str = str(e)
+                # Check if it's a network error that might be resolved with retry
+                if any(err in error_str.lower() for err in ['gnutls', 'network', 'connection', 'tls', 'timeout']):
+                    if attempt < max_retries - 1:
+                        delay = retry_delays[attempt]
+                        logger.warning(f"Network error during clone, retrying in {delay}s: {e}")
+                        await asyncio.sleep(delay)
+                        continue
+                    else:
+                        logger.error(f"Git clone failed after {max_retries} attempts: {e}")
+                        return None
+                else:
+                    # Non-retryable error
+                    logger.error(f"Git command error during clone: {e}")
+                    return None
+                    
+            except Exception as e:
+                if attempt < max_retries - 1:
+                    delay = retry_delays[attempt]
+                    logger.warning(f"Clone failed, retrying in {delay}s: {e}")
+                    await asyncio.sleep(delay)
+                    continue
+                else:
+                    logger.error(f"Clone failed after {max_retries} attempts: {e}")
+                    return None
+        
+        return None
     
     def _normalize_clone_url(self, url: str) -> str:
         """
@@ -807,6 +835,180 @@ class GitHubAdapter(RepositoryAdapter):
             logger.warning(f"Error extracting repository metadata: {e}")
         
         return metadata
+    
+    async def _get_repository_structure(self, repo_path: str) -> Dict[str, Any]:
+        """
+        Get complete repository file structure using git.
+        
+        Args:
+            repo_path: Path to the cloned repository
+            
+        Returns:
+            Dictionary containing file structure and metadata
+        """
+        structure = {
+            'files': [],
+            'total_files': 0,
+            'total_size': 0,
+            'directories': set()
+        }
+        
+        try:
+            # Use git ls-tree to get all files
+            result = subprocess.run(
+                ['git', 'ls-tree', '-r', 'HEAD', '--name-only'],
+                capture_output=True,
+                text=True,
+                cwd=repo_path,
+                timeout=30
+            )
+            
+            if result.returncode == 0:
+                files = result.stdout.strip().split('\n')
+                structure['files'] = [f for f in files if f]
+                structure['total_files'] = len(structure['files'])
+                
+                # Get directory list
+                for file_path in structure['files']:
+                    dir_path = os.path.dirname(file_path)
+                    if dir_path:
+                        structure['directories'].add(dir_path)
+                
+                structure['directories'] = sorted(list(structure['directories']))
+                
+                # Calculate total size
+                structure['total_size'] = self._get_directory_size(repo_path)
+                
+                logger.info(f"Repository structure: {structure['total_files']} files in {len(structure['directories'])} directories")
+            else:
+                logger.warning(f"Failed to get repository structure: {result.stderr}")
+                # Fallback to os.walk
+                for root, dirs, files in os.walk(repo_path):
+                    # Skip .git directory
+                    if '.git' in root:
+                        continue
+                    for file in files:
+                        rel_path = os.path.relpath(os.path.join(root, file), repo_path)
+                        structure['files'].append(rel_path)
+                        structure['total_files'] += 1
+                
+        except Exception as e:
+            logger.error(f"Error getting repository structure: {e}")
+        
+        return structure
+    
+    async def _select_files_intelligently(self, repo_path: str, structure: Dict[str, Any], role: Role, task_requirements: str) -> List[str]:
+        """
+        Use LLM to intelligently select relevant files for analysis.
+        
+        Args:
+            repo_path: Path to repository
+            structure: Repository structure from _get_repository_structure
+            role: Target role (frontend/backend)
+            task_requirements: Task requirements for the role
+            
+        Returns:
+            List of file paths to analyze
+        """
+        try:
+            # Load task requirements if not provided
+            if not task_requirements:
+                task_file = f"data/task_requirements/{role.value}_task.md"
+                if os.path.exists(task_file):
+                    with open(task_file, 'r') as f:
+                        task_requirements = f.read()
+                else:
+                    task_requirements = f"Evaluate for {role.value} position"
+            
+            # Format repository structure for prompt
+            structure_text = self._format_structure_for_prompt(structure)
+            
+            # Load and format the file selection prompt
+            prompt = load_prompt(
+                "file_selection/smart_selection.md",
+                repository_structure=structure_text,
+                role=role.value,
+                max_files=50,  # Limit to top 50 files
+                token_limit=self.max_tokens,
+                task_requirements=task_requirements
+            )
+            
+            # Call LLM for file selection (using OpenRouter)
+            # Import here to avoid circular dependency
+            from adapters.analyzers.openrouter import OpenRouterAdapter
+            
+            analyzer = OpenRouterAdapter()
+            response = await analyzer.call_llm_for_selection(prompt, "google/gemini-2.5-flash")
+            
+            # Parse the JSON response
+            import json
+            try:
+                # Clean up the response - remove extra backticks and whitespace
+                cleaned_response = response.strip()
+                
+                # Remove trailing backticks if present
+                if cleaned_response.endswith('```'):
+                    cleaned_response = cleaned_response[:-3].strip()
+                
+                # Try to extract JSON from markdown code block
+                if '```json' in cleaned_response:
+                    start = cleaned_response.find('```json') + 7
+                    end = cleaned_response.find('```', start)
+                    if end != -1:
+                        cleaned_response = cleaned_response[start:end].strip()
+                elif cleaned_response.startswith('```'):
+                    # Remove code block markers
+                    lines = cleaned_response.split('\n')
+                    if lines[0].startswith('```'):
+                        lines = lines[1:]
+                    if lines[-1].strip() == '```':
+                        lines = lines[:-1]
+                    cleaned_response = '\n'.join(lines).strip()
+                
+                result = json.loads(cleaned_response)
+                selected_files = [f['path'] for f in result.get('selected_files', [])]
+                logger.info(f"LLM selected {len(selected_files)} files for analysis")
+                return selected_files
+            except (json.JSONDecodeError, KeyError) as e:
+                logger.warning(f"Failed to parse LLM file selection response: {e}")
+                logger.debug(f"Response was: {response[:500]}")
+                return []
+                
+        except Exception as e:
+            logger.error(f"Intelligent file selection failed: {e}")
+            return []
+    
+    def _format_structure_for_prompt(self, structure: Dict[str, Any]) -> str:
+        """
+        Format repository structure for LLM prompt.
+        
+        Args:
+            structure: Repository structure dictionary
+            
+        Returns:
+            Formatted structure text
+        """
+        lines = []
+        lines.append(f"Total files: {structure['total_files']}")
+        lines.append(f"Total size: {structure['total_size'] / (1024*1024):.2f} MB")
+        lines.append("\nFile list:")
+        
+        # Group files by directory for better readability
+        files_by_dir = {}
+        for file_path in structure['files'][:500]:  # Limit to first 500 files
+            dir_name = os.path.dirname(file_path) or '.'
+            if dir_name not in files_by_dir:
+                files_by_dir[dir_name] = []
+            files_by_dir[dir_name].append(os.path.basename(file_path))
+        
+        for dir_name in sorted(files_by_dir.keys()):
+            lines.append(f"\n{dir_name}/")
+            for file_name in sorted(files_by_dir[dir_name])[:20]:  # Limit files per directory
+                lines.append(f"  - {file_name}")
+            if len(files_by_dir[dir_name]) > 20:
+                lines.append(f"  ... and {len(files_by_dir[dir_name]) - 20} more files")
+        
+        return '\n'.join(lines)
     
     def _optimize_content_for_limits(self, repo_content: RepositoryContent) -> RepositoryContent:
         """

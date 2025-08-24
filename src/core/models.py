@@ -7,7 +7,7 @@ used throughout the application.
 
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Any
-from datetime import datetime
+from datetime import datetime, timezone
 from enum import Enum
 
 
@@ -94,12 +94,14 @@ class AnalysisRequest:
         repository_content: Processed repository content
         role: Role to evaluate against
         task_requirements: Task requirements text
+        github_url: GitHub repository URL
         submission_id: Associated submission ID
         config: Additional configuration options
     """
     repository_content: RepositoryContent
     role: Role
     task_requirements: str
+    github_url: str
     submission_id: Optional[int] = None
     config: Dict[str, Any] = field(default_factory=dict)
 
@@ -179,9 +181,9 @@ class Submission:
     def __post_init__(self):
         """Initialize timestamps if not provided."""
         if self.created_at is None:
-            self.created_at = datetime.utcnow()
+            self.created_at = datetime.now(timezone.utc)
         if self.updated_at is None:
-            self.updated_at = datetime.utcnow()
+            self.updated_at = datetime.now(timezone.utc)
     
     def is_complete(self) -> bool:
         """Check if submission is complete."""
@@ -217,7 +219,7 @@ class Report:
     def __post_init__(self):
         """Initialize timestamp if not provided."""
         if self.created_at is None:
-            self.created_at = datetime.utcnow()
+            self.created_at = datetime.now(timezone.utc)
     
     def to_dict(self) -> Dict[str, Any]:
         """Convert to dictionary representation."""

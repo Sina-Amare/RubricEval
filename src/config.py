@@ -16,7 +16,6 @@ if not BOT_TOKEN or not OPENROUTER_KEY:
 # Optional: Restrict bot to specific Telegram user IDs (comma-separated)
 # Example: MANAGER_IDS=123456789,987654321
 # If not set, all users can use the bot
-MANAGER_IDS = os.getenv('MANAGER_IDS', '')
 
 # Developer-configured (with defaults)
 DATABASE_PATH = os.getenv('DATABASE_PATH', './data/reviews.db')
@@ -25,8 +24,8 @@ ANALYSIS_TIMEOUT = int(os.getenv('ANALYSIS_TIMEOUT', '600'))
 MAX_CONCURRENT = int(os.getenv('MAX_CONCURRENT', '3'))
 
 # LLM Configuration
-PRIMARY_MODEL = os.getenv('PRIMARY_MODEL', 'google/gemini-flash-1.5-8b')
-FALLBACK_MODEL = os.getenv('FALLBACK_MODEL', 'openai/gpt-4-turbo-preview')
+PRIMARY_MODEL = os.getenv('PRIMARY_MODEL', 'google/gemini-2.5-flash')
+FALLBACK_MODEL = os.getenv('FALLBACK_MODEL', 'openai/gpt-5-mini')
 MAX_TOKENS = int(os.getenv('MAX_TOKENS', '900000'))
 TEMPERATURE = float(os.getenv('TEMPERATURE', '0.2'))
 
@@ -39,77 +38,165 @@ CACHE_DURATION = int(os.getenv('CACHE_DURATION', '3600'))
 MANAGER_IDS = os.getenv('MANAGER_IDS', '').split(',') if os.getenv('MANAGER_IDS') else []
 MANAGER_IDS = [id.strip() for id in MANAGER_IDS if id.strip()]
 
-# File Patterns for different roles
+# File Patterns for different roles - INCLUDE everything except useless files
 BACKEND_PATTERNS = {
-    'critical': [
-        'main.go', 
-        'cmd/**/*.go', 
-        'handler/**/*.go', 
-        'handlers/**/*.go',
-        'api/**/*.go',
-        'server/**/*.go'
-    ],
-    'important': [
-        'service/**/*.go',
-        'services/**/*.go', 
-        'model/**/*.go',
-        'models/**/*.go',
-        'repository/**/*.go',
-        'repositories/**/*.go',
-        'pkg/**/*.go',
-        'internal/**/*.go'
-    ],
-    'useful': [
-        '**/*_test.go', 
-        'go.mod', 
-        'go.sum', 
-        'README.md',
-        'Dockerfile',
-        '.env.example'
-    ],
+    'critical': ['**/*'],  # Get all files
+    'important': [],
+    'useful': [],
     'exclude': [
-        'vendor/**', 
-        '.git/**', 
-        '**/*.pb.go',
+        # Package managers and dependencies
+        'vendor/**',
+        'node_modules/**',
+        '.venv/**',
+        'venv/**',
+        'env/**',
+        '__pycache__/**',
+        '*.pyc',
+        '*.pyo',
+        '*.pyd',
+        '.Python',
+        'pip-log.txt',
+        'pip-delete-this-directory.txt',
+        
+        # Build outputs
+        'build/**',
+        'dist/**',
+        'target/**',
         'bin/**',
-        'dist/**'
+        'obj/**',
+        'out/**',
+        '*.egg-info/**',
+        
+        # Version control
+        '.git/**',
+        '.svn/**',
+        '.hg/**',
+        
+        # IDE and editor files
+        '.idea/**',
+        '.vscode/**',
+        '*.swp',
+        '*.swo',
+        '*~',
+        '.DS_Store',
+        'Thumbs.db',
+        
+        # Compiled files
+        '*.exe',
+        '*.dll',
+        '*.so',
+        '*.dylib',
+        '*.a',
+        '*.o',
+        '*.class',
+        '*.jar',
+        '*.war',
+        '*.ear',
+        
+        # Logs and databases
+        '*.log',
+        '*.sqlite',
+        '*.db',
+        
+        # Media files (usually not code)
+        '*.png',
+        '*.jpg',
+        '*.jpeg',
+        '*.gif',
+        '*.ico',
+        '*.pdf',
+        '*.mp4',
+        '*.mp3',
+        '*.wav',
+        '*.avi',
+        
+        # Archives
+        '*.zip',
+        '*.tar',
+        '*.gz',
+        '*.rar',
+        '*.7z',
+        
+        # Large data files
+        '*.csv',
+        '*.parquet',
+        '*.feather',
+        '*.h5',
+        '*.hdf5'
     ]
 }
 
 FRONTEND_PATTERNS = {
-    'critical': [
-        'src/App.*',
-        'src/index.*',
-        'src/main.*',
-        'pages/**/*',
-        'app/**/*'
-    ],
-    'important': [
-        'components/**/*',
-        'src/components/**/*',
-        'services/**/*',
-        'src/services/**/*',
-        'hooks/**/*',
-        'src/hooks/**/*',
-        'utils/**/*',
-        'src/utils/**/*'
-    ],
-    'useful': [
-        '**/*.test.*',
-        '**/*.spec.*',
-        'package.json',
-        '*.config.js',
-        '*.config.ts',
-        'tsconfig.json',
-        'README.md'
-    ],
+    'critical': ['**/*'],  # Get all files
+    'important': [],
+    'useful': [],
     'exclude': [
+        # Package managers and dependencies
         'node_modules/**',
+        'bower_components/**',
+        'jspm_packages/**',
+        '.pnp/**',
+        '.pnp.js',
+        'package-lock.json',
+        'yarn.lock',
+        'pnpm-lock.yaml',
+        
+        # Build outputs
         'build/**',
         'dist/**',
-        '.git/**',
-        'coverage/**',
+        'out/**',
         '.next/**',
-        'out/**'
+        '.nuxt/**',
+        '.cache/**',
+        'coverage/**',
+        '.parcel-cache/**',
+        
+        # Version control
+        '.git/**',
+        '.svn/**',
+        '.hg/**',
+        
+        # IDE and editor files
+        '.idea/**',
+        '.vscode/**',
+        '*.swp',
+        '*.swo',
+        '*~',
+        '.DS_Store',
+        'Thumbs.db',
+        
+        # Font files (binary)
+        '*.woff',
+        '*.woff2',
+        '*.ttf',
+        '*.eot',
+        '*.otf',
+        
+        # Media files
+        '*.png',
+        '*.jpg',
+        '*.jpeg',
+        '*.gif',
+        '*.svg',
+        '*.ico',
+        '*.webp',
+        '*.mp4',
+        '*.mp3',
+        '*.wav',
+        '*.avi',
+        
+        # Archives
+        '*.zip',
+        '*.tar',
+        '*.gz',
+        '*.rar',
+        '*.7z',
+        
+        # Other binary files
+        '*.pdf',
+        '*.exe',
+        '*.dll',
+        '*.so',
+        '*.dylib'
     ]
 }
