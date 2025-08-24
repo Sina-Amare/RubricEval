@@ -1,0 +1,29 @@
+[Unit]
+Description=CV Review Telegram Bot
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/cv_review
+Environment="PATH=/home/ubuntu/cv_review/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ExecStart=/home/ubuntu/cv_review/venv/bin/python /home/ubuntu/cv_review/src/bot.py
+Restart=always
+RestartSec=10
+
+# Graceful shutdown
+KillMode=mixed
+KillSignal=SIGTERM
+TimeoutStopSec=30
+
+# Logging
+StandardOutput=append:/home/ubuntu/cv_review/logs/bot.log
+StandardError=append:/home/ubuntu/cv_review/logs/error.log
+
+# Resource limits
+LimitNOFILE=4096
+MemoryMax=2G
+CPUQuota=200%
+
+[Install]
+WantedBy=multi-user.target

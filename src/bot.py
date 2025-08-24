@@ -71,7 +71,11 @@ I help you analyze candidate GitHub repositories quickly and consistently.
 
 **Commands:**
 /analyze - Start new analysis
-/recent - View recent analyses
+/recent - View recent analyses (last 10)
+/history - View full analysis history
+/history frontend - Frontend analyses only
+/history backend - Backend analyses only
+/report <id> - View specific report
 /stats - View statistics
 /help - Show this message
 /cancel - Cancel current operation
@@ -273,6 +277,8 @@ async def process_analysis(
     
     This runs as a background task to avoid blocking the bot.
     """
+    progress_message = None  # Store message to edit/delete later
+    
     try:
         # Create submission record
         submission = Submission(
@@ -292,8 +298,8 @@ async def process_analysis(
             status=SubmissionStatus.ANALYZING
         )
         
-        # Send progress update
-        await context.bot.send_message(
+        # Send initial progress message (will be edited)
+        progress_message = await context.bot.send_message(
             chat_id=chat_id,
             text="📥 Fetching repository content..."
         )
@@ -307,9 +313,10 @@ async def process_analysis(
         except Exception as e:
             raise Exception(f"Failed to fetch repository: {str(e)}")
         
-        # Send another progress update
-        await context.bot.send_message(
+        # Edit progress message instead of sending new one
+        await context.bot.edit_message_text(
             chat_id=chat_id,
+            message_id=progress_message.message_id,
             text=f"🔍 Analyzing {len(repo_content.files)} files..."
         )
         
@@ -361,6 +368,16 @@ async def process_analysis(
             completed_at=datetime.now(timezone.utc)
         )
         
+        # Delete progress message before sending results
+        if progress_message:
+            try:
+                await context.bot.delete_message(
+                    chat_id=chat_id,
+                    message_id=progress_message.message_id
+                )
+            except:
+                pass  # Ignore if message already deleted
+        
         # Send results
         await notification_adapter.send_analysis_complete(
             str(chat_id),
@@ -368,10 +385,26 @@ async def process_analysis(
             report
         )
         
+        # Send separator for clarity
+        await context.bot.send_message(
+            chat_id=chat_id,
+            text="━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        )
+        
     except Exception as e:
         error_msg = str(e)
         logger.error(f"Analysis failed for {github_url}: {error_msg}")
         log_error_with_context(logger, e, {'url': github_url, 'role': role.value})
+        
+        # Delete progress message if exists
+        if progress_message:
+            try:
+                await context.bot.delete_message(
+                    chat_id=chat_id,
+                    message_id=progress_message.message_id
+                )
+            except:
+                pass
         
         # Update submission as failed
         if submission and submission.id:
@@ -426,9 +459,16 @@ async def recent_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
             score = report.analysis_result.get_overall_score()
             rec = report.analysis_result.recommendation.value.replace('_', ' ').upper()
             
-            # Format time
+            # Format time - handle both timezone-aware and naive datetimes
             if report.created_at:
-                time_diff = datetime.now(timezone.utc) - report.created_at
+                # Ensure report.created_at is timezone-aware
+                if report.created_at.tzinfo is None:
+                    # If naive, assume it's UTC
+                    report_time = report.created_at.replace(tzinfo=timezone.utc)
+                else:
+                    report_time = report.created_at
+                
+                time_diff = datetime.now(timezone.utc) - report_time
                 if time_diff.days > 0:
                     time_str = f"{time_diff.days}d ago"
                 elif time_diff.seconds > 3600:
@@ -466,35 +506,38 @@ async def stats_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
         # Get statistics
         stats = await storage_adapter.get_statistics()
         
-        # Format statistics message
+        # Format statistics message using HTML to avoid markdown parsing issues
         message = f"""
-📊 **System Statistics**
+📊 <b>System Statistics</b>
 ━━━━━━━━━━━━━━━━━━━━
 
-**Overall:**
+<b>Overall:</b>
 • Total Analyses: {stats.get('total_submissions', 0)}
 • Completed: {stats.get('completed_submissions', 0)}
 • Failed: {stats.get('failed_submissions', 0)}
 • Last 24h: {stats.get('recent_submissions_24h', 0)}
 
-**By Position:**
+<b>By Position:</b>
         """
         
         role_breakdown = stats.get('role_breakdown', {})
         for role, count in role_breakdown.items():
             message += f"• {role.title()}: {count}\n"
         
-        message += "\n**Recommendations:**\n"
+        message += "\n<b>Recommendations:</b>\n"
         rec_breakdown = stats.get('recommendation_breakdown', {})
         for rec, count in rec_breakdown.items():
-            message += f"• {rec.upper()}: {count}\n"
+            # Replace underscores with spaces for better display
+            rec_display = rec.replace('_', ' ').upper()
+            message += f"• {rec_display}: {count}\n"
         
         if 'average_confidence' in stats and stats['average_confidence']:
-            message += f"\n**Average Confidence:** {stats['average_confidence']:.0%}"
+            confidence_pct = int(stats['average_confidence'] * 100)
+            message += f"\n<b>Average Confidence:</b> {confidence_pct}%"
         
         await update.message.reply_text(
             message,
-            parse_mode=ParseMode.MARKDOWN
+            parse_mode=ParseMode.HTML
         )
         
     except Exception as e:
@@ -519,6 +562,319 @@ async def cancel_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     )
     
     return ConversationHandler.END
+
+
+async def history_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Show paginated history of analyses with filtering."""
+    user = update.effective_user
+    logger.info(f"History command from user {user.username} ({user.id})")
+    
+    # Check if user is manager
+    if MANAGER_IDS and str(user.id) not in MANAGER_IDS:
+        await update.message.reply_text(
+            "❌ This command is only available to managers."
+        )
+        return
+    
+    # Parse arguments for role filter
+    role_filter = None
+    page = 0
+    
+    if context.args:
+        arg = context.args[0].lower()
+        if arg in ['frontend', 'backend']:
+            role_filter = Role.FRONTEND if arg == 'frontend' else Role.BACKEND
+    
+    # Store filter in context for pagination
+    context.user_data['history_role_filter'] = role_filter
+    context.user_data['history_page'] = page
+    
+    await show_history_page(update, context, page, role_filter)
+
+
+async def show_history_page(update: Update, context: ContextTypes.DEFAULT_TYPE, page: int, role_filter: Optional[Role] = None) -> None:
+    """Display a page of history results."""
+    ITEMS_PER_PAGE = 5
+    
+    try:
+        # Get all reports with optional role filter
+        all_reports = await storage_adapter.get_recent_reports(limit=100, role=role_filter)
+        
+        if not all_reports:
+            text = "📋 No analyses found"
+            if role_filter:
+                text += f" for {role_filter.value} position"
+            await update.message.reply_text(text)
+            return
+        
+        # Calculate pagination
+        total_pages = (len(all_reports) - 1) // ITEMS_PER_PAGE + 1
+        start_idx = page * ITEMS_PER_PAGE
+        end_idx = min(start_idx + ITEMS_PER_PAGE, len(all_reports))
+        page_reports = all_reports[start_idx:end_idx]
+        
+        # Build message
+        message = f"📊 **Analysis History**"
+        if role_filter:
+            message += f" - {role_filter.value.upper()}"
+        message += f"\nPage {page + 1}/{total_pages}\n\n"
+        
+        for report in page_reports:
+            # Get submission details
+            submission = await storage_adapter.get_submission(report.submission_id)
+            if submission:
+                repo_name = submission.github_url.split('/')[-1].replace('.git', '')
+                username = submission.telegram_username or "Unknown"
+                
+                # Format time
+                if report.created_at:
+                    if report.created_at.tzinfo is None:
+                        report_time = report.created_at.replace(tzinfo=timezone.utc)
+                    else:
+                        report_time = report.created_at
+                    time_str = report_time.strftime("%Y-%m-%d %H:%M")
+                else:
+                    time_str = "Unknown"
+                
+                score = report.analysis_result.get_overall_score()
+                rec = report.analysis_result.recommendation.value.replace('_', ' ').title()
+                
+                message += f"**#{report.id}** `{repo_name}`\n"
+                message += f"👤 {username} | 💼 {submission.role.value}\n"
+                message += f"📊 Score: {score:.0%} | {rec}\n"
+                message += f"🕐 {time_str}\n"
+                message += "─" * 30 + "\n"
+        
+        # Create inline keyboard for pagination and viewing
+        keyboard = []
+        
+        # View buttons for each report
+        view_buttons = []
+        for report in page_reports:
+            view_buttons.append(
+                InlineKeyboardButton(
+                    f"View #{report.id}",
+                    callback_data=f"view_report_{report.id}"
+                )
+            )
+        
+        # Add view buttons in rows of 2
+        for i in range(0, len(view_buttons), 2):
+            row = view_buttons[i:i+2]
+            keyboard.append(row)
+        
+        # Navigation buttons
+        nav_buttons = []
+        if page > 0:
+            nav_buttons.append(
+                InlineKeyboardButton("⬅️ Previous", callback_data=f"history_prev_{page}")
+            )
+        if page < total_pages - 1:
+            nav_buttons.append(
+                InlineKeyboardButton("Next ➡️", callback_data=f"history_next_{page}")
+            )
+        
+        if nav_buttons:
+            keyboard.append(nav_buttons)
+        
+        # Filter buttons
+        filter_buttons = []
+        if role_filter != Role.FRONTEND:
+            filter_buttons.append(
+                InlineKeyboardButton("🎨 Frontend Only", callback_data="history_filter_frontend")
+            )
+        if role_filter != Role.BACKEND:
+            filter_buttons.append(
+                InlineKeyboardButton("⚙️ Backend Only", callback_data="history_filter_backend")
+            )
+        if role_filter is not None:
+            filter_buttons.append(
+                InlineKeyboardButton("📋 Show All", callback_data="history_filter_all")
+            )
+        
+        if filter_buttons:
+            keyboard.append(filter_buttons)
+        
+        reply_markup = InlineKeyboardMarkup(keyboard) if keyboard else None
+        
+        # Send or edit message
+        if update.callback_query:
+            await update.callback_query.edit_message_text(
+                text=message,
+                parse_mode=ParseMode.MARKDOWN,
+                reply_markup=reply_markup
+            )
+        else:
+            await update.message.reply_text(
+                text=message,
+                parse_mode=ParseMode.MARKDOWN,
+                reply_markup=reply_markup
+            )
+            
+    except Exception as e:
+        logger.error(f"Error in history display: {e}")
+        error_text = "❌ Error retrieving history. Please try again."
+        if update.callback_query:
+            await update.callback_query.edit_message_text(error_text)
+        else:
+            await update.message.reply_text(error_text)
+
+
+async def history_navigation_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Handle history navigation callbacks."""
+    query = update.callback_query
+    await query.answer()
+    
+    data = query.data
+    role_filter = context.user_data.get('history_role_filter')
+    current_page = context.user_data.get('history_page', 0)
+    
+    if data.startswith("history_prev_"):
+        new_page = max(0, current_page - 1)
+    elif data.startswith("history_next_"):
+        new_page = current_page + 1
+    elif data == "history_filter_frontend":
+        role_filter = Role.FRONTEND
+        new_page = 0
+    elif data == "history_filter_backend":
+        role_filter = Role.BACKEND
+        new_page = 0
+    elif data == "history_filter_all":
+        role_filter = None
+        new_page = 0
+    elif data == "history_back":
+        # Return to history from report view
+        new_page = context.user_data.get('history_page', 0)
+    else:
+        return
+    
+    context.user_data['history_role_filter'] = role_filter
+    context.user_data['history_page'] = new_page
+    
+    await show_history_page(update, context, new_page, role_filter)
+
+
+async def view_report_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Handle viewing individual report."""
+    query = update.callback_query
+    await query.answer()
+    
+    # Extract report ID
+    report_id = int(query.data.split('_')[-1])
+    
+    try:
+        # Get report from database
+        report = await storage_adapter.get_report(report_id)
+        if not report:
+            await query.edit_message_text("❌ Report not found.")
+            return
+        
+        # Get submission details
+        submission = await storage_adapter.get_submission(report.submission_id)
+        if not submission:
+            await query.edit_message_text("❌ Submission data not found.")
+            return
+        
+        # Format the detailed report
+        repo_name = submission.github_url.split('/')[-1].replace('.git', '')
+        score = report.analysis_result.get_overall_score()
+        
+        message = f"""📊 **DETAILED ANALYSIS REPORT #{report.id}**
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+**Repository:** `{repo_name}`
+**URL:** {submission.github_url}
+**Position:** {submission.role.value}
+**Candidate:** {submission.telegram_username}
+**Date:** {report.created_at.strftime("%Y-%m-%d %H:%M") if report.created_at else "Unknown"}
+
+**SCORES**
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+"""
+        
+        # Add individual scores
+        for score_name, score_value in report.analysis_result.scores.items():
+            score_display = score_name.replace('_', ' ').title()
+            bar = "█" * int(score_value / 10) + "░" * (10 - int(score_value / 10))
+            message += f"{score_display}: {bar} {score_value:.0f}%\n"
+        
+        message += f"\n**Overall:** {score:.0%}\n"
+        message += f"**Recommendation:** {report.analysis_result.recommendation.value.replace('_', ' ').upper()}\n"
+        message += f"**Confidence:** {int(report.analysis_result.confidence * 100)}%\n"
+        
+        # Add strengths
+        if report.analysis_result.strengths:
+            message += "\n**STRENGTHS**\n"
+            for strength in report.analysis_result.strengths[:5]:
+                message += f"✅ {strength}\n"
+        
+        # Add weaknesses
+        if report.analysis_result.weaknesses:
+            message += "\n**WEAKNESSES**\n"
+            for weakness in report.analysis_result.weaknesses[:5]:
+                message += f"⚠️ {weakness}\n"
+        
+        # Add detailed feedback (truncate if too long)
+        if report.analysis_result.detailed_feedback:
+            feedback = report.analysis_result.detailed_feedback
+            if len(feedback) > 800:
+                feedback = feedback[:797] + "..."
+            message += f"\n**DETAILED FEEDBACK**\n{feedback}\n"
+        
+        # Add back button
+        keyboard = [[
+            InlineKeyboardButton("⬅️ Back to History", callback_data="history_back")
+        ]]
+        reply_markup = InlineKeyboardMarkup(keyboard)
+        
+        await query.edit_message_text(
+            text=message,
+            parse_mode=ParseMode.MARKDOWN,
+            reply_markup=reply_markup
+        )
+        
+    except Exception as e:
+        logger.error(f"Error viewing report {report_id}: {e}")
+        await query.edit_message_text(f"❌ Error viewing report: {str(e)}")
+
+
+async def report_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """View a specific report by ID."""
+    user = update.effective_user
+    logger.info(f"Report command from user {user.username} ({user.id})")
+    
+    # Check if user is manager
+    if MANAGER_IDS and str(user.id) not in MANAGER_IDS:
+        await update.message.reply_text(
+            "❌ This command is only available to managers."
+        )
+        return
+    
+    if not context.args:
+        await update.message.reply_text(
+            "Please provide a report ID.\n"
+            "Usage: /report <id>\n"
+            "Example: /report 5"
+        )
+        return
+    
+    try:
+        report_id = int(context.args[0])
+    except ValueError:
+        await update.message.reply_text("❌ Invalid report ID. Please provide a number.")
+        return
+    
+    # Create a fake callback query to reuse the view_report_callback
+    class FakeQuery:
+        def __init__(self, data):
+            self.data = data
+        async def answer(self):
+            pass
+        async def edit_message_text(self, **kwargs):
+            await update.message.reply_text(**kwargs)
+    
+    update.callback_query = FakeQuery(f"view_report_{report_id}")
+    await view_report_callback(update, context)
 
 
 async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -575,7 +931,8 @@ def main() -> None:
             WAITING_FOR_URL: [MessageHandler(filters.TEXT & ~filters.COMMAND, receive_url)],
             WAITING_FOR_ROLE: [CallbackQueryHandler(role_callback, pattern="^role_")]
         },
-        fallbacks=[CommandHandler("cancel", cancel_command)]
+        fallbacks=[CommandHandler("cancel", cancel_command)],
+        per_chat=False  # Disable per_chat to avoid issues
     )
     
     # Add handlers
@@ -583,8 +940,12 @@ def main() -> None:
     application.add_handler(CommandHandler("help", help_command))
     application.add_handler(conv_handler)
     application.add_handler(CommandHandler("recent", recent_command))
+    application.add_handler(CommandHandler("history", history_command))
+    application.add_handler(CommandHandler("report", report_command))
     application.add_handler(CommandHandler("stats", stats_command))
     application.add_handler(CommandHandler("cancel", cancel_command))
+    application.add_handler(CallbackQueryHandler(history_navigation_callback, pattern="^history_"))
+    application.add_handler(CallbackQueryHandler(view_report_callback, pattern="^view_report_"))
     
     # Add error handler
     application.add_error_handler(error_handler)
@@ -594,17 +955,89 @@ def main() -> None:
     asyncio.set_event_loop(loop)
     loop.run_until_complete(initialize_adapters())
     
+    # Delete any existing webhook to avoid conflicts (with retry)
+    max_retries = 3
+    for attempt in range(max_retries):
+        try:
+            loop.run_until_complete(application.bot.delete_webhook(drop_pending_updates=True))
+            logger.info("Cleared any existing webhooks")
+            break
+        except Exception as e:
+            if attempt < max_retries - 1:
+                logger.warning(f"Failed to delete webhook (attempt {attempt + 1}/{max_retries}): {e}")
+                import time
+                time.sleep(2)
+            else:
+                logger.error(f"Could not delete webhook after {max_retries} attempts: {e}")
+                # Continue anyway - polling might still work
+    
     logger.info("Bot is ready! Starting polling...")
     
-    # Start the bot
-    application.run_polling(drop_pending_updates=True)
+    # Start the bot with proper configuration
+    application.run_polling(
+        drop_pending_updates=True,
+        close_loop=False
+    )
 
 
 if __name__ == "__main__":
+    import signal
+    import os
+    
+    # PID file to track running instance
+    PID_FILE = "/tmp/cv_review_bot.pid"
+    
+    def cleanup_and_exit(signum=None, frame=None):
+        """Clean shutdown handler."""
+        logger.info("Shutting down bot gracefully...")
+        try:
+            if os.path.exists(PID_FILE):
+                os.remove(PID_FILE)
+        except:
+            pass
+        sys.exit(0)
+    
+    # Register signal handlers for graceful shutdown
+    signal.signal(signal.SIGTERM, cleanup_and_exit)
+    signal.signal(signal.SIGINT, cleanup_and_exit)
+    
+    # Check if another instance is running
+    if os.path.exists(PID_FILE):
+        try:
+            with open(PID_FILE, 'r') as f:
+                old_pid = int(f.read().strip())
+            
+            # Check if process is still running
+            os.kill(old_pid, 0)
+            
+            # Process exists, try to kill it
+            logger.warning(f"Found existing bot process (PID: {old_pid}), stopping it...")
+            try:
+                os.kill(old_pid, signal.SIGTERM)
+                import time
+                time.sleep(2)  # Give it time to shutdown gracefully
+            except:
+                pass
+                
+        except (ProcessLookupError, ValueError):
+            # Process doesn't exist or invalid PID, safe to continue
+            pass
+        except Exception as e:
+            logger.warning(f"Error checking PID file: {e}")
+    
+    # Write current PID
+    try:
+        with open(PID_FILE, 'w') as f:
+            f.write(str(os.getpid()))
+    except Exception as e:
+        logger.error(f"Could not write PID file: {e}")
+    
     try:
         main()
     except KeyboardInterrupt:
         logger.info("Bot stopped by user")
+        cleanup_and_exit()
     except Exception as e:
         logger.error(f"Fatal error: {e}")
+        cleanup_and_exit()
         sys.exit(1)

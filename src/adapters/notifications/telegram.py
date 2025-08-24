@@ -499,7 +499,7 @@ Recommendations:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📁 Repository: `{repo_name}`
 💼 Position: {submission.role.value}
-📅 Analyzed: {datetime.now().strftime('%Y-%m-%d %H:%M')}
+📅 Analyzed: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M')}
 
 **OVERALL ASSESSMENT**
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━

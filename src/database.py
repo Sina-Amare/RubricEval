@@ -26,7 +26,7 @@ class Submission(Base):
     github_url = Column(String, nullable=False)
     role = Column(String, nullable=False)  # 'backend' or 'frontend'
     status = Column(String, default='pending', index=True)  # pending, analyzing, completed, failed
-    created_at = Column(DateTime, default=datetime.utcnow, index=True)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc), index=True)
     completed_at = Column(DateTime)
     error_message = Column(Text)  # Store error if analysis fails
     
@@ -60,7 +60,7 @@ class Report(Base):
     quality_score = Column(Float)
     architecture_score = Column(Float)
     testing_score = Column(Float)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
     
     # Relationship with submission
     submission = relationship("Submission", back_populates="report")

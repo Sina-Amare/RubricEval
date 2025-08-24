@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  cv-review-bot:
+    build: .
+    container_name: cv-review-bot
+    restart: unless-stopped
+    
+    # Environment variables from .env file
+    env_file:
+      - .env
+    
+    # Volume mappings for persistent data
+    volumes:
+      # Database persistence
+      - ./data/reviews.db:/app/data/reviews.db
+      
+      # Reports persistence
+      - ./data/reports:/app/data/reports
+      
+      # Logs persistence
+      - ./logs:/app/logs
+      
+      # Task requirements (can be updated without rebuild)
+      - ./data/task_requirements:/app/data/task_requirements
+      
+      # Prompts (can be updated without rebuild)  
+      - ./data/prompts:/app/data/prompts
+    
+    # Network configuration
+    networks:
+      - bot-network
+    
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys; sys.exit(0)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  bot-network:
+    driver: bridge

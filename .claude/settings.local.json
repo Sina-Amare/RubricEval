@@ -22,7 +22,10 @@
       "Read(//tmp/test_repo/**)",
       "Read(//tmp/test_repo/**)",
       "Read(//tmp/test_repo/**)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(pkill:*)",
+      "Bash(tree:*)",
+      "Bash(sqlite3:*)"
     ],
     "deny": [],
     "ask": [],

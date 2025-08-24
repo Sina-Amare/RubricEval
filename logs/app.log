@@ -340,3 +340,349 @@
 [2025-08-24T19:25:48.883857] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
 [2025-08-24T19:25:52.458658] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
 [2025-08-24T19:25:58.286682] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:26:04.013383] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:26:12.202206] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:26:20.416370] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:26:32.550780] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:26:36.852053] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:32:42.351502] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-24T19:32:43.962629] [INFO] [bot:main:576] - Starting CV Review Bot...
+[2025-08-24T19:32:44.831201] [INFO] [bot:initialize_adapters:553] - Initializing adapters...
+[2025-08-24T19:32:44.831904] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-24T19:32:44.835274] [INFO] [sqlite:_init:543] - Database tables created/verified
+[2025-08-24T19:32:44.836233] [INFO] [bot:initialize_adapters:558] - Storage adapter initialized
+[2025-08-24T19:32:45.071720] [INFO] [github:__init__:83] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-24T19:32:45.072845] [INFO] [bot:initialize_adapters:562] - Repository adapter initialized
+[2025-08-24T19:32:45.073745] [INFO] [openrouter:__init__:97] - OpenRouter adapter initialized with 3 models
+[2025-08-24T19:32:45.074452] [INFO] [openrouter:__init__:98] - Primary model: google/gemini-2.5-flash
+[2025-08-24T19:32:45.075162] [INFO] [bot:initialize_adapters:566] - Analyzer adapter initialized
+[2025-08-24T19:32:45.075717] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-24T19:32:46.259241] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-24T19:32:46.260219] [INFO] [bot:initialize_adapters:571] - Notification adapter initialized
+[2025-08-24T19:32:46.261177] [INFO] [bot:main:607] - Bot is ready! Starting polling...
+[2025-08-24T19:32:47.781919] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:32:51.957306] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:32:53.188913] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:32:57.888681] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:32:59.580156] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:33:05.031843] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:33:40.438509] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-24T19:33:42.345553] [INFO] [bot:main:576] - Starting CV Review Bot...
+[2025-08-24T19:33:43.283680] [INFO] [bot:initialize_adapters:553] - Initializing adapters...
+[2025-08-24T19:33:43.284343] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-24T19:33:43.288732] [INFO] [sqlite:_init:543] - Database tables created/verified
+[2025-08-24T19:33:43.289796] [INFO] [bot:initialize_adapters:558] - Storage adapter initialized
+[2025-08-24T19:33:43.531734] [INFO] [github:__init__:83] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-24T19:33:43.532907] [INFO] [bot:initialize_adapters:562] - Repository adapter initialized
+[2025-08-24T19:33:43.533878] [INFO] [openrouter:__init__:97] - OpenRouter adapter initialized with 3 models
+[2025-08-24T19:33:43.534717] [INFO] [openrouter:__init__:98] - Primary model: google/gemini-2.5-flash
+[2025-08-24T19:33:43.535622] [INFO] [bot:initialize_adapters:566] - Analyzer adapter initialized
+[2025-08-24T19:33:43.536616] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-24T19:33:44.562546] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-24T19:33:44.563905] [INFO] [bot:initialize_adapters:571] - Notification adapter initialized
+[2025-08-24T19:33:44.565030] [INFO] [bot:main:607] - Bot is ready! Starting polling...
+[2025-08-24T19:35:56.580800] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-24T19:35:58.388013] [INFO] [bot:main:576] - Starting CV Review Bot...
+[2025-08-24T19:35:59.360907] [INFO] [bot:initialize_adapters:553] - Initializing adapters...
+[2025-08-24T19:35:59.361633] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-24T19:35:59.366231] [INFO] [sqlite:_init:543] - Database tables created/verified
+[2025-08-24T19:35:59.367799] [INFO] [bot:initialize_adapters:558] - Storage adapter initialized
+[2025-08-24T19:35:59.734669] [INFO] [github:__init__:83] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-24T19:35:59.735999] [INFO] [bot:initialize_adapters:562] - Repository adapter initialized
+[2025-08-24T19:35:59.737309] [INFO] [openrouter:__init__:97] - OpenRouter adapter initialized with 3 models
+[2025-08-24T19:35:59.738589] [INFO] [openrouter:__init__:98] - Primary model: google/gemini-2.5-flash
+[2025-08-24T19:35:59.739788] [INFO] [bot:initialize_adapters:566] - Analyzer adapter initialized
+[2025-08-24T19:35:59.740913] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-24T19:36:00.808660] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-24T19:36:00.809862] [INFO] [bot:initialize_adapters:571] - Notification adapter initialized
+[2025-08-24T19:36:00.810974] [INFO] [bot:main:607] - Bot is ready! Starting polling...
+[2025-08-24T19:36:02.202609] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:37:25.623051] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-24T19:37:27.493576] [INFO] [bot:main:576] - Starting CV Review Bot...
+[2025-08-24T19:37:28.453166] [INFO] [bot:initialize_adapters:553] - Initializing adapters...
+[2025-08-24T19:37:28.453825] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-24T19:37:28.458758] [INFO] [sqlite:_init:543] - Database tables created/verified
+[2025-08-24T19:37:28.460678] [INFO] [bot:initialize_adapters:558] - Storage adapter initialized
+[2025-08-24T19:37:28.685523] [INFO] [github:__init__:83] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-24T19:37:28.686595] [INFO] [bot:initialize_adapters:562] - Repository adapter initialized
+[2025-08-24T19:37:28.687654] [INFO] [openrouter:__init__:97] - OpenRouter adapter initialized with 3 models
+[2025-08-24T19:37:28.688681] [INFO] [openrouter:__init__:98] - Primary model: anthropic/claude-sonnet-4
+[2025-08-24T19:37:28.689650] [INFO] [bot:initialize_adapters:566] - Analyzer adapter initialized
+[2025-08-24T19:37:28.690568] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-24T19:37:29.765417] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-24T19:37:29.767301] [INFO] [bot:initialize_adapters:571] - Notification adapter initialized
+[2025-08-24T19:37:29.768593] [INFO] [bot:main:607] - Bot is ready! Starting polling...
+[2025-08-24T19:37:31.224388] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:37:33.922307] [INFO] [bot:analyze_command:94] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-24T19:37:35.439214] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:37:36.640906] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:37:40.842823] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:37:42.578794] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:37:47.361360] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:37:49.834099] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:37:55.325435] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:37:58.923007] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:38:02.523535] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:38:08.199435] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:38:14.089042] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:38:22.448466] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:38:30.726493] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:38:42.783637] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:38:47.004613] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:39:04.735416] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:39:08.923288] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:39:35.182810] [ERROR] [bot:error_handler:536] - Update None caused error httpx.ConnectError: 
+[2025-08-24T19:40:12.215617] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:40:16.436668] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:40:17.618794] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:40:22.333374] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:40:24.017219] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:40:29.475178] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:40:31.911300] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:40:35.503799] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:40:39.042349] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:40:44.933061] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:40:50.606061] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:40:58.907946] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:41:07.098692] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:41:19.128391] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:41:23.302377] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:41:41.121662] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:41:45.311458] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:42:11.692026] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:42:15.857073] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:42:17.133504] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:42:21.820707] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:42:23.515544] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:42:28.946117] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T20:06:56.299151] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-24T20:06:58.470509] [INFO] [bot:main:922] - Starting CV Review Bot...
+[2025-08-24T20:06:59.486867] [INFO] [bot:initialize_adapters:899] - Initializing adapters...
+[2025-08-24T20:06:59.487799] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-24T20:06:59.493422] [INFO] [sqlite:_init:543] - Database tables created/verified
+[2025-08-24T20:06:59.494989] [INFO] [bot:initialize_adapters:904] - Storage adapter initialized
+[2025-08-24T20:06:59.757641] [INFO] [github:__init__:83] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-24T20:06:59.758869] [INFO] [bot:initialize_adapters:908] - Repository adapter initialized
+[2025-08-24T20:06:59.760063] [INFO] [openrouter:__init__:97] - OpenRouter adapter initialized with 3 models
+[2025-08-24T20:06:59.761046] [INFO] [openrouter:__init__:98] - Primary model: anthropic/claude-sonnet-4
+[2025-08-24T20:06:59.762095] [INFO] [bot:initialize_adapters:912] - Analyzer adapter initialized
+[2025-08-24T20:06:59.763237] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-24T20:07:00.890420] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-24T20:07:00.891659] [INFO] [bot:initialize_adapters:917] - Notification adapter initialized
+[2025-08-24T20:07:01.624985] [INFO] [bot:main:961] - Cleared any existing webhooks
+[2025-08-24T20:07:01.626392] [INFO] [bot:main:963] - Bot is ready! Starting polling...
+[2025-08-24T20:07:15.469013] [INFO] [bot:start_command:59] - Start command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-24T20:07:26.176956] [INFO] [bot:recent_command:433] - Recent command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-24T20:07:35.537451] [INFO] [bot:stats_command:503] - Stats command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-24T20:07:35.996717] [ERROR] [bot:stats_command:544] - Error in stats command: httpx.ConnectError: 
+[2025-08-24T20:07:40.812444] [INFO] [bot:stats_command:503] - Stats command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-24T20:08:17.745142] [INFO] [bot:cancel_command:554] - Cancel command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-24T20:13:44.923038] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-24T20:13:46.763547] [INFO] [bot:main:922] - Starting CV Review Bot...
+[2025-08-24T20:13:47.693953] [INFO] [bot:initialize_adapters:899] - Initializing adapters...
+[2025-08-24T20:13:47.704031] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-24T20:13:47.709072] [INFO] [sqlite:_init:543] - Database tables created/verified
+[2025-08-24T20:13:47.710128] [INFO] [bot:initialize_adapters:904] - Storage adapter initialized
+[2025-08-24T20:13:47.931811] [INFO] [github:__init__:83] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-24T20:13:47.933260] [INFO] [bot:initialize_adapters:908] - Repository adapter initialized
+[2025-08-24T20:13:47.934373] [INFO] [openrouter:__init__:97] - OpenRouter adapter initialized with 3 models
+[2025-08-24T20:13:47.935397] [INFO] [openrouter:__init__:98] - Primary model: anthropic/claude-sonnet-4
+[2025-08-24T20:13:47.936311] [INFO] [bot:initialize_adapters:912] - Analyzer adapter initialized
+[2025-08-24T20:13:47.937491] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-24T20:13:49.027730] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-24T20:13:49.028723] [INFO] [bot:initialize_adapters:917] - Notification adapter initialized
+[2025-08-24T20:13:49.689347] [INFO] [bot:main:960] - Cleared any existing webhooks
+[2025-08-24T20:13:49.690633] [INFO] [bot:main:962] - Bot is ready! Starting polling...
+[2025-08-24T20:16:47.405927] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-24T20:16:49.016349] [INFO] [bot:main:922] - Starting CV Review Bot...
+[2025-08-24T20:16:49.787473] [INFO] [bot:initialize_adapters:899] - Initializing adapters...
+[2025-08-24T20:16:49.788241] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-24T20:16:49.792564] [INFO] [sqlite:_init:543] - Database tables created/verified
+[2025-08-24T20:16:49.793675] [INFO] [bot:initialize_adapters:904] - Storage adapter initialized
+[2025-08-24T20:16:50.008387] [INFO] [github:__init__:83] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-24T20:16:50.009498] [INFO] [bot:initialize_adapters:908] - Repository adapter initialized
+[2025-08-24T20:16:50.010474] [INFO] [openrouter:__init__:97] - OpenRouter adapter initialized with 3 models
+[2025-08-24T20:16:50.011535] [INFO] [openrouter:__init__:98] - Primary model: anthropic/claude-sonnet-4
+[2025-08-24T20:16:50.012707] [INFO] [bot:initialize_adapters:912] - Analyzer adapter initialized
+[2025-08-24T20:16:50.013618] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-24T20:16:50.921881] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-24T20:16:50.922880] [INFO] [bot:initialize_adapters:917] - Notification adapter initialized
+[2025-08-24T20:16:51.527663] [INFO] [bot:main:963] - Cleared any existing webhooks
+[2025-08-24T20:16:51.528784] [INFO] [bot:main:974] - Bot is ready! Starting polling...
+[2025-08-24T20:16:53.679857] [INFO] [bot:start_command:59] - Start command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-24T20:16:57.105459] [INFO] [bot:recent_command:433] - Recent command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-24T20:17:05.204224] [INFO] [bot:stats_command:503] - Stats command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-24T20:17:09.323470] [INFO] [bot:start_command:59] - Start command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-24T20:17:12.375157] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-24T20:17:18.637905] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/shahrzad98/kaleri-ai
+[2025-08-24T20:17:18.639189] [INFO] [validators:validate_github_url:105] - Successfully validated GitHub URL: shahrzad98/kaleri-ai
+[2025-08-24T20:17:48.136293] [INFO] [bot:role_callback:240] - Starting analysis for https://github.com/shahrzad98/kaleri-ai as frontend
+[2025-08-24T20:17:48.670898] [INFO] [sqlite:create_submission:109] - Created submission 18 for user ***ID_MASKED***
+[2025-08-24T20:17:48.671975] [INFO] [bot:process_analysis:293] - Created submission 18
+[2025-08-24T20:17:48.693429] [INFO] [sqlite:update_submission:194] - Updated submission 18: status=SubmissionStatus.ANALYZING
+[2025-08-24T20:17:48.946636] [INFO] [github:fetch_repository:139] - Fetching GitHub repository: https://github.com/shahrzad98/kaleri-ai for role: frontend
+[2025-08-24T20:17:48.948316] [INFO] [github:_clone_repository:346] - Cloning repository: https://github.com/shahrzad98/kaleri-ai (attempt 1/3)
+[2025-08-24T20:17:50.627839] [INFO] [github:_clone_repository:358] - Repository cloned successfully
+[2025-08-24T20:17:50.629765] [INFO] [github:fetch_repository:154] - Repository size: 0.26MB
+[2025-08-24T20:17:50.630809] [INFO] [github:fetch_repository:161] - Extracting files based on patterns
+[2025-08-24T20:17:50.665812] [INFO] [github:_extract_files:482] - Extracted files - Critical: 25, Important: 0, Useful: 0, Total unique: 25
+[2025-08-24T20:17:50.667076] [INFO] [github:fetch_repository:163] - Extracted 25 files using patterns
+[2025-08-24T20:17:50.668136] [INFO] [github:fetch_repository:170] - Raw content: 4913 tokens
+[2025-08-24T20:17:50.679577] [INFO] [github:fetch_repository:193] - Successfully processed repository: 25 files, 4913 tokens
+[2025-08-24T20:17:50.680755] [INFO] [bot:process_analysis:310] - Fetched repository: 25 files
+[2025-08-24T20:17:50.934600] [INFO] [openrouter:analyze_code:122] - Starting code analysis for frontend submission (repo: https://github.com/shahrzad98/kaleri-ai)
+[2025-08-24T20:17:50.935553] [INFO] [openrouter:analyze_code:134] - Attempt 1/3: anthropic/claude-sonnet-4 (context: ***ID_MASKED*** tokens)
+[2025-08-24T20:17:50.936653] [INFO] [openrouter:_build_user_prompt:613] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-24T20:17:50.937429] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-24T20:17:50.942853] [INFO] [openrouter:_analyze_with_model:448] - Total content size: 22549 characters, 25 files
+[2025-08-24T20:18:29.019927] [INFO] [openrouter:_analyze_with_model:492] - LLM Response length: 7267 characters
+[2025-08-24T20:18:29.022452] [INFO] [openrouter:analyze_code:150] - Analysis successful with anthropic/claude-sonnet-4
+[2025-08-24T20:18:29.023716] [INFO] [bot:process_analysis:345] - Analysis complete for submission 18
+[2025-08-24T20:18:29.064640] [INFO] [sqlite:create_report:348] - Created report 3 for submission 18
+[2025-08-24T20:18:29.066192] [INFO] [bot:process_analysis:362] - Created report 3
+[2025-08-24T20:18:29.088057] [INFO] [sqlite:update_submission:194] - Updated submission 18: status=SubmissionStatus.COMPLETED
+[2025-08-24T20:18:30.461455] [INFO] [telegram:send_analysis_complete:278] - Analysis report sent for submission 18
+[2025-08-24T20:18:30.735148] [INFO] [github:cleanup:298] - GitHub adapter cleanup completed
+[2025-08-24T20:32:34.575119] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-24T20:32:38.800458] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/Amir99Aslani/authPanel/tree/master
+[2025-08-24T20:32:38.801768] [INFO] [validators:validate_github_url:105] - Successfully validated GitHub URL: Amir99Aslani/authPanel
+[2025-08-24T20:36:41.537213] [INFO] [bot:cancel_command:554] - Cancel command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-24T20:39:05.268041] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-24T20:39:08.070687] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/sorna-fast/django-online-shop
+[2025-08-24T20:39:08.072200] [INFO] [validators:validate_github_url:105] - Successfully validated GitHub URL: sorna-fast/django-online-shop
+[2025-08-24T20:39:37.553031] [INFO] [bot:role_callback:240] - Starting analysis for https://github.com/sorna-fast/django-online-shop as backend
+[2025-08-24T20:39:37.829833] [INFO] [sqlite:create_submission:109] - Created submission 19 for user ***ID_MASKED***
+[2025-08-24T20:39:37.830783] [INFO] [bot:process_analysis:293] - Created submission 19
+[2025-08-24T20:39:37.846978] [INFO] [sqlite:update_submission:194] - Updated submission 19: status=SubmissionStatus.ANALYZING
+[2025-08-24T20:39:38.147753] [INFO] [github:fetch_repository:139] - Fetching GitHub repository: https://github.com/sorna-fast/django-online-shop for role: backend
+[2025-08-24T20:39:38.149457] [INFO] [github:_clone_repository:346] - Cloning repository: https://github.com/sorna-fast/django-online-shop (attempt 1/3)
+[2025-08-24T20:39:48.518226] [INFO] [github:_clone_repository:358] - Repository cloned successfully
+[2025-08-24T20:39:48.521706] [INFO] [github:fetch_repository:154] - Repository size: 31.92MB
+[2025-08-24T20:39:48.522730] [INFO] [github:fetch_repository:161] - Extracting files based on patterns
+[2025-08-24T20:39:51.905168] [INFO] [github:_extract_files:482] - Extracted files - Critical: 406, Important: 0, Useful: 0, Total unique: 406
+[2025-08-24T20:39:51.906121] [INFO] [github:fetch_repository:163] - Extracted 406 files using patterns
+[2025-08-24T20:39:51.907092] [INFO] [github:fetch_repository:170] - Raw content: ***ID_MASKED*** tokens
+[2025-08-24T20:39:51.919693] [WARNING] [github:fetch_repository:189] - Repository exceeds token limit: ***ID_MASKED*** > ***ID_MASKED***
+[2025-08-24T20:39:51.920650] [INFO] [github:_optimize_content_for_limits:1026] - Optimizing content from ***ID_MASKED*** to max ***ID_MASKED*** tokens
+[2025-08-24T20:39:51.942820] [INFO] [github:_optimize_content_for_limits:1069] - Truncated critical file: shop/static/fonts/farsi-fonts/dubai-700.eot
+[2025-08-24T20:39:51.944606] [INFO] [github:_optimize_content_for_limits:1086] - Optimization complete: kept 225 files, skipped 181 files, using ***ID_MASKED*** tokens
+[2025-08-24T20:39:51.945841] [INFO] [github:fetch_repository:193] - Successfully processed repository: 225 files, ***ID_MASKED*** tokens
+[2025-08-24T20:39:51.947107] [INFO] [bot:process_analysis:310] - Fetched repository: 225 files
+[2025-08-24T20:39:52.645153] [INFO] [openrouter:analyze_code:122] - Starting code analysis for backend submission (repo: https://github.com/sorna-fast/django-online-shop)
+[2025-08-24T20:39:52.646438] [INFO] [openrouter:analyze_code:134] - Attempt 1/3: anthropic/claude-sonnet-4 (context: ***ID_MASKED*** tokens)
+[2025-08-24T20:39:52.653135] [INFO] [openrouter:_build_user_prompt:613] - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+[2025-08-24T20:39:52.664335] [INFO] [openrouter:_analyze_with_model:448] - Total content size: ***ID_MASKED*** characters, 225 files
+[2025-08-24T20:41:08.416454] [INFO] [openrouter:_analyze_with_model:492] - LLM Response length: 7746 characters
+[2025-08-24T20:41:08.419915] [INFO] [openrouter:analyze_code:150] - Analysis successful with anthropic/claude-sonnet-4
+[2025-08-24T20:41:08.421305] [INFO] [bot:process_analysis:345] - Analysis complete for submission 19
+[2025-08-24T20:41:08.454290] [INFO] [sqlite:create_report:348] - Created report 4 for submission 19
+[2025-08-24T20:41:08.455227] [INFO] [bot:process_analysis:362] - Created report 4
+[2025-08-24T20:41:08.476144] [INFO] [sqlite:update_submission:194] - Updated submission 19: status=SubmissionStatus.COMPLETED
+[2025-08-24T20:41:10.150869] [INFO] [telegram:send_analysis_complete:278] - Analysis report sent for submission 19
+[2025-08-24T20:41:10.376951] [INFO] [github:cleanup:298] - GitHub adapter cleanup completed
+[2025-08-24T20:43:22.616165] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-24T20:43:24.911877] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/alirezayn/login-test
+[2025-08-24T20:43:24.913368] [INFO] [validators:validate_github_url:105] - Successfully validated GitHub URL: alirezayn/login-test
+[2025-08-24T20:43:27.962058] [INFO] [bot:role_callback:240] - Starting analysis for https://github.com/alirezayn/login-test as frontend
+[2025-08-24T20:43:28.215184] [INFO] [sqlite:create_submission:109] - Created submission 20 for user ***ID_MASKED***
+[2025-08-24T20:43:28.216172] [INFO] [bot:process_analysis:293] - Created submission 20
+[2025-08-24T20:43:28.232899] [INFO] [sqlite:update_submission:194] - Updated submission 20: status=SubmissionStatus.ANALYZING
+[2025-08-24T20:43:28.456709] [INFO] [github:fetch_repository:139] - Fetching GitHub repository: https://github.com/alirezayn/login-test for role: frontend
+[2025-08-24T20:43:28.458386] [INFO] [github:_clone_repository:346] - Cloning repository: https://github.com/alirezayn/login-test (attempt 1/3)
+[2025-08-24T20:43:30.189859] [INFO] [github:_clone_repository:358] - Repository cloned successfully
+[2025-08-24T20:43:30.191475] [INFO] [github:fetch_repository:154] - Repository size: 0.35MB
+[2025-08-24T20:43:30.192380] [INFO] [github:fetch_repository:161] - Extracting files based on patterns
+[2025-08-24T20:43:30.206456] [INFO] [github:_extract_files:482] - Extracted files - Critical: 25, Important: 0, Useful: 0, Total unique: 25
+[2025-08-24T20:43:30.207675] [INFO] [github:fetch_repository:163] - Extracted 25 files using patterns
+[2025-08-24T20:43:30.208719] [INFO] [github:fetch_repository:170] - Raw content: 3402 tokens
+[2025-08-24T20:43:30.219762] [INFO] [github:fetch_repository:193] - Successfully processed repository: 25 files, 3402 tokens
+[2025-08-24T20:43:30.221282] [INFO] [bot:process_analysis:310] - Fetched repository: 25 files
+[2025-08-24T20:43:30.538710] [INFO] [openrouter:analyze_code:122] - Starting code analysis for frontend submission (repo: https://github.com/alirezayn/login-test)
+[2025-08-24T20:43:30.540045] [INFO] [openrouter:analyze_code:134] - Attempt 1/3: anthropic/claude-sonnet-4 (context: ***ID_MASKED*** tokens)
+[2025-08-24T20:43:30.540933] [INFO] [openrouter:_build_user_prompt:613] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-24T20:43:30.541810] [INFO] [openrouter:_analyze_with_model:448] - Total content size: 16617 characters, 25 files
+[2025-08-24T20:43:32.827652] [ERROR] [openrouter:_analyze_with_model:512] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-24T20:43:32.829880] [INFO] [openrouter:_analyze_with_model:523] - Retrying in 1 seconds...
+[2025-08-24T20:43:35.418615] [ERROR] [openrouter:_analyze_with_model:512] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-24T20:43:35.420917] [INFO] [openrouter:_analyze_with_model:523] - Retrying in 2 seconds...
+[2025-08-24T20:43:38.809621] [ERROR] [openrouter:_analyze_with_model:512] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-24T20:43:38.812028] [WARNING] [openrouter:analyze_code:173] - Model anthropic/claude-sonnet-4 failed: AnalysisError: API call failed: 403 {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-24T20:43:38.813272] [INFO] [openrouter:analyze_code:134] - Attempt 2/3: openai/gpt-5-mini (context: ***ID_MASKED*** tokens)
+[2025-08-24T20:43:38.814517] [INFO] [openrouter:_build_user_prompt:613] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-24T20:43:38.815614] [INFO] [openrouter:_analyze_with_model:448] - Total content size: 16617 characters, 25 files
+[2025-08-24T20:43:40.194388] [ERROR] [openrouter:_analyze_with_model:512] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-24T20:43:40.196540] [INFO] [openrouter:_analyze_with_model:523] - Retrying in 1 seconds...
+[2025-08-24T20:43:43.034417] [ERROR] [openrouter:_analyze_with_model:512] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-24T20:43:43.036402] [INFO] [openrouter:_analyze_with_model:523] - Retrying in 2 seconds...
+[2025-08-24T20:43:46.667242] [ERROR] [openrouter:_analyze_with_model:512] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-24T20:43:46.669798] [WARNING] [openrouter:analyze_code:173] - Model openai/gpt-5-mini failed: AnalysisError: API call failed: 403 {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-24T20:43:46.670953] [INFO] [openrouter:analyze_code:134] - Attempt 3/3: openai/gpt-3.5-turbo-16k (context: 16000 tokens)
+[2025-08-24T20:43:46.672096] [INFO] [openrouter:_build_user_prompt:613] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-24T20:43:46.673051] [INFO] [openrouter:_analyze_with_model:448] - Total content size: 16617 characters, 25 files
+[2025-08-24T20:43:48.164922] [ERROR] [openrouter:_analyze_with_model:512] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-24T20:43:48.167038] [INFO] [openrouter:_analyze_with_model:523] - Retrying in 1 seconds...
+[2025-08-24T20:43:50.798612] [ERROR] [openrouter:_analyze_with_model:512] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-24T20:43:50.800498] [INFO] [openrouter:_analyze_with_model:523] - Retrying in 2 seconds...
+[2025-08-24T20:44:13.086215] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-24T20:44:14.822831] [INFO] [bot:main:922] - Starting CV Review Bot...
+[2025-08-24T20:44:15.663866] [INFO] [bot:initialize_adapters:899] - Initializing adapters...
+[2025-08-24T20:44:15.665050] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-24T20:44:15.670496] [INFO] [sqlite:_init:543] - Database tables created/verified
+[2025-08-24T20:44:15.671798] [INFO] [bot:initialize_adapters:904] - Storage adapter initialized
+[2025-08-24T20:44:15.923069] [INFO] [github:__init__:83] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-24T20:44:15.924189] [INFO] [bot:initialize_adapters:908] - Repository adapter initialized
+[2025-08-24T20:44:15.925020] [INFO] [openrouter:__init__:97] - OpenRouter adapter initialized with 3 models
+[2025-08-24T20:44:15.925784] [INFO] [openrouter:__init__:98] - Primary model: anthropic/claude-sonnet-4
+[2025-08-24T20:44:15.926689] [INFO] [bot:initialize_adapters:912] - Analyzer adapter initialized
+[2025-08-24T20:44:15.927605] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-24T20:44:16.816582] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-24T20:44:16.817642] [INFO] [bot:initialize_adapters:917] - Notification adapter initialized
+[2025-08-24T20:44:17.450833] [INFO] [bot:main:963] - Cleared any existing webhooks
+[2025-08-24T20:44:17.452037] [INFO] [bot:main:974] - Bot is ready! Starting polling...
+[2025-08-24T20:44:44.890668] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-24T20:44:46.591126] [INFO] [bot:main:922] - Starting CV Review Bot...
+[2025-08-24T20:44:47.509710] [INFO] [bot:initialize_adapters:899] - Initializing adapters...
+[2025-08-24T20:44:47.510860] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-24T20:44:47.514586] [INFO] [sqlite:_init:543] - Database tables created/verified
+[2025-08-24T20:44:47.515587] [INFO] [bot:initialize_adapters:904] - Storage adapter initialized
+[2025-08-24T20:44:47.773993] [INFO] [github:__init__:83] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-24T20:44:47.775199] [INFO] [bot:initialize_adapters:908] - Repository adapter initialized
+[2025-08-24T20:44:47.776375] [INFO] [openrouter:__init__:97] - OpenRouter adapter initialized with 3 models
+[2025-08-24T20:44:47.777497] [INFO] [openrouter:__init__:98] - Primary model: google/gemini-2.5-flash
+[2025-08-24T20:44:47.778524] [INFO] [bot:initialize_adapters:912] - Analyzer adapter initialized
+[2025-08-24T20:44:47.779474] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-24T20:44:48.688823] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-24T20:44:48.690089] [INFO] [bot:initialize_adapters:917] - Notification adapter initialized
+[2025-08-24T20:44:49.327777] [INFO] [bot:main:963] - Cleared any existing webhooks
+[2025-08-24T20:44:49.329122] [INFO] [bot:main:974] - Bot is ready! Starting polling...
+[2025-08-24T20:44:52.890289] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-24T20:44:56.760226] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/alirezayn/login-test
+[2025-08-24T20:44:56.761807] [INFO] [validators:validate_github_url:105] - Successfully validated GitHub URL: alirezayn/login-test
+[2025-08-24T20:44:58.635600] [INFO] [bot:role_callback:240] - Starting analysis for https://github.com/alirezayn/login-test as frontend
+[2025-08-24T20:44:58.906060] [INFO] [sqlite:create_submission:109] - Created submission 21 for user ***ID_MASKED***
+[2025-08-24T20:44:58.906791] [INFO] [bot:process_analysis:293] - Created submission 21
+[2025-08-24T20:44:58.923218] [INFO] [sqlite:update_submission:194] - Updated submission 21: status=SubmissionStatus.ANALYZING
+[2025-08-24T20:44:59.177245] [INFO] [github:fetch_repository:139] - Fetching GitHub repository: https://github.com/alirezayn/login-test for role: frontend
+[2025-08-24T20:44:59.178544] [INFO] [github:_clone_repository:346] - Cloning repository: https://github.com/alirezayn/login-test (attempt 1/3)
+[2025-08-24T20:45:00.956694] [INFO] [github:_clone_repository:358] - Repository cloned successfully
+[2025-08-24T20:45:00.958576] [INFO] [github:fetch_repository:154] - Repository size: 0.35MB
+[2025-08-24T20:45:00.959638] [INFO] [github:fetch_repository:161] - Extracting files based on patterns
+[2025-08-24T20:45:00.981430] [INFO] [github:_extract_files:482] - Extracted files - Critical: 25, Important: 0, Useful: 0, Total unique: 25
+[2025-08-24T20:45:00.982644] [INFO] [github:fetch_repository:163] - Extracted 25 files using patterns
+[2025-08-24T20:45:00.983681] [INFO] [github:fetch_repository:170] - Raw content: 3402 tokens
+[2025-08-24T20:45:00.996795] [INFO] [github:fetch_repository:193] - Successfully processed repository: 25 files, 3402 tokens
+[2025-08-24T20:45:00.997857] [INFO] [bot:process_analysis:310] - Fetched repository: 25 files
+[2025-08-24T20:45:01.433533] [INFO] [openrouter:analyze_code:122] - Starting code analysis for frontend submission (repo: https://github.com/alirezayn/login-test)
+[2025-08-24T20:45:01.434537] [INFO] [openrouter:analyze_code:134] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-24T20:45:01.436647] [INFO] [openrouter:_build_user_prompt:613] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-24T20:45:01.437718] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-24T20:45:01.445382] [INFO] [openrouter:_analyze_with_model:448] - Total content size: 16617 characters, 25 files
+[2025-08-24T20:45:03.141042] [ERROR] [openrouter:_analyze_with_model:512] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-24T20:45:03.142693] [INFO] [openrouter:_analyze_with_model:523] - Retrying in 1 seconds...
+[2025-08-24T20:45:05.526373] [ERROR] [openrouter:_analyze_with_model:512] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-24T20:45:05.528724] [INFO] [openrouter:_analyze_with_model:523] - Retrying in 2 seconds...
+[2025-08-24T20:45:08.895995] [ERROR] [openrouter:_analyze_with_model:512] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-24T20:45:08.898550] [WARNING] [openrouter:analyze_code:173] - Model google/gemini-2.5-flash failed: AnalysisError: API call failed: 403 {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-24T20:45:08.899837] [INFO] [openrouter:analyze_code:134] - Attempt 2/3: openai/gpt-5-mini (context: ***ID_MASKED*** tokens)
+[2025-08-24T20:45:08.900987] [INFO] [openrouter:_build_user_prompt:613] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-24T20:45:08.902112] [INFO] [openrouter:_analyze_with_model:448] - Total content size: 16617 characters, 25 files

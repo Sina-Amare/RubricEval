@@ -92,3 +92,69 @@
 [2025-08-24T19:25:48.883857] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
 [2025-08-24T19:25:52.458658] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
 [2025-08-24T19:25:58.286682] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:26:04.013383] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:26:12.202206] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:26:20.416370] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:26:32.550780] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:26:36.852053] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:32:47.781919] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:32:51.957306] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:32:53.188913] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:32:57.888681] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:32:59.580156] [ERROR] [bot:error_handler:526] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:33:05.031843] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:36:02.202609] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:37:31.224388] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:37:35.439214] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:37:36.640906] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:37:40.842823] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:37:42.578794] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:37:47.361360] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:37:49.834099] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:37:55.325435] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:37:58.923007] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:38:02.523535] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:38:08.199435] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:38:14.089042] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:38:22.448466] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:38:30.726493] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:38:42.783637] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:38:47.004613] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:39:04.735416] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:39:08.923288] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:39:35.182810] [ERROR] [bot:error_handler:536] - Update None caused error httpx.ConnectError: 
+[2025-08-24T19:40:12.215617] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:40:16.436668] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:40:17.618794] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:40:22.333374] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:40:24.017219] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:40:29.475178] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:40:31.911300] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:40:35.503799] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:40:39.042349] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:40:44.933061] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:40:50.606061] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:40:58.907946] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:41:07.098692] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:41:19.128391] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:41:23.302377] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:41:41.121662] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:41:45.311458] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:42:11.692026] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:42:15.857073] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:42:17.133504] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:42:21.820707] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:42:23.515544] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T19:42:28.946117] [ERROR] [bot:error_handler:536] - Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[2025-08-24T20:07:35.996717] [ERROR] [bot:stats_command:544] - Error in stats command: httpx.ConnectError: 
+[2025-08-24T20:43:32.827652] [ERROR] [openrouter:_analyze_with_model:512] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-24T20:43:35.418615] [ERROR] [openrouter:_analyze_with_model:512] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-24T20:43:38.809621] [ERROR] [openrouter:_analyze_with_model:512] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-24T20:43:40.194388] [ERROR] [openrouter:_analyze_with_model:512] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-24T20:43:43.034417] [ERROR] [openrouter:_analyze_with_model:512] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-24T20:43:46.667242] [ERROR] [openrouter:_analyze_with_model:512] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-24T20:43:48.164922] [ERROR] [openrouter:_analyze_with_model:512] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-24T20:43:50.798612] [ERROR] [openrouter:_analyze_with_model:512] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-24T20:45:03.141042] [ERROR] [openrouter:_analyze_with_model:512] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-24T20:45:05.526373] [ERROR] [openrouter:_analyze_with_model:512] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-24T20:45:08.895995] [ERROR] [openrouter:_analyze_with_model:512] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}

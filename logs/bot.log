@@ -1,0 +1,199 @@
+2025-08-24 20:16:47,405 - utils.logger - INFO - Logging system initialized successfully
+2025-08-24 20:16:49,016 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:928: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-24 20:16:49,787 - __main__ - INFO - Initializing adapters...
+2025-08-24 20:16:49,788 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-24 20:16:49,792 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-24 20:16:49,793 - __main__ - INFO - Storage adapter initialized
+2025-08-24 20:16:50,008 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-24 20:16:50,009 - __main__ - INFO - Repository adapter initialized
+2025-08-24 20:16:50,010 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-24 20:16:50,011 - adapters.analyzers.openrouter - INFO - Primary model: anthropic/claude-sonnet-4
+2025-08-24 20:16:50,012 - __main__ - INFO - Analyzer adapter initialized
+2025-08-24 20:16:50,013 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-24 20:16:50,921 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-24 20:16:50,922 - __main__ - INFO - Notification adapter initialized
+2025-08-24 20:16:51,527 - __main__ - INFO - Cleared any existing webhooks
+2025-08-24 20:16:51,528 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-24 20:16:53,679 - __main__ - INFO - Start command from user Sinaam_00 (***ID_MASKED***)
+2025-08-24 20:16:57,105 - __main__ - INFO - Recent command from user Sinaam_00 (***ID_MASKED***)
+2025-08-24 20:17:05,204 - __main__ - INFO - Stats command from user Sinaam_00 (***ID_MASKED***)
+2025-08-24 20:17:09,323 - __main__ - INFO - Start command from user Sinaam_00 (***ID_MASKED***)
+2025-08-24 20:17:12,375 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-24 20:17:18,637 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/shahrzad98/kaleri-ai
+2025-08-24 20:17:18,639 - utils.validators - INFO - Successfully validated GitHub URL: shahrzad98/kaleri-ai
+2025-08-24 20:17:48,136 - __main__ - INFO - Starting analysis for https://github.com/shahrzad98/kaleri-ai as frontend
+2025-08-24 20:17:48,670 - adapters.storage.sqlite - INFO - Created submission 18 for user ***ID_MASKED***
+2025-08-24 20:17:48,671 - __main__ - INFO - Created submission 18
+2025-08-24 20:17:48,693 - adapters.storage.sqlite - INFO - Updated submission 18: status=SubmissionStatus.ANALYZING
+2025-08-24 20:17:48,946 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/shahrzad98/kaleri-ai for role: frontend
+2025-08-24 20:17:48,948 - adapters.repositories.github - INFO - Cloning repository: https://github.com/shahrzad98/kaleri-ai (attempt 1/3)
+2025-08-24 20:17:50,627 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-24 20:17:50,629 - adapters.repositories.github - INFO - Repository size: 0.26MB
+2025-08-24 20:17:50,630 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-24 20:17:50,665 - adapters.repositories.github - INFO - Extracted files - Critical: 25, Important: 0, Useful: 0, Total unique: 25
+2025-08-24 20:17:50,667 - adapters.repositories.github - INFO - Extracted 25 files using patterns
+2025-08-24 20:17:50,668 - adapters.repositories.github - INFO - Raw content: 4913 tokens
+2025-08-24 20:17:50,679 - adapters.repositories.github - INFO - Successfully processed repository: 25 files, 4913 tokens
+2025-08-24 20:17:50,680 - __main__ - INFO - Fetched repository: 25 files
+2025-08-24 20:17:50,934 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/shahrzad98/kaleri-ai)
+2025-08-24 20:17:50,935 - adapters.analyzers.openrouter - INFO - Attempt 1/3: anthropic/claude-sonnet-4 (context: ***ID_MASKED*** tokens)
+2025-08-24 20:17:50,936 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+2025-08-24 20:17:50,937 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-24 20:17:50,942 - adapters.analyzers.openrouter - INFO - Total content size: 22549 characters, 25 files
+2025-08-24 20:18:29,019 - adapters.analyzers.openrouter - INFO - LLM Response length: 7267 characters
+2025-08-24 20:18:29,022 - adapters.analyzers.openrouter - INFO - Analysis successful with anthropic/claude-sonnet-4
+2025-08-24 20:18:29,023 - __main__ - INFO - Analysis complete for submission 18
+2025-08-24 20:18:29,064 - adapters.storage.sqlite - INFO - Created report 3 for submission 18
+2025-08-24 20:18:29,066 - __main__ - INFO - Created report 3
+2025-08-24 20:18:29,088 - adapters.storage.sqlite - INFO - Updated submission 18: status=SubmissionStatus.COMPLETED
+2025-08-24 20:18:30,461 - adapters.notifications.telegram - INFO - Analysis report sent for submission 18
+2025-08-24 20:18:30,735 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-24 20:32:34,575 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-24 20:32:38,800 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/Amir99Aslani/authPanel/tree/master
+2025-08-24 20:32:38,801 - utils.validators - INFO - Successfully validated GitHub URL: Amir99Aslani/authPanel
+2025-08-24 20:36:41,537 - __main__ - INFO - Cancel command from user Sinaam_00 (***ID_MASKED***)
+2025-08-24 20:39:05,268 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-24 20:39:08,070 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/sorna-fast/django-online-shop
+2025-08-24 20:39:08,072 - utils.validators - INFO - Successfully validated GitHub URL: sorna-fast/django-online-shop
+2025-08-24 20:39:37,553 - __main__ - INFO - Starting analysis for https://github.com/sorna-fast/django-online-shop as backend
+2025-08-24 20:39:37,829 - adapters.storage.sqlite - INFO - Created submission 19 for user ***ID_MASKED***
+2025-08-24 20:39:37,830 - __main__ - INFO - Created submission 19
+2025-08-24 20:39:37,846 - adapters.storage.sqlite - INFO - Updated submission 19: status=SubmissionStatus.ANALYZING
+2025-08-24 20:39:38,147 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/sorna-fast/django-online-shop for role: backend
+2025-08-24 20:39:38,149 - adapters.repositories.github - INFO - Cloning repository: https://github.com/sorna-fast/django-online-shop (attempt 1/3)
+2025-08-24 20:39:48,518 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-24 20:39:48,521 - adapters.repositories.github - INFO - Repository size: 31.92MB
+2025-08-24 20:39:48,522 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-24 20:39:51,905 - adapters.repositories.github - INFO - Extracted files - Critical: 406, Important: 0, Useful: 0, Total unique: 406
+2025-08-24 20:39:51,906 - adapters.repositories.github - INFO - Extracted 406 files using patterns
+2025-08-24 20:39:51,907 - adapters.repositories.github - INFO - Raw content: ***ID_MASKED*** tokens
+2025-08-24 20:39:51,919 - adapters.repositories.github - WARNING - Repository exceeds token limit: ***ID_MASKED*** > ***ID_MASKED***
+2025-08-24 20:39:51,920 - adapters.repositories.github - INFO - Optimizing content from ***ID_MASKED*** to max ***ID_MASKED*** tokens
+2025-08-24 20:39:51,942 - adapters.repositories.github - INFO - Truncated critical file: shop/static/fonts/farsi-fonts/dubai-700.eot
+2025-08-24 20:39:51,944 - adapters.repositories.github - INFO - Optimization complete: kept 225 files, skipped 181 files, using ***ID_MASKED*** tokens
+2025-08-24 20:39:51,945 - adapters.repositories.github - INFO - Successfully processed repository: 225 files, ***ID_MASKED*** tokens
+2025-08-24 20:39:51,947 - __main__ - INFO - Fetched repository: 225 files
+2025-08-24 20:39:52,645 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/sorna-fast/django-online-shop)
+2025-08-24 20:39:52,646 - adapters.analyzers.openrouter - INFO - Attempt 1/3: anthropic/claude-sonnet-4 (context: ***ID_MASKED*** tokens)
+2025-08-24 20:39:52,653 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-24 20:39:52,664 - adapters.analyzers.openrouter - INFO - Total content size: ***ID_MASKED*** characters, 225 files
+2025-08-24 20:41:08,416 - adapters.analyzers.openrouter - INFO - LLM Response length: 7746 characters
+2025-08-24 20:41:08,419 - adapters.analyzers.openrouter - INFO - Analysis successful with anthropic/claude-sonnet-4
+2025-08-24 20:41:08,421 - __main__ - INFO - Analysis complete for submission 19
+2025-08-24 20:41:08,454 - adapters.storage.sqlite - INFO - Created report 4 for submission 19
+2025-08-24 20:41:08,455 - __main__ - INFO - Created report 4
+2025-08-24 20:41:08,476 - adapters.storage.sqlite - INFO - Updated submission 19: status=SubmissionStatus.COMPLETED
+2025-08-24 20:41:10,150 - adapters.notifications.telegram - INFO - Analysis report sent for submission 19
+2025-08-24 20:41:10,376 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-24 20:43:22,616 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-24 20:43:24,911 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/alirezayn/login-test
+2025-08-24 20:43:24,913 - utils.validators - INFO - Successfully validated GitHub URL: alirezayn/login-test
+2025-08-24 20:43:27,962 - __main__ - INFO - Starting analysis for https://github.com/alirezayn/login-test as frontend
+2025-08-24 20:43:28,215 - adapters.storage.sqlite - INFO - Created submission 20 for user ***ID_MASKED***
+2025-08-24 20:43:28,216 - __main__ - INFO - Created submission 20
+2025-08-24 20:43:28,232 - adapters.storage.sqlite - INFO - Updated submission 20: status=SubmissionStatus.ANALYZING
+2025-08-24 20:43:28,456 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/alirezayn/login-test for role: frontend
+2025-08-24 20:43:28,458 - adapters.repositories.github - INFO - Cloning repository: https://github.com/alirezayn/login-test (attempt 1/3)
+2025-08-24 20:43:30,189 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-24 20:43:30,191 - adapters.repositories.github - INFO - Repository size: 0.35MB
+2025-08-24 20:43:30,192 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-24 20:43:30,206 - adapters.repositories.github - INFO - Extracted files - Critical: 25, Important: 0, Useful: 0, Total unique: 25
+2025-08-24 20:43:30,207 - adapters.repositories.github - INFO - Extracted 25 files using patterns
+2025-08-24 20:43:30,208 - adapters.repositories.github - INFO - Raw content: 3402 tokens
+2025-08-24 20:43:30,219 - adapters.repositories.github - INFO - Successfully processed repository: 25 files, 3402 tokens
+2025-08-24 20:43:30,221 - __main__ - INFO - Fetched repository: 25 files
+2025-08-24 20:43:30,538 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/alirezayn/login-test)
+2025-08-24 20:43:30,540 - adapters.analyzers.openrouter - INFO - Attempt 1/3: anthropic/claude-sonnet-4 (context: ***ID_MASKED*** tokens)
+2025-08-24 20:43:30,540 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+2025-08-24 20:43:30,541 - adapters.analyzers.openrouter - INFO - Total content size: 16617 characters, 25 files
+2025-08-24 20:43:32,827 - adapters.analyzers.openrouter - ERROR - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+2025-08-24 20:43:32,829 - adapters.analyzers.openrouter - INFO - Retrying in 1 seconds...
+2025-08-24 20:43:35,418 - adapters.analyzers.openrouter - ERROR - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+2025-08-24 20:43:35,420 - adapters.analyzers.openrouter - INFO - Retrying in 2 seconds...
+2025-08-24 20:43:38,809 - adapters.analyzers.openrouter - ERROR - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+2025-08-24 20:43:38,812 - adapters.analyzers.openrouter - WARNING - Model anthropic/claude-sonnet-4 failed: AnalysisError: API call failed: 403 {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+2025-08-24 20:43:38,813 - adapters.analyzers.openrouter - INFO - Attempt 2/3: openai/gpt-5-mini (context: ***ID_MASKED*** tokens)
+2025-08-24 20:43:38,814 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+2025-08-24 20:43:38,815 - adapters.analyzers.openrouter - INFO - Total content size: 16617 characters, 25 files
+2025-08-24 20:43:40,194 - adapters.analyzers.openrouter - ERROR - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+2025-08-24 20:43:40,196 - adapters.analyzers.openrouter - INFO - Retrying in 1 seconds...
+2025-08-24 20:43:43,034 - adapters.analyzers.openrouter - ERROR - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+2025-08-24 20:43:43,036 - adapters.analyzers.openrouter - INFO - Retrying in 2 seconds...
+2025-08-24 20:43:46,667 - adapters.analyzers.openrouter - ERROR - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+2025-08-24 20:43:46,669 - adapters.analyzers.openrouter - WARNING - Model openai/gpt-5-mini failed: AnalysisError: API call failed: 403 {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+2025-08-24 20:43:46,670 - adapters.analyzers.openrouter - INFO - Attempt 3/3: openai/gpt-3.5-turbo-16k (context: 16000 tokens)
+2025-08-24 20:43:46,672 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+2025-08-24 20:43:46,673 - adapters.analyzers.openrouter - INFO - Total content size: 16617 characters, 25 files
+2025-08-24 20:43:48,164 - adapters.analyzers.openrouter - ERROR - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+2025-08-24 20:43:48,167 - adapters.analyzers.openrouter - INFO - Retrying in 1 seconds...
+2025-08-24 20:43:50,798 - adapters.analyzers.openrouter - ERROR - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+2025-08-24 20:43:50,800 - adapters.analyzers.openrouter - INFO - Retrying in 2 seconds...
+2025-08-24 20:44:13,086 - utils.logger - INFO - Logging system initialized successfully
+2025-08-24 20:44:14,822 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:928: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-24 20:44:15,663 - __main__ - INFO - Initializing adapters...
+2025-08-24 20:44:15,665 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-24 20:44:15,670 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-24 20:44:15,671 - __main__ - INFO - Storage adapter initialized
+2025-08-24 20:44:15,923 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-24 20:44:15,924 - __main__ - INFO - Repository adapter initialized
+2025-08-24 20:44:15,925 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-24 20:44:15,925 - adapters.analyzers.openrouter - INFO - Primary model: anthropic/claude-sonnet-4
+2025-08-24 20:44:15,926 - __main__ - INFO - Analyzer adapter initialized
+2025-08-24 20:44:15,927 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-24 20:44:16,816 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-24 20:44:16,817 - __main__ - INFO - Notification adapter initialized
+2025-08-24 20:44:17,450 - __main__ - INFO - Cleared any existing webhooks
+2025-08-24 20:44:17,452 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-24 20:44:44,890 - utils.logger - INFO - Logging system initialized successfully
+2025-08-24 20:44:46,591 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:928: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-24 20:44:47,509 - __main__ - INFO - Initializing adapters...
+2025-08-24 20:44:47,510 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-24 20:44:47,514 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-24 20:44:47,515 - __main__ - INFO - Storage adapter initialized
+2025-08-24 20:44:47,773 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-24 20:44:47,775 - __main__ - INFO - Repository adapter initialized
+2025-08-24 20:44:47,776 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-24 20:44:47,777 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-24 20:44:47,778 - __main__ - INFO - Analyzer adapter initialized
+2025-08-24 20:44:47,779 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-24 20:44:48,688 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-24 20:44:48,690 - __main__ - INFO - Notification adapter initialized
+2025-08-24 20:44:49,327 - __main__ - INFO - Cleared any existing webhooks
+2025-08-24 20:44:49,329 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-24 20:44:52,890 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-24 20:44:56,760 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/alirezayn/login-test
+2025-08-24 20:44:56,761 - utils.validators - INFO - Successfully validated GitHub URL: alirezayn/login-test
+2025-08-24 20:44:58,635 - __main__ - INFO - Starting analysis for https://github.com/alirezayn/login-test as frontend
+2025-08-24 20:44:58,906 - adapters.storage.sqlite - INFO - Created submission 21 for user ***ID_MASKED***
+2025-08-24 20:44:58,906 - __main__ - INFO - Created submission 21
+2025-08-24 20:44:58,923 - adapters.storage.sqlite - INFO - Updated submission 21: status=SubmissionStatus.ANALYZING
+2025-08-24 20:44:59,177 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/alirezayn/login-test for role: frontend
+2025-08-24 20:44:59,178 - adapters.repositories.github - INFO - Cloning repository: https://github.com/alirezayn/login-test (attempt 1/3)
+2025-08-24 20:45:00,956 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-24 20:45:00,958 - adapters.repositories.github - INFO - Repository size: 0.35MB
+2025-08-24 20:45:00,959 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-24 20:45:00,981 - adapters.repositories.github - INFO - Extracted files - Critical: 25, Important: 0, Useful: 0, Total unique: 25
+2025-08-24 20:45:00,982 - adapters.repositories.github - INFO - Extracted 25 files using patterns
+2025-08-24 20:45:00,983 - adapters.repositories.github - INFO - Raw content: 3402 tokens
+2025-08-24 20:45:00,996 - adapters.repositories.github - INFO - Successfully processed repository: 25 files, 3402 tokens
+2025-08-24 20:45:00,997 - __main__ - INFO - Fetched repository: 25 files
+2025-08-24 20:45:01,433 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/alirezayn/login-test)
+2025-08-24 20:45:01,434 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-24 20:45:01,436 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+2025-08-24 20:45:01,437 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-24 20:45:01,445 - adapters.analyzers.openrouter - INFO - Total content size: 16617 characters, 25 files
+2025-08-24 20:45:03,141 - adapters.analyzers.openrouter - ERROR - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+2025-08-24 20:45:03,142 - adapters.analyzers.openrouter - INFO - Retrying in 1 seconds...
+2025-08-24 20:45:05,526 - adapters.analyzers.openrouter - ERROR - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+2025-08-24 20:45:05,528 - adapters.analyzers.openrouter - INFO - Retrying in 2 seconds...
+2025-08-24 20:45:08,895 - adapters.analyzers.openrouter - ERROR - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+2025-08-24 20:45:08,898 - adapters.analyzers.openrouter - WARNING - Model google/gemini-2.5-flash failed: AnalysisError: API call failed: 403 {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+2025-08-24 20:45:08,899 - adapters.analyzers.openrouter - INFO - Attempt 2/3: openai/gpt-5-mini (context: ***ID_MASKED*** tokens)
+2025-08-24 20:45:08,900 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+2025-08-24 20:45:08,902 - adapters.analyzers.openrouter - INFO - Total content size: 16617 characters, 25 files

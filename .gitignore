@@ -18,6 +18,7 @@ venv/
 .pytest_cache/
 .coverage
 htmlcov/
+test_results/
 
 # Distribution / packaging
 dist/
