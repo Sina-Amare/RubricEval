@@ -5,7 +5,7 @@ __pycache__/
 *.so
 .Python
 venv/
-
+.env
 # IDE (optional - you may want to keep these)
 .vscode/
 .idea/
