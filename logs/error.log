@@ -158,3 +158,4 @@
 [2025-08-24T20:45:03.141042] [ERROR] [openrouter:_analyze_with_model:512] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
 [2025-08-24T20:45:05.526373] [ERROR] [openrouter:_analyze_with_model:512] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
 [2025-08-24T20:45:08.895995] [ERROR] [openrouter:_analyze_with_model:512] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-24T20:50:32.664860] [ERROR] [openrouter:_parse_llm_response:709] - JSON parsing error: Expecting ',' delimiter: line 90 column 4 (char 3788)

@@ -197,3 +197,52 @@
 2025-08-24 20:45:08,899 - adapters.analyzers.openrouter - INFO - Attempt 2/3: openai/gpt-5-mini (context: ***ID_MASKED*** tokens)
 2025-08-24 20:45:08,900 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
 2025-08-24 20:45:08,902 - adapters.analyzers.openrouter - INFO - Total content size: 16617 characters, 25 files
+2025-08-24 20:48:36,318 - utils.logger - INFO - Logging system initialized successfully
+2025-08-24 20:48:38,031 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:928: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-24 20:48:38,894 - __main__ - INFO - Initializing adapters...
+2025-08-24 20:48:38,894 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-24 20:48:38,899 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-24 20:48:38,901 - __main__ - INFO - Storage adapter initialized
+2025-08-24 20:48:39,134 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-24 20:48:39,135 - __main__ - INFO - Repository adapter initialized
+2025-08-24 20:48:39,136 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-24 20:48:39,137 - adapters.analyzers.openrouter - INFO - Primary model: deepseek/deepseek-r1-0528:free
+2025-08-24 20:48:39,138 - __main__ - INFO - Analyzer adapter initialized
+2025-08-24 20:48:39,138 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-24 20:48:40,218 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-24 20:48:40,219 - __main__ - INFO - Notification adapter initialized
+2025-08-24 20:48:40,832 - __main__ - INFO - Cleared any existing webhooks
+2025-08-24 20:48:40,833 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-24 20:48:43,560 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-24 20:48:56,451 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/alirezayn/login-test
+2025-08-24 20:48:56,452 - utils.validators - INFO - Successfully validated GitHub URL: alirezayn/login-test
+2025-08-24 20:48:59,187 - __main__ - INFO - Starting analysis for https://github.com/alirezayn/login-test as frontend
+2025-08-24 20:48:59,458 - adapters.storage.sqlite - INFO - Created submission 22 for user ***ID_MASKED***
+2025-08-24 20:48:59,459 - __main__ - INFO - Created submission 22
+2025-08-24 20:48:59,477 - adapters.storage.sqlite - INFO - Updated submission 22: status=SubmissionStatus.ANALYZING
+2025-08-24 20:48:59,729 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/alirezayn/login-test for role: frontend
+2025-08-24 20:48:59,731 - adapters.repositories.github - INFO - Cloning repository: https://github.com/alirezayn/login-test (attempt 1/3)
+2025-08-24 20:49:01,511 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-24 20:49:01,513 - adapters.repositories.github - INFO - Repository size: 0.35MB
+2025-08-24 20:49:01,514 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-24 20:49:01,531 - adapters.repositories.github - INFO - Extracted files - Critical: 25, Important: 0, Useful: 0, Total unique: 25
+2025-08-24 20:49:01,532 - adapters.repositories.github - INFO - Extracted 25 files using patterns
+2025-08-24 20:49:01,533 - adapters.repositories.github - INFO - Raw content: 3402 tokens
+2025-08-24 20:49:01,545 - adapters.repositories.github - INFO - Successfully processed repository: 25 files, 3402 tokens
+2025-08-24 20:49:01,546 - __main__ - INFO - Fetched repository: 25 files
+2025-08-24 20:49:01,767 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/alirezayn/login-test)
+2025-08-24 20:49:01,768 - adapters.analyzers.openrouter - INFO - Attempt 1/3: deepseek/deepseek-r1-0528:free (context: ***ID_MASKED*** tokens)
+2025-08-24 20:49:01,769 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+2025-08-24 20:49:01,770 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-24 20:49:01,775 - adapters.analyzers.openrouter - INFO - Total content size: 16617 characters, 25 files
+2025-08-24 20:50:32,663 - adapters.analyzers.openrouter - INFO - LLM Response length: 3982 characters
+2025-08-24 20:50:32,664 - adapters.analyzers.openrouter - ERROR - JSON parsing error: Expecting ',' delimiter: line 90 column 4 (char 3788)
+2025-08-24 20:50:32,667 - adapters.analyzers.openrouter - INFO - Analysis successful with deepseek/deepseek-r1-0528:free
+2025-08-24 20:50:32,668 - __main__ - INFO - Analysis complete for submission 22
+2025-08-24 20:50:32,701 - adapters.storage.sqlite - INFO - Created report 5 for submission 22
+2025-08-24 20:50:32,703 - __main__ - INFO - Created report 5
+2025-08-24 20:50:32,722 - adapters.storage.sqlite - INFO - Updated submission 22: status=SubmissionStatus.COMPLETED
+2025-08-24 20:50:34,210 - adapters.notifications.telegram - INFO - Analysis report sent for submission 22
+2025-08-24 20:50:34,461 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
