@@ -13,6 +13,11 @@ OPENROUTER_KEY = os.getenv('OPENROUTER_KEY')
 if not BOT_TOKEN or not OPENROUTER_KEY:
     raise ValueError("BOT_TOKEN and OPENROUTER_KEY must be set in .env file")
 
+# Optional: Restrict bot to specific Telegram user IDs (comma-separated)
+# Example: MANAGER_IDS=123456789,987654321
+# If not set, all users can use the bot
+MANAGER_IDS = os.getenv('MANAGER_IDS', '')
+
 # Developer-configured (with defaults)
 DATABASE_PATH = os.getenv('DATABASE_PATH', './data/reviews.db')
 MAX_REPO_SIZE_MB = int(os.getenv('MAX_REPO_SIZE_MB', '100'))

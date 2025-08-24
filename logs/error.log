@@ -3,3 +3,28 @@
   stderr: 'Cloning into '/tmp/repos/cv_review_github_b7n8iqva'...
 fatal: could not read Username for 'https://github.com': terminal prompts disabled
 '
+[2025-08-24T15:03:46.895700] [ERROR] [sqlite:create_report:327] - Failed to create report: 'requirements_met' is an invalid keyword argument for Report
+[2025-08-24T15:03:46.898002] [ERROR] [logger:log_error_with_context:361] - ERROR: TypeError: 'requirements_met' is an invalid keyword argument for Report | CONTEXT: submission_id=1
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/tests/../src/adapters/storage/sqlite.py", line 321, in create_report
+    result = await asyncio.get_event_loop().run_in_executor(executor, _create)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/tests/../src/adapters/storage/sqlite.py", line 298, in _create
+    db_report = DBReport(
+                ^^^^^^^^^
+  File "<string>", line 4, in __init__
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/sqlalchemy/orm/state.py", line 571, in _initialize_instance
+    with util.safe_reraise():
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/sqlalchemy/orm/state.py", line 569, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/sqlalchemy/orm/decl_base.py", line 2179, in _declarative_constructor
+    raise TypeError(
+TypeError: 'requirements_met' is an invalid keyword argument for Report
+[2025-08-24T15:05:21.852614] [ERROR] [sqlite:get_statistics:511] - Failed to get statistics: type object 'Report' has no attribute 'analysis_duration'
+[2025-08-24T15:06:25.443237] [ERROR] [sqlite:cleanup_old_data:580] - Failed to cleanup old data: Can't call Query.update() or Query.delete() when join(), outerjoin(), select_from(), or from_self() has been called
+[2025-08-24T15:59:44.629484] [ERROR] [telegram:initialize:126] - Failed to initialize Telegram bot: httpx.ConnectError: 

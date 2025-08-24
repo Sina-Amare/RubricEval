@@ -85,3 +85,85 @@ fatal: could not read Username for 'https://github.com': terminal prompts disabl
 [2025-08-24T14:49:19.879498] [INFO] [openrouter:__init__:97] - Primary model: google/gemini-flash-1.5-8b
 [2025-08-24T14:49:19.880031] [INFO] [openrouter:__init__:96] - OpenRouter adapter initialized with 3 models
 [2025-08-24T14:49:19.880653] [INFO] [openrouter:__init__:97] - Primary model: google/gemini-flash-1.5-8b
+[2025-08-24T15:03:09.339198] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-24T15:03:45.060421] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-24T15:03:46.756032] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-24T15:03:46.761437] [INFO] [sqlite:_init:516] - Database tables created/verified
+[2025-08-24T15:03:46.764510] [INFO] [sqlite:close:579] - SQLite adapter closed
+[2025-08-24T15:03:46.765805] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-24T15:03:46.786217] [INFO] [sqlite:_init:516] - Database tables created/verified
+[2025-08-24T15:03:46.823644] [INFO] [sqlite:create_submission:109] - Created submission 1 for user ***ID_MASKED***
+[2025-08-24T15:03:46.849095] [INFO] [sqlite:update_submission:194] - Updated submission 1: status=SubmissionStatus.ANALYZING
+[2025-08-24T15:03:46.889899] [INFO] [sqlite:update_submission:194] - Updated submission 1: status=SubmissionStatus.FAILED
+[2025-08-24T15:03:46.895700] [ERROR] [sqlite:create_report:327] - Failed to create report: 'requirements_met' is an invalid keyword argument for Report
+[2025-08-24T15:03:46.898002] [ERROR] [logger:log_error_with_context:361] - ERROR: TypeError: 'requirements_met' is an invalid keyword argument for Report | CONTEXT: submission_id=1
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/tests/../src/adapters/storage/sqlite.py", line 321, in create_report
+    result = await asyncio.get_event_loop().run_in_executor(executor, _create)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/tests/../src/adapters/storage/sqlite.py", line 298, in _create
+    db_report = DBReport(
+                ^^^^^^^^^
+  File "<string>", line 4, in __init__
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/sqlalchemy/orm/state.py", line 571, in _initialize_instance
+    with util.safe_reraise():
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/sqlalchemy/orm/state.py", line 569, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/sqlalchemy/orm/decl_base.py", line 2179, in _declarative_constructor
+    raise TypeError(
+TypeError: 'requirements_met' is an invalid keyword argument for Report
+[2025-08-24T15:03:46.938018] [INFO] [sqlite:close:579] - SQLite adapter closed
+[2025-08-24T15:05:20.227786] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-24T15:05:21.695241] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-24T15:05:21.699871] [INFO] [sqlite:_init:526] - Database tables created/verified
+[2025-08-24T15:05:21.702230] [INFO] [sqlite:close:589] - SQLite adapter closed
+[2025-08-24T15:05:21.703382] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-24T15:05:21.712930] [INFO] [sqlite:_init:526] - Database tables created/verified
+[2025-08-24T15:05:21.741841] [INFO] [sqlite:create_submission:109] - Created submission 2 for user ***ID_MASKED***
+[2025-08-24T15:05:21.765741] [INFO] [sqlite:update_submission:194] - Updated submission 2: status=SubmissionStatus.ANALYZING
+[2025-08-24T15:05:21.799332] [INFO] [sqlite:update_submission:194] - Updated submission 2: status=SubmissionStatus.FAILED
+[2025-08-24T15:05:21.825086] [INFO] [sqlite:create_report:332] - Created report 1 for submission 2
+[2025-08-24T15:05:21.852614] [ERROR] [sqlite:get_statistics:511] - Failed to get statistics: type object 'Report' has no attribute 'analysis_duration'
+[2025-08-24T15:05:21.869617] [INFO] [sqlite:close:589] - SQLite adapter closed
+[2025-08-24T15:06:23.799979] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-24T15:06:25.257225] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-24T15:06:25.261834] [INFO] [sqlite:_init:527] - Database tables created/verified
+[2025-08-24T15:06:25.264435] [INFO] [sqlite:close:590] - SQLite adapter closed
+[2025-08-24T15:06:25.265534] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-24T15:06:25.276853] [INFO] [sqlite:_init:527] - Database tables created/verified
+[2025-08-24T15:06:25.307650] [INFO] [sqlite:create_submission:109] - Created submission 3 for user ***ID_MASKED***
+[2025-08-24T15:06:25.330413] [INFO] [sqlite:update_submission:194] - Updated submission 3: status=SubmissionStatus.ANALYZING
+[2025-08-24T15:06:25.366138] [INFO] [sqlite:update_submission:194] - Updated submission 3: status=SubmissionStatus.FAILED
+[2025-08-24T15:06:25.391288] [INFO] [sqlite:create_report:332] - Created report 2 for submission 3
+[2025-08-24T15:06:25.443237] [ERROR] [sqlite:cleanup_old_data:580] - Failed to cleanup old data: Can't call Query.update() or Query.delete() when join(), outerjoin(), select_from(), or from_self() has been called
+[2025-08-24T15:06:25.462984] [INFO] [sqlite:close:590] - SQLite adapter closed
+[2025-08-24T15:07:03.352653] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-24T15:07:04.981360] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-24T15:07:04.987748] [INFO] [sqlite:_init:527] - Database tables created/verified
+[2025-08-24T15:07:04.990887] [INFO] [sqlite:close:597] - SQLite adapter closed
+[2025-08-24T15:07:04.992059] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-24T15:07:05.004050] [INFO] [sqlite:_init:527] - Database tables created/verified
+[2025-08-24T15:07:05.045199] [INFO] [sqlite:create_submission:109] - Created submission 4 for user ***ID_MASKED***
+[2025-08-24T15:07:05.077089] [INFO] [sqlite:update_submission:194] - Updated submission 4: status=SubmissionStatus.ANALYZING
+[2025-08-24T15:07:05.123782] [INFO] [sqlite:update_submission:194] - Updated submission 4: status=SubmissionStatus.FAILED
+[2025-08-24T15:07:05.153460] [INFO] [sqlite:create_report:332] - Created report 3 for submission 4
+[2025-08-24T15:07:05.266246] [INFO] [sqlite:close:597] - SQLite adapter closed
+[2025-08-24T15:58:58.998516] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-24T15:59:40.751598] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-24T15:59:42.688428] [INFO] [bot:main:561] - Starting CV Review Bot...
+[2025-08-24T15:59:43.647018] [INFO] [bot:initialize_adapters:538] - Initializing adapters...
+[2025-08-24T15:59:43.647922] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-24T15:59:43.651624] [INFO] [sqlite:_init:527] - Database tables created/verified
+[2025-08-24T15:59:43.652426] [INFO] [bot:initialize_adapters:543] - Storage adapter initialized
+[2025-08-24T15:59:43.973641] [INFO] [github:__init__:80] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-24T15:59:43.974975] [INFO] [bot:initialize_adapters:547] - Repository adapter initialized
+[2025-08-24T15:59:43.976091] [INFO] [openrouter:__init__:96] - OpenRouter adapter initialized with 3 models
+[2025-08-24T15:59:43.977145] [INFO] [openrouter:__init__:97] - Primary model: google/gemini-flash-1.5-8b
+[2025-08-24T15:59:43.978172] [INFO] [bot:initialize_adapters:551] - Analyzer adapter initialized
+[2025-08-24T15:59:43.979157] [INFO] [telegram:__init__:110] - Telegram adapter initialized
+[2025-08-24T15:59:44.629484] [ERROR] [telegram:initialize:126] - Failed to initialize Telegram bot: httpx.ConnectError: 

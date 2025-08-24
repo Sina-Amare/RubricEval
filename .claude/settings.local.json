@@ -9,7 +9,15 @@
       "Bash(source:*)",
       "Bash(pip install:*)",
       "Bash(python:*)",
-      "Bash(test:*)"
+      "Bash(test:*)",
+      "Read(//mnt/wsl/**)",
+      "Bash(ping:*)",
+      "Bash(nslookup:*)",
+      "Bash(timeout:*)",
+      "Bash(chmod:*)",
+      "Read(//mnt/wsl/**)",
+      "Bash(host:*)",
+      "Bash(curl:*)"
     ],
     "deny": [],
     "ask": []
