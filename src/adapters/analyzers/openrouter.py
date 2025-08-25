@@ -900,9 +900,58 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
         the issues mentioned in the feedback. It creates a breakdown if missing,
         and also caps excessive penalties to their maximum allowed values.
         
+        IMPORTANT: Only penalize for MISSING features that were EXPLICITLY REQUESTED.
+        Do NOT penalize for:
+        - Features not mentioned in the task requirements
+        - Implementation choices allowed by the task (e.g., in-memory storage)
+        - Nice-to-haves that weren't required
+        
         Args:
             parsed_response: Parsed response dictionary from LLM (modified in place)
         """
+        # Define what was ACTUALLY requested in the task
+        # These are the ONLY things we should penalize if missing
+        TASK_REQUIREMENTS = {
+            'otp_implementation': ['otp', 'one-time password'],
+            'rate_limiting': ['rate limit'],
+            'user_management': ['user management', 'user endpoint'],
+            'api_documentation': ['swagger', 'openapi', 'api documentation'],
+            'jwt_token': ['jwt', 'token'],
+            'docker': ['docker', 'dockerfile', 'containerization'],
+            'architecture': ['architecture', 'separation of concerns', 'clean code']
+        }
+        
+        # Things explicitly NOT required or optional
+        NOT_REQUIRED = [
+            'tests', 'testing', 'unit test', 'integration test', 'test coverage',
+            'ci/cd', 'pipeline', 'github action', 'continuous integration',
+            'graceful shutdown', 'signal handling',
+            'logging', 'monitoring', 'metrics', 'observability',
+            'caching', 'cache',
+            'authentication beyond jwt', 'oauth', 'saml',
+            'https', 'tls', 'ssl',
+            'deployment', 'kubernetes', 'k8s', 'helm',
+            'performance', 'benchmarks', 'load testing',
+            'documentation beyond api', 'readme completeness',
+            'commit history', 'git practices',
+            'code coverage', 'linting', 'formatting'
+        ]
+        
+        # Implementation choices that are explicitly allowed
+        ALLOWED_CHOICES = [
+            ('in-memory', 'Task explicitly allows in-memory storage instead of database'),
+            ('no database', 'Task allows in-memory storage as alternative'),
+            ('simple architecture', 'Task doesn\'t mandate specific architecture pattern'),
+            ('basic error handling', 'Task doesn\'t specify advanced error handling'),
+        ]
+        
+        # Security issues we SHOULD penalize (but cap the penalty)
+        SECURITY_ISSUES = {
+            'math/rand': 20,  # Security issue but cap at 20 points
+            'hardcoded secret': 15,  # Security issue but cap at 15 points
+            'weak jwt': 15,  # Security issue but cap at 15 points
+        }
+        
         # Get detailed feedback and penalty breakdown
         detailed_feedback = parsed_response.get('detailed_feedback', '').lower()
         areas_for_improvement = parsed_response.get('weaknesses', [])
@@ -915,9 +964,30 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
         # If penalty_breakdown is missing or empty, try to extract from feedback
         if not penalty_breakdown or not issues_found:
             logger.warning("penalty_breakdown missing or empty, extracting from feedback")
-            penalty_breakdown = {'issues_found': [], 'total_penalty': 0}
+            
+            # Try to build issues_found from the feedback
+            extracted_issues = []
+            
+            # Check for common issues in feedback
+            if 'math/rand' in combined_feedback or 'math.rand' in combined_feedback:
+                extracted_issues.append({'issue': 'Uses math/rand for OTP generation', 'penalty': 20})
+            
+            if 'jwt' in combined_feedback and ('hardcoded' in combined_feedback or 'weak' in combined_feedback or 'default' in combined_feedback):
+                extracted_issues.append({'issue': 'JWT secret hardcoded or weak', 'penalty': 20})
+            
+            # Note: We do NOT add penalties for:
+            # - In-memory storage (task allows it)
+            # - Missing tests (not requested)
+            # - Missing CI/CD (not requested)
+            
+            penalty_breakdown = {
+                'issues_found': extracted_issues,
+                'total_penalty': sum(i['penalty'] for i in extracted_issues)
+            }
             parsed_response['penalty_breakdown'] = penalty_breakdown
-            issues_found = []
+            issues_found = extracted_issues
+            
+            logger.info(f"Extracted {len(extracted_issues)} issues from feedback")
         
         # First pass: Check for over-penalization and cap excessive penalties
         for issue in issues_found:
@@ -947,9 +1017,40 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
                         issue['penalty'] = 35
                         issue['severity'] = 'major'
         
+        # CRITICAL: First check what requirements are actually met
+        requirements_met = parsed_response.get('requirements_met', {})
+        
+        # If requirements_met is empty, try to infer from feedback
+        if not requirements_met:
+            feedback = parsed_response.get('detailed_feedback', '').lower()
+            strengths_text = ' '.join(parsed_response.get('strengths', [])).lower()
+            combined_text = feedback + ' ' + strengths_text
+            
+            # Quick inference for penalty validation
+            requirements_met = {
+                'repository_pattern': 'repository pattern' in combined_text and 'implement' in combined_text,
+                'service_layer': 'service layer' in combined_text and ('implement' in combined_text or 'proper' in combined_text),
+                'redis_implementation': 'redis' in combined_text and ('implement' in combined_text or 'uses redis' in combined_text),
+                'architectural_pattern': any(arch in combined_text for arch in ['layered architecture', 'clean architecture', 'hexagonal', 'mvc']),
+                'database_implementation': any(db in combined_text for db in ['postgresql', 'mysql', 'mongodb']) and 'implement' in combined_text,
+                'dockerization': 'docker' in combined_text and ('dockerfile' in combined_text or 'docker-compose' in combined_text)
+            }
+        
+        # Check if key architecture requirements are actually met
+        has_repository_pattern = requirements_met.get('repository_pattern', False)
+        has_service_layer = requirements_met.get('service_layer', False)
+        has_redis = requirements_met.get('redis_implementation', False)
+        has_database = requirements_met.get('database_implementation', False)
+        has_architecture_pattern = requirements_met.get('architectural_pattern', False)
+        
+        # Log what the LLM actually reported
+        logger.info(f"LLM reported requirements: repo={has_repository_pattern}, service={has_service_layer}, redis={has_redis}, db={has_database}, arch={has_architecture_pattern}")
+        
         # CRITICAL: Filter out penalties that should be skipped based on requirements_met
         filtered_issues = []
         skipped_penalties = []
+        
+        logger.info(f"Starting penalty filtering for {len(issues_found)} issues")
         
         for issue in issues_found:
             if not isinstance(issue, dict):
@@ -962,35 +1063,44 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
             should_skip = False
             skip_reason = ""
             
-            # CRITICAL: Skip in-memory storage penalty - task explicitly allows it!
-            if 'in-memory' in issue_text and ('storage' in issue_text or 'user' in issue_text):
-                # Task explicitly says "If not using a DB: Use in-memory storage for simplicity"
-                should_skip = True
-                skip_reason = "In-memory storage explicitly allowed by task"
-                logger.info(f"Skipping in-memory penalty - task allows in-memory storage")
-            
-            # CRITICAL: Skip test penalties - tests were NOT requested in the task!
-            elif 'test' in issue_text and ('missing' in issue_text or 'lack' in issue_text or 'no test' in issue_text):
-                should_skip = True
-                skip_reason = "Tests were not requested in the task"
-                logger.info(f"Skipping test penalty - tests not required by task")
-            
-            # Skip CI/CD penalties - not requested
-            elif any(term in issue_text for term in ['ci/cd', 'continuous integration', 'pipeline', 'github action']):
-                should_skip = True
-                skip_reason = "CI/CD not requested in the task"
-            
-            # Skip architecture/pattern penalties if they exist
-            elif any(term in issue_text for term in ['repository pattern', 'service layer', 'architecture pattern']):
-                if 'repository' in issue_text and has_repository_pattern:
+            # Check if this issue is about something NOT required
+            for not_req in NOT_REQUIRED:
+                if not_req in issue_text:
                     should_skip = True
-                    skip_reason = "Repository pattern exists"
-                elif 'service' in issue_text and has_service_layer:
-                    should_skip = True
-                    skip_reason = "Service layer exists"
-                elif 'architecture' in issue_text and has_architecture_pattern:
-                    should_skip = True
-                    skip_reason = "Architecture pattern exists"
+                    skip_reason = f"{not_req.title()} not required by task"
+                    logger.info(f"Skipping penalty for '{issue_text[:50]}...' - {skip_reason}")
+                    break
+            
+            # Check if this is an allowed implementation choice
+            if not should_skip:
+                for allowed_term, reason in ALLOWED_CHOICES:
+                    if allowed_term in issue_text:
+                        should_skip = True
+                        skip_reason = reason
+                        logger.info(f"Skipping penalty for '{issue_text[:50]}...' - {skip_reason}")
+                        break
+            
+            # Check if requirement is actually met (even if LLM penalized it)
+            if not should_skip:
+                # Skip architecture/pattern penalties if they exist
+                if any(term in issue_text for term in ['repository pattern', 'service layer', 'architecture pattern']):
+                    if 'repository' in issue_text and has_repository_pattern:
+                        should_skip = True
+                        skip_reason = "Repository pattern exists"
+                    elif 'service' in issue_text and has_service_layer:
+                        should_skip = True
+                        skip_reason = "Service layer exists"
+                    elif 'architecture' in issue_text and has_architecture_pattern:
+                        should_skip = True
+                        skip_reason = "Architecture pattern exists"
+            
+            # Cap security issue penalties
+            if not should_skip:
+                for security_term, max_penalty in SECURITY_ISSUES.items():
+                    if security_term in issue_text and penalty > max_penalty:
+                        logger.info(f"Capping {security_term} penalty from {penalty} to {max_penalty}")
+                        issue['penalty'] = max_penalty
+                        penalty = max_penalty
             
             if should_skip:
                 skipped_penalties.append(f"{issue.get('issue', 'Unknown')}: {penalty} points ({skip_reason})")
@@ -1013,6 +1123,16 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
         
         reported_total = penalty_breakdown.get('total_penalty', 0)
         current_penalty = parsed_response.get('scores', {}).get('critical_issues_penalty', 0)
+        
+        # CRITICAL: Update the penalty score to match filtered breakdown
+        if calculated_total != current_penalty:
+            logger.info(f"Updating penalty score to match filtered breakdown: {current_penalty} → {calculated_total}")
+            if 'scores' not in parsed_response:
+                parsed_response['scores'] = {}
+            parsed_response['scores']['critical_issues_penalty'] = calculated_total
+            
+        # Update the breakdown total as well
+        parsed_response['penalty_breakdown']['total_penalty'] = calculated_total
         
         # Check for specific high-priority issues that MUST have minimum penalties
         # These are critical for safety/security and should never be under-penalized
@@ -1043,40 +1163,8 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
             (r'weak.*jwt.*secret|default.*jwt.*secret|jwt.*fallback', 20, "Weak/default JWT secret"),
         ]
         
-        # CRITICAL FIX: Check structured requirements_met field FIRST (most reliable)
-        # But also handle when LLM doesn't provide it properly
-        requirements_met = parsed_response.get('requirements_met', {})
-        
-        # If requirements_met is empty, try to get it from the converted result
-        # This happens when _convert_to_analysis_result has already inferred the requirements
-        if not requirements_met and 'analysis_result' in parsed_response:
-            requirements_met = parsed_response['analysis_result'].requirements_met
-        
-        # As a last resort, infer from feedback text
-        if not requirements_met:
-            feedback = parsed_response.get('detailed_feedback', '').lower()
-            strengths_text = ' '.join(parsed_response.get('strengths', [])).lower()
-            combined_text = feedback + ' ' + strengths_text
-            
-            # Quick inference for penalty validation
-            requirements_met = {
-                'repository_pattern': 'repository pattern' in combined_text and 'implement' in combined_text,
-                'service_layer': 'service layer' in combined_text and ('implement' in combined_text or 'proper' in combined_text),
-                'redis_implementation': 'redis' in combined_text and ('implement' in combined_text or 'uses redis' in combined_text),
-                'architectural_pattern': any(arch in combined_text for arch in ['layered architecture', 'clean architecture', 'hexagonal', 'mvc']),
-                'database_implementation': any(db in combined_text for db in ['postgresql', 'mysql', 'mongodb']) and 'implement' in combined_text,
-                'dockerization': 'docker' in combined_text and ('dockerfile' in combined_text or 'docker-compose' in combined_text)
-            }
-        
-        # Check if key architecture requirements are actually met
-        has_repository_pattern = requirements_met.get('repository_pattern', False)
-        has_service_layer = requirements_met.get('service_layer', False)
-        has_redis = requirements_met.get('redis_implementation', False)
-        has_database = requirements_met.get('database_implementation', False)
-        has_architecture_pattern = requirements_met.get('architectural_pattern', False)
-        
-        # Log what the LLM actually reported
-        logger.info(f"LLM reported requirements: repo={has_repository_pattern}, service={has_service_layer}, redis={has_redis}, db={has_database}, arch={has_architecture_pattern}")
+        # NOTE: requirements_met already checked and populated at the beginning of this function
+        # We have has_repository_pattern, has_service_layer, etc. already set
         
         # FALLBACK: Also check text for architecture patterns (less reliable)
         proper_architecture_patterns = [
@@ -1175,18 +1263,16 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
                     'penalty': penalty,
                     'category': category
                 })
-                # Don't add to calculated_total here - it's already calculated from filtered issues
-                pass  # calculated_total already set from filtered issues above
             
-            # Update the total
-            parsed_response['penalty_breakdown']['total_penalty'] = calculated_total
+            # Recalculate total after adding missing penalties
+            final_issues = parsed_response['penalty_breakdown']['issues_found']
+            final_total = sum(issue.get('penalty', 0) for issue in final_issues if isinstance(issue, dict))
             
-        # Ensure the scores match the breakdown
-        if calculated_total != current_penalty:
-            logger.info(f"Aligning penalty score with breakdown: {current_penalty} → {calculated_total}")
+            logger.info(f"Final penalty after adding missing critical issues: {final_total}")
+            parsed_response['penalty_breakdown']['total_penalty'] = final_total
             if 'scores' not in parsed_response:
                 parsed_response['scores'] = {}
-            parsed_response['scores']['critical_issues_penalty'] = calculated_total
+            parsed_response['scores']['critical_issues_penalty'] = final_total
     
     def _convert_to_analysis_result(self, parsed_response: Dict[str, Any]) -> AnalysisResult:
         """
@@ -1290,8 +1376,15 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
             else:
                 normalized_scores[key] = 0.0
         
-        # Calculate average score for default generation
-        avg_score = sum(normalized_scores.values()) / len(normalized_scores) if normalized_scores else 0
+        # Calculate average score from POSITIVE metrics only (exclude penalties)
+        positive_scores = []
+        for key, value in normalized_scores.items():
+            # Skip penalty scores
+            if 'penalty' not in key.lower() and 'critical' not in key.lower():
+                positive_scores.append(value)
+        
+        avg_score = sum(positive_scores) / len(positive_scores) if positive_scores else 0
+        logger.info(f"Average of positive scores: {avg_score:.1f}% (from {positive_scores})")
         
         # Handle both old and new prompt formats robustly
         # New format has 'requirements_implementation', old has 'requirements_met'
@@ -1437,16 +1530,17 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
             llm_decision = hiring_decision.get('decision', '').upper()
             
             # Check if LLM's decision contradicts the rules
-            if penalty < 50 and avg_positive >= 70 and llm_decision == 'NO_HIRE':
+            # IMPORTANT: Be more lenient - penalty <= 50 is acceptable if other scores are good
+            if penalty <= 50 and avg_positive >= 70 and llm_decision == 'NO_HIRE':
                 logger.warning(f"LLM said NO_HIRE but scores say HIRE (avg={avg_positive:.1f}%, penalty={penalty}). Overriding to HIRE.")
                 hiring_decision['decision'] = 'HIRE'
-                hiring_decision['primary_reason'] = f"Meets hiring criteria: {avg_positive:.1f}% average, {penalty} penalty points (<50)"
+                hiring_decision['primary_reason'] = f"Meets hiring criteria: {avg_positive:.1f}% average, {penalty} penalty points (≤50)"
                 
-            elif (penalty >= 50 or avg_positive < 70) and llm_decision == 'HIRE':
+            elif (penalty > 50 or avg_positive < 70) and llm_decision == 'HIRE':
                 logger.warning(f"LLM said HIRE but scores say NO_HIRE (avg={avg_positive:.1f}%, penalty={penalty}). Overriding to NO_HIRE.")
                 hiring_decision['decision'] = 'NO_HIRE'
-                if penalty >= 50:
-                    hiring_decision['primary_reason'] = f"Critical issues penalty too high: {penalty} points (≥50 threshold)"
+                if penalty > 50:
+                    hiring_decision['primary_reason'] = f"Critical issues penalty too high: {penalty} points (>50 threshold)"
                 else:
                     hiring_decision['primary_reason'] = f"Average score too low: {avg_positive:.1f}% (<70% threshold)"
         

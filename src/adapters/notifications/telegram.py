@@ -451,8 +451,16 @@ Recommendations:
             if reports:
                 reports_text = "📋 Recent Analyses:\n\n"
                 for i, report in enumerate(reports[:10], 1):
-                    score = report.analysis_result.get_overall_score()
-                    rec = report.analysis_result.recommendation.value
+                    # Handle both dict and object formats
+                    if isinstance(report.analysis_result, dict):
+                        # Calculate score from dict
+                        scores = report.analysis_result.get('scores', {})
+                        positive_scores = [v for k, v in scores.items() if 'penalty' not in k.lower() and 'critical' not in k.lower()]
+                        score = sum(positive_scores) / len(positive_scores) / 100 if positive_scores else 0
+                        rec = report.analysis_result.get('recommendation', 'unknown')
+                    else:
+                        score = report.analysis_result.get_overall_score()
+                        rec = report.analysis_result.recommendation.value
                     reports_text += f"{i}. Score: {score:.0%} - {rec}\n"
                     reports_text += f"   _Analyzed {self._format_time_ago(report.created_at)}_\n\n"
                 
@@ -484,12 +492,23 @@ Recommendations:
             return "N/A (Frontend role - different architecture requirements apply)"
         
         # Extract architecture checks from feedback and penalty breakdown
-        feedback_lower = result.detailed_feedback.lower() if result.detailed_feedback else ""
+        # Handle both dict and object formats
+        if isinstance(result, dict):
+            feedback_lower = result.get('detailed_feedback', '').lower()
+        else:
+            feedback_lower = result.detailed_feedback.lower() if result.detailed_feedback else ""
         
         # Check for penalty breakdown issues
         issues_text = ""
-        if hasattr(result, 'penalty_breakdown') and result.penalty_breakdown:
-            issues = result.penalty_breakdown.get('issues_found', []) if isinstance(result.penalty_breakdown, dict) else []
+        # Handle both dict and object formats for penalty_breakdown
+        penalty_breakdown = None
+        if isinstance(result, dict):
+            penalty_breakdown = result.get('penalty_breakdown')
+        elif hasattr(result, 'penalty_breakdown'):
+            penalty_breakdown = result.penalty_breakdown
+        
+        if penalty_breakdown:
+            issues = penalty_breakdown.get('issues_found', []) if isinstance(penalty_breakdown, dict) else []
             issues_text = " ".join(str(issue.get('issue', '')).lower() for issue in issues if isinstance(issue, dict))
         
         combined_text = feedback_lower + " " + issues_text
@@ -575,9 +594,16 @@ Recommendations:
         for key, check in architecture_checks.items():
             # CRITICAL FIX: Use actual requirements_met data, not text patterns!
             # First check if we have the actual requirement status from analysis
-            if hasattr(result, 'requirements_met') and result.requirements_met and key in result.requirements_met:
+            # Handle both dict and object formats
+            requirements_met = None
+            if isinstance(result, dict):
+                requirements_met = result.get('requirements_met', {})
+            elif hasattr(result, 'requirements_met'):
+                requirements_met = result.requirements_met
+            
+            if requirements_met and key in requirements_met:
                 # Use the ACTUAL requirement status from LLM analysis
-                is_met = result.requirements_met.get(key, False)
+                is_met = requirements_met.get(key, False)
             else:
                 # FALLBACK ONLY: Check text patterns if requirements_met not available
                 is_met = False
@@ -618,7 +644,14 @@ Recommendations:
         repo_name = submission.github_url.split('/')[-1].replace('.git', '')
         
         # Calculate overall score
-        overall_score = result.get_overall_score()
+        # Handle both dict and object formats
+        if isinstance(result, dict):
+            # Calculate from dict scores
+            scores = result.get('scores', {})
+            positive_scores = [v for k, v in scores.items() if 'penalty' not in k.lower() and 'critical' not in k.lower()]
+            overall_score = sum(positive_scores) / len(positive_scores) / 100 if positive_scores else 0
+        else:
+            overall_score = result.get_overall_score()
         
         # Format scores with progress bars
         def make_progress_bar(score: float) -> str:
@@ -634,21 +667,27 @@ Recommendations:
         
         # Format requirements check
         requirements_text = ""
-        for req, met in result.requirements_met.items():
+        # Handle both dict and object formats
+        requirements_met = result.get('requirements_met', {}) if isinstance(result, dict) else result.requirements_met
+        for req, met in requirements_met.items():
             symbol = "✓" if met else "✗"
             requirements_text += f"{symbol} {escape_html(req)}\n"
         
         # Format strengths and weaknesses with escaped HTML
-        strengths_text = "\n".join(f"• {escape_html(s)}" for s in result.strengths[:5])
-        weaknesses_text = "\n".join(f"• {escape_html(w)}" for w in result.weaknesses[:5])
+        # Handle both dict and object formats
+        strengths = result.get('strengths', [])[:5] if isinstance(result, dict) else result.strengths[:5]
+        weaknesses = result.get('weaknesses', [])[:5] if isinstance(result, dict) else result.weaknesses[:5]
+        strengths_text = "\n".join(f"• {escape_html(s)}" for s in strengths)
+        weaknesses_text = "\n".join(f"• {escape_html(w)}" for w in weaknesses)
         
         # Determine clear HIRE/NO HIRE decision
         hiring_reason = None
         production_ready = None
         
         # Check if we have hiring_decision from new prompt format
-        if hasattr(result, 'hiring_decision') and result.hiring_decision:
-            hiring_info = result.hiring_decision
+        # Note: result is a dict when loaded from DB, not an AnalysisResult object
+        if isinstance(result, dict) and 'hiring_decision' in result and result['hiring_decision']:
+            hiring_info = result['hiring_decision']
             hire_decision = hiring_info.get('decision', '').upper()
             hiring_reason = hiring_info.get('primary_reason')
             production_ready = hiring_info.get('is_production_ready')
@@ -663,7 +702,7 @@ Recommendations:
                 decision_color = "RED"
             else:
                 # Fallback to recommendation-based decision
-                recommendation = result.recommendation.value
+                recommendation = result.get('recommendation', '') if isinstance(result, dict) else result.recommendation.value
                 if recommendation in ['strongly_accept', 'accept', 'strong_yes', 'yes']:
                     decision = "✅ HIRE"
                     decision_emoji = "🎯"
@@ -678,7 +717,7 @@ Recommendations:
                     decision_color = "RED"
         else:
             # Old format - use recommendation-based decision
-            recommendation = result.recommendation.value
+            recommendation = result.get('recommendation', '') if isinstance(result, dict) else result.recommendation.value
             if recommendation in ['strongly_accept', 'accept', 'strong_yes', 'yes']:
                 decision = "✅ HIRE"
                 decision_emoji = "🎯"
@@ -703,7 +742,7 @@ Recommendations:
 <b>{decision_emoji} FINAL DECISION: {decision}</b>
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🎯 Overall Score: {overall_score:.0%}
-🔍 Confidence: {result.confidence:.0%}"""
+🔍 Confidence: {(result.get('confidence', 0) if isinstance(result, dict) else result.confidence):.0%}"""
         
         # Add hiring reason and production ready status if available
         if hiring_reason:
@@ -725,7 +764,9 @@ Recommendations:
             'critical_issues_penalty': 'Critical Issues Penalty'
         }
         
-        for metric, score in result.scores.items():
+        # Handle both dict and object formats
+        scores = result.get('scores', {}) if isinstance(result, dict) else result.scores
+        for metric, score in scores.items():
             bar = make_progress_bar(score)
             # Use standard name if available, otherwise format the metric name
             if metric in standard_scores:
@@ -736,8 +777,14 @@ Recommendations:
             report_text += f"{metric_display:25} {bar} {score:.0f}%\n"
         
         # Add penalty breakdown if available and has actual issues
-        if hasattr(result, 'penalty_breakdown') and result.penalty_breakdown:
+        # Handle both dict and object formats
+        penalty_info = None
+        if isinstance(result, dict):
+            penalty_info = result.get('penalty_breakdown')
+        elif hasattr(result, 'penalty_breakdown'):
             penalty_info = result.penalty_breakdown
+        
+        if penalty_info:
             issues = penalty_info.get('issues_found', []) if isinstance(penalty_info, dict) else []
             total = penalty_info.get('total_penalty', 0) if isinstance(penalty_info, dict) else 0
             
@@ -787,7 +834,7 @@ Recommendations:
 {architecture_checks}
 
 💡 <b>DETAILED FEEDBACK</b>
-{escape_html(result.detailed_feedback)}
+{escape_html(result.get('detailed_feedback', '') if isinstance(result, dict) else result.detailed_feedback)}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Analysis ID: #{report.id}
@@ -799,10 +846,17 @@ Model: {report.model_used}
     def _format_report_summary(self, submission: Submission, report: Report) -> str:
         """Format a brief summary of the report."""
         result = report.analysis_result
-        overall_score = result.get_overall_score()
+        # Handle both dict and object formats
+        if isinstance(result, dict):
+            # Calculate from dict scores
+            scores = result.get('scores', {})
+            positive_scores = [v for k, v in scores.items() if 'penalty' not in k.lower() and 'critical' not in k.lower()]
+            overall_score = sum(positive_scores) / len(positive_scores) / 100 if positive_scores else 0
+        else:
+            overall_score = result.get_overall_score()
         
         # Determine clear HIRE/NO HIRE decision
-        recommendation = result.recommendation.value
+        recommendation = result.get('recommendation', '') if isinstance(result, dict) else result.recommendation.value
         # Handle all possible positive recommendations
         if recommendation in ['strongly_accept', 'accept', 'strong_yes', 'yes']:
             decision = "✅ HIRE"
@@ -816,7 +870,7 @@ Model: {report.model_used}
 
 <b>Decision: {decision}</b>
 Score: {overall_score:.0%}
-Confidence: {result.confidence:.0%}
+Confidence: {(result.get('confidence', 0) if isinstance(result, dict) else result.confidence):.0%}
 
 <i>Full report follows...</i>
         """

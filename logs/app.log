@@ -4631,3 +4631,453 @@ core.exceptions.NotificationError: Failed to initialize Telegram bot: httpx.Conn
 [2025-08-26T00:43:49.656724] [INFO] [openrouter:_validate_and_adjust_penalty:1109] - Skipping 'Only in-memory storage (no Redis/DB)' penalty - LLM confirmed Redis implementation exists
 [2025-08-26T00:43:49.657470] [INFO] [openrouter:_validate_and_adjust_penalty:1109] - Skipping 'Missing Redis implementation' penalty - LLM confirmed Redis implementation exists
 [2025-08-26T00:43:49.659410] [INFO] [openrouter:_validate_and_adjust_penalty:1186] - Aligning penalty score with breakdown: 0 → 40
+[2025-08-26T00:44:43.577864] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T00:44:43.664103] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T00:44:43.664827] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T00:44:43.665470] [WARNING] [openrouter:_validate_and_adjust_penalty:946] - Capping missing tests penalty from 40 to 35
+[2025-08-26T00:44:43.666091] [INFO] [openrouter:_validate_and_adjust_penalty:954] - Starting penalty filtering for 2 issues
+[2025-08-26T00:44:43.666664] [INFO] [openrouter:_validate_and_adjust_penalty:972] - Skipping in-memory penalty - task allows in-memory storage
+[2025-08-26T00:44:43.667297] [INFO] [openrouter:_validate_and_adjust_penalty:999] - Skipped penalty: In-memory user storage (35 points) - In-memory storage explicitly allowed by task
+[2025-08-26T00:44:43.668088] [INFO] [openrouter:_validate_and_adjust_penalty:978] - Skipping test penalty - tests not required by task
+[2025-08-26T00:44:43.669089] [INFO] [openrouter:_validate_and_adjust_penalty:999] - Skipped penalty: Missing unit tests (35 points) - Tests were not requested in the task
+[2025-08-26T00:44:43.669840] [INFO] [openrouter:_validate_and_adjust_penalty:1013] - Filtered out 2 penalties based on actual implementation
+[2025-08-26T00:44:43.670557] [INFO] [openrouter:_validate_and_adjust_penalty:1014] - Penalty after filtering: 0 points (from 0 issues)
+[2025-08-26T00:44:43.671256] [INFO] [openrouter:_validate_and_adjust_penalty:1081] - LLM reported requirements: repo=False, service=False, redis=True, db=False, arch=False
+[2025-08-26T00:44:43.673004] [INFO] [openrouter:_validate_and_adjust_penalty:1111] - Skipping 'Only in-memory storage (no Redis/DB)' penalty - LLM confirmed Redis implementation exists
+[2025-08-26T00:44:43.673667] [INFO] [openrouter:_validate_and_adjust_penalty:1111] - Skipping 'Missing Redis implementation' penalty - LLM confirmed Redis implementation exists
+[2025-08-26T00:46:02.759203] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T00:46:02.828603] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T00:46:02.829353] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T00:46:02.830104] [WARNING] [openrouter:_validate_and_adjust_penalty:917] - penalty_breakdown missing or empty, extracting from feedback
+[2025-08-26T00:46:02.830644] [INFO] [openrouter:_validate_and_adjust_penalty:941] - Extracted 2 issues from feedback
+[2025-08-26T00:46:02.831134] [INFO] [openrouter:_validate_and_adjust_penalty:975] - Starting penalty filtering for 2 issues
+[2025-08-26T00:46:02.831662] [INFO] [openrouter:_validate_and_adjust_penalty:1102] - LLM reported requirements: repo=False, service=False, redis=True, db=False, arch=False
+[2025-08-26T00:46:02.833486] [INFO] [openrouter:_validate_and_adjust_penalty:1132] - Skipping 'Only in-memory storage (no Redis/DB)' penalty - LLM confirmed Redis implementation exists
+[2025-08-26T00:46:02.834255] [INFO] [openrouter:_validate_and_adjust_penalty:1132] - Skipping 'Missing Redis implementation' penalty - LLM confirmed Redis implementation exists
+[2025-08-26T00:46:02.835913] [INFO] [openrouter:_validate_and_adjust_penalty:1209] - Aligning penalty score with breakdown: 0 → 40
+[2025-08-26T00:47:32.397386] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T00:47:34.164554] [INFO] [bot:<module>:1283] - Starting bot (attempt #1)...
+[2025-08-26T00:47:34.165366] [INFO] [bot:main:1160] - Starting CV Review Bot...
+[2025-08-26T00:47:34.913993] [INFO] [bot:initialize_adapters:1137] - Initializing adapters...
+[2025-08-26T00:47:34.914840] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-26T00:47:34.918457] [INFO] [sqlite:_init:724] - Database tables created/verified
+[2025-08-26T00:47:34.919576] [INFO] [bot:initialize_adapters:1142] - Storage adapter initialized
+[2025-08-26T00:47:35.126580] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-26T00:47:35.127848] [INFO] [bot:initialize_adapters:1146] - Repository adapter initialized
+[2025-08-26T00:47:35.129112] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T00:47:35.130204] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T00:47:35.131302] [INFO] [bot:initialize_adapters:1150] - Analyzer adapter initialized
+[2025-08-26T00:47:35.132584] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-26T00:47:36.042609] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-26T00:47:36.043712] [INFO] [bot:initialize_adapters:1155] - Notification adapter initialized
+[2025-08-26T00:47:36.611625] [INFO] [bot:main:1203] - Cleared any existing webhooks
+[2025-08-26T00:47:36.613453] [INFO] [bot:main:1214] - Bot is ready! Starting polling...
+[2025-08-26T00:47:39.234276] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-26T00:47:41.280160] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/majidbl/aaa
+[2025-08-26T00:47:41.281842] [INFO] [validators:validate_github_url:117] - Successfully validated GitHub URL: majidbl/aaa
+[2025-08-26T00:47:43.015347] [INFO] [bot:role_callback:245] - Starting analysis for https://github.com/majidbl/aaa as backend
+[2025-08-26T00:47:43.288525] [INFO] [bot:process_analysis:297] - Found existing submission 53, removing it
+[2025-08-26T00:47:43.324229] [INFO] [sqlite:_delete:222] - Deleted submission 53 and 1 associated reports
+[2025-08-26T00:47:43.706659] [INFO] [sqlite:create_submission:109] - Created submission 55 for user ***ID_MASKED***
+[2025-08-26T00:47:43.707853] [INFO] [bot:process_analysis:316] - Created submission 55
+[2025-08-26T00:47:43.729822] [INFO] [sqlite:update_submission:281] - Updated submission 55: status=SubmissionStatus.ANALYZING
+[2025-08-26T00:47:44.006342] [INFO] [github:fetch_repository:141] - Fetching GitHub repository: https://github.com/majidbl/aaa for role: backend
+[2025-08-26T00:47:44.009664] [INFO] [github:_clone_repository:356] - Cloning repository: https://github.com/majidbl/aaa (attempt 1/3)
+[2025-08-26T00:47:45.586221] [INFO] [github:_clone_repository:375] - Repository cloned successfully
+[2025-08-26T00:47:45.587855] [INFO] [github:fetch_repository:160] - Repository size: 0.17MB
+[2025-08-26T00:47:45.589155] [INFO] [github:fetch_repository:167] - Extracting files based on patterns
+[2025-08-26T00:47:45.638189] [INFO] [github:_extract_files:502] - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+[2025-08-26T00:47:45.639420] [INFO] [github:fetch_repository:169] - Extracted 30 files using patterns
+[2025-08-26T00:47:45.640229] [INFO] [github:fetch_repository:176] - Raw content: 33481 tokens
+[2025-08-26T00:47:45.647855] [INFO] [github:fetch_repository:199] - Successfully processed repository: 30 files, 33481 tokens
+[2025-08-26T00:47:45.648892] [INFO] [bot:process_analysis:333] - Fetched repository: 30 files
+[2025-08-26T00:47:45.860092] [INFO] [openrouter:analyze_code:124] - Starting code analysis for backend submission (repo: https://github.com/majidbl/aaa)
+[2025-08-26T00:47:45.861030] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-26T00:47:45.862029] [INFO] [openrouter:_build_user_prompt:624] - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+[2025-08-26T00:47:45.862741] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-26T00:47:45.867402] [INFO] [openrouter:_analyze_with_model:452] - Total content size: ***ID_MASKED*** characters, 30 files
+[2025-08-26T00:48:04.348063] [INFO] [openrouter:_analyze_with_model:496] - LLM Response length: 14300 characters
+[2025-08-26T00:48:04.350461] [INFO] [openrouter:_parse_llm_response:690] - Successfully recovered JSON from LLM response
+[2025-08-26T00:48:04.351670] [INFO] [openrouter:_parse_llm_response:696] - LLM requirements_implementation found with 10 items
+[2025-08-26T00:48:04.352695] [INFO] [openrouter:_normalize_requirements:741] - Converting requirements_implementation to requirements_met
+[2025-08-26T00:48:04.353487] [INFO] [openrouter:_normalize_requirements:791] - Normalized requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+[2025-08-26T00:48:04.354359] [INFO] [openrouter:_validate_and_adjust_penalty:975] - Starting penalty filtering for 5 issues
+[2025-08-26T00:48:04.355522] [INFO] [openrouter:_validate_and_adjust_penalty:993] - Skipping in-memory penalty - task allows in-memory storage
+[2025-08-26T00:48:04.356413] [INFO] [openrouter:_validate_and_adjust_penalty:1020] - Skipped penalty: In-memory storage for user data (not persistent) for a senior role, despite task allowing it, a persistent DB would be expected for user data. (10 points) - In-memory storage explicitly allowed by task
+[2025-08-26T00:48:04.357267] [INFO] [openrouter:_validate_and_adjust_penalty:999] - Skipping test penalty - tests not required by task
+[2025-08-26T00:48:04.358119] [INFO] [openrouter:_validate_and_adjust_penalty:1020] - Skipped penalty: Lack of comprehensive unit/integration tests for services and handlers. (10 points) - Tests were not requested in the task
+[2025-08-26T00:48:04.359082] [INFO] [openrouter:_validate_and_adjust_penalty:1034] - Filtered out 2 penalties based on actual implementation
+[2025-08-26T00:48:04.359838] [INFO] [openrouter:_validate_and_adjust_penalty:1035] - Penalty after filtering: 45 points (from 3 issues)
+[2025-08-26T00:48:04.360912] [INFO] [openrouter:_validate_and_adjust_penalty:1102] - LLM reported requirements: repo=True, service=True, redis=True, db=True, arch=True
+[2025-08-26T00:48:04.362597] [INFO] [openrouter:_validate_and_adjust_penalty:1141] - Skipping architecture penalty - proper architecture pattern detected in feedback
+[2025-08-26T00:48:04.363628] [INFO] [openrouter:_validate_and_adjust_penalty:1124] - Skipping 'Missing repository pattern' penalty - LLM confirmed repository pattern exists
+[2025-08-26T00:48:04.364535] [INFO] [openrouter:_validate_and_adjust_penalty:1128] - Skipping 'Missing service layer' penalty - LLM confirmed service layer exists
+[2025-08-26T00:48:04.365487] [INFO] [openrouter:_validate_and_adjust_penalty:1132] - Skipping 'Only in-memory storage (no Redis/DB)' penalty - LLM confirmed Redis implementation exists
+[2025-08-26T00:48:04.366403] [INFO] [openrouter:_validate_and_adjust_penalty:1132] - Skipping 'Missing Redis implementation' penalty - LLM confirmed Redis implementation exists
+[2025-08-26T00:48:04.367201] [INFO] [openrouter:_validate_and_adjust_penalty:1136] - Skipping 'Missing proper database' penalty - LLM confirmed database implementation exists
+[2025-08-26T00:48:04.368826] [WARNING] [openrouter:_validate_and_adjust_penalty:1163] - Critical issue detected: 'Hardcoded/exposed secrets' - ensuring minimum penalty of 45
+[2025-08-26T00:48:04.370224] [INFO] [openrouter:_validate_and_adjust_penalty:1209] - Aligning penalty score with breakdown: 65 → 45
+[2025-08-26T00:48:04.371171] [INFO] [openrouter:_convert_to_analysis_result:1362] - Extracted requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+[2025-08-26T00:48:04.372199] [WARNING] [openrouter:_convert_to_analysis_result:1464] - LLM said NO_HIRE but scores say HIRE (avg=73.8%, penalty=45.0). Overriding to HIRE.
+[2025-08-26T00:48:04.373639] [INFO] [openrouter:analyze_code:152] - Analysis successful with google/gemini-2.5-flash
+[2025-08-26T00:48:04.374704] [INFO] [bot:process_analysis:368] - Analysis complete for submission 55
+[2025-08-26T00:48:04.410061] [INFO] [sqlite:create_report:453] - Created report 36 for submission 55
+[2025-08-26T00:48:04.410877] [INFO] [bot:process_analysis:385] - Created report 36
+[2025-08-26T00:48:04.427316] [INFO] [sqlite:update_submission:281] - Updated submission 55: status=SubmissionStatus.COMPLETED
+[2025-08-26T00:48:06.566327] [INFO] [telegram:send_analysis_complete:279] - Analysis report sent for submission 55
+[2025-08-26T00:48:06.791782] [INFO] [github:cleanup:304] - GitHub adapter cleanup completed
+[2025-08-26T00:50:10.254488] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T00:50:10.327022] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T00:50:10.327925] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T00:50:10.328803] [INFO] [openrouter:_normalize_requirements:741] - Converting requirements_implementation to requirements_met
+[2025-08-26T00:50:10.329549] [INFO] [openrouter:_normalize_requirements:791] - Normalized requirements_met: {'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+[2025-08-26T00:50:10.330305] [INFO] [openrouter:_convert_to_analysis_result:1269] - Converting 'maybe' to ACCEPT (score: 83.3%, penalty: 0)
+[2025-08-26T00:50:10.330927] [INFO] [openrouter:_convert_to_analysis_result:1324] - Average of positive scores: 83.3% (from [95.0, 85.0, 70.0])
+[2025-08-26T00:50:10.331629] [INFO] [openrouter:_convert_to_analysis_result:1369] - Extracted requirements_met: {'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+[2025-08-26T00:50:10.332369] [WARNING] [openrouter:_convert_to_analysis_result:1471] - LLM said NO_HIRE but scores say HIRE (avg=83.3%, penalty=0). Overriding to HIRE.
+[2025-08-26T00:50:36.614739] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T00:50:36.684777] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T00:50:36.685474] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T00:50:36.686188] [INFO] [openrouter:_normalize_requirements:741] - Converting requirements_implementation to requirements_met
+[2025-08-26T00:50:36.686794] [INFO] [openrouter:_normalize_requirements:791] - Normalized requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+[2025-08-26T00:50:36.687394] [INFO] [openrouter:_validate_and_adjust_penalty:975] - Starting penalty filtering for 4 issues
+[2025-08-26T00:50:36.687883] [INFO] [openrouter:_validate_and_adjust_penalty:993] - Skipping in-memory penalty - task allows in-memory storage
+[2025-08-26T00:50:36.688404] [INFO] [openrouter:_validate_and_adjust_penalty:1020] - Skipped penalty: In-memory user storage (10 points) - In-memory storage explicitly allowed by task
+[2025-08-26T00:50:36.688894] [INFO] [openrouter:_validate_and_adjust_penalty:999] - Skipping test penalty - tests not required by task
+[2025-08-26T00:50:36.689450] [INFO] [openrouter:_validate_and_adjust_penalty:1020] - Skipped penalty: Lack of tests (10 points) - Tests were not requested in the task
+[2025-08-26T00:50:36.690108] [INFO] [openrouter:_validate_and_adjust_penalty:1034] - Filtered out 2 penalties based on actual implementation
+[2025-08-26T00:50:36.690652] [INFO] [openrouter:_validate_and_adjust_penalty:1035] - Penalty after filtering: 45 points (from 2 issues)
+[2025-08-26T00:50:36.691170] [INFO] [openrouter:_validate_and_adjust_penalty:1102] - LLM reported requirements: repo=True, service=True, redis=True, db=True, arch=True
+[2025-08-26T00:50:36.692302] [INFO] [openrouter:_validate_and_adjust_penalty:1141] - Skipping architecture penalty - proper architecture pattern detected in feedback
+[2025-08-26T00:50:36.692910] [INFO] [openrouter:_validate_and_adjust_penalty:1124] - Skipping 'Missing repository pattern' penalty - LLM confirmed repository pattern exists
+[2025-08-26T00:50:36.693366] [INFO] [openrouter:_validate_and_adjust_penalty:1128] - Skipping 'Missing service layer' penalty - LLM confirmed service layer exists
+[2025-08-26T00:50:36.693880] [INFO] [openrouter:_validate_and_adjust_penalty:1132] - Skipping 'Only in-memory storage (no Redis/DB)' penalty - LLM confirmed Redis implementation exists
+[2025-08-26T00:50:36.694495] [INFO] [openrouter:_validate_and_adjust_penalty:1132] - Skipping 'Missing Redis implementation' penalty - LLM confirmed Redis implementation exists
+[2025-08-26T00:50:36.695131] [INFO] [openrouter:_validate_and_adjust_penalty:1136] - Skipping 'Missing proper database' penalty - LLM confirmed database implementation exists
+[2025-08-26T00:50:36.696819] [INFO] [openrouter:_validate_and_adjust_penalty:1209] - Aligning penalty score with breakdown: 0 → 45
+[2025-08-26T00:50:36.697703] [INFO] [openrouter:_convert_to_analysis_result:1269] - Converting 'maybe' to ACCEPT (score: 83.3%, penalty: 45)
+[2025-08-26T00:50:36.698506] [INFO] [openrouter:_convert_to_analysis_result:1324] - Average of positive scores: 83.3% (from [95.0, 85.0, 70.0])
+[2025-08-26T00:50:36.699250] [INFO] [openrouter:_convert_to_analysis_result:1369] - Extracted requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+[2025-08-26T00:50:36.700073] [WARNING] [openrouter:_convert_to_analysis_result:1471] - LLM said NO_HIRE but scores say HIRE (avg=83.3%, penalty=45.0). Overriding to HIRE.
+[2025-08-26T00:51:02.827816] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T00:51:04.436494] [INFO] [bot:<module>:1283] - Starting bot (attempt #1)...
+[2025-08-26T00:51:04.437259] [INFO] [bot:main:1160] - Starting CV Review Bot...
+[2025-08-26T00:51:05.266858] [INFO] [bot:initialize_adapters:1137] - Initializing adapters...
+[2025-08-26T00:51:05.267703] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-26T00:51:05.271704] [INFO] [sqlite:_init:724] - Database tables created/verified
+[2025-08-26T00:51:05.272771] [INFO] [bot:initialize_adapters:1142] - Storage adapter initialized
+[2025-08-26T00:51:05.472664] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-26T00:51:05.474287] [INFO] [bot:initialize_adapters:1146] - Repository adapter initialized
+[2025-08-26T00:51:05.475737] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T00:51:05.477120] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T00:51:05.478429] [INFO] [bot:initialize_adapters:1150] - Analyzer adapter initialized
+[2025-08-26T00:51:05.479728] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-26T00:51:06.379582] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-26T00:51:06.381521] [INFO] [bot:initialize_adapters:1155] - Notification adapter initialized
+[2025-08-26T00:51:06.981583] [INFO] [bot:main:1203] - Cleared any existing webhooks
+[2025-08-26T00:51:06.983214] [INFO] [bot:main:1214] - Bot is ready! Starting polling...
+[2025-08-26T00:51:08.341732] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-26T00:51:11.996785] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/majidbl/aaa
+[2025-08-26T00:51:11.998485] [INFO] [validators:validate_github_url:117] - Successfully validated GitHub URL: majidbl/aaa
+[2025-08-26T00:51:13.523392] [INFO] [bot:role_callback:245] - Starting analysis for https://github.com/majidbl/aaa as backend
+[2025-08-26T00:51:13.731798] [INFO] [bot:process_analysis:297] - Found existing submission 55, removing it
+[2025-08-26T00:51:13.755528] [INFO] [sqlite:_delete:222] - Deleted submission 55 and 1 associated reports
+[2025-08-26T00:51:13.992578] [INFO] [sqlite:create_submission:109] - Created submission 55 for user ***ID_MASKED***
+[2025-08-26T00:51:13.993842] [INFO] [bot:process_analysis:316] - Created submission 55
+[2025-08-26T00:51:14.011746] [INFO] [sqlite:update_submission:281] - Updated submission 55: status=SubmissionStatus.ANALYZING
+[2025-08-26T00:51:14.247675] [INFO] [github:fetch_repository:141] - Fetching GitHub repository: https://github.com/majidbl/aaa for role: backend
+[2025-08-26T00:51:14.249227] [INFO] [github:_clone_repository:356] - Cloning repository: https://github.com/majidbl/aaa (attempt 1/3)
+[2025-08-26T00:51:16.029763] [INFO] [github:_clone_repository:375] - Repository cloned successfully
+[2025-08-26T00:51:16.031297] [INFO] [github:fetch_repository:160] - Repository size: 0.17MB
+[2025-08-26T00:51:16.032358] [INFO] [github:fetch_repository:167] - Extracting files based on patterns
+[2025-08-26T00:51:16.067359] [INFO] [github:_extract_files:502] - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+[2025-08-26T00:51:16.068875] [INFO] [github:fetch_repository:169] - Extracted 30 files using patterns
+[2025-08-26T00:51:16.070078] [INFO] [github:fetch_repository:176] - Raw content: 33481 tokens
+[2025-08-26T00:51:16.080533] [INFO] [github:fetch_repository:199] - Successfully processed repository: 30 files, 33481 tokens
+[2025-08-26T00:51:16.081555] [INFO] [bot:process_analysis:333] - Fetched repository: 30 files
+[2025-08-26T00:51:16.291421] [INFO] [openrouter:analyze_code:124] - Starting code analysis for backend submission (repo: https://github.com/majidbl/aaa)
+[2025-08-26T00:51:16.292777] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-26T00:51:16.294397] [INFO] [openrouter:_build_user_prompt:624] - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+[2025-08-26T00:51:16.296006] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-26T00:51:16.304562] [INFO] [openrouter:_analyze_with_model:452] - Total content size: ***ID_MASKED*** characters, 30 files
+[2025-08-26T00:51:31.156951] [INFO] [openrouter:_analyze_with_model:496] - LLM Response length: 10833 characters
+[2025-08-26T00:51:31.159961] [INFO] [openrouter:_parse_llm_response:690] - Successfully recovered JSON from LLM response
+[2025-08-26T00:51:31.161870] [INFO] [openrouter:_parse_llm_response:696] - LLM requirements_implementation found with 10 items
+[2025-08-26T00:51:31.163638] [INFO] [openrouter:_normalize_requirements:741] - Converting requirements_implementation to requirements_met
+[2025-08-26T00:51:31.165170] [INFO] [openrouter:_normalize_requirements:791] - Normalized requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+[2025-08-26T00:51:31.166940] [INFO] [openrouter:_validate_and_adjust_penalty:975] - Starting penalty filtering for 4 issues
+[2025-08-26T00:51:31.168517] [INFO] [openrouter:_validate_and_adjust_penalty:993] - Skipping in-memory penalty - task allows in-memory storage
+[2025-08-26T00:51:31.169702] [INFO] [openrouter:_validate_and_adjust_penalty:1020] - Skipped penalty: User data stored in in-memory map (not production-ready for senior role) (40 points) - In-memory storage explicitly allowed by task
+[2025-08-26T00:51:31.170804] [INFO] [openrouter:_validate_and_adjust_penalty:1034] - Filtered out 1 penalties based on actual implementation
+[2025-08-26T00:51:31.172097] [INFO] [openrouter:_validate_and_adjust_penalty:1035] - Penalty after filtering: 40 points (from 3 issues)
+[2025-08-26T00:51:31.173154] [INFO] [openrouter:_validate_and_adjust_penalty:1102] - LLM reported requirements: repo=True, service=True, redis=True, db=True, arch=True
+[2025-08-26T00:51:31.174016] [INFO] [openrouter:_validate_and_adjust_penalty:1141] - Skipping architecture penalty - proper architecture pattern detected in feedback
+[2025-08-26T00:51:31.175036] [INFO] [openrouter:_validate_and_adjust_penalty:1124] - Skipping 'Missing repository pattern' penalty - LLM confirmed repository pattern exists
+[2025-08-26T00:51:31.175994] [INFO] [openrouter:_validate_and_adjust_penalty:1128] - Skipping 'Missing service layer' penalty - LLM confirmed service layer exists
+[2025-08-26T00:51:31.177056] [INFO] [openrouter:_validate_and_adjust_penalty:1132] - Skipping 'Only in-memory storage (no Redis/DB)' penalty - LLM confirmed Redis implementation exists
+[2025-08-26T00:51:31.178061] [INFO] [openrouter:_validate_and_adjust_penalty:1132] - Skipping 'Missing Redis implementation' penalty - LLM confirmed Redis implementation exists
+[2025-08-26T00:51:31.179072] [INFO] [openrouter:_validate_and_adjust_penalty:1136] - Skipping 'Missing proper database' penalty - LLM confirmed database implementation exists
+[2025-08-26T00:51:31.181934] [INFO] [openrouter:_validate_and_adjust_penalty:1209] - Aligning penalty score with breakdown: 80 → 40
+[2025-08-26T00:51:31.183246] [INFO] [openrouter:_convert_to_analysis_result:1324] - Average of positive scores: 80.0% (from [90.0, 85.0, 65.0])
+[2025-08-26T00:51:31.184401] [INFO] [openrouter:_convert_to_analysis_result:1369] - Extracted requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+[2025-08-26T00:51:31.185575] [WARNING] [openrouter:_convert_to_analysis_result:1471] - LLM said NO_HIRE but scores say HIRE (avg=80.0%, penalty=40.0). Overriding to HIRE.
+[2025-08-26T00:51:31.187023] [INFO] [openrouter:analyze_code:152] - Analysis successful with google/gemini-2.5-flash
+[2025-08-26T00:51:31.188359] [INFO] [bot:process_analysis:368] - Analysis complete for submission 55
+[2025-08-26T00:51:31.224302] [INFO] [sqlite:create_report:453] - Created report 36 for submission 55
+[2025-08-26T00:51:31.225127] [INFO] [bot:process_analysis:385] - Created report 36
+[2025-08-26T00:51:31.243057] [INFO] [sqlite:update_submission:281] - Updated submission 55: status=SubmissionStatus.COMPLETED
+[2025-08-26T00:51:33.037196] [INFO] [telegram:send_analysis_complete:279] - Analysis report sent for submission 55
+[2025-08-26T00:51:33.334609] [INFO] [github:cleanup:304] - GitHub adapter cleanup completed
+[2025-08-26T00:58:56.779817] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T00:58:58.555395] [WARNING] [bot:<module>:1256] - Found existing bot process (PID: 11357), stopping it...
+[2025-08-26T00:58:59.374287] [INFO] [bot:<module>:1286] - Bot exited normally
+[2025-08-26T00:59:00.556789] [INFO] [bot:<module>:1283] - Starting bot (attempt #1)...
+[2025-08-26T00:59:00.558487] [INFO] [bot:main:1160] - Starting CV Review Bot...
+[2025-08-26T00:59:01.562972] [INFO] [bot:initialize_adapters:1137] - Initializing adapters...
+[2025-08-26T00:59:01.563789] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-26T00:59:01.568775] [INFO] [sqlite:_init:724] - Database tables created/verified
+[2025-08-26T00:59:01.569855] [INFO] [bot:initialize_adapters:1142] - Storage adapter initialized
+[2025-08-26T00:59:01.747484] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-26T00:59:01.749916] [INFO] [bot:initialize_adapters:1146] - Repository adapter initialized
+[2025-08-26T00:59:01.751160] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T00:59:01.752156] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T00:59:01.753252] [INFO] [bot:initialize_adapters:1150] - Analyzer adapter initialized
+[2025-08-26T00:59:01.754167] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-26T00:59:02.667171] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-26T00:59:02.668621] [INFO] [bot:initialize_adapters:1155] - Notification adapter initialized
+[2025-08-26T00:59:03.231724] [INFO] [bot:main:1203] - Cleared any existing webhooks
+[2025-08-26T00:59:03.232903] [INFO] [bot:main:1214] - Bot is ready! Starting polling...
+[2025-08-26T01:00:29.763237] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T01:00:31.708001] [INFO] [bot:<module>:1283] - Starting bot (attempt #1)...
+[2025-08-26T01:00:31.709011] [INFO] [bot:main:1160] - Starting CV Review Bot...
+[2025-08-26T01:00:32.601223] [INFO] [bot:initialize_adapters:1137] - Initializing adapters...
+[2025-08-26T01:00:32.602353] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-26T01:00:32.608280] [INFO] [sqlite:_init:724] - Database tables created/verified
+[2025-08-26T01:00:32.609651] [INFO] [bot:initialize_adapters:1142] - Storage adapter initialized
+[2025-08-26T01:00:32.874048] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-26T01:00:32.875183] [INFO] [bot:initialize_adapters:1146] - Repository adapter initialized
+[2025-08-26T01:00:32.876331] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T01:00:32.877186] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T01:00:32.878069] [INFO] [bot:initialize_adapters:1150] - Analyzer adapter initialized
+[2025-08-26T01:00:32.878971] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-26T01:00:33.813369] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-26T01:00:33.814647] [INFO] [bot:initialize_adapters:1155] - Notification adapter initialized
+[2025-08-26T01:00:34.590632] [INFO] [bot:main:1203] - Cleared any existing webhooks
+[2025-08-26T01:00:34.592165] [INFO] [bot:main:1214] - Bot is ready! Starting polling...
+[2025-08-26T01:00:36.861433] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-26T01:00:42.290693] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/majidbl/aaa
+[2025-08-26T01:00:42.292642] [INFO] [validators:validate_github_url:117] - Successfully validated GitHub URL: majidbl/aaa
+[2025-08-26T01:00:44.504898] [INFO] [bot:role_callback:245] - Starting analysis for https://github.com/majidbl/aaa as backend
+[2025-08-26T01:00:44.753172] [INFO] [bot:process_analysis:297] - Found existing submission 55, removing it
+[2025-08-26T01:00:44.772289] [INFO] [sqlite:_delete:222] - Deleted submission 55 and 1 associated reports
+[2025-08-26T01:00:45.086931] [INFO] [sqlite:create_submission:109] - Created submission 55 for user ***ID_MASKED***
+[2025-08-26T01:00:45.087993] [INFO] [bot:process_analysis:316] - Created submission 55
+[2025-08-26T01:00:45.107194] [INFO] [sqlite:update_submission:281] - Updated submission 55: status=SubmissionStatus.ANALYZING
+[2025-08-26T01:00:45.406046] [INFO] [github:fetch_repository:141] - Fetching GitHub repository: https://github.com/majidbl/aaa for role: backend
+[2025-08-26T01:00:45.407226] [INFO] [github:_clone_repository:356] - Cloning repository: https://github.com/majidbl/aaa (attempt 1/3)
+[2025-08-26T01:00:46.908052] [INFO] [github:_clone_repository:375] - Repository cloned successfully
+[2025-08-26T01:00:46.910496] [INFO] [github:fetch_repository:160] - Repository size: 0.17MB
+[2025-08-26T01:00:46.911803] [INFO] [github:fetch_repository:167] - Extracting files based on patterns
+[2025-08-26T01:00:46.958565] [INFO] [github:_extract_files:502] - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+[2025-08-26T01:00:46.960560] [INFO] [github:fetch_repository:169] - Extracted 30 files using patterns
+[2025-08-26T01:00:46.961896] [INFO] [github:fetch_repository:176] - Raw content: 33481 tokens
+[2025-08-26T01:00:46.974102] [INFO] [github:fetch_repository:199] - Successfully processed repository: 30 files, 33481 tokens
+[2025-08-26T01:00:46.975279] [INFO] [bot:process_analysis:333] - Fetched repository: 30 files
+[2025-08-26T01:00:47.314630] [INFO] [openrouter:analyze_code:124] - Starting code analysis for backend submission (repo: https://github.com/majidbl/aaa)
+[2025-08-26T01:00:47.315559] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-26T01:00:47.318149] [INFO] [openrouter:_build_user_prompt:624] - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+[2025-08-26T01:00:47.320140] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-26T01:00:47.329894] [INFO] [openrouter:_analyze_with_model:452] - Total content size: ***ID_MASKED*** characters, 30 files
+[2025-08-26T01:01:01.746485] [INFO] [openrouter:_analyze_with_model:496] - LLM Response length: 10954 characters
+[2025-08-26T01:01:01.748130] [INFO] [openrouter:_parse_llm_response:690] - Successfully recovered JSON from LLM response
+[2025-08-26T01:01:01.749295] [INFO] [openrouter:_parse_llm_response:696] - LLM requirements_implementation found with 10 items
+[2025-08-26T01:01:01.750481] [INFO] [openrouter:_normalize_requirements:741] - Converting requirements_implementation to requirements_met
+[2025-08-26T01:01:01.751889] [INFO] [openrouter:_normalize_requirements:791] - Normalized requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+[2025-08-26T01:01:01.753085] [INFO] [openrouter:_validate_and_adjust_penalty:975] - Starting penalty filtering for 5 issues
+[2025-08-26T01:01:01.754262] [INFO] [openrouter:_validate_and_adjust_penalty:1102] - LLM reported requirements: repo=True, service=True, redis=True, db=True, arch=True
+[2025-08-26T01:01:01.755614] [INFO] [openrouter:_validate_and_adjust_penalty:1141] - Skipping architecture penalty - proper architecture pattern detected in feedback
+[2025-08-26T01:01:01.756465] [INFO] [openrouter:_validate_and_adjust_penalty:1124] - Skipping 'Missing repository pattern' penalty - LLM confirmed repository pattern exists
+[2025-08-26T01:01:01.757367] [INFO] [openrouter:_validate_and_adjust_penalty:1128] - Skipping 'Missing service layer' penalty - LLM confirmed service layer exists
+[2025-08-26T01:01:01.758163] [INFO] [openrouter:_validate_and_adjust_penalty:1132] - Skipping 'Only in-memory storage (no Redis/DB)' penalty - LLM confirmed Redis implementation exists
+[2025-08-26T01:01:01.758940] [INFO] [openrouter:_validate_and_adjust_penalty:1132] - Skipping 'Missing Redis implementation' penalty - LLM confirmed Redis implementation exists
+[2025-08-26T01:01:01.759742] [INFO] [openrouter:_validate_and_adjust_penalty:1136] - Skipping 'Missing proper database' penalty - LLM confirmed database implementation exists
+[2025-08-26T01:01:01.761743] [INFO] [openrouter:_convert_to_analysis_result:1324] - Average of positive scores: 81.7% (from [95.0, 85.0, 65.0])
+[2025-08-26T01:01:01.762609] [INFO] [openrouter:_convert_to_analysis_result:1369] - Extracted requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+[2025-08-26T01:01:01.764098] [INFO] [openrouter:analyze_code:152] - Analysis successful with google/gemini-2.5-flash
+[2025-08-26T01:01:01.765513] [INFO] [bot:process_analysis:368] - Analysis complete for submission 55
+[2025-08-26T01:01:01.800397] [INFO] [sqlite:create_report:453] - Created report 36 for submission 55
+[2025-08-26T01:01:01.801736] [INFO] [bot:process_analysis:385] - Created report 36
+[2025-08-26T01:01:01.818963] [INFO] [sqlite:update_submission:281] - Updated submission 55: status=SubmissionStatus.COMPLETED
+[2025-08-26T01:01:03.673907] [INFO] [telegram:send_analysis_complete:279] - Analysis report sent for submission 55
+[2025-08-26T01:01:03.907600] [INFO] [github:cleanup:304] - GitHub adapter cleanup completed
+[2025-08-26T01:01:08.572765] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T01:01:32.326855] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T01:02:26.312371] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T01:02:44.405161] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T01:02:48.497108] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-26T01:02:48.508910] [INFO] [sqlite:_init:724] - Database tables created/verified
+[2025-08-26T01:02:48.804544] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=<module 'config' from '/mnt/c/Users/sinaa/Desktop/cv_review/src/config.py'>
+[2025-08-26T01:03:10.055782] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T01:03:13.932098] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-26T01:03:13.939870] [INFO] [sqlite:_init:724] - Database tables created/verified
+[2025-08-26T01:03:14.154596] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-26T01:03:14.155964] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T01:03:14.157040] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T01:08:15.268376] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T01:08:17.429332] [INFO] [bot:<module>:1283] - Starting bot (attempt #1)...
+[2025-08-26T01:08:17.430234] [INFO] [bot:main:1160] - Starting CV Review Bot...
+[2025-08-26T01:08:18.437657] [INFO] [bot:initialize_adapters:1137] - Initializing adapters...
+[2025-08-26T01:08:18.438441] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-26T01:08:18.443222] [INFO] [sqlite:_init:724] - Database tables created/verified
+[2025-08-26T01:08:18.444640] [INFO] [bot:initialize_adapters:1142] - Storage adapter initialized
+[2025-08-26T01:08:18.654681] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-26T01:08:18.655716] [INFO] [bot:initialize_adapters:1146] - Repository adapter initialized
+[2025-08-26T01:08:18.656539] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T01:08:18.657257] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T01:08:18.658040] [INFO] [bot:initialize_adapters:1150] - Analyzer adapter initialized
+[2025-08-26T01:08:18.658775] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-26T01:08:19.725889] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-26T01:08:19.727139] [INFO] [bot:initialize_adapters:1155] - Notification adapter initialized
+[2025-08-26T01:08:20.339307] [INFO] [bot:main:1203] - Cleared any existing webhooks
+[2025-08-26T01:08:20.340636] [INFO] [bot:main:1214] - Bot is ready! Starting polling...
+[2025-08-26T01:09:18.824575] [INFO] [bot:<module>:1286] - Bot exited normally
+[2025-08-26T01:09:30.245413] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T01:09:31.983446] [INFO] [bot:<module>:1283] - Starting bot (attempt #1)...
+[2025-08-26T01:09:31.984303] [INFO] [bot:main:1160] - Starting CV Review Bot...
+[2025-08-26T01:09:32.790215] [INFO] [bot:initialize_adapters:1137] - Initializing adapters...
+[2025-08-26T01:09:32.791187] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-26T01:09:32.796393] [INFO] [sqlite:_init:724] - Database tables created/verified
+[2025-08-26T01:09:32.797398] [INFO] [bot:initialize_adapters:1142] - Storage adapter initialized
+[2025-08-26T01:09:33.001580] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-26T01:09:33.002782] [INFO] [bot:initialize_adapters:1146] - Repository adapter initialized
+[2025-08-26T01:09:33.003760] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T01:09:33.004832] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T01:09:33.005731] [INFO] [bot:initialize_adapters:1150] - Analyzer adapter initialized
+[2025-08-26T01:09:33.006757] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-26T01:09:33.901473] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-26T01:09:33.903142] [INFO] [bot:initialize_adapters:1155] - Notification adapter initialized
+[2025-08-26T01:09:34.477610] [INFO] [bot:main:1203] - Cleared any existing webhooks
+[2025-08-26T01:09:34.478931] [INFO] [bot:main:1214] - Bot is ready! Starting polling...
+[2025-08-26T01:09:35.618263] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-26T01:09:41.616283] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/majidbl/aaa
+[2025-08-26T01:09:41.617926] [INFO] [validators:validate_github_url:117] - Successfully validated GitHub URL: majidbl/aaa
+[2025-08-26T01:09:43.603273] [INFO] [bot:role_callback:245] - Starting analysis for https://github.com/majidbl/aaa as backend
+[2025-08-26T01:09:43.857544] [INFO] [bot:process_analysis:297] - Found existing submission 55, removing it
+[2025-08-26T01:09:43.896276] [INFO] [sqlite:_delete:222] - Deleted submission 55 and 1 associated reports
+[2025-08-26T01:09:44.176301] [INFO] [sqlite:create_submission:109] - Created submission 55 for user ***ID_MASKED***
+[2025-08-26T01:09:44.177318] [INFO] [bot:process_analysis:316] - Created submission 55
+[2025-08-26T01:09:44.200403] [INFO] [sqlite:update_submission:281] - Updated submission 55: status=SubmissionStatus.ANALYZING
+[2025-08-26T01:09:44.440262] [INFO] [github:fetch_repository:141] - Fetching GitHub repository: https://github.com/majidbl/aaa for role: backend
+[2025-08-26T01:09:44.441885] [INFO] [github:_clone_repository:356] - Cloning repository: https://github.com/majidbl/aaa (attempt 1/3)
+[2025-08-26T01:09:46.041924] [INFO] [github:_clone_repository:375] - Repository cloned successfully
+[2025-08-26T01:09:46.043793] [INFO] [github:fetch_repository:160] - Repository size: 0.17MB
+[2025-08-26T01:09:46.044891] [INFO] [github:fetch_repository:167] - Extracting files based on patterns
+[2025-08-26T01:09:46.083341] [INFO] [github:_extract_files:502] - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+[2025-08-26T01:09:46.084910] [INFO] [github:fetch_repository:169] - Extracted 30 files using patterns
+[2025-08-26T01:09:46.086176] [INFO] [github:fetch_repository:176] - Raw content: 33481 tokens
+[2025-08-26T01:09:46.098325] [INFO] [github:fetch_repository:199] - Successfully processed repository: 30 files, 33481 tokens
+[2025-08-26T01:09:46.099609] [INFO] [bot:process_analysis:333] - Fetched repository: 30 files
+[2025-08-26T01:09:46.378947] [INFO] [openrouter:analyze_code:124] - Starting code analysis for backend submission (repo: https://github.com/majidbl/aaa)
+[2025-08-26T01:09:46.380518] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-26T01:09:46.382093] [INFO] [openrouter:_build_user_prompt:624] - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+[2025-08-26T01:09:46.383817] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-26T01:09:46.391794] [INFO] [openrouter:_analyze_with_model:452] - Total content size: ***ID_MASKED*** characters, 30 files
+[2025-08-26T01:10:02.340745] [INFO] [openrouter:_analyze_with_model:496] - LLM Response length: 12210 characters
+[2025-08-26T01:10:02.344156] [INFO] [openrouter:_parse_llm_response:690] - Successfully recovered JSON from LLM response
+[2025-08-26T01:10:02.345768] [INFO] [openrouter:_parse_llm_response:696] - LLM requirements_implementation found with 10 items
+[2025-08-26T01:10:02.347312] [INFO] [openrouter:_normalize_requirements:741] - Converting requirements_implementation to requirements_met
+[2025-08-26T01:10:02.348756] [INFO] [openrouter:_normalize_requirements:791] - Normalized requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+[2025-08-26T01:10:02.350239] [INFO] [openrouter:_validate_and_adjust_penalty:998] - LLM reported requirements: repo=True, service=True, redis=True, db=True, arch=True
+[2025-08-26T01:10:02.351735] [INFO] [openrouter:_validate_and_adjust_penalty:1004] - Starting penalty filtering for 4 issues
+[2025-08-26T01:10:02.353121] [INFO] [openrouter:_validate_and_adjust_penalty:1022] - Skipping in-memory penalty - task allows in-memory storage
+[2025-08-26T01:10:02.354264] [INFO] [openrouter:_validate_and_adjust_penalty:1049] - Skipped penalty: User data stored in-memory only (not a persistent database for a senior role) (20 points) - In-memory storage explicitly allowed by task
+[2025-08-26T01:10:02.355473] [INFO] [openrouter:_validate_and_adjust_penalty:1063] - Filtered out 1 penalties based on actual implementation
+[2025-08-26T01:10:02.356743] [INFO] [openrouter:_validate_and_adjust_penalty:1064] - Penalty after filtering: 50 points (from 3 issues)
+[2025-08-26T01:10:02.357823] [INFO] [openrouter:_validate_and_adjust_penalty:1071] - Updating penalty score to match filtered breakdown: 70 → 50
+[2025-08-26T01:10:02.359120] [INFO] [openrouter:_validate_and_adjust_penalty:1148] - Skipping architecture penalty - proper architecture pattern detected in feedback
+[2025-08-26T01:10:02.360644] [INFO] [openrouter:_validate_and_adjust_penalty:1131] - Skipping 'Missing repository pattern' penalty - LLM confirmed repository pattern exists
+[2025-08-26T01:10:02.361824] [INFO] [openrouter:_validate_and_adjust_penalty:1135] - Skipping 'Missing service layer' penalty - LLM confirmed service layer exists
+[2025-08-26T01:10:02.363094] [INFO] [openrouter:_validate_and_adjust_penalty:1139] - Skipping 'Only in-memory storage (no Redis/DB)' penalty - LLM confirmed Redis implementation exists
+[2025-08-26T01:10:02.364253] [INFO] [openrouter:_validate_and_adjust_penalty:1139] - Skipping 'Missing Redis implementation' penalty - LLM confirmed Redis implementation exists
+[2025-08-26T01:10:02.365340] [INFO] [openrouter:_validate_and_adjust_penalty:1143] - Skipping 'Missing proper database' penalty - LLM confirmed database implementation exists
+[2025-08-26T01:10:02.368443] [INFO] [openrouter:_convert_to_analysis_result:1329] - Average of positive scores: 83.3% (from [95.0, 85.0, 70.0])
+[2025-08-26T01:10:02.369694] [INFO] [openrouter:_convert_to_analysis_result:1374] - Extracted requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+[2025-08-26T01:10:02.372273] [INFO] [openrouter:analyze_code:152] - Analysis successful with google/gemini-2.5-flash
+[2025-08-26T01:10:02.373856] [INFO] [bot:process_analysis:368] - Analysis complete for submission 55
+[2025-08-26T01:10:02.403094] [INFO] [sqlite:create_report:453] - Created report 36 for submission 55
+[2025-08-26T01:10:02.404362] [INFO] [bot:process_analysis:385] - Created report 36
+[2025-08-26T01:10:02.427331] [INFO] [sqlite:update_submission:281] - Updated submission 55: status=SubmissionStatus.COMPLETED
+[2025-08-26T01:10:04.500372] [INFO] [telegram:send_analysis_complete:279] - Analysis report sent for submission 55
+[2025-08-26T01:10:04.755922] [INFO] [github:cleanup:304] - GitHub adapter cleanup completed
+[2025-08-26T01:16:08.086306] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T01:16:09.991374] [INFO] [bot:<module>:1283] - Starting bot (attempt #1)...
+[2025-08-26T01:16:09.992532] [INFO] [bot:main:1160] - Starting CV Review Bot...
+[2025-08-26T01:16:10.951777] [INFO] [bot:initialize_adapters:1137] - Initializing adapters...
+[2025-08-26T01:16:10.952770] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-26T01:16:10.957338] [INFO] [sqlite:_init:724] - Database tables created/verified
+[2025-08-26T01:16:10.959450] [INFO] [bot:initialize_adapters:1142] - Storage adapter initialized
+[2025-08-26T01:16:11.174302] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-26T01:16:11.175468] [INFO] [bot:initialize_adapters:1146] - Repository adapter initialized
+[2025-08-26T01:16:11.176656] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T01:16:11.177657] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T01:16:11.178565] [INFO] [bot:initialize_adapters:1150] - Analyzer adapter initialized
+[2025-08-26T01:16:11.179533] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-26T01:16:12.101039] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-26T01:16:12.102679] [INFO] [bot:initialize_adapters:1155] - Notification adapter initialized
+[2025-08-26T01:16:12.699546] [INFO] [bot:main:1203] - Cleared any existing webhooks
+[2025-08-26T01:16:12.701316] [INFO] [bot:main:1214] - Bot is ready! Starting polling...
+[2025-08-26T01:16:50.314905] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-26T01:17:04.004705] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/majidbl/aaa
+[2025-08-26T01:17:04.006470] [INFO] [validators:validate_github_url:117] - Successfully validated GitHub URL: majidbl/aaa
+[2025-08-26T01:17:06.311905] [INFO] [bot:role_callback:245] - Starting analysis for https://github.com/majidbl/aaa as backend
+[2025-08-26T01:17:06.549955] [INFO] [bot:process_analysis:297] - Found existing submission 55, removing it
+[2025-08-26T01:17:06.586834] [INFO] [sqlite:_delete:222] - Deleted submission 55 and 1 associated reports
+[2025-08-26T01:17:06.828318] [INFO] [sqlite:create_submission:109] - Created submission 55 for user ***ID_MASKED***
+[2025-08-26T01:17:06.829383] [INFO] [bot:process_analysis:316] - Created submission 55
+[2025-08-26T01:17:06.848526] [INFO] [sqlite:update_submission:281] - Updated submission 55: status=SubmissionStatus.ANALYZING
+[2025-08-26T01:17:07.080385] [INFO] [github:fetch_repository:141] - Fetching GitHub repository: https://github.com/majidbl/aaa for role: backend
+[2025-08-26T01:17:07.082098] [INFO] [github:_clone_repository:356] - Cloning repository: https://github.com/majidbl/aaa (attempt 1/3)
+[2025-08-26T01:17:08.793370] [INFO] [github:_clone_repository:375] - Repository cloned successfully
+[2025-08-26T01:17:08.795341] [INFO] [github:fetch_repository:160] - Repository size: 0.17MB
+[2025-08-26T01:17:08.796355] [INFO] [github:fetch_repository:167] - Extracting files based on patterns
+[2025-08-26T01:17:08.846470] [INFO] [github:_extract_files:502] - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+[2025-08-26T01:17:08.847560] [INFO] [github:fetch_repository:169] - Extracted 30 files using patterns
+[2025-08-26T01:17:08.848763] [INFO] [github:fetch_repository:176] - Raw content: 33481 tokens
+[2025-08-26T01:17:08.859692] [INFO] [github:fetch_repository:199] - Successfully processed repository: 30 files, 33481 tokens
+[2025-08-26T01:17:08.861023] [INFO] [bot:process_analysis:333] - Fetched repository: 30 files
+[2025-08-26T01:17:09.162975] [INFO] [openrouter:analyze_code:124] - Starting code analysis for backend submission (repo: https://github.com/majidbl/aaa)
+[2025-08-26T01:17:09.164061] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-26T01:17:09.165390] [INFO] [openrouter:_build_user_prompt:624] - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+[2025-08-26T01:17:09.166616] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-26T01:17:09.172490] [INFO] [openrouter:_analyze_with_model:452] - Total content size: ***ID_MASKED*** characters, 30 files
+[2025-08-26T01:17:26.574414] [INFO] [openrouter:_analyze_with_model:496] - LLM Response length: 12123 characters
+[2025-08-26T01:17:26.576239] [INFO] [openrouter:_parse_llm_response:690] - Successfully recovered JSON from LLM response
+[2025-08-26T01:17:26.577332] [INFO] [openrouter:_parse_llm_response:696] - LLM requirements_implementation found with 10 items
+[2025-08-26T01:17:26.579206] [INFO] [openrouter:_normalize_requirements:741] - Converting requirements_implementation to requirements_met
+[2025-08-26T01:17:26.580373] [INFO] [openrouter:_normalize_requirements:791] - Normalized requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+[2025-08-26T01:17:26.581500] [WARNING] [openrouter:_validate_and_adjust_penalty:1002] - Capping math/rand penalty from 45 to 20
+[2025-08-26T01:17:26.582583] [WARNING] [openrouter:_validate_and_adjust_penalty:1009] - Capping JWT penalty from 30 to 20
+[2025-08-26T01:17:26.583416] [INFO] [openrouter:_validate_and_adjust_penalty:1047] - LLM reported requirements: repo=True, service=True, redis=True, db=True, arch=True
+[2025-08-26T01:17:26.584368] [INFO] [openrouter:_validate_and_adjust_penalty:1053] - Starting penalty filtering for 4 issues
+[2025-08-26T01:17:26.585166] [INFO] [openrouter:_validate_and_adjust_penalty:1080] - Skipping penalty for 'user data stored in-memory only (not persistent da...' - Task explicitly allows in-memory storage instead of database
+[2025-08-26T01:17:26.585923] [INFO] [openrouter:_validate_and_adjust_penalty:1107] - Skipped penalty: User data stored in-memory only (not persistent database) (20 points) - Task explicitly allows in-memory storage instead of database
+[2025-08-26T01:17:26.586775] [INFO] [openrouter:_validate_and_adjust_penalty:1121] - Filtered out 1 penalties based on actual implementation
+[2025-08-26T01:17:26.587542] [INFO] [openrouter:_validate_and_adjust_penalty:1122] - Penalty after filtering: 50 points (from 3 issues)
+[2025-08-26T01:17:26.588258] [INFO] [openrouter:_validate_and_adjust_penalty:1129] - Updating penalty score to match filtered breakdown: 105 → 50
+[2025-08-26T01:17:26.589155] [INFO] [openrouter:_validate_and_adjust_penalty:1206] - Skipping architecture penalty - proper architecture pattern detected in feedback
+[2025-08-26T01:17:26.589903] [INFO] [openrouter:_validate_and_adjust_penalty:1189] - Skipping 'Missing repository pattern' penalty - LLM confirmed repository pattern exists
+[2025-08-26T01:17:26.590791] [INFO] [openrouter:_validate_and_adjust_penalty:1193] - Skipping 'Missing service layer' penalty - LLM confirmed service layer exists
+[2025-08-26T01:17:26.591678] [INFO] [openrouter:_validate_and_adjust_penalty:1197] - Skipping 'Only in-memory storage (no Redis/DB)' penalty - LLM confirmed Redis implementation exists
+[2025-08-26T01:17:26.592608] [INFO] [openrouter:_validate_and_adjust_penalty:1197] - Skipping 'Missing Redis implementation' penalty - LLM confirmed Redis implementation exists
+[2025-08-26T01:17:26.593455] [INFO] [openrouter:_validate_and_adjust_penalty:1201] - Skipping 'Missing proper database' penalty - LLM confirmed database implementation exists
+[2025-08-26T01:17:26.595579] [WARNING] [openrouter:_validate_and_adjust_penalty:1228] - Critical issue detected: 'Hardcoded/exposed secrets' - ensuring minimum penalty of 45
+[2025-08-26T01:17:26.596762] [INFO] [openrouter:_validate_and_adjust_penalty:1271] - Final penalty after adding missing critical issues: 95
+[2025-08-26T01:17:26.597743] [INFO] [openrouter:_convert_to_analysis_result:1387] - Average of positive scores: 83.3% (from [95.0, 85.0, 70.0])
+[2025-08-26T01:17:26.598709] [INFO] [openrouter:_convert_to_analysis_result:1432] - Extracted requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+[2025-08-26T01:17:26.599986] [INFO] [openrouter:analyze_code:152] - Analysis successful with google/gemini-2.5-flash
+[2025-08-26T01:17:26.600868] [INFO] [bot:process_analysis:368] - Analysis complete for submission 55
+[2025-08-26T01:17:26.635565] [INFO] [sqlite:create_report:453] - Created report 36 for submission 55
+[2025-08-26T01:17:26.636885] [INFO] [bot:process_analysis:385] - Created report 36
+[2025-08-26T01:17:26.657831] [INFO] [sqlite:update_submission:281] - Updated submission 55: status=SubmissionStatus.COMPLETED
+[2025-08-26T01:17:28.772666] [INFO] [telegram:send_analysis_complete:279] - Analysis report sent for submission 55
+[2025-08-26T01:17:28.969738] [INFO] [github:cleanup:304] - GitHub adapter cleanup completed

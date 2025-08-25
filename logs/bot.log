@@ -3376,3 +3376,357 @@ core.exceptions.NotificationError: Failed to initialize Telegram bot: httpx.Conn
 2025-08-26 00:42:42,314 - adapters.storage.sqlite - INFO - Updated submission 54: status=SubmissionStatus.COMPLETED
 2025-08-26 00:42:43,971 - adapters.notifications.telegram - INFO - Analysis report sent for submission 54
 2025-08-26 00:42:44,263 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-26 00:47:32,397 - utils.logger - INFO - Logging system initialized successfully
+2025-08-26 00:47:34,164 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-26 00:47:34,165 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-26 00:47:34,913 - __main__ - INFO - Initializing adapters...
+2025-08-26 00:47:34,914 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 00:47:34,918 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 00:47:34,919 - __main__ - INFO - Storage adapter initialized
+2025-08-26 00:47:35,126 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 00:47:35,127 - __main__ - INFO - Repository adapter initialized
+2025-08-26 00:47:35,129 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 00:47:35,130 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 00:47:35,131 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 00:47:35,132 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 00:47:36,042 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-26 00:47:36,043 - __main__ - INFO - Notification adapter initialized
+2025-08-26 00:47:36,611 - __main__ - INFO - Cleared any existing webhooks
+2025-08-26 00:47:36,613 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-26 00:47:39,234 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 00:47:41,280 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/majidbl/aaa
+2025-08-26 00:47:41,281 - utils.validators - INFO - Successfully validated GitHub URL: majidbl/aaa
+2025-08-26 00:47:43,015 - __main__ - INFO - Starting analysis for https://github.com/majidbl/aaa as backend
+2025-08-26 00:47:43,288 - __main__ - INFO - Found existing submission 53, removing it
+2025-08-26 00:47:43,324 - adapters.storage.sqlite - INFO - Deleted submission 53 and 1 associated reports
+2025-08-26 00:47:43,706 - adapters.storage.sqlite - INFO - Created submission 55 for user ***ID_MASKED***
+2025-08-26 00:47:43,707 - __main__ - INFO - Created submission 55
+2025-08-26 00:47:43,729 - adapters.storage.sqlite - INFO - Updated submission 55: status=SubmissionStatus.ANALYZING
+2025-08-26 00:47:44,006 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/majidbl/aaa for role: backend
+2025-08-26 00:47:44,009 - adapters.repositories.github - INFO - Cloning repository: https://github.com/majidbl/aaa (attempt 1/3)
+2025-08-26 00:47:45,586 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-26 00:47:45,587 - adapters.repositories.github - INFO - Repository size: 0.17MB
+2025-08-26 00:47:45,589 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-26 00:47:45,638 - adapters.repositories.github - INFO - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+2025-08-26 00:47:45,639 - adapters.repositories.github - INFO - Extracted 30 files using patterns
+2025-08-26 00:47:45,640 - adapters.repositories.github - INFO - Raw content: 33481 tokens
+2025-08-26 00:47:45,647 - adapters.repositories.github - INFO - Successfully processed repository: 30 files, 33481 tokens
+2025-08-26 00:47:45,648 - __main__ - INFO - Fetched repository: 30 files
+2025-08-26 00:47:45,860 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/majidbl/aaa)
+2025-08-26 00:47:45,861 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-26 00:47:45,862 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-26 00:47:45,862 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-26 00:47:45,867 - adapters.analyzers.openrouter - INFO - Total content size: ***ID_MASKED*** characters, 30 files
+2025-08-26 00:48:04,348 - adapters.analyzers.openrouter - INFO - LLM Response length: 14300 characters
+2025-08-26 00:48:04,350 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-26 00:48:04,351 - adapters.analyzers.openrouter - INFO - LLM requirements_implementation found with 10 items
+2025-08-26 00:48:04,352 - adapters.analyzers.openrouter - INFO - Converting requirements_implementation to requirements_met
+2025-08-26 00:48:04,353 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+2025-08-26 00:48:04,354 - adapters.analyzers.openrouter - INFO - Starting penalty filtering for 5 issues
+2025-08-26 00:48:04,355 - adapters.analyzers.openrouter - INFO - Skipping in-memory penalty - task allows in-memory storage
+2025-08-26 00:48:04,356 - adapters.analyzers.openrouter - INFO - Skipped penalty: In-memory storage for user data (not persistent) for a senior role, despite task allowing it, a persistent DB would be expected for user data. (10 points) - In-memory storage explicitly allowed by task
+2025-08-26 00:48:04,357 - adapters.analyzers.openrouter - INFO - Skipping test penalty - tests not required by task
+2025-08-26 00:48:04,358 - adapters.analyzers.openrouter - INFO - Skipped penalty: Lack of comprehensive unit/integration tests for services and handlers. (10 points) - Tests were not requested in the task
+2025-08-26 00:48:04,359 - adapters.analyzers.openrouter - INFO - Filtered out 2 penalties based on actual implementation
+2025-08-26 00:48:04,359 - adapters.analyzers.openrouter - INFO - Penalty after filtering: 45 points (from 3 issues)
+2025-08-26 00:48:04,360 - adapters.analyzers.openrouter - INFO - LLM reported requirements: repo=True, service=True, redis=True, db=True, arch=True
+2025-08-26 00:48:04,362 - adapters.analyzers.openrouter - INFO - Skipping architecture penalty - proper architecture pattern detected in feedback
+2025-08-26 00:48:04,363 - adapters.analyzers.openrouter - INFO - Skipping 'Missing repository pattern' penalty - LLM confirmed repository pattern exists
+2025-08-26 00:48:04,364 - adapters.analyzers.openrouter - INFO - Skipping 'Missing service layer' penalty - LLM confirmed service layer exists
+2025-08-26 00:48:04,365 - adapters.analyzers.openrouter - INFO - Skipping 'Only in-memory storage (no Redis/DB)' penalty - LLM confirmed Redis implementation exists
+2025-08-26 00:48:04,366 - adapters.analyzers.openrouter - INFO - Skipping 'Missing Redis implementation' penalty - LLM confirmed Redis implementation exists
+2025-08-26 00:48:04,367 - adapters.analyzers.openrouter - INFO - Skipping 'Missing proper database' penalty - LLM confirmed database implementation exists
+2025-08-26 00:48:04,368 - adapters.analyzers.openrouter - WARNING - Critical issue detected: 'Hardcoded/exposed secrets' - ensuring minimum penalty of 45
+2025-08-26 00:48:04,370 - adapters.analyzers.openrouter - INFO - Aligning penalty score with breakdown: 65 → 45
+2025-08-26 00:48:04,371 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+2025-08-26 00:48:04,372 - adapters.analyzers.openrouter - WARNING - LLM said NO_HIRE but scores say HIRE (avg=73.8%, penalty=45.0). Overriding to HIRE.
+2025-08-26 00:48:04,373 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-26 00:48:04,374 - __main__ - INFO - Analysis complete for submission 55
+2025-08-26 00:48:04,410 - adapters.storage.sqlite - INFO - Created report 36 for submission 55
+2025-08-26 00:48:04,410 - __main__ - INFO - Created report 36
+2025-08-26 00:48:04,427 - adapters.storage.sqlite - INFO - Updated submission 55: status=SubmissionStatus.COMPLETED
+2025-08-26 00:48:06,566 - adapters.notifications.telegram - INFO - Analysis report sent for submission 55
+2025-08-26 00:48:06,791 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-26 00:51:02,827 - utils.logger - INFO - Logging system initialized successfully
+2025-08-26 00:51:04,436 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-26 00:51:04,437 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-26 00:51:05,266 - __main__ - INFO - Initializing adapters...
+2025-08-26 00:51:05,267 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 00:51:05,271 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 00:51:05,272 - __main__ - INFO - Storage adapter initialized
+2025-08-26 00:51:05,472 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 00:51:05,474 - __main__ - INFO - Repository adapter initialized
+2025-08-26 00:51:05,475 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 00:51:05,477 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 00:51:05,478 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 00:51:05,479 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 00:51:06,379 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-26 00:51:06,381 - __main__ - INFO - Notification adapter initialized
+2025-08-26 00:51:06,981 - __main__ - INFO - Cleared any existing webhooks
+2025-08-26 00:51:06,983 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-26 00:51:08,341 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 00:51:11,996 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/majidbl/aaa
+2025-08-26 00:51:11,998 - utils.validators - INFO - Successfully validated GitHub URL: majidbl/aaa
+2025-08-26 00:51:13,523 - __main__ - INFO - Starting analysis for https://github.com/majidbl/aaa as backend
+2025-08-26 00:51:13,731 - __main__ - INFO - Found existing submission 55, removing it
+2025-08-26 00:51:13,755 - adapters.storage.sqlite - INFO - Deleted submission 55 and 1 associated reports
+2025-08-26 00:51:13,992 - adapters.storage.sqlite - INFO - Created submission 55 for user ***ID_MASKED***
+2025-08-26 00:51:13,993 - __main__ - INFO - Created submission 55
+2025-08-26 00:51:14,011 - adapters.storage.sqlite - INFO - Updated submission 55: status=SubmissionStatus.ANALYZING
+2025-08-26 00:51:14,247 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/majidbl/aaa for role: backend
+2025-08-26 00:51:14,249 - adapters.repositories.github - INFO - Cloning repository: https://github.com/majidbl/aaa (attempt 1/3)
+2025-08-26 00:51:16,029 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-26 00:51:16,031 - adapters.repositories.github - INFO - Repository size: 0.17MB
+2025-08-26 00:51:16,032 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-26 00:51:16,067 - adapters.repositories.github - INFO - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+2025-08-26 00:51:16,068 - adapters.repositories.github - INFO - Extracted 30 files using patterns
+2025-08-26 00:51:16,070 - adapters.repositories.github - INFO - Raw content: 33481 tokens
+2025-08-26 00:51:16,080 - adapters.repositories.github - INFO - Successfully processed repository: 30 files, 33481 tokens
+2025-08-26 00:51:16,081 - __main__ - INFO - Fetched repository: 30 files
+2025-08-26 00:51:16,291 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/majidbl/aaa)
+2025-08-26 00:51:16,292 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-26 00:51:16,294 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-26 00:51:16,296 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-26 00:51:16,304 - adapters.analyzers.openrouter - INFO - Total content size: ***ID_MASKED*** characters, 30 files
+2025-08-26 00:51:31,156 - adapters.analyzers.openrouter - INFO - LLM Response length: 10833 characters
+2025-08-26 00:51:31,159 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-26 00:51:31,161 - adapters.analyzers.openrouter - INFO - LLM requirements_implementation found with 10 items
+2025-08-26 00:51:31,163 - adapters.analyzers.openrouter - INFO - Converting requirements_implementation to requirements_met
+2025-08-26 00:51:31,165 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+2025-08-26 00:51:31,166 - adapters.analyzers.openrouter - INFO - Starting penalty filtering for 4 issues
+2025-08-26 00:51:31,168 - adapters.analyzers.openrouter - INFO - Skipping in-memory penalty - task allows in-memory storage
+2025-08-26 00:51:31,169 - adapters.analyzers.openrouter - INFO - Skipped penalty: User data stored in in-memory map (not production-ready for senior role) (40 points) - In-memory storage explicitly allowed by task
+2025-08-26 00:51:31,170 - adapters.analyzers.openrouter - INFO - Filtered out 1 penalties based on actual implementation
+2025-08-26 00:51:31,172 - adapters.analyzers.openrouter - INFO - Penalty after filtering: 40 points (from 3 issues)
+2025-08-26 00:51:31,173 - adapters.analyzers.openrouter - INFO - LLM reported requirements: repo=True, service=True, redis=True, db=True, arch=True
+2025-08-26 00:51:31,174 - adapters.analyzers.openrouter - INFO - Skipping architecture penalty - proper architecture pattern detected in feedback
+2025-08-26 00:51:31,175 - adapters.analyzers.openrouter - INFO - Skipping 'Missing repository pattern' penalty - LLM confirmed repository pattern exists
+2025-08-26 00:51:31,175 - adapters.analyzers.openrouter - INFO - Skipping 'Missing service layer' penalty - LLM confirmed service layer exists
+2025-08-26 00:51:31,177 - adapters.analyzers.openrouter - INFO - Skipping 'Only in-memory storage (no Redis/DB)' penalty - LLM confirmed Redis implementation exists
+2025-08-26 00:51:31,178 - adapters.analyzers.openrouter - INFO - Skipping 'Missing Redis implementation' penalty - LLM confirmed Redis implementation exists
+2025-08-26 00:51:31,179 - adapters.analyzers.openrouter - INFO - Skipping 'Missing proper database' penalty - LLM confirmed database implementation exists
+2025-08-26 00:51:31,181 - adapters.analyzers.openrouter - INFO - Aligning penalty score with breakdown: 80 → 40
+2025-08-26 00:51:31,183 - adapters.analyzers.openrouter - INFO - Average of positive scores: 80.0% (from [90.0, 85.0, 65.0])
+2025-08-26 00:51:31,184 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+2025-08-26 00:51:31,185 - adapters.analyzers.openrouter - WARNING - LLM said NO_HIRE but scores say HIRE (avg=80.0%, penalty=40.0). Overriding to HIRE.
+2025-08-26 00:51:31,187 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-26 00:51:31,188 - __main__ - INFO - Analysis complete for submission 55
+2025-08-26 00:51:31,224 - adapters.storage.sqlite - INFO - Created report 36 for submission 55
+2025-08-26 00:51:31,225 - __main__ - INFO - Created report 36
+2025-08-26 00:51:31,243 - adapters.storage.sqlite - INFO - Updated submission 55: status=SubmissionStatus.COMPLETED
+2025-08-26 00:51:33,037 - adapters.notifications.telegram - INFO - Analysis report sent for submission 55
+2025-08-26 00:51:33,334 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-26 00:58:59,374 - __main__ - INFO - Bot exited normally
+2025-08-26 01:00:29,763 - utils.logger - INFO - Logging system initialized successfully
+2025-08-26 01:00:31,708 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-26 01:00:31,709 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-26 01:00:32,601 - __main__ - INFO - Initializing adapters...
+2025-08-26 01:00:32,602 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 01:00:32,608 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 01:00:32,609 - __main__ - INFO - Storage adapter initialized
+2025-08-26 01:00:32,874 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 01:00:32,875 - __main__ - INFO - Repository adapter initialized
+2025-08-26 01:00:32,876 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 01:00:32,877 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 01:00:32,878 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 01:00:32,878 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 01:00:33,813 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-26 01:00:33,814 - __main__ - INFO - Notification adapter initialized
+2025-08-26 01:00:34,590 - __main__ - INFO - Cleared any existing webhooks
+2025-08-26 01:00:34,592 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-26 01:00:36,861 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 01:00:42,290 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/majidbl/aaa
+2025-08-26 01:00:42,292 - utils.validators - INFO - Successfully validated GitHub URL: majidbl/aaa
+2025-08-26 01:00:44,504 - __main__ - INFO - Starting analysis for https://github.com/majidbl/aaa as backend
+2025-08-26 01:00:44,753 - __main__ - INFO - Found existing submission 55, removing it
+2025-08-26 01:00:44,772 - adapters.storage.sqlite - INFO - Deleted submission 55 and 1 associated reports
+2025-08-26 01:00:45,086 - adapters.storage.sqlite - INFO - Created submission 55 for user ***ID_MASKED***
+2025-08-26 01:00:45,087 - __main__ - INFO - Created submission 55
+2025-08-26 01:00:45,107 - adapters.storage.sqlite - INFO - Updated submission 55: status=SubmissionStatus.ANALYZING
+2025-08-26 01:00:45,406 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/majidbl/aaa for role: backend
+2025-08-26 01:00:45,407 - adapters.repositories.github - INFO - Cloning repository: https://github.com/majidbl/aaa (attempt 1/3)
+2025-08-26 01:00:46,908 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-26 01:00:46,910 - adapters.repositories.github - INFO - Repository size: 0.17MB
+2025-08-26 01:00:46,911 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-26 01:00:46,958 - adapters.repositories.github - INFO - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+2025-08-26 01:00:46,960 - adapters.repositories.github - INFO - Extracted 30 files using patterns
+2025-08-26 01:00:46,961 - adapters.repositories.github - INFO - Raw content: 33481 tokens
+2025-08-26 01:00:46,974 - adapters.repositories.github - INFO - Successfully processed repository: 30 files, 33481 tokens
+2025-08-26 01:00:46,975 - __main__ - INFO - Fetched repository: 30 files
+2025-08-26 01:00:47,314 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/majidbl/aaa)
+2025-08-26 01:00:47,315 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-26 01:00:47,318 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-26 01:00:47,320 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-26 01:00:47,329 - adapters.analyzers.openrouter - INFO - Total content size: ***ID_MASKED*** characters, 30 files
+2025-08-26 01:01:01,746 - adapters.analyzers.openrouter - INFO - LLM Response length: 10954 characters
+2025-08-26 01:01:01,748 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-26 01:01:01,749 - adapters.analyzers.openrouter - INFO - LLM requirements_implementation found with 10 items
+2025-08-26 01:01:01,750 - adapters.analyzers.openrouter - INFO - Converting requirements_implementation to requirements_met
+2025-08-26 01:01:01,751 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+2025-08-26 01:01:01,753 - adapters.analyzers.openrouter - INFO - Starting penalty filtering for 5 issues
+2025-08-26 01:01:01,754 - adapters.analyzers.openrouter - INFO - LLM reported requirements: repo=True, service=True, redis=True, db=True, arch=True
+2025-08-26 01:01:01,755 - adapters.analyzers.openrouter - INFO - Skipping architecture penalty - proper architecture pattern detected in feedback
+2025-08-26 01:01:01,756 - adapters.analyzers.openrouter - INFO - Skipping 'Missing repository pattern' penalty - LLM confirmed repository pattern exists
+2025-08-26 01:01:01,757 - adapters.analyzers.openrouter - INFO - Skipping 'Missing service layer' penalty - LLM confirmed service layer exists
+2025-08-26 01:01:01,758 - adapters.analyzers.openrouter - INFO - Skipping 'Only in-memory storage (no Redis/DB)' penalty - LLM confirmed Redis implementation exists
+2025-08-26 01:01:01,758 - adapters.analyzers.openrouter - INFO - Skipping 'Missing Redis implementation' penalty - LLM confirmed Redis implementation exists
+2025-08-26 01:01:01,759 - adapters.analyzers.openrouter - INFO - Skipping 'Missing proper database' penalty - LLM confirmed database implementation exists
+2025-08-26 01:01:01,761 - adapters.analyzers.openrouter - INFO - Average of positive scores: 81.7% (from [95.0, 85.0, 65.0])
+2025-08-26 01:01:01,762 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+2025-08-26 01:01:01,764 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-26 01:01:01,765 - __main__ - INFO - Analysis complete for submission 55
+2025-08-26 01:01:01,800 - adapters.storage.sqlite - INFO - Created report 36 for submission 55
+2025-08-26 01:01:01,801 - __main__ - INFO - Created report 36
+2025-08-26 01:01:01,818 - adapters.storage.sqlite - INFO - Updated submission 55: status=SubmissionStatus.COMPLETED
+2025-08-26 01:01:03,673 - adapters.notifications.telegram - INFO - Analysis report sent for submission 55
+2025-08-26 01:01:03,907 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-26 01:09:30,245 - utils.logger - INFO - Logging system initialized successfully
+2025-08-26 01:09:31,983 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-26 01:09:31,984 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-26 01:09:32,790 - __main__ - INFO - Initializing adapters...
+2025-08-26 01:09:32,791 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 01:09:32,796 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 01:09:32,797 - __main__ - INFO - Storage adapter initialized
+2025-08-26 01:09:33,001 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 01:09:33,002 - __main__ - INFO - Repository adapter initialized
+2025-08-26 01:09:33,003 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 01:09:33,004 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 01:09:33,005 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 01:09:33,006 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 01:09:33,901 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-26 01:09:33,903 - __main__ - INFO - Notification adapter initialized
+2025-08-26 01:09:34,477 - __main__ - INFO - Cleared any existing webhooks
+2025-08-26 01:09:34,478 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-26 01:09:35,618 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 01:09:41,616 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/majidbl/aaa
+2025-08-26 01:09:41,617 - utils.validators - INFO - Successfully validated GitHub URL: majidbl/aaa
+2025-08-26 01:09:43,603 - __main__ - INFO - Starting analysis for https://github.com/majidbl/aaa as backend
+2025-08-26 01:09:43,857 - __main__ - INFO - Found existing submission 55, removing it
+2025-08-26 01:09:43,896 - adapters.storage.sqlite - INFO - Deleted submission 55 and 1 associated reports
+2025-08-26 01:09:44,176 - adapters.storage.sqlite - INFO - Created submission 55 for user ***ID_MASKED***
+2025-08-26 01:09:44,177 - __main__ - INFO - Created submission 55
+2025-08-26 01:09:44,200 - adapters.storage.sqlite - INFO - Updated submission 55: status=SubmissionStatus.ANALYZING
+2025-08-26 01:09:44,440 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/majidbl/aaa for role: backend
+2025-08-26 01:09:44,441 - adapters.repositories.github - INFO - Cloning repository: https://github.com/majidbl/aaa (attempt 1/3)
+2025-08-26 01:09:46,041 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-26 01:09:46,043 - adapters.repositories.github - INFO - Repository size: 0.17MB
+2025-08-26 01:09:46,044 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-26 01:09:46,083 - adapters.repositories.github - INFO - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+2025-08-26 01:09:46,084 - adapters.repositories.github - INFO - Extracted 30 files using patterns
+2025-08-26 01:09:46,086 - adapters.repositories.github - INFO - Raw content: 33481 tokens
+2025-08-26 01:09:46,098 - adapters.repositories.github - INFO - Successfully processed repository: 30 files, 33481 tokens
+2025-08-26 01:09:46,099 - __main__ - INFO - Fetched repository: 30 files
+2025-08-26 01:09:46,378 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/majidbl/aaa)
+2025-08-26 01:09:46,380 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-26 01:09:46,382 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-26 01:09:46,383 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-26 01:09:46,391 - adapters.analyzers.openrouter - INFO - Total content size: ***ID_MASKED*** characters, 30 files
+2025-08-26 01:10:02,340 - adapters.analyzers.openrouter - INFO - LLM Response length: 12210 characters
+2025-08-26 01:10:02,344 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-26 01:10:02,345 - adapters.analyzers.openrouter - INFO - LLM requirements_implementation found with 10 items
+2025-08-26 01:10:02,347 - adapters.analyzers.openrouter - INFO - Converting requirements_implementation to requirements_met
+2025-08-26 01:10:02,348 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+2025-08-26 01:10:02,350 - adapters.analyzers.openrouter - INFO - LLM reported requirements: repo=True, service=True, redis=True, db=True, arch=True
+2025-08-26 01:10:02,351 - adapters.analyzers.openrouter - INFO - Starting penalty filtering for 4 issues
+2025-08-26 01:10:02,353 - adapters.analyzers.openrouter - INFO - Skipping in-memory penalty - task allows in-memory storage
+2025-08-26 01:10:02,354 - adapters.analyzers.openrouter - INFO - Skipped penalty: User data stored in-memory only (not a persistent database for a senior role) (20 points) - In-memory storage explicitly allowed by task
+2025-08-26 01:10:02,355 - adapters.analyzers.openrouter - INFO - Filtered out 1 penalties based on actual implementation
+2025-08-26 01:10:02,356 - adapters.analyzers.openrouter - INFO - Penalty after filtering: 50 points (from 3 issues)
+2025-08-26 01:10:02,357 - adapters.analyzers.openrouter - INFO - Updating penalty score to match filtered breakdown: 70 → 50
+2025-08-26 01:10:02,359 - adapters.analyzers.openrouter - INFO - Skipping architecture penalty - proper architecture pattern detected in feedback
+2025-08-26 01:10:02,360 - adapters.analyzers.openrouter - INFO - Skipping 'Missing repository pattern' penalty - LLM confirmed repository pattern exists
+2025-08-26 01:10:02,361 - adapters.analyzers.openrouter - INFO - Skipping 'Missing service layer' penalty - LLM confirmed service layer exists
+2025-08-26 01:10:02,363 - adapters.analyzers.openrouter - INFO - Skipping 'Only in-memory storage (no Redis/DB)' penalty - LLM confirmed Redis implementation exists
+2025-08-26 01:10:02,364 - adapters.analyzers.openrouter - INFO - Skipping 'Missing Redis implementation' penalty - LLM confirmed Redis implementation exists
+2025-08-26 01:10:02,365 - adapters.analyzers.openrouter - INFO - Skipping 'Missing proper database' penalty - LLM confirmed database implementation exists
+2025-08-26 01:10:02,368 - adapters.analyzers.openrouter - INFO - Average of positive scores: 83.3% (from [95.0, 85.0, 70.0])
+2025-08-26 01:10:02,369 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+2025-08-26 01:10:02,372 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-26 01:10:02,373 - __main__ - INFO - Analysis complete for submission 55
+2025-08-26 01:10:02,403 - adapters.storage.sqlite - INFO - Created report 36 for submission 55
+2025-08-26 01:10:02,404 - __main__ - INFO - Created report 36
+2025-08-26 01:10:02,427 - adapters.storage.sqlite - INFO - Updated submission 55: status=SubmissionStatus.COMPLETED
+2025-08-26 01:10:04,500 - adapters.notifications.telegram - INFO - Analysis report sent for submission 55
+2025-08-26 01:10:04,755 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-26 01:16:08,086 - utils.logger - INFO - Logging system initialized successfully
+2025-08-26 01:16:09,991 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-26 01:16:09,992 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-26 01:16:10,951 - __main__ - INFO - Initializing adapters...
+2025-08-26 01:16:10,952 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 01:16:10,957 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 01:16:10,959 - __main__ - INFO - Storage adapter initialized
+2025-08-26 01:16:11,174 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 01:16:11,175 - __main__ - INFO - Repository adapter initialized
+2025-08-26 01:16:11,176 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 01:16:11,177 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 01:16:11,178 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 01:16:11,179 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 01:16:12,101 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-26 01:16:12,102 - __main__ - INFO - Notification adapter initialized
+2025-08-26 01:16:12,699 - __main__ - INFO - Cleared any existing webhooks
+2025-08-26 01:16:12,701 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-26 01:16:50,314 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 01:17:04,004 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/majidbl/aaa
+2025-08-26 01:17:04,006 - utils.validators - INFO - Successfully validated GitHub URL: majidbl/aaa
+2025-08-26 01:17:06,311 - __main__ - INFO - Starting analysis for https://github.com/majidbl/aaa as backend
+2025-08-26 01:17:06,549 - __main__ - INFO - Found existing submission 55, removing it
+2025-08-26 01:17:06,586 - adapters.storage.sqlite - INFO - Deleted submission 55 and 1 associated reports
+2025-08-26 01:17:06,828 - adapters.storage.sqlite - INFO - Created submission 55 for user ***ID_MASKED***
+2025-08-26 01:17:06,829 - __main__ - INFO - Created submission 55
+2025-08-26 01:17:06,848 - adapters.storage.sqlite - INFO - Updated submission 55: status=SubmissionStatus.ANALYZING
+2025-08-26 01:17:07,080 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/majidbl/aaa for role: backend
+2025-08-26 01:17:07,082 - adapters.repositories.github - INFO - Cloning repository: https://github.com/majidbl/aaa (attempt 1/3)
+2025-08-26 01:17:08,793 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-26 01:17:08,795 - adapters.repositories.github - INFO - Repository size: 0.17MB
+2025-08-26 01:17:08,796 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-26 01:17:08,846 - adapters.repositories.github - INFO - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+2025-08-26 01:17:08,847 - adapters.repositories.github - INFO - Extracted 30 files using patterns
+2025-08-26 01:17:08,848 - adapters.repositories.github - INFO - Raw content: 33481 tokens
+2025-08-26 01:17:08,859 - adapters.repositories.github - INFO - Successfully processed repository: 30 files, 33481 tokens
+2025-08-26 01:17:08,861 - __main__ - INFO - Fetched repository: 30 files
+2025-08-26 01:17:09,162 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/majidbl/aaa)
+2025-08-26 01:17:09,164 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-26 01:17:09,165 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-26 01:17:09,166 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-26 01:17:09,172 - adapters.analyzers.openrouter - INFO - Total content size: ***ID_MASKED*** characters, 30 files
+2025-08-26 01:17:26,574 - adapters.analyzers.openrouter - INFO - LLM Response length: 12123 characters
+2025-08-26 01:17:26,576 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-26 01:17:26,577 - adapters.analyzers.openrouter - INFO - LLM requirements_implementation found with 10 items
+2025-08-26 01:17:26,579 - adapters.analyzers.openrouter - INFO - Converting requirements_implementation to requirements_met
+2025-08-26 01:17:26,580 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+2025-08-26 01:17:26,581 - adapters.analyzers.openrouter - WARNING - Capping math/rand penalty from 45 to 20
+2025-08-26 01:17:26,582 - adapters.analyzers.openrouter - WARNING - Capping JWT penalty from 30 to 20
+2025-08-26 01:17:26,583 - adapters.analyzers.openrouter - INFO - LLM reported requirements: repo=True, service=True, redis=True, db=True, arch=True
+2025-08-26 01:17:26,584 - adapters.analyzers.openrouter - INFO - Starting penalty filtering for 4 issues
+2025-08-26 01:17:26,585 - adapters.analyzers.openrouter - INFO - Skipping penalty for 'user data stored in-memory only (not persistent da...' - Task explicitly allows in-memory storage instead of database
+2025-08-26 01:17:26,585 - adapters.analyzers.openrouter - INFO - Skipped penalty: User data stored in-memory only (not persistent database) (20 points) - Task explicitly allows in-memory storage instead of database
+2025-08-26 01:17:26,586 - adapters.analyzers.openrouter - INFO - Filtered out 1 penalties based on actual implementation
+2025-08-26 01:17:26,587 - adapters.analyzers.openrouter - INFO - Penalty after filtering: 50 points (from 3 issues)
+2025-08-26 01:17:26,588 - adapters.analyzers.openrouter - INFO - Updating penalty score to match filtered breakdown: 105 → 50
+2025-08-26 01:17:26,589 - adapters.analyzers.openrouter - INFO - Skipping architecture penalty - proper architecture pattern detected in feedback
+2025-08-26 01:17:26,589 - adapters.analyzers.openrouter - INFO - Skipping 'Missing repository pattern' penalty - LLM confirmed repository pattern exists
+2025-08-26 01:17:26,590 - adapters.analyzers.openrouter - INFO - Skipping 'Missing service layer' penalty - LLM confirmed service layer exists
+2025-08-26 01:17:26,591 - adapters.analyzers.openrouter - INFO - Skipping 'Only in-memory storage (no Redis/DB)' penalty - LLM confirmed Redis implementation exists
+2025-08-26 01:17:26,592 - adapters.analyzers.openrouter - INFO - Skipping 'Missing Redis implementation' penalty - LLM confirmed Redis implementation exists
+2025-08-26 01:17:26,593 - adapters.analyzers.openrouter - INFO - Skipping 'Missing proper database' penalty - LLM confirmed database implementation exists
+2025-08-26 01:17:26,595 - adapters.analyzers.openrouter - WARNING - Critical issue detected: 'Hardcoded/exposed secrets' - ensuring minimum penalty of 45
+2025-08-26 01:17:26,596 - adapters.analyzers.openrouter - INFO - Final penalty after adding missing critical issues: 95
+2025-08-26 01:17:26,597 - adapters.analyzers.openrouter - INFO - Average of positive scores: 83.3% (from [95.0, 85.0, 70.0])
+2025-08-26 01:17:26,598 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+2025-08-26 01:17:26,599 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-26 01:17:26,600 - __main__ - INFO - Analysis complete for submission 55
+2025-08-26 01:17:26,635 - adapters.storage.sqlite - INFO - Created report 36 for submission 55
+2025-08-26 01:17:26,636 - __main__ - INFO - Created report 36
+2025-08-26 01:17:26,657 - adapters.storage.sqlite - INFO - Updated submission 55: status=SubmissionStatus.COMPLETED
+2025-08-26 01:17:28,772 - adapters.notifications.telegram - INFO - Analysis report sent for submission 55
+2025-08-26 01:17:28,969 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
