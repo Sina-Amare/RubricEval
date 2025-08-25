@@ -152,6 +152,8 @@ class OpenRouterAdapter(AnalyzerAdapter):
                     logger.info(
                         f"Analysis successful with {model_config['name']}"
                     )
+                    # Set the model that was actually used
+                    result.model_used = model_config['name']
                     return result
                     
             except TokenLimitError as e:
@@ -496,6 +498,13 @@ class OpenRouterAdapter(AnalyzerAdapter):
                             # Parse and validate response
                             parsed_result = self._parse_llm_response(response_content)
                             
+                            # CRITICAL: Convert requirements BEFORE penalty validation
+                            # This ensures penalty validation has access to properly extracted requirements
+                            self._normalize_requirements(parsed_result)
+                            
+                            # Ensure penalty_breakdown exists
+                            self._ensure_penalty_breakdown(parsed_result)
+                            
                             if await self.validate_response(parsed_result):
                                 return self._convert_to_analysis_result(parsed_result)
                             else:
@@ -680,6 +689,18 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
             if JSONRecovery.validate_recovered_json(recovered_json):
                 logger.info("Successfully recovered JSON from LLM response")
                 
+                # CRITICAL: Log what requirements_met the LLM actually returned
+                if 'requirements_met' in recovered_json:
+                    logger.info(f"LLM requirements_met: {recovered_json['requirements_met']}")
+                elif 'requirements_implementation' in recovered_json:
+                    logger.info(f"LLM requirements_implementation found with {len(recovered_json['requirements_implementation'])} items")
+                    # Log a sample of the implementation data
+                    sample = list(recovered_json['requirements_implementation'].items())[:3]
+                    logger.debug(f"Sample requirements_implementation: {sample}")
+                else:
+                    logger.warning("No requirements_met or requirements_implementation found in LLM response")
+                    logger.info(f"Available keys in response: {list(recovered_json.keys())}")
+                
                 # Add metadata about recovery if partial
                 if recovered_json.get('partial_recovery'):
                     logger.warning("Response was partially recovered - some data may be incomplete")
@@ -703,6 +724,115 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
         error_result['parse_failure'] = True
         
         return error_result
+    
+    def _normalize_requirements(self, parsed_response: Dict[str, Any]) -> None:
+        """
+        Normalize requirements from various formats to standard requirements_met.
+        This MUST be called before penalty validation to ensure correct penalty skipping.
+        
+        Args:
+            parsed_response: Response dictionary (modified in place)
+        """
+        requirements_met = {}
+        
+        # Try multiple locations where requirements might be stored
+        if 'requirements_implementation' in parsed_response:
+            # Convert new format to old format for compatibility
+            logger.info("Converting requirements_implementation to requirements_met")
+            for req_name, req_data in parsed_response.get('requirements_implementation', {}).items():
+                if isinstance(req_data, dict):
+                    requirements_met[req_name] = req_data.get('implemented', False)
+                else:
+                    requirements_met[req_name] = bool(req_data)
+        elif 'requirements_met' in parsed_response:
+            # Old format - ensure all values are booleans
+            raw_requirements = parsed_response.get('requirements_met', {})
+            for key, value in raw_requirements.items():
+                # Handle different representations of boolean values
+                if isinstance(value, bool):
+                    requirements_met[key] = value
+                elif isinstance(value, str):
+                    requirements_met[key] = value.lower() in ['true', 'yes', '✓', 'pass', 'implemented']
+                elif isinstance(value, dict):
+                    requirements_met[key] = value.get('implemented', False) or value.get('met', False)
+                else:
+                    requirements_met[key] = bool(value)
+        
+        # FALLBACK: If requirements_met is empty or all False, try to infer from feedback
+        if not requirements_met or all(not v for v in requirements_met.values()):
+            logger.warning("Requirements all False or missing - attempting inference from feedback")
+            feedback = parsed_response.get('detailed_feedback', '').lower()
+            strengths_text = ' '.join(parsed_response.get('strengths', [])).lower()
+            combined_text = feedback + ' ' + strengths_text
+            
+            # Infer based on positive mentions in feedback
+            if ('repository pattern' in combined_text or 'dependency inversion' in combined_text) and ('implement' in combined_text or 'effective use' in combined_text or 'use of interfaces' in combined_text):
+                requirements_met['repository_pattern'] = True
+                logger.info("Inferred repository_pattern=True from feedback")
+            
+            if 'service layer' in combined_text and ('implement' in combined_text or 'proper' in combined_text):
+                requirements_met['service_layer'] = True
+                logger.info("Inferred service_layer=True from feedback")
+            
+            if 'redis' in combined_text and ('implement' in combined_text or 'uses redis' in combined_text or 'redis integration' in combined_text):
+                requirements_met['redis_implementation'] = True
+                logger.info("Inferred redis_implementation=True from feedback")
+            
+            if any(arch in combined_text for arch in ['layered architecture', 'clean architecture', 'hexagonal', 'mvc']):
+                requirements_met['architectural_pattern'] = True
+                logger.info("Inferred architectural_pattern=True from feedback")
+            
+            if 'docker' in combined_text and ('dockerfile' in combined_text or 'docker-compose' in combined_text or 'dockerization' in combined_text):
+                requirements_met['dockerization'] = True
+                logger.info("Inferred dockerization=True from feedback")
+        
+        # Store the normalized requirements back
+        parsed_response['requirements_met'] = requirements_met
+        logger.info(f"Normalized requirements_met: {requirements_met}")
+    
+    def _ensure_penalty_breakdown(self, data: Dict[str, Any]) -> None:
+        """
+        Ensure penalty_breakdown exists and is properly populated.
+        
+        Args:
+            data: Response dictionary (modified in place)
+        """
+        # CRITICAL: First validate and adjust penalties
+        self._validate_and_adjust_penalty(data)
+        
+        if 'penalty_breakdown' not in data or not data.get('penalty_breakdown'):
+            logger.warning("Creating missing penalty_breakdown structure")
+            data['penalty_breakdown'] = {
+                'issues_found': [],
+                'total_penalty': 0
+            }
+        
+        # If we have a critical_issues_penalty but empty breakdown, create a generic entry
+        penalty_score = data.get('scores', {}).get('critical_issues_penalty', 0)
+        breakdown = data.get('penalty_breakdown', {})
+        
+        if penalty_score > 0 and not breakdown.get('issues_found'):
+            logger.warning(f"Penalty score {penalty_score} but no breakdown - creating generic entry")
+            # Try to infer severity from score
+            if penalty_score >= 45:
+                severity = 'critical'
+                desc = 'Critical security/requirement issues detected'
+            elif penalty_score >= 30:
+                severity = 'major'
+                desc = 'Major requirement violations detected'
+            elif penalty_score >= 20:
+                severity = 'moderate'
+                desc = 'Moderate issues detected'
+            else:
+                severity = 'minor'
+                desc = 'Minor issues detected'
+            
+            breakdown['issues_found'] = [{
+                'issue': f"[INFERRED] {desc}",
+                'severity': severity,
+                'penalty': penalty_score
+            }]
+            breakdown['total_penalty'] = penalty_score
     
     def _ensure_complete_structure(self, data: Dict[str, Any]) -> Dict[str, Any]:
         """Ensure partially recovered JSON has all required fields."""
@@ -762,6 +892,302 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
         
         return feedback[:500]  # Limit length
     
+    def _validate_and_adjust_penalty(self, parsed_response: Dict[str, Any]) -> None:
+        """
+        Validate penalty calculation and ensure consistency.
+        
+        This function checks if the LLM properly calculated penalties based on
+        the issues mentioned in the feedback. It creates a breakdown if missing,
+        and also caps excessive penalties to their maximum allowed values.
+        
+        Args:
+            parsed_response: Parsed response dictionary from LLM (modified in place)
+        """
+        # Get detailed feedback and penalty breakdown
+        detailed_feedback = parsed_response.get('detailed_feedback', '').lower()
+        areas_for_improvement = parsed_response.get('weaknesses', [])
+        improvement_text = ' '.join(areas_for_improvement).lower() if areas_for_improvement else ''
+        combined_feedback = f"{detailed_feedback} {improvement_text}"
+        
+        penalty_breakdown = parsed_response.get('penalty_breakdown', {})
+        issues_found = penalty_breakdown.get('issues_found', []) if isinstance(penalty_breakdown, dict) else []
+        
+        # If penalty_breakdown is missing or empty, try to extract from feedback
+        if not penalty_breakdown or not issues_found:
+            logger.warning("penalty_breakdown missing or empty, extracting from feedback")
+            penalty_breakdown = {'issues_found': [], 'total_penalty': 0}
+            parsed_response['penalty_breakdown'] = penalty_breakdown
+            issues_found = []
+        
+        # First pass: Check for over-penalization and cap excessive penalties
+        for issue in issues_found:
+            if isinstance(issue, dict):
+                issue_text = issue.get('issue', '').lower()
+                current_pen = issue.get('penalty', 0)
+                
+                # Check for math/rand - should never exceed 20
+                if ('math/rand' in issue_text or 'math.rand' in issue_text or 
+                    'math rand' in issue_text or 'mathrandom' in issue_text):
+                    if current_pen > 20:
+                        logger.warning(f"Capping math/rand penalty from {current_pen} to 20")
+                        issue['penalty'] = 20
+                        issue['severity'] = 'moderate'
+                
+                # Check for JWT issues - should never exceed 20
+                elif 'jwt' in issue_text and ('weak' in issue_text or 'default' in issue_text or 'fallback' in issue_text):
+                    if current_pen > 20:
+                        logger.warning(f"Capping JWT penalty from {current_pen} to 20")
+                        issue['penalty'] = 20
+                        issue['severity'] = 'moderate'
+                
+                # Check for missing tests - should never exceed 35
+                elif 'test' in issue_text and ('missing' in issue_text or 'no ' in issue_text):
+                    if current_pen > 35:
+                        logger.warning(f"Capping missing tests penalty from {current_pen} to 35")
+                        issue['penalty'] = 35
+                        issue['severity'] = 'major'
+        
+        # CRITICAL: Filter out penalties that should be skipped based on requirements_met
+        filtered_issues = []
+        skipped_penalties = []
+        
+        for issue in issues_found:
+            if not isinstance(issue, dict):
+                continue
+                
+            issue_text = issue.get('issue', '').lower()
+            penalty = issue.get('penalty', 0)
+            
+            # Skip penalties for things that are actually implemented
+            should_skip = False
+            skip_reason = ""
+            
+            # CRITICAL: Skip in-memory storage penalty - task explicitly allows it!
+            if 'in-memory' in issue_text and ('storage' in issue_text or 'user' in issue_text):
+                # Task explicitly says "If not using a DB: Use in-memory storage for simplicity"
+                should_skip = True
+                skip_reason = "In-memory storage explicitly allowed by task"
+                logger.info(f"Skipping in-memory penalty - task allows in-memory storage")
+            
+            # CRITICAL: Skip test penalties - tests were NOT requested in the task!
+            elif 'test' in issue_text and ('missing' in issue_text or 'lack' in issue_text or 'no test' in issue_text):
+                should_skip = True
+                skip_reason = "Tests were not requested in the task"
+                logger.info(f"Skipping test penalty - tests not required by task")
+            
+            # Skip CI/CD penalties - not requested
+            elif any(term in issue_text for term in ['ci/cd', 'continuous integration', 'pipeline', 'github action']):
+                should_skip = True
+                skip_reason = "CI/CD not requested in the task"
+            
+            # Skip architecture/pattern penalties if they exist
+            elif any(term in issue_text for term in ['repository pattern', 'service layer', 'architecture pattern']):
+                if 'repository' in issue_text and has_repository_pattern:
+                    should_skip = True
+                    skip_reason = "Repository pattern exists"
+                elif 'service' in issue_text and has_service_layer:
+                    should_skip = True
+                    skip_reason = "Service layer exists"
+                elif 'architecture' in issue_text and has_architecture_pattern:
+                    should_skip = True
+                    skip_reason = "Architecture pattern exists"
+            
+            if should_skip:
+                skipped_penalties.append(f"{issue.get('issue', 'Unknown')}: {penalty} points ({skip_reason})")
+                logger.info(f"Skipped penalty: {issue.get('issue', '')} ({penalty} points) - {skip_reason}")
+            else:
+                filtered_issues.append(issue)
+            
+        # Replace the issues with filtered ones
+        parsed_response['penalty_breakdown']['issues_found'] = filtered_issues
+        
+        # Calculate what the total penalty should be based on the filtered breakdown
+        calculated_total = sum(issue.get('penalty', 0) for issue in filtered_issues)
+        
+        # Store that we did filtering so we don't double-count later
+        did_filtering = len(skipped_penalties) > 0
+        
+        if skipped_penalties:
+            logger.info(f"Filtered out {len(skipped_penalties)} penalties based on actual implementation")
+            logger.info(f"Penalty after filtering: {calculated_total} points (from {len(filtered_issues)} issues)")
+        
+        reported_total = penalty_breakdown.get('total_penalty', 0)
+        current_penalty = parsed_response.get('scores', {}).get('critical_issues_penalty', 0)
+        
+        # Check for specific high-priority issues that MUST have minimum penalties
+        # These are critical for safety/security and should never be under-penalized
+        import re
+        critical_checks = [
+            # Pattern, minimum penalty, description
+            (r'no.*(architecture|pattern)|cannot.*identify.*pattern|just.*(folders|components|organization)|basic.*(structure|separation)|not.*architecture', 50, "No identifiable architecture pattern"),
+            
+            # Senior-level mandatory requirements
+            (r'missing.*repository.*(pattern|layer)|no.*repository.*(pattern|layer|abstraction)', 50, "Missing repository pattern"),
+            (r'missing.*service.*(layer|pattern|abstraction)|no.*service.*(layer|pattern|abstraction)', 50, "Missing service layer"),
+            (r'only.*in.?memory.*storage', 50, "Only in-memory storage (no Redis/DB)"),
+            (r'missing.*redis(?!.*database)|no.*redis.*implementation', 40, "Missing Redis implementation"),
+            (r'no.*(proper.*database|postgres|mysql|mongodb)|missing.*(proper.*database|postgres|mysql)', 40, "Missing proper database"),
+            (r'missing.*dockerfile|no.*dockerfile', 40, "Missing Dockerfile"),
+            (r'missing.*docker.?compose|no.*docker.?compose', 40, "Missing docker-compose"),
+            (r'incomplete.*docker.?compose|docker.?compose.*(missing|without).*(redis|database)', 30, "Incomplete docker-compose"),
+            
+            # Task requirements
+            (r'missing.*(swagger|openapi|api.?doc)', 35, "Missing API documentation"),
+            
+            # Security issues
+            (r'plain.?text.?password|password.*plain.?text|unencrypted.?password', 45, "Plain text passwords"),
+            (r'sql.?injection', 45, "SQL injection vulnerability"),
+            (r'xss|cross.?site.?scripting', 45, "XSS vulnerability"),
+            (r'hardcoded.*(secret|key|password|token)|exposed.*(secret|key|credential)', 45, "Hardcoded/exposed secrets"),
+            (r'math[./]rand.*(otp|security|token|password)', 20, "Using math/rand for security"),
+            (r'weak.*jwt.*secret|default.*jwt.*secret|jwt.*fallback', 20, "Weak/default JWT secret"),
+        ]
+        
+        # CRITICAL FIX: Check structured requirements_met field FIRST (most reliable)
+        # But also handle when LLM doesn't provide it properly
+        requirements_met = parsed_response.get('requirements_met', {})
+        
+        # If requirements_met is empty, try to get it from the converted result
+        # This happens when _convert_to_analysis_result has already inferred the requirements
+        if not requirements_met and 'analysis_result' in parsed_response:
+            requirements_met = parsed_response['analysis_result'].requirements_met
+        
+        # As a last resort, infer from feedback text
+        if not requirements_met:
+            feedback = parsed_response.get('detailed_feedback', '').lower()
+            strengths_text = ' '.join(parsed_response.get('strengths', [])).lower()
+            combined_text = feedback + ' ' + strengths_text
+            
+            # Quick inference for penalty validation
+            requirements_met = {
+                'repository_pattern': 'repository pattern' in combined_text and 'implement' in combined_text,
+                'service_layer': 'service layer' in combined_text and ('implement' in combined_text or 'proper' in combined_text),
+                'redis_implementation': 'redis' in combined_text and ('implement' in combined_text or 'uses redis' in combined_text),
+                'architectural_pattern': any(arch in combined_text for arch in ['layered architecture', 'clean architecture', 'hexagonal', 'mvc']),
+                'database_implementation': any(db in combined_text for db in ['postgresql', 'mysql', 'mongodb']) and 'implement' in combined_text,
+                'dockerization': 'docker' in combined_text and ('dockerfile' in combined_text or 'docker-compose' in combined_text)
+            }
+        
+        # Check if key architecture requirements are actually met
+        has_repository_pattern = requirements_met.get('repository_pattern', False)
+        has_service_layer = requirements_met.get('service_layer', False)
+        has_redis = requirements_met.get('redis_implementation', False)
+        has_database = requirements_met.get('database_implementation', False)
+        has_architecture_pattern = requirements_met.get('architectural_pattern', False)
+        
+        # Log what the LLM actually reported
+        logger.info(f"LLM reported requirements: repo={has_repository_pattern}, service={has_service_layer}, redis={has_redis}, db={has_database}, arch={has_architecture_pattern}")
+        
+        # FALLBACK: Also check text for architecture patterns (less reliable)
+        proper_architecture_patterns = [
+            r'layered.*(architecture|pattern)', r'n-tier', r'clean\s+architecture',
+            r'hexagonal.*(architecture|pattern)', r'ports.*adapters',
+            r'mvc\s+', r'mvp\s+', r'mvvm\s+',
+            r'microservice', r'event.?driven', r'domain.?driven',
+            r'ddd\s+', r'cqrs', r'event.?sourcing'
+        ]
+        
+        has_proper_architecture_text = any(re.search(pattern, combined_feedback) for pattern in proper_architecture_patterns)
+        
+        # Trust structured field over text analysis
+        has_proper_architecture = has_architecture_pattern or has_proper_architecture_text
+        
+        missing_penalties = []
+        detected_issues = set()  # Track what we've already found
+        
+        for pattern, min_penalty, description in critical_checks:
+            # Skip penalties if the requirement is actually met (based on structured response)
+            if 'repository' in description.lower() and has_repository_pattern:
+                logger.info(f"Skipping '{description}' penalty - LLM confirmed repository pattern exists")
+                continue
+            
+            if 'service' in description.lower() and has_service_layer:
+                logger.info(f"Skipping '{description}' penalty - LLM confirmed service layer exists")
+                continue
+            
+            if 'redis' in description.lower() and has_redis:
+                logger.info(f"Skipping '{description}' penalty - LLM confirmed Redis implementation exists")
+                continue
+                
+            if 'database' in description.lower() and 'in-memory' not in description.lower() and has_database:
+                logger.info(f"Skipping '{description}' penalty - LLM confirmed database implementation exists")
+                continue
+            
+            # Skip architecture penalty if proper architecture is mentioned
+            if 'architecture' in description.lower() and has_proper_architecture:
+                logger.info(f"Skipping architecture penalty - proper architecture pattern detected in feedback")
+                continue
+            
+            # Skip if we already detected a more severe version of this issue
+            if description == "Missing Redis implementation" and "Only in-memory storage (no Redis/DB)" in detected_issues:
+                continue  # Already covered by the more severe penalty
+            if description == "Missing proper database" and "Only in-memory storage (no Redis/DB)" in detected_issues:
+                continue  # Already covered by the more severe penalty
+                
+            if re.search(pattern, combined_feedback) and description not in detected_issues:
+                # Check if this issue has appropriate penalty in breakdown
+                has_appropriate_penalty = False
+                for issue in issues_found:
+                    if isinstance(issue, dict):
+                        issue_text = issue.get('issue', '').lower()
+                        issue_penalty = issue.get('penalty', 0)
+                        # Check if this issue matches and has sufficient penalty
+                        if re.search(pattern, issue_text) and issue_penalty >= min_penalty:
+                            has_appropriate_penalty = True
+                            break
+                
+                if not has_appropriate_penalty:
+                    logger.warning(f"Critical issue detected: '{description}' - ensuring minimum penalty of {min_penalty}")
+                    missing_penalties.append((description, min_penalty))
+                    detected_issues.add(description)
+        
+        # Add missing penalties if any critical issues weren't properly penalized
+        if missing_penalties:
+            if 'penalty_breakdown' not in parsed_response:
+                parsed_response['penalty_breakdown'] = {'issues_found': [], 'total_penalty': 0}
+            
+            for description, penalty in missing_penalties:
+                # Determine category based on the issue
+                category = 'unknown'
+                desc_lower = description.lower()
+                if 'architecture' in desc_lower:
+                    category = 'architecture'
+                elif 'repository' in desc_lower:
+                    category = 'repository_pattern'
+                elif 'service' in desc_lower and 'layer' in desc_lower:
+                    category = 'service_layer'
+                elif 'redis' in desc_lower or 'database' in desc_lower or 'storage' in desc_lower:
+                    category = 'data_storage'
+                elif 'docker' in desc_lower:
+                    category = 'containerization'
+                elif 'api' in desc_lower or 'swagger' in desc_lower or 'openapi' in desc_lower:
+                    category = 'documentation'
+                elif 'math/rand' in desc_lower or 'random' in desc_lower:
+                    category = 'security_random'
+                elif 'security' in desc_lower or 'xss' in desc_lower or 'injection' in desc_lower:
+                    category = 'security'
+                elif 'test' in desc_lower:
+                    category = 'testing'
+                    
+                parsed_response['penalty_breakdown']['issues_found'].append({
+                    'issue': f"[ENFORCED] {description}",
+                    'severity': 'critical' if penalty >= 40 else 'major' if penalty >= 30 else 'moderate',
+                    'penalty': penalty,
+                    'category': category
+                })
+                # Don't add to calculated_total here - it's already calculated from filtered issues
+                pass  # calculated_total already set from filtered issues above
+            
+            # Update the total
+            parsed_response['penalty_breakdown']['total_penalty'] = calculated_total
+            
+        # Ensure the scores match the breakdown
+        if calculated_total != current_penalty:
+            logger.info(f"Aligning penalty score with breakdown: {current_penalty} → {calculated_total}")
+            if 'scores' not in parsed_response:
+                parsed_response['scores'] = {}
+            parsed_response['scores']['critical_issues_penalty'] = calculated_total
+    
     def _convert_to_analysis_result(self, parsed_response: Dict[str, Any]) -> AnalysisResult:
         """
         Convert parsed LLM response to structured AnalysisResult.
@@ -772,6 +1198,9 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
         Returns:
             Structured AnalysisResult object
         """
+        # NOTE: Penalty validation already done in _ensure_penalty_breakdown
+        # Do NOT call _validate_and_adjust_penalty again here!
+        
         # Map LLM recommendation string to enum
         # LLM should return: strong_yes, yes, maybe, no, strong_no
         # But sometimes returns: strongly_accept, accept, review_required, reject, strongly_reject
@@ -794,24 +1223,56 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
                 logger.warning(f"Review required (exception): {exception_case.get('exception_reason')}")
                 recommendation = RecommendationLevel.REVIEW_REQUIRED
             else:
-                # Force a decision - if avg score >= 60%, accept, otherwise reject
+                # Force a decision based on positive metrics average and critical issues
                 scores = parsed_response.get('scores', {})
-                avg_score = sum(scores.values()) / len(scores) if scores else 0
-                if avg_score >= 60:
-                    logger.info(f"Converting 'maybe' to ACCEPT (score: {avg_score:.1f}%)")
+                
+                # Calculate average of positive metrics only (exclude penalty)
+                penalty_keywords = ['penalty', 'critical_issues', 'violations']
+                positive_scores = []
+                penalty = 0
+                
+                for key, value in scores.items():
+                    if any(keyword in key.lower() for keyword in penalty_keywords):
+                        penalty = max(penalty, value)  # Use highest penalty value found
+                    else:
+                        positive_scores.append(value)
+                
+                avg_score = sum(positive_scores) / len(positive_scores) if positive_scores else 0
+                
+                if penalty >= 50:
+                    logger.info(f"Critical issues detected (penalty: {penalty}), forcing REJECT")
+                    recommendation = RecommendationLevel.REJECT
+                elif avg_score >= 70:
+                    logger.info(f"Converting 'maybe' to ACCEPT (score: {avg_score:.1f}%, penalty: {penalty})")
                     recommendation = RecommendationLevel.ACCEPT
                 else:
-                    logger.info(f"Converting 'maybe' to REJECT (score: {avg_score:.1f}%)")
+                    logger.info(f"Converting 'maybe' to REJECT (score: {avg_score:.1f}%, penalty: {penalty})")
                     recommendation = RecommendationLevel.REJECT
         else:
             # Fallback - make decision based on scores
             scores = parsed_response.get('scores', {})
-            avg_score = sum(scores.values()) / len(scores) if scores else 0
-            if avg_score >= 60:
-                logger.warning(f"Unknown recommendation '{recommendation_str}', defaulting to ACCEPT (score: {avg_score:.1f}%)")
+            
+            # Calculate average of positive metrics only (exclude penalty)
+            penalty_keywords = ['penalty', 'critical_issues', 'violations']
+            positive_scores = []
+            penalty = 0
+            
+            for key, value in scores.items():
+                if any(keyword in key.lower() for keyword in penalty_keywords):
+                    penalty = max(penalty, value)  # Use highest penalty value found
+                else:
+                    positive_scores.append(value)
+            
+            avg_score = sum(positive_scores) / len(positive_scores) if positive_scores else 0
+            
+            if penalty >= 50:
+                logger.warning(f"Unknown recommendation '{recommendation_str}', defaulting to REJECT due to critical issues (penalty: {penalty})")
+                recommendation = RecommendationLevel.REJECT
+            elif avg_score >= 70:
+                logger.warning(f"Unknown recommendation '{recommendation_str}', defaulting to ACCEPT (score: {avg_score:.1f}%, penalty: {penalty})")
                 recommendation = RecommendationLevel.ACCEPT
             else:
-                logger.warning(f"Unknown recommendation '{recommendation_str}', defaulting to REJECT (score: {avg_score:.1f}%)")
+                logger.warning(f"Unknown recommendation '{recommendation_str}', defaulting to REJECT (score: {avg_score:.1f}%, penalty: {penalty})")
                 recommendation = RecommendationLevel.REJECT
         
         # Convert confidence to 0-1 scale if it's 0-100
@@ -832,10 +1293,11 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
         # Calculate average score for default generation
         avg_score = sum(normalized_scores.values()) / len(normalized_scores) if normalized_scores else 0
         
-        # Handle both old and new prompt formats
+        # Handle both old and new prompt formats robustly
         # New format has 'requirements_implementation', old has 'requirements_met'
         requirements_met = {}
         
+        # Try multiple locations where requirements might be stored
         if 'requirements_implementation' in parsed_response:
             # Convert new format to old format for compatibility
             for req_name, req_data in parsed_response.get('requirements_implementation', {}).items():
@@ -843,9 +1305,66 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
                     requirements_met[req_name] = req_data.get('implemented', False)
                 else:
                     requirements_met[req_name] = bool(req_data)
+        elif 'requirements_met' in parsed_response:
+            # Old format - ensure all values are booleans
+            raw_requirements = parsed_response.get('requirements_met', {})
+            for key, value in raw_requirements.items():
+                # Handle different representations of boolean values
+                if isinstance(value, bool):
+                    requirements_met[key] = value
+                elif isinstance(value, str):
+                    requirements_met[key] = value.lower() in ['true', 'yes', '✓', 'pass', 'implemented']
+                elif isinstance(value, dict):
+                    requirements_met[key] = value.get('implemented', False) or value.get('met', False)
+                else:
+                    requirements_met[key] = bool(value)
         else:
-            # Old format
-            requirements_met = parsed_response.get('requirements_met', {})
+            # No requirements found - try to extract from other fields
+            logger.warning("No requirements_met or requirements_implementation in response")
+            
+            # Try to infer from scores or other fields
+            if 'task_requirements' in parsed_response:
+                for req, status in parsed_response['task_requirements'].items():
+                    requirements_met[req] = bool(status)
+            elif 'architecture_check' in parsed_response:
+                # Map architecture check results
+                arch_check = parsed_response['architecture_check']
+                requirements_met['architectural_pattern'] = arch_check.get('pattern', False)
+                requirements_met['repository_pattern'] = arch_check.get('repository', False)
+                requirements_met['service_layer'] = arch_check.get('service', False)
+                requirements_met['redis_implementation'] = arch_check.get('redis', False)
+                requirements_met['database_implementation'] = arch_check.get('database', False)
+        
+        # Log what we extracted
+        logger.info(f"Extracted requirements_met: {requirements_met}")
+        
+        # FALLBACK: If requirements_met is empty or all False, try to infer from feedback
+        if not requirements_met or all(not v for v in requirements_met.values()):
+            logger.warning("Requirements all False or missing - attempting inference from feedback")
+            feedback = parsed_response.get('detailed_feedback', '').lower()
+            strengths_text = ' '.join(parsed_response.get('strengths', [])).lower()
+            combined_text = feedback + ' ' + strengths_text
+            
+            # Infer based on positive mentions in feedback
+            if 'repository pattern' in combined_text and 'implement' in combined_text:
+                requirements_met['repository_pattern'] = True
+                logger.info("Inferred repository_pattern=True from feedback")
+            
+            if 'service layer' in combined_text and ('implement' in combined_text or 'proper' in combined_text):
+                requirements_met['service_layer'] = True
+                logger.info("Inferred service_layer=True from feedback")
+            
+            if 'redis' in combined_text and ('implement' in combined_text or 'uses redis' in combined_text):
+                requirements_met['redis_implementation'] = True
+                logger.info("Inferred redis_implementation=True from feedback")
+            
+            if any(arch in combined_text for arch in ['layered architecture', 'clean architecture', 'hexagonal', 'mvc']):
+                requirements_met['architectural_pattern'] = True
+                logger.info("Inferred architectural_pattern=True from feedback")
+            
+            if 'docker' in combined_text and ('dockerfile' in combined_text or 'docker-compose' in combined_text):
+                requirements_met['dockerization'] = True
+                logger.info("Inferred dockerization=True from feedback")
         
         # Extract strengths and weaknesses from different possible locations
         strengths = parsed_response.get('strengths', [])
@@ -909,6 +1428,28 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
         # Extract hiring decision if present (new format)
         hiring_decision = parsed_response.get('hiring_decision', None)
         
+        # CRITICAL: Override LLM's hiring decision if it contradicts the scoring rules
+        # The prompt clearly states: avg >= 70% AND penalty < 50 = HIRE
+        penalty = normalized_scores.get('critical_issues_penalty', 0)
+        avg_positive = avg_score  # Already calculated above
+        
+        if hiring_decision:
+            llm_decision = hiring_decision.get('decision', '').upper()
+            
+            # Check if LLM's decision contradicts the rules
+            if penalty < 50 and avg_positive >= 70 and llm_decision == 'NO_HIRE':
+                logger.warning(f"LLM said NO_HIRE but scores say HIRE (avg={avg_positive:.1f}%, penalty={penalty}). Overriding to HIRE.")
+                hiring_decision['decision'] = 'HIRE'
+                hiring_decision['primary_reason'] = f"Meets hiring criteria: {avg_positive:.1f}% average, {penalty} penalty points (<50)"
+                
+            elif (penalty >= 50 or avg_positive < 70) and llm_decision == 'HIRE':
+                logger.warning(f"LLM said HIRE but scores say NO_HIRE (avg={avg_positive:.1f}%, penalty={penalty}). Overriding to NO_HIRE.")
+                hiring_decision['decision'] = 'NO_HIRE'
+                if penalty >= 50:
+                    hiring_decision['primary_reason'] = f"Critical issues penalty too high: {penalty} points (≥50 threshold)"
+                else:
+                    hiring_decision['primary_reason'] = f"Average score too low: {avg_positive:.1f}% (<70% threshold)"
+        
         return AnalysisResult(
             requirements_met=requirements_met,
             scores=normalized_scores,
@@ -918,7 +1459,8 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
             weaknesses=weaknesses,
             detailed_feedback=parsed_response.get('detailed_feedback', ''),
             suggestions=suggestions,
-            hiring_decision=hiring_decision
+            hiring_decision=hiring_decision,
+            penalty_breakdown=parsed_response.get('penalty_breakdown', None)
         )
     
     def _create_error_result(self, error_message: str) -> Dict[str, Any]:

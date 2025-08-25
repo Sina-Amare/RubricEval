@@ -470,6 +470,148 @@ Recommendations:
     
     # Helper methods
     
+    def _format_architecture_requirements(self, result, role) -> str:
+        """Format senior-level architecture requirements check."""
+        
+        # Helper function to escape HTML
+        def escape_html(text: str) -> str:
+            if not text:
+                return text
+            return text.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+        
+        # Only check architecture for backend role
+        if role.value != 'backend':
+            return "N/A (Frontend role - different architecture requirements apply)"
+        
+        # Extract architecture checks from feedback and penalty breakdown
+        feedback_lower = result.detailed_feedback.lower() if result.detailed_feedback else ""
+        
+        # Check for penalty breakdown issues
+        issues_text = ""
+        if hasattr(result, 'penalty_breakdown') and result.penalty_breakdown:
+            issues = result.penalty_breakdown.get('issues_found', []) if isinstance(result.penalty_breakdown, dict) else []
+            issues_text = " ".join(str(issue.get('issue', '')).lower() for issue in issues if isinstance(issue, dict))
+        
+        combined_text = feedback_lower + " " + issues_text
+        
+        # Define what to check with their patterns
+        architecture_checks = {
+            'architectural_pattern': {
+                'name': 'Architectural Pattern',
+                'met_patterns': [
+                    'layered architecture', 'clean architecture', 'hexagonal', 
+                    'mvc', 'mvp', 'mvvm', 'microservice', 'event-driven', 
+                    'domain-driven', 'ddd', 'ports and adapters', 'n-tier'
+                ],
+                'fail_patterns': [
+                    'no architecture', 'cannot identify pattern', 
+                    'just folders', 'no architectural pattern'
+                ]
+            },
+            'repository_pattern': {
+                'name': 'Repository Pattern',
+                'met_patterns': [
+                    'repository pattern implemented', 'repositories package', 
+                    'repository layer', 'data access abstraction',
+                    'proper repository', 'repository and service'
+                ],
+                'fail_patterns': [
+                    'missing repository', 'no repository pattern',
+                    'no repository layer', 'no repository abstraction',
+                    '[enforced] missing repository'
+                ]
+            },
+            'service_layer': {
+                'name': 'Service Layer',
+                'met_patterns': [
+                    'service layer', 'services package', 
+                    'business logic separated', 'service pattern'
+                ],
+                'fail_patterns': [
+                    'missing service', 'no service layer',
+                    'no service pattern', 'logic in controllers'
+                ]
+            },
+            'redis_implementation': {
+                'name': 'Redis Implementation',
+                'met_patterns': [
+                    'redis for caching', 'redis implementation',
+                    'uses redis', 'redis for rate limiting'
+                ],
+                'fail_patterns': [
+                    'missing redis', 'no redis', 
+                    'without redis', 'no caching'
+                ]
+            },
+            'database_implementation': {
+                'name': 'Database (PostgreSQL/MySQL/MongoDB)',
+                'met_patterns': [
+                    'postgresql', 'postgres', 'mysql', 'mongodb',
+                    'database for persistence', 'proper database'
+                ],
+                'fail_patterns': [
+                    'only in-memory', 'no database', 'missing database',
+                    'no proper database', 'in-memory storage only'
+                ]
+            },
+            'dockerization': {
+                'name': 'Dockerization',
+                'met_patterns': [
+                    'dockerfile', 'docker-compose', 'dockerized',
+                    'multi-stage docker', 'container', 'docker setup'
+                ],
+                'fail_patterns': [
+                    'missing dockerfile', 'no dockerfile',
+                    'missing docker-compose', 'no docker',
+                    '[enforced] missing docker'
+                ]
+            }
+        }
+        
+        # Check each requirement
+        checks_text = ""
+        all_met = True
+        
+        for key, check in architecture_checks.items():
+            # CRITICAL FIX: Use actual requirements_met data, not text patterns!
+            # First check if we have the actual requirement status from analysis
+            if hasattr(result, 'requirements_met') and result.requirements_met and key in result.requirements_met:
+                # Use the ACTUAL requirement status from LLM analysis
+                is_met = result.requirements_met.get(key, False)
+            else:
+                # FALLBACK ONLY: Check text patterns if requirements_met not available
+                is_met = False
+                
+                # First check for positive indicators
+                for pattern in check['met_patterns']:
+                    if pattern in combined_text:
+                        is_met = True
+                        break
+                
+                # Then check for negative indicators (overrides positive)
+                for pattern in check['fail_patterns']:
+                    if pattern in combined_text:
+                        is_met = False
+                        break
+            
+            # Format the check result
+            symbol = "✓" if is_met else "✗"
+            status = "PASS" if is_met else "FAIL"
+            
+            if not is_met:
+                all_met = False
+                checks_text += f"<b>{symbol} {escape_html(check['name'])}: <code>{status}</code></b>\n"
+            else:
+                checks_text += f"{symbol} {escape_html(check['name'])}: <code>{status}</code>\n"
+        
+        # Add summary
+        if not all_met:
+            checks_text += "\n<b>⚠️ Missing senior-level requirements detected</b>"
+        else:
+            checks_text += "\n<b>✅ All senior-level requirements met</b>"
+        
+        return checks_text
+    
     def _format_analysis_report(self, submission: Submission, report: Report) -> str:
         """Format a complete analysis report."""
         result = report.analysis_result
@@ -575,9 +717,60 @@ Recommendations:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 """
         
+        # Standard score names we expect
+        standard_scores = {
+            'task_completion': 'Task Completion',
+            'code_quality': 'Code Quality', 
+            'seniority_indicators': 'Seniority Indicators',
+            'critical_issues_penalty': 'Critical Issues Penalty'
+        }
+        
         for metric, score in result.scores.items():
             bar = make_progress_bar(score)
-            report_text += f"{metric.title():15} {bar} {score:.0f}%\n"
+            # Use standard name if available, otherwise format the metric name
+            if metric in standard_scores:
+                metric_display = standard_scores[metric]
+            else:
+                # Handle any other score names gracefully
+                metric_display = metric.replace('_', ' ').title()
+            report_text += f"{metric_display:25} {bar} {score:.0f}%\n"
+        
+        # Add penalty breakdown if available and has actual issues
+        if hasattr(result, 'penalty_breakdown') and result.penalty_breakdown:
+            penalty_info = result.penalty_breakdown
+            issues = penalty_info.get('issues_found', []) if isinstance(penalty_info, dict) else []
+            total = penalty_info.get('total_penalty', 0) if isinstance(penalty_info, dict) else 0
+            
+            # Only show breakdown if we have actual issues to report
+            if issues and len(issues) > 0:
+                report_text += """
+
+⚠️ <b>CRITICAL ISSUES BREAKDOWN</b>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+"""
+                for issue in issues:
+                    if isinstance(issue, dict):
+                        issue_text = escape_html(issue.get('issue', 'Unknown issue'))
+                        severity = issue.get('severity', 'unknown')
+                        penalty = issue.get('penalty', 0)
+                        
+                        # Severity emoji
+                        severity_emoji = {
+                            'minor': '🟡',
+                            'moderate': '🟠', 
+                            'major': '🔴',
+                            'critical': '⛔'
+                        }.get(severity, '❓')
+                        
+                        report_text += f"{severity_emoji} {issue_text}\n"
+                        report_text += f"   Severity: {severity.upper()} | Penalty: +{penalty} points\n"
+                
+                report_text += f"\n<b>Total Penalty: {total} points</b>"
+                if total >= 50:
+                    report_text += " <b>(AUTO-REJECT THRESHOLD)</b>"
+        
+        # Add senior-level architecture requirements section
+        architecture_checks = self._format_architecture_requirements(result, submission.role)
         
         report_text += f"""
 
@@ -587,8 +780,11 @@ Recommendations:
 ⚠️ <b>AREAS FOR IMPROVEMENT</b>
 {weaknesses_text}
 
-📝 <b>KEY REQUIREMENTS CHECK</b>
+📝 <b>TASK REQUIREMENTS CHECK</b>
 {requirements_text}
+
+🏗️ <b>SENIOR-LEVEL ARCHITECTURE CHECK</b>
+{architecture_checks}
 
 💡 <b>DETAILED FEEDBACK</b>
 {escape_html(result.detailed_feedback)}

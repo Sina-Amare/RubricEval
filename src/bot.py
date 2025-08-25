@@ -376,7 +376,7 @@ async def process_analysis(
         report = Report(
             submission_id=submission.id,
             analysis_result=analysis_result,
-            model_used=analyzer_adapter.models[0]['name'] if analyzer_adapter.models else "unknown",
+            model_used=analysis_result.model_used or (analyzer_adapter.models[0]['name'] if analyzer_adapter.models else "unknown"),
             tokens_used=repo_content.total_tokens,
             analysis_duration=60  # TODO: Track actual duration
         )

@@ -26,7 +26,9 @@
       "Bash(pkill:*)",
       "Bash(tree:*)",
       "Bash(sqlite3:*)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(export:*)",
+      "Bash(git clone:*)"
     ],
     "deny": [],
     "ask": [],

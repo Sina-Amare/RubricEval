@@ -173,3 +173,893 @@
 [2025-08-25T14:39:21.341928] [ERROR] [bot:view_report_callback:945] - Error viewing report 18: Can't parse entities: can't find end of the entity starting at byte offset 264
 [2025-08-25T14:39:27.680108] [ERROR] [bot:view_report_callback:945] - Error viewing report 17: Can't parse entities: can't find end of the entity starting at byte offset 1812
 [2025-08-25T14:55:38.524359] [ERROR] [telegram:send_analysis_complete:284] - Failed to send analysis complete: Can't parse entities: can't find end of the entity starting at byte offset 2833
+[2025-08-25T21:10:37.547385] [ERROR] [openrouter:_analyze_with_model:547] - HTTP client error: Cannot connect to host openrouter.ai:443 ssl:default [None]
+[2025-08-25T22:16:24.311250] [ERROR] [bot:error_handler:1103] - Update None caused error httpx.ConnectError: All connection attempts failed
+[2025-08-25T22:16:24.510313] [ERROR] [bot:error_handler:1126] - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+[2025-08-25T22:16:25.384420] [ERROR] [bot:error_handler:1103] - Update None caused error httpx.ConnectError: All connection attempts failed
+[2025-08-25T22:16:25.402240] [ERROR] [bot:error_handler:1126] - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+[2025-08-25T22:16:27.057898] [ERROR] [bot:error_handler:1103] - Update None caused error httpx.ConnectError: All connection attempts failed
+[2025-08-25T22:16:27.071687] [ERROR] [bot:error_handler:1126] - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+[2025-08-25T22:16:29.444496] [ERROR] [bot:error_handler:1103] - Update None caused error httpx.ConnectError: All connection attempts failed
+[2025-08-25T22:16:29.460206] [ERROR] [bot:error_handler:1126] - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+[2025-08-25T22:16:32.888718] [ERROR] [bot:error_handler:1103] - Update None caused error httpx.ConnectError: All connection attempts failed
+[2025-08-25T22:16:32.900121] [ERROR] [bot:error_handler:1126] - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+[2025-08-25T22:16:38.052230] [ERROR] [bot:error_handler:1103] - Update None caused error httpx.ConnectError: All connection attempts failed
+[2025-08-25T22:16:38.065009] [ERROR] [bot:error_handler:1126] - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+[2025-08-25T22:16:45.761964] [ERROR] [bot:error_handler:1103] - Update None caused error httpx.ConnectError: All connection attempts failed
+[2025-08-25T22:16:45.773653] [ERROR] [bot:error_handler:1126] - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+[2025-08-25T22:16:57.258359] [ERROR] [bot:error_handler:1103] - Update None caused error httpx.ConnectError: All connection attempts failed
+[2025-08-25T22:16:57.272043] [ERROR] [bot:error_handler:1126] - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+[2025-08-25T22:17:14.409811] [ERROR] [bot:error_handler:1103] - Update None caused error httpx.ConnectError: All connection attempts failed
+[2025-08-25T22:17:14.420261] [ERROR] [bot:error_handler:1126] - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+[2025-08-25T22:17:40.135585] [ERROR] [bot:error_handler:1103] - Update None caused error httpx.ConnectError: All connection attempts failed
+[2025-08-25T22:17:40.153779] [ERROR] [bot:error_handler:1126] - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+[2025-08-25T22:18:10.198154] [ERROR] [bot:error_handler:1103] - Update None caused error httpx.ConnectError: All connection attempts failed
+[2025-08-25T22:18:10.207942] [ERROR] [bot:error_handler:1126] - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+[2025-08-25T22:18:40.278610] [ERROR] [bot:error_handler:1103] - Update None caused error httpx.ConnectError: All connection attempts failed
+[2025-08-25T22:18:40.293916] [ERROR] [bot:error_handler:1126] - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+[2025-08-25T22:19:10.359295] [ERROR] [bot:error_handler:1103] - Update None caused error httpx.ConnectError: All connection attempts failed
+[2025-08-25T22:19:10.375814] [ERROR] [bot:error_handler:1126] - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+[2025-08-25T22:19:40.517520] [ERROR] [bot:error_handler:1103] - Update None caused error httpx.ConnectError: All connection attempts failed
+[2025-08-25T22:19:40.534681] [ERROR] [bot:error_handler:1126] - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+[2025-08-25T22:20:10.598791] [ERROR] [bot:error_handler:1103] - Update None caused error httpx.ConnectError: All connection attempts failed
+[2025-08-25T22:20:10.612456] [ERROR] [bot:error_handler:1126] - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+[2025-08-25T22:20:40.691030] [ERROR] [bot:error_handler:1103] - Update None caused error httpx.ConnectError: All connection attempts failed
+[2025-08-25T22:20:40.707799] [ERROR] [bot:error_handler:1126] - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+[2025-08-25T22:21:10.760007] [ERROR] [bot:error_handler:1103] - Update None caused error httpx.ConnectError: All connection attempts failed
+[2025-08-25T22:21:10.778607] [ERROR] [bot:error_handler:1126] - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+[2025-08-25T22:21:40.837421] [ERROR] [bot:error_handler:1103] - Update None caused error httpx.ConnectError: All connection attempts failed
+[2025-08-25T22:21:40.854662] [ERROR] [bot:error_handler:1126] - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+[2025-08-25T22:22:10.926931] [ERROR] [bot:error_handler:1103] - Update None caused error httpx.ConnectError: All connection attempts failed
+[2025-08-25T22:22:10.945979] [ERROR] [bot:error_handler:1126] - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+[2025-08-25T22:22:40.997585] [ERROR] [bot:error_handler:1103] - Update None caused error httpx.ConnectError: All connection attempts failed
+[2025-08-25T22:22:41.012403] [ERROR] [bot:error_handler:1126] - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+[2025-08-25T22:23:11.104838] [ERROR] [bot:error_handler:1103] - Update None caused error httpx.ConnectError: All connection attempts failed
+[2025-08-25T22:23:11.121730] [ERROR] [bot:error_handler:1126] - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+[2025-08-25T22:23:41.254051] [ERROR] [bot:error_handler:1103] - Update None caused error httpx.ConnectError: All connection attempts failed
+[2025-08-25T22:23:41.298062] [ERROR] [bot:error_handler:1126] - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+[2025-08-25T22:24:11.337524] [ERROR] [bot:error_handler:1103] - Update None caused error httpx.ConnectError: All connection attempts failed
+[2025-08-25T22:24:11.361716] [ERROR] [bot:error_handler:1126] - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+[2025-08-25T22:46:58.897209] [ERROR] [prompts:format_prompt:105] - Missing required parameter for prompt analysis/senior_backend_analysis.md: '\n     "issues_found"'
+[2025-08-26T00:13:50.965370] [ERROR] [telegram:initialize:131] - Failed to initialize Telegram bot: httpx.ConnectError: 
+[2025-08-26T00:13:50.969413] [ERROR] [bot:<module>:1298] - Bot crashed with error: Failed to initialize Telegram bot: httpx.ConnectError: 
+[2025-08-26T00:13:51.208623] [ERROR] [bot:<module>:1299] - Full traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 101, in handle_async_request
+    raise exc
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 156, in _connect
+    stream = await stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 67, in start_tls
+    with map_exceptions(exc_map):
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 273, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/adapters/notifications/telegram.py", line 125, in initialize
+    bot_info = await self.bot.get_me()
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 1981, in get_me
+    return await super().get_me(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 976, in get_me
+    result = await self._post(
+             ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: 
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 1284, in <module>
+    main()
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 1196, in main
+    loop.run_until_complete(initialize_adapters())
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 1154, in initialize_adapters
+    await notification_adapter.initialize()
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/adapters/notifications/telegram.py", line 132, in initialize
+    raise NotificationError(error_msg)
+core.exceptions.NotificationError: Failed to initialize Telegram bot: httpx.ConnectError: 
+

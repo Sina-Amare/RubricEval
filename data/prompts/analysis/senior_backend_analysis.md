@@ -106,7 +106,56 @@ You are evaluating a **Backend Developer** candidate for a mid-to-senior level p
 {repository_structure}
 ```
 
+### MANDATORY ARCHITECTURE CHECK
+
+**CRITICAL**: You MUST identify the architecture pattern used in the codebase.
+
+**Common Architecture Patterns to Look For:**
+- **Layered/N-Tier Architecture**: Separation into layers (controllers/handlers, services, repositories/data)
+- **Clean Architecture**: Core domain at center, infrastructure at edges, dependency inversion
+- **Hexagonal Architecture (Ports & Adapters)**: Domain core with ports/adapters for external systems
+- **MVC/MVP/MVVM**: Model-View-Controller variations
+- **Microservices Pattern**: Service boundaries, API gateways, service discovery
+- **Domain-Driven Design (DDD)**: Bounded contexts, aggregates, domain events
+- **Event-Driven Architecture**: Event sourcing, CQRS, message brokers
+- **Simple Modular**: At minimum, logical separation of concerns into modules/packages
+
+**Architecture Evaluation Rules:**
+
+1. **NO IDENTIFIABLE ARCHITECTURE PATTERN = AUTOMATIC REJECTION**
+   - Just having folders is NOT an architecture → Add 50+ penalty points
+   - Must implement a SPECIFIC architectural pattern → Not just "separation of concerns"
+   - If you cannot name the specific pattern used → Add 50+ penalty points
+   - Examples of NOT ACCEPTABLE:
+     - "Just organized code into folders"
+     - "Basic separation with handlers and models"
+     - "Simple modular structure"
+   - MUST BE one of: Layered/N-Tier, Clean Architecture, Hexagonal, DDD, MVC, Microservices, Event-Driven, etc.
+
+2. **Minimum Acceptable Architecture**
+   - MUST implement at least ONE clear architectural pattern
+   - Even if basic, it must be a recognized pattern (e.g., basic MVC, simple layered)
+   - Score: 60-70 on architecture metric
+
+3. **Good Architecture**
+   - Well-implemented architectural pattern (e.g., proper Layered with clear boundaries)
+   - Dependency flow follows the pattern's principles
+   - Score: 70-85 on architecture metric
+
+4. **Excellent Architecture**
+   - Advanced pattern implementation (Clean, Hexagonal, DDD, etc.)
+   - Clear architectural boundaries with interfaces
+   - Dependency inversion principle applied
+   - Proper dependency injection
+   - Score: 85-100 on architecture metric
+
+**CRITICAL EVALUATION QUESTION:**
+"What SPECIFIC architectural pattern does this code implement?"
+- If answer is "none" or "just organized folders" → REJECT (50+ penalty)
+- Must be able to identify: "This implements [PATTERN NAME] architecture"
+
 **Evaluate the architecture:**
+
 - Is the package structure appropriate for a Go project?
 - Are files organized logically (handlers, services, models, etc.)?
 - Does the structure indicate understanding of Go conventions?
@@ -119,7 +168,58 @@ You are evaluating a **Backend Developer** candidate for a mid-to-senior level p
 {code_content}
 ```
 
-## SECTION 4: STANDARDS-BASED EVALUATION
+## SECTION 4: MANDATORY SENIOR-LEVEL REQUIREMENTS
+
+### CRITICAL: Senior Backend Developer MUST-HAVES
+
+**These are MANDATORY for senior-level positions. Missing ANY of these = AUTOMATIC REJECTION:**
+
+1. **Proper Repository Pattern Implementation** (MANDATORY)
+   - MUST have a `repository` or `repositories` package/folder
+   - MUST abstract data access behind interfaces
+   - MUST NOT have database queries in handlers or services
+   - Missing repository pattern → +50 penalty (AUTO-REJECT)
+
+2. **Service Layer Implementation** (MANDATORY)
+   - MUST have a `service` or `services` package/folder
+   - MUST contain business logic separated from handlers
+   - MUST use dependency injection for repositories
+   - Missing service layer → +50 penalty (AUTO-REJECT)
+
+3. **Multiple Data Storage Systems** (MANDATORY for Production-Ready)
+   - MUST use Redis for caching/sessions/rate limiting
+   - MUST use a proper database (PostgreSQL, MySQL, MongoDB, etc.)
+   - In-memory storage alone is NOT acceptable for senior level
+   - Missing Redis → +40 penalty
+   - Missing proper database → +40 penalty
+   - Only in-memory storage → +50 penalty (AUTO-REJECT)
+
+4. **Proper Dockerization** (MANDATORY)
+   - MUST have Dockerfile for the application
+   - MUST have docker-compose.yml with all services
+   - MUST include database AND Redis in docker-compose
+   - Multi-stage Docker builds are expected
+   - Missing Dockerfile → +40 penalty
+   - Missing docker-compose → +40 penalty
+   - Incomplete docker-compose (missing Redis/DB) → +30 penalty
+
+5. **Production-Ready Architecture Components**
+   - MUST have handlers/controllers separate from business logic
+   - MUST have models/entities package
+   - MUST have proper middleware implementation
+   - MUST have configuration management (not hardcoded values)
+   - Missing any component → +30 penalty each
+
+**EVALUATION RULE FOR SENIOR POSITIONS:**
+If the candidate is missing:
+- Repository pattern → REJECT (not senior level)
+- Service layer → REJECT (not senior level)  
+- Redis + Database → REJECT (not production-ready)
+- Proper Dockerization → REJECT (not deployment-ready)
+
+**NOTE**: These are IN ADDITION to the task requirements. A senior developer should go beyond basic requirements and implement production-ready patterns.
+
+## SECTION 5: STANDARDS-BASED EVALUATION
 
 ### A. Critical Issues (Always Check)
 
@@ -148,6 +248,15 @@ These are enterprise standards that should ALWAYS be followed:
    - Wrong package visibility (uppercase/lowercase)
 
 ### B. Task-Specific Evaluation
+
+**CRITICAL RULE FOR EXPLICIT REQUIREMENTS:**
+When the task explicitly states "implement X", "add Y", or "include Z", these are NOT optional.
+Missing an explicit requirement = MAJOR penalty (+30-40 points per missing item).
+Examples of explicit requirements:
+- "Implement Swagger/OpenAPI documentation" → Missing = +35 points
+- "Add unit tests" → Missing = +35 points  
+- "Include rate limiting" → Missing = +35 points
+- "Create API documentation" → Missing = +35 points
 
 Evaluate ONLY what was asked for:
 
@@ -202,6 +311,62 @@ func (h *AuthHandler) Login(w http.ResponseWriter, r *http.Request) {{
 - No tests (OK if not required)
 - Simple architecture (OK for simple requirements)
 
+## MANDATORY PENALTY CALCULATION
+
+**CRITICAL: The penalty_breakdown field is REQUIRED and MUST be populated with ALL issues found.**
+
+Before scoring, you MUST identify ALL issues and calculate penalties:
+
+1. **Check Explicit Requirements** (from task description):
+   - Missing Swagger/OpenAPI documentation? → +35 points MINIMUM
+   - Missing required endpoints? → +35 points MINIMUM  
+   - Missing rate limiting (if required)? → +35 points MINIMUM
+   - Missing authentication (if required)? → +35 points MINIMUM
+   - Missing tests (if required)? → +35 points MINIMUM
+
+2. **Check Architecture (MANDATORY)**:
+   - Cannot identify a SPECIFIC architectural pattern? → +50 points (AUTO-REJECT)
+   - Just folders without actual architecture? → +50 points (AUTO-REJECT)
+   - No clear architectural pattern (MVC, Layered, Clean, etc.)? → +50 points
+   - Example penalty reasons:
+     - "Code has folders but no architectural pattern" → +50 points
+     - "Cannot identify if this is MVC, Layered, or any pattern" → +50 points
+     - "Just basic code organization, not an architecture" → +50 points
+
+3. **Check Senior-Level Requirements (MANDATORY)**:
+   - Missing repository pattern? → +50 points (AUTO-REJECT)
+   - Missing service layer? → +50 points (AUTO-REJECT)
+   - Using only in-memory storage (no Redis/DB)? → +50 points (AUTO-REJECT)
+   - Missing Redis implementation? → +40 points
+   - Missing proper database? → +40 points
+   - Missing Dockerfile? → +40 points
+   - Missing docker-compose.yml? → +40 points
+   - Incomplete docker-compose (no Redis/DB services)? → +30 points
+
+4. **Check Security Issues**:
+   - Plain text passwords? → +45 points
+   - SQL injection vulnerability? → +45 points
+   - math/rand for security (OTP, tokens)? → +20 points (MAXIMUM)
+   - Hardcoded secrets/keys? → +45 points
+   - JWT with weak/default secret? → +20 points
+
+5. **List EVERY Issue in penalty_breakdown**:
+   Example:
+   ```
+   "penalty_breakdown": {{
+     "issues_found": [
+       {{"issue": "Using math/rand for OTP generation", "severity": "moderate", "penalty": 20}},
+       {{"issue": "Missing Swagger documentation", "severity": "major", "penalty": 35}}
+     ],
+     "total_penalty": 55
+   }}
+   ```
+
+6. **Ensure Consistency**:
+   - penalty_breakdown.total_penalty MUST equal sum of all penalties
+   - critical_issues_penalty score MUST equal penalty_breakdown.total_penalty
+   - If total ≥ 50 → MUST recommend NO_HIRE
+
 ## OUTPUT FORMAT
 
 ```json
@@ -213,13 +378,70 @@ func (h *AuthHandler) Login(w http.ResponseWriter, r *http.Request) {{
     "task_complexity": "simple|moderate|complex"
   }},
   "requirements_implementation": {{
-    "requirement_name": {{
-      "requested": true/false,
+    // Task Requirements
+    "otp_login_registration": {{
+      "requested": true,
       "implemented": true/false,
       "quality": "not_done|basic|good|excellent",
       "notes": "Specific observations"
+    }},
+    "rate_limiting": {{
+      "requested": true,
+      "implemented": true/false,
+      "quality": "not_done|basic|good|excellent",
+      "notes": "Specific observations"
+    }},
+    "user_management": {{
+      "requested": true,
+      "implemented": true/false,
+      "quality": "not_done|basic|good|excellent",
+      "notes": "Specific observations"
+    }},
+    "api_documentation": {{
+      "requested": true,
+      "implemented": true/false,
+      "quality": "not_done|basic|good|excellent",
+      "notes": "Swagger/OpenAPI implementation"
+    }},
+    
+    // Senior-Level Architecture Requirements (MANDATORY)
+    "architectural_pattern": {{
+      "requested": true,
+      "implemented": true/false,
+      "quality": "not_done|basic|good|excellent",
+      "notes": "Specify which pattern: Layered/Clean/Hexagonal/MVC/etc"
+    }},
+    "repository_pattern": {{
+      "requested": true,
+      "implemented": true/false,
+      "quality": "not_done|basic|good|excellent",
+      "notes": "Check for repository layer abstracting data access"
+    }},
+    "service_layer": {{
+      "requested": true,
+      "implemented": true/false,
+      "quality": "not_done|basic|good|excellent",
+      "notes": "Business logic separation from handlers"
+    }},
+    "redis_implementation": {{
+      "requested": true,
+      "implemented": true/false,
+      "quality": "not_done|basic|good|excellent",
+      "notes": "Used for caching/rate limiting/sessions"
+    }},
+    "database_implementation": {{
+      "requested": true,
+      "implemented": true/false,
+      "quality": "not_done|basic|good|excellent",
+      "notes": "PostgreSQL/MySQL/MongoDB - not just in-memory"
+    }},
+    "dockerization": {{
+      "requested": true,
+      "implemented": true/false,
+      "quality": "not_done|basic|good|excellent",
+      "notes": "Dockerfile + docker-compose with all services"
     }}
-    // ... for each requirement
+    // ... any other requirements
   }},
   "critical_issues": [
     "List any security vulnerabilities",
@@ -246,11 +468,17 @@ func (h *AuthHandler) Login(w http.ResponseWriter, r *http.Request) {{
     "performance_awareness": true/false,
     "security_awareness": true/false
   }},
+  "penalty_breakdown": {{
+    "issues_found": [
+      {{"issue": "Description", "severity": "minor|moderate|major|critical", "penalty": number}}
+    ],
+    "total_penalty": "Sum of all penalties"
+  }},
   "scores": {{
     "task_completion": 0-100,  // Did they do what was asked?
     "code_quality": 0-100,      // Is it well-written Go?
     "seniority_indicators": 0-100,  // Do they show experience?
-    "critical_issues_penalty": 0-100  // Deduct for security/breaking issues
+    "critical_issues_penalty": 0-50  // MUST equal penalty_breakdown.total_penalty
   }},
   "recommendation": "strong_yes|yes|no|strong_no",
   "confidence": 0.0-1.0,
@@ -266,21 +494,57 @@ func (h *AuthHandler) Login(w http.ResponseWriter, r *http.Request) {{
 
 ## DECISION FRAMEWORK
 
+### Scoring Rules:
+
+- **Average of positive metrics** (task_completion, code_quality, seniority_indicators) must be **≥70%** for HIRE
+- **critical_issues_penalty ≥ 50** = automatic NO_HIRE regardless of other scores
+- Focus on what was delivered, not what's missing (unless it was required)
+
 ### HIRE Indicators:
 
+- Average of positive metrics ≥ 70% AND Critical issues penalty < 50
 - Completed the required functionality
-- No critical security issues (SQL injection, weak crypto)
+- No critical security issues (SQL injection, plain text passwords)
 - Proper Go patterns for the task complexity
 - Shows understanding of Go idioms
 - Handles errors appropriately
 
 ### NO HIRE Indicators:
 
+- Average of positive metrics < 70% OR
+- Critical issues penalty ≥ 50
 - Failed to implement core requirements
-- Security vulnerabilities (math/rand for OTP, SQL injection)
+- Security vulnerabilities (plain text passwords, SQL injection = 40-50 penalty each)
 - Fundamental Go mistakes (ignoring all errors, race conditions)
 - Code that wouldn't work in production
 - Quality far below expected for Go developer
+
+### Penalty Examples (Cumulative):
+
+- Minor issues (+10-15 each):
+  - Poor error handling
+  - Inconsistent naming conventions
+  - Missing input validation for non-critical fields
+- Moderate issues (+20 each, EXACTLY):
+  - math/rand for security features (OTP, tokens) → ALWAYS 20 points, never more
+  - Missing graceful shutdown
+  - No connection pooling configuration
+- Major issues (+30-40 each):
+  - Missing EXPLICITLY REQUIRED features/documentation
+  - Missing required API endpoints
+  - No authentication on sensitive endpoints
+  - Race conditions without synchronization
+  - Ignoring explicit task requirements
+- Critical issues (+40-50 each):
+  - SQL injection vulnerability
+  - Plain text password storage
+  - Hardcoded secrets/credentials
+  - Exposed sensitive data in logs
+
+Note: Multiple issues accumulate - e.g., math/rand (20) + missing required docs (35) = 55 total → rejection
+
+IMPORTANT: If the task EXPLICITLY asks for something (e.g., "implement API documentation", "add Swagger", "include tests"), 
+missing it is a MAJOR issue (+30-40 points). Don't treat explicit requirements as optional.
 
 ### Context Examples:
 
@@ -296,7 +560,6 @@ func (h *AuthHandler) Login(w http.ResponseWriter, r *http.Request) {{
 
 ### Remember:
 
-- **Be Fair**: Evaluate based on task complexity
 - **Be Practical**: Focus on what was asked
 - **Be Security-Conscious**: Always check for vulnerabilities
 - **Be Go-Idiomatic**: Look for Go patterns, not Java/Python in Go

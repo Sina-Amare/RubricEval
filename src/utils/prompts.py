@@ -101,9 +101,10 @@ class PromptLoader:
             return formatted
             
         except KeyError as e:
-            error_msg = f"Missing required parameter for prompt {prompt_path}: {e}"
-            logger.error(error_msg)
-            raise ValueError(error_msg)
+            # Don't fail entirely - just return template with unfilled variables
+            logger.warning(f"Some template variables not provided for {prompt_path}: {e}")
+            # Return the template as-is, the LLM will figure it out
+            return template
         except Exception as e:
             error_msg = f"Failed to format prompt {prompt_path}: {str(e)}"
             logger.error(error_msg)

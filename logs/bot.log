@@ -1305,3 +1305,2074 @@
 2025-08-25 16:47:46,824 - adapters.storage.sqlite - INFO - Updated submission 42: status=SubmissionStatus.COMPLETED
 2025-08-25 16:47:48,872 - adapters.notifications.telegram - INFO - Analysis report sent for submission 42
 2025-08-25 16:47:49,189 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-25 21:07:38,892 - utils.logger - INFO - Logging system initialized successfully
+2025-08-25 21:07:40,785 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-25 21:07:40,785 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-25 21:07:41,551 - __main__ - INFO - Initializing adapters...
+2025-08-25 21:07:41,552 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-25 21:07:41,556 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-25 21:07:41,557 - __main__ - INFO - Storage adapter initialized
+2025-08-25 21:07:41,777 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-25 21:07:41,779 - __main__ - INFO - Repository adapter initialized
+2025-08-25 21:07:41,780 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-25 21:07:41,781 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-25 21:07:41,782 - __main__ - INFO - Analyzer adapter initialized
+2025-08-25 21:07:41,783 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-25 21:07:42,749 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-25 21:07:42,751 - __main__ - INFO - Notification adapter initialized
+2025-08-25 21:07:43,353 - __main__ - INFO - Cleared any existing webhooks
+2025-08-25 21:07:43,355 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-25 21:08:07,081 - utils.logger - INFO - Logging system initialized successfully
+2025-08-25 21:08:09,240 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-25 21:08:09,241 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-25 21:08:10,199 - __main__ - INFO - Initializing adapters...
+2025-08-25 21:08:10,200 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-25 21:08:10,204 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-25 21:08:10,205 - __main__ - INFO - Storage adapter initialized
+2025-08-25 21:08:10,436 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-25 21:08:10,437 - __main__ - INFO - Repository adapter initialized
+2025-08-25 21:08:10,438 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-25 21:08:10,439 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-25 21:08:10,440 - __main__ - INFO - Analyzer adapter initialized
+2025-08-25 21:08:10,441 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-25 21:08:11,761 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-25 21:08:11,762 - __main__ - INFO - Notification adapter initialized
+2025-08-25 21:08:12,356 - __main__ - INFO - Cleared any existing webhooks
+2025-08-25 21:08:12,357 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-25 21:08:14,659 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 21:08:24,451 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/mobinadavid/go-auth-otp-service
+2025-08-25 21:08:24,453 - utils.validators - INFO - Successfully validated GitHub URL: mobinadavid/go-auth-otp-service
+2025-08-25 21:08:26,875 - __main__ - INFO - Starting analysis for https://github.com/mobinadavid/go-auth-otp-service as backend
+2025-08-25 21:08:27,100 - __main__ - INFO - Found existing submission 42, removing it
+2025-08-25 21:08:27,134 - adapters.storage.sqlite - INFO - Deleted submission 42 and 1 associated reports
+2025-08-25 21:08:27,394 - adapters.storage.sqlite - INFO - Created submission 42 for user ***ID_MASKED***
+2025-08-25 21:08:27,395 - __main__ - INFO - Created submission 42
+2025-08-25 21:08:27,419 - adapters.storage.sqlite - INFO - Updated submission 42: status=SubmissionStatus.ANALYZING
+2025-08-25 21:08:27,660 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/mobinadavid/go-auth-otp-service for role: backend
+2025-08-25 21:08:27,661 - adapters.repositories.github - INFO - Cloning repository: https://github.com/mobinadavid/go-auth-otp-service (attempt 1/3)
+2025-08-25 21:08:29,217 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-25 21:08:29,219 - adapters.repositories.github - INFO - Repository size: 0.25MB
+2025-08-25 21:08:29,220 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-25 21:08:29,327 - adapters.repositories.github - INFO - Extracted files - Critical: 71, Important: 0, Useful: 0, Total unique: 71
+2025-08-25 21:08:29,328 - adapters.repositories.github - INFO - Extracted 71 files using patterns
+2025-08-25 21:08:29,329 - adapters.repositories.github - INFO - Raw content: 46782 tokens
+2025-08-25 21:08:29,341 - adapters.repositories.github - INFO - Successfully processed repository: 71 files, 46782 tokens
+2025-08-25 21:08:29,343 - __main__ - INFO - Fetched repository: 71 files
+2025-08-25 21:08:29,564 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/mobinadavid/go-auth-otp-service)
+2025-08-25 21:08:29,565 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-25 21:08:29,567 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-25 21:08:29,568 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-25 21:08:29,574 - adapters.analyzers.openrouter - INFO - Total content size: ***ID_MASKED*** characters, 71 files
+2025-08-25 21:08:47,805 - adapters.analyzers.openrouter - INFO - LLM Response length: 11690 characters
+2025-08-25 21:08:47,807 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-25 21:08:47,809 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-25 21:08:47,811 - __main__ - INFO - Analysis complete for submission 42
+2025-08-25 21:08:47,849 - adapters.storage.sqlite - INFO - Created report 23 for submission 42
+2025-08-25 21:08:47,851 - __main__ - INFO - Created report 23
+2025-08-25 21:08:47,875 - adapters.storage.sqlite - INFO - Updated submission 42: status=SubmissionStatus.COMPLETED
+2025-08-25 21:08:50,078 - adapters.notifications.telegram - INFO - Analysis report sent for submission 42
+2025-08-25 21:08:50,327 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-25 21:10:26,689 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 21:10:31,516 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/majidbl/aaa
+2025-08-25 21:10:31,518 - utils.validators - INFO - Successfully validated GitHub URL: majidbl/aaa
+2025-08-25 21:10:33,931 - __main__ - INFO - Starting analysis for https://github.com/majidbl/aaa as backend
+2025-08-25 21:10:34,121 - __main__ - INFO - Found existing submission 41, removing it
+2025-08-25 21:10:34,163 - adapters.storage.sqlite - INFO - Deleted submission 41 and 1 associated reports
+2025-08-25 21:10:34,420 - adapters.storage.sqlite - INFO - Created submission 43 for user ***ID_MASKED***
+2025-08-25 21:10:34,421 - __main__ - INFO - Created submission 43
+2025-08-25 21:10:34,436 - adapters.storage.sqlite - INFO - Updated submission 43: status=SubmissionStatus.ANALYZING
+2025-08-25 21:10:34,736 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/majidbl/aaa for role: backend
+2025-08-25 21:10:34,737 - adapters.repositories.github - INFO - Cloning repository: https://github.com/majidbl/aaa (attempt 1/3)
+2025-08-25 21:10:36,302 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-25 21:10:36,304 - adapters.repositories.github - INFO - Repository size: 0.17MB
+2025-08-25 21:10:36,305 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-25 21:10:36,336 - adapters.repositories.github - INFO - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+2025-08-25 21:10:36,338 - adapters.repositories.github - INFO - Extracted 30 files using patterns
+2025-08-25 21:10:36,339 - adapters.repositories.github - INFO - Raw content: 33481 tokens
+2025-08-25 21:10:36,350 - adapters.repositories.github - INFO - Successfully processed repository: 30 files, 33481 tokens
+2025-08-25 21:10:36,351 - __main__ - INFO - Fetched repository: 30 files
+2025-08-25 21:10:36,580 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/majidbl/aaa)
+2025-08-25 21:10:36,581 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-25 21:10:36,582 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-25 21:10:36,584 - adapters.analyzers.openrouter - INFO - Total content size: ***ID_MASKED*** characters, 30 files
+2025-08-25 21:10:37,547 - adapters.analyzers.openrouter - ERROR - HTTP client error: Cannot connect to host openrouter.ai:443 ssl:default [None]
+2025-08-25 21:10:55,130 - adapters.analyzers.openrouter - INFO - LLM Response length: 10807 characters
+2025-08-25 21:10:55,132 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-25 21:10:55,134 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-25 21:10:55,135 - __main__ - INFO - Analysis complete for submission 43
+2025-08-25 21:10:55,171 - adapters.storage.sqlite - INFO - Created report 24 for submission 43
+2025-08-25 21:10:55,174 - __main__ - INFO - Created report 24
+2025-08-25 21:10:55,206 - adapters.storage.sqlite - INFO - Updated submission 43: status=SubmissionStatus.COMPLETED
+2025-08-25 21:10:56,685 - adapters.notifications.telegram - INFO - Analysis report sent for submission 43
+2025-08-25 21:10:56,912 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-25 21:40:39,945 - utils.logger - INFO - Logging system initialized successfully
+2025-08-25 21:40:41,720 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-25 21:40:41,721 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-25 21:40:42,587 - __main__ - INFO - Initializing adapters...
+2025-08-25 21:40:42,588 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-25 21:40:42,592 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-25 21:40:42,594 - __main__ - INFO - Storage adapter initialized
+2025-08-25 21:40:42,813 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-25 21:40:42,815 - __main__ - INFO - Repository adapter initialized
+2025-08-25 21:40:42,816 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-25 21:40:42,817 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-25 21:40:42,819 - __main__ - INFO - Analyzer adapter initialized
+2025-08-25 21:40:42,820 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-25 21:40:43,682 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-25 21:40:43,684 - __main__ - INFO - Notification adapter initialized
+2025-08-25 21:40:44,250 - __main__ - INFO - Cleared any existing webhooks
+2025-08-25 21:40:44,252 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-25 21:40:48,695 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 21:40:53,679 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/majidbl/aaa
+2025-08-25 21:40:53,681 - utils.validators - INFO - Successfully validated GitHub URL: majidbl/aaa
+2025-08-25 21:40:55,239 - __main__ - INFO - Starting analysis for https://github.com/majidbl/aaa as backend
+2025-08-25 21:40:55,463 - __main__ - INFO - Found existing submission 43, removing it
+2025-08-25 21:40:55,501 - adapters.storage.sqlite - INFO - Deleted submission 43 and 1 associated reports
+2025-08-25 21:40:55,826 - adapters.storage.sqlite - INFO - Created submission 43 for user ***ID_MASKED***
+2025-08-25 21:40:55,827 - __main__ - INFO - Created submission 43
+2025-08-25 21:40:55,845 - adapters.storage.sqlite - INFO - Updated submission 43: status=SubmissionStatus.ANALYZING
+2025-08-25 21:40:56,062 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/majidbl/aaa for role: backend
+2025-08-25 21:40:56,064 - adapters.repositories.github - INFO - Cloning repository: https://github.com/majidbl/aaa (attempt 1/3)
+2025-08-25 21:40:57,640 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-25 21:40:57,641 - adapters.repositories.github - INFO - Repository size: 0.17MB
+2025-08-25 21:40:57,643 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-25 21:40:57,682 - adapters.repositories.github - INFO - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+2025-08-25 21:40:57,684 - adapters.repositories.github - INFO - Extracted 30 files using patterns
+2025-08-25 21:40:57,685 - adapters.repositories.github - INFO - Raw content: 33481 tokens
+2025-08-25 21:40:57,697 - adapters.repositories.github - INFO - Successfully processed repository: 30 files, 33481 tokens
+2025-08-25 21:40:57,698 - __main__ - INFO - Fetched repository: 30 files
+2025-08-25 21:40:57,934 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/majidbl/aaa)
+2025-08-25 21:40:57,935 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-25 21:40:57,937 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-25 21:40:57,938 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-25 21:40:57,946 - adapters.analyzers.openrouter - INFO - Total content size: ***ID_MASKED*** characters, 30 files
+2025-08-25 21:41:13,969 - adapters.analyzers.openrouter - INFO - LLM Response length: 10389 characters
+2025-08-25 21:41:13,971 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-25 21:41:13,973 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-25 21:41:13,974 - __main__ - INFO - Analysis complete for submission 43
+2025-08-25 21:41:14,009 - adapters.storage.sqlite - INFO - Created report 24 for submission 43
+2025-08-25 21:41:14,011 - __main__ - INFO - Created report 24
+2025-08-25 21:41:14,029 - adapters.storage.sqlite - INFO - Updated submission 43: status=SubmissionStatus.COMPLETED
+2025-08-25 21:41:15,793 - adapters.notifications.telegram - INFO - Analysis report sent for submission 43
+2025-08-25 21:41:16,056 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-25 21:41:29,232 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 21:41:33,364 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/rezadev8/otp-auth-golang
+2025-08-25 21:41:33,366 - utils.validators - INFO - Successfully validated GitHub URL: rezadev8/otp-auth-golang
+2025-08-25 21:41:36,791 - __main__ - INFO - Starting analysis for https://github.com/rezadev8/otp-auth-golang as backend
+2025-08-25 21:41:37,074 - adapters.storage.sqlite - INFO - Created submission 44 for user ***ID_MASKED***
+2025-08-25 21:41:37,075 - __main__ - INFO - Created submission 44
+2025-08-25 21:41:37,092 - adapters.storage.sqlite - INFO - Updated submission 44: status=SubmissionStatus.ANALYZING
+2025-08-25 21:41:37,327 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/rezadev8/otp-auth-golang for role: backend
+2025-08-25 21:41:37,329 - adapters.repositories.github - INFO - Cloning repository: https://github.com/rezadev8/otp-auth-golang (attempt 1/3)
+2025-08-25 21:41:38,689 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-25 21:41:38,690 - adapters.repositories.github - INFO - Repository size: 0.12MB
+2025-08-25 21:41:38,691 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-25 21:41:38,711 - adapters.repositories.github - INFO - Extracted files - Critical: 21, Important: 0, Useful: 0, Total unique: 21
+2025-08-25 21:41:38,713 - adapters.repositories.github - INFO - Extracted 21 files using patterns
+2025-08-25 21:41:38,714 - adapters.repositories.github - INFO - Raw content: 20847 tokens
+2025-08-25 21:41:38,725 - adapters.repositories.github - INFO - Successfully processed repository: 21 files, 20847 tokens
+2025-08-25 21:41:38,726 - __main__ - INFO - Fetched repository: 21 files
+2025-08-25 21:41:39,030 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/rezadev8/otp-auth-golang)
+2025-08-25 21:41:39,031 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-25 21:41:39,033 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-25 21:41:39,034 - adapters.analyzers.openrouter - INFO - Total content size: 75012 characters, 21 files
+2025-08-25 21:41:52,428 - adapters.analyzers.openrouter - INFO - LLM Response length: 8548 characters
+2025-08-25 21:41:52,430 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-25 21:41:52,432 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-25 21:41:52,433 - __main__ - INFO - Analysis complete for submission 44
+2025-08-25 21:41:52,461 - adapters.storage.sqlite - INFO - Created report 25 for submission 44
+2025-08-25 21:41:52,462 - __main__ - INFO - Created report 25
+2025-08-25 21:41:52,478 - adapters.storage.sqlite - INFO - Updated submission 44: status=SubmissionStatus.COMPLETED
+2025-08-25 21:41:53,964 - adapters.notifications.telegram - INFO - Analysis report sent for submission 44
+2025-08-25 21:41:54,195 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-25 21:42:09,381 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 21:42:11,642 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/mobinadavid/go-auth-otp-service
+2025-08-25 21:42:11,643 - utils.validators - INFO - Successfully validated GitHub URL: mobinadavid/go-auth-otp-service
+2025-08-25 21:42:13,922 - __main__ - INFO - Starting analysis for https://github.com/mobinadavid/go-auth-otp-service as backend
+2025-08-25 21:42:14,171 - __main__ - INFO - Found existing submission 42, removing it
+2025-08-25 21:42:14,202 - adapters.storage.sqlite - INFO - Deleted submission 42 and 1 associated reports
+2025-08-25 21:42:14,494 - adapters.storage.sqlite - INFO - Created submission 45 for user ***ID_MASKED***
+2025-08-25 21:42:14,495 - __main__ - INFO - Created submission 45
+2025-08-25 21:42:14,517 - adapters.storage.sqlite - INFO - Updated submission 45: status=SubmissionStatus.ANALYZING
+2025-08-25 21:42:14,774 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/mobinadavid/go-auth-otp-service for role: backend
+2025-08-25 21:42:14,775 - adapters.repositories.github - INFO - Cloning repository: https://github.com/mobinadavid/go-auth-otp-service (attempt 1/3)
+2025-08-25 21:42:16,487 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-25 21:42:16,489 - adapters.repositories.github - INFO - Repository size: 0.25MB
+2025-08-25 21:42:16,490 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-25 21:42:16,533 - adapters.repositories.github - INFO - Extracted files - Critical: 71, Important: 0, Useful: 0, Total unique: 71
+2025-08-25 21:42:16,535 - adapters.repositories.github - INFO - Extracted 71 files using patterns
+2025-08-25 21:42:16,536 - adapters.repositories.github - INFO - Raw content: 46782 tokens
+2025-08-25 21:42:16,544 - adapters.repositories.github - INFO - Successfully processed repository: 71 files, 46782 tokens
+2025-08-25 21:42:16,545 - __main__ - INFO - Fetched repository: 71 files
+2025-08-25 21:42:16,811 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/mobinadavid/go-auth-otp-service)
+2025-08-25 21:42:16,812 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-25 21:42:16,813 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-25 21:42:16,814 - adapters.analyzers.openrouter - INFO - Total content size: ***ID_MASKED*** characters, 71 files
+2025-08-25 21:42:33,537 - adapters.analyzers.openrouter - INFO - LLM Response length: 11347 characters
+2025-08-25 21:42:33,540 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-25 21:42:33,542 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-25 21:42:33,543 - __main__ - INFO - Analysis complete for submission 45
+2025-08-25 21:42:33,574 - adapters.storage.sqlite - INFO - Created report 26 for submission 45
+2025-08-25 21:42:33,575 - __main__ - INFO - Created report 26
+2025-08-25 21:42:33,592 - adapters.storage.sqlite - INFO - Updated submission 45: status=SubmissionStatus.COMPLETED
+2025-08-25 21:42:35,622 - adapters.notifications.telegram - INFO - Analysis report sent for submission 45
+2025-08-25 21:42:35,852 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-25 21:47:12,982 - utils.logger - INFO - Logging system initialized successfully
+2025-08-25 21:47:14,800 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-25 21:47:14,801 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-25 21:47:15,730 - __main__ - INFO - Initializing adapters...
+2025-08-25 21:47:15,731 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-25 21:47:15,736 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-25 21:47:15,737 - __main__ - INFO - Storage adapter initialized
+2025-08-25 21:47:15,943 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-25 21:47:15,944 - __main__ - INFO - Repository adapter initialized
+2025-08-25 21:47:15,946 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-25 21:47:15,947 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-25 21:47:15,948 - __main__ - INFO - Analyzer adapter initialized
+2025-08-25 21:47:15,949 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-25 21:47:16,830 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-25 21:47:16,831 - __main__ - INFO - Notification adapter initialized
+2025-08-25 21:47:17,430 - __main__ - INFO - Cleared any existing webhooks
+2025-08-25 21:47:17,431 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-25 21:47:19,425 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 21:47:26,330 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/rezadev8/otp-auth-golang
+2025-08-25 21:47:26,332 - utils.validators - INFO - Successfully validated GitHub URL: rezadev8/otp-auth-golang
+2025-08-25 21:47:38,633 - __main__ - INFO - Cancel command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 21:47:40,508 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 21:47:45,315 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/mobinadavid/go-auth-otp-service
+2025-08-25 21:47:45,317 - utils.validators - INFO - Successfully validated GitHub URL: mobinadavid/go-auth-otp-service
+2025-08-25 21:47:47,452 - __main__ - INFO - Starting analysis for https://github.com/mobinadavid/go-auth-otp-service as backend
+2025-08-25 21:47:47,659 - __main__ - INFO - Found existing submission 45, removing it
+2025-08-25 21:47:47,681 - adapters.storage.sqlite - INFO - Deleted submission 45 and 1 associated reports
+2025-08-25 21:47:47,953 - adapters.storage.sqlite - INFO - Created submission 45 for user ***ID_MASKED***
+2025-08-25 21:47:47,954 - __main__ - INFO - Created submission 45
+2025-08-25 21:47:47,978 - adapters.storage.sqlite - INFO - Updated submission 45: status=SubmissionStatus.ANALYZING
+2025-08-25 21:47:48,228 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/mobinadavid/go-auth-otp-service for role: backend
+2025-08-25 21:47:48,229 - adapters.repositories.github - INFO - Cloning repository: https://github.com/mobinadavid/go-auth-otp-service (attempt 1/3)
+2025-08-25 21:47:49,902 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-25 21:47:49,904 - adapters.repositories.github - INFO - Repository size: 0.25MB
+2025-08-25 21:47:49,905 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-25 21:47:49,960 - adapters.repositories.github - INFO - Extracted files - Critical: 71, Important: 0, Useful: 0, Total unique: 71
+2025-08-25 21:47:49,961 - adapters.repositories.github - INFO - Extracted 71 files using patterns
+2025-08-25 21:47:49,962 - adapters.repositories.github - INFO - Raw content: 46782 tokens
+2025-08-25 21:47:49,972 - adapters.repositories.github - INFO - Successfully processed repository: 71 files, 46782 tokens
+2025-08-25 21:47:49,973 - __main__ - INFO - Fetched repository: 71 files
+2025-08-25 21:47:50,216 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/mobinadavid/go-auth-otp-service)
+2025-08-25 21:47:50,217 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-25 21:47:50,219 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-25 21:47:50,220 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-25 21:47:50,225 - adapters.analyzers.openrouter - INFO - Total content size: ***ID_MASKED*** characters, 71 files
+2025-08-25 21:48:06,162 - adapters.analyzers.openrouter - INFO - LLM Response length: 10746 characters
+2025-08-25 21:48:06,163 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-25 21:48:06,166 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-25 21:48:06,167 - __main__ - INFO - Analysis complete for submission 45
+2025-08-25 21:48:06,200 - adapters.storage.sqlite - INFO - Created report 26 for submission 45
+2025-08-25 21:48:06,201 - __main__ - INFO - Created report 26
+2025-08-25 21:48:06,218 - adapters.storage.sqlite - INFO - Updated submission 45: status=SubmissionStatus.COMPLETED
+2025-08-25 21:48:08,601 - adapters.notifications.telegram - INFO - Analysis report sent for submission 45
+2025-08-25 21:48:08,908 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-25 21:58:38,629 - utils.logger - INFO - Logging system initialized successfully
+2025-08-25 21:58:40,403 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-25 21:58:40,404 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-25 21:58:41,216 - __main__ - INFO - Initializing adapters...
+2025-08-25 21:58:41,217 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-25 21:58:41,221 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-25 21:58:41,222 - __main__ - INFO - Storage adapter initialized
+2025-08-25 21:58:41,528 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-25 21:58:41,530 - __main__ - INFO - Repository adapter initialized
+2025-08-25 21:58:41,532 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-25 21:58:41,533 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-25 21:58:41,534 - __main__ - INFO - Analyzer adapter initialized
+2025-08-25 21:58:41,535 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-25 21:58:42,398 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-25 21:58:42,400 - __main__ - INFO - Notification adapter initialized
+2025-08-25 21:58:42,968 - __main__ - INFO - Cleared any existing webhooks
+2025-08-25 21:58:42,969 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-25 21:58:50,515 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 21:58:54,359 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/mobinadavid/go-auth-otp-service
+2025-08-25 21:58:54,361 - utils.validators - INFO - Successfully validated GitHub URL: mobinadavid/go-auth-otp-service
+2025-08-25 21:58:58,630 - __main__ - INFO - Starting analysis for https://github.com/mobinadavid/go-auth-otp-service as backend
+2025-08-25 21:58:58,841 - __main__ - INFO - Found existing submission 45, removing it
+2025-08-25 21:58:58,880 - adapters.storage.sqlite - INFO - Deleted submission 45 and 1 associated reports
+2025-08-25 21:58:59,142 - adapters.storage.sqlite - INFO - Created submission 45 for user ***ID_MASKED***
+2025-08-25 21:58:59,143 - __main__ - INFO - Created submission 45
+2025-08-25 21:58:59,168 - adapters.storage.sqlite - INFO - Updated submission 45: status=SubmissionStatus.ANALYZING
+2025-08-25 21:58:59,353 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/mobinadavid/go-auth-otp-service for role: backend
+2025-08-25 21:58:59,355 - adapters.repositories.github - INFO - Cloning repository: https://github.com/mobinadavid/go-auth-otp-service (attempt 1/3)
+2025-08-25 21:59:01,026 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-25 21:59:01,028 - adapters.repositories.github - INFO - Repository size: 0.25MB
+2025-08-25 21:59:01,030 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-25 21:59:01,091 - adapters.repositories.github - INFO - Extracted files - Critical: 71, Important: 0, Useful: 0, Total unique: 71
+2025-08-25 21:59:01,093 - adapters.repositories.github - INFO - Extracted 71 files using patterns
+2025-08-25 21:59:01,094 - adapters.repositories.github - INFO - Raw content: 46782 tokens
+2025-08-25 21:59:01,105 - adapters.repositories.github - INFO - Successfully processed repository: 71 files, 46782 tokens
+2025-08-25 21:59:01,106 - __main__ - INFO - Fetched repository: 71 files
+2025-08-25 21:59:01,301 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/mobinadavid/go-auth-otp-service)
+2025-08-25 21:59:01,303 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-25 21:59:01,304 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-25 21:59:01,305 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-25 21:59:01,312 - adapters.analyzers.openrouter - INFO - Total content size: ***ID_MASKED*** characters, 71 files
+2025-08-25 21:59:20,440 - adapters.analyzers.openrouter - INFO - LLM Response length: 12907 characters
+2025-08-25 21:59:20,442 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-25 21:59:20,445 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-25 21:59:20,446 - __main__ - INFO - Analysis complete for submission 45
+2025-08-25 21:59:20,481 - adapters.storage.sqlite - INFO - Created report 26 for submission 45
+2025-08-25 21:59:20,482 - __main__ - INFO - Created report 26
+2025-08-25 21:59:20,503 - adapters.storage.sqlite - INFO - Updated submission 45: status=SubmissionStatus.COMPLETED
+2025-08-25 21:59:22,922 - adapters.notifications.telegram - INFO - Analysis report sent for submission 45
+2025-08-25 21:59:23,230 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-25 21:59:42,892 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 21:59:45,381 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/majidbl/aaa
+2025-08-25 21:59:45,382 - utils.validators - INFO - Successfully validated GitHub URL: majidbl/aaa
+2025-08-25 21:59:47,581 - __main__ - INFO - Starting analysis for https://github.com/majidbl/aaa as backend
+2025-08-25 21:59:47,830 - __main__ - INFO - Found existing submission 43, removing it
+2025-08-25 21:59:47,862 - adapters.storage.sqlite - INFO - Deleted submission 43 and 1 associated reports
+2025-08-25 21:59:48,159 - adapters.storage.sqlite - INFO - Created submission 46 for user ***ID_MASKED***
+2025-08-25 21:59:48,161 - __main__ - INFO - Created submission 46
+2025-08-25 21:59:48,180 - adapters.storage.sqlite - INFO - Updated submission 46: status=SubmissionStatus.ANALYZING
+2025-08-25 21:59:48,493 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/majidbl/aaa for role: backend
+2025-08-25 21:59:48,494 - adapters.repositories.github - INFO - Cloning repository: https://github.com/majidbl/aaa (attempt 1/3)
+2025-08-25 21:59:50,173 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-25 21:59:50,175 - adapters.repositories.github - INFO - Repository size: 0.17MB
+2025-08-25 21:59:50,176 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-25 21:59:50,210 - adapters.repositories.github - INFO - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+2025-08-25 21:59:50,212 - adapters.repositories.github - INFO - Extracted 30 files using patterns
+2025-08-25 21:59:50,214 - adapters.repositories.github - INFO - Raw content: 33481 tokens
+2025-08-25 21:59:50,224 - adapters.repositories.github - INFO - Successfully processed repository: 30 files, 33481 tokens
+2025-08-25 21:59:50,225 - __main__ - INFO - Fetched repository: 30 files
+2025-08-25 21:59:50,433 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/majidbl/aaa)
+2025-08-25 21:59:50,434 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-25 21:59:50,436 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-25 21:59:50,437 - adapters.analyzers.openrouter - INFO - Total content size: ***ID_MASKED*** characters, 30 files
+2025-08-25 22:00:05,624 - adapters.analyzers.openrouter - INFO - LLM Response length: 11346 characters
+2025-08-25 22:00:05,626 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-25 22:00:05,627 - adapters.analyzers.openrouter - WARNING - Issue 'math/rand.*otp' mentioned but not in penalty breakdown, adding 20 points
+2025-08-25 22:00:05,628 - adapters.analyzers.openrouter - WARNING - Issue 'math/rand.*security' mentioned but not in penalty breakdown, adding 20 points
+2025-08-25 22:00:05,629 - adapters.analyzers.openrouter - WARNING - Issue 'math.rand.*otp' mentioned but not in penalty breakdown, adding 20 points
+2025-08-25 22:00:05,630 - adapters.analyzers.openrouter - WARNING - Adjusting penalty from 20 to 50 (+60)
+2025-08-25 22:00:05,631 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-25 22:00:05,632 - __main__ - INFO - Analysis complete for submission 46
+2025-08-25 22:00:05,663 - adapters.storage.sqlite - INFO - Created report 27 for submission 46
+2025-08-25 22:00:05,664 - __main__ - INFO - Created report 27
+2025-08-25 22:00:05,686 - adapters.storage.sqlite - INFO - Updated submission 46: status=SubmissionStatus.COMPLETED
+2025-08-25 22:00:08,188 - adapters.notifications.telegram - INFO - Analysis report sent for submission 46
+2025-08-25 22:00:08,449 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-25 22:00:25,108 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 22:00:29,535 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/mobinadavid/go-auth-otp-service
+2025-08-25 22:00:29,538 - utils.validators - INFO - Successfully validated GitHub URL: mobinadavid/go-auth-otp-service
+2025-08-25 22:00:32,623 - __main__ - INFO - Starting analysis for https://github.com/mobinadavid/go-auth-otp-service as backend
+2025-08-25 22:00:33,556 - __main__ - INFO - Found existing submission 45, removing it
+2025-08-25 22:00:33,589 - adapters.storage.sqlite - INFO - Deleted submission 45 and 1 associated reports
+2025-08-25 22:00:33,871 - adapters.storage.sqlite - INFO - Created submission 47 for user ***ID_MASKED***
+2025-08-25 22:00:33,872 - __main__ - INFO - Created submission 47
+2025-08-25 22:00:33,898 - adapters.storage.sqlite - INFO - Updated submission 47: status=SubmissionStatus.ANALYZING
+2025-08-25 22:00:34,165 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/mobinadavid/go-auth-otp-service for role: backend
+2025-08-25 22:00:34,166 - adapters.repositories.github - INFO - Cloning repository: https://github.com/mobinadavid/go-auth-otp-service (attempt 1/3)
+2025-08-25 22:00:36,023 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-25 22:00:36,025 - adapters.repositories.github - INFO - Repository size: 0.25MB
+2025-08-25 22:00:36,026 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-25 22:00:36,073 - adapters.repositories.github - INFO - Extracted files - Critical: 71, Important: 0, Useful: 0, Total unique: 71
+2025-08-25 22:00:36,074 - adapters.repositories.github - INFO - Extracted 71 files using patterns
+2025-08-25 22:00:36,075 - adapters.repositories.github - INFO - Raw content: 46782 tokens
+2025-08-25 22:00:36,086 - adapters.repositories.github - INFO - Successfully processed repository: 71 files, 46782 tokens
+2025-08-25 22:00:36,087 - __main__ - INFO - Fetched repository: 71 files
+2025-08-25 22:00:36,394 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/mobinadavid/go-auth-otp-service)
+2025-08-25 22:00:36,395 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-25 22:00:36,397 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-25 22:00:36,398 - adapters.analyzers.openrouter - INFO - Total content size: ***ID_MASKED*** characters, 71 files
+2025-08-25 22:00:56,407 - adapters.analyzers.openrouter - INFO - LLM Response length: 11470 characters
+2025-08-25 22:00:56,408 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-25 22:00:56,409 - adapters.analyzers.openrouter - WARNING - Response validation failed: Score 'critical_issues_penalty' must be between 0 and 100
+2025-08-25 22:00:56,410 - adapters.analyzers.openrouter - WARNING - Response validation failed
+2025-08-25 22:00:56,412 - adapters.analyzers.openrouter - INFO - Attempt 2/3: anthropic/claude-sonnet-4 (context: ***ID_MASKED*** tokens)
+2025-08-25 22:00:56,413 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-25 22:00:56,414 - adapters.analyzers.openrouter - INFO - Total content size: ***ID_MASKED*** characters, 71 files
+2025-08-25 22:01:45,926 - adapters.analyzers.openrouter - INFO - LLM Response length: 9927 characters
+2025-08-25 22:01:45,927 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-25 22:01:45,928 - adapters.analyzers.openrouter - WARNING - Issue 'no api documentation' mentioned but not in penalty breakdown, adding 35 points
+2025-08-25 22:01:45,929 - adapters.analyzers.openrouter - WARNING - Adjusting penalty from 80 to 50 (+35)
+2025-08-25 22:01:45,931 - adapters.analyzers.openrouter - INFO - Analysis successful with anthropic/claude-sonnet-4
+2025-08-25 22:01:45,931 - __main__ - INFO - Analysis complete for submission 47
+2025-08-25 22:01:45,961 - adapters.storage.sqlite - INFO - Created report 28 for submission 47
+2025-08-25 22:01:45,962 - __main__ - INFO - Created report 28
+2025-08-25 22:01:45,978 - adapters.storage.sqlite - INFO - Updated submission 47: status=SubmissionStatus.COMPLETED
+2025-08-25 22:01:48,136 - adapters.notifications.telegram - INFO - Analysis report sent for submission 47
+2025-08-25 22:01:48,363 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-25 22:04:31,239 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 22:16:24,311 - __main__ - ERROR - Update None caused error httpx.ConnectError: All connection attempts failed
+2025-08-25 22:16:24,510 - __main__ - ERROR - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+2025-08-25 22:16:25,384 - __main__ - ERROR - Update None caused error httpx.ConnectError: All connection attempts failed
+2025-08-25 22:16:25,402 - __main__ - ERROR - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+2025-08-25 22:16:27,057 - __main__ - ERROR - Update None caused error httpx.ConnectError: All connection attempts failed
+2025-08-25 22:16:27,071 - __main__ - ERROR - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+2025-08-25 22:16:29,444 - __main__ - ERROR - Update None caused error httpx.ConnectError: All connection attempts failed
+2025-08-25 22:16:29,460 - __main__ - ERROR - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+2025-08-25 22:16:32,888 - __main__ - ERROR - Update None caused error httpx.ConnectError: All connection attempts failed
+2025-08-25 22:16:32,900 - __main__ - ERROR - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+2025-08-25 22:16:38,052 - __main__ - ERROR - Update None caused error httpx.ConnectError: All connection attempts failed
+2025-08-25 22:16:38,065 - __main__ - ERROR - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+2025-08-25 22:16:45,761 - __main__ - ERROR - Update None caused error httpx.ConnectError: All connection attempts failed
+2025-08-25 22:16:45,773 - __main__ - ERROR - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+2025-08-25 22:16:57,258 - __main__ - ERROR - Update None caused error httpx.ConnectError: All connection attempts failed
+2025-08-25 22:16:57,272 - __main__ - ERROR - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+2025-08-25 22:17:14,409 - __main__ - ERROR - Update None caused error httpx.ConnectError: All connection attempts failed
+2025-08-25 22:17:14,420 - __main__ - ERROR - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+2025-08-25 22:17:40,135 - __main__ - ERROR - Update None caused error httpx.ConnectError: All connection attempts failed
+2025-08-25 22:17:40,153 - __main__ - ERROR - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+2025-08-25 22:18:10,198 - __main__ - ERROR - Update None caused error httpx.ConnectError: All connection attempts failed
+2025-08-25 22:18:10,207 - __main__ - ERROR - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+2025-08-25 22:18:40,278 - __main__ - ERROR - Update None caused error httpx.ConnectError: All connection attempts failed
+2025-08-25 22:18:40,293 - __main__ - ERROR - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+2025-08-25 22:19:10,359 - __main__ - ERROR - Update None caused error httpx.ConnectError: All connection attempts failed
+2025-08-25 22:19:10,375 - __main__ - ERROR - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+2025-08-25 22:19:40,517 - __main__ - ERROR - Update None caused error httpx.ConnectError: All connection attempts failed
+2025-08-25 22:19:40,534 - __main__ - ERROR - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+2025-08-25 22:20:10,598 - __main__ - ERROR - Update None caused error httpx.ConnectError: All connection attempts failed
+2025-08-25 22:20:10,612 - __main__ - ERROR - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+2025-08-25 22:20:40,691 - __main__ - ERROR - Update None caused error httpx.ConnectError: All connection attempts failed
+2025-08-25 22:20:40,707 - __main__ - ERROR - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+2025-08-25 22:21:10,760 - __main__ - ERROR - Update None caused error httpx.ConnectError: All connection attempts failed
+2025-08-25 22:21:10,778 - __main__ - ERROR - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+2025-08-25 22:21:40,837 - __main__ - ERROR - Update None caused error httpx.ConnectError: All connection attempts failed
+2025-08-25 22:21:40,854 - __main__ - ERROR - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+2025-08-25 22:22:10,926 - __main__ - ERROR - Update None caused error httpx.ConnectError: All connection attempts failed
+2025-08-25 22:22:10,945 - __main__ - ERROR - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+2025-08-25 22:22:40,997 - __main__ - ERROR - Update None caused error httpx.ConnectError: All connection attempts failed
+2025-08-25 22:22:41,012 - __main__ - ERROR - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+2025-08-25 22:23:11,104 - __main__ - ERROR - Update None caused error httpx.ConnectError: All connection attempts failed
+2025-08-25 22:23:11,121 - __main__ - ERROR - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+2025-08-25 22:23:41,254 - __main__ - ERROR - Update None caused error httpx.ConnectError: All connection attempts failed
+2025-08-25 22:23:41,298 - __main__ - ERROR - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+2025-08-25 22:24:11,337 - __main__ - ERROR - Update None caused error httpx.ConnectError: All connection attempts failed
+2025-08-25 22:24:11,361 - __main__ - ERROR - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+2025-08-25 22:24:44,109 - utils.logger - INFO - Logging system initialized successfully
+2025-08-25 22:24:45,901 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-25 22:24:45,902 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-25 22:24:46,811 - __main__ - INFO - Initializing adapters...
+2025-08-25 22:24:46,812 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-25 22:24:46,816 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-25 22:24:46,818 - __main__ - INFO - Storage adapter initialized
+2025-08-25 22:24:47,033 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-25 22:24:47,035 - __main__ - INFO - Repository adapter initialized
+2025-08-25 22:24:47,036 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-25 22:24:47,037 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-25 22:24:47,038 - __main__ - INFO - Analyzer adapter initialized
+2025-08-25 22:24:47,039 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-25 22:24:47,950 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-25 22:24:47,952 - __main__ - INFO - Notification adapter initialized
+2025-08-25 22:24:48,519 - __main__ - INFO - Cleared any existing webhooks
+2025-08-25 22:24:48,521 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-25 22:24:51,574 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 22:24:53,552 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/rezadev8/otp-auth-golang
+2025-08-25 22:24:53,555 - utils.validators - INFO - Successfully validated GitHub URL: rezadev8/otp-auth-golang
+2025-08-25 22:24:58,150 - __main__ - INFO - Starting analysis for https://github.com/rezadev8/otp-auth-golang as backend
+2025-08-25 22:24:58,571 - __main__ - INFO - Found existing submission 44, removing it
+2025-08-25 22:24:58,610 - adapters.storage.sqlite - INFO - Deleted submission 44 and 1 associated reports
+2025-08-25 22:24:58,854 - adapters.storage.sqlite - INFO - Created submission 48 for user ***ID_MASKED***
+2025-08-25 22:24:58,855 - __main__ - INFO - Created submission 48
+2025-08-25 22:24:58,872 - adapters.storage.sqlite - INFO - Updated submission 48: status=SubmissionStatus.ANALYZING
+2025-08-25 22:24:59,078 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/rezadev8/otp-auth-golang for role: backend
+2025-08-25 22:24:59,079 - adapters.repositories.github - INFO - Cloning repository: https://github.com/rezadev8/otp-auth-golang (attempt 1/3)
+2025-08-25 22:25:03,204 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-25 22:25:03,206 - adapters.repositories.github - INFO - Repository size: 0.12MB
+2025-08-25 22:25:03,207 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-25 22:25:03,233 - adapters.repositories.github - INFO - Extracted files - Critical: 21, Important: 0, Useful: 0, Total unique: 21
+2025-08-25 22:25:03,235 - adapters.repositories.github - INFO - Extracted 21 files using patterns
+2025-08-25 22:25:03,236 - adapters.repositories.github - INFO - Raw content: 20847 tokens
+2025-08-25 22:25:03,244 - adapters.repositories.github - INFO - Successfully processed repository: 21 files, 20847 tokens
+2025-08-25 22:25:03,245 - __main__ - INFO - Fetched repository: 21 files
+2025-08-25 22:25:03,480 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/rezadev8/otp-auth-golang)
+2025-08-25 22:25:03,481 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-25 22:25:03,482 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-25 22:25:03,483 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-25 22:25:03,488 - adapters.analyzers.openrouter - INFO - Total content size: 75012 characters, 21 files
+2025-08-25 22:25:19,277 - adapters.analyzers.openrouter - INFO - LLM Response length: 11451 characters
+2025-08-25 22:25:19,279 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-25 22:25:19,281 - adapters.analyzers.openrouter - WARNING - Issue 'math/rand.*otp' mentioned but not in penalty breakdown, adding 20 points
+2025-08-25 22:25:19,282 - adapters.analyzers.openrouter - WARNING - Issue 'math/rand.*security' mentioned but not in penalty breakdown, adding 20 points
+2025-08-25 22:25:19,283 - adapters.analyzers.openrouter - WARNING - Issue 'math.rand.*otp' mentioned but not in penalty breakdown, adding 20 points
+2025-08-25 22:25:19,284 - adapters.analyzers.openrouter - WARNING - Adjusting penalty from 45 to 50 (+60)
+2025-08-25 22:25:19,286 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-25 22:25:19,287 - __main__ - INFO - Analysis complete for submission 48
+2025-08-25 22:25:19,318 - adapters.storage.sqlite - INFO - Created report 29 for submission 48
+2025-08-25 22:25:19,319 - __main__ - INFO - Created report 29
+2025-08-25 22:25:19,338 - adapters.storage.sqlite - INFO - Updated submission 48: status=SubmissionStatus.COMPLETED
+2025-08-25 22:25:21,015 - adapters.notifications.telegram - INFO - Analysis report sent for submission 48
+2025-08-25 22:25:21,234 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-25 22:25:33,435 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 22:25:36,090 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/TheAmirMohammad/golang-otp.git
+2025-08-25 22:25:36,092 - utils.validators - INFO - Successfully validated GitHub URL: TheAmirMohammad/golang-otp
+2025-08-25 22:25:38,552 - __main__ - INFO - Starting analysis for https://github.com/TheAmirMohammad/golang-otp.git as backend
+2025-08-25 22:25:38,904 - adapters.storage.sqlite - INFO - Created submission 49 for user ***ID_MASKED***
+2025-08-25 22:25:38,905 - __main__ - INFO - Created submission 49
+2025-08-25 22:25:38,920 - adapters.storage.sqlite - INFO - Updated submission 49: status=SubmissionStatus.ANALYZING
+2025-08-25 22:25:39,172 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/TheAmirMohammad/golang-otp.git for role: backend
+2025-08-25 22:25:39,174 - adapters.repositories.github - INFO - Cloning repository: https://github.com/TheAmirMohammad/golang-otp.git (attempt 1/3)
+2025-08-25 22:25:40,547 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-25 22:25:40,549 - adapters.repositories.github - INFO - Repository size: 0.08MB
+2025-08-25 22:25:40,550 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-25 22:25:40,563 - adapters.repositories.github - INFO - Extracted files - Critical: 17, Important: 0, Useful: 0, Total unique: 17
+2025-08-25 22:25:40,565 - adapters.repositories.github - INFO - Extracted 17 files using patterns
+2025-08-25 22:25:40,566 - adapters.repositories.github - INFO - Raw content: 8748 tokens
+2025-08-25 22:25:40,576 - adapters.repositories.github - INFO - Successfully processed repository: 17 files, 8748 tokens
+2025-08-25 22:25:40,577 - __main__ - INFO - Fetched repository: 17 files
+2025-08-25 22:25:40,826 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/TheAmirMohammad/golang-otp.git)
+2025-08-25 22:25:40,827 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-25 22:25:40,828 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-25 22:25:40,829 - adapters.analyzers.openrouter - INFO - Total content size: 40591 characters, 17 files
+2025-08-25 22:25:51,576 - adapters.analyzers.openrouter - INFO - LLM Response length: 10049 characters
+2025-08-25 22:25:51,577 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-25 22:25:51,578 - adapters.analyzers.openrouter - WARNING - Issue 'hardcoded.*secret' mentioned but not in penalty breakdown, adding 45 points
+2025-08-25 22:25:51,580 - adapters.analyzers.openrouter - WARNING - Issue 'math/rand.*otp' mentioned but not in penalty breakdown, adding 20 points
+2025-08-25 22:25:51,580 - adapters.analyzers.openrouter - WARNING - Issue 'math/rand.*security' mentioned but not in penalty breakdown, adding 20 points
+2025-08-25 22:25:51,581 - adapters.analyzers.openrouter - WARNING - Issue 'math.rand.*otp' mentioned but not in penalty breakdown, adding 20 points
+2025-08-25 22:25:51,582 - adapters.analyzers.openrouter - WARNING - Adjusting penalty from 45 to 50 (+105)
+2025-08-25 22:25:51,583 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-25 22:25:51,584 - __main__ - INFO - Analysis complete for submission 49
+2025-08-25 22:25:51,613 - adapters.storage.sqlite - INFO - Created report 30 for submission 49
+2025-08-25 22:25:51,613 - __main__ - INFO - Created report 30
+2025-08-25 22:25:51,630 - adapters.storage.sqlite - INFO - Updated submission 49: status=SubmissionStatus.COMPLETED
+2025-08-25 22:25:53,473 - adapters.notifications.telegram - INFO - Analysis report sent for submission 49
+2025-08-25 22:25:53,787 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-25 22:32:38,154 - utils.logger - INFO - Logging system initialized successfully
+2025-08-25 22:32:39,904 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-25 22:32:39,904 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-25 22:32:40,776 - __main__ - INFO - Initializing adapters...
+2025-08-25 22:32:40,777 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-25 22:32:40,781 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-25 22:32:40,782 - __main__ - INFO - Storage adapter initialized
+2025-08-25 22:32:40,997 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-25 22:32:40,999 - __main__ - INFO - Repository adapter initialized
+2025-08-25 22:32:41,000 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-25 22:32:41,002 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-25 22:32:41,003 - __main__ - INFO - Analyzer adapter initialized
+2025-08-25 22:32:41,004 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-25 22:32:41,888 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-25 22:32:41,889 - __main__ - INFO - Notification adapter initialized
+2025-08-25 22:32:42,500 - __main__ - INFO - Cleared any existing webhooks
+2025-08-25 22:32:42,501 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-25 22:32:46,635 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 22:32:48,324 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/rezadev8/otp-auth-golang
+2025-08-25 22:32:48,326 - utils.validators - INFO - Successfully validated GitHub URL: rezadev8/otp-auth-golang
+2025-08-25 22:32:50,720 - __main__ - INFO - Starting analysis for https://github.com/rezadev8/otp-auth-golang as backend
+2025-08-25 22:32:51,057 - __main__ - INFO - Found existing submission 48, removing it
+2025-08-25 22:32:51,094 - adapters.storage.sqlite - INFO - Deleted submission 48 and 1 associated reports
+2025-08-25 22:32:51,468 - adapters.storage.sqlite - INFO - Created submission 50 for user ***ID_MASKED***
+2025-08-25 22:32:51,469 - __main__ - INFO - Created submission 50
+2025-08-25 22:32:51,487 - adapters.storage.sqlite - INFO - Updated submission 50: status=SubmissionStatus.ANALYZING
+2025-08-25 22:32:52,016 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/rezadev8/otp-auth-golang for role: backend
+2025-08-25 22:32:52,018 - adapters.repositories.github - INFO - Cloning repository: https://github.com/rezadev8/otp-auth-golang (attempt 1/3)
+2025-08-25 22:32:53,717 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-25 22:32:53,719 - adapters.repositories.github - INFO - Repository size: 0.12MB
+2025-08-25 22:32:53,720 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-25 22:32:53,751 - adapters.repositories.github - INFO - Extracted files - Critical: 21, Important: 0, Useful: 0, Total unique: 21
+2025-08-25 22:32:53,752 - adapters.repositories.github - INFO - Extracted 21 files using patterns
+2025-08-25 22:32:53,753 - adapters.repositories.github - INFO - Raw content: 20847 tokens
+2025-08-25 22:32:53,764 - adapters.repositories.github - INFO - Successfully processed repository: 21 files, 20847 tokens
+2025-08-25 22:32:53,765 - __main__ - INFO - Fetched repository: 21 files
+2025-08-25 22:32:53,983 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/rezadev8/otp-auth-golang)
+2025-08-25 22:32:53,984 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-25 22:32:53,986 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-25 22:32:53,987 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-25 22:32:53,995 - adapters.analyzers.openrouter - INFO - Total content size: 75012 characters, 21 files
+2025-08-25 22:33:07,110 - adapters.analyzers.openrouter - INFO - LLM Response length: 9012 characters
+2025-08-25 22:33:07,112 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-25 22:33:07,116 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-25 22:33:07,117 - __main__ - INFO - Analysis complete for submission 50
+2025-08-25 22:33:07,153 - adapters.storage.sqlite - INFO - Created report 31 for submission 50
+2025-08-25 22:33:07,154 - __main__ - INFO - Created report 31
+2025-08-25 22:33:07,181 - adapters.storage.sqlite - INFO - Updated submission 50: status=SubmissionStatus.COMPLETED
+2025-08-25 22:33:08,895 - adapters.notifications.telegram - INFO - Analysis report sent for submission 50
+2025-08-25 22:33:09,305 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-25 22:33:31,456 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 22:33:34,045 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/TheAmirMohammad/golang-otp.git
+2025-08-25 22:33:34,046 - utils.validators - INFO - Successfully validated GitHub URL: TheAmirMohammad/golang-otp
+2025-08-25 22:33:36,536 - __main__ - INFO - Starting analysis for https://github.com/TheAmirMohammad/golang-otp.git as backend
+2025-08-25 22:33:36,789 - __main__ - INFO - Found existing submission 49, removing it
+2025-08-25 22:33:36,827 - adapters.storage.sqlite - INFO - Deleted submission 49 and 1 associated reports
+2025-08-25 22:33:37,152 - adapters.storage.sqlite - INFO - Created submission 51 for user ***ID_MASKED***
+2025-08-25 22:33:37,153 - __main__ - INFO - Created submission 51
+2025-08-25 22:33:37,169 - adapters.storage.sqlite - INFO - Updated submission 51: status=SubmissionStatus.ANALYZING
+2025-08-25 22:33:37,399 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/TheAmirMohammad/golang-otp.git for role: backend
+2025-08-25 22:33:37,401 - adapters.repositories.github - INFO - Cloning repository: https://github.com/TheAmirMohammad/golang-otp.git (attempt 1/3)
+2025-08-25 22:33:39,058 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-25 22:33:39,060 - adapters.repositories.github - INFO - Repository size: 0.08MB
+2025-08-25 22:33:39,061 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-25 22:33:39,074 - adapters.repositories.github - INFO - Extracted files - Critical: 17, Important: 0, Useful: 0, Total unique: 17
+2025-08-25 22:33:39,075 - adapters.repositories.github - INFO - Extracted 17 files using patterns
+2025-08-25 22:33:39,077 - adapters.repositories.github - INFO - Raw content: 8748 tokens
+2025-08-25 22:33:39,088 - adapters.repositories.github - INFO - Successfully processed repository: 17 files, 8748 tokens
+2025-08-25 22:33:39,090 - __main__ - INFO - Fetched repository: 17 files
+2025-08-25 22:33:39,342 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/TheAmirMohammad/golang-otp.git)
+2025-08-25 22:33:39,343 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-25 22:33:39,344 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-25 22:33:39,345 - adapters.analyzers.openrouter - INFO - Total content size: 40591 characters, 17 files
+2025-08-25 22:33:54,277 - adapters.analyzers.openrouter - INFO - LLM Response length: 10355 characters
+2025-08-25 22:33:54,280 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-25 22:33:54,283 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-25 22:33:54,285 - __main__ - INFO - Analysis complete for submission 51
+2025-08-25 22:33:54,325 - adapters.storage.sqlite - INFO - Created report 32 for submission 51
+2025-08-25 22:33:54,326 - __main__ - INFO - Created report 32
+2025-08-25 22:33:54,349 - adapters.storage.sqlite - INFO - Updated submission 51: status=SubmissionStatus.COMPLETED
+2025-08-25 22:33:55,907 - adapters.notifications.telegram - INFO - Analysis report sent for submission 51
+2025-08-25 22:33:56,138 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-25 22:46:16,403 - utils.logger - INFO - Logging system initialized successfully
+2025-08-25 22:46:18,023 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-25 22:46:18,024 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-25 22:46:18,852 - __main__ - INFO - Initializing adapters...
+2025-08-25 22:46:18,853 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-25 22:46:18,857 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-25 22:46:18,858 - __main__ - INFO - Storage adapter initialized
+2025-08-25 22:46:19,060 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-25 22:46:19,061 - __main__ - INFO - Repository adapter initialized
+2025-08-25 22:46:19,062 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-25 22:46:19,064 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-25 22:46:19,065 - __main__ - INFO - Analyzer adapter initialized
+2025-08-25 22:46:19,066 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-25 22:46:20,080 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-25 22:46:20,081 - __main__ - INFO - Notification adapter initialized
+2025-08-25 22:46:20,701 - __main__ - INFO - Cleared any existing webhooks
+2025-08-25 22:46:20,703 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-25 22:46:51,072 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 22:46:53,437 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/rezadev8/otp-auth-golang
+2025-08-25 22:46:53,439 - utils.validators - INFO - Successfully validated GitHub URL: rezadev8/otp-auth-golang
+2025-08-25 22:46:55,629 - __main__ - INFO - Starting analysis for https://github.com/rezadev8/otp-auth-golang as backend
+2025-08-25 22:46:55,847 - __main__ - INFO - Found existing submission 50, removing it
+2025-08-25 22:46:55,888 - adapters.storage.sqlite - INFO - Deleted submission 50 and 1 associated reports
+2025-08-25 22:46:56,147 - adapters.storage.sqlite - INFO - Created submission 52 for user ***ID_MASKED***
+2025-08-25 22:46:56,148 - __main__ - INFO - Created submission 52
+2025-08-25 22:46:56,170 - adapters.storage.sqlite - INFO - Updated submission 52: status=SubmissionStatus.ANALYZING
+2025-08-25 22:46:56,361 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/rezadev8/otp-auth-golang for role: backend
+2025-08-25 22:46:56,362 - adapters.repositories.github - INFO - Cloning repository: https://github.com/rezadev8/otp-auth-golang (attempt 1/3)
+2025-08-25 22:46:58,368 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-25 22:46:58,370 - adapters.repositories.github - INFO - Repository size: 0.12MB
+2025-08-25 22:46:58,371 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-25 22:46:58,398 - adapters.repositories.github - INFO - Extracted files - Critical: 21, Important: 0, Useful: 0, Total unique: 21
+2025-08-25 22:46:58,399 - adapters.repositories.github - INFO - Extracted 21 files using patterns
+2025-08-25 22:46:58,400 - adapters.repositories.github - INFO - Raw content: 20847 tokens
+2025-08-25 22:46:58,412 - adapters.repositories.github - INFO - Successfully processed repository: 21 files, 20847 tokens
+2025-08-25 22:46:58,413 - __main__ - INFO - Fetched repository: 21 files
+2025-08-25 22:46:58,886 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/rezadev8/otp-auth-golang)
+2025-08-25 22:46:58,887 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-25 22:46:58,888 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-25 22:46:58,889 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-25 22:46:58,897 - utils.prompts - ERROR - Missing required parameter for prompt analysis/senior_backend_analysis.md: '\n     "issues_found"'
+2025-08-25 22:46:58,899 - adapters.analyzers.openrouter - WARNING - Failed to load external prompt, using fallback: Missing required parameter for prompt analysis/senior_backend_analysis.md: '\n     "issues_found"'
+2025-08-25 22:46:58,900 - adapters.analyzers.openrouter - INFO - Total content size: 75012 characters, 21 files
+2025-08-25 22:47:07,817 - adapters.analyzers.openrouter - INFO - LLM Response length: 5458 characters
+2025-08-25 22:47:07,818 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-25 22:47:07,820 - adapters.analyzers.openrouter - WARNING - Creating missing penalty_breakdown structure
+2025-08-25 22:47:07,822 - adapters.analyzers.openrouter - WARNING - penalty_breakdown missing or empty, extracting from feedback
+2025-08-25 22:47:07,824 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-25 22:47:07,826 - __main__ - INFO - Analysis complete for submission 52
+2025-08-25 22:47:07,862 - adapters.storage.sqlite - INFO - Created report 33 for submission 52
+2025-08-25 22:47:07,863 - __main__ - INFO - Created report 33
+2025-08-25 22:47:07,880 - adapters.storage.sqlite - INFO - Updated submission 52: status=SubmissionStatus.COMPLETED
+2025-08-25 22:47:10,095 - adapters.notifications.telegram - INFO - Analysis report sent for submission 52
+2025-08-25 22:47:10,369 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-25 23:09:36,270 - utils.logger - INFO - Logging system initialized successfully
+2025-08-25 23:09:38,011 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-25 23:09:38,012 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-25 23:09:38,845 - __main__ - INFO - Initializing adapters...
+2025-08-25 23:09:38,846 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-25 23:09:38,850 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-25 23:09:38,851 - __main__ - INFO - Storage adapter initialized
+2025-08-25 23:09:39,067 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-25 23:09:39,069 - __main__ - INFO - Repository adapter initialized
+2025-08-25 23:09:39,070 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-25 23:09:39,072 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-25 23:09:39,073 - __main__ - INFO - Analyzer adapter initialized
+2025-08-25 23:09:39,074 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-25 23:09:39,966 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-25 23:09:39,968 - __main__ - INFO - Notification adapter initialized
+2025-08-25 23:09:40,567 - __main__ - INFO - Cleared any existing webhooks
+2025-08-25 23:09:40,568 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-25 23:09:42,231 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 23:09:45,438 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/rezadev8/otp-auth-golang
+2025-08-25 23:09:45,440 - utils.validators - INFO - Successfully validated GitHub URL: rezadev8/otp-auth-golang
+2025-08-25 23:09:55,151 - __main__ - INFO - Starting analysis for https://github.com/rezadev8/otp-auth-golang as backend
+2025-08-25 23:09:55,427 - __main__ - INFO - Found existing submission 52, removing it
+2025-08-25 23:09:55,462 - adapters.storage.sqlite - INFO - Deleted submission 52 and 1 associated reports
+2025-08-25 23:09:55,752 - adapters.storage.sqlite - INFO - Created submission 52 for user ***ID_MASKED***
+2025-08-25 23:09:55,753 - __main__ - INFO - Created submission 52
+2025-08-25 23:09:55,772 - adapters.storage.sqlite - INFO - Updated submission 52: status=SubmissionStatus.ANALYZING
+2025-08-25 23:09:55,986 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/rezadev8/otp-auth-golang for role: backend
+2025-08-25 23:09:55,988 - adapters.repositories.github - INFO - Cloning repository: https://github.com/rezadev8/otp-auth-golang (attempt 1/3)
+2025-08-25 23:09:57,575 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-25 23:09:57,576 - adapters.repositories.github - INFO - Repository size: 0.12MB
+2025-08-25 23:09:57,577 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-25 23:09:57,605 - adapters.repositories.github - INFO - Extracted files - Critical: 21, Important: 0, Useful: 0, Total unique: 21
+2025-08-25 23:09:57,607 - adapters.repositories.github - INFO - Extracted 21 files using patterns
+2025-08-25 23:09:57,608 - adapters.repositories.github - INFO - Raw content: 20847 tokens
+2025-08-25 23:09:57,617 - adapters.repositories.github - INFO - Successfully processed repository: 21 files, 20847 tokens
+2025-08-25 23:09:57,619 - __main__ - INFO - Fetched repository: 21 files
+2025-08-25 23:09:57,817 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/rezadev8/otp-auth-golang)
+2025-08-25 23:09:57,819 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-25 23:09:57,820 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-25 23:09:57,821 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-25 23:09:57,827 - adapters.analyzers.openrouter - INFO - Total content size: 75012 characters, 21 files
+2025-08-25 23:10:11,567 - adapters.analyzers.openrouter - INFO - LLM Response length: 9759 characters
+2025-08-25 23:10:11,569 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-25 23:10:11,574 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-25 23:10:11,575 - __main__ - INFO - Analysis complete for submission 52
+2025-08-25 23:10:11,609 - adapters.storage.sqlite - INFO - Created report 33 for submission 52
+2025-08-25 23:10:11,610 - __main__ - INFO - Created report 33
+2025-08-25 23:10:11,630 - adapters.storage.sqlite - INFO - Updated submission 52: status=SubmissionStatus.COMPLETED
+2025-08-25 23:10:13,332 - adapters.notifications.telegram - INFO - Analysis report sent for submission 52
+2025-08-25 23:10:13,677 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-25 23:40:26,182 - utils.logger - INFO - Logging system initialized successfully
+2025-08-25 23:40:27,877 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-25 23:40:27,878 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-25 23:40:28,709 - __main__ - INFO - Initializing adapters...
+2025-08-25 23:40:28,710 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-25 23:40:28,715 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-25 23:40:28,716 - __main__ - INFO - Storage adapter initialized
+2025-08-25 23:40:28,905 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-25 23:40:28,907 - __main__ - INFO - Repository adapter initialized
+2025-08-25 23:40:28,908 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-25 23:40:28,910 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-25 23:40:28,911 - __main__ - INFO - Analyzer adapter initialized
+2025-08-25 23:40:28,911 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-25 23:40:30,026 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-25 23:40:30,028 - __main__ - INFO - Notification adapter initialized
+2025-08-25 23:40:30,644 - __main__ - INFO - Cleared any existing webhooks
+2025-08-25 23:40:30,646 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-25 23:40:53,628 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 23:41:16,580 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/rezadev8/otp-auth-golang
+2025-08-25 23:41:16,582 - utils.validators - INFO - Successfully validated GitHub URL: rezadev8/otp-auth-golang
+2025-08-25 23:41:22,365 - __main__ - INFO - Starting analysis for https://github.com/rezadev8/otp-auth-golang as backend
+2025-08-25 23:41:22,670 - __main__ - INFO - Found existing submission 52, removing it
+2025-08-25 23:41:22,705 - adapters.storage.sqlite - INFO - Deleted submission 52 and 1 associated reports
+2025-08-25 23:41:22,946 - adapters.storage.sqlite - INFO - Created submission 52 for user ***ID_MASKED***
+2025-08-25 23:41:22,947 - __main__ - INFO - Created submission 52
+2025-08-25 23:41:22,972 - adapters.storage.sqlite - INFO - Updated submission 52: status=SubmissionStatus.ANALYZING
+2025-08-25 23:41:23,213 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/rezadev8/otp-auth-golang for role: backend
+2025-08-25 23:41:23,214 - adapters.repositories.github - INFO - Cloning repository: https://github.com/rezadev8/otp-auth-golang (attempt 1/3)
+2025-08-25 23:41:24,756 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-25 23:41:24,757 - adapters.repositories.github - INFO - Repository size: 0.12MB
+2025-08-25 23:41:24,758 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-25 23:41:24,789 - adapters.repositories.github - INFO - Extracted files - Critical: 21, Important: 0, Useful: 0, Total unique: 21
+2025-08-25 23:41:24,790 - adapters.repositories.github - INFO - Extracted 21 files using patterns
+2025-08-25 23:41:24,791 - adapters.repositories.github - INFO - Raw content: 20847 tokens
+2025-08-25 23:41:24,801 - adapters.repositories.github - INFO - Successfully processed repository: 21 files, 20847 tokens
+2025-08-25 23:41:24,803 - __main__ - INFO - Fetched repository: 21 files
+2025-08-25 23:41:25,047 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/rezadev8/otp-auth-golang)
+2025-08-25 23:41:25,049 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-25 23:41:25,050 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-25 23:41:25,051 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-25 23:41:25,059 - adapters.analyzers.openrouter - INFO - Total content size: 75012 characters, 21 files
+2025-08-25 23:41:42,946 - adapters.analyzers.openrouter - INFO - LLM Response length: 13197 characters
+2025-08-25 23:41:42,948 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-25 23:41:42,950 - adapters.analyzers.openrouter - WARNING - Critical issue detected: 'Missing proper database' - ensuring minimum penalty of 40
+2025-08-25 23:41:42,953 - adapters.analyzers.openrouter - INFO - Aligning penalty score with breakdown: 180 → 220
+2025-08-25 23:41:42,955 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-25 23:41:42,956 - __main__ - INFO - Analysis complete for submission 52
+2025-08-25 23:41:42,997 - adapters.storage.sqlite - INFO - Created report 33 for submission 52
+2025-08-25 23:41:42,999 - __main__ - INFO - Created report 33
+2025-08-25 23:41:43,021 - adapters.storage.sqlite - INFO - Updated submission 52: status=SubmissionStatus.COMPLETED
+2025-08-25 23:41:45,164 - adapters.notifications.telegram - INFO - Analysis report sent for submission 52
+2025-08-25 23:41:45,397 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-25 23:44:28,504 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 23:45:04,705 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/majidbl/aaa
+2025-08-25 23:45:04,706 - utils.validators - INFO - Successfully validated GitHub URL: majidbl/aaa
+2025-08-25 23:45:13,252 - __main__ - INFO - Starting analysis for https://github.com/majidbl/aaa as backend
+2025-08-25 23:45:13,525 - __main__ - INFO - Found existing submission 46, removing it
+2025-08-25 23:45:13,559 - adapters.storage.sqlite - INFO - Deleted submission 46 and 1 associated reports
+2025-08-25 23:45:15,661 - adapters.storage.sqlite - INFO - Created submission 53 for user ***ID_MASKED***
+2025-08-25 23:45:15,662 - __main__ - INFO - Created submission 53
+2025-08-25 23:45:15,688 - adapters.storage.sqlite - INFO - Updated submission 53: status=SubmissionStatus.ANALYZING
+2025-08-25 23:45:16,163 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/majidbl/aaa for role: backend
+2025-08-25 23:45:16,165 - adapters.repositories.github - INFO - Cloning repository: https://github.com/majidbl/aaa (attempt 1/3)
+2025-08-25 23:45:20,694 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-25 23:45:20,696 - adapters.repositories.github - INFO - Repository size: 0.17MB
+2025-08-25 23:45:20,697 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-25 23:45:20,729 - adapters.repositories.github - INFO - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+2025-08-25 23:45:20,730 - adapters.repositories.github - INFO - Extracted 30 files using patterns
+2025-08-25 23:45:20,732 - adapters.repositories.github - INFO - Raw content: 33481 tokens
+2025-08-25 23:45:20,746 - adapters.repositories.github - INFO - Successfully processed repository: 30 files, 33481 tokens
+2025-08-25 23:45:20,747 - __main__ - INFO - Fetched repository: 30 files
+2025-08-25 23:45:23,246 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/majidbl/aaa)
+2025-08-25 23:45:23,247 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-25 23:45:23,248 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-25 23:45:23,250 - adapters.analyzers.openrouter - INFO - Total content size: ***ID_MASKED*** characters, 30 files
+2025-08-25 23:45:45,191 - adapters.analyzers.openrouter - INFO - LLM Response length: 13030 characters
+2025-08-25 23:45:45,192 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-25 23:45:45,193 - adapters.analyzers.openrouter - INFO - Skipping architecture penalty - proper architecture pattern detected in feedback
+2025-08-25 23:45:45,194 - adapters.analyzers.openrouter - WARNING - Critical issue detected: 'Missing docker-compose' - ensuring minimum penalty of 40
+2025-08-25 23:45:45,195 - adapters.analyzers.openrouter - WARNING - Critical issue detected: 'Hardcoded/exposed secrets' - ensuring minimum penalty of 45
+2025-08-25 23:45:45,196 - adapters.analyzers.openrouter - INFO - Aligning penalty score with breakdown: 75 → 160
+2025-08-25 23:45:45,198 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-25 23:45:45,200 - __main__ - INFO - Analysis complete for submission 53
+2025-08-25 23:45:45,229 - adapters.storage.sqlite - INFO - Created report 34 for submission 53
+2025-08-25 23:45:45,231 - __main__ - INFO - Created report 34
+2025-08-25 23:45:45,248 - adapters.storage.sqlite - INFO - Updated submission 53: status=SubmissionStatus.COMPLETED
+2025-08-25 23:45:47,255 - adapters.notifications.telegram - INFO - Analysis report sent for submission 53
+2025-08-25 23:45:47,559 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-26 00:04:53,247 - utils.logger - INFO - Logging system initialized successfully
+2025-08-26 00:04:55,196 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-26 00:04:55,196 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-26 00:04:56,113 - __main__ - INFO - Initializing adapters...
+2025-08-26 00:04:56,114 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 00:04:56,118 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 00:04:56,119 - __main__ - INFO - Storage adapter initialized
+2025-08-26 00:04:56,328 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 00:04:56,329 - __main__ - INFO - Repository adapter initialized
+2025-08-26 00:04:56,331 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 00:04:56,332 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 00:04:56,333 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 00:04:56,334 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 00:04:57,217 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-26 00:04:57,218 - __main__ - INFO - Notification adapter initialized
+2025-08-26 00:04:57,787 - __main__ - INFO - Cleared any existing webhooks
+2025-08-26 00:04:57,788 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-26 00:05:18,169 - utils.logger - INFO - Logging system initialized successfully
+2025-08-26 00:05:19,963 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-26 00:05:19,964 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-26 00:05:20,828 - __main__ - INFO - Initializing adapters...
+2025-08-26 00:05:20,829 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 00:05:20,832 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 00:05:20,834 - __main__ - INFO - Storage adapter initialized
+2025-08-26 00:05:21,031 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 00:05:21,032 - __main__ - INFO - Repository adapter initialized
+2025-08-26 00:05:21,034 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 00:05:21,035 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 00:05:21,036 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 00:05:21,037 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 00:05:21,934 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-26 00:05:21,935 - __main__ - INFO - Notification adapter initialized
+2025-08-26 00:05:22,470 - __main__ - INFO - Cleared any existing webhooks
+2025-08-26 00:05:22,472 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-26 00:05:29,840 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 00:05:39,134 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/majidbl/aaa
+2025-08-26 00:05:39,136 - utils.validators - INFO - Successfully validated GitHub URL: majidbl/aaa
+2025-08-26 00:05:41,454 - __main__ - INFO - Starting analysis for https://github.com/majidbl/aaa as backend
+2025-08-26 00:05:41,678 - __main__ - INFO - Found existing submission 53, removing it
+2025-08-26 00:05:41,721 - adapters.storage.sqlite - INFO - Deleted submission 53 and 1 associated reports
+2025-08-26 00:05:41,972 - adapters.storage.sqlite - INFO - Created submission 53 for user ***ID_MASKED***
+2025-08-26 00:05:41,973 - __main__ - INFO - Created submission 53
+2025-08-26 00:05:41,994 - adapters.storage.sqlite - INFO - Updated submission 53: status=SubmissionStatus.ANALYZING
+2025-08-26 00:05:42,239 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/majidbl/aaa for role: backend
+2025-08-26 00:05:42,241 - adapters.repositories.github - INFO - Cloning repository: https://github.com/majidbl/aaa (attempt 1/3)
+2025-08-26 00:05:43,910 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-26 00:05:43,912 - adapters.repositories.github - INFO - Repository size: 0.17MB
+2025-08-26 00:05:43,913 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-26 00:05:43,951 - adapters.repositories.github - INFO - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+2025-08-26 00:05:43,953 - adapters.repositories.github - INFO - Extracted 30 files using patterns
+2025-08-26 00:05:43,954 - adapters.repositories.github - INFO - Raw content: 33481 tokens
+2025-08-26 00:05:43,965 - adapters.repositories.github - INFO - Successfully processed repository: 30 files, 33481 tokens
+2025-08-26 00:05:43,967 - __main__ - INFO - Fetched repository: 30 files
+2025-08-26 00:05:44,179 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/majidbl/aaa)
+2025-08-26 00:05:44,180 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-26 00:05:44,182 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-26 00:05:44,184 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-26 00:05:44,193 - adapters.analyzers.openrouter - INFO - Total content size: ***ID_MASKED*** characters, 30 files
+2025-08-26 00:06:02,424 - adapters.analyzers.openrouter - INFO - LLM Response length: 12612 characters
+2025-08-26 00:06:02,426 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-26 00:06:02,427 - adapters.analyzers.openrouter - INFO - LLM reported requirements: repo=False, service=False, redis=False, db=False, arch=False
+2025-08-26 00:06:02,431 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-26 00:06:02,432 - __main__ - INFO - Analysis complete for submission 53
+2025-08-26 00:06:02,463 - adapters.storage.sqlite - INFO - Created report 34 for submission 53
+2025-08-26 00:06:02,464 - __main__ - INFO - Created report 34
+2025-08-26 00:06:02,482 - adapters.storage.sqlite - INFO - Updated submission 53: status=SubmissionStatus.COMPLETED
+2025-08-26 00:06:05,034 - adapters.notifications.telegram - INFO - Analysis report sent for submission 53
+2025-08-26 00:06:05,291 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-26 00:13:43,830 - utils.logger - INFO - Logging system initialized successfully
+2025-08-26 00:13:45,568 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-26 00:13:45,569 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-26 00:13:46,438 - __main__ - INFO - Initializing adapters...
+2025-08-26 00:13:46,439 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 00:13:46,444 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 00:13:46,445 - __main__ - INFO - Storage adapter initialized
+2025-08-26 00:13:46,651 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 00:13:46,652 - __main__ - INFO - Repository adapter initialized
+2025-08-26 00:13:46,654 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 00:13:46,655 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 00:13:46,657 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 00:13:46,659 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 00:13:50,965 - adapters.notifications.telegram - ERROR - Failed to initialize Telegram bot: httpx.ConnectError: 
+2025-08-26 00:13:50,969 - __main__ - ERROR - Bot crashed with error: Failed to initialize Telegram bot: httpx.ConnectError: 
+2025-08-26 00:13:51,208 - __main__ - ERROR - Full traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 101, in handle_async_request
+    raise exc
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 156, in _connect
+    stream = await stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 67, in start_tls
+    with map_exceptions(exc_map):
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 273, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/adapters/notifications/telegram.py", line 125, in initialize
+    bot_info = await self.bot.get_me()
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 1981, in get_me
+    return await super().get_me(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 976, in get_me
+    result = await self._post(
+             ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: 
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 1284, in <module>
+    main()
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 1196, in main
+    loop.run_until_complete(initialize_adapters())
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 1154, in initialize_adapters
+    await notification_adapter.initialize()
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/adapters/notifications/telegram.py", line 132, in initialize
+    raise NotificationError(error_msg)
+core.exceptions.NotificationError: Failed to initialize Telegram bot: httpx.ConnectError: 
+
+2025-08-26 00:13:51,212 - __main__ - WARNING - Bot will restart in 5 seconds (attempt #2)...
+2025-08-26 00:13:51,213 - __main__ - WARNING - The bot will keep trying to recover automatically.
+2025-08-26 00:13:56,214 - __main__ - INFO - Attempting to restart bot...
+2025-08-26 00:13:56,217 - __main__ - INFO - Starting bot (attempt #2)...
+2025-08-26 00:13:56,219 - __main__ - INFO - Starting CV Review Bot...
+2025-08-26 00:13:56,489 - __main__ - INFO - Initializing adapters...
+2025-08-26 00:13:56,490 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 00:13:56,494 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 00:13:56,495 - __main__ - INFO - Storage adapter initialized
+2025-08-26 00:13:56,496 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 00:13:56,497 - __main__ - INFO - Repository adapter initialized
+2025-08-26 00:13:56,498 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 00:13:56,498 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 00:13:56,499 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 00:13:56,500 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 00:13:58,518 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-26 00:13:58,519 - __main__ - INFO - Notification adapter initialized
+2025-08-26 00:14:00,025 - __main__ - INFO - Cleared any existing webhooks
+2025-08-26 00:14:00,026 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-26 00:14:04,902 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 00:14:32,243 - utils.logger - INFO - Logging system initialized successfully
+2025-08-26 00:14:34,020 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-26 00:14:34,020 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-26 00:14:34,805 - __main__ - INFO - Initializing adapters...
+2025-08-26 00:14:34,805 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 00:14:34,809 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 00:14:34,810 - __main__ - INFO - Storage adapter initialized
+2025-08-26 00:14:35,031 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 00:14:35,032 - __main__ - INFO - Repository adapter initialized
+2025-08-26 00:14:35,033 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 00:14:35,034 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 00:14:35,036 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 00:14:35,037 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 00:14:35,928 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-26 00:14:35,929 - __main__ - INFO - Notification adapter initialized
+2025-08-26 00:14:36,463 - __main__ - INFO - Cleared any existing webhooks
+2025-08-26 00:14:36,464 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-26 00:14:41,523 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 00:14:47,811 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/majidbl/aaa
+2025-08-26 00:14:47,812 - utils.validators - INFO - Successfully validated GitHub URL: majidbl/aaa
+2025-08-26 00:14:50,362 - __main__ - INFO - Starting analysis for https://github.com/majidbl/aaa as backend
+2025-08-26 00:14:50,655 - __main__ - INFO - Found existing submission 53, removing it
+2025-08-26 00:14:50,678 - adapters.storage.sqlite - INFO - Deleted submission 53 and 1 associated reports
+2025-08-26 00:14:51,012 - adapters.storage.sqlite - INFO - Created submission 53 for user ***ID_MASKED***
+2025-08-26 00:14:51,013 - __main__ - INFO - Created submission 53
+2025-08-26 00:14:51,031 - adapters.storage.sqlite - INFO - Updated submission 53: status=SubmissionStatus.ANALYZING
+2025-08-26 00:14:51,297 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/majidbl/aaa for role: backend
+2025-08-26 00:14:51,299 - adapters.repositories.github - INFO - Cloning repository: https://github.com/majidbl/aaa (attempt 1/3)
+2025-08-26 00:14:52,954 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-26 00:14:52,956 - adapters.repositories.github - INFO - Repository size: 0.17MB
+2025-08-26 00:14:52,957 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-26 00:14:52,995 - adapters.repositories.github - INFO - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+2025-08-26 00:14:52,997 - adapters.repositories.github - INFO - Extracted 30 files using patterns
+2025-08-26 00:14:52,998 - adapters.repositories.github - INFO - Raw content: 33481 tokens
+2025-08-26 00:14:53,009 - adapters.repositories.github - INFO - Successfully processed repository: 30 files, 33481 tokens
+2025-08-26 00:14:53,011 - __main__ - INFO - Fetched repository: 30 files
+2025-08-26 00:14:53,321 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/majidbl/aaa)
+2025-08-26 00:14:53,322 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-26 00:14:53,324 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-26 00:14:53,324 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-26 00:14:53,329 - adapters.analyzers.openrouter - INFO - Total content size: ***ID_MASKED*** characters, 30 files
+2025-08-26 00:15:08,456 - adapters.analyzers.openrouter - INFO - LLM Response length: 11036 characters
+2025-08-26 00:15:08,459 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-26 00:15:08,460 - adapters.analyzers.openrouter - INFO - LLM requirements_implementation found with 10 items
+2025-08-26 00:15:08,461 - adapters.analyzers.openrouter - WARNING - Capping JWT penalty from 45 to 20
+2025-08-26 00:15:08,462 - adapters.analyzers.openrouter - INFO - LLM reported requirements: repo=False, service=False, redis=True, db=False, arch=True
+2025-08-26 00:15:08,464 - adapters.analyzers.openrouter - INFO - Skipping architecture penalty - proper architecture pattern detected in feedback
+2025-08-26 00:15:08,465 - adapters.analyzers.openrouter - INFO - Skipping 'Only in-memory storage (no Redis/DB)' penalty - LLM confirmed Redis implementation exists
+2025-08-26 00:15:08,466 - adapters.analyzers.openrouter - INFO - Skipping 'Missing Redis implementation' penalty - LLM confirmed Redis implementation exists
+2025-08-26 00:15:08,468 - adapters.analyzers.openrouter - WARNING - Critical issue detected: 'Hardcoded/exposed secrets' - ensuring minimum penalty of 45
+2025-08-26 00:15:08,469 - adapters.analyzers.openrouter - INFO - Aligning penalty score with breakdown: 105 → 125
+2025-08-26 00:15:08,470 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+2025-08-26 00:15:08,472 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-26 00:15:08,473 - __main__ - INFO - Analysis complete for submission 53
+2025-08-26 00:15:08,507 - adapters.storage.sqlite - INFO - Created report 34 for submission 53
+2025-08-26 00:15:08,508 - __main__ - INFO - Created report 34
+2025-08-26 00:15:08,526 - adapters.storage.sqlite - INFO - Updated submission 53: status=SubmissionStatus.COMPLETED
+2025-08-26 00:15:10,109 - adapters.notifications.telegram - INFO - Analysis report sent for submission 53
+2025-08-26 00:15:10,370 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-26 00:20:11,146 - utils.logger - INFO - Logging system initialized successfully
+2025-08-26 00:20:12,696 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-26 00:20:12,697 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-26 00:20:13,478 - __main__ - INFO - Initializing adapters...
+2025-08-26 00:20:13,479 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 00:20:13,485 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 00:20:13,487 - __main__ - INFO - Storage adapter initialized
+2025-08-26 00:20:13,698 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 00:20:13,700 - __main__ - INFO - Repository adapter initialized
+2025-08-26 00:20:13,702 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 00:20:13,703 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 00:20:13,705 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 00:20:13,707 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 00:20:14,607 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-26 00:20:14,608 - __main__ - INFO - Notification adapter initialized
+2025-08-26 00:20:15,205 - __main__ - INFO - Cleared any existing webhooks
+2025-08-26 00:20:15,207 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-26 00:20:17,411 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 00:20:22,550 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/majidbl/aaa
+2025-08-26 00:20:22,553 - utils.validators - INFO - Successfully validated GitHub URL: majidbl/aaa
+2025-08-26 00:20:24,600 - __main__ - INFO - Starting analysis for https://github.com/majidbl/aaa as backend
+2025-08-26 00:20:24,882 - __main__ - INFO - Found existing submission 53, removing it
+2025-08-26 00:20:24,922 - adapters.storage.sqlite - INFO - Deleted submission 53 and 1 associated reports
+2025-08-26 00:20:25,276 - adapters.storage.sqlite - INFO - Created submission 53 for user ***ID_MASKED***
+2025-08-26 00:20:25,277 - __main__ - INFO - Created submission 53
+2025-08-26 00:20:25,298 - adapters.storage.sqlite - INFO - Updated submission 53: status=SubmissionStatus.ANALYZING
+2025-08-26 00:20:25,599 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/majidbl/aaa for role: backend
+2025-08-26 00:20:25,601 - adapters.repositories.github - INFO - Cloning repository: https://github.com/majidbl/aaa (attempt 1/3)
+2025-08-26 00:20:27,170 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-26 00:20:27,171 - adapters.repositories.github - INFO - Repository size: 0.17MB
+2025-08-26 00:20:27,173 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-26 00:20:27,206 - adapters.repositories.github - INFO - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+2025-08-26 00:20:27,207 - adapters.repositories.github - INFO - Extracted 30 files using patterns
+2025-08-26 00:20:27,209 - adapters.repositories.github - INFO - Raw content: 33481 tokens
+2025-08-26 00:20:27,220 - adapters.repositories.github - INFO - Successfully processed repository: 30 files, 33481 tokens
+2025-08-26 00:20:27,221 - __main__ - INFO - Fetched repository: 30 files
+2025-08-26 00:20:27,457 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/majidbl/aaa)
+2025-08-26 00:20:27,458 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-26 00:20:27,460 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-26 00:20:27,462 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-26 00:20:27,470 - adapters.analyzers.openrouter - INFO - Total content size: ***ID_MASKED*** characters, 30 files
+2025-08-26 00:20:43,124 - adapters.analyzers.openrouter - INFO - LLM Response length: 11024 characters
+2025-08-26 00:20:43,127 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-26 00:20:43,129 - adapters.analyzers.openrouter - INFO - LLM requirements_implementation found with 10 items
+2025-08-26 00:20:43,131 - adapters.analyzers.openrouter - INFO - Converting requirements_implementation to requirements_met
+2025-08-26 00:20:43,133 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+2025-08-26 00:20:43,135 - adapters.analyzers.openrouter - INFO - LLM reported requirements: repo=True, service=True, redis=True, db=True, arch=True
+2025-08-26 00:20:43,137 - adapters.analyzers.openrouter - INFO - Skipping architecture penalty - proper architecture pattern detected in feedback
+2025-08-26 00:20:43,139 - adapters.analyzers.openrouter - INFO - Skipping 'Missing repository pattern' penalty - LLM confirmed repository pattern exists
+2025-08-26 00:20:43,140 - adapters.analyzers.openrouter - INFO - Skipping 'Missing service layer' penalty - LLM confirmed service layer exists
+2025-08-26 00:20:43,141 - adapters.analyzers.openrouter - INFO - Skipping 'Only in-memory storage (no Redis/DB)' penalty - LLM confirmed Redis implementation exists
+2025-08-26 00:20:43,142 - adapters.analyzers.openrouter - INFO - Skipping 'Missing Redis implementation' penalty - LLM confirmed Redis implementation exists
+2025-08-26 00:20:43,143 - adapters.analyzers.openrouter - INFO - Skipping 'Missing proper database' penalty - LLM confirmed database implementation exists
+2025-08-26 00:20:43,147 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+2025-08-26 00:20:43,148 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-26 00:20:43,149 - __main__ - INFO - Analysis complete for submission 53
+2025-08-26 00:20:43,184 - adapters.storage.sqlite - INFO - Created report 34 for submission 53
+2025-08-26 00:20:43,185 - __main__ - INFO - Created report 34
+2025-08-26 00:20:43,202 - adapters.storage.sqlite - INFO - Updated submission 53: status=SubmissionStatus.COMPLETED
+2025-08-26 00:20:44,977 - adapters.notifications.telegram - INFO - Analysis report sent for submission 53
+2025-08-26 00:20:45,255 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-26 00:22:54,401 - utils.logger - INFO - Logging system initialized successfully
+2025-08-26 00:22:56,324 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-26 00:22:56,325 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-26 00:22:57,262 - __main__ - INFO - Initializing adapters...
+2025-08-26 00:22:57,263 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 00:22:57,267 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 00:22:57,268 - __main__ - INFO - Storage adapter initialized
+2025-08-26 00:22:57,495 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 00:22:57,496 - __main__ - INFO - Repository adapter initialized
+2025-08-26 00:22:57,497 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 00:22:57,498 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 00:22:57,499 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 00:22:57,500 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 00:22:58,441 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-26 00:22:58,442 - __main__ - INFO - Notification adapter initialized
+2025-08-26 00:22:59,383 - __main__ - INFO - Cleared any existing webhooks
+2025-08-26 00:22:59,385 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-26 00:23:03,812 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 00:25:13,265 - utils.logger - INFO - Logging system initialized successfully
+2025-08-26 00:25:14,957 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-26 00:25:14,958 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-26 00:25:15,756 - __main__ - INFO - Initializing adapters...
+2025-08-26 00:25:15,757 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 00:25:15,761 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 00:25:15,762 - __main__ - INFO - Storage adapter initialized
+2025-08-26 00:25:15,974 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 00:25:15,976 - __main__ - INFO - Repository adapter initialized
+2025-08-26 00:25:15,977 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 00:25:15,979 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 00:25:15,980 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 00:25:15,982 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 00:25:16,825 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-26 00:25:16,826 - __main__ - INFO - Notification adapter initialized
+2025-08-26 00:25:17,456 - __main__ - INFO - Cleared any existing webhooks
+2025-08-26 00:25:17,458 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-26 00:25:18,884 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 00:25:23,678 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/majidbl/aaa
+2025-08-26 00:25:23,680 - utils.validators - INFO - Successfully validated GitHub URL: majidbl/aaa
+2025-08-26 00:25:25,623 - __main__ - INFO - Starting analysis for https://github.com/majidbl/aaa as backend
+2025-08-26 00:25:25,891 - __main__ - INFO - Found existing submission 53, removing it
+2025-08-26 00:25:25,934 - adapters.storage.sqlite - INFO - Deleted submission 53 and 1 associated reports
+2025-08-26 00:25:26,206 - adapters.storage.sqlite - INFO - Created submission 53 for user ***ID_MASKED***
+2025-08-26 00:25:26,207 - __main__ - INFO - Created submission 53
+2025-08-26 00:25:26,224 - adapters.storage.sqlite - INFO - Updated submission 53: status=SubmissionStatus.ANALYZING
+2025-08-26 00:25:26,473 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/majidbl/aaa for role: backend
+2025-08-26 00:25:26,476 - adapters.repositories.github - INFO - Cloning repository: https://github.com/majidbl/aaa (attempt 1/3)
+2025-08-26 00:25:28,149 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-26 00:25:28,151 - adapters.repositories.github - INFO - Repository size: 0.17MB
+2025-08-26 00:25:28,152 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-26 00:25:28,191 - adapters.repositories.github - INFO - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+2025-08-26 00:25:28,192 - adapters.repositories.github - INFO - Extracted 30 files using patterns
+2025-08-26 00:25:28,193 - adapters.repositories.github - INFO - Raw content: 33481 tokens
+2025-08-26 00:25:28,205 - adapters.repositories.github - INFO - Successfully processed repository: 30 files, 33481 tokens
+2025-08-26 00:25:28,206 - __main__ - INFO - Fetched repository: 30 files
+2025-08-26 00:25:28,438 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/majidbl/aaa)
+2025-08-26 00:25:28,440 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-26 00:25:28,441 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-26 00:25:28,442 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-26 00:25:28,452 - adapters.analyzers.openrouter - INFO - Total content size: ***ID_MASKED*** characters, 30 files
+2025-08-26 00:25:41,182 - adapters.analyzers.openrouter - INFO - LLM Response length: 11253 characters
+2025-08-26 00:25:41,184 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-26 00:25:41,185 - adapters.analyzers.openrouter - INFO - LLM requirements_implementation found with 10 items
+2025-08-26 00:25:41,186 - adapters.analyzers.openrouter - INFO - Converting requirements_implementation to requirements_met
+2025-08-26 00:25:41,187 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+2025-08-26 00:25:41,188 - adapters.analyzers.openrouter - INFO - LLM reported requirements: repo=True, service=True, redis=True, db=True, arch=True
+2025-08-26 00:25:41,189 - adapters.analyzers.openrouter - INFO - Skipping architecture penalty - proper architecture pattern detected in feedback
+2025-08-26 00:25:41,190 - adapters.analyzers.openrouter - INFO - Skipping 'Missing repository pattern' penalty - LLM confirmed repository pattern exists
+2025-08-26 00:25:41,191 - adapters.analyzers.openrouter - INFO - Skipping 'Missing service layer' penalty - LLM confirmed service layer exists
+2025-08-26 00:25:41,191 - adapters.analyzers.openrouter - INFO - Skipping 'Only in-memory storage (no Redis/DB)' penalty - LLM confirmed Redis implementation exists
+2025-08-26 00:25:41,192 - adapters.analyzers.openrouter - INFO - Skipping 'Missing Redis implementation' penalty - LLM confirmed Redis implementation exists
+2025-08-26 00:25:41,192 - adapters.analyzers.openrouter - INFO - Skipping 'Missing proper database' penalty - LLM confirmed database implementation exists
+2025-08-26 00:25:41,195 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+2025-08-26 00:25:41,196 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-26 00:25:41,197 - __main__ - INFO - Analysis complete for submission 53
+2025-08-26 00:25:41,228 - adapters.storage.sqlite - INFO - Created report 34 for submission 53
+2025-08-26 00:25:41,229 - __main__ - INFO - Created report 34
+2025-08-26 00:25:41,246 - adapters.storage.sqlite - INFO - Updated submission 53: status=SubmissionStatus.COMPLETED
+2025-08-26 00:25:42,960 - adapters.notifications.telegram - INFO - Analysis report sent for submission 53
+2025-08-26 00:25:43,192 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-26 00:40:31,852 - utils.logger - INFO - Logging system initialized successfully
+2025-08-26 00:40:33,512 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-26 00:40:33,512 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-26 00:40:34,359 - __main__ - INFO - Initializing adapters...
+2025-08-26 00:40:34,360 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 00:40:34,366 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 00:40:34,367 - __main__ - INFO - Storage adapter initialized
+2025-08-26 00:40:34,581 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 00:40:34,582 - __main__ - INFO - Repository adapter initialized
+2025-08-26 00:40:34,584 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 00:40:34,586 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 00:40:34,587 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 00:40:34,589 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 00:40:35,447 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-26 00:40:35,449 - __main__ - INFO - Notification adapter initialized
+2025-08-26 00:40:35,992 - __main__ - INFO - Cleared any existing webhooks
+2025-08-26 00:40:35,993 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-26 00:40:39,329 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 00:40:53,135 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/majidbl/aaa
+2025-08-26 00:40:53,136 - utils.validators - INFO - Successfully validated GitHub URL: majidbl/aaa
+2025-08-26 00:40:55,522 - __main__ - INFO - Starting analysis for https://github.com/majidbl/aaa as backend
+2025-08-26 00:40:55,740 - __main__ - INFO - Found existing submission 53, removing it
+2025-08-26 00:40:55,782 - adapters.storage.sqlite - INFO - Deleted submission 53 and 1 associated reports
+2025-08-26 00:40:56,071 - adapters.storage.sqlite - INFO - Created submission 53 for user ***ID_MASKED***
+2025-08-26 00:40:56,072 - __main__ - INFO - Created submission 53
+2025-08-26 00:40:56,092 - adapters.storage.sqlite - INFO - Updated submission 53: status=SubmissionStatus.ANALYZING
+2025-08-26 00:40:56,309 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/majidbl/aaa for role: backend
+2025-08-26 00:40:56,311 - adapters.repositories.github - INFO - Cloning repository: https://github.com/majidbl/aaa (attempt 1/3)
+2025-08-26 00:40:57,958 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-26 00:40:57,960 - adapters.repositories.github - INFO - Repository size: 0.17MB
+2025-08-26 00:40:57,961 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-26 00:40:58,001 - adapters.repositories.github - INFO - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+2025-08-26 00:40:58,002 - adapters.repositories.github - INFO - Extracted 30 files using patterns
+2025-08-26 00:40:58,003 - adapters.repositories.github - INFO - Raw content: 33481 tokens
+2025-08-26 00:40:58,015 - adapters.repositories.github - INFO - Successfully processed repository: 30 files, 33481 tokens
+2025-08-26 00:40:58,016 - __main__ - INFO - Fetched repository: 30 files
+2025-08-26 00:40:58,211 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/majidbl/aaa)
+2025-08-26 00:40:58,212 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-26 00:40:58,214 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-26 00:40:58,215 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-26 00:40:58,222 - adapters.analyzers.openrouter - INFO - Total content size: ***ID_MASKED*** characters, 30 files
+2025-08-26 00:41:15,811 - adapters.analyzers.openrouter - INFO - LLM Response length: 11570 characters
+2025-08-26 00:41:15,814 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-26 00:41:15,816 - adapters.analyzers.openrouter - INFO - LLM requirements_implementation found with 10 items
+2025-08-26 00:41:15,818 - adapters.analyzers.openrouter - INFO - Converting requirements_implementation to requirements_met
+2025-08-26 00:41:15,820 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+2025-08-26 00:41:15,821 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+2025-08-26 00:41:15,824 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-26 00:41:15,826 - __main__ - INFO - Analysis complete for submission 53
+2025-08-26 00:41:15,863 - adapters.storage.sqlite - INFO - Created report 34 for submission 53
+2025-08-26 00:41:15,864 - __main__ - INFO - Created report 34
+2025-08-26 00:41:15,883 - adapters.storage.sqlite - INFO - Updated submission 53: status=SubmissionStatus.COMPLETED
+2025-08-26 00:41:17,532 - adapters.notifications.telegram - INFO - Analysis report sent for submission 53
+2025-08-26 00:41:17,754 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-26 00:42:13,856 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 00:42:22,422 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/rezadev8/otp-auth-golang
+2025-08-26 00:42:22,424 - utils.validators - INFO - Successfully validated GitHub URL: rezadev8/otp-auth-golang
+2025-08-26 00:42:24,735 - __main__ - INFO - Starting analysis for https://github.com/rezadev8/otp-auth-golang as backend
+2025-08-26 00:42:24,963 - __main__ - INFO - Found existing submission 52, removing it
+2025-08-26 00:42:25,005 - adapters.storage.sqlite - INFO - Deleted submission 52 and 1 associated reports
+2025-08-26 00:42:25,302 - adapters.storage.sqlite - INFO - Created submission 54 for user ***ID_MASKED***
+2025-08-26 00:42:25,303 - __main__ - INFO - Created submission 54
+2025-08-26 00:42:25,321 - adapters.storage.sqlite - INFO - Updated submission 54: status=SubmissionStatus.ANALYZING
+2025-08-26 00:42:25,515 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/rezadev8/otp-auth-golang for role: backend
+2025-08-26 00:42:25,517 - adapters.repositories.github - INFO - Cloning repository: https://github.com/rezadev8/otp-auth-golang (attempt 1/3)
+2025-08-26 00:42:27,082 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-26 00:42:27,084 - adapters.repositories.github - INFO - Repository size: 0.12MB
+2025-08-26 00:42:27,084 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-26 00:42:27,106 - adapters.repositories.github - INFO - Extracted files - Critical: 21, Important: 0, Useful: 0, Total unique: 21
+2025-08-26 00:42:27,108 - adapters.repositories.github - INFO - Extracted 21 files using patterns
+2025-08-26 00:42:27,109 - adapters.repositories.github - INFO - Raw content: 20847 tokens
+2025-08-26 00:42:27,121 - adapters.repositories.github - INFO - Successfully processed repository: 21 files, 20847 tokens
+2025-08-26 00:42:27,122 - __main__ - INFO - Fetched repository: 21 files
+2025-08-26 00:42:27,426 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/rezadev8/otp-auth-golang)
+2025-08-26 00:42:27,427 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-26 00:42:27,429 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-26 00:42:27,430 - adapters.analyzers.openrouter - INFO - Total content size: 75012 characters, 21 files
+2025-08-26 00:42:42,166 - adapters.analyzers.openrouter - INFO - LLM Response length: 11521 characters
+2025-08-26 00:42:42,167 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-26 00:42:42,168 - adapters.analyzers.openrouter - INFO - LLM requirements_implementation found with 10 items
+2025-08-26 00:42:42,169 - adapters.analyzers.openrouter - INFO - Converting requirements_implementation to requirements_met
+2025-08-26 00:42:42,170 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': False, 'service_layer': True, 'redis_implementation': False, 'database_implementation': False, 'dockerization': True}
+2025-08-26 00:42:42,171 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': False, 'service_layer': True, 'redis_implementation': False, 'database_implementation': False, 'dockerization': True}
+2025-08-26 00:42:42,173 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-26 00:42:42,174 - __main__ - INFO - Analysis complete for submission 54
+2025-08-26 00:42:42,294 - adapters.storage.sqlite - INFO - Created report 35 for submission 54
+2025-08-26 00:42:42,295 - __main__ - INFO - Created report 35
+2025-08-26 00:42:42,314 - adapters.storage.sqlite - INFO - Updated submission 54: status=SubmissionStatus.COMPLETED
+2025-08-26 00:42:43,971 - adapters.notifications.telegram - INFO - Analysis report sent for submission 54
+2025-08-26 00:42:44,263 - adapters.repositories.github - INFO - GitHub adapter cleanup completed

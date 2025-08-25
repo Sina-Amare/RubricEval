@@ -407,8 +407,19 @@ class SQLiteAdapter(StorageAdapter):
                     else:
                         # Fallback based on scores if recommendation is unexpected
                         scores = report.analysis_result.scores
-                        avg_score = sum(scores.values()) / len(scores) if scores else 0
-                        if avg_score >= 60:
+                        
+                        # Calculate average of positive metrics only
+                        positive_keys = ['task_completion', 'code_quality', 'seniority_indicators']
+                        positive_scores = [scores.get(k, 0) for k in positive_keys if k in scores]
+                        avg_score = sum(positive_scores) / len(positive_scores) if positive_scores else 0
+                        
+                        # Check critical issues
+                        penalty = scores.get('critical_issues_penalty', 0)
+                        
+                        if penalty >= 50:
+                            logger.warning(f"Unknown recommendation '{llm_rec}', using REJECT due to critical issues (penalty: {penalty})")
+                            db_recommendation = 'REJECT'
+                        elif avg_score >= 70:
                             logger.warning(f"Unknown recommendation '{llm_rec}', using ACCEPT (score: {avg_score:.1f}%)")
                             db_recommendation = 'ACCEPT'
                         else:
@@ -871,8 +882,19 @@ class SQLiteAdapter(StorageAdapter):
             else:
                 # Default based on scores if recommendation is unrecognized
                 scores = analysis_dict.get('scores', {})
-                avg_score = sum(scores.values()) / len(scores) if scores else 0
-                if avg_score >= 60:
+                
+                # Calculate average of positive metrics only
+                positive_keys = ['task_completion', 'code_quality', 'seniority_indicators']
+                positive_scores = [scores.get(k, 0) for k in positive_keys if k in scores]
+                avg_score = sum(positive_scores) / len(positive_scores) if positive_scores else 0
+                
+                # Check critical issues
+                penalty = scores.get('critical_issues_penalty', 0)
+                
+                if penalty >= 50:
+                    logger.warning(f"Unknown recommendation '{rec_to_check}', using REJECT due to critical issues (penalty: {penalty})")
+                    recommendation = RecommendationLevel.REJECT
+                elif avg_score >= 70:
                     logger.warning(f"Unknown recommendation '{rec_to_check}', using ACCEPT (score: {avg_score})")
                     recommendation = RecommendationLevel.ACCEPT
                 else:

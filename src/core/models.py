@@ -131,6 +131,8 @@ class AnalysisResult:
     detailed_feedback: str
     suggestions: List[str] = field(default_factory=list)
     hiring_decision: Optional[Dict[str, str]] = None
+    model_used: Optional[str] = None
+    penalty_breakdown: Optional[Dict[str, Any]] = None
     
     def to_dict(self) -> Dict[str, Any]:
         """Convert to dictionary representation."""
@@ -146,16 +148,45 @@ class AnalysisResult:
         }
         if self.hiring_decision:
             result["hiring_decision"] = self.hiring_decision
+        if self.model_used:
+            result["model_used"] = self.model_used
+        if self.penalty_breakdown:
+            result["penalty_breakdown"] = self.penalty_breakdown
         return result
     
     def get_overall_score(self) -> float:
-        """Calculate overall score from individual scores.
+        """Calculate overall score from positive metrics only.
         Returns a value between 0 and 1 for percentage formatting.
+        Excludes critical_issues_penalty from the average.
         """
         if not self.scores:
             return 0.0
+        
+        # Exclude penalty-related scores from average
+        penalty_keywords = ['penalty', 'critical_issues', 'violations', 'issues']
+        positive_scores = []
+        
+        for key, value in self.scores.items():
+            # Skip if this looks like a penalty score
+            if any(keyword in key.lower() for keyword in penalty_keywords):
+                continue
+            positive_scores.append(value)
+        
+        if not positive_scores:
+            # If we can't identify positive scores, try standard keys
+            standard_positive = ['task_completion', 'code_quality', 'seniority_indicators', 
+                               'functionality', 'architecture', 'documentation']
+            for key in standard_positive:
+                if key in self.scores:
+                    positive_scores.append(self.scores[key])
+            
+            # Still no scores? Use all non-penalty scores
+            if not positive_scores:
+                return 0.0
+        
+        avg_score = sum(positive_scores) / len(positive_scores)
         # Divide by 100 since scores are 0-100 but we want 0-1 for percentage
-        return sum(self.scores.values()) / len(self.scores) / 100
+        return avg_score / 100
 
 
 @dataclass

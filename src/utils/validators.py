@@ -262,8 +262,14 @@ def validate_analysis_result(result: Dict[str, Any]) -> Tuple[bool, Optional[str
     for score_name, score_value in result['scores'].items():
         if not isinstance(score_value, (int, float)):
             return False, f"Score '{score_name}' must be numeric"
-        if not 0 <= score_value <= 100:
-            return False, f"Score '{score_name}' must be between 0 and 100"
+        # Special range for penalty (0-50 normally, but can exceed for multiple issues)
+        if score_name == 'critical_issues_penalty':
+            if score_value < 0:
+                return False, f"Score '{score_name}' must be >= 0"
+            # Allow exceeding 50 when multiple issues are found
+        else:
+            if not 0 <= score_value <= 100:
+                return False, f"Score '{score_name}' must be between 0 and 100"
     
     # Validate recommendation (LLM may return different formats)
     valid_recommendations = [
