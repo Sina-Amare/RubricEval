@@ -25,6 +25,7 @@ def validate_github_url(url: str) -> Tuple[bool, Optional[str]]:
     - Proper URL format
     - GitHub domain (github.com)
     - Repository path structure (username/repository)
+    - Supports branch-specific URLs (e.g., /tree/branch-name)
     
     Args:
         url: The URL string to validate
@@ -36,6 +37,9 @@ def validate_github_url(url: str) -> Tuple[bool, Optional[str]]:
         
     Examples:
         >>> validate_github_url("https://github.com/user/repo")
+        (True, None)
+        
+        >>> validate_github_url("https://github.com/user/repo/tree/main")
         (True, None)
         
         >>> validate_github_url("https://gitlab.com/user/repo")
@@ -72,7 +76,7 @@ def validate_github_url(url: str) -> Tuple[bool, Optional[str]]:
         logger.warning(f"Validation failed: {error_msg}")
         return False, error_msg
     
-    # Check path format (should be /username/repository)
+    # Check path format (should be /username/repository or /username/repository/tree/branch)
     path_parts = [p for p in parsed.path.split('/') if p]
     
     if len(path_parts) < 2:
@@ -102,8 +106,57 @@ def validate_github_url(url: str) -> Tuple[bool, Optional[str]]:
     if repo_name.endswith('.git'):
         repo_name = repo_name[:-4]
     
-    logger.info(f"Successfully validated GitHub URL: {username}/{repo_name}")
+    # Check if it's a branch-specific URL
+    if len(path_parts) > 2:
+        # Could be /tree/branch, /blob/branch/file, etc.
+        if path_parts[2] in ['tree', 'blob', 'commits', 'branches']:
+            logger.info(f"Successfully validated GitHub URL with branch: {username}/{repo_name}")
+        else:
+            logger.info(f"Successfully validated GitHub URL: {username}/{repo_name}")
+    else:
+        logger.info(f"Successfully validated GitHub URL: {username}/{repo_name}")
+    
     return True, None
+
+
+def extract_github_info(url: str) -> Tuple[str, str, Optional[str]]:
+    """
+    Extract username, repository name, and branch from a GitHub URL.
+    
+    Args:
+        url: The GitHub URL to parse
+        
+    Returns:
+        Tuple[str, str, Optional[str]]: (username, repo_name, branch)
+        - username: GitHub username
+        - repo_name: Repository name (without .git)
+        - branch: Branch name if specified in URL, None otherwise
+        
+    Examples:
+        >>> extract_github_info("https://github.com/user/repo")
+        ('user', 'repo', None)
+        
+        >>> extract_github_info("https://github.com/user/repo/tree/develop")
+        ('user', 'repo', 'develop')
+    """
+    # Parse the URL
+    parsed = urlparse(url.strip())
+    path_parts = [p for p in parsed.path.split('/') if p]
+    
+    username = path_parts[0]
+    repo_name = path_parts[1]
+    
+    # Remove .git extension if present
+    if repo_name.endswith('.git'):
+        repo_name = repo_name[:-4]
+    
+    # Extract branch if present
+    branch = None
+    if len(path_parts) >= 4 and path_parts[2] == 'tree':
+        # Branch name is everything after /tree/
+        branch = '/'.join(path_parts[3:])
+    
+    return username, repo_name, branch
 
 
 def validate_role_selection(role: str) -> Tuple[bool, Optional[str]]:
@@ -163,6 +216,7 @@ def validate_analysis_result(result: Dict[str, Any]) -> Tuple[bool, Optional[str
     Validate LLM analysis result structure.
     
     Checks for required fields and proper format of analysis response.
+    Supports both old and new prompt formats.
     
     Args:
         result: The analysis result dictionary to validate
@@ -173,13 +227,22 @@ def validate_analysis_result(result: Dict[str, Any]) -> Tuple[bool, Optional[str
     if not isinstance(result, dict):
         return False, "Analysis result must be a dictionary"
     
-    # Required fields in analysis result
-    required_fields = [
-        'requirements_met',
-        'scores',
-        'recommendation',
-        'confidence'
-    ]
+    # Check for new format first (task_analysis, requirements_implementation, etc.)
+    if 'task_analysis' in result or 'requirements_implementation' in result:
+        # New format validation
+        required_fields = [
+            'scores',
+            'recommendation',
+            'confidence'
+        ]
+    else:
+        # Old format validation (backwards compatibility)
+        required_fields = [
+            'requirements_met',
+            'scores',
+            'recommendation',
+            'confidence'
+        ]
     
     # Check for required fields
     for field in required_fields:

@@ -493,6 +493,56 @@ Recommendations:
         strengths_text = "\n".join(f"• {escape_markdown(s)}" for s in result.strengths[:5])
         weaknesses_text = "\n".join(f"• {escape_markdown(w)}" for w in result.weaknesses[:5])
         
+        # Determine clear HIRE/NO HIRE decision
+        hiring_reason = None
+        production_ready = None
+        
+        # Check if we have hiring_decision from new prompt format
+        if hasattr(result, 'hiring_decision') and result.hiring_decision:
+            hiring_info = result.hiring_decision
+            hire_decision = hiring_info.get('decision', '').upper()
+            hiring_reason = hiring_info.get('primary_reason')
+            production_ready = hiring_info.get('is_production_ready')
+            
+            if hire_decision == 'HIRE':
+                decision = "✅ HIRE"
+                decision_emoji = "🎯"
+                decision_color = "GREEN"
+            elif hire_decision == 'NO_HIRE':
+                decision = "❌ NO HIRE"
+                decision_emoji = "🚫"
+                decision_color = "RED"
+            else:
+                # Fallback to recommendation-based decision
+                recommendation = result.recommendation.value
+                if recommendation in ['strongly_accept', 'accept', 'strong_yes', 'yes']:
+                    decision = "✅ HIRE"
+                    decision_emoji = "🎯"
+                    decision_color = "GREEN"
+                elif recommendation == 'review_required':
+                    decision = "🔍 REVIEW REQUIRED"
+                    decision_emoji = "⚠️"
+                    decision_color = "YELLOW"
+                else:
+                    decision = "❌ NO HIRE"
+                    decision_emoji = "🚫"
+                    decision_color = "RED"
+        else:
+            # Old format - use recommendation-based decision
+            recommendation = result.recommendation.value
+            if recommendation in ['strongly_accept', 'accept', 'strong_yes', 'yes']:
+                decision = "✅ HIRE"
+                decision_emoji = "🎯"
+                decision_color = "GREEN"
+            elif recommendation == 'review_required':
+                decision = "🔍 REVIEW REQUIRED"
+                decision_emoji = "⚠️"
+                decision_color = "YELLOW"
+            else:
+                decision = "❌ NO HIRE"
+                decision_emoji = "🚫"
+                decision_color = "RED"
+        
         # Build the report
         report_text = f"""
 📊 **CANDIDATE ASSESSMENT REPORT**
@@ -501,11 +551,18 @@ Recommendations:
 💼 Position: {submission.role.value}
 📅 Analyzed: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M')}
 
-**OVERALL ASSESSMENT**
+**{decision_emoji} FINAL DECISION: {decision}**
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🎯 Score: {overall_score:.0%}
-📈 Recommendation: **{result.recommendation.value.replace('_', ' ').upper()}**
-🔍 Confidence: {result.confidence:.0%}
+🎯 Overall Score: {overall_score:.0%}
+🔍 Confidence: {result.confidence:.0%}"""
+        
+        # Add hiring reason and production ready status if available
+        if hiring_reason:
+            report_text += f"\n📌 **Reason:** {escape_markdown(hiring_reason)}"
+        if production_ready:
+            report_text += f"\n🚀 **Production Ready:** {escape_markdown(production_ready)}"
+        
+        report_text += """
 
 **TECHNICAL SCORES**
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -541,11 +598,21 @@ Model: {report.model_used}
         result = report.analysis_result
         overall_score = result.get_overall_score()
         
+        # Determine clear HIRE/NO HIRE decision
+        recommendation = result.recommendation.value
+        # Handle all possible positive recommendations
+        if recommendation in ['strongly_accept', 'accept', 'strong_yes', 'yes']:
+            decision = "✅ HIRE"
+        elif recommendation == 'review_required':
+            decision = "🔍 REVIEW REQUIRED (Exception)"
+        else:
+            decision = "❌ NO HIRE"
+        
         return f"""
 📊 **Analysis Complete!**
 
+**Decision: {decision}**
 Score: {overall_score:.0%}
-Recommendation: **{result.recommendation.value.replace('_', ' ').upper()}**
 Confidence: {result.confidence:.0%}
 
 _Full report follows..._

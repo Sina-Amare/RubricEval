@@ -304,22 +304,29 @@ class SQLiteAdapter(StorageAdapter):
                     scores = report.analysis_result.scores
                     
                     # Map LLM recommendation to database format
-                    # LLM returns: strong_yes, yes, maybe, no, strong_no
-                    # We map to: STRONGLY_ACCEPT, ACCEPT, REVIEW_REQUIRED, REJECT, STRONGLY_REJECT
-                    llm_rec = analysis_dict.get('recommendation', 'maybe')
-                    if llm_rec == 'strong_yes':
+                    # LLM can return various formats, normalize them
+                    llm_rec = str(analysis_dict.get('recommendation', 'maybe')).lower().strip()
+                    
+                    if llm_rec in ['strong_yes', 'strongly_accept']:
                         db_recommendation = 'STRONGLY_ACCEPT'
-                    elif llm_rec == 'yes':
+                    elif llm_rec in ['yes', 'accept']:
                         db_recommendation = 'ACCEPT'
-                    elif llm_rec == 'maybe':
+                    elif llm_rec in ['maybe', 'review_required', 'review']:
                         db_recommendation = 'REVIEW_REQUIRED'
-                    elif llm_rec == 'no':
+                    elif llm_rec in ['no', 'reject']:
                         db_recommendation = 'REJECT'
-                    elif llm_rec == 'strong_no':
+                    elif llm_rec in ['strong_no', 'strongly_reject']:
                         db_recommendation = 'STRONGLY_REJECT'
                     else:
-                        # Fallback for any unexpected values
-                        db_recommendation = 'REVIEW_REQUIRED'
+                        # Fallback based on scores if recommendation is unexpected
+                        scores = report.analysis_result.scores
+                        avg_score = sum(scores.values()) / len(scores) if scores else 0
+                        if avg_score >= 60:
+                            logger.warning(f"Unknown recommendation '{llm_rec}', using ACCEPT (score: {avg_score:.1f}%)")
+                            db_recommendation = 'ACCEPT'
+                        else:
+                            logger.warning(f"Unknown recommendation '{llm_rec}', using REJECT (score: {avg_score:.1f}%)")
+                            db_recommendation = 'REJECT'
                     
                     # Create database report
                     db_report = DBReport(
@@ -415,6 +422,82 @@ class SQLiteAdapter(StorageAdapter):
             error_msg = f"Failed to get report for submission {submission_id}: {str(e)}"
             logger.error(error_msg)
             raise StorageError(error_msg)
+    
+    async def get_all_reports(
+        self,
+        limit: Optional[int] = None,
+        offset: int = 0,
+        role: Optional[Role] = None
+    ) -> List[DomainReport]:
+        """
+        Get all reports with optional pagination and role filtering.
+        
+        Args:
+            limit: Maximum number of reports to return (None for all)
+            offset: Number of reports to skip (for pagination)
+            role: Optional role filter
+            
+        Returns:
+            List of reports
+            
+        Raises:
+            StorageError: If query fails
+        """
+        try:
+            def _get_all():
+                session = self.SessionFactory()
+                try:
+                    query = session.query(DBReport).join(
+                        DBSubmission, DBReport.submission_id == DBSubmission.id
+                    )
+                    
+                    # Apply role filter if specified
+                    if role:
+                        query = query.filter(DBSubmission.role == role.value)
+                    
+                    # Order by creation date (newest first)
+                    query = query.order_by(DBReport.created_at.desc())
+                    
+                    # Apply pagination
+                    if offset:
+                        query = query.offset(offset)
+                    if limit:
+                        query = query.limit(limit)
+                    
+                    db_reports = query.all()
+                    return [self._db_to_domain_report(r) for r in db_reports]
+                    
+                finally:
+                    session.close()
+            
+            return await asyncio.get_event_loop().run_in_executor(executor, _get_all)
+            
+        except Exception as e:
+            error_msg = f"Failed to get all reports: {str(e)}"
+            logger.error(error_msg)
+            raise StorageError(error_msg)
+    
+    async def get_reports_by_role(
+        self,
+        role: Role,
+        limit: Optional[int] = None,
+        offset: int = 0
+    ) -> List[DomainReport]:
+        """
+        Get reports filtered by role.
+        
+        Args:
+            role: Role to filter by
+            limit: Maximum number of reports to return
+            offset: Number of reports to skip
+            
+        Returns:
+            List of reports for the specified role
+            
+        Raises:
+            StorageError: If query fails
+        """
+        return await self.get_all_reports(limit=limit, offset=offset, role=role)
     
     async def get_recent_reports(
         self,
@@ -680,40 +763,34 @@ class SQLiteAdapter(StorageAdapter):
             analysis_dict = json.loads(db_report.analysis_result)
             
             # Map database recommendation back to enum
-            # Database stores: STRONGLY_ACCEPT, ACCEPT, REVIEW_REQUIRED, REJECT, STRONGLY_REJECT
-            # LLM provides: strong_yes, yes, maybe, no, strong_no
-            llm_rec = analysis_dict.get('recommendation')  # This is what LLM returned
-            db_rec = db_report.recommendation  # This is what's stored in DB
+            # Unified mapping that handles all possible formats
+            llm_rec = analysis_dict.get('recommendation', '').lower()  # This is what LLM returned
+            db_rec = (db_report.recommendation or '').lower()  # This is what's stored in DB
             
-            # Use LLM recommendation if available, otherwise map from DB format
-            if llm_rec in ['strong_yes', 'yes', 'maybe', 'no', 'strong_no']:
-                # Map LLM format to our enum
-                if llm_rec == 'strong_yes':
-                    recommendation = RecommendationLevel.STRONGLY_ACCEPT
-                elif llm_rec == 'yes':
-                    recommendation = RecommendationLevel.ACCEPT
-                elif llm_rec == 'maybe':
-                    recommendation = RecommendationLevel.REVIEW_REQUIRED
-                elif llm_rec == 'no':
-                    recommendation = RecommendationLevel.REJECT
-                elif llm_rec == 'strong_no':
-                    recommendation = RecommendationLevel.STRONGLY_REJECT
-                else:
-                    recommendation = RecommendationLevel.REVIEW_REQUIRED
+            # Try LLM recommendation first, then DB recommendation
+            rec_to_check = llm_rec if llm_rec else db_rec
+            
+            # Comprehensive mapping of all possible values
+            if rec_to_check in ['strong_yes', 'strongly_accept', 'strong yes']:
+                recommendation = RecommendationLevel.STRONGLY_ACCEPT
+            elif rec_to_check in ['yes', 'accept']:
+                recommendation = RecommendationLevel.ACCEPT
+            elif rec_to_check in ['no', 'reject']:
+                recommendation = RecommendationLevel.REJECT
+            elif rec_to_check in ['strong_no', 'strongly_reject', 'strong no']:
+                recommendation = RecommendationLevel.STRONGLY_REJECT
+            elif rec_to_check in ['maybe', 'review_required', 'review required', 'review']:
+                recommendation = RecommendationLevel.REVIEW_REQUIRED
             else:
-                # Map from database format
-                if db_rec == 'STRONGLY_ACCEPT':
-                    recommendation = RecommendationLevel.STRONGLY_ACCEPT
-                elif db_rec == 'ACCEPT':
+                # Default based on scores if recommendation is unrecognized
+                scores = analysis_dict.get('scores', {})
+                avg_score = sum(scores.values()) / len(scores) if scores else 0
+                if avg_score >= 60:
+                    logger.warning(f"Unknown recommendation '{rec_to_check}', using ACCEPT (score: {avg_score})")
                     recommendation = RecommendationLevel.ACCEPT
-                elif db_rec == 'REVIEW_REQUIRED':
-                    recommendation = RecommendationLevel.REVIEW_REQUIRED
-                elif db_rec == 'REJECT':
-                    recommendation = RecommendationLevel.REJECT
-                elif db_rec == 'STRONGLY_REJECT':
-                    recommendation = RecommendationLevel.STRONGLY_REJECT
                 else:
-                    recommendation = RecommendationLevel.REVIEW_REQUIRED
+                    logger.warning(f"Unknown recommendation '{rec_to_check}', using REJECT (score: {avg_score})")
+                    recommendation = RecommendationLevel.REJECT
             
             # Reconstruct scores from individual fields or from dict
             if 'scores' in analysis_dict:

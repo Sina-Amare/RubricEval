@@ -12,20 +12,14 @@ services:
     
     # Volume mappings for persistent data
     volumes:
-      # Database persistence
-      - ./data/reviews.db:/app/data/reviews.db
-      
-      # Reports persistence
-      - ./data/reports:/app/data/reports
+      # Data directory persistence (includes database)
+      - ./data:/app/data
       
       # Logs persistence
       - ./logs:/app/logs
       
-      # Task requirements (can be updated without rebuild)
-      - ./data/task_requirements:/app/data/task_requirements
-      
-      # Prompts (can be updated without rebuild)  
-      - ./data/prompts:/app/data/prompts
+      # Temporary files and PID management
+      - ./tmp:/tmp
     
     # Network configuration
     networks:
@@ -41,13 +35,13 @@ services:
           cpus: '0.5'
           memory: 512M
     
-    # Health check
+    # Health check - verify bot process is running
     healthcheck:
-      test: ["CMD", "python", "-c", "import sys; sys.exit(0)"]
+      test: ["CMD", "sh", "-c", "test -f /tmp/cv_review_bot.pid && kill -0 $(cat /tmp/cv_review_bot.pid) || exit 1"]
       interval: 30s
       timeout: 10s
       retries: 3
-      start_period: 40s
+      start_period: 60s
 
 networks:
   bot-network:

@@ -159,3 +159,11 @@
 [2025-08-24T20:45:05.526373] [ERROR] [openrouter:_analyze_with_model:512] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
 [2025-08-24T20:45:08.895995] [ERROR] [openrouter:_analyze_with_model:512] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
 [2025-08-24T20:50:32.664860] [ERROR] [openrouter:_parse_llm_response:709] - JSON parsing error: Expecting ',' delimiter: line 90 column 4 (char 3788)
+[2025-08-24T21:20:20.966075] [ERROR] [bot:show_history_page:715] - Error in history display: Can't parse entities: can't find end of the entity starting at byte offset 881
+[2025-08-24T21:20:36.007009] [ERROR] [bot:show_history_page:715] - Error in history display: Can't parse entities: can't find end of the entity starting at byte offset 881
+[2025-08-24T21:22:16.929238] [ERROR] [bot:show_history_page:715] - Error in history display: Can't parse entities: can't find end of the entity starting at byte offset 881
+[2025-08-25T11:54:02.999728] [ERROR] [openrouter:_parse_llm_response:709] - JSON parsing error: Expecting ',' delimiter: line 87 column 3 (char 7918)
+[2025-08-25T12:43:35.360205] [ERROR] [bot:show_history_page:715] - Error in history display: Can't parse entities: can't find end of the entity starting at byte offset 875
+[2025-08-25T12:51:56.410472] [ERROR] [bot:<module>:1067] - Fatal error: name 'history_frontend_command' is not defined
+[2025-08-25T13:02:45.144812] [ERROR] [bot:view_report_callback:907] - Error viewing report 9: Can't parse entities: can't find end of the entity starting at byte offset 254
+[2025-08-25T13:40:30.438959] [ERROR] [prompts:format_prompt:109] - Failed to format prompt analysis/senior_frontend_analysis.md: unexpected '{' in field name

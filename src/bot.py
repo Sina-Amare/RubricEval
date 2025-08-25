@@ -72,10 +72,10 @@ I help you analyze candidate GitHub repositories quickly and consistently.
 **Commands:**
 /analyze - Start new analysis
 /recent - View recent analyses (last 10)
-/history - View full analysis history
-/history frontend - Frontend analyses only
-/history backend - Backend analyses only
-/report <id> - View specific report
+/history - View all analysis history
+/historyfrontend - Frontend analyses only
+/historybackend - Backend analyses only
+/report - View specific report (use: /report 12)
 /stats - View statistics
 /help - Show this message
 /cancel - Cancel current operation
@@ -185,15 +185,20 @@ Try again:
         logger.warning(f"Error checking repository accessibility: {e}")
         # Continue anyway - will fail later with better error
     
-    # Extract repository name for display
-    repo_name = url.split('/')[-1].replace('.git', '')
-    if '/' in url:
-        owner_repo = '/'.join(url.split('/')[-2:]).replace('.git', '')
-    else:
-        owner_repo = repo_name
+    # Extract repository info including branch
+    from utils.validators import extract_github_info
+    username, repo_name, branch = extract_github_info(url)
+    owner_repo = f"{username}/{repo_name}"
     
     # Ask for role selection
-    message = f"""
+    if branch:
+        message = f"""
+✅ Repository found: `{owner_repo}` (branch: `{branch}`)
+
+Which position is this candidate applying for?
+    """
+    else:
+        message = f"""
 ✅ Repository found: `{owner_repo}`
 
 Which position is this candidate applying for?
@@ -592,19 +597,70 @@ async def history_command(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
     await show_history_page(update, context, page, role_filter)
 
 
+async def history_frontend_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Show paginated history of frontend analyses."""
+    user = update.effective_user
+    logger.info(f"History frontend command from user {user.username} ({user.id})")
+    
+    # Check if user is manager
+    if MANAGER_IDS and str(user.id) not in MANAGER_IDS:
+        await update.message.reply_text(
+            "❌ This command is only available to managers."
+        )
+        return
+    
+    # Set frontend filter
+    role_filter = Role.FRONTEND
+    page = 0
+    
+    # Store filter in context for pagination
+    context.user_data['history_role_filter'] = role_filter
+    context.user_data['history_page'] = page
+    
+    await show_history_page(update, context, page, role_filter)
+
+
+async def history_backend_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Show paginated history of backend analyses."""
+    user = update.effective_user
+    logger.info(f"History backend command from user {user.username} ({user.id})")
+    
+    # Check if user is manager
+    if MANAGER_IDS and str(user.id) not in MANAGER_IDS:
+        await update.message.reply_text(
+            "❌ This command is only available to managers."
+        )
+        return
+    
+    # Set backend filter
+    role_filter = Role.BACKEND
+    page = 0
+    
+    # Store filter in context for pagination
+    context.user_data['history_role_filter'] = role_filter
+    context.user_data['history_page'] = page
+    
+    await show_history_page(update, context, page, role_filter)
+
+
 async def show_history_page(update: Update, context: ContextTypes.DEFAULT_TYPE, page: int, role_filter: Optional[Role] = None) -> None:
     """Display a page of history results."""
     ITEMS_PER_PAGE = 5
     
     try:
         # Get all reports with optional role filter
-        all_reports = await storage_adapter.get_recent_reports(limit=100, role=role_filter)
+        all_reports = await storage_adapter.get_all_reports(limit=100, role=role_filter)
         
         if not all_reports:
             text = "📋 No analyses found"
             if role_filter:
                 text += f" for {role_filter.value} position"
-            await update.message.reply_text(text)
+            
+            # Check if this is from callback or direct command
+            if update.callback_query:
+                await update.callback_query.edit_message_text(text)
+            else:
+                await update.message.reply_text(text)
             return
         
         # Calculate pagination
@@ -613,8 +669,8 @@ async def show_history_page(update: Update, context: ContextTypes.DEFAULT_TYPE, 
         end_idx = min(start_idx + ITEMS_PER_PAGE, len(all_reports))
         page_reports = all_reports[start_idx:end_idx]
         
-        # Build message
-        message = f"📊 **Analysis History**"
+        # Build message using HTML format to avoid markdown parsing issues
+        message = f"📊 <b>Analysis History</b>"
         if role_filter:
             message += f" - {role_filter.value.upper()}"
         message += f"\nPage {page + 1}/{total_pages}\n\n"
@@ -639,8 +695,13 @@ async def show_history_page(update: Update, context: ContextTypes.DEFAULT_TYPE, 
                 score = report.analysis_result.get_overall_score()
                 rec = report.analysis_result.recommendation.value.replace('_', ' ').title()
                 
-                message += f"**#{report.id}** `{repo_name}`\n"
-                message += f"👤 {username} | 💼 {submission.role.value}\n"
+                # HTML escape for safety
+                from html import escape
+                safe_repo = escape(repo_name)
+                safe_username = escape(username)
+                
+                message += f"<b>#{report.id}</b> <code>{safe_repo}</code>\n"
+                message += f"👤 {safe_username} | 💼 {submission.role.value}\n"
                 message += f"📊 Score: {score:.0%} | {rec}\n"
                 message += f"🕐 {time_str}\n"
                 message += "─" * 30 + "\n"
@@ -697,17 +758,17 @@ async def show_history_page(update: Update, context: ContextTypes.DEFAULT_TYPE, 
         
         reply_markup = InlineKeyboardMarkup(keyboard) if keyboard else None
         
-        # Send or edit message
+        # Send or edit message with HTML parse mode
         if update.callback_query:
             await update.callback_query.edit_message_text(
                 text=message,
-                parse_mode=ParseMode.MARKDOWN,
+                parse_mode=ParseMode.HTML,
                 reply_markup=reply_markup
             )
         else:
             await update.message.reply_text(
                 text=message,
-                parse_mode=ParseMode.MARKDOWN,
+                parse_mode=ParseMode.HTML,
                 reply_markup=reply_markup
             )
             
@@ -798,8 +859,55 @@ async def view_report_callback(update: Update, context: ContextTypes.DEFAULT_TYP
             bar = "█" * int(score_value / 10) + "░" * (10 - int(score_value / 10))
             message += f"{score_display}: {bar} {score_value:.0f}%\n"
         
-        message += f"\n**Overall:** {score:.0%}\n"
-        message += f"**Recommendation:** {report.analysis_result.recommendation.value.replace('_', ' ').upper()}\n"
+        message += f"\n**Overall Score:** {score:.0%}\n"
+        
+        # Check if we have hiring_decision from new prompt format
+        if hasattr(report.analysis_result, 'hiring_decision') and report.analysis_result.hiring_decision:
+            hiring_info = report.analysis_result.hiring_decision
+            hire_decision = hiring_info.get('decision', '').upper()
+            
+            if hire_decision == 'HIRE':
+                decision = "✅ **HIRE**"
+                decision_emoji = "🎯"
+            elif hire_decision == 'NO_HIRE':
+                decision = "❌ **NO HIRE**"
+                decision_emoji = "🚫"
+            else:
+                # Fallback to recommendation-based decision
+                recommendation = report.analysis_result.recommendation.value
+                if recommendation in ['strongly_accept', 'accept', 'strong_yes', 'yes']:
+                    decision = "✅ **HIRE**"
+                    decision_emoji = "🎯"
+                elif recommendation == 'review_required':
+                    decision = "🔍 **REVIEW REQUIRED**"
+                    decision_emoji = "⚠️"
+                else:
+                    decision = "❌ **NO HIRE**"
+                    decision_emoji = "🚫"
+            
+            message += f"\n{decision_emoji} **FINAL DECISION: {decision}**\n"
+            
+            # Add hiring reason if available
+            if hiring_info.get('primary_reason'):
+                message += f"**Reason:** {hiring_info['primary_reason']}\n"
+            
+            if hiring_info.get('is_production_ready'):
+                message += f"**Production Ready:** {hiring_info['is_production_ready']}\n"
+        else:
+            # Old format - use recommendation-based decision
+            recommendation = report.analysis_result.recommendation.value
+            if recommendation in ['strongly_accept', 'accept', 'strong_yes', 'yes']:
+                decision = "✅ **HIRE**"
+                decision_emoji = "🎯"
+            elif recommendation == 'review_required':
+                decision = "🔍 **REVIEW REQUIRED** (Exception Case)"
+                decision_emoji = "⚠️"
+            else:
+                decision = "❌ **NO HIRE**"
+                decision_emoji = "🚫"
+            
+            message += f"\n{decision_emoji} **FINAL DECISION: {decision}**\n"
+        
         message += f"**Confidence:** {int(report.analysis_result.confidence * 100)}%\n"
         
         # Add strengths
@@ -850,10 +958,11 @@ async def report_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
         )
         return
     
+    # Get report ID from arguments
     if not context.args:
         await update.message.reply_text(
             "Please provide a report ID.\n"
-            "Usage: /report <id>\n"
+            "Usage: /report <ID>\n"
             "Example: /report 5"
         )
         return
@@ -861,7 +970,10 @@ async def report_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     try:
         report_id = int(context.args[0])
     except ValueError:
-        await update.message.reply_text("❌ Invalid report ID. Please provide a number.")
+        await update.message.reply_text(
+            "Invalid report ID. Please provide a number.\n"
+            "Example: /report 5"
+        )
         return
     
     # Create a fake callback query to reuse the view_report_callback
@@ -941,6 +1053,8 @@ def main() -> None:
     application.add_handler(conv_handler)
     application.add_handler(CommandHandler("recent", recent_command))
     application.add_handler(CommandHandler("history", history_command))
+    application.add_handler(CommandHandler("historyfrontend", history_frontend_command))
+    application.add_handler(CommandHandler("historybackend", history_backend_command))
     application.add_handler(CommandHandler("report", report_command))
     application.add_handler(CommandHandler("stats", stats_command))
     application.add_handler(CommandHandler("cancel", cancel_command))

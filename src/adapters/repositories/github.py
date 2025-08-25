@@ -51,9 +51,11 @@ class GitHubAdapter(RepositoryAdapter):
     - Automatic cleanup
     """
     
-    # Supported GitHub URL patterns
+    # Supported GitHub URL patterns (including branch URLs)
     GITHUB_URL_PATTERNS = [
         r"^https://github\.com/[\w.-]+/[\w.-]+/?$",
+        r"^https://github\.com/[\w.-]+/[\w.-]+/tree/.*$",  # Branch URL
+        r"^https://github\.com/[\w.-]+/[\w.-]+/blob/.*$",  # File URL
         r"^git@github\.com:[\w.-]+/[\w.-]+\.git$",
         r"^https://github\.com/[\w.-]+/[\w.-]+\.git$"
     ]
@@ -143,8 +145,12 @@ class GitHubAdapter(RepositoryAdapter):
             self._temp_directories.append(temp_dir)
             logger.debug(f"Created temp directory: {temp_dir}")
             
-            # Clone the repository
-            repo = await self._clone_repository(url, temp_dir)
+            # Extract branch info if present in URL
+            from utils.validators import extract_github_info
+            username, repo_name, branch = extract_github_info(url)
+            
+            # Clone the repository (with branch if specified)
+            repo = await self._clone_repository(url, temp_dir, branch=branch)
             if not repo:
                 raise RepositoryError(f"Failed to clone repository: {url}")
             
@@ -326,13 +332,14 @@ class GitHubAdapter(RepositoryAdapter):
     
     # Private helper methods
     
-    async def _clone_repository(self, url: str, target_dir: str) -> Optional[Repo]:
+    async def _clone_repository(self, url: str, target_dir: str, branch: Optional[str] = None) -> Optional[Repo]:
         """
         Clone a GitHub repository with retry logic and timeout handling.
         
         Args:
             url: GitHub repository URL
             target_dir: Directory to clone into
+            branch: Specific branch to clone (optional)
             
         Returns:
             Git Repo object if successful, None otherwise
@@ -343,19 +350,29 @@ class GitHubAdapter(RepositoryAdapter):
         
         for attempt in range(max_retries):
             try:
-                logger.info(f"Cloning repository: {url} (attempt {attempt + 1}/{max_retries})")
+                if branch:
+                    logger.info(f"Cloning repository: {url} (branch: {branch}, attempt {attempt + 1}/{max_retries})")
+                else:
+                    logger.info(f"Cloning repository: {url} (attempt {attempt + 1}/{max_retries})")
+                
+                # Prepare clone kwargs
+                clone_kwargs = {
+                    'url': clone_url,
+                    'to_path': target_dir,
+                    'depth': 1,  # Shallow clone - only latest commit
+                    'single_branch': True,  # Only specified branch
+                    'progress': None,
+                    'env': {'GIT_TERMINAL_PROMPT': '0'}  # Disable password prompts
+                }
+                
+                # Add branch if specified
+                if branch:
+                    clone_kwargs['branch'] = branch
                 
                 # Use shallow clone for speed and bandwidth efficiency
-                repo = Repo.clone_from(
-                    clone_url,
-                    target_dir,
-                    depth=1,  # Shallow clone - only latest commit
-                    single_branch=True,  # Only default branch
-                    progress=None,
-                    env={'GIT_TERMINAL_PROMPT': '0'}  # Disable password prompts
-                )
+                repo = Repo.clone_from(**clone_kwargs)
                 
-                logger.info("Repository cloned successfully")
+                logger.info(f"Repository cloned successfully{' (branch: ' + branch + ')' if branch else ''}")
                 return repo
                 
             except GitCommandError as e:
@@ -403,9 +420,12 @@ class GitHubAdapter(RepositoryAdapter):
             repo_path = url.replace('git@github.com:', '').replace('.git', '')
             return f"https://github.com/{repo_path}.git"
         
-        # Ensure HTTPS URLs end with .git for consistency
-        if url.startswith('https://github.com/') and not url.endswith('.git'):
-            return f"{url.rstrip('/')}.git"
+        # For HTTPS URLs, extract the base repository URL (removing branch/tree/blob paths)
+        if url.startswith('https://github.com/'):
+            # Extract username and repo from URL, removing branch paths
+            from utils.validators import extract_github_info
+            username, repo_name, _ = extract_github_info(url)
+            return f"https://github.com/{username}/{repo_name}.git"
         
         return url
     

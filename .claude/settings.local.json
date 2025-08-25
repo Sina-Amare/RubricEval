@@ -25,12 +25,14 @@
       "Bash(grep:*)",
       "Bash(pkill:*)",
       "Bash(tree:*)",
-      "Bash(sqlite3:*)"
+      "Bash(sqlite3:*)",
+      "WebSearch"
     ],
     "deny": [],
     "ask": [],
     "additionalDirectories": [
-      "/tmp/test_repo"
+      "/tmp/test_repo",
+      "/tmp"
     ]
   }
 }

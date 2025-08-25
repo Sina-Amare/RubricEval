@@ -7,6 +7,7 @@ fallback, retry logic, token management, and structured response parsing.
 """
 
 import json
+import re
 import asyncio
 import aiohttp
 from typing import Dict, List, Optional, Any, Tuple
@@ -25,6 +26,7 @@ from utils.logger import setup_logger, log_performance
 from utils.token_counter import TokenCounter
 from utils.validators import validate_analysis_result
 from utils.prompts import load_prompt
+from utils.json_recovery import JSONRecovery
 from config import (
     OPENROUTER_KEY, PRIMARY_MODEL, FALLBACK_MODEL,
     TEMPERATURE, ANALYSIS_TIMEOUT, MAX_TOKENS
@@ -636,83 +638,124 @@ Provide your analysis in the specified JSON format with detailed, specific feedb
 Evaluate the submission thoroughly and provide your analysis in JSON format with these fields:
 - requirements_met: Object mapping each requirement to true/false
 - scores: Object with completeness, quality, architecture, testing (0-100)
-- strengths: Array of strong points
-- weaknesses: Array of areas needing improvement
-- recommendation: "strong_yes", "yes", "maybe", "no", or "strong_no"
+- strengths: Array of strong points (REQUIRED: minimum 3 items, be specific)
+- weaknesses: Array of areas needing improvement (REQUIRED: minimum 3 items, be constructive)
+- recommendation: "strong_yes", "yes", "no", or "strong_no" (avoid "maybe")
 - confidence: 0.0-1.0
 - detailed_feedback: Comprehensive explanation
+
+IMPORTANT: You MUST provide at least 3 strengths and 3 weaknesses. Even excellent code has areas for improvement, and even poor code has some positive aspects.
 
 Be thorough but fair. Focus on demonstrating technical competency for the {request.role.value} role."""
     
     def _parse_llm_response(self, response_text: str) -> Dict[str, Any]:
         """
-        Parse LLM response into structured data.
+        Parse LLM response into structured data using robust recovery.
         
-        Handles various response formats including plain JSON,
-        markdown code blocks, and mixed text with JSON.
+        Uses multiple strategies to extract JSON even from malformed responses,
+        ensuring expensive LLM calls are not wasted due to minor formatting issues.
         
         Args:
             response_text: Raw response from LLM
             
         Returns:
-            Parsed dictionary
+            Parsed dictionary (may include partial recovery)
             
         Raises:
-            AnalysisError: If response cannot be parsed
+            AnalysisError: Only if response is completely unparseable
         """
         if not response_text or not response_text.strip():
             raise AnalysisError("Empty response from LLM")
         
-        try:
-            # Try direct JSON parsing first
-            if response_text.strip().startswith('{'):
-                return json.loads(response_text.strip())
-            
-            # Look for JSON in markdown code blocks
-            if '```json' in response_text:
-                json_start = response_text.find('```json') + 7
-                json_end = response_text.find('```', json_start)
-                if json_end != -1:
-                    json_text = response_text[json_start:json_end].strip()
-                    return json.loads(json_text)
-            
-            # Look for JSON in regular code blocks
-            if '```' in response_text:
-                # Find first code block that might be JSON
-                parts = response_text.split('```')
-                for i in range(1, len(parts), 2):  # Odd indices are code blocks
-                    code_block = parts[i].strip()
-                    # Remove language identifier if present
-                    lines = code_block.split('\n')
-                    if lines[0] and not lines[0].startswith('{'):
-                        code_block = '\n'.join(lines[1:])
-                    
-                    if code_block.strip().startswith('{'):
-                        try:
-                            return json.loads(code_block)
-                        except json.JSONDecodeError:
-                            continue
-            
-            # Look for JSON object anywhere in the text
-            json_start = response_text.find('{')
-            json_end = response_text.rfind('}') + 1
-            
-            if json_start != -1 and json_end > json_start:
-                json_text = response_text[json_start:json_end]
-                return json.loads(json_text)
-            
-            # If all else fails, return a structured error
-            logger.error("Could not extract JSON from LLM response")
-            return self._create_error_result("Failed to parse analysis response")
-            
-        except json.JSONDecodeError as e:
-            logger.error(f"JSON parsing error: {e}")
-            logger.debug(f"Response text: {response_text[:500]}...")
-            return self._create_error_result(f"Invalid JSON in response: {str(e)}")
-            
-        except Exception as e:
-            logger.error(f"Response parsing error: {e}")
-            return self._create_error_result(f"Failed to parse response: {str(e)}")
+        # Use robust JSON recovery system
+        recovered_json, raw_json = JSONRecovery.extract_json(response_text)
+        
+        if recovered_json:
+            # Validate minimum structure
+            if JSONRecovery.validate_recovered_json(recovered_json):
+                logger.info("Successfully recovered JSON from LLM response")
+                
+                # Add metadata about recovery if partial
+                if recovered_json.get('partial_recovery'):
+                    logger.warning("Response was partially recovered - some data may be incomplete")
+                    # Ensure we have all required fields with defaults
+                    recovered_json = self._ensure_complete_structure(recovered_json)
+                
+                return recovered_json
+            else:
+                logger.warning("Recovered JSON lacks minimum required fields")
+                # Try to augment with defaults
+                return self._augment_incomplete_json(recovered_json)
+        
+        # If recovery completely failed, log the issue
+        logger.error(f"JSON recovery failed: {raw_json}")
+        logger.debug(f"Original response (first 1000 chars): {response_text[:1000]}...")
+        
+        # Create structured error result as last resort
+        # But include any text we can extract as feedback
+        error_result = self._create_error_result("Failed to parse analysis response")
+        error_result['detailed_feedback'] = self._extract_text_feedback(response_text)
+        error_result['parse_failure'] = True
+        
+        return error_result
+    
+    def _ensure_complete_structure(self, data: Dict[str, Any]) -> Dict[str, Any]:
+        """Ensure partially recovered JSON has all required fields."""
+        # Default structure
+        defaults = {
+            "requirements_met": {},
+            "scores": {
+                "completeness": 0,
+                "quality": 0,
+                "architecture": 0,
+                "testing": 0
+            },
+            "strengths": [],
+            "weaknesses": [],
+            "suggestions": [],
+            "recommendation": "review_required",
+            "confidence": 50,
+            "detailed_feedback": "Analysis partially recovered from malformed response"
+        }
+        
+        # Merge with defaults (data overwrites defaults)
+        for key, default_value in defaults.items():
+            if key not in data:
+                data[key] = default_value
+            elif key == 'scores' and isinstance(data[key], dict):
+                # Ensure all score fields exist
+                for score_key, score_default in defaults['scores'].items():
+                    if score_key not in data['scores']:
+                        data['scores'][score_key] = score_default
+        
+        return data
+    
+    def _augment_incomplete_json(self, data: Dict[str, Any]) -> Dict[str, Any]:
+        """Augment incomplete JSON with required fields."""
+        # Start with error result structure
+        result = self._create_error_result("Incomplete analysis response")
+        
+        # Override with any data we recovered
+        if data:
+            for key, value in data.items():
+                if value is not None and value != "":
+                    result[key] = value
+        
+        result['partial_recovery'] = True
+        return result
+    
+    def _extract_text_feedback(self, response_text: str) -> str:
+        """Extract any meaningful text feedback from failed response."""
+        # Remove JSON artifacts and code blocks
+        text = re.sub(r'```[^`]*```', '', response_text)
+        text = re.sub(r'[{}\[\]]', '', text)
+        text = re.sub(r'"[^"]*":', '', text)
+        
+        # Get first meaningful paragraph
+        lines = [line.strip() for line in text.split('\n') if line.strip()]
+        feedback = ' '.join(lines[:5]) if lines else "Unable to extract feedback"
+        
+        return feedback[:500]  # Limit length
     
     def _convert_to_analysis_result(self, parsed_response: Dict[str, Any]) -> AnalysisResult:
         """
@@ -727,26 +770,48 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
         # Map LLM recommendation string to enum
         # LLM should return: strong_yes, yes, maybe, no, strong_no
         # But sometimes returns: strongly_accept, accept, review_required, reject, strongly_reject
+        # Default to 'maybe' to give candidates benefit of doubt
         recommendation_str = parsed_response.get('recommendation', 'maybe').lower().strip()
         
-        # Handle both formats
+        # Handle both formats - NO MAYBE unless exceptional case
         if recommendation_str in ['strong_yes', 'strongly_accept']:
             recommendation = RecommendationLevel.STRONGLY_ACCEPT
         elif recommendation_str in ['yes', 'accept']:
             recommendation = RecommendationLevel.ACCEPT
-        elif recommendation_str in ['maybe', 'review_required']:
-            recommendation = RecommendationLevel.REVIEW_REQUIRED
         elif recommendation_str in ['no', 'reject']:
             recommendation = RecommendationLevel.REJECT
         elif recommendation_str in ['strong_no', 'strongly_reject']:
             recommendation = RecommendationLevel.STRONGLY_REJECT
+        elif recommendation_str in ['maybe', 'review_required', 'review']:
+            # Check if this is a legitimate exception case
+            exception_case = parsed_response.get('hiring_recommendation', {}).get('exception_case', {})
+            if exception_case.get('is_exception') and exception_case.get('exception_reason'):
+                logger.warning(f"Review required (exception): {exception_case.get('exception_reason')}")
+                recommendation = RecommendationLevel.REVIEW_REQUIRED
+            else:
+                # Force a decision - if avg score >= 60%, accept, otherwise reject
+                scores = parsed_response.get('scores', {})
+                avg_score = sum(scores.values()) / len(scores) if scores else 0
+                if avg_score >= 60:
+                    logger.info(f"Converting 'maybe' to ACCEPT (score: {avg_score:.1f}%)")
+                    recommendation = RecommendationLevel.ACCEPT
+                else:
+                    logger.info(f"Converting 'maybe' to REJECT (score: {avg_score:.1f}%)")
+                    recommendation = RecommendationLevel.REJECT
         else:
-            # Fallback for unexpected values
-            logger.warning(f"Unexpected recommendation value: {recommendation_str}, defaulting to REVIEW_REQUIRED")
-            recommendation = RecommendationLevel.REVIEW_REQUIRED
+            # Fallback - make decision based on scores
+            scores = parsed_response.get('scores', {})
+            avg_score = sum(scores.values()) / len(scores) if scores else 0
+            if avg_score >= 60:
+                logger.warning(f"Unknown recommendation '{recommendation_str}', defaulting to ACCEPT (score: {avg_score:.1f}%)")
+                recommendation = RecommendationLevel.ACCEPT
+            else:
+                logger.warning(f"Unknown recommendation '{recommendation_str}', defaulting to REJECT (score: {avg_score:.1f}%)")
+                recommendation = RecommendationLevel.REJECT
         
         # Convert confidence to 0-1 scale if it's 0-100
-        confidence = parsed_response.get('confidence', 0)
+        # Default to moderate confidence (0.6) if not provided
+        confidence = parsed_response.get('confidence', 0.6)
         if isinstance(confidence, (int, float)) and confidence > 1:
             confidence = confidence / 100.0
         
@@ -759,15 +824,96 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
             else:
                 normalized_scores[key] = 0.0
         
+        # Calculate average score for default generation
+        avg_score = sum(normalized_scores.values()) / len(normalized_scores) if normalized_scores else 0
+        
+        # Handle both old and new prompt formats
+        # New format has 'requirements_implementation', old has 'requirements_met'
+        requirements_met = {}
+        
+        if 'requirements_implementation' in parsed_response:
+            # Convert new format to old format for compatibility
+            for req_name, req_data in parsed_response.get('requirements_implementation', {}).items():
+                if isinstance(req_data, dict):
+                    requirements_met[req_name] = req_data.get('implemented', False)
+                else:
+                    requirements_met[req_name] = bool(req_data)
+        else:
+            # Old format
+            requirements_met = parsed_response.get('requirements_met', {})
+        
+        # Extract strengths and weaknesses from different possible locations
+        strengths = parsed_response.get('strengths', [])
+        weaknesses = parsed_response.get('weaknesses', [])
+        
+        # Try to extract from seniority_assessment if not found
+        if not strengths and 'seniority_assessment' in parsed_response:
+            seniority = parsed_response['seniority_assessment']
+            strengths = seniority.get('strengths', [])
+            weaknesses = seniority.get('growth_areas', weaknesses)
+        
+        # Add default values if empty
+        if not strengths:
+            if avg_score >= 80:
+                strengths = [
+                    "Code meets the specified requirements",
+                    "Implementation shows understanding of the technology stack",
+                    "Solution addresses the core problem effectively"
+                ]
+            elif avg_score >= 60:
+                strengths = [
+                    "Basic requirements are addressed",
+                    "Code shows effort and understanding",
+                    "Some good practices are followed"
+                ]
+            else:
+                strengths = [
+                    "Submission shows effort",
+                    "Some requirements are attempted",
+                    "Basic code structure is present"
+                ]
+        
+        if not weaknesses:
+            if avg_score >= 80:
+                weaknesses = [
+                    "Could benefit from more comprehensive testing",
+                    "Documentation could be more detailed",
+                    "Some edge cases might need additional handling"
+                ]
+            elif avg_score >= 60:
+                weaknesses = [
+                    "Code organization could be improved",
+                    "Error handling needs enhancement",
+                    "Some best practices are not followed consistently"
+                ]
+            else:
+                weaknesses = [
+                    "Several requirements are not fully implemented",
+                    "Code quality needs significant improvement",
+                    "Architecture and design patterns need work"
+                ]
+        
+        # Extract suggestions from various possible locations
+        suggestions = parsed_response.get('suggestions', [])
+        if not suggestions and 'seniority_assessment' in parsed_response:
+            # Try to use growth areas as suggestions
+            growth_areas = parsed_response['seniority_assessment'].get('growth_areas', [])
+            if growth_areas:
+                suggestions = [f"Consider improving: {area}" for area in growth_areas[:3]]
+        
+        # Extract hiring decision if present (new format)
+        hiring_decision = parsed_response.get('hiring_decision', None)
+        
         return AnalysisResult(
-            requirements_met=parsed_response.get('requirements_met', {}),
+            requirements_met=requirements_met,
             scores=normalized_scores,
             recommendation=recommendation,
             confidence=float(confidence),
-            strengths=parsed_response.get('strengths', []),
-            weaknesses=parsed_response.get('weaknesses', []),
+            strengths=strengths,
+            weaknesses=weaknesses,
             detailed_feedback=parsed_response.get('detailed_feedback', ''),
-            suggestions=parsed_response.get('suggestions', [])
+            suggestions=suggestions,
+            hiring_decision=hiring_decision
         )
     
     def _create_error_result(self, error_message: str) -> Dict[str, Any]:

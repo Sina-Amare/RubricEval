@@ -120,6 +120,7 @@ class AnalysisResult:
         weaknesses: List of identified weaknesses
         detailed_feedback: Detailed feedback text
         suggestions: List of improvement suggestions
+        hiring_decision: Structured hiring decision from LLM (optional)
     """
     requirements_met: Dict[str, bool]
     scores: Dict[str, float]
@@ -129,10 +130,11 @@ class AnalysisResult:
     weaknesses: List[str]
     detailed_feedback: str
     suggestions: List[str] = field(default_factory=list)
+    hiring_decision: Optional[Dict[str, str]] = None
     
     def to_dict(self) -> Dict[str, Any]:
         """Convert to dictionary representation."""
-        return {
+        result = {
             "requirements_met": self.requirements_met,
             "scores": self.scores,
             "recommendation": self.recommendation.value,
@@ -142,12 +144,18 @@ class AnalysisResult:
             "detailed_feedback": self.detailed_feedback,
             "suggestions": self.suggestions
         }
+        if self.hiring_decision:
+            result["hiring_decision"] = self.hiring_decision
+        return result
     
     def get_overall_score(self) -> float:
-        """Calculate overall score from individual scores."""
+        """Calculate overall score from individual scores.
+        Returns a value between 0 and 1 for percentage formatting.
+        """
         if not self.scores:
             return 0.0
-        return sum(self.scores.values()) / len(self.scores)
+        # Divide by 100 since scores are 0-100 but we want 0-1 for percentage
+        return sum(self.scores.values()) / len(self.scores) / 100
 
 
 @dataclass

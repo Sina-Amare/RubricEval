@@ -37,13 +37,17 @@ ENV PATH=/root/.local/bin:$PATH
 COPY src/ ./src/
 COPY data/prompts/ ./data/prompts/
 COPY data/task_requirements/ ./data/task_requirements/
+COPY run_bot.sh ./
+COPY scripts/ ./scripts/
 
-# Create necessary directories
-RUN mkdir -p /app/data/reports /app/logs
+# Create necessary directories and make script executable
+RUN mkdir -p /app/data/reports /app/logs /tmp && \
+    chmod +x run_bot.sh
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
+ENV DATABASE_PATH=/app/data/reviews.db
 
-# Run the bot
-CMD ["python", "src/bot.py"]
+# Run the bot using our startup script
+CMD ["./run_bot.sh"]
