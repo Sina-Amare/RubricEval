@@ -11,7 +11,18 @@ BOT_TOKEN = os.getenv('BOT_TOKEN')
 OPENROUTER_KEY = os.getenv('OPENROUTER_KEY')
 
 if not BOT_TOKEN or not OPENROUTER_KEY:
-    raise ValueError("BOT_TOKEN and OPENROUTER_KEY must be set in .env file")
+    import sys
+    print("\n" + "="*60)
+    print("ERROR: Missing required credentials!")
+    print("="*60)
+    print("\nBOT_TOKEN and OPENROUTER_KEY must be set in .env file")
+    print("\nPlease follow these steps:")
+    print("1. Copy .env.example to .env")
+    print("2. Add your Telegram BOT_TOKEN from BotFather")
+    print("3. Add your OPENROUTER_KEY from OpenRouter")
+    print("\nFor detailed instructions, see .env.example")
+    print("="*60 + "\n")
+    sys.exit(1)  # Clean exit, not a crash
 
 # Optional: Restrict bot to specific Telegram user IDs (comma-separated)
 # Example: MANAGER_IDS=123456789,987654321

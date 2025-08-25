@@ -9,7 +9,16 @@ echo "========================================"
 
 # Configuration
 BOT_DIR="$(cd "$(dirname "$0")" && pwd)"
-PID_FILE="/tmp/cv_review_bot.pid"
+# Check if running in Docker container
+if [ -f /.dockerenv ]; then
+    # Running in Docker - use container's tmp
+    PID_FILE="/tmp/cv_review_bot.pid"
+    echo "Running in Docker container"
+else
+    # Running on host - use local tmp
+    PID_FILE="/tmp/cv_review_bot.pid"
+    echo "Running on host system"
+fi
 LOG_FILE="$BOT_DIR/logs/bot.log"
 
 # Colors for output
@@ -104,20 +113,17 @@ echo -e "${GREEN}Starting CV Review Bot...${NC}"
 echo "Logs will be written to: $LOG_FILE"
 echo "========================================"
 
-# Run the bot with automatic restart on failure
-while true; do
-    python3 "$BOT_DIR/src/bot.py" 2>&1 | tee -a "$LOG_FILE"
-    EXIT_CODE=$?
-    
-    if [ $EXIT_CODE -eq 0 ]; then
-        echo -e "${GREEN}Bot stopped normally${NC}"
-        break
-    else
-        echo -e "${RED}Bot crashed with exit code $EXIT_CODE${NC}"
-        echo "Restarting in 5 seconds..."
-        sleep 5
-    fi
-done
+# Run the bot - it has its own restart logic in Python
+# We don't need shell-level restart since bot.py handles it
+python3 "$BOT_DIR/src/bot.py" 2>&1 | tee -a "$LOG_FILE"
+EXIT_CODE=$?
+
+if [ $EXIT_CODE -eq 0 ]; then
+    echo -e "${GREEN}Bot stopped normally${NC}"
+else
+    echo -e "${YELLOW}Bot exited with code $EXIT_CODE${NC}"
+    echo "Note: The bot has internal recovery mechanisms and should have restarted automatically"
+fi
 
 echo "========================================"
 echo "Bot shutdown complete"

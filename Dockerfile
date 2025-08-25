@@ -41,7 +41,9 @@ COPY run_bot.sh ./
 COPY scripts/ ./scripts/
 
 # Create necessary directories and make script executable
+# Ensure /tmp exists with proper permissions for PID file
 RUN mkdir -p /app/data/reports /app/logs /tmp && \
+    chmod 1777 /tmp && \
     chmod +x run_bot.sh
 
 # Set environment variables

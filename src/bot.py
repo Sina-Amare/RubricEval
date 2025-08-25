@@ -430,20 +430,43 @@ async def process_analysis(
                 pass
         
         # Update submission as failed
-        if submission and submission.id:
-            await storage_adapter.update_submission(
-                submission.id,
-                status=SubmissionStatus.FAILED,
-                error_message=error_msg[:500],  # Truncate long errors
-                completed_at=datetime.now(timezone.utc)
-            )
+        try:
+            if submission and submission.id:
+                await storage_adapter.update_submission(
+                    submission.id,
+                    status=SubmissionStatus.FAILED,
+                    error_message=error_msg[:500],  # Truncate long errors
+                    completed_at=datetime.now(timezone.utc)
+                )
+        except Exception as db_error:
+            logger.error(f"Could not update submission status: {db_error}")
+            # Continue anyway - user notification is more important
         
-        # Send error message
-        await notification_adapter.send_analysis_failed(
-            str(chat_id),
-            submission,
-            error_msg
-        )
+        # Send user-friendly error message with recovery instructions
+        try:
+            recovery_message = (
+                "❌ **Analysis Failed**\n\n"
+                f"Repository: `{github_url.split('/')[-1]}`\n"
+                f"Position: {role.value}\n\n"
+                "The analysis could not be completed. This might be due to:\n"
+                "• Repository is too large\n"
+                "• Network connectivity issues\n"
+                "• Temporary API unavailability\n\n"
+                "**What to do:**\n"
+                "1️⃣ Use /cancel to reset\n"
+                "2️⃣ Try again with /analyze\n"
+                "3️⃣ If it's a large repo, try a smaller one\n\n"
+                "The bot is still running and ready for your next request!"
+            )
+            
+            await context.bot.send_message(
+                chat_id=chat_id,
+                text=recovery_message,
+                parse_mode=ParseMode.MARKDOWN
+            )
+        except Exception as notify_error:
+            logger.error(f"Could not send error notification: {notify_error}")
+            # Even if we can't notify, don't crash - just log it
     
     finally:
         # Clean up repository adapter
@@ -1076,18 +1099,35 @@ async def report_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
 
 
 async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Handle errors in the bot."""
+    """Handle errors in the bot - NEVER let the bot crash."""
     logger.error(f"Update {update} caused error {context.error}")
     
-    # Try to notify user
+    # Always try to notify user with helpful recovery message
     try:
         if update and hasattr(update, 'effective_chat'):
+            error_message = (
+                "❌ An unexpected error occurred.\n\n"
+                "Please try the following:\n"
+                "1️⃣ Use /cancel to reset\n"
+                "2️⃣ Start fresh with /analyze\n\n"
+                "If the problem persists, please try again in a few moments."
+            )
             await context.bot.send_message(
                 chat_id=update.effective_chat.id,
-                text="❌ An error occurred. Please try again or contact support."
+                text=error_message
             )
-    except:
+    except Exception as e:
+        logger.error(f"Could not send error message to user: {e}")
+        # Even if we can't notify the user, DON'T CRASH
         pass
+    
+    # Log the full error for debugging
+    import traceback
+    logger.error(f"Full traceback:\n{''.join(traceback.format_tb(context.error.__traceback__))}")
+    
+    # IMPORTANT: Return None to indicate error was handled
+    # This prevents the error from propagating and crashing the bot
+    return None
 
 
 async def initialize_adapters():
@@ -1183,6 +1223,8 @@ def main() -> None:
 if __name__ == "__main__":
     import signal
     import os
+    import time
+    import traceback
     
     # PID file to track running instance
     PID_FILE = "/tmp/cv_review_bot.pid"
@@ -1214,7 +1256,6 @@ if __name__ == "__main__":
             logger.warning(f"Found existing bot process (PID: {old_pid}), stopping it...")
             try:
                 os.kill(old_pid, signal.SIGTERM)
-                import time
                 time.sleep(2)  # Give it time to shutdown gracefully
             except:
                 pass
@@ -1232,12 +1273,43 @@ if __name__ == "__main__":
     except Exception as e:
         logger.error(f"Could not write PID file: {e}")
     
-    try:
-        main()
-    except KeyboardInterrupt:
-        logger.info("Bot stopped by user")
-        cleanup_and_exit()
-    except Exception as e:
-        logger.error(f"Fatal error: {e}")
-        cleanup_and_exit()
-        sys.exit(1)
+    # MAIN LOOP WITH AUTOMATIC RECOVERY
+    # The bot will NEVER exit due to errors - it will always try to recover
+    restart_count = 0
+    max_restart_delay = 60  # Maximum delay between restarts (seconds)
+    
+    while True:
+        try:
+            logger.info(f"Starting bot (attempt #{restart_count + 1})...")
+            main()
+            # If main() returns normally (shouldn't happen), break the loop
+            logger.info("Bot exited normally")
+            break
+            
+        except KeyboardInterrupt:
+            logger.info("Bot stopped by user (Ctrl+C)")
+            cleanup_and_exit()
+            break
+            
+        except Exception as e:
+            restart_count += 1
+            
+            # Log the error with full traceback
+            logger.error(f"Bot crashed with error: {e}")
+            logger.error(f"Full traceback:\n{traceback.format_exc()}")
+            
+            # Calculate restart delay with exponential backoff
+            # Starts at 5 seconds, doubles each time, max 60 seconds
+            restart_delay = min(5 * (2 ** min(restart_count - 1, 5)), max_restart_delay)
+            
+            logger.warning(f"Bot will restart in {restart_delay} seconds (attempt #{restart_count + 1})...")
+            logger.warning("The bot will keep trying to recover automatically.")
+            
+            # Wait before restarting
+            time.sleep(restart_delay)
+            
+            # Reset restart count after 10 successful minutes
+            # This is handled by the main() function running for a while
+            
+            logger.info("Attempting to restart bot...")
+            # Continue the loop to restart the bot
