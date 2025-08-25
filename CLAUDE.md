@@ -213,6 +213,7 @@ MANAGER_IDS=123456789,987654321  # Telegram user IDs
 - **Logging System**: Design and implement a robust logging system following best practices to ensure effective monitoring, debugging, and maintenance.
 
 - **Use Specialized Agents**: When working on complex tasks, proactively use specialized subagents via the Task tool when they match the task requirements. For example:
+
   - Use `architecture-agent` for system design and architectural decisions
   - Use `backend-specialist` for server-side logic and API design
   - Use `frontend-specialist` for UI/UX implementation
@@ -221,6 +222,7 @@ MANAGER_IDS=123456789,987654321  # Telegram user IDs
   - Leverage agents working in parallel when tasks are independent
 
 - **Test After Implementation**: Test each component immediately after implementation before moving to the next component. This ensures:
+
   - Early detection of issues
   - Validation of functionality
   - Confidence in the codebase
@@ -237,26 +239,31 @@ MANAGER_IDS=123456789,987654321  # Telegram user IDs
 ## Development Workflow with User
 
 ### Credential Management
+
 - **Never hardcode credentials** - Always use environment variables
-- **When credentials are needed**: 
+- **When credentials are needed**:
   1. PAUSE implementation
   2. Ask user to provide specific credential with clear instructions
   3. WAIT for user confirmation
   4. Only then proceed with implementation
 
 ### User Action Protocol
+
 When user action is required:
+
 1. **PAUSE** current task
 2. **PROVIDE** clear, step-by-step instructions
 3. **WAIT** for user to complete and confirm
 4. **CONTINUE** only after confirmation
 
 ### Examples of User Actions:
+
 - **Creating Telegram Bot**: "Please create a Telegram bot using BotFather. Instructions: [step-by-step guide]. Let me know when done and provide the BOT_TOKEN."
 - **Getting API Keys**: "Please obtain OpenRouter API key from [website]. Let me know when you have it."
 - **Installing Packages**: "Please run: `pip install [packages]` in your terminal. Confirm when installation is complete."
 - **Testing Setup**: "Please test [specific feature]. Let me know if it works or any errors you encounter."
 
 ### Development Responsibilities
+
 - **Claude Code handles**: All code implementation, documentation, configuration files
 - **User handles**: Environment setup, credential acquisition, package installation, testing

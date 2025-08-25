@@ -1724,3 +1724,116 @@
 [2025-08-25T15:08:39.790002] [INFO] [bot:main:1163] - Cleared any existing webhooks
 [2025-08-25T15:08:39.832766] [INFO] [bot:main:1174] - Bot is ready! Starting polling...
 [2025-08-25T15:08:42.077836] [INFO] [bot:history_command:593] - History command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-25T16:45:14.898177] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-25T16:45:20.611784] [INFO] [bot:main:1120] - Starting CV Review Bot...
+[2025-08-25T16:45:23.007925] [INFO] [bot:initialize_adapters:1097] - Initializing adapters...
+[2025-08-25T16:45:23.010059] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-25T16:45:23.021498] [INFO] [sqlite:_init:713] - Database tables created/verified
+[2025-08-25T16:45:23.024283] [INFO] [bot:initialize_adapters:1102] - Storage adapter initialized
+[2025-08-25T16:45:23.346818] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-25T16:45:23.348303] [INFO] [bot:initialize_adapters:1106] - Repository adapter initialized
+[2025-08-25T16:45:23.349651] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-25T16:45:23.351949] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-25T16:45:23.353634] [INFO] [bot:initialize_adapters:1110] - Analyzer adapter initialized
+[2025-08-25T16:45:23.354889] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-25T16:45:24.736101] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-25T16:45:24.738143] [INFO] [bot:initialize_adapters:1115] - Notification adapter initialized
+[2025-08-25T16:45:25.376123] [INFO] [bot:main:1163] - Cleared any existing webhooks
+[2025-08-25T16:45:25.378792] [INFO] [bot:main:1174] - Bot is ready! Starting polling...
+[2025-08-25T16:45:27.970590] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-25T16:45:30.385347] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/majidbl/aaa
+[2025-08-25T16:45:30.388053] [INFO] [validators:validate_github_url:117] - Successfully validated GitHub URL: majidbl/aaa
+[2025-08-25T16:45:33.804176] [INFO] [bot:role_callback:245] - Starting analysis for https://github.com/majidbl/aaa as backend
+[2025-08-25T16:45:34.110353] [INFO] [sqlite:create_submission:109] - Created submission 41 for user ***ID_MASKED***
+[2025-08-25T16:45:34.112266] [INFO] [bot:process_analysis:316] - Created submission 41
+[2025-08-25T16:45:34.155408] [INFO] [sqlite:update_submission:281] - Updated submission 41: status=SubmissionStatus.ANALYZING
+[2025-08-25T16:45:34.368639] [INFO] [github:fetch_repository:141] - Fetching GitHub repository: https://github.com/majidbl/aaa for role: backend
+[2025-08-25T16:45:34.370881] [INFO] [github:_clone_repository:356] - Cloning repository: https://github.com/majidbl/aaa (attempt 1/3)
+[2025-08-25T16:45:36.327165] [INFO] [github:_clone_repository:375] - Repository cloned successfully
+[2025-08-25T16:45:36.330051] [INFO] [github:fetch_repository:160] - Repository size: 0.17MB
+[2025-08-25T16:45:36.331197] [INFO] [github:fetch_repository:167] - Extracting files based on patterns
+[2025-08-25T16:45:36.396311] [INFO] [github:_extract_files:502] - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+[2025-08-25T16:45:36.398325] [INFO] [github:fetch_repository:169] - Extracted 30 files using patterns
+[2025-08-25T16:45:36.400377] [INFO] [github:fetch_repository:176] - Raw content: 33481 tokens
+[2025-08-25T16:45:36.415586] [INFO] [github:fetch_repository:199] - Successfully processed repository: 30 files, 33481 tokens
+[2025-08-25T16:45:36.417477] [INFO] [bot:process_analysis:333] - Fetched repository: 30 files
+[2025-08-25T16:45:36.686388] [INFO] [openrouter:analyze_code:124] - Starting code analysis for backend submission (repo: https://github.com/majidbl/aaa)
+[2025-08-25T16:45:36.688232] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-25T16:45:36.691098] [INFO] [openrouter:_build_user_prompt:615] - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+[2025-08-25T16:45:36.693141] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-25T16:45:36.710678] [INFO] [openrouter:_analyze_with_model:450] - Total content size: ***ID_MASKED*** characters, 30 files
+[2025-08-25T16:45:53.057323] [INFO] [openrouter:_analyze_with_model:494] - LLM Response length: 11516 characters
+[2025-08-25T16:45:53.061364] [INFO] [openrouter:_parse_llm_response:676] - Successfully recovered JSON from LLM response
+[2025-08-25T16:45:53.065392] [INFO] [openrouter:analyze_code:152] - Analysis successful with google/gemini-2.5-flash
+[2025-08-25T16:45:53.068286] [INFO] [bot:process_analysis:368] - Analysis complete for submission 41
+[2025-08-25T16:45:53.132261] [INFO] [sqlite:create_report:442] - Created report 22 for submission 41
+[2025-08-25T16:45:53.133883] [INFO] [bot:process_analysis:385] - Created report 22
+[2025-08-25T16:45:53.175360] [INFO] [sqlite:update_submission:281] - Updated submission 41: status=SubmissionStatus.COMPLETED
+[2025-08-25T16:45:55.372783] [INFO] [telegram:send_analysis_complete:279] - Analysis report sent for submission 41
+[2025-08-25T16:45:55.776522] [INFO] [github:cleanup:304] - GitHub adapter cleanup completed
+[2025-08-25T16:46:18.491786] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-25T16:47:20.809197] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/mobinadavid/go-auth-otp-service
+[2025-08-25T16:47:20.812127] [INFO] [validators:validate_github_url:117] - Successfully validated GitHub URL: mobinadavid/go-auth-otp-service
+[2025-08-25T16:47:23.405875] [INFO] [bot:role_callback:245] - Starting analysis for https://github.com/mobinadavid/go-auth-otp-service as backend
+[2025-08-25T16:47:23.755734] [INFO] [sqlite:create_submission:109] - Created submission 42 for user ***ID_MASKED***
+[2025-08-25T16:47:23.757664] [INFO] [bot:process_analysis:316] - Created submission 42
+[2025-08-25T16:47:23.793936] [INFO] [sqlite:update_submission:281] - Updated submission 42: status=SubmissionStatus.ANALYZING
+[2025-08-25T16:47:24.020438] [INFO] [github:fetch_repository:141] - Fetching GitHub repository: https://github.com/mobinadavid/go-auth-otp-service for role: backend
+[2025-08-25T16:47:24.023777] [INFO] [github:_clone_repository:356] - Cloning repository: https://github.com/mobinadavid/go-auth-otp-service (attempt 1/3)
+[2025-08-25T16:47:26.080681] [INFO] [github:_clone_repository:375] - Repository cloned successfully
+[2025-08-25T16:47:26.083603] [INFO] [github:fetch_repository:160] - Repository size: 0.25MB
+[2025-08-25T16:47:26.085603] [INFO] [github:fetch_repository:167] - Extracting files based on patterns
+[2025-08-25T16:47:26.135806] [INFO] [github:_extract_files:502] - Extracted files - Critical: 71, Important: 0, Useful: 0, Total unique: 71
+[2025-08-25T16:47:26.137484] [INFO] [github:fetch_repository:169] - Extracted 71 files using patterns
+[2025-08-25T16:47:26.140290] [INFO] [github:fetch_repository:176] - Raw content: 46782 tokens
+[2025-08-25T16:47:26.155700] [INFO] [github:fetch_repository:199] - Successfully processed repository: 71 files, 46782 tokens
+[2025-08-25T16:47:26.157702] [INFO] [bot:process_analysis:333] - Fetched repository: 71 files
+[2025-08-25T16:47:26.446218] [INFO] [openrouter:analyze_code:124] - Starting code analysis for backend submission (repo: https://github.com/mobinadavid/go-auth-otp-service)
+[2025-08-25T16:47:26.448922] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-25T16:47:26.451519] [INFO] [openrouter:_build_user_prompt:615] - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+[2025-08-25T16:47:26.453814] [INFO] [openrouter:_analyze_with_model:450] - Total content size: ***ID_MASKED*** characters, 71 files
+[2025-08-25T16:47:46.721358] [INFO] [openrouter:_analyze_with_model:494] - LLM Response length: 13643 characters
+[2025-08-25T16:47:46.725045] [INFO] [openrouter:_parse_llm_response:676] - Successfully recovered JSON from LLM response
+[2025-08-25T16:47:46.728607] [INFO] [openrouter:analyze_code:152] - Analysis successful with google/gemini-2.5-flash
+[2025-08-25T16:47:46.731204] [INFO] [bot:process_analysis:368] - Analysis complete for submission 42
+[2025-08-25T16:47:46.786436] [INFO] [sqlite:create_report:442] - Created report 23 for submission 42
+[2025-08-25T16:47:46.788104] [INFO] [bot:process_analysis:385] - Created report 23
+[2025-08-25T16:47:46.824447] [INFO] [sqlite:update_submission:281] - Updated submission 42: status=SubmissionStatus.COMPLETED
+[2025-08-25T16:47:48.872969] [INFO] [telegram:send_analysis_complete:279] - Analysis report sent for submission 42
+[2025-08-25T16:47:49.189724] [INFO] [github:cleanup:304] - GitHub adapter cleanup completed
+[2025-08-25T16:56:29.050498] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-25T16:56:31.417296] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-25T16:56:31.424275] [INFO] [github:cleanup:304] - GitHub adapter cleanup completed
+[2025-08-25T16:57:05.332728] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-25T16:57:07.549405] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-25T16:57:07.552498] [INFO] [github:_clone_repository:356] - Cloning repository: https://github.com/mobinadavid/go-auth-otp-service (attempt 1/3)
+[2025-08-25T16:57:09.337397] [INFO] [github:_clone_repository:375] - Repository cloned successfully
+[2025-08-25T16:57:09.344512] [INFO] [github:cleanup:304] - GitHub adapter cleanup completed
+[2025-08-25T16:57:34.228429] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-25T16:57:37.457455] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-25T16:57:37.459666] [INFO] [github:_clone_repository:356] - Cloning repository: https://github.com/mobinadavid/go-auth-otp-service (attempt 1/3)
+[2025-08-25T16:57:38.963878] [INFO] [github:_clone_repository:375] - Repository cloned successfully
+[2025-08-25T16:57:38.968069] [INFO] [github:fetch_repository:141] - Fetching GitHub repository: https://github.com/mobinadavid/go-auth-otp-service for role: backend
+[2025-08-25T16:57:38.969339] [INFO] [github:_clone_repository:356] - Cloning repository: https://github.com/mobinadavid/go-auth-otp-service (attempt 1/3)
+[2025-08-25T16:57:40.598554] [INFO] [github:_clone_repository:375] - Repository cloned successfully
+[2025-08-25T16:57:40.601683] [INFO] [github:fetch_repository:160] - Repository size: 0.25MB
+[2025-08-25T16:57:40.602953] [INFO] [github:fetch_repository:167] - Extracting files based on patterns
+[2025-08-25T16:57:40.703994] [INFO] [github:_extract_files:502] - Extracted files - Critical: 71, Important: 0, Useful: 0, Total unique: 71
+[2025-08-25T16:57:40.705368] [INFO] [github:fetch_repository:169] - Extracted 71 files using patterns
+[2025-08-25T16:57:40.706482] [INFO] [github:fetch_repository:176] - Raw content: 46782 tokens
+[2025-08-25T16:57:40.717522] [INFO] [github:fetch_repository:199] - Successfully processed repository: 71 files, 46782 tokens
+[2025-08-25T16:57:40.728626] [INFO] [github:cleanup:304] - GitHub adapter cleanup completed
+[2025-08-25T16:58:16.459762] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-25T16:58:18.817954] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-25T16:58:18.820674] [INFO] [github:_clone_repository:356] - Cloning repository: https://github.com/mobinadavid/go-auth-otp-service (attempt 1/3)
+[2025-08-25T16:58:20.634808] [INFO] [github:_clone_repository:375] - Repository cloned successfully
+[2025-08-25T16:58:20.639214] [INFO] [github:fetch_repository:141] - Fetching GitHub repository: https://github.com/mobinadavid/go-auth-otp-service for role: backend
+[2025-08-25T16:58:20.640524] [INFO] [github:_clone_repository:356] - Cloning repository: https://github.com/mobinadavid/go-auth-otp-service (attempt 1/3)
+[2025-08-25T16:58:22.122636] [INFO] [github:_clone_repository:375] - Repository cloned successfully
+[2025-08-25T16:58:22.125532] [INFO] [github:fetch_repository:160] - Repository size: 0.25MB
+[2025-08-25T16:58:22.126985] [INFO] [github:fetch_repository:167] - Extracting files based on patterns
+[2025-08-25T16:58:22.217330] [INFO] [github:_extract_files:502] - Extracted files - Critical: 71, Important: 0, Useful: 0, Total unique: 71
+[2025-08-25T16:58:22.218981] [INFO] [github:fetch_repository:169] - Extracted 71 files using patterns
+[2025-08-25T16:58:22.220305] [INFO] [github:fetch_repository:176] - Raw content: 46782 tokens
+[2025-08-25T16:58:22.235303] [INFO] [github:fetch_repository:199] - Successfully processed repository: 71 files, 46782 tokens
+[2025-08-25T16:58:22.252921] [INFO] [github:cleanup:304] - GitHub adapter cleanup completed
