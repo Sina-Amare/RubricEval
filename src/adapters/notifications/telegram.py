@@ -247,7 +247,7 @@ This typically takes 2-5 minutes.
             True if sent successfully
         """
         try:
-            # Format the detailed report
+            # Format the detailed report (already in HTML format)
             report_text = self._format_analysis_report(submission, report)
             
             # Split if too long (Telegram limit is 4096 characters)
@@ -257,7 +257,7 @@ This typically takes 2-5 minutes.
                 await self.bot.send_message(
                     chat_id=user_id,
                     text=summary,
-                    parse_mode=ParseMode.MARKDOWN
+                    parse_mode=ParseMode.HTML
                 )
                 
                 # Send detailed parts
@@ -266,13 +266,14 @@ This typically takes 2-5 minutes.
                     await self.bot.send_message(
                         chat_id=user_id,
                         text=part,
-                        parse_mode=ParseMode.MARKDOWN
+                        parse_mode=ParseMode.HTML
                     )
             else:
+                # Send the report directly (it's already in HTML format)
                 await self.bot.send_message(
                     chat_id=user_id,
                     text=report_text,
-                    parse_mode=ParseMode.MARKDOWN
+                    parse_mode=ParseMode.HTML
                 )
             
             logger.info(f"Analysis report sent for submission {submission.id}")
@@ -483,15 +484,21 @@ Recommendations:
             empty = 10 - filled
             return "█" * filled + "░" * empty
         
+        # Helper function to escape HTML
+        def escape_html(text: str) -> str:
+            if not text:
+                return text
+            return text.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+        
         # Format requirements check
         requirements_text = ""
         for req, met in result.requirements_met.items():
             symbol = "✓" if met else "✗"
-            requirements_text += f"{symbol} {escape_markdown(req)}\n"
+            requirements_text += f"{symbol} {escape_html(req)}\n"
         
-        # Format strengths and weaknesses with escaped markdown
-        strengths_text = "\n".join(f"• {escape_markdown(s)}" for s in result.strengths[:5])
-        weaknesses_text = "\n".join(f"• {escape_markdown(w)}" for w in result.weaknesses[:5])
+        # Format strengths and weaknesses with escaped HTML
+        strengths_text = "\n".join(f"• {escape_html(s)}" for s in result.strengths[:5])
+        weaknesses_text = "\n".join(f"• {escape_html(w)}" for w in result.weaknesses[:5])
         
         # Determine clear HIRE/NO HIRE decision
         hiring_reason = None
@@ -543,28 +550,28 @@ Recommendations:
                 decision_emoji = "🚫"
                 decision_color = "RED"
         
-        # Build the report
+        # Build the report (using HTML format)
         report_text = f"""
-📊 **CANDIDATE ASSESSMENT REPORT**
+📊 <b>CANDIDATE ASSESSMENT REPORT</b>
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📁 Repository: `{repo_name}`
+📁 Repository: <code>{escape_html(repo_name)}</code>
 💼 Position: {submission.role.value}
 📅 Analyzed: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M')}
 
-**{decision_emoji} FINAL DECISION: {decision}**
+<b>{decision_emoji} FINAL DECISION: {decision}</b>
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🎯 Overall Score: {overall_score:.0%}
 🔍 Confidence: {result.confidence:.0%}"""
         
         # Add hiring reason and production ready status if available
         if hiring_reason:
-            report_text += f"\n📌 **Reason:** {escape_markdown(hiring_reason)}"
+            report_text += f"\n📌 <b>Reason:</b> {escape_html(hiring_reason)}"
         if production_ready:
-            report_text += f"\n🚀 **Production Ready:** {escape_markdown(production_ready)}"
+            report_text += f"\n🚀 <b>Production Ready:</b> {escape_html(production_ready)}"
         
         report_text += """
 
-**TECHNICAL SCORES**
+<b>TECHNICAL SCORES</b>
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 """
         
@@ -574,17 +581,17 @@ Recommendations:
         
         report_text += f"""
 
-✅ **STRENGTHS**
+✅ <b>STRENGTHS</b>
 {strengths_text}
 
-⚠️ **AREAS FOR IMPROVEMENT**
+⚠️ <b>AREAS FOR IMPROVEMENT</b>
 {weaknesses_text}
 
-📝 **KEY REQUIREMENTS CHECK**
+📝 <b>KEY REQUIREMENTS CHECK</b>
 {requirements_text}
 
-💡 **DETAILED FEEDBACK**
-{escape_markdown(result.detailed_feedback)}
+💡 <b>DETAILED FEEDBACK</b>
+{escape_html(result.detailed_feedback)}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Analysis ID: #{report.id}
@@ -609,13 +616,13 @@ Model: {report.model_used}
             decision = "❌ NO HIRE"
         
         return f"""
-📊 **Analysis Complete!**
+📊 <b>Analysis Complete!</b>
 
-**Decision: {decision}**
+<b>Decision: {decision}</b>
 Score: {overall_score:.0%}
 Confidence: {result.confidence:.0%}
 
-_Full report follows..._
+<i>Full report follows...</i>
         """
     
     def _split_long_message(self, text: str, max_length: int = 4000) -> List[str]:
@@ -660,3 +667,25 @@ _Full report follows..._
             return f"{minutes} minute{'s' if minutes > 1 else ''} ago"
         else:
             return "just now"
+    
+    def _markdown_to_html(self, text: str) -> str:
+        """Convert markdown-formatted text to HTML for Telegram."""
+        if not text:
+            return text
+        
+        # Escape HTML special characters first
+        text = text.replace('&', '&amp;')
+        text = text.replace('<', '&lt;')
+        text = text.replace('>', '&gt;')
+        
+        # Convert markdown bold to HTML
+        import re
+        text = re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', text)
+        
+        # Convert markdown code blocks to HTML
+        text = re.sub(r'`(.+?)`', r'<code>\1</code>', text)
+        
+        # Keep line breaks
+        text = text.replace('\n', '\n')
+        
+        return text

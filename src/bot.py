@@ -285,7 +285,25 @@ async def process_analysis(
     progress_message = None  # Store message to edit/delete later
     
     try:
-        # Create submission record
+        # Check for existing submission with same URL and role
+        existing = await storage_adapter.find_existing_submission(
+            github_url=github_url,
+            role=role.value,
+            user_id=str(user_id)
+        )
+        
+        if existing:
+            # Delete the old submission and its report
+            logger.info(f"Found existing submission {existing.id}, removing it")
+            await storage_adapter.delete_submission_and_report(existing.id)
+            
+            # Notify user we're replacing the old analysis
+            await context.bot.send_message(
+                chat_id=chat_id,
+                text="ℹ️ Found previous analysis for this repository. Replacing with new analysis..."
+            )
+        
+        # Create new submission record
         submission = Submission(
             telegram_user_id=str(user_id),
             telegram_username=username or "Unknown",
@@ -836,20 +854,26 @@ async def view_report_callback(update: Update, context: ContextTypes.DEFAULT_TYP
             await query.edit_message_text("❌ Submission data not found.")
             return
         
-        # Format the detailed report
-        repo_name = submission.github_url.split('/')[-1].replace('.git', '')
+        # Helper function to escape HTML
+        def escape_html(text: str) -> str:
+            if not text:
+                return text
+            return text.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+        
+        # Format the detailed report using HTML
+        repo_name = escape_html(submission.github_url.split('/')[-1].replace('.git', ''))
         score = report.analysis_result.get_overall_score()
         
-        message = f"""📊 **DETAILED ANALYSIS REPORT #{report.id}**
+        message = f"""📊 <b>DETAILED ANALYSIS REPORT #{report.id}</b>
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-**Repository:** `{repo_name}`
-**URL:** {submission.github_url}
-**Position:** {submission.role.value}
-**Candidate:** {submission.telegram_username}
-**Date:** {report.created_at.strftime("%Y-%m-%d %H:%M") if report.created_at else "Unknown"}
+<b>Repository:</b> <code>{repo_name}</code>
+<b>URL:</b> {escape_html(submission.github_url)}
+<b>Position:</b> {submission.role.value}
+<b>Candidate:</b> {escape_html(submission.telegram_username)}
+<b>Date:</b> {report.created_at.strftime("%Y-%m-%d %H:%M") if report.created_at else "Unknown"}
 
-**SCORES**
+<b>SCORES</b>
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 """
         
@@ -859,7 +883,7 @@ async def view_report_callback(update: Update, context: ContextTypes.DEFAULT_TYP
             bar = "█" * int(score_value / 10) + "░" * (10 - int(score_value / 10))
             message += f"{score_display}: {bar} {score_value:.0f}%\n"
         
-        message += f"\n**Overall Score:** {score:.0%}\n"
+        message += f"\n<b>Overall Score:</b> {score:.0%}\n"
         
         # Check if we have hiring_decision from new prompt format
         if hasattr(report.analysis_result, 'hiring_decision') and report.analysis_result.hiring_decision:
@@ -867,67 +891,67 @@ async def view_report_callback(update: Update, context: ContextTypes.DEFAULT_TYP
             hire_decision = hiring_info.get('decision', '').upper()
             
             if hire_decision == 'HIRE':
-                decision = "✅ **HIRE**"
+                decision = "✅ <b>HIRE</b>"
                 decision_emoji = "🎯"
             elif hire_decision == 'NO_HIRE':
-                decision = "❌ **NO HIRE**"
+                decision = "❌ <b>NO HIRE</b>"
                 decision_emoji = "🚫"
             else:
                 # Fallback to recommendation-based decision
                 recommendation = report.analysis_result.recommendation.value
                 if recommendation in ['strongly_accept', 'accept', 'strong_yes', 'yes']:
-                    decision = "✅ **HIRE**"
+                    decision = "✅ <b>HIRE</b>"
                     decision_emoji = "🎯"
                 elif recommendation == 'review_required':
-                    decision = "🔍 **REVIEW REQUIRED**"
+                    decision = "🔍 <b>REVIEW REQUIRED</b>"
                     decision_emoji = "⚠️"
                 else:
-                    decision = "❌ **NO HIRE**"
+                    decision = "❌ <b>NO HIRE</b>"
                     decision_emoji = "🚫"
             
-            message += f"\n{decision_emoji} **FINAL DECISION: {decision}**\n"
+            message += f"\n{decision_emoji} <b>FINAL DECISION: {decision}</b>\n"
             
             # Add hiring reason if available
             if hiring_info.get('primary_reason'):
-                message += f"**Reason:** {hiring_info['primary_reason']}\n"
+                message += f"<b>Reason:</b> {escape_html(hiring_info['primary_reason'])}\n"
             
             if hiring_info.get('is_production_ready'):
-                message += f"**Production Ready:** {hiring_info['is_production_ready']}\n"
+                message += f"<b>Production Ready:</b> {escape_html(str(hiring_info['is_production_ready']))}\n"
         else:
             # Old format - use recommendation-based decision
             recommendation = report.analysis_result.recommendation.value
             if recommendation in ['strongly_accept', 'accept', 'strong_yes', 'yes']:
-                decision = "✅ **HIRE**"
+                decision = "✅ <b>HIRE</b>"
                 decision_emoji = "🎯"
             elif recommendation == 'review_required':
-                decision = "🔍 **REVIEW REQUIRED** (Exception Case)"
+                decision = "🔍 <b>REVIEW REQUIRED</b> (Exception Case)"
                 decision_emoji = "⚠️"
             else:
-                decision = "❌ **NO HIRE**"
+                decision = "❌ <b>NO HIRE</b>"
                 decision_emoji = "🚫"
             
-            message += f"\n{decision_emoji} **FINAL DECISION: {decision}**\n"
+            message += f"\n{decision_emoji} <b>FINAL DECISION: {decision}</b>\n"
         
-        message += f"**Confidence:** {int(report.analysis_result.confidence * 100)}%\n"
+        message += f"<b>Confidence:</b> {int(report.analysis_result.confidence * 100)}%\n"
         
         # Add strengths
         if report.analysis_result.strengths:
-            message += "\n**STRENGTHS**\n"
+            message += "\n<b>STRENGTHS</b>\n"
             for strength in report.analysis_result.strengths[:5]:
-                message += f"✅ {strength}\n"
+                message += f"✅ {escape_html(strength)}\n"
         
         # Add weaknesses
         if report.analysis_result.weaknesses:
-            message += "\n**WEAKNESSES**\n"
+            message += "\n<b>WEAKNESSES</b>\n"
             for weakness in report.analysis_result.weaknesses[:5]:
-                message += f"⚠️ {weakness}\n"
+                message += f"⚠️ {escape_html(weakness)}\n"
         
         # Add detailed feedback (truncate if too long)
         if report.analysis_result.detailed_feedback:
             feedback = report.analysis_result.detailed_feedback
             if len(feedback) > 800:
                 feedback = feedback[:797] + "..."
-            message += f"\n**DETAILED FEEDBACK**\n{feedback}\n"
+            message += f"\n<b>DETAILED FEEDBACK</b>\n{escape_html(feedback)}\n"
         
         # Add back button
         keyboard = [[
@@ -937,7 +961,7 @@ async def view_report_callback(update: Update, context: ContextTypes.DEFAULT_TYP
         
         await query.edit_message_text(
             text=message,
-            parse_mode=ParseMode.MARKDOWN,
+            parse_mode=ParseMode.HTML,
             reply_markup=reply_markup
         )
         

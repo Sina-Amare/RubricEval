@@ -167,3 +167,9 @@
 [2025-08-25T12:51:56.410472] [ERROR] [bot:<module>:1067] - Fatal error: name 'history_frontend_command' is not defined
 [2025-08-25T13:02:45.144812] [ERROR] [bot:view_report_callback:907] - Error viewing report 9: Can't parse entities: can't find end of the entity starting at byte offset 254
 [2025-08-25T13:40:30.438959] [ERROR] [prompts:format_prompt:109] - Failed to format prompt analysis/senior_frontend_analysis.md: unexpected '{' in field name
+[2025-08-25T14:28:18.461631] [ERROR] [telegram:send_analysis_complete:282] - Failed to send analysis complete: Can't parse entities: can't find end of the entity starting at byte offset 661
+[2025-08-25T14:32:11.788777] [ERROR] [bot:view_report_callback:945] - Error viewing report 19: Can't parse entities: can't find end of the entity starting at byte offset 259
+[2025-08-25T14:39:03.901340] [ERROR] [bot:view_report_callback:945] - Error viewing report 19: Can't parse entities: can't find end of the entity starting at byte offset 259
+[2025-08-25T14:39:21.341928] [ERROR] [bot:view_report_callback:945] - Error viewing report 18: Can't parse entities: can't find end of the entity starting at byte offset 264
+[2025-08-25T14:39:27.680108] [ERROR] [bot:view_report_callback:945] - Error viewing report 17: Can't parse entities: can't find end of the entity starting at byte offset 1812
+[2025-08-25T14:55:38.524359] [ERROR] [telegram:send_analysis_complete:284] - Failed to send analysis complete: Can't parse entities: can't find end of the entity starting at byte offset 2833

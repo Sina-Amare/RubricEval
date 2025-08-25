@@ -1510,3 +1510,200 @@
 [2025-08-25T14:20:52.288416] [INFO] [sqlite:update_submission:194] - Updated submission 37: status=SubmissionStatus.COMPLETED
 [2025-08-25T14:20:54.928900] [INFO] [telegram:send_analysis_complete:278] - Analysis report sent for submission 37
 [2025-08-25T14:20:55.145354] [INFO] [github:cleanup:304] - GitHub adapter cleanup completed
+[2025-08-25T14:27:22.616787] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-25T14:27:26.004115] [INFO] [bot:main:1034] - Starting CV Review Bot...
+[2025-08-25T14:27:27.681592] [INFO] [bot:initialize_adapters:1011] - Initializing adapters...
+[2025-08-25T14:27:27.682513] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-25T14:27:27.695390] [INFO] [sqlite:_init:626] - Database tables created/verified
+[2025-08-25T14:27:27.721750] [INFO] [bot:initialize_adapters:1016] - Storage adapter initialized
+[2025-08-25T14:27:28.142077] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-25T14:27:28.148095] [INFO] [bot:initialize_adapters:1020] - Repository adapter initialized
+[2025-08-25T14:27:28.154616] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-25T14:27:28.161937] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-25T14:27:28.166961] [INFO] [bot:initialize_adapters:1024] - Analyzer adapter initialized
+[2025-08-25T14:27:28.178107] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-25T14:27:29.216349] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-25T14:27:29.218171] [INFO] [bot:initialize_adapters:1029] - Notification adapter initialized
+[2025-08-25T14:27:29.835390] [INFO] [bot:main:1077] - Cleared any existing webhooks
+[2025-08-25T14:27:29.871498] [INFO] [bot:main:1088] - Bot is ready! Starting polling...
+[2025-08-25T14:27:49.677554] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-25T14:27:52.041155] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/PuvaDD/Decamond-next-auth
+[2025-08-25T14:27:52.043297] [INFO] [validators:validate_github_url:117] - Successfully validated GitHub URL: PuvaDD/Decamond-next-auth
+[2025-08-25T14:27:57.623406] [INFO] [bot:role_callback:245] - Starting analysis for https://github.com/PuvaDD/Decamond-next-auth as frontend
+[2025-08-25T14:27:57.895371] [INFO] [sqlite:create_submission:109] - Created submission 38 for user ***ID_MASKED***
+[2025-08-25T14:27:57.896592] [INFO] [bot:process_analysis:298] - Created submission 38
+[2025-08-25T14:27:57.920997] [INFO] [sqlite:update_submission:194] - Updated submission 38: status=SubmissionStatus.ANALYZING
+[2025-08-25T14:27:58.127344] [INFO] [github:fetch_repository:141] - Fetching GitHub repository: https://github.com/PuvaDD/Decamond-next-auth for role: frontend
+[2025-08-25T14:27:58.129397] [INFO] [github:_clone_repository:356] - Cloning repository: https://github.com/PuvaDD/Decamond-next-auth (attempt 1/3)
+[2025-08-25T14:27:59.906121] [INFO] [github:_clone_repository:375] - Repository cloned successfully
+[2025-08-25T14:27:59.908129] [INFO] [github:fetch_repository:160] - Repository size: 0.34MB
+[2025-08-25T14:27:59.909391] [INFO] [github:fetch_repository:167] - Extracting files based on patterns
+[2025-08-25T14:27:59.952127] [INFO] [github:_extract_files:502] - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+[2025-08-25T14:27:59.953394] [INFO] [github:fetch_repository:169] - Extracted 30 files using patterns
+[2025-08-25T14:27:59.954456] [INFO] [github:fetch_repository:176] - Raw content: 6650 tokens
+[2025-08-25T14:27:59.965492] [INFO] [github:fetch_repository:199] - Successfully processed repository: 30 files, 6650 tokens
+[2025-08-25T14:27:59.966832] [INFO] [bot:process_analysis:315] - Fetched repository: 30 files
+[2025-08-25T14:28:00.227788] [INFO] [openrouter:analyze_code:124] - Starting code analysis for frontend submission (repo: https://github.com/PuvaDD/Decamond-next-auth)
+[2025-08-25T14:28:00.228964] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-25T14:28:00.230299] [INFO] [openrouter:_build_user_prompt:615] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-25T14:28:00.231449] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-25T14:28:00.238249] [INFO] [openrouter:_analyze_with_model:450] - Total content size: 31125 characters, 30 files
+[2025-08-25T14:28:16.507858] [INFO] [openrouter:_analyze_with_model:494] - LLM Response length: 12857 characters
+[2025-08-25T14:28:16.511933] [INFO] [openrouter:_parse_llm_response:676] - Successfully recovered JSON from LLM response
+[2025-08-25T14:28:16.514272] [INFO] [openrouter:analyze_code:152] - Analysis successful with google/gemini-2.5-flash
+[2025-08-25T14:28:16.515814] [INFO] [bot:process_analysis:350] - Analysis complete for submission 38
+[2025-08-25T14:28:16.617571] [INFO] [sqlite:create_report:355] - Created report 19 for submission 38
+[2025-08-25T14:28:16.622480] [INFO] [bot:process_analysis:367] - Created report 19
+[2025-08-25T14:28:16.649699] [INFO] [sqlite:update_submission:194] - Updated submission 38: status=SubmissionStatus.COMPLETED
+[2025-08-25T14:28:18.461631] [ERROR] [telegram:send_analysis_complete:282] - Failed to send analysis complete: Can't parse entities: can't find end of the entity starting at byte offset 661
+[2025-08-25T14:28:18.717221] [INFO] [github:cleanup:304] - GitHub adapter cleanup completed
+[2025-08-25T14:31:42.875967] [INFO] [bot:history_command:575] - History command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-25T14:32:11.788777] [ERROR] [bot:view_report_callback:945] - Error viewing report 19: Can't parse entities: can't find end of the entity starting at byte offset 259
+[2025-08-25T14:32:20.350640] [INFO] [bot:history_frontend_command:603] - History frontend command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-25T14:32:28.707381] [INFO] [bot:history_backend_command:626] - History backend command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-25T14:32:39.155737] [INFO] [bot:history_command:575] - History command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-25T14:37:59.070829] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-25T14:38:02.067374] [INFO] [bot:main:1034] - Starting CV Review Bot...
+[2025-08-25T14:38:03.951109] [INFO] [bot:initialize_adapters:1011] - Initializing adapters...
+[2025-08-25T14:38:03.952626] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-25T14:38:03.959558] [INFO] [sqlite:_init:626] - Database tables created/verified
+[2025-08-25T14:38:03.961900] [INFO] [bot:initialize_adapters:1016] - Storage adapter initialized
+[2025-08-25T14:38:04.276556] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-25T14:38:04.277760] [INFO] [bot:initialize_adapters:1020] - Repository adapter initialized
+[2025-08-25T14:38:04.279000] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-25T14:38:04.279959] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-25T14:38:04.280882] [INFO] [bot:initialize_adapters:1024] - Analyzer adapter initialized
+[2025-08-25T14:38:04.281874] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-25T14:38:05.623190] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-25T14:38:05.624653] [INFO] [bot:initialize_adapters:1029] - Notification adapter initialized
+[2025-08-25T14:38:06.359772] [INFO] [bot:main:1077] - Cleared any existing webhooks
+[2025-08-25T14:38:06.361401] [INFO] [bot:main:1088] - Bot is ready! Starting polling...
+[2025-08-25T14:38:49.916230] [INFO] [bot:history_command:575] - History command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-25T14:39:03.901340] [ERROR] [bot:view_report_callback:945] - Error viewing report 19: Can't parse entities: can't find end of the entity starting at byte offset 259
+[2025-08-25T14:39:15.413853] [INFO] [bot:history_frontend_command:603] - History frontend command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-25T14:39:21.341928] [ERROR] [bot:view_report_callback:945] - Error viewing report 18: Can't parse entities: can't find end of the entity starting at byte offset 264
+[2025-08-25T14:39:25.311758] [INFO] [bot:history_command:575] - History command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-25T14:39:27.680108] [ERROR] [bot:view_report_callback:945] - Error viewing report 17: Can't parse entities: can't find end of the entity starting at byte offset 1812
+[2025-08-25T14:46:12.426826] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-25T14:46:15.649913] [WARNING] [bot:<module>:1152] - Found existing bot process (PID: 6915), stopping it...
+[2025-08-25T14:53:00.589232] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-25T14:53:03.814454] [INFO] [bot:main:1058] - Starting CV Review Bot...
+[2025-08-25T14:53:05.523773] [INFO] [bot:initialize_adapters:1035] - Initializing adapters...
+[2025-08-25T14:53:05.525024] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-25T14:53:05.530306] [INFO] [sqlite:_init:713] - Database tables created/verified
+[2025-08-25T14:53:05.531636] [INFO] [bot:initialize_adapters:1040] - Storage adapter initialized
+[2025-08-25T14:53:05.774089] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-25T14:53:05.775421] [INFO] [bot:initialize_adapters:1044] - Repository adapter initialized
+[2025-08-25T14:53:05.776496] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-25T14:53:05.777556] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-25T14:53:05.778645] [INFO] [bot:initialize_adapters:1048] - Analyzer adapter initialized
+[2025-08-25T14:53:05.779665] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-25T14:53:06.760453] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-25T14:53:06.761964] [INFO] [bot:initialize_adapters:1053] - Notification adapter initialized
+[2025-08-25T14:53:07.216367] [WARNING] [bot:main:1105] - Failed to delete webhook (attempt 1/3): httpx.ConnectError: 
+[2025-08-25T14:53:09.980980] [INFO] [bot:main:1101] - Cleared any existing webhooks
+[2025-08-25T14:53:09.990734] [INFO] [bot:main:1112] - Bot is ready! Starting polling...
+[2025-08-25T14:53:20.702849] [INFO] [bot:history_command:593] - History command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-25T14:54:48.012341] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-25T14:55:14.777984] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/theariansalmanzadeh/dashboard-demo
+[2025-08-25T14:55:14.779882] [INFO] [validators:validate_github_url:117] - Successfully validated GitHub URL: theariansalmanzadeh/dashboard-demo
+[2025-08-25T14:55:17.475641] [INFO] [bot:role_callback:245] - Starting analysis for https://github.com/theariansalmanzadeh/dashboard-demo as frontend
+[2025-08-25T14:55:17.817128] [INFO] [bot:process_analysis:297] - Found existing submission 37, removing it
+[2025-08-25T14:55:17.854599] [INFO] [sqlite:_delete:222] - Deleted submission 37 and 1 associated reports
+[2025-08-25T14:55:18.784184] [INFO] [sqlite:create_submission:109] - Created submission 39 for user ***ID_MASKED***
+[2025-08-25T14:55:18.785750] [INFO] [bot:process_analysis:316] - Created submission 39
+[2025-08-25T14:55:18.808583] [INFO] [sqlite:update_submission:281] - Updated submission 39: status=SubmissionStatus.ANALYZING
+[2025-08-25T14:55:19.019172] [INFO] [github:fetch_repository:141] - Fetching GitHub repository: https://github.com/theariansalmanzadeh/dashboard-demo for role: frontend
+[2025-08-25T14:55:19.020436] [INFO] [github:_clone_repository:356] - Cloning repository: https://github.com/theariansalmanzadeh/dashboard-demo (attempt 1/3)
+[2025-08-25T14:55:21.020641] [INFO] [github:_clone_repository:375] - Repository cloned successfully
+[2025-08-25T14:55:21.025349] [INFO] [github:fetch_repository:160] - Repository size: 0.50MB
+[2025-08-25T14:55:21.026443] [INFO] [github:fetch_repository:167] - Extracting files based on patterns
+[2025-08-25T14:55:21.053793] [INFO] [github:_extract_files:502] - Extracted files - Critical: 49, Important: 0, Useful: 0, Total unique: 49
+[2025-08-25T14:55:21.055142] [INFO] [github:fetch_repository:169] - Extracted 49 files using patterns
+[2025-08-25T14:55:21.056373] [INFO] [github:fetch_repository:176] - Raw content: 6835 tokens
+[2025-08-25T14:55:21.067260] [INFO] [github:fetch_repository:199] - Successfully processed repository: 49 files, 6835 tokens
+[2025-08-25T14:55:21.068296] [INFO] [bot:process_analysis:333] - Fetched repository: 49 files
+[2025-08-25T14:55:21.270237] [INFO] [openrouter:analyze_code:124] - Starting code analysis for frontend submission (repo: https://github.com/theariansalmanzadeh/dashboard-demo)
+[2025-08-25T14:55:21.271070] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-25T14:55:21.272477] [INFO] [openrouter:_build_user_prompt:615] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-25T14:55:21.273579] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-25T14:55:21.278908] [INFO] [openrouter:_analyze_with_model:450] - Total content size: 31411 characters, 49 files
+[2025-08-25T14:55:36.690417] [INFO] [openrouter:_analyze_with_model:494] - LLM Response length: 12039 characters
+[2025-08-25T14:55:36.691912] [INFO] [openrouter:_parse_llm_response:676] - Successfully recovered JSON from LLM response
+[2025-08-25T14:55:36.693335] [INFO] [openrouter:analyze_code:152] - Analysis successful with google/gemini-2.5-flash
+[2025-08-25T14:55:36.694269] [INFO] [bot:process_analysis:368] - Analysis complete for submission 39
+[2025-08-25T14:55:36.728669] [INFO] [sqlite:create_report:442] - Created report 20 for submission 39
+[2025-08-25T14:55:36.729769] [INFO] [bot:process_analysis:385] - Created report 20
+[2025-08-25T14:55:36.748783] [INFO] [sqlite:update_submission:281] - Updated submission 39: status=SubmissionStatus.COMPLETED
+[2025-08-25T14:55:38.524359] [ERROR] [telegram:send_analysis_complete:284] - Failed to send analysis complete: Can't parse entities: can't find end of the entity starting at byte offset 2833
+[2025-08-25T14:55:38.743510] [INFO] [github:cleanup:304] - GitHub adapter cleanup completed
+[2025-08-25T15:01:53.188067] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-25T15:01:56.285832] [INFO] [bot:main:1058] - Starting CV Review Bot...
+[2025-08-25T15:01:58.308040] [INFO] [bot:initialize_adapters:1035] - Initializing adapters...
+[2025-08-25T15:01:58.309174] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-25T15:01:58.314459] [INFO] [sqlite:_init:713] - Database tables created/verified
+[2025-08-25T15:01:58.315834] [INFO] [bot:initialize_adapters:1040] - Storage adapter initialized
+[2025-08-25T15:01:58.586378] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-25T15:01:58.587745] [INFO] [bot:initialize_adapters:1044] - Repository adapter initialized
+[2025-08-25T15:01:58.588688] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-25T15:01:58.590383] [INFO] [openrouter:__init__:100] - Primary model: openai/gpt-5-mini
+[2025-08-25T15:01:58.591938] [INFO] [bot:initialize_adapters:1048] - Analyzer adapter initialized
+[2025-08-25T15:01:58.592980] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-25T15:01:59.853460] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-25T15:01:59.932000] [INFO] [bot:initialize_adapters:1053] - Notification adapter initialized
+[2025-08-25T15:02:00.610741] [INFO] [bot:main:1101] - Cleared any existing webhooks
+[2025-08-25T15:02:00.611865] [INFO] [bot:main:1112] - Bot is ready! Starting polling...
+[2025-08-25T15:02:54.965634] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-25T15:02:57.688638] [INFO] [bot:main:1058] - Starting CV Review Bot...
+[2025-08-25T15:02:59.498305] [INFO] [bot:initialize_adapters:1035] - Initializing adapters...
+[2025-08-25T15:02:59.499392] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-25T15:02:59.504032] [INFO] [sqlite:_init:713] - Database tables created/verified
+[2025-08-25T15:02:59.505449] [INFO] [bot:initialize_adapters:1040] - Storage adapter initialized
+[2025-08-25T15:02:59.745624] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-25T15:02:59.747058] [INFO] [bot:initialize_adapters:1044] - Repository adapter initialized
+[2025-08-25T15:02:59.748440] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-25T15:02:59.749392] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-25T15:02:59.750396] [INFO] [bot:initialize_adapters:1048] - Analyzer adapter initialized
+[2025-08-25T15:02:59.751594] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-25T15:03:01.273871] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-25T15:03:01.274954] [INFO] [bot:initialize_adapters:1053] - Notification adapter initialized
+[2025-08-25T15:03:01.954187] [INFO] [bot:main:1101] - Cleared any existing webhooks
+[2025-08-25T15:03:01.955315] [INFO] [bot:main:1112] - Bot is ready! Starting polling...
+[2025-08-25T15:03:11.542129] [INFO] [bot:recent_command:456] - Recent command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-25T15:03:17.039690] [INFO] [bot:stats_command:526] - Stats command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-25T15:03:25.257073] [INFO] [bot:history_frontend_command:621] - History frontend command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-25T15:03:57.757037] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-25T15:04:12.230191] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/PuvaDD/Decamond-next-auth
+[2025-08-25T15:04:12.232161] [INFO] [validators:validate_github_url:117] - Successfully validated GitHub URL: PuvaDD/Decamond-next-auth
+[2025-08-25T15:04:15.284684] [INFO] [bot:role_callback:245] - Starting analysis for https://github.com/PuvaDD/Decamond-next-auth as frontend
+[2025-08-25T15:04:15.632462] [INFO] [bot:process_analysis:297] - Found existing submission 38, removing it
+[2025-08-25T15:04:15.668409] [INFO] [sqlite:_delete:222] - Deleted submission 38 and 1 associated reports
+[2025-08-25T15:04:15.917141] [INFO] [sqlite:create_submission:109] - Created submission 40 for user ***ID_MASKED***
+[2025-08-25T15:04:15.918100] [INFO] [bot:process_analysis:316] - Created submission 40
+[2025-08-25T15:04:15.940548] [INFO] [sqlite:update_submission:281] - Updated submission 40: status=SubmissionStatus.ANALYZING
+[2025-08-25T15:04:16.194450] [INFO] [github:fetch_repository:141] - Fetching GitHub repository: https://github.com/PuvaDD/Decamond-next-auth for role: frontend
+[2025-08-25T15:04:16.196800] [INFO] [github:_clone_repository:356] - Cloning repository: https://github.com/PuvaDD/Decamond-next-auth (attempt 1/3)
+[2025-08-25T15:04:18.222065] [INFO] [github:_clone_repository:375] - Repository cloned successfully
+[2025-08-25T15:04:18.224315] [INFO] [github:fetch_repository:160] - Repository size: 0.34MB
+[2025-08-25T15:04:18.225708] [INFO] [github:fetch_repository:167] - Extracting files based on patterns
+[2025-08-25T15:04:18.257958] [INFO] [github:_extract_files:502] - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+[2025-08-25T15:04:18.259865] [INFO] [github:fetch_repository:169] - Extracted 30 files using patterns
+[2025-08-25T15:04:18.261185] [INFO] [github:fetch_repository:176] - Raw content: 6650 tokens
+[2025-08-25T15:04:18.273289] [INFO] [github:fetch_repository:199] - Successfully processed repository: 30 files, 6650 tokens
+[2025-08-25T15:04:18.275052] [INFO] [bot:process_analysis:333] - Fetched repository: 30 files
+[2025-08-25T15:04:18.537871] [INFO] [openrouter:analyze_code:124] - Starting code analysis for frontend submission (repo: https://github.com/PuvaDD/Decamond-next-auth)
+[2025-08-25T15:04:18.539103] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-25T15:04:18.540636] [INFO] [openrouter:_build_user_prompt:615] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-25T15:04:18.541750] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-25T15:04:18.549376] [INFO] [openrouter:_analyze_with_model:450] - Total content size: 31125 characters, 30 files
+[2025-08-25T15:04:34.841923] [INFO] [openrouter:_analyze_with_model:494] - LLM Response length: 12260 characters
+[2025-08-25T15:04:34.843920] [INFO] [openrouter:_parse_llm_response:676] - Successfully recovered JSON from LLM response
+[2025-08-25T15:04:34.846193] [INFO] [openrouter:analyze_code:152] - Analysis successful with google/gemini-2.5-flash
+[2025-08-25T15:04:34.847543] [INFO] [bot:process_analysis:368] - Analysis complete for submission 40
+[2025-08-25T15:04:34.889452] [INFO] [sqlite:create_report:442] - Created report 21 for submission 40
+[2025-08-25T15:04:34.890846] [INFO] [bot:process_analysis:385] - Created report 21
+[2025-08-25T15:04:34.910922] [INFO] [sqlite:update_submission:281] - Updated submission 40: status=SubmissionStatus.COMPLETED
+[2025-08-25T15:04:37.236319] [INFO] [telegram:send_analysis_complete:279] - Analysis report sent for submission 40
+[2025-08-25T15:04:37.481886] [INFO] [github:cleanup:304] - GitHub adapter cleanup completed
+[2025-08-25T15:05:18.439693] [INFO] [bot:recent_command:456] - Recent command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-25T15:05:28.150920] [INFO] [bot:history_command:593] - History command from user Sinaam_00 (***ID_MASKED***)

@@ -146,6 +146,93 @@ class SQLiteAdapter(StorageAdapter):
             logger.error(error_msg)
             raise StorageError(error_msg)
     
+    async def find_existing_submission(
+        self,
+        github_url: str,
+        role: str,
+        user_id: Optional[str] = None
+    ) -> Optional[DomainSubmission]:
+        """
+        Find existing submission by GitHub URL and role.
+        
+        Args:
+            github_url: GitHub repository URL
+            role: Role (backend/frontend)
+            user_id: Optional user ID to limit search
+            
+        Returns:
+            Most recent matching submission if found, None otherwise
+            
+        Raises:
+            StorageError: If query fails
+        """
+        try:
+            def _find():
+                session = self.SessionFactory()
+                try:
+                    query = session.query(DBSubmission).filter(
+                        DBSubmission.github_url == github_url,
+                        DBSubmission.role == role
+                    )
+                    
+                    if user_id:
+                        query = query.filter(DBSubmission.telegram_user_id == user_id)
+                    
+                    # Get the most recent submission
+                    db_submission = query.order_by(DBSubmission.created_at.desc()).first()
+                    
+                    if db_submission:
+                        return self._db_to_domain_submission(db_submission)
+                    return None
+                finally:
+                    session.close()
+            
+            return await asyncio.get_event_loop().run_in_executor(executor, _find)
+            
+        except Exception as e:
+            error_msg = f"Failed to find existing submission: {str(e)}"
+            logger.error(error_msg)
+            raise StorageError(error_msg)
+    
+    async def delete_submission_and_report(self, submission_id: int) -> bool:
+        """
+        Delete submission and its associated report.
+        
+        Args:
+            submission_id: Submission ID to delete
+            
+        Returns:
+            True if deleted, False if not found
+            
+        Raises:
+            StorageError: If deletion fails
+        """
+        try:
+            def _delete():
+                session = self.SessionFactory()
+                try:
+                    # First delete any associated reports
+                    report_count = session.query(DBReport).filter_by(submission_id=submission_id).delete()
+                    
+                    # Then delete the submission
+                    submission_count = session.query(DBSubmission).filter_by(id=submission_id).delete()
+                    
+                    if submission_count > 0:
+                        session.commit()
+                        logger.info(f"Deleted submission {submission_id} and {report_count} associated reports")
+                        return True
+                    return False
+                    
+                finally:
+                    session.close()
+            
+            return await asyncio.get_event_loop().run_in_executor(executor, _delete)
+            
+        except Exception as e:
+            error_msg = f"Failed to delete submission {submission_id}: {str(e)}"
+            logger.error(error_msg)
+            raise StorageError(error_msg)
+    
     async def update_submission(
         self,
         submission_id: int,

@@ -54,6 +54,45 @@ class StorageAdapter(ABC):
         pass
     
     @abstractmethod
+    async def find_existing_submission(
+        self,
+        github_url: str,
+        role: str,
+        user_id: Optional[str] = None
+    ) -> Optional[Submission]:
+        """
+        Find existing submission by GitHub URL and role.
+        
+        Args:
+            github_url: GitHub repository URL
+            role: Role (backend/frontend)
+            user_id: Optional user ID to limit search
+            
+        Returns:
+            Most recent matching submission if found, None otherwise
+            
+        Raises:
+            StorageError: If query fails
+        """
+        pass
+    
+    @abstractmethod
+    async def delete_submission_and_report(self, submission_id: int) -> bool:
+        """
+        Delete submission and its associated report.
+        
+        Args:
+            submission_id: Submission ID to delete
+            
+        Returns:
+            True if deleted, False if not found
+            
+        Raises:
+            StorageError: If deletion fails
+        """
+        pass
+    
+    @abstractmethod
     async def update_submission(
         self,
         submission_id: int,

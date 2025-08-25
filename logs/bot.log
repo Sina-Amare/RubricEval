@@ -1020,3 +1020,190 @@
 2025-08-25 14:20:52,288 - adapters.storage.sqlite - INFO - Updated submission 37: status=SubmissionStatus.COMPLETED
 2025-08-25 14:20:54,928 - adapters.notifications.telegram - INFO - Analysis report sent for submission 37
 2025-08-25 14:20:55,145 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-25 14:27:22,616 - utils.logger - INFO - Logging system initialized successfully
+2025-08-25 14:27:26,004 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1040: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-25 14:27:27,681 - __main__ - INFO - Initializing adapters...
+2025-08-25 14:27:27,682 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-25 14:27:27,695 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-25 14:27:27,721 - __main__ - INFO - Storage adapter initialized
+2025-08-25 14:27:28,142 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-25 14:27:28,148 - __main__ - INFO - Repository adapter initialized
+2025-08-25 14:27:28,154 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-25 14:27:28,161 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-25 14:27:28,166 - __main__ - INFO - Analyzer adapter initialized
+2025-08-25 14:27:28,178 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-25 14:27:29,216 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-25 14:27:29,218 - __main__ - INFO - Notification adapter initialized
+2025-08-25 14:27:29,835 - __main__ - INFO - Cleared any existing webhooks
+2025-08-25 14:27:29,871 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-25 14:27:49,677 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 14:27:52,041 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/PuvaDD/Decamond-next-auth
+2025-08-25 14:27:52,043 - utils.validators - INFO - Successfully validated GitHub URL: PuvaDD/Decamond-next-auth
+2025-08-25 14:27:57,623 - __main__ - INFO - Starting analysis for https://github.com/PuvaDD/Decamond-next-auth as frontend
+2025-08-25 14:27:57,895 - adapters.storage.sqlite - INFO - Created submission 38 for user ***ID_MASKED***
+2025-08-25 14:27:57,896 - __main__ - INFO - Created submission 38
+2025-08-25 14:27:57,920 - adapters.storage.sqlite - INFO - Updated submission 38: status=SubmissionStatus.ANALYZING
+2025-08-25 14:27:58,127 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/PuvaDD/Decamond-next-auth for role: frontend
+2025-08-25 14:27:58,129 - adapters.repositories.github - INFO - Cloning repository: https://github.com/PuvaDD/Decamond-next-auth (attempt 1/3)
+2025-08-25 14:27:59,906 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-25 14:27:59,908 - adapters.repositories.github - INFO - Repository size: 0.34MB
+2025-08-25 14:27:59,909 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-25 14:27:59,952 - adapters.repositories.github - INFO - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+2025-08-25 14:27:59,953 - adapters.repositories.github - INFO - Extracted 30 files using patterns
+2025-08-25 14:27:59,954 - adapters.repositories.github - INFO - Raw content: 6650 tokens
+2025-08-25 14:27:59,965 - adapters.repositories.github - INFO - Successfully processed repository: 30 files, 6650 tokens
+2025-08-25 14:27:59,966 - __main__ - INFO - Fetched repository: 30 files
+2025-08-25 14:28:00,227 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/PuvaDD/Decamond-next-auth)
+2025-08-25 14:28:00,228 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-25 14:28:00,230 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+2025-08-25 14:28:00,231 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-25 14:28:00,238 - adapters.analyzers.openrouter - INFO - Total content size: 31125 characters, 30 files
+2025-08-25 14:28:16,507 - adapters.analyzers.openrouter - INFO - LLM Response length: 12857 characters
+2025-08-25 14:28:16,511 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-25 14:28:16,514 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-25 14:28:16,515 - __main__ - INFO - Analysis complete for submission 38
+2025-08-25 14:28:16,617 - adapters.storage.sqlite - INFO - Created report 19 for submission 38
+2025-08-25 14:28:16,622 - __main__ - INFO - Created report 19
+2025-08-25 14:28:16,649 - adapters.storage.sqlite - INFO - Updated submission 38: status=SubmissionStatus.COMPLETED
+2025-08-25 14:28:18,461 - adapters.notifications.telegram - ERROR - Failed to send analysis complete: Can't parse entities: can't find end of the entity starting at byte offset 661
+2025-08-25 14:28:18,717 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-25 14:31:42,875 - __main__ - INFO - History command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 14:32:11,788 - __main__ - ERROR - Error viewing report 19: Can't parse entities: can't find end of the entity starting at byte offset 259
+2025-08-25 14:32:20,350 - __main__ - INFO - History frontend command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 14:32:28,707 - __main__ - INFO - History backend command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 14:32:39,155 - __main__ - INFO - History command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 14:37:59,070 - utils.logger - INFO - Logging system initialized successfully
+2025-08-25 14:38:02,067 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1040: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-25 14:38:03,951 - __main__ - INFO - Initializing adapters...
+2025-08-25 14:38:03,952 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-25 14:38:03,959 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-25 14:38:03,961 - __main__ - INFO - Storage adapter initialized
+2025-08-25 14:38:04,276 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-25 14:38:04,277 - __main__ - INFO - Repository adapter initialized
+2025-08-25 14:38:04,278 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-25 14:38:04,279 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-25 14:38:04,280 - __main__ - INFO - Analyzer adapter initialized
+2025-08-25 14:38:04,281 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-25 14:38:05,623 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-25 14:38:05,624 - __main__ - INFO - Notification adapter initialized
+2025-08-25 14:38:06,359 - __main__ - INFO - Cleared any existing webhooks
+2025-08-25 14:38:06,361 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-25 14:38:49,916 - __main__ - INFO - History command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 14:39:03,901 - __main__ - ERROR - Error viewing report 19: Can't parse entities: can't find end of the entity starting at byte offset 259
+2025-08-25 14:39:15,413 - __main__ - INFO - History frontend command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 14:39:21,341 - __main__ - ERROR - Error viewing report 18: Can't parse entities: can't find end of the entity starting at byte offset 264
+2025-08-25 14:39:25,311 - __main__ - INFO - History command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 14:39:27,680 - __main__ - ERROR - Error viewing report 17: Can't parse entities: can't find end of the entity starting at byte offset 1812
+2025-08-25 14:53:00,589 - utils.logger - INFO - Logging system initialized successfully
+2025-08-25 14:53:03,814 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1064: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-25 14:53:05,523 - __main__ - INFO - Initializing adapters...
+2025-08-25 14:53:05,525 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-25 14:53:05,530 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-25 14:53:05,531 - __main__ - INFO - Storage adapter initialized
+2025-08-25 14:53:05,774 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-25 14:53:05,775 - __main__ - INFO - Repository adapter initialized
+2025-08-25 14:53:05,776 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-25 14:53:05,777 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-25 14:53:05,778 - __main__ - INFO - Analyzer adapter initialized
+2025-08-25 14:53:05,779 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-25 14:53:06,760 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-25 14:53:06,761 - __main__ - INFO - Notification adapter initialized
+2025-08-25 14:53:07,216 - __main__ - WARNING - Failed to delete webhook (attempt 1/3): httpx.ConnectError: 
+2025-08-25 14:53:09,980 - __main__ - INFO - Cleared any existing webhooks
+2025-08-25 14:53:09,990 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-25 14:53:20,702 - __main__ - INFO - History command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 14:54:48,012 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 14:55:14,777 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/theariansalmanzadeh/dashboard-demo
+2025-08-25 14:55:14,779 - utils.validators - INFO - Successfully validated GitHub URL: theariansalmanzadeh/dashboard-demo
+2025-08-25 14:55:17,475 - __main__ - INFO - Starting analysis for https://github.com/theariansalmanzadeh/dashboard-demo as frontend
+2025-08-25 14:55:17,817 - __main__ - INFO - Found existing submission 37, removing it
+2025-08-25 14:55:17,854 - adapters.storage.sqlite - INFO - Deleted submission 37 and 1 associated reports
+2025-08-25 14:55:18,784 - adapters.storage.sqlite - INFO - Created submission 39 for user ***ID_MASKED***
+2025-08-25 14:55:18,785 - __main__ - INFO - Created submission 39
+2025-08-25 14:55:18,808 - adapters.storage.sqlite - INFO - Updated submission 39: status=SubmissionStatus.ANALYZING
+2025-08-25 14:55:19,019 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/theariansalmanzadeh/dashboard-demo for role: frontend
+2025-08-25 14:55:19,020 - adapters.repositories.github - INFO - Cloning repository: https://github.com/theariansalmanzadeh/dashboard-demo (attempt 1/3)
+2025-08-25 14:55:21,020 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-25 14:55:21,025 - adapters.repositories.github - INFO - Repository size: 0.50MB
+2025-08-25 14:55:21,026 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-25 14:55:21,053 - adapters.repositories.github - INFO - Extracted files - Critical: 49, Important: 0, Useful: 0, Total unique: 49
+2025-08-25 14:55:21,055 - adapters.repositories.github - INFO - Extracted 49 files using patterns
+2025-08-25 14:55:21,056 - adapters.repositories.github - INFO - Raw content: 6835 tokens
+2025-08-25 14:55:21,067 - adapters.repositories.github - INFO - Successfully processed repository: 49 files, 6835 tokens
+2025-08-25 14:55:21,068 - __main__ - INFO - Fetched repository: 49 files
+2025-08-25 14:55:21,270 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/theariansalmanzadeh/dashboard-demo)
+2025-08-25 14:55:21,271 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-25 14:55:21,272 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+2025-08-25 14:55:21,273 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-25 14:55:21,278 - adapters.analyzers.openrouter - INFO - Total content size: 31411 characters, 49 files
+2025-08-25 14:55:36,690 - adapters.analyzers.openrouter - INFO - LLM Response length: 12039 characters
+2025-08-25 14:55:36,691 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-25 14:55:36,693 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-25 14:55:36,694 - __main__ - INFO - Analysis complete for submission 39
+2025-08-25 14:55:36,728 - adapters.storage.sqlite - INFO - Created report 20 for submission 39
+2025-08-25 14:55:36,729 - __main__ - INFO - Created report 20
+2025-08-25 14:55:36,748 - adapters.storage.sqlite - INFO - Updated submission 39: status=SubmissionStatus.COMPLETED
+2025-08-25 14:55:38,524 - adapters.notifications.telegram - ERROR - Failed to send analysis complete: Can't parse entities: can't find end of the entity starting at byte offset 2833
+2025-08-25 14:55:38,743 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-25 15:02:54,965 - utils.logger - INFO - Logging system initialized successfully
+2025-08-25 15:02:57,688 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1064: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-25 15:02:59,498 - __main__ - INFO - Initializing adapters...
+2025-08-25 15:02:59,499 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-25 15:02:59,504 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-25 15:02:59,505 - __main__ - INFO - Storage adapter initialized
+2025-08-25 15:02:59,745 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-25 15:02:59,747 - __main__ - INFO - Repository adapter initialized
+2025-08-25 15:02:59,748 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-25 15:02:59,749 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-25 15:02:59,750 - __main__ - INFO - Analyzer adapter initialized
+2025-08-25 15:02:59,751 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-25 15:03:01,273 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-25 15:03:01,274 - __main__ - INFO - Notification adapter initialized
+2025-08-25 15:03:01,954 - __main__ - INFO - Cleared any existing webhooks
+2025-08-25 15:03:01,955 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-25 15:03:11,542 - __main__ - INFO - Recent command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 15:03:17,039 - __main__ - INFO - Stats command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 15:03:25,257 - __main__ - INFO - History frontend command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 15:03:57,757 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 15:04:12,230 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/PuvaDD/Decamond-next-auth
+2025-08-25 15:04:12,232 - utils.validators - INFO - Successfully validated GitHub URL: PuvaDD/Decamond-next-auth
+2025-08-25 15:04:15,284 - __main__ - INFO - Starting analysis for https://github.com/PuvaDD/Decamond-next-auth as frontend
+2025-08-25 15:04:15,632 - __main__ - INFO - Found existing submission 38, removing it
+2025-08-25 15:04:15,668 - adapters.storage.sqlite - INFO - Deleted submission 38 and 1 associated reports
+2025-08-25 15:04:15,917 - adapters.storage.sqlite - INFO - Created submission 40 for user ***ID_MASKED***
+2025-08-25 15:04:15,918 - __main__ - INFO - Created submission 40
+2025-08-25 15:04:15,940 - adapters.storage.sqlite - INFO - Updated submission 40: status=SubmissionStatus.ANALYZING
+2025-08-25 15:04:16,194 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/PuvaDD/Decamond-next-auth for role: frontend
+2025-08-25 15:04:16,196 - adapters.repositories.github - INFO - Cloning repository: https://github.com/PuvaDD/Decamond-next-auth (attempt 1/3)
+2025-08-25 15:04:18,222 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-25 15:04:18,224 - adapters.repositories.github - INFO - Repository size: 0.34MB
+2025-08-25 15:04:18,225 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-25 15:04:18,257 - adapters.repositories.github - INFO - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+2025-08-25 15:04:18,259 - adapters.repositories.github - INFO - Extracted 30 files using patterns
+2025-08-25 15:04:18,261 - adapters.repositories.github - INFO - Raw content: 6650 tokens
+2025-08-25 15:04:18,273 - adapters.repositories.github - INFO - Successfully processed repository: 30 files, 6650 tokens
+2025-08-25 15:04:18,275 - __main__ - INFO - Fetched repository: 30 files
+2025-08-25 15:04:18,537 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/PuvaDD/Decamond-next-auth)
+2025-08-25 15:04:18,539 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-25 15:04:18,540 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+2025-08-25 15:04:18,541 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-25 15:04:18,549 - adapters.analyzers.openrouter - INFO - Total content size: 31125 characters, 30 files
+2025-08-25 15:04:34,841 - adapters.analyzers.openrouter - INFO - LLM Response length: 12260 characters
+2025-08-25 15:04:34,843 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-25 15:04:34,846 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-25 15:04:34,847 - __main__ - INFO - Analysis complete for submission 40
+2025-08-25 15:04:34,889 - adapters.storage.sqlite - INFO - Created report 21 for submission 40
+2025-08-25 15:04:34,890 - __main__ - INFO - Created report 21
+2025-08-25 15:04:34,910 - adapters.storage.sqlite - INFO - Updated submission 40: status=SubmissionStatus.COMPLETED
+2025-08-25 15:04:37,236 - adapters.notifications.telegram - INFO - Analysis report sent for submission 40
+2025-08-25 15:04:37,481 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-25 15:05:18,439 - __main__ - INFO - Recent command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 15:05:28,150 - __main__ - INFO - History command from user Sinaam_00 (***ID_MASKED***)
