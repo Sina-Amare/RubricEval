@@ -613,6 +613,10 @@ Provide your analysis in the specified JSON format with detailed, specific feedb
                 prompt_file = "analysis/code_review.md"
             
             logger.info(f"Using prompt: {prompt_file} for {request.role.value} analysis")
+            
+            # Extract repository structure separately for clearer prompt formatting
+            repository_structure = request.repository_content.structure if hasattr(request.repository_content, 'structure') else "Structure not available"
+            
             prompt = load_prompt(
                 prompt_file,
                 role=request.role.value,
@@ -620,6 +624,7 @@ Provide your analysis in the specified JSON format with detailed, specific feedb
                 github_url=request.github_url,
                 file_count=file_count,
                 total_tokens=total_tokens,
+                repository_structure=repository_structure,
                 code_content=content
             )
             return prompt

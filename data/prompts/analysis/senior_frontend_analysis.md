@@ -95,6 +95,19 @@ You are evaluating a **Frontend Developer** candidate for a mid-to-senior level 
 - **Files**: {file_count}
 - **Tokens**: {total_tokens}
 
+### Repository Architecture
+
+```
+{repository_structure}
+```
+
+**Evaluate the architecture:**
+- Is the folder structure following React/Next.js conventions?
+- Are components, hooks, utils, and services properly separated?
+- Does the structure indicate understanding of frontend organization?
+- For simple tasks: Is the structure appropriately simple?
+- For complex tasks: Does it show proper separation of concerns?
+
 ### The Code
 
 ```

@@ -100,6 +100,19 @@ You are evaluating a **Backend Developer** candidate for a mid-to-senior level p
 - **Files**: {file_count}
 - **Tokens**: {total_tokens}
 
+### Repository Architecture
+
+```
+{repository_structure}
+```
+
+**Evaluate the architecture:**
+- Is the package structure appropriate for a Go project?
+- Are files organized logically (handlers, services, models, etc.)?
+- Does the structure indicate understanding of Go conventions?
+- For simple tasks: Is the structure appropriately simple?
+- For complex tasks: Does it show proper separation of concerns?
+
 ### The Code
 
 ```
