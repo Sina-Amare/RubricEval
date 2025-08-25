@@ -946,24 +946,86 @@ async def view_report_callback(update: Update, context: ContextTypes.DEFAULT_TYP
             for weakness in report.analysis_result.weaknesses[:5]:
                 message += f"⚠️ {escape_html(weakness)}\n"
         
-        # Add detailed feedback (truncate if too long)
-        if report.analysis_result.detailed_feedback:
-            feedback = report.analysis_result.detailed_feedback
-            if len(feedback) > 800:
-                feedback = feedback[:797] + "..."
-            message += f"\n<b>DETAILED FEEDBACK</b>\n{escape_html(feedback)}\n"
-        
-        # Add back button
-        keyboard = [[
-            InlineKeyboardButton("⬅️ Back to History", callback_data="history_back")
-        ]]
-        reply_markup = InlineKeyboardMarkup(keyboard)
-        
-        await query.edit_message_text(
-            text=message,
-            parse_mode=ParseMode.HTML,
-            reply_markup=reply_markup
-        )
+        # Check if message is getting too long
+        if len(message) > 3500:  # Leave room for feedback
+            # Send main report first
+            await query.edit_message_text(
+                text=message + "\n\n<i>Detailed feedback follows...</i>",
+                parse_mode=ParseMode.HTML
+            )
+            
+            # Send detailed feedback as a separate message
+            if report.analysis_result.detailed_feedback:
+                feedback_message = f"<b>DETAILED FEEDBACK (continued)</b>\n\n{escape_html(report.analysis_result.detailed_feedback)}"
+                
+                # Split feedback if it's too long
+                if len(feedback_message) > 4000:
+                    # Send in chunks
+                    chunks = []
+                    words = feedback_message.split(' ')
+                    current_chunk = ""
+                    
+                    for word in words:
+                        if len(current_chunk) + len(word) + 1 < 4000:
+                            current_chunk += word + " "
+                        else:
+                            chunks.append(current_chunk.strip())
+                            current_chunk = word + " "
+                    
+                    if current_chunk:
+                        chunks.append(current_chunk.strip())
+                    
+                    for i, chunk in enumerate(chunks):
+                        if i == 0:
+                            await context.bot.send_message(
+                                chat_id=query.message.chat_id,
+                                text=chunk,
+                                parse_mode=ParseMode.HTML
+                            )
+                        else:
+                            await context.bot.send_message(
+                                chat_id=query.message.chat_id,
+                                text=f"<i>(continued)</i>\n\n{chunk}",
+                                parse_mode=ParseMode.HTML
+                            )
+                else:
+                    await context.bot.send_message(
+                        chat_id=query.message.chat_id,
+                        text=feedback_message,
+                        parse_mode=ParseMode.HTML
+                    )
+            
+            # Send back button as final message
+            keyboard = [[
+                InlineKeyboardButton("⬅️ Back to History", callback_data="history_back")
+            ]]
+            reply_markup = InlineKeyboardMarkup(keyboard)
+            await context.bot.send_message(
+                chat_id=query.message.chat_id,
+                text="━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
+                reply_markup=reply_markup
+            )
+        else:
+            # Message is short enough, include everything
+            if report.analysis_result.detailed_feedback:
+                feedback = report.analysis_result.detailed_feedback
+                # Allow more space for feedback when message is shorter
+                max_feedback_len = 4000 - len(message) - 50  # Leave some buffer
+                if len(feedback) > max_feedback_len:
+                    feedback = feedback[:max_feedback_len-3] + "..."
+                message += f"\n<b>DETAILED FEEDBACK</b>\n{escape_html(feedback)}\n"
+            
+            # Add back button
+            keyboard = [[
+                InlineKeyboardButton("⬅️ Back to History", callback_data="history_back")
+            ]]
+            reply_markup = InlineKeyboardMarkup(keyboard)
+            
+            await query.edit_message_text(
+                text=message,
+                parse_mode=ParseMode.HTML,
+                reply_markup=reply_markup
+            )
         
     except Exception as e:
         logger.error(f"Error viewing report {report_id}: {e}")

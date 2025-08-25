@@ -1707,3 +1707,20 @@
 [2025-08-25T15:04:37.481886] [INFO] [github:cleanup:304] - GitHub adapter cleanup completed
 [2025-08-25T15:05:18.439693] [INFO] [bot:recent_command:456] - Recent command from user Sinaam_00 (***ID_MASKED***)
 [2025-08-25T15:05:28.150920] [INFO] [bot:history_command:593] - History command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-25T15:08:32.766592] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-25T15:08:36.241947] [INFO] [bot:main:1120] - Starting CV Review Bot...
+[2025-08-25T15:08:37.370855] [INFO] [bot:initialize_adapters:1097] - Initializing adapters...
+[2025-08-25T15:08:37.438686] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-25T15:08:37.682695] [INFO] [sqlite:_init:713] - Database tables created/verified
+[2025-08-25T15:08:37.720915] [INFO] [bot:initialize_adapters:1102] - Storage adapter initialized
+[2025-08-25T15:08:38.151146] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-25T15:08:38.152413] [INFO] [bot:initialize_adapters:1106] - Repository adapter initialized
+[2025-08-25T15:08:38.153566] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-25T15:08:38.154583] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-25T15:08:38.155586] [INFO] [bot:initialize_adapters:1110] - Analyzer adapter initialized
+[2025-08-25T15:08:38.156574] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-25T15:08:39.132123] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-25T15:08:39.133570] [INFO] [bot:initialize_adapters:1115] - Notification adapter initialized
+[2025-08-25T15:08:39.790002] [INFO] [bot:main:1163] - Cleared any existing webhooks
+[2025-08-25T15:08:39.832766] [INFO] [bot:main:1174] - Bot is ready! Starting polling...
+[2025-08-25T15:08:42.077836] [INFO] [bot:history_command:593] - History command from user Sinaam_00 (***ID_MASKED***)

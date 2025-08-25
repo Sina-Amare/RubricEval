@@ -1207,3 +1207,22 @@
 2025-08-25 15:04:37,481 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
 2025-08-25 15:05:18,439 - __main__ - INFO - Recent command from user Sinaam_00 (***ID_MASKED***)
 2025-08-25 15:05:28,150 - __main__ - INFO - History command from user Sinaam_00 (***ID_MASKED***)
+2025-08-25 15:08:32,766 - utils.logger - INFO - Logging system initialized successfully
+2025-08-25 15:08:36,241 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1126: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-25 15:08:37,370 - __main__ - INFO - Initializing adapters...
+2025-08-25 15:08:37,438 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-25 15:08:37,682 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-25 15:08:37,720 - __main__ - INFO - Storage adapter initialized
+2025-08-25 15:08:38,151 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-25 15:08:38,152 - __main__ - INFO - Repository adapter initialized
+2025-08-25 15:08:38,153 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-25 15:08:38,154 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-25 15:08:38,155 - __main__ - INFO - Analyzer adapter initialized
+2025-08-25 15:08:38,156 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-25 15:08:39,132 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-25 15:08:39,133 - __main__ - INFO - Notification adapter initialized
+2025-08-25 15:08:39,790 - __main__ - INFO - Cleared any existing webhooks
+2025-08-25 15:08:39,832 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-25 15:08:42,077 - __main__ - INFO - History command from user Sinaam_00 (***ID_MASKED***)
