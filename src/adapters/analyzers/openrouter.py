@@ -510,6 +510,14 @@ class OpenRouterAdapter(AnalyzerAdapter):
                             # This ensures penalty validation has access to properly extracted requirements
                             self._normalize_requirements(parsed_result)
                             
+                            # Validate evidence against actual repository files
+                            evidence_valid = self._validate_evidence(parsed_result, request.repository_content)
+                            if not evidence_valid:
+                                logger.warning("Evidence validation failed - evidence references non-existent files")
+                                logger.warning(f"Raw LLM response: {response_content[:1000]}...")
+                                # Auto-correct hallucinated evidence by marking requirements as false
+                                self._correct_hallucinated_evidence(parsed_result, request.repository_content)
+                            
                             # Ensure penalty_breakdown exists
                             self._ensure_penalty_breakdown(parsed_result)
                             
@@ -517,6 +525,7 @@ class OpenRouterAdapter(AnalyzerAdapter):
                                 return self._convert_to_analysis_result(parsed_result, request.role.value, content)
                             else:
                                 logger.warning("Response validation failed")
+                                logger.warning(f"Raw LLM response for debugging: {response_content[:2000]}...")
                                 return None
                                 
                         elif response.status == 429:  # Rate limit
@@ -622,7 +631,8 @@ Provide your analysis in the specified JSON format with detailed, specific feedb
         try:
             # Determine which prompt file to use based on role
             if request.role.value == "frontend":
-                prompt_file = "analysis/senior_frontend_analysis.md"
+                # Use simplified prompt that actually works
+                prompt_file = "analysis/senior_frontend_analysis_simple.md"
             elif request.role.value == "backend":
                 prompt_file = "analysis/senior_backend_analysis.md"
             else:
@@ -672,22 +682,27 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
     
     def _parse_llm_response(self, response_text: str) -> Dict[str, Any]:
         """
-        Parse LLM response into structured data using robust recovery.
+        Parse LLM response into structured data.
         
-        Uses multiple strategies to extract JSON even from malformed responses,
-        ensuring expensive LLM calls are not wasted due to minor formatting issues.
+        SIMPLIFIED: Trust the LLM to provide valid JSON, log raw response if it fails.
         
         Args:
             response_text: Raw response from LLM
             
         Returns:
-            Parsed dictionary (may include partial recovery)
+            Parsed dictionary
             
         Raises:
             AnalysisError: Only if response is completely unparseable
         """
         if not response_text or not response_text.strip():
+            logger.error("Empty response from LLM")
             raise AnalysisError("Empty response from LLM")
+        
+        # Log raw response for debugging
+        logger.info("=== RAW LLM RESPONSE (first 1500 chars) ===")
+        logger.info(response_text[:1500])
+        logger.info("=== END RAW RESPONSE ===")
         
         # Use robust JSON recovery system
         recovered_json, raw_json = JSONRecovery.extract_json(response_text)
@@ -752,6 +767,198 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
         
         return error_result
     
+    def _validate_evidence(self, parsed_response: Dict[str, Any], repo_content: RepositoryContent) -> bool:
+        """
+        Validate that evidence references actual files in the repository.
+        
+        Args:
+            parsed_response: Parsed LLM response
+            repo_content: Repository content with actual files
+            
+        Returns:
+            True if evidence is valid, False otherwise
+        """
+        import re  # Import re module here to avoid missing import error
+        
+        # Get actual file paths from repository
+        actual_files = set(f.path for f in repo_content.files)
+        logger.info(f"Repository contains {len(actual_files)} files")
+        
+        invalid_references = []
+        
+        # Check storage_method_check evidence
+        if 'storage_method_check' in parsed_response:
+            evidence = parsed_response['storage_method_check'].get('evidence', '')
+            if evidence and evidence != 'No evidence found':
+                # Extract file paths from evidence (format: "path/file.tsx:line - code")
+                file_refs = re.findall(r'([^\s:]+\.\w+):\d+', evidence)
+                for file_ref in file_refs:
+                    if file_ref not in actual_files:
+                        logger.warning(f"❌ Evidence references non-existent file: {file_ref}")
+                        invalid_references.append(file_ref)
+        
+        # Check penalty_breakdown evidence
+        if 'penalty_breakdown' in parsed_response:
+            issues = parsed_response['penalty_breakdown'].get('issues_found', [])
+            for issue in issues:
+                evidence = issue.get('evidence', '')
+                if evidence:
+                    # Extract file paths
+                    file_refs = re.findall(r'([^\s:]+\.\w+):\d+', evidence)
+                    for file_ref in file_refs:
+                        if file_ref not in actual_files:
+                            logger.warning(f"❌ Penalty evidence references non-existent file: {file_ref}")
+                            invalid_references.append(file_ref)
+        
+        # Check detailed_feedback for file references
+        detailed_feedback = parsed_response.get('detailed_feedback', '')
+        if detailed_feedback:
+            # Find file references with optional backticks
+            file_refs = re.findall(r'`?([^\s`]+\.\w+)(?::\d+)?', detailed_feedback)
+            for file_ref in file_refs:
+                # Clean up the file reference
+                file_ref = file_ref.lstrip('`(').rstrip(')`')
+                
+                # Skip if it's not a path-like reference
+                if '/' not in file_ref and file_ref not in ['tsconfig.json', 'package.json', 'README.md']:
+                    continue
+                    
+                # Skip generic examples
+                if file_ref in ['file.ts', 'login.tsx', 'dashboard.tsx', 'page.tsx', 'component.tsx']:
+                    logger.warning(f"⚠️ Generic example file detected: {file_ref}")
+                    invalid_references.append(file_ref)
+                elif file_ref not in actual_files and file_ref.strip() not in actual_files:
+                    logger.warning(f"❌ Feedback references non-existent file: {file_ref}")
+                    invalid_references.append(file_ref)
+        
+        if invalid_references:
+            logger.error(f"Found {len(invalid_references)} invalid file references: {invalid_references}")
+            logger.info(f"Actual files in repo: {list(actual_files)[:10]}...")  # Show first 10 files
+            return False
+        
+        return True
+    
+    def _correct_hallucinated_evidence(self, parsed_response: Dict[str, Any], repo_content: RepositoryContent) -> None:
+        """
+        Correct hallucinated evidence by marking affected requirements as false.
+        
+        Args:
+            parsed_response: Response dictionary (modified in place)
+            repo_content: Repository content with actual files
+        """
+        import re  # Import at method level to avoid missing import error
+        
+        # Get actual file paths and content mapping
+        actual_files = set(f.path for f in repo_content.files)
+        file_contents = {f.path: f.content for f in repo_content.files}
+        logger.info(f"Correcting hallucinated evidence. Actual files: {len(actual_files)}")
+        
+        hallucination_detected = False
+        
+        # Check storage_method_check evidence
+        if 'storage_method_check' in parsed_response:
+            evidence = parsed_response['storage_method_check'].get('evidence', '')
+            if evidence and evidence != 'No evidence found':
+                # Extract file paths and line numbers from evidence
+                file_line_refs = re.findall(r'([^\s:]+\.\w+):(\d+)', evidence)
+                
+                for file_ref, line_num in file_line_refs:
+                    if file_ref not in actual_files:
+                        logger.warning(f"Storage check references non-existent file: {file_ref}")
+                        hallucination_detected = True
+                    elif file_ref in file_contents:
+                        # Check if the referenced line/code actually exists
+                        lines = file_contents[file_ref].split('\n')
+                        line_idx = int(line_num) - 1
+                        if line_idx >= len(lines):
+                            logger.warning(f"Line {line_num} doesn't exist in {file_ref} (file has {len(lines)} lines)")
+                            hallucination_detected = True
+                        else:
+                            # For localStorage specifically, check if it's actually in that line
+                            actual_line = lines[line_idx] if line_idx < len(lines) else ''
+                            if 'localStorage' in evidence and 'localStorage' not in actual_line:
+                                logger.warning(f"localStorage not found in {file_ref}:{line_num}")
+                                logger.debug(f"Actual line: {actual_line[:100]}")
+                                hallucination_detected = True
+                
+                if hallucination_detected:
+                    # If localStorage evidence is hallucinated, it's not implemented
+                    if parsed_response['storage_method_check'].get('found_localStorage'):
+                        logger.warning("Marking localStorage as NOT implemented due to hallucinated evidence")
+                        parsed_response['storage_method_check']['found_localStorage'] = False
+                        parsed_response['storage_method_check']['evidence'] = "INVALID: Evidence references non-existent code or files"
+                        
+                        # Update requirements_met
+                        if 'requirements_met' in parsed_response:
+                            parsed_response['requirements_met']['localstorage_implementation'] = False
+        
+        # Check penalty evidence for hallucinations
+        if 'penalty_breakdown' in parsed_response:
+            issues = parsed_response['penalty_breakdown'].get('issues_found', [])
+            for issue in issues:
+                evidence_text = issue.get('evidence', '')
+                if evidence_text:
+                    # Check for file:line references
+                    file_line_refs = re.findall(r'([^\s:]+\.\w+):(\d+)', evidence_text)
+                    for file_ref, line_num in file_line_refs:
+                        if file_ref not in actual_files:
+                            logger.warning(f"Penalty evidence references non-existent file: {file_ref}")
+                            issue['evidence'] = f"[INVALID EVIDENCE - file doesn't exist: {file_ref}]"
+                            hallucination_detected = True
+                        elif file_ref in file_contents:
+                            lines = file_contents[file_ref].split('\n')
+                            line_idx = int(line_num) - 1
+                            if line_idx >= len(lines):
+                                logger.warning(f"Penalty references line {line_num} but {file_ref} only has {len(lines)} lines")
+                                issue['evidence'] = f"[INVALID EVIDENCE - line {line_num} doesn't exist in {file_ref}]"
+                                hallucination_detected = True
+        
+        # Check for common requirement hallucinations
+        if 'requirements_met' in parsed_response:
+            # For frontend: Check login page
+            if 'login_page_implementation' in parsed_response['requirements_met']:
+                login_files = [f.path for f in repo_content.files if 'login' in f.path.lower()]
+                if not login_files and parsed_response['requirements_met'].get('login_page_implementation'):
+                    logger.warning("No login files found - marking login_page_implementation as FALSE")
+                    parsed_response['requirements_met']['login_page_implementation'] = False
+                    hallucination_detected = True
+            
+            # For frontend: Check dashboard
+            if 'dashboard_page' in parsed_response['requirements_met']:
+                dashboard_files = [f.path for f in repo_content.files if 'dashboard' in f.path.lower()]
+                if not dashboard_files and parsed_response['requirements_met'].get('dashboard_page'):
+                    logger.warning("No dashboard files found - marking dashboard_page as FALSE")
+                    parsed_response['requirements_met']['dashboard_page'] = False
+                    hallucination_detected = True
+        
+        # Add penalty for hallucination
+        if 'penalty_breakdown' not in parsed_response:
+            parsed_response['penalty_breakdown'] = {'issues_found': [], 'total_penalty': 0}
+        
+        # Check if we already have a hallucination penalty
+        has_hallucination_penalty = any(
+            'hallucination' in issue.get('issue', '').lower() 
+            for issue in parsed_response['penalty_breakdown'].get('issues_found', [])
+        )
+        
+        # Add penalty if hallucination was detected
+        if not has_hallucination_penalty and hallucination_detected:
+            parsed_response['penalty_breakdown']['issues_found'].append({
+                'category': 'analysis',
+                'issue': 'Analysis contains invalid evidence (references to non-existent code/files)',
+                'severity': 'high',
+                'penalty': 30,
+                'evidence': 'Multiple references do not match actual repository content'
+            })
+            parsed_response['penalty_breakdown']['total_penalty'] = (
+                parsed_response['penalty_breakdown'].get('total_penalty', 0) + 30
+            )
+            logger.info("Added 30 point penalty for hallucinated evidence")
+            
+        # Log summary of corrections
+        if hallucination_detected:
+            logger.warning("⚠️ Hallucination detected and corrected in LLM response")
+    
     def _normalize_requirements(self, parsed_response: Dict[str, Any]) -> None:
         """
         Normalize requirements from various formats to standard requirements_met.
@@ -785,33 +992,10 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
                 else:
                     requirements_met[key] = bool(value)
         
-        # FALLBACK: If requirements_met is empty or all False, try to infer from feedback
+        # NO FALLBACK - Trust LLM's direct response
         if not requirements_met or all(not v for v in requirements_met.values()):
-            logger.warning("Requirements all False or missing - attempting inference from feedback")
-            feedback = parsed_response.get('detailed_feedback', '').lower()
-            strengths_text = ' '.join(parsed_response.get('strengths', [])).lower()
-            combined_text = feedback + ' ' + strengths_text
-            
-            # Infer based on positive mentions in feedback
-            if ('repository pattern' in combined_text or 'dependency inversion' in combined_text) and ('implement' in combined_text or 'effective use' in combined_text or 'use of interfaces' in combined_text):
-                requirements_met['repository_pattern'] = True
-                logger.info("Inferred repository_pattern=True from feedback")
-            
-            if 'service layer' in combined_text and ('implement' in combined_text or 'proper' in combined_text):
-                requirements_met['service_layer'] = True
-                logger.info("Inferred service_layer=True from feedback")
-            
-            if 'redis' in combined_text and ('implement' in combined_text or 'uses redis' in combined_text or 'redis integration' in combined_text):
-                requirements_met['redis_implementation'] = True
-                logger.info("Inferred redis_implementation=True from feedback")
-            
-            if any(arch in combined_text for arch in ['layered architecture', 'clean architecture', 'hexagonal', 'mvc']):
-                requirements_met['architectural_pattern'] = True
-                logger.info("Inferred architectural_pattern=True from feedback")
-            
-            if 'docker' in combined_text and ('dockerfile' in combined_text or 'docker-compose' in combined_text or 'dockerization' in combined_text):
-                requirements_met['dockerization'] = True
-                logger.info("Inferred dockerization=True from feedback")
+            logger.warning("Requirements all False or missing - accepting LLM's analysis as-is")
+            logger.info("No inference will be attempted - trusting direct LLM response")
         
         # Store the normalized requirements back
         parsed_response['requirements_met'] = requirements_met
@@ -1113,33 +1297,10 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
         # Log what we extracted
         logger.info(f"Extracted requirements_met: {requirements_met}")
         
-        # FALLBACK: If requirements_met is empty or all False, try to infer from feedback
+        # NO FALLBACK - Trust LLM's direct response
         if not requirements_met or all(not v for v in requirements_met.values()):
-            logger.warning("Requirements all False or missing - attempting inference from feedback")
-            feedback = parsed_response.get('detailed_feedback', '').lower()
-            strengths_text = ' '.join(parsed_response.get('strengths', [])).lower()
-            combined_text = feedback + ' ' + strengths_text
-            
-            # Infer based on positive mentions in feedback
-            if 'repository pattern' in combined_text and 'implement' in combined_text:
-                requirements_met['repository_pattern'] = True
-                logger.info("Inferred repository_pattern=True from feedback")
-            
-            if 'service layer' in combined_text and ('implement' in combined_text or 'proper' in combined_text):
-                requirements_met['service_layer'] = True
-                logger.info("Inferred service_layer=True from feedback")
-            
-            if 'redis' in combined_text and ('implement' in combined_text or 'uses redis' in combined_text):
-                requirements_met['redis_implementation'] = True
-                logger.info("Inferred redis_implementation=True from feedback")
-            
-            if any(arch in combined_text for arch in ['layered architecture', 'clean architecture', 'hexagonal', 'mvc']):
-                requirements_met['architectural_pattern'] = True
-                logger.info("Inferred architectural_pattern=True from feedback")
-            
-            if 'docker' in combined_text and ('dockerfile' in combined_text or 'docker-compose' in combined_text):
-                requirements_met['dockerization'] = True
-                logger.info("Inferred dockerization=True from feedback")
+            logger.warning("Requirements all False or missing in _convert - trusting LLM's direct analysis")
+            logger.info("No inference attempted - using LLM response as-is")
         
         # For frontend, double-check cookie usage in actual content
         if role == "frontend" and content:

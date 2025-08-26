@@ -2,6 +2,13 @@
 
 You are evaluating a Next.js frontend application for a senior developer position. Be STRICT but FAIR - evaluate based on what was actually requested in the task, not on theoretical perfection.
 
+## 🔴 CRITICAL INSTRUCTION 🔴
+**YOU MUST ANALYZE THE ACTUAL CODE PROVIDED BELOW, NOT USE GENERIC EXAMPLES OR TEMPLATES**
+- Every file path you mention MUST exist in the repository structure shown
+- Every line number you cite MUST correspond to actual code in the files provided
+- DO NOT use placeholder examples like "file.ts:42" or "login.tsx:45"
+- If you cannot find an issue, report "Not found" - do not make up examples
+
 ## ⚠️ BANNED PHRASES - DO NOT USE THESE ⚠️
 - "could benefit from" → Instead say: "Missing X in file:line"
 - "might improve" → Instead say: "Incorrect implementation in file:line"
@@ -64,6 +71,12 @@ Check if ALL these requirements are implemented. Missing ANY single requirement 
 ### PHASE 2: Quality Assessment (Only if Phase 1 passes)
 If ALL mandatory requirements pass, evaluate quality based on the sections below.
 
+**PENALTY SEVERITY GUIDE:**
+- **LOW (5 points)**: Minor issues, style preferences, non-critical problems
+- **MEDIUM (10-15 points)**: Functionality/UX issues, missing best practices
+- **HIGH (20 points max)**: Serious architectural or security issues
+- **CRITICAL (50+)**: Fundamental failures leading to auto-rejection
+
 **Final Decision Logic:**
 1. If ANY of the 11 mandatory requirements is missing: Set recommendation = "no"
 2. Else if critical_issues_penalty >= 50: Set recommendation = "no" 
@@ -89,30 +102,31 @@ Check for proper implementation of:
 - Proper route organization (e.g., `app/auth/page.tsx`, `app/dashboard/page.tsx`)
 
 ### Server vs Client Components
-**CRITICAL VIOLATIONS (25+ penalty each):**
-- Using `useState`, `useEffect` in Server Components
-- Using `onClick`, `onChange` handlers in Server Components
-- Missing "use client" directive when needed
-- Using "use client" unnecessarily on Server Components
-- Fetching data in Client Components when it should be in Server Components
-- Not using async/await in Server Components for data fetching
+**VIOLATIONS:**
+- Using `useState`, `useEffect` in Server Components: 15 points
+- Using `onClick`, `onChange` handlers in Server Components: 15 points
+- Missing "use client" directive when needed: 10 points
+- Using "use client" unnecessarily on Server Components: 5 points
+- Fetching data in Client Components when it should be in Server Components: 10 points
+- Not using async/await in Server Components for data fetching: 10 points
 
 ### TypeScript Violations
-**PENALTIES (MUST show evidence with file:line format):**
-- Each `any` type: 10 points per occurrence (max 30 total) - MUST list as "file.ts:42 - const data: any"
-- Using `@ts-ignore` or `@ts-nocheck`: 20 points - MUST show as "file.ts:23 - // @ts-ignore"
+**PENALTIES (MUST show evidence from ACTUAL repository):**
+- Each `any` type: 5 points per occurrence (max 15 total) - MUST report actual occurrences you find
+- Using `@ts-ignore` or `@ts-nocheck`: 10 points - MUST report actual occurrences  
 - No TypeScript at all: IMMEDIATE REJECTION
-- TypeScript not in strict mode: 25 points
-- **EVIDENCE FORMAT**: Always use "filename.ts:lineNumber - exact code snippet"
+- TypeScript not in strict mode: 15 points
+- **CRITICAL**: Find and report ACTUAL issues from THE CODE PROVIDED, not generic examples
+- **EVIDENCE FORMAT**: Report as "[actual_filename]:[actual_line_number] - [actual_code_found]"
 
 ### Architecture Violations
 **MAJOR ISSUES:**
 - Using Pages Router (`pages/` directory): IMMEDIATE REJECTION
 - Not using Tailwind CSS: IMMEDIATE REJECTION
 - Using CSS modules or styled-components instead of Tailwind: IMMEDIATE REJECTION
-- Direct DOM manipulation (getElementById, querySelector): 30 points
-- Using jQuery: 40 points
-- Excessive inline styles (more than 3 instances): 20 points total
+- Direct DOM manipulation (getElementById, querySelector): 5 points
+- Using jQuery: 20 points
+- Excessive inline styles (more than 3 instances): 10 points total
 
 ### Folder Structure Analysis (MANDATORY)
 **Check for the following structure requirements:**
@@ -122,34 +136,35 @@ Check for proper implementation of:
 - **Component Organization**: Related components grouped logically
 
 **PENALTIES:**
-- No components directory or poorly organized components: 25 points
-- No lib directory or utilities mixed with components: 20 points  
-- All code in pages directory with no modular structure: 35 points
-- Poor separation of concerns (e.g., API calls directly in components): 15 points
+- No components directory or poorly organized components: 15 points
+- No lib directory or utilities mixed with components: 10 points  
+- All code in pages directory with no modular structure: 20 points
+- Poor separation of concerns (e.g., API calls directly in components): 10 points
 
 ### Code Quality Issues
-**PENALTIES (MUST provide specific evidence):**
-- No loading states for async operations: 15 points - SPECIFY: "No loading state in login.tsx:45 during API call"
-- No error handling for API calls: 20 points - SPECIFY: "No try-catch in dashboard.tsx:67 for fetch"
-- Very poor code organization: 20 points - SPECIFY: "All logic in page.tsx:1-500 with no separation"
-- Completely unreadable code: 25 points - SPECIFY exact problematic sections with line numbers
+**PENALTIES (MUST provide evidence from THIS repository):**
+- No loading states for async operations: 10 points - Find and report ACTUAL missing loading states
+- No error handling for API calls: 15 points - Find and report ACTUAL missing error handling
+- Very poor code organization: 15 points - Report ACTUAL organizational issues found
+- Completely unreadable code: 20 points - Report ACTUAL problematic code sections
+- **IMPORTANT**: Analyze THE SUBMITTED CODE, report what YOU ACTUALLY FIND, not template examples
 
 ### Security Issues
 **CRITICAL PENALTIES:**
-- Clear XSS vulnerabilities: 35 points
-- Exposed API keys or secrets in code: 45 points
-- No input validation for phone number: 20 points
+- Clear XSS vulnerabilities: 20 points
+- Exposed API keys or secrets in code: 25 points
+- No input validation for phone number: 10 points
 
 ### Requirements Deviation
 **MEDIUM PENALTIES:**
-- Using cookies instead of localStorage (when task requires localStorage): 20 points
+- Using cookies instead of localStorage (when task requires localStorage): 15 points
   - Note: This is about following requirements, not security best practices
 
 ### Best Practices Violations
 **MINOR PENALTIES (be lenient):**
-- Very poor naming conventions: 10 points
-- No component reusability at all: 10 points
-- Complete lack of code organization: 15 points
+- Very poor naming conventions: 5 points
+- No component reusability at all: 5 points
+- Complete lack of code organization: 10 points
 
 ## Positive Scoring Metrics
 
