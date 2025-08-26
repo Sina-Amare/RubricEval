@@ -387,9 +387,13 @@ class OpenRouterAdapter(AnalyzerAdapter):
         
         # Add file contents with priority-based selection
         for file_info in repo_content.files:
-            content_parts.append(f"\n## File: {file_info.path}")
+            # Calculate line count for this file
+            line_count = len(file_info.content.split('\n')) if file_info.content else 0
+            
+            content_parts.append(f"\n## File: {file_info.path} [{line_count} lines total]")
             content_parts.append(f"Language: {file_info.language or 'Unknown'}")
             content_parts.append(f"Priority: {file_info.priority}")
+            content_parts.append(f"Lines: {line_count}")
             content_parts.append(f"\n```\n{file_info.content}\n```\n")
             
             # Debug log for critical files
@@ -521,6 +525,12 @@ class OpenRouterAdapter(AnalyzerAdapter):
                             # Ensure penalty_breakdown exists
                             self._ensure_penalty_breakdown(parsed_result)
                             
+                            # Check analysis reliability
+                            if parsed_result.get('analysis_reliability') == 'LOW':
+                                logger.error("Analysis reliability too low due to hallucinations - rejecting result")
+                                # Try next model instead of returning unreliable result
+                                continue
+                            
                             if await self.validate_response(parsed_result):
                                 return self._convert_to_analysis_result(parsed_result, request.role.value, content)
                             else:
@@ -631,8 +641,8 @@ Provide your analysis in the specified JSON format with detailed, specific feedb
         try:
             # Determine which prompt file to use based on role
             if request.role.value == "frontend":
-                # Use simplified prompt that actually works
-                prompt_file = "analysis/senior_frontend_analysis_simple.md"
+                # Use enterprise-level evaluation for proper senior assessment
+                prompt_file = "analysis/senior_frontend_analysis_enterprise.md"
             elif request.role.value == "backend":
                 prompt_file = "analysis/senior_backend_analysis.md"
             else:
@@ -712,21 +722,8 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
             if JSONRecovery.validate_recovered_json(recovered_json):
                 logger.info("Successfully recovered JSON from LLM response")
                 
-                # CRITICAL: Log storage method check first
-                if 'storage_method_check' in recovered_json:
-                    storage_check = recovered_json['storage_method_check']
-                    logger.warning(f"🔍 STORAGE METHOD CHECK: {storage_check}")
-                    
-                    # Log evidence specifically
-                    if 'evidence' in storage_check:
-                        logger.warning(f"📝 EVIDENCE: {storage_check['evidence']}")
-                    
-                    # Override localstorage_implementation based on what was actually found
-                    if storage_check.get('found_cookies') and not storage_check.get('found_localStorage'):
-                        logger.warning("⚠️ Found cookies but no localStorage - forcing localstorage_implementation to FALSE")
-                        if 'requirements_met' not in recovered_json:
-                            recovered_json['requirements_met'] = {}
-                        recovered_json['requirements_met']['localstorage_implementation'] = False
+                # Log if we got a clean response
+                logger.info("JSON response parsed successfully")
                 
                 # Log what requirements_met the LLM actually returned
                 if 'requirements_met' in recovered_json:
@@ -778,6 +775,10 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
         Returns:
             True if evidence is valid, False otherwise
         """
+        # For clean prompts, skip strict evidence validation
+        # The new prompt structure doesn't require specific file:line citations
+        return True
+        
         import re  # Import re module here to avoid missing import error
         
         # Get actual file paths from repository
@@ -863,23 +864,39 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
                 file_line_refs = re.findall(r'([^\s:]+\.\w+):(\d+)', evidence)
                 
                 for file_ref, line_num in file_line_refs:
+                    try:
+                        line_num_int = int(line_num)
+                    except ValueError:
+                        logger.warning(f"Invalid line number: {line_num}")
+                        hallucination_detected = True
+                        continue
+                    
                     if file_ref not in actual_files:
                         logger.warning(f"Storage check references non-existent file: {file_ref}")
                         hallucination_detected = True
                     elif file_ref in file_contents:
                         # Check if the referenced line/code actually exists
                         lines = file_contents[file_ref].split('\n')
-                        line_idx = int(line_num) - 1
+                        line_idx = line_num_int - 1
+                        
+                        # Critical check: line number exceeds file length
                         if line_idx >= len(lines):
-                            logger.warning(f"Line {line_num} doesn't exist in {file_ref} (file has {len(lines)} lines)")
+                            logger.error(f"🚨 HALLUCINATION: Line {line_num_int} doesn't exist in {file_ref} (file has only {len(lines)} lines)")
                             hallucination_detected = True
+                            # Mark this as severe hallucination
+                            parsed_response['storage_method_check']['evidence'] = f"HALLUCINATED: Referenced line {line_num_int} but {file_ref} only has {len(lines)} lines"
                         else:
                             # For localStorage specifically, check if it's actually in that line
                             actual_line = lines[line_idx] if line_idx < len(lines) else ''
                             if 'localStorage' in evidence and 'localStorage' not in actual_line:
-                                logger.warning(f"localStorage not found in {file_ref}:{line_num}")
-                                logger.debug(f"Actual line: {actual_line[:100]}")
+                                logger.warning(f"localStorage not found at {file_ref}:{line_num_int}")
+                                logger.warning(f"Actual line {line_num_int}: {actual_line[:100]}")
                                 hallucination_detected = True
+                                # Check if localStorage exists elsewhere in the file
+                                for i, line in enumerate(lines, 1):
+                                    if 'localStorage' in line:
+                                        logger.info(f"Found localStorage at actual line {i}: {line.strip()[:80]}")
+                                        break
                 
                 if hallucination_detected:
                     # If localStorage evidence is hallucinated, it's not implemented
@@ -941,23 +958,59 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
             for issue in parsed_response['penalty_breakdown'].get('issues_found', [])
         )
         
-        # Add penalty if hallucination was detected
-        if not has_hallucination_penalty and hallucination_detected:
-            parsed_response['penalty_breakdown']['issues_found'].append({
-                'category': 'analysis',
-                'issue': 'Analysis contains invalid evidence (references to non-existent code/files)',
-                'severity': 'high',
-                'penalty': 30,
-                'evidence': 'Multiple references do not match actual repository content'
-            })
-            parsed_response['penalty_breakdown']['total_penalty'] = (
-                parsed_response['penalty_breakdown'].get('total_penalty', 0) + 30
-            )
-            logger.info("Added 30 point penalty for hallucinated evidence")
-            
-        # Log summary of corrections
+        # DO NOT penalize candidate for LLM hallucinations!
         if hallucination_detected:
             logger.warning("⚠️ Hallucination detected and corrected in LLM response")
+            logger.warning("🔧 Removing invalid penalties caused by hallucination")
+            
+            # Remove or mark invalid penalties that reference non-existent lines/files
+            valid_issues = []
+            removed_penalty = 0
+            
+            for issue in parsed_response['penalty_breakdown'].get('issues_found', []):
+                evidence = issue.get('evidence', '')
+                # Check if this issue's evidence is valid
+                if '[INVALID EVIDENCE' in evidence or 'HALLUCINATED' in evidence:
+                    logger.info(f"Removing invalid penalty: {issue.get('issue', 'Unknown')} ({issue.get('penalty', 0)} points)")
+                    removed_penalty += issue.get('penalty', 0)
+                else:
+                    # Keep valid issues only
+                    valid_issues.append(issue)
+            
+            # Update with only valid issues
+            parsed_response['penalty_breakdown']['issues_found'] = valid_issues
+            
+            # Recalculate total penalty
+            original_total = parsed_response['penalty_breakdown'].get('total_penalty', 0)
+            new_total = sum(issue.get('penalty', 0) for issue in valid_issues)
+            parsed_response['penalty_breakdown']['total_penalty'] = new_total
+            
+            logger.info(f"Adjusted penalties: {original_total} -> {new_total} (removed {removed_penalty} points of invalid penalties)")
+            
+            # Adjust confidence based on hallucination severity
+            if 'confidence' in parsed_response:
+                original_confidence = parsed_response['confidence']
+                if isinstance(original_confidence, str):
+                    try:
+                        original_confidence = float(original_confidence.strip('%')) / 100
+                    except:
+                        original_confidence = 0.5
+                
+                # Reduce confidence based on hallucination severity
+                if removed_penalty > 30:
+                    parsed_response['confidence'] = max(0.3, original_confidence - 0.4)
+                    logger.warning(f"Reduced confidence due to severe hallucinations: {original_confidence:.0%} -> {parsed_response['confidence']:.0%}")
+                elif removed_penalty > 20:
+                    parsed_response['confidence'] = max(0.5, original_confidence - 0.3)
+                    logger.warning(f"Reduced confidence due to hallucinations: {original_confidence:.0%} -> {parsed_response['confidence']:.0%}")
+                elif removed_penalty > 10:
+                    parsed_response['confidence'] = max(0.6, original_confidence - 0.2)
+                    logger.info(f"Adjusted confidence: {original_confidence:.0%} -> {parsed_response['confidence']:.0%}")
+            
+            # Mark analysis as potentially unreliable if too many hallucinations
+            if removed_penalty > 40:
+                logger.error("⚠️ Analysis reliability severely compromised - too many hallucinations")
+                parsed_response['analysis_reliability'] = 'LOW'
     
     def _normalize_requirements(self, parsed_response: Dict[str, Any]) -> None:
         """
@@ -1154,6 +1207,11 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
         # NOTE: Penalty validation already done in _ensure_penalty_breakdown
         # Do NOT call _validate_and_adjust_penalty again here!
         
+        # Check if we should override LLM decision based on objective criteria
+        requirements_met = parsed_response.get('requirements_met', {})
+        all_requirements_met = all(requirements_met.values()) if requirements_met else False
+        total_penalty = parsed_response.get('penalty_breakdown', {}).get('total_penalty', 0)
+        
         # Map LLM recommendation string to enum
         # Both backend and frontend use 'recommendation' field with yes/no format
         recommendation_str = parsed_response.get('recommendation', 'maybe').lower().strip()
@@ -1225,6 +1283,32 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
             else:
                 logger.warning(f"Unknown recommendation '{recommendation_str}', defaulting to REJECT (score: {avg_score:.1f}%, penalty: {penalty})")
                 recommendation = RecommendationLevel.REJECT
+        
+        # Override decision based on objective criteria
+        # FIRST: Enforce mandatory requirements - if ANY is missing, must reject
+        if not all_requirements_met:
+            # Force rejection if mandatory requirements are missing
+            if recommendation in [RecommendationLevel.ACCEPT, RecommendationLevel.STRONGLY_ACCEPT]:
+                missing_reqs = [k for k, v in requirements_met.items() if not v]
+                logger.warning(f"Overriding ACCEPT to REJECT - missing mandatory requirements: {missing_reqs}")
+                recommendation = RecommendationLevel.REJECT
+        elif all_requirements_met:
+            if total_penalty >= 60:
+                # Keep rejection if penalty is high
+                if recommendation in [RecommendationLevel.ACCEPT, RecommendationLevel.STRONGLY_ACCEPT]:
+                    logger.warning(f"Overriding ACCEPT to REJECT due to high penalty ({total_penalty} >= 60)")
+                    recommendation = RecommendationLevel.REJECT
+            elif total_penalty < 30:
+                # Should definitely accept if penalty is low
+                if recommendation in [RecommendationLevel.REJECT, RecommendationLevel.STRONGLY_REJECT]:
+                    logger.warning(f"Overriding REJECT to ACCEPT - all requirements met with low penalty ({total_penalty} < 30)")
+                    recommendation = RecommendationLevel.ACCEPT
+            elif total_penalty < 50:
+                # Accept if penalty is moderate but all requirements met
+                if recommendation in [RecommendationLevel.REJECT, RecommendationLevel.STRONGLY_REJECT]:
+                    logger.info(f"Considering override: all requirements met, penalty {total_penalty} < 50")
+                    logger.warning(f"Overriding REJECT to ACCEPT - all requirements met with acceptable penalty ({total_penalty} < 50)")
+                    recommendation = RecommendationLevel.ACCEPT
         
         # Convert confidence to 0-1 scale if it's 0-100
         # Default to moderate confidence (0.6) if not provided

@@ -98,8 +98,9 @@ async def main():
     
     # Test repositories
     test_repos = [
-        "https://github.com/mehransobhani/dekamond",
-        # Add more if needed
+        "https://github.com/mehransobhani/dekamond",        # repo1
+        "https://github.com/behnamhsn/dekamond-auth-demo",  # repo2 - uses CSS modules, should be rejected
+        "https://github.com/hoseingp/login-register",       # repo3
     ]
     
     for repo in test_repos:

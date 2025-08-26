@@ -28,7 +28,8 @@
       "Bash(sqlite3:*)",
       "WebSearch",
       "Bash(export:*)",
-      "Bash(git clone:*)"
+      "Bash(git clone:*)",
+      "Bash(echo:*)"
     ],
     "deny": [],
     "ask": [],
