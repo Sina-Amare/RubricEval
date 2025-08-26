@@ -896,8 +896,8 @@ Recommendations:
 🏗️ <b>SENIOR-LEVEL ARCHITECTURE CHECK</b>
 {architecture_checks}
 
-💡 <b>DETAILED FEEDBACK</b>
-{escape_html(result.get('detailed_feedback', '') if isinstance(result, dict) else result.detailed_feedback)}
+💡 <b>EXPLANATION FOR CANDIDATE</b>
+{escape_html(result.get('candidate_explanation', result.get('detailed_feedback', 'Analysis completed. Please review the detailed feedback above.')) if isinstance(result, dict) else (result.candidate_explanation if hasattr(result, 'candidate_explanation') and result.candidate_explanation else (result.detailed_feedback if hasattr(result, 'detailed_feedback') else 'Analysis completed. Please review the detailed feedback above.')))}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Analysis ID: #{report.id}

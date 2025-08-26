@@ -1285,29 +1285,27 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
                 recommendation = RecommendationLevel.REJECT
         
         # Override decision based on objective criteria
-        # FIRST: Enforce mandatory requirements - if ANY is missing, must reject
-        if not all_requirements_met:
-            # Force rejection if mandatory requirements are missing
+        # Count how many requirements are met
+        met_count = sum(1 for v in requirements_met.values() if v)
+        total_count = len(requirements_met)
+        
+        # FIRST: Check if enough requirements are met (at least 9/11 for frontend)
+        if met_count < 9:
+            # Force rejection if too many requirements are missing
             if recommendation in [RecommendationLevel.ACCEPT, RecommendationLevel.STRONGLY_ACCEPT]:
                 missing_reqs = [k for k, v in requirements_met.items() if not v]
-                logger.warning(f"Overriding ACCEPT to REJECT - missing mandatory requirements: {missing_reqs}")
+                logger.warning(f"Overriding ACCEPT to REJECT - only {met_count}/{total_count} requirements met: {missing_reqs}")
                 recommendation = RecommendationLevel.REJECT
-        elif all_requirements_met:
-            if total_penalty >= 60:
+        elif met_count >= 9:  # If enough requirements are met
+            if total_penalty > 60:  # Changed from >= to > to allow exactly 60
                 # Keep rejection if penalty is high
                 if recommendation in [RecommendationLevel.ACCEPT, RecommendationLevel.STRONGLY_ACCEPT]:
-                    logger.warning(f"Overriding ACCEPT to REJECT due to high penalty ({total_penalty} >= 60)")
+                    logger.warning(f"Overriding ACCEPT to REJECT due to high penalty ({total_penalty} > 60)")
                     recommendation = RecommendationLevel.REJECT
-            elif total_penalty < 30:
-                # Should definitely accept if penalty is low
+            elif total_penalty <= 60:  # Changed from < to <= to include 60
+                # Should accept if penalty is below threshold and enough requirements met
                 if recommendation in [RecommendationLevel.REJECT, RecommendationLevel.STRONGLY_REJECT]:
-                    logger.warning(f"Overriding REJECT to ACCEPT - all requirements met with low penalty ({total_penalty} < 30)")
-                    recommendation = RecommendationLevel.ACCEPT
-            elif total_penalty < 50:
-                # Accept if penalty is moderate but all requirements met
-                if recommendation in [RecommendationLevel.REJECT, RecommendationLevel.STRONGLY_REJECT]:
-                    logger.info(f"Considering override: all requirements met, penalty {total_penalty} < 50")
-                    logger.warning(f"Overriding REJECT to ACCEPT - all requirements met with acceptable penalty ({total_penalty} < 50)")
+                    logger.warning(f"Overriding REJECT to ACCEPT - {met_count}/{total_count} requirements met with acceptable penalty ({total_penalty} <= 60)")
                     recommendation = RecommendationLevel.ACCEPT
         
         # Convert confidence to 0-1 scale if it's 0-100
@@ -1586,6 +1584,42 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
             if not storage_check.get('evidence') or storage_check.get('evidence') == 'No evidence found':
                 logger.warning("Frontend analysis missing localStorage detection evidence")
 
+        # Get candidate explanation - this is REQUIRED
+        candidate_explanation = parsed_response.get('candidate_explanation', '')
+        
+        # Log if missing and try to extract from detailed feedback
+        if not candidate_explanation or candidate_explanation.strip() == '':
+            logger.warning("⚠️ LLM did not provide candidate_explanation - this is a required field!")
+            
+            # Try to use detailed_feedback as fallback
+            detailed = parsed_response.get('detailed_feedback', '')
+            if detailed and len(detailed) > 50:
+                # Use first part of detailed feedback
+                candidate_explanation = detailed[:500] + "..." if len(detailed) > 500 else detailed
+                logger.info(f"Using detailed_feedback as candidate_explanation: {len(candidate_explanation)} chars")
+            else:
+                # Generate a proper explanation based on the analysis
+                logger.warning("Generating default candidate_explanation")
+                if recommendation in [RecommendationLevel.ACCEPT, RecommendationLevel.STRONGLY_ACCEPT]:
+                    candidate_explanation = (
+                        f"Congratulations on your submission! Your implementation successfully met {met_count} out of {total_count} requirements, "
+                        f"demonstrating strong technical proficiency in the required stack. "
+                        f"The code quality and architectural decisions show good understanding of best practices. "
+                        f"While we identified some minor areas for improvement (penalty score: {total_penalty}/60), "
+                        f"these do not detract from the overall quality of your submission. "
+                        f"We are impressed with your work and look forward to next steps."
+                    )
+                else:
+                    missing_reqs = [k.replace('_', ' ').title() for k, v in requirements_met.items() if not v][:3]
+                    candidate_explanation = (
+                        f"Thank you for your submission. Your code demonstrates competence in several areas, "
+                        f"particularly in your approach to structuring the application. "
+                        f"However, we identified critical issues that need addressing before we can proceed. "
+                        f"Key areas requiring improvement include: {', '.join(missing_reqs) if missing_reqs else 'meeting all core requirements'}. "
+                        f"Additionally, the penalty score of {total_penalty} points indicates several code quality issues. "
+                        f"We encourage you to review the detailed feedback and consider resubmitting after addressing these concerns."
+                    )
+        
         return AnalysisResult(
             requirements_met=requirements_met,
             scores=normalized_scores,
@@ -1597,7 +1631,8 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
             suggestions=suggestions,
             hiring_decision=hiring_decision,
             penalty_breakdown=parsed_response.get('penalty_breakdown', None),
-            architecture_analysis=architecture_analysis
+            architecture_analysis=architecture_analysis,
+            candidate_explanation=candidate_explanation
         )
     
     def _create_error_result(self, error_message: str) -> Dict[str, Any]:

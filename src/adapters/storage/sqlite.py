@@ -925,7 +925,8 @@ class SQLiteAdapter(StorageAdapter):
                 hiring_decision=analysis_dict.get('hiring_decision'),
                 model_used=analysis_dict.get('model_used'),
                 penalty_breakdown=analysis_dict.get('penalty_breakdown'),
-                architecture_analysis=analysis_dict.get('architecture_analysis')
+                architecture_analysis=analysis_dict.get('architecture_analysis'),
+                candidate_explanation=analysis_dict.get('candidate_explanation', analysis_dict.get('detailed_feedback', ''))
             )
             
             # Extract metadata from analysis dict
@@ -951,7 +952,8 @@ class SQLiteAdapter(StorageAdapter):
                 hiring_decision=None,
                 model_used=None,
                 penalty_breakdown=None,
-                architecture_analysis=None
+                architecture_analysis=None,
+                candidate_explanation=''
             )
             model_used = ''
             tokens_used = 0
