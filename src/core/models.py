@@ -133,6 +133,7 @@ class AnalysisResult:
     hiring_decision: Optional[Dict[str, str]] = None
     model_used: Optional[str] = None
     penalty_breakdown: Optional[Dict[str, Any]] = None
+    architecture_analysis: Optional[Dict[str, Any]] = None
     
     def to_dict(self) -> Dict[str, Any]:
         """Convert to dictionary representation."""
@@ -152,6 +153,8 @@ class AnalysisResult:
             result["model_used"] = self.model_used
         if self.penalty_breakdown:
             result["penalty_breakdown"] = self.penalty_breakdown
+        if self.architecture_analysis:
+            result["architecture_analysis"] = self.architecture_analysis
         return result
     
     def get_overall_score(self) -> float:

@@ -921,7 +921,11 @@ class SQLiteAdapter(StorageAdapter):
                 strengths=analysis_dict.get('strengths', []),
                 weaknesses=analysis_dict.get('weaknesses', []),
                 detailed_feedback=analysis_dict.get('detailed_feedback', ''),
-                suggestions=analysis_dict.get('suggestions', [])
+                suggestions=analysis_dict.get('suggestions', []),
+                hiring_decision=analysis_dict.get('hiring_decision'),
+                model_used=analysis_dict.get('model_used'),
+                penalty_breakdown=analysis_dict.get('penalty_breakdown'),
+                architecture_analysis=analysis_dict.get('architecture_analysis')
             )
             
             # Extract metadata from analysis dict
@@ -942,7 +946,12 @@ class SQLiteAdapter(StorageAdapter):
                 confidence=db_report.confidence or 0,
                 strengths=[],
                 weaknesses=[],
-                detailed_feedback=''
+                detailed_feedback='',
+                suggestions=[],
+                hiring_decision=None,
+                model_used=None,
+                penalty_breakdown=None,
+                architecture_analysis=None
             )
             model_used = ''
             tokens_used = 0

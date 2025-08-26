@@ -1,0 +1,27 @@
+I'm ready to evaluate the Next.js frontend application for the senior developer position. I understand the two-phase evaluation system:
+
+**Phase 1: Mandatory Requirements Gate (Pass/Fail)**
+- All 10 requirements must be implemented or it's an immediate NO_HIRE
+- Requirements include: login page, phone validation, API integration, localStorage, dashboard, logout, App Router, TypeScript strict mode, Tailwind only, and responsive design
+
+**Phase 2: Quality Assessment (Only if Phase 1 passes)**
+- Evaluate code quality, architecture, seniority indicators, and Next.js expertise
+- Apply penalties for violations but be fair and reasonable
+- Final decision based on: penalty < 50 points AND average score ≥ 70%
+
+**Key Standards I'll enforce:**
+- Next.js App Router (not Pages Router) - mandatory
+- TypeScript with strict mode - mandatory  
+- Tailwind CSS only - mandatory
+- Proper server/client component boundaries
+- Iranian phone validation
+- Working authentication flow with localStorage
+- Mobile-responsive design
+
+**What I won't penalize:**
+- Missing features not requested (tests, CI/CD, advanced optimizations)
+- Reasonable use of `any` type (max 45 points penalty total)
+- Basic but functional implementations
+- Alternative approaches that meet requirements
+
+Please provide the code repository for evaluation, and I'll analyze it according to these strict but fair criteria.

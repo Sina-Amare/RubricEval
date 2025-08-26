@@ -3868,3 +3868,1137 @@ fatal: unable to access 'https://github.com/rezadev8/otp-auth-golang.git/': gnut
 2025-08-26 12:06:27,589 - adapters.storage.sqlite - INFO - Updated submission 57: status=SubmissionStatus.COMPLETED
 2025-08-26 12:06:29,186 - adapters.notifications.telegram - INFO - Analysis report sent for submission 57
 2025-08-26 12:06:29,523 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-26 12:23:25,832 - utils.logger - INFO - Logging system initialized successfully
+2025-08-26 12:23:29,793 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-26 12:23:29,795 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-26 12:23:31,706 - __main__ - INFO - Initializing adapters...
+2025-08-26 12:23:31,707 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 12:23:31,715 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 12:23:31,717 - __main__ - INFO - Storage adapter initialized
+2025-08-26 12:23:32,045 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 12:23:32,046 - __main__ - INFO - Repository adapter initialized
+2025-08-26 12:23:32,047 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 12:23:32,048 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 12:23:32,050 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 12:23:32,050 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 12:23:33,301 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-26 12:23:33,303 - __main__ - INFO - Notification adapter initialized
+2025-08-26 12:23:33,898 - __main__ - INFO - Cleared any existing webhooks
+2025-08-26 12:23:33,899 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-26 12:23:35,420 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 12:23:37,419 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/arashgl/GoOTP
+2025-08-26 12:23:37,421 - utils.validators - INFO - Successfully validated GitHub URL: arashgl/GoOTP
+2025-08-26 12:23:41,153 - __main__ - INFO - Starting analysis for https://github.com/arashgl/GoOTP as backend
+2025-08-26 12:23:41,436 - adapters.storage.sqlite - INFO - Created submission 58 for user ***ID_MASKED***
+2025-08-26 12:23:41,437 - __main__ - INFO - Created submission 58
+2025-08-26 12:23:41,467 - adapters.storage.sqlite - INFO - Updated submission 58: status=SubmissionStatus.ANALYZING
+2025-08-26 12:23:41,699 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/arashgl/GoOTP for role: backend
+2025-08-26 12:23:41,702 - adapters.repositories.github - INFO - Cloning repository: https://github.com/arashgl/GoOTP (attempt 1/3)
+2025-08-26 12:23:43,602 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-26 12:23:43,604 - adapters.repositories.github - INFO - Repository size: 0.22MB
+2025-08-26 12:23:43,605 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-26 12:23:43,669 - adapters.repositories.github - INFO - Extracted files - Critical: 38, Important: 0, Useful: 0, Total unique: 38
+2025-08-26 12:23:43,670 - adapters.repositories.github - INFO - Extracted 38 files using patterns
+2025-08-26 12:23:43,671 - adapters.repositories.github - INFO - Raw content: 42740 tokens
+2025-08-26 12:23:43,684 - adapters.repositories.github - INFO - Successfully processed repository: 38 files, 42740 tokens
+2025-08-26 12:23:43,685 - __main__ - INFO - Fetched repository: 38 files
+2025-08-26 12:23:43,895 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/arashgl/GoOTP)
+2025-08-26 12:23:43,896 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-26 12:23:43,897 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-26 12:23:43,899 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-26 12:23:43,910 - adapters.analyzers.openrouter - INFO - Total content size: ***ID_MASKED*** characters, 38 files
+2025-08-26 12:23:46,063 - adapters.analyzers.openrouter - ERROR - HTTP client error: Cannot connect to host openrouter.ai:443 ssl:default [None]
+2025-08-26 12:24:07,535 - adapters.analyzers.openrouter - INFO - LLM Response length: 12897 characters
+2025-08-26 12:24:07,537 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-26 12:24:07,538 - adapters.analyzers.openrouter - INFO - LLM requirements_implementation found with 10 items
+2025-08-26 12:24:07,539 - adapters.analyzers.openrouter - INFO - Converting requirements_implementation to requirements_met
+2025-08-26 12:24:07,540 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+2025-08-26 12:24:07,542 - adapters.analyzers.openrouter - INFO - Average of positive scores: 96.7% (from [100.0, 95.0, 95.0])
+2025-08-26 12:24:07,543 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+2025-08-26 12:24:07,546 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-26 12:24:07,547 - __main__ - INFO - Analysis complete for submission 58
+2025-08-26 12:24:07,601 - adapters.storage.sqlite - INFO - Created report 39 for submission 58
+2025-08-26 12:24:07,602 - __main__ - INFO - Created report 39
+2025-08-26 12:24:07,634 - adapters.storage.sqlite - INFO - Updated submission 58: status=SubmissionStatus.COMPLETED
+2025-08-26 12:24:10,434 - adapters.notifications.telegram - INFO - Analysis report sent for submission 58
+2025-08-26 12:24:10,656 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-26 13:54:55,589 - utils.logger - INFO - Logging system initialized successfully
+2025-08-26 13:54:59,572 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-26 13:54:59,573 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-26 13:55:00,509 - __main__ - INFO - Initializing adapters...
+2025-08-26 13:55:00,509 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 13:55:00,514 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 13:55:00,515 - __main__ - INFO - Storage adapter initialized
+2025-08-26 13:55:00,728 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 13:55:00,729 - __main__ - INFO - Repository adapter initialized
+2025-08-26 13:55:00,731 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 13:55:00,732 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 13:55:00,733 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 13:55:00,734 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 13:55:01,566 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-26 13:55:01,567 - __main__ - INFO - Notification adapter initialized
+2025-08-26 13:55:03,192 - __main__ - INFO - Cleared any existing webhooks
+2025-08-26 13:55:03,194 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-26 13:55:10,898 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 13:55:13,309 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/DevineDecrypter/dekamond-task
+2025-08-26 13:55:13,311 - utils.validators - INFO - Successfully validated GitHub URL: DevineDecrypter/dekamond-task
+2025-08-26 13:55:15,140 - __main__ - INFO - Starting analysis for https://github.com/DevineDecrypter/dekamond-task as frontend
+2025-08-26 13:55:15,395 - adapters.storage.sqlite - INFO - Created submission 59 for user ***ID_MASKED***
+2025-08-26 13:55:15,396 - __main__ - INFO - Created submission 59
+2025-08-26 13:55:15,413 - adapters.storage.sqlite - INFO - Updated submission 59: status=SubmissionStatus.ANALYZING
+2025-08-26 13:55:15,609 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/DevineDecrypter/dekamond-task for role: frontend
+2025-08-26 13:55:15,610 - adapters.repositories.github - INFO - Cloning repository: https://github.com/DevineDecrypter/dekamond-task (attempt 1/3)
+2025-08-26 13:55:17,091 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-26 13:55:17,093 - adapters.repositories.github - INFO - Repository size: 0.39MB
+2025-08-26 13:55:17,094 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-26 13:55:17,123 - adapters.repositories.github - INFO - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+2025-08-26 13:55:17,125 - adapters.repositories.github - INFO - Extracted 30 files using patterns
+2025-08-26 13:55:17,126 - adapters.repositories.github - INFO - Raw content: 9117 tokens
+2025-08-26 13:55:17,134 - adapters.repositories.github - INFO - Successfully processed repository: 30 files, 9117 tokens
+2025-08-26 13:55:17,136 - __main__ - INFO - Fetched repository: 30 files
+2025-08-26 13:55:17,357 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/DevineDecrypter/dekamond-task)
+2025-08-26 13:55:17,358 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-26 13:55:17,359 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+2025-08-26 13:55:17,361 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-26 13:55:17,368 - utils.prompts - WARNING - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "requirements_met"'
+2025-08-26 13:55:17,369 - adapters.analyzers.openrouter - INFO - Total content size: 37259 characters, 30 files
+2025-08-26 13:55:24,060 - adapters.analyzers.openrouter - INFO - LLM Response length: 3146 characters
+2025-08-26 13:55:24,063 - adapters.analyzers.openrouter - WARNING - Recovered JSON lacks minimum required fields
+2025-08-26 13:55:24,065 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+2025-08-26 13:55:24,068 - adapters.analyzers.openrouter - INFO - Average of positive scores: 87.5% (from [95.0, 85.0, 80.0, 90.0])
+2025-08-26 13:55:24,069 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+2025-08-26 13:55:24,071 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-26 13:55:24,072 - __main__ - INFO - Analysis complete for submission 59
+2025-08-26 13:55:24,108 - adapters.storage.sqlite - INFO - Created report 40 for submission 59
+2025-08-26 13:55:24,109 - __main__ - INFO - Created report 40
+2025-08-26 13:55:24,124 - adapters.storage.sqlite - INFO - Updated submission 59: status=SubmissionStatus.COMPLETED
+2025-08-26 13:55:25,551 - adapters.notifications.telegram - INFO - Analysis report sent for submission 59
+2025-08-26 13:55:25,798 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-26 14:16:08,661 - utils.logger - INFO - Logging system initialized successfully
+2025-08-26 14:16:10,452 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-26 14:16:10,453 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-26 14:16:11,326 - __main__ - INFO - Initializing adapters...
+2025-08-26 14:16:11,327 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 14:16:11,331 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 14:16:11,332 - __main__ - INFO - Storage adapter initialized
+2025-08-26 14:16:11,540 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 14:16:11,541 - __main__ - INFO - Repository adapter initialized
+2025-08-26 14:16:11,542 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 14:16:11,543 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 14:16:11,544 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 14:16:11,545 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 14:16:12,365 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-26 14:16:12,366 - __main__ - INFO - Notification adapter initialized
+2025-08-26 14:16:12,881 - __main__ - INFO - Cleared any existing webhooks
+2025-08-26 14:16:12,883 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-26 14:16:14,515 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 14:16:16,771 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/mortezakhademan/dekamond-sample
+2025-08-26 14:16:16,774 - utils.validators - INFO - Successfully validated GitHub URL: mortezakhademan/dekamond-sample
+2025-08-26 14:16:18,565 - __main__ - INFO - Starting analysis for https://github.com/mortezakhademan/dekamond-sample as backend
+2025-08-26 14:16:18,822 - adapters.storage.sqlite - INFO - Created submission 60 for user ***ID_MASKED***
+2025-08-26 14:16:18,823 - __main__ - INFO - Created submission 60
+2025-08-26 14:16:18,847 - adapters.storage.sqlite - INFO - Updated submission 60: status=SubmissionStatus.ANALYZING
+2025-08-26 14:16:19,049 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/mortezakhademan/dekamond-sample for role: backend
+2025-08-26 14:16:19,051 - adapters.repositories.github - INFO - Cloning repository: https://github.com/mortezakhademan/dekamond-sample (attempt 1/3)
+2025-08-26 14:16:55,817 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-26 14:16:55,885 - adapters.repositories.github - INFO - Repository size: 146.47MB
+2025-08-26 14:16:55,886 - adapters.repositories.github - WARNING - Repository large: 146.47MB (max: 100MB)
+2025-08-26 14:16:55,888 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-26 14:16:56,072 - adapters.repositories.github - WARNING - File too large (***ID_MASKED*** bytes), skipping: /tmp/repos/cv_review_github_px0w_wuf/services/proto/includes/googleapis/api-index-v1.json
+2025-08-26 14:16:56,346 - adapters.repositories.github - WARNING - Could not decode file with any encoding: /tmp/repos/cv_review_github_px0w_wuf/services/proto/includes/googleapis/.kokoro/.bazelrc
+2025-08-26 14:16:56,419 - adapters.repositories.github - WARNING - Could not decode file with any encoding: /tmp/repos/cv_review_github_px0w_wuf/services/proto/includes/googleapis/google/container/README.md
+2025-08-26 14:16:56,422 - adapters.repositories.github - WARNING - Could not decode file with any encoding: /tmp/repos/cv_review_github_px0w_wuf/services/proto/includes/googleapis/google/datastore/README.md
+2025-08-26 14:16:58,774 - adapters.repositories.github - WARNING - File too large (***ID_MASKED*** bytes), skipping: /tmp/repos/cv_review_github_px0w_wuf/services/proto/includes/googleapis/google/cloud/compute/v1/compute.proto
+2025-08-26 14:16:58,776 - adapters.repositories.github - WARNING - File too large (***ID_MASKED*** bytes), skipping: /tmp/repos/cv_review_github_px0w_wuf/services/proto/includes/googleapis/google/cloud/compute/v1/compute.v1.json
+2025-08-26 14:17:04,515 - adapters.repositories.github - INFO - Extracted files - Critical: 6951, Important: 0, Useful: 0, Total unique: 6951
+2025-08-26 14:17:04,516 - adapters.repositories.github - INFO - Extracted 6951 files using patterns
+2025-08-26 14:17:04,518 - adapters.repositories.github - INFO - Raw content: ***ID_MASKED*** tokens
+2025-08-26 14:17:04,607 - adapters.repositories.github - WARNING - Repository exceeds token limit: ***ID_MASKED*** > ***ID_MASKED***
+2025-08-26 14:17:04,612 - adapters.repositories.github - INFO - Optimizing content from ***ID_MASKED*** to max ***ID_MASKED*** tokens
+2025-08-26 14:17:04,624 - adapters.repositories.github - INFO - Optimization complete: kept 2819 files, skipped 4132 files, using ***ID_MASKED*** tokens
+2025-08-26 14:17:04,626 - adapters.repositories.github - INFO - Successfully processed repository: 2819 files, ***ID_MASKED*** tokens
+2025-08-26 14:17:04,629 - __main__ - INFO - Fetched repository: 2819 files
+2025-08-26 14:17:05,424 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/mortezakhademan/dekamond-sample)
+2025-08-26 14:17:05,425 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-26 14:17:05,435 - adapters.analyzers.openrouter - WARNING - Content too large for google/gemini-2.5-flash, truncating...
+2025-08-26 14:17:05,436 - utils.token_counter - WARNING - Truncating text from ***ID_MASKED*** to ***ID_MASKED*** characters
+2025-08-26 14:17:05,449 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-26 14:17:05,450 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-26 14:17:05,461 - adapters.analyzers.openrouter - INFO - Total content size: ***ID_MASKED*** characters, 2819 files
+2025-08-26 14:18:40,274 - adapters.analyzers.openrouter - INFO - LLM Response length: 12431 characters
+2025-08-26 14:18:40,276 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-26 14:18:40,277 - adapters.analyzers.openrouter - INFO - LLM requirements_implementation found with 10 items
+2025-08-26 14:18:40,278 - adapters.analyzers.openrouter - INFO - Converting requirements_implementation to requirements_met
+2025-08-26 14:18:40,279 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'otp_login_registration': False, 'rate_limiting': False, 'user_management': False, 'api_documentation': False, 'architectural_pattern': False, 'repository_pattern': False, 'service_layer': False, 'redis_implementation': False, 'database_implementation': True, 'dockerization': True}
+2025-08-26 14:18:40,280 - adapters.analyzers.openrouter - INFO - Average of positive scores: 0.0% (from [0.0, 0.0, 0.0])
+2025-08-26 14:18:40,280 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'otp_login_registration': False, 'rate_limiting': False, 'user_management': False, 'api_documentation': False, 'architectural_pattern': False, 'repository_pattern': False, 'service_layer': False, 'redis_implementation': False, 'database_implementation': True, 'dockerization': True}
+2025-08-26 14:18:40,282 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-26 14:18:40,284 - __main__ - INFO - Analysis complete for submission 60
+2025-08-26 14:18:40,315 - adapters.storage.sqlite - INFO - Created report 41 for submission 60
+2025-08-26 14:18:40,316 - __main__ - INFO - Created report 41
+2025-08-26 14:18:40,333 - adapters.storage.sqlite - INFO - Updated submission 60: status=SubmissionStatus.COMPLETED
+2025-08-26 14:18:41,895 - adapters.notifications.telegram - INFO - Analysis report sent for submission 60
+2025-08-26 14:18:42,427 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-26 14:23:38,638 - utils.logger - INFO - Logging system initialized successfully
+2025-08-26 14:23:40,410 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-26 14:23:40,411 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-26 14:23:41,278 - __main__ - INFO - Initializing adapters...
+2025-08-26 14:23:41,279 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 14:23:41,284 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 14:23:41,291 - __main__ - INFO - Storage adapter initialized
+2025-08-26 14:23:41,514 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 14:23:41,516 - __main__ - INFO - Repository adapter initialized
+2025-08-26 14:23:41,517 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 14:23:41,518 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 14:23:41,519 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 14:23:41,520 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 14:23:43,564 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-26 14:23:43,565 - __main__ - INFO - Notification adapter initialized
+2025-08-26 14:23:44,261 - __main__ - INFO - Cleared any existing webhooks
+2025-08-26 14:23:44,262 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-26 14:23:45,144 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 14:23:47,175 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/DevineDecrypter/dekamond-task
+2025-08-26 14:23:47,176 - utils.validators - INFO - Successfully validated GitHub URL: DevineDecrypter/dekamond-task
+2025-08-26 14:23:49,633 - __main__ - INFO - Starting analysis for https://github.com/DevineDecrypter/dekamond-task as backend
+2025-08-26 14:23:50,019 - adapters.storage.sqlite - INFO - Created submission 61 for user ***ID_MASKED***
+2025-08-26 14:23:50,020 - __main__ - INFO - Created submission 61
+2025-08-26 14:23:50,040 - adapters.storage.sqlite - INFO - Updated submission 61: status=SubmissionStatus.ANALYZING
+2025-08-26 14:23:50,278 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/DevineDecrypter/dekamond-task for role: backend
+2025-08-26 14:23:50,279 - adapters.repositories.github - INFO - Cloning repository: https://github.com/DevineDecrypter/dekamond-task (attempt 1/3)
+2025-08-26 14:23:55,193 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-26 14:23:55,195 - adapters.repositories.github - INFO - Repository size: 0.39MB
+2025-08-26 14:23:55,196 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-26 14:23:55,332 - adapters.repositories.github - INFO - Extracted files - Critical: 36, Important: 0, Useful: 0, Total unique: 36
+2025-08-26 14:23:55,334 - adapters.repositories.github - INFO - Extracted 36 files using patterns
+2025-08-26 14:23:55,335 - adapters.repositories.github - INFO - Raw content: ***ID_MASKED*** tokens
+2025-08-26 14:23:55,345 - adapters.repositories.github - INFO - Successfully processed repository: 36 files, ***ID_MASKED*** tokens
+2025-08-26 14:23:55,346 - __main__ - INFO - Fetched repository: 36 files
+2025-08-26 14:23:55,350 - __main__ - INFO - Cancel command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 14:23:56,476 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/DevineDecrypter/dekamond-task)
+2025-08-26 14:23:56,477 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-26 14:23:56,479 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-26 14:23:56,480 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-26 14:23:56,487 - adapters.analyzers.openrouter - INFO - Total content size: ***ID_MASKED*** characters, 36 files
+2025-08-26 14:24:12,174 - utils.logger - INFO - Logging system initialized successfully
+2025-08-26 14:24:14,095 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-26 14:24:14,095 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-26 14:24:15,051 - __main__ - INFO - Initializing adapters...
+2025-08-26 14:24:15,052 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 14:24:15,056 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 14:24:15,057 - __main__ - INFO - Storage adapter initialized
+2025-08-26 14:24:15,272 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 14:24:15,274 - __main__ - INFO - Repository adapter initialized
+2025-08-26 14:24:15,275 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 14:24:15,276 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 14:24:15,277 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 14:24:15,278 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 14:24:16,595 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-26 14:24:16,596 - __main__ - INFO - Notification adapter initialized
+2025-08-26 14:24:17,171 - __main__ - INFO - Cleared any existing webhooks
+2025-08-26 14:24:17,172 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-26 14:24:24,194 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 14:24:27,594 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/DevineDecrypter/dekamond-task
+2025-08-26 14:24:27,596 - utils.validators - INFO - Successfully validated GitHub URL: DevineDecrypter/dekamond-task
+2025-08-26 14:24:29,732 - __main__ - INFO - Starting analysis for https://github.com/DevineDecrypter/dekamond-task as frontend
+2025-08-26 14:24:29,941 - __main__ - INFO - Found existing submission 59, removing it
+2025-08-26 14:24:29,977 - adapters.storage.sqlite - INFO - Deleted submission 59 and 1 associated reports
+2025-08-26 14:24:30,207 - adapters.storage.sqlite - INFO - Created submission 62 for user ***ID_MASKED***
+2025-08-26 14:24:30,208 - __main__ - INFO - Created submission 62
+2025-08-26 14:24:30,228 - adapters.storage.sqlite - INFO - Updated submission 62: status=SubmissionStatus.ANALYZING
+2025-08-26 14:24:30,422 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/DevineDecrypter/dekamond-task for role: frontend
+2025-08-26 14:24:30,424 - adapters.repositories.github - INFO - Cloning repository: https://github.com/DevineDecrypter/dekamond-task (attempt 1/3)
+2025-08-26 14:24:31,085 - adapters.repositories.github - WARNING - Network error during clone, retrying in 2s: Cmd('git') failed due to: exit code(128)
+  cmdline: git clone -v --depth=1 --single-branch -- https://github.com/DevineDecrypter/dekamond-task.git /tmp/repos/cv_review_github_cy5p1bhf
+  stderr: 'Cloning into '/tmp/repos/cv_review_github_cy5p1bhf'...
+fatal: unable to access 'https://github.com/DevineDecrypter/dekamond-task.git/': gnutls_handshake() failed: The TLS connection was non-properly terminated.
+'
+2025-08-26 14:24:33,088 - adapters.repositories.github - INFO - Cloning repository: https://github.com/DevineDecrypter/dekamond-task (attempt 2/3)
+2025-08-26 14:24:34,558 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-26 14:24:34,560 - adapters.repositories.github - INFO - Repository size: 0.39MB
+2025-08-26 14:24:34,561 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-26 14:24:34,585 - adapters.repositories.github - INFO - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+2025-08-26 14:24:34,586 - adapters.repositories.github - INFO - Extracted 30 files using patterns
+2025-08-26 14:24:34,587 - adapters.repositories.github - INFO - Raw content: 9117 tokens
+2025-08-26 14:24:34,595 - adapters.repositories.github - INFO - Successfully processed repository: 30 files, 9117 tokens
+2025-08-26 14:24:34,597 - __main__ - INFO - Fetched repository: 30 files
+2025-08-26 14:24:34,801 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/DevineDecrypter/dekamond-task)
+2025-08-26 14:24:34,802 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-26 14:24:34,803 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+2025-08-26 14:24:34,803 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-26 14:24:34,809 - utils.prompts - WARNING - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "requirements_met"'
+2025-08-26 14:24:34,810 - adapters.analyzers.openrouter - INFO - Total content size: 37259 characters, 30 files
+2025-08-26 14:24:35,749 - adapters.analyzers.openrouter - ERROR - HTTP client error: Cannot connect to host openrouter.ai:443 ssl:default [None]
+2025-08-26 14:24:43,300 - adapters.analyzers.openrouter - INFO - LLM Response length: 4899 characters
+2025-08-26 14:24:43,302 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-26 14:24:43,303 - adapters.analyzers.openrouter - INFO - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+2025-08-26 14:24:43,304 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+2025-08-26 14:24:43,306 - adapters.analyzers.openrouter - WARNING - Response validation failed: Recommendation must be one of: strong_yes, yes, maybe, no, strong_no
+2025-08-26 14:24:43,307 - adapters.analyzers.openrouter - WARNING - Response validation failed
+2025-08-26 14:24:43,308 - adapters.analyzers.openrouter - INFO - Attempt 2/3: anthropic/claude-sonnet-4 (context: ***ID_MASKED*** tokens)
+2025-08-26 14:24:43,309 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+2025-08-26 14:24:43,310 - utils.prompts - WARNING - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "requirements_met"'
+2025-08-26 14:24:43,311 - adapters.analyzers.openrouter - INFO - Total content size: 37259 characters, 30 files
+2025-08-26 14:24:52,932 - adapters.analyzers.openrouter - INFO - LLM Response length: 1381 characters
+2025-08-26 14:24:52,942 - utils.json_recovery - INFO - Saved failed response to ./data/failed_responses/failed_response_***ID_MASKED***_***ID_MASKED***.txt for manual recovery
+2025-08-26 14:24:52,943 - adapters.analyzers.openrouter - ERROR - JSON recovery failed: All recovery strategies failed
+2025-08-26 14:24:52,946 - adapters.analyzers.openrouter - WARNING - Requirements all False or missing - attempting inference from feedback
+2025-08-26 14:24:52,947 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {}
+2025-08-26 14:24:52,948 - adapters.analyzers.openrouter - INFO - Average of positive scores: 0.0% (from [0.0, 0.0, 0.0, 0.0])
+2025-08-26 14:24:52,949 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {}
+2025-08-26 14:24:52,950 - adapters.analyzers.openrouter - WARNING - Requirements all False or missing - attempting inference from feedback
+2025-08-26 14:24:52,952 - adapters.analyzers.openrouter - INFO - Analysis successful with anthropic/claude-sonnet-4
+2025-08-26 14:24:52,953 - __main__ - INFO - Analysis complete for submission 62
+2025-08-26 14:24:52,992 - adapters.storage.sqlite - INFO - Created report 42 for submission 62
+2025-08-26 14:24:52,993 - __main__ - INFO - Created report 42
+2025-08-26 14:24:53,010 - adapters.storage.sqlite - INFO - Updated submission 62: status=SubmissionStatus.COMPLETED
+2025-08-26 14:24:55,157 - adapters.notifications.telegram - INFO - Analysis report sent for submission 62
+2025-08-26 14:24:55,411 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-26 14:36:31,806 - utils.logger - INFO - Logging system initialized successfully
+2025-08-26 14:36:33,606 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-26 14:36:33,607 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-26 14:36:34,411 - __main__ - INFO - Initializing adapters...
+2025-08-26 14:36:34,412 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 14:36:34,416 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 14:36:34,417 - __main__ - INFO - Storage adapter initialized
+2025-08-26 14:36:34,613 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 14:36:34,614 - __main__ - INFO - Repository adapter initialized
+2025-08-26 14:36:34,615 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 14:36:34,617 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 14:36:34,618 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 14:36:34,619 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 14:36:35,396 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-26 14:36:35,397 - __main__ - INFO - Notification adapter initialized
+2025-08-26 14:36:35,900 - __main__ - INFO - Cleared any existing webhooks
+2025-08-26 14:36:35,902 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-26 14:36:41,772 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 14:36:48,311 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/DevineDecrypter/dekamond-task
+2025-08-26 14:36:48,313 - utils.validators - INFO - Successfully validated GitHub URL: DevineDecrypter/dekamond-task
+2025-08-26 14:36:50,494 - __main__ - INFO - Starting analysis for https://github.com/DevineDecrypter/dekamond-task as frontend
+2025-08-26 14:36:50,717 - __main__ - INFO - Found existing submission 62, removing it
+2025-08-26 14:36:50,751 - adapters.storage.sqlite - INFO - Deleted submission 62 and 1 associated reports
+2025-08-26 14:36:50,984 - adapters.storage.sqlite - INFO - Created submission 62 for user ***ID_MASKED***
+2025-08-26 14:36:50,985 - __main__ - INFO - Created submission 62
+2025-08-26 14:36:51,001 - adapters.storage.sqlite - INFO - Updated submission 62: status=SubmissionStatus.ANALYZING
+2025-08-26 14:36:51,213 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/DevineDecrypter/dekamond-task for role: frontend
+2025-08-26 14:36:51,214 - adapters.repositories.github - INFO - Cloning repository: https://github.com/DevineDecrypter/dekamond-task (attempt 1/3)
+2025-08-26 14:36:52,714 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-26 14:36:52,715 - adapters.repositories.github - INFO - Repository size: 0.39MB
+2025-08-26 14:36:52,717 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-26 14:36:52,742 - adapters.repositories.github - INFO - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+2025-08-26 14:36:52,744 - adapters.repositories.github - INFO - Extracted 30 files using patterns
+2025-08-26 14:36:52,744 - adapters.repositories.github - INFO - Raw content: 9117 tokens
+2025-08-26 14:36:52,754 - adapters.repositories.github - INFO - Successfully processed repository: 30 files, 9117 tokens
+2025-08-26 14:36:52,755 - __main__ - INFO - Fetched repository: 30 files
+2025-08-26 14:36:53,020 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/DevineDecrypter/dekamond-task)
+2025-08-26 14:36:53,021 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-26 14:36:53,022 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+2025-08-26 14:36:53,023 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-26 14:36:53,028 - utils.prompts - WARNING - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "requirements_met"'
+2025-08-26 14:36:53,029 - adapters.analyzers.openrouter - INFO - Total content size: 37259 characters, 30 files
+2025-08-26 14:36:59,100 - adapters.analyzers.openrouter - INFO - LLM Response length: 3660 characters
+2025-08-26 14:36:59,101 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-26 14:36:59,102 - adapters.analyzers.openrouter - INFO - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+2025-08-26 14:36:59,104 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+2025-08-26 14:36:59,105 - adapters.analyzers.openrouter - INFO - Average of positive scores: 83.8% (from [95.0, 80.0, 75.0, 85.0])
+2025-08-26 14:36:59,106 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+2025-08-26 14:36:59,108 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-26 14:36:59,109 - __main__ - INFO - Analysis complete for submission 62
+2025-08-26 14:36:59,148 - adapters.storage.sqlite - INFO - Created report 42 for submission 62
+2025-08-26 14:36:59,149 - __main__ - INFO - Created report 42
+2025-08-26 14:36:59,170 - adapters.storage.sqlite - INFO - Updated submission 62: status=SubmissionStatus.COMPLETED
+2025-08-26 14:37:00,541 - adapters.notifications.telegram - INFO - Analysis report sent for submission 62
+2025-08-26 14:37:00,759 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-26 14:56:15,956 - utils.logger - INFO - Logging system initialized successfully
+2025-08-26 14:56:19,487 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-26 14:56:19,488 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-26 14:56:20,288 - __main__ - INFO - Initializing adapters...
+2025-08-26 14:56:20,289 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 14:56:20,294 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 14:56:20,295 - __main__ - INFO - Storage adapter initialized
+2025-08-26 14:56:20,537 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 14:56:20,539 - __main__ - INFO - Repository adapter initialized
+2025-08-26 14:56:20,540 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 14:56:20,541 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 14:56:20,542 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 14:56:20,543 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 14:56:22,520 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-26 14:56:22,522 - __main__ - INFO - Notification adapter initialized
+2025-08-26 14:56:24,240 - __main__ - INFO - Cleared any existing webhooks
+2025-08-26 14:56:24,241 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-26 14:56:28,862 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 14:56:37,438 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/DevineDecrypter/dekamond-task
+2025-08-26 14:56:37,440 - utils.validators - INFO - Successfully validated GitHub URL: DevineDecrypter/dekamond-task
+2025-08-26 14:56:44,818 - __main__ - INFO - Starting analysis for https://github.com/DevineDecrypter/dekamond-task as frontend
+2025-08-26 14:56:45,351 - __main__ - INFO - Found existing submission 62, removing it
+2025-08-26 14:56:45,393 - adapters.storage.sqlite - INFO - Deleted submission 62 and 1 associated reports
+2025-08-26 14:56:45,988 - adapters.storage.sqlite - INFO - Created submission 62 for user ***ID_MASKED***
+2025-08-26 14:56:45,989 - __main__ - INFO - Created submission 62
+2025-08-26 14:56:46,009 - adapters.storage.sqlite - INFO - Updated submission 62: status=SubmissionStatus.ANALYZING
+2025-08-26 14:56:46,599 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/DevineDecrypter/dekamond-task for role: frontend
+2025-08-26 14:56:46,601 - adapters.repositories.github - INFO - Cloning repository: https://github.com/DevineDecrypter/dekamond-task (attempt 1/3)
+2025-08-26 14:57:05,631 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-26 14:57:05,633 - adapters.repositories.github - INFO - Repository size: 0.39MB
+2025-08-26 14:57:05,634 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-26 14:57:05,655 - adapters.repositories.github - INFO - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+2025-08-26 14:57:05,656 - adapters.repositories.github - INFO - Extracted 30 files using patterns
+2025-08-26 14:57:05,658 - adapters.repositories.github - INFO - Raw content: 9117 tokens
+2025-08-26 14:57:05,666 - adapters.repositories.github - INFO - Successfully processed repository: 30 files, 9117 tokens
+2025-08-26 14:57:05,667 - __main__ - INFO - Fetched repository: 30 files
+2025-08-26 14:57:06,171 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/DevineDecrypter/dekamond-task)
+2025-08-26 14:57:06,171 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-26 14:57:06,172 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+2025-08-26 14:57:06,173 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-26 14:57:06,178 - utils.prompts - WARNING - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "requirements_met"'
+2025-08-26 14:57:06,179 - adapters.analyzers.openrouter - INFO - Total content size: 37259 characters, 30 files
+2025-08-26 14:57:15,652 - adapters.analyzers.openrouter - INFO - LLM Response length: 5344 characters
+2025-08-26 14:57:15,654 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-26 14:57:15,655 - adapters.analyzers.openrouter - INFO - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+2025-08-26 14:57:15,656 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+2025-08-26 14:57:15,657 - adapters.analyzers.openrouter - INFO - Average of positive scores: 80.0% (from [95.0, 75.0, 70.0, 80.0])
+2025-08-26 14:57:15,659 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+2025-08-26 14:57:15,660 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-26 14:57:15,661 - __main__ - INFO - Analysis complete for submission 62
+2025-08-26 14:57:15,692 - adapters.storage.sqlite - INFO - Created report 42 for submission 62
+2025-08-26 14:57:15,692 - __main__ - INFO - Created report 42
+2025-08-26 14:57:15,707 - adapters.storage.sqlite - INFO - Updated submission 62: status=SubmissionStatus.COMPLETED
+2025-08-26 14:57:16,817 - adapters.notifications.telegram - ERROR - Failed to send analysis complete: httpx.ConnectError: 
+2025-08-26 14:57:17,014 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-26 15:02:27,809 - __main__ - INFO - History command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 15:05:40,790 - utils.logger - INFO - Logging system initialized successfully
+2025-08-26 15:05:42,465 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-26 15:05:42,466 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-26 15:05:43,341 - __main__ - INFO - Initializing adapters...
+2025-08-26 15:05:43,342 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 15:05:43,346 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 15:05:43,347 - __main__ - INFO - Storage adapter initialized
+2025-08-26 15:05:43,547 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 15:05:43,548 - __main__ - INFO - Repository adapter initialized
+2025-08-26 15:05:43,549 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 15:05:43,551 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 15:05:43,552 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 15:05:43,554 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 15:05:44,368 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-26 15:05:44,370 - __main__ - INFO - Notification adapter initialized
+2025-08-26 15:05:44,878 - __main__ - INFO - Cleared any existing webhooks
+2025-08-26 15:05:44,880 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-26 15:05:48,634 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 15:05:57,488 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/DevineDecrypter/dekamond-task
+2025-08-26 15:05:57,489 - utils.validators - INFO - Successfully validated GitHub URL: DevineDecrypter/dekamond-task
+2025-08-26 15:05:59,640 - __main__ - INFO - Starting analysis for https://github.com/DevineDecrypter/dekamond-task as frontend
+2025-08-26 15:05:59,844 - __main__ - INFO - Found existing submission 62, removing it
+2025-08-26 15:05:59,880 - adapters.storage.sqlite - INFO - Deleted submission 62 and 1 associated reports
+2025-08-26 15:06:00,107 - adapters.storage.sqlite - INFO - Created submission 62 for user ***ID_MASKED***
+2025-08-26 15:06:00,108 - __main__ - INFO - Created submission 62
+2025-08-26 15:06:00,128 - adapters.storage.sqlite - INFO - Updated submission 62: status=SubmissionStatus.ANALYZING
+2025-08-26 15:06:00,327 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/DevineDecrypter/dekamond-task for role: frontend
+2025-08-26 15:06:00,329 - adapters.repositories.github - INFO - Cloning repository: https://github.com/DevineDecrypter/dekamond-task (attempt 1/3)
+2025-08-26 15:06:01,802 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-26 15:06:01,804 - adapters.repositories.github - INFO - Repository size: 0.39MB
+2025-08-26 15:06:01,805 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-26 15:06:01,825 - adapters.repositories.github - INFO - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+2025-08-26 15:06:01,827 - adapters.repositories.github - INFO - Extracted 30 files using patterns
+2025-08-26 15:06:01,828 - adapters.repositories.github - INFO - Raw content: 9117 tokens
+2025-08-26 15:06:01,838 - adapters.repositories.github - INFO - Successfully processed repository: 30 files, 9117 tokens
+2025-08-26 15:06:01,840 - __main__ - INFO - Fetched repository: 30 files
+2025-08-26 15:06:02,040 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/DevineDecrypter/dekamond-task)
+2025-08-26 15:06:02,041 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-26 15:06:02,043 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+2025-08-26 15:06:02,044 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-26 15:06:02,050 - utils.prompts - WARNING - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "requirements_met"'
+2025-08-26 15:06:02,051 - adapters.analyzers.openrouter - INFO - Total content size: 37259 characters, 30 files
+2025-08-26 15:06:12,064 - adapters.analyzers.openrouter - ERROR - HTTP client error: Cannot connect to host openrouter.ai:443 ssl:default [Temporary failure in name resolution]
+2025-08-26 15:06:23,826 - adapters.analyzers.openrouter - INFO - LLM Response length: 5769 characters
+2025-08-26 15:06:23,828 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-26 15:06:23,830 - adapters.analyzers.openrouter - INFO - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+2025-08-26 15:06:23,831 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+2025-08-26 15:06:23,833 - adapters.analyzers.openrouter - INFO - Average of positive scores: 87.0% (from [95.0, 85.0, 80.0, 88.0])
+2025-08-26 15:06:23,834 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+2025-08-26 15:06:23,835 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-26 15:06:23,836 - __main__ - INFO - Analysis complete for submission 62
+2025-08-26 15:06:23,872 - adapters.storage.sqlite - INFO - Created report 42 for submission 62
+2025-08-26 15:06:23,873 - __main__ - INFO - Created report 42
+2025-08-26 15:06:23,891 - adapters.storage.sqlite - INFO - Updated submission 62: status=SubmissionStatus.COMPLETED
+2025-08-26 15:06:25,966 - adapters.notifications.telegram - INFO - Analysis report sent for submission 62
+2025-08-26 15:06:26,169 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-26 15:32:52,409 - utils.logger - INFO - Logging system initialized successfully
+2025-08-26 15:32:53,999 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-26 15:32:54,000 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-26 15:32:54,774 - __main__ - INFO - Initializing adapters...
+2025-08-26 15:32:54,775 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 15:32:54,779 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 15:32:54,780 - __main__ - INFO - Storage adapter initialized
+2025-08-26 15:32:54,969 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 15:32:54,971 - __main__ - INFO - Repository adapter initialized
+2025-08-26 15:32:54,973 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 15:32:54,974 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 15:32:54,976 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 15:32:54,977 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 15:32:55,794 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-26 15:32:55,796 - __main__ - INFO - Notification adapter initialized
+2025-08-26 15:32:56,309 - __main__ - INFO - Cleared any existing webhooks
+2025-08-26 15:32:56,311 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-26 15:33:23,926 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 15:33:31,842 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/Talkhestani/digitaldekamond
+2025-08-26 15:33:31,844 - utils.validators - INFO - Successfully validated GitHub URL: Talkhestani/digitaldekamond
+2025-08-26 15:33:37,113 - __main__ - INFO - Starting analysis for https://github.com/Talkhestani/digitaldekamond as frontend
+2025-08-26 15:33:37,378 - adapters.storage.sqlite - INFO - Created submission 63 for user ***ID_MASKED***
+2025-08-26 15:33:37,379 - __main__ - INFO - Created submission 63
+2025-08-26 15:33:37,399 - adapters.storage.sqlite - INFO - Updated submission 63: status=SubmissionStatus.ANALYZING
+2025-08-26 15:33:37,627 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/Talkhestani/digitaldekamond for role: frontend
+2025-08-26 15:33:37,628 - adapters.repositories.github - INFO - Cloning repository: https://github.com/Talkhestani/digitaldekamond (attempt 1/3)
+2025-08-26 15:33:39,005 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-26 15:33:39,007 - adapters.repositories.github - INFO - Repository size: 0.12MB
+2025-08-26 15:33:39,009 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-26 15:33:39,031 - adapters.repositories.github - INFO - Extracted files - Critical: 25, Important: 0, Useful: 0, Total unique: 25
+2025-08-26 15:33:39,032 - adapters.repositories.github - INFO - Extracted 25 files using patterns
+2025-08-26 15:33:39,033 - adapters.repositories.github - INFO - Raw content: 8790 tokens
+2025-08-26 15:33:39,044 - adapters.repositories.github - INFO - Successfully processed repository: 25 files, 8790 tokens
+2025-08-26 15:33:39,045 - __main__ - INFO - Fetched repository: 25 files
+2025-08-26 15:33:39,283 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/Talkhestani/digitaldekamond)
+2025-08-26 15:33:39,284 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-26 15:33:39,285 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/app/login/page.tsx
+2025-08-26 15:33:39,286 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+2025-08-26 15:33:39,286 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-26 15:33:39,291 - utils.prompts - WARNING - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+2025-08-26 15:33:39,291 - adapters.analyzers.openrouter - INFO - Total content size: 37081 characters, 25 files
+2025-08-26 15:33:47,880 - adapters.analyzers.openrouter - INFO - LLM Response length: 5376 characters
+2025-08-26 15:33:47,883 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-26 15:33:47,885 - adapters.analyzers.openrouter - WARNING - 🔍 STORAGE METHOD CHECK: {'found_localStorage': True, 'found_cookies': False, 'found_sessionStorage': False, 'storage_details': 'Found localStorage.setItem and localStorage.getItem in src/app/auth/page.tsx and src/app/dashboard/page.tsx', 'evidence': "localStorage.setItem('user', JSON.stringify(data.results[0])); (src/app/auth/page.tsx:75), localStorage.getItem('user'); (src/app/dashboard/page.tsx:12)"}
+2025-08-26 15:33:47,887 - adapters.analyzers.openrouter - WARNING - 📝 EVIDENCE: localStorage.setItem('user', JSON.stringify(data.results[0])); (src/app/auth/page.tsx:75), localStorage.getItem('user'); (src/app/dashboard/page.tsx:12)
+2025-08-26 15:33:47,888 - adapters.analyzers.openrouter - INFO - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+2025-08-26 15:33:47,889 - adapters.analyzers.openrouter - WARNING - ⚠️ LLM marked localstorage_implementation as: True
+2025-08-26 15:33:47,890 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+2025-08-26 15:33:47,891 - adapters.analyzers.openrouter - INFO - Average of positive scores: 82.5% (from [95.0, 80.0, 70.0, 85.0])
+2025-08-26 15:33:47,892 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+2025-08-26 15:33:47,893 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-26 15:33:47,894 - __main__ - INFO - Analysis complete for submission 63
+2025-08-26 15:33:47,929 - adapters.storage.sqlite - INFO - Created report 43 for submission 63
+2025-08-26 15:33:47,930 - __main__ - INFO - Created report 43
+2025-08-26 15:33:47,949 - adapters.storage.sqlite - INFO - Updated submission 63: status=SubmissionStatus.COMPLETED
+2025-08-26 15:33:49,290 - adapters.notifications.telegram - INFO - Analysis report sent for submission 63
+2025-08-26 15:33:49,493 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-26 15:46:03,416 - utils.logger - INFO - Logging system initialized successfully
+2025-08-26 15:46:05,440 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-26 15:46:05,441 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-26 15:46:06,381 - __main__ - INFO - Initializing adapters...
+2025-08-26 15:46:06,382 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 15:46:06,386 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 15:46:06,387 - __main__ - INFO - Storage adapter initialized
+2025-08-26 15:46:06,607 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 15:46:06,608 - __main__ - INFO - Repository adapter initialized
+2025-08-26 15:46:06,610 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 15:46:06,611 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 15:46:06,612 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 15:46:06,613 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 15:46:07,749 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-26 15:46:07,750 - __main__ - INFO - Notification adapter initialized
+2025-08-26 15:46:08,315 - __main__ - INFO - Cleared any existing webhooks
+2025-08-26 15:46:08,317 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-26 15:46:10,411 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 15:46:12,315 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/Talkhestani/digitaldekamond
+2025-08-26 15:46:12,317 - utils.validators - INFO - Successfully validated GitHub URL: Talkhestani/digitaldekamond
+2025-08-26 15:46:15,003 - __main__ - INFO - Starting analysis for https://github.com/Talkhestani/digitaldekamond as frontend
+2025-08-26 15:46:15,227 - __main__ - INFO - Found existing submission 63, removing it
+2025-08-26 15:46:15,262 - adapters.storage.sqlite - INFO - Deleted submission 63 and 1 associated reports
+2025-08-26 15:46:15,524 - adapters.storage.sqlite - INFO - Created submission 63 for user ***ID_MASKED***
+2025-08-26 15:46:15,526 - __main__ - INFO - Created submission 63
+2025-08-26 15:46:15,550 - adapters.storage.sqlite - INFO - Updated submission 63: status=SubmissionStatus.ANALYZING
+2025-08-26 15:46:15,767 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/Talkhestani/digitaldekamond for role: frontend
+2025-08-26 15:46:15,769 - adapters.repositories.github - INFO - Cloning repository: https://github.com/Talkhestani/digitaldekamond (attempt 1/3)
+2025-08-26 15:46:17,417 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-26 15:46:17,419 - adapters.repositories.github - INFO - Repository size: 0.12MB
+2025-08-26 15:46:17,420 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-26 15:46:17,443 - adapters.repositories.github - INFO - Extracted files - Critical: 25, Important: 0, Useful: 0, Total unique: 25
+2025-08-26 15:46:17,444 - adapters.repositories.github - INFO - Extracted 25 files using patterns
+2025-08-26 15:46:17,446 - adapters.repositories.github - INFO - Raw content: 8737 tokens
+2025-08-26 15:46:17,456 - adapters.repositories.github - INFO - Successfully processed repository: 25 files, 8737 tokens
+2025-08-26 15:46:17,458 - __main__ - INFO - Fetched repository: 25 files
+2025-08-26 15:46:17,680 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/Talkhestani/digitaldekamond)
+2025-08-26 15:46:17,681 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-26 15:46:17,682 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/app/login/page.tsx
+2025-08-26 15:46:17,683 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+2025-08-26 15:46:17,684 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-26 15:46:17,689 - utils.prompts - WARNING - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+2025-08-26 15:46:17,690 - adapters.analyzers.openrouter - INFO - Total content size: 36648 characters, 25 files
+2025-08-26 15:46:26,522 - adapters.analyzers.openrouter - INFO - LLM Response length: 5424 characters
+2025-08-26 15:46:26,525 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-26 15:46:26,527 - adapters.analyzers.openrouter - WARNING - 🔍 STORAGE METHOD CHECK: {'found_localStorage': True, 'found_cookies': False, 'found_sessionStorage': False, 'storage_details': 'Found localStorage.setItem and localStorage.getItem in src/app/auth/page.tsx line 45 and src/app/dashboard/page.tsx line 15', 'evidence': "localStorage.setItem('user', JSON.stringify(data.results[0]));\nlocalStorage.getItem('user');"}
+2025-08-26 15:46:26,528 - adapters.analyzers.openrouter - WARNING - 📝 EVIDENCE: localStorage.setItem('user', JSON.stringify(data.results[0]));
+localStorage.getItem('user');
+2025-08-26 15:46:26,529 - adapters.analyzers.openrouter - INFO - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+2025-08-26 15:46:26,530 - adapters.analyzers.openrouter - WARNING - ⚠️ LLM marked localstorage_implementation as: True
+2025-08-26 15:46:26,532 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+2025-08-26 15:46:26,533 - adapters.analyzers.openrouter - INFO - Average of positive scores: 82.5% (from [95.0, 80.0, 70.0, 85.0])
+2025-08-26 15:46:26,534 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+2025-08-26 15:46:26,536 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-26 15:46:26,537 - __main__ - INFO - Analysis complete for submission 63
+2025-08-26 15:46:26,572 - adapters.storage.sqlite - INFO - Created report 43 for submission 63
+2025-08-26 15:46:26,573 - __main__ - INFO - Created report 43
+2025-08-26 15:46:26,590 - adapters.storage.sqlite - INFO - Updated submission 63: status=SubmissionStatus.COMPLETED
+2025-08-26 15:46:28,076 - adapters.notifications.telegram - INFO - Analysis report sent for submission 63
+2025-08-26 15:46:28,308 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-26 16:00:55,203 - utils.logger - INFO - Logging system initialized successfully
+2025-08-26 16:00:56,884 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-26 16:00:56,885 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-26 16:00:57,645 - __main__ - INFO - Initializing adapters...
+2025-08-26 16:00:57,646 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 16:00:57,652 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 16:00:57,653 - __main__ - INFO - Storage adapter initialized
+2025-08-26 16:00:57,853 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 16:00:57,855 - __main__ - INFO - Repository adapter initialized
+2025-08-26 16:00:57,856 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 16:00:57,857 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 16:00:57,858 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 16:00:57,860 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 16:00:58,672 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-26 16:00:58,673 - __main__ - INFO - Notification adapter initialized
+2025-08-26 16:00:59,197 - __main__ - INFO - Cleared any existing webhooks
+2025-08-26 16:00:59,199 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-26 16:01:01,886 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 16:01:10,210 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/DevineDecrypter/dekamond-task
+2025-08-26 16:01:10,212 - utils.validators - INFO - Successfully validated GitHub URL: DevineDecrypter/dekamond-task
+2025-08-26 16:01:12,676 - __main__ - INFO - Starting analysis for https://github.com/DevineDecrypter/dekamond-task as frontend
+2025-08-26 16:01:12,878 - __main__ - INFO - Found existing submission 62, removing it
+2025-08-26 16:01:12,917 - adapters.storage.sqlite - INFO - Deleted submission 62 and 1 associated reports
+2025-08-26 16:01:13,134 - adapters.storage.sqlite - INFO - Created submission 64 for user ***ID_MASKED***
+2025-08-26 16:01:13,135 - __main__ - INFO - Created submission 64
+2025-08-26 16:01:13,156 - adapters.storage.sqlite - INFO - Updated submission 64: status=SubmissionStatus.ANALYZING
+2025-08-26 16:01:13,385 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/DevineDecrypter/dekamond-task for role: frontend
+2025-08-26 16:01:13,387 - adapters.repositories.github - INFO - Cloning repository: https://github.com/DevineDecrypter/dekamond-task (attempt 1/3)
+2025-08-26 16:01:14,879 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-26 16:01:14,881 - adapters.repositories.github - INFO - Repository size: 0.39MB
+2025-08-26 16:01:14,882 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-26 16:01:14,904 - adapters.repositories.github - INFO - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+2025-08-26 16:01:14,905 - adapters.repositories.github - INFO - Extracted 30 files using patterns
+2025-08-26 16:01:14,906 - adapters.repositories.github - INFO - Raw content: 9117 tokens
+2025-08-26 16:01:14,915 - adapters.repositories.github - INFO - Successfully processed repository: 30 files, 9117 tokens
+2025-08-26 16:01:14,917 - __main__ - INFO - Fetched repository: 30 files
+2025-08-26 16:01:15,112 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/DevineDecrypter/dekamond-task)
+2025-08-26 16:01:15,113 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-26 16:01:15,115 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/lib/cookies.ts
+2025-08-26 16:01:15,115 - adapters.analyzers.openrouter - WARNING - ⚠️ DETECTED COOKIE USAGE in src/lib/cookies.ts
+2025-08-26 16:01:15,116 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/services/auth/login.ts
+2025-08-26 16:01:15,117 - adapters.analyzers.openrouter - WARNING - ⚠️ DETECTED COOKIE USAGE in src/services/auth/login.ts
+2025-08-26 16:01:15,118 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/lib/utils/authUtils.ts
+2025-08-26 16:01:15,118 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/app/login/page.tsx
+2025-08-26 16:01:15,119 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/components/auth/LoginForm.tsx
+2025-08-26 16:01:15,120 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+2025-08-26 16:01:15,121 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-26 16:01:15,126 - utils.prompts - WARNING - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+2025-08-26 16:01:15,127 - adapters.analyzers.openrouter - INFO - Total content size: 37259 characters, 30 files
+2025-08-26 16:01:22,490 - adapters.analyzers.openrouter - INFO - LLM Response length: 5596 characters
+2025-08-26 16:01:22,492 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-26 16:01:22,494 - adapters.analyzers.openrouter - WARNING - 🔍 STORAGE METHOD CHECK: {'found_localStorage': True, 'found_cookies': False, 'found_sessionStorage': False, 'storage_details': 'Found localStorage.setItem and localStorage.getItem in src/app/auth/page.tsx and src/lib/auth.ts', 'evidence': "localStorage.setItem('user', JSON.stringify(user)); (src/app/auth/page.tsx:50), localStorage.getItem('user'); (src/lib/auth.ts:5)"}
+2025-08-26 16:01:22,496 - adapters.analyzers.openrouter - WARNING - 📝 EVIDENCE: localStorage.setItem('user', JSON.stringify(user)); (src/app/auth/page.tsx:50), localStorage.getItem('user'); (src/lib/auth.ts:5)
+2025-08-26 16:01:22,497 - adapters.analyzers.openrouter - INFO - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-26 16:01:22,499 - adapters.analyzers.openrouter - WARNING - ⚠️ LLM marked localstorage_implementation as: True
+2025-08-26 16:01:22,500 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-26 16:01:22,501 - adapters.analyzers.openrouter - WARNING - Model google/gemini-2.5-flash failed: AttributeError: 'list' object has no attribute 'get'
+2025-08-26 16:01:22,502 - adapters.analyzers.openrouter - INFO - Attempt 2/3: anthropic/claude-sonnet-4 (context: ***ID_MASKED*** tokens)
+2025-08-26 16:01:22,503 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/lib/cookies.ts
+2025-08-26 16:01:22,504 - adapters.analyzers.openrouter - WARNING - ⚠️ DETECTED COOKIE USAGE in src/lib/cookies.ts
+2025-08-26 16:01:22,505 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/services/auth/login.ts
+2025-08-26 16:01:22,506 - adapters.analyzers.openrouter - WARNING - ⚠️ DETECTED COOKIE USAGE in src/services/auth/login.ts
+2025-08-26 16:01:22,507 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/lib/utils/authUtils.ts
+2025-08-26 16:01:22,508 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/app/login/page.tsx
+2025-08-26 16:01:22,509 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/components/auth/LoginForm.tsx
+2025-08-26 16:01:22,510 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+2025-08-26 16:01:22,511 - utils.prompts - WARNING - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+2025-08-26 16:01:22,512 - adapters.analyzers.openrouter - INFO - Total content size: 37259 characters, 30 files
+2025-08-26 16:01:55,949 - adapters.analyzers.openrouter - INFO - LLM Response length: 6423 characters
+2025-08-26 16:01:55,950 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-26 16:01:55,952 - adapters.analyzers.openrouter - WARNING - 🔍 STORAGE METHOD CHECK: {'found_localStorage': True, 'found_cookies': False, 'found_sessionStorage': False, 'storage_details': 'Found localStorage.setItem in src/lib/auth.ts line 15 and localStorage.getItem in src/lib/auth.ts line 8, localStorage.removeItem in src/components/LogoutButton.tsx line 12', 'evidence': "localStorage.setItem('user', JSON.stringify(userData)); localStorage.getItem('user'); localStorage.removeItem('user')"}
+2025-08-26 16:01:55,953 - adapters.analyzers.openrouter - WARNING - 📝 EVIDENCE: localStorage.setItem('user', JSON.stringify(userData)); localStorage.getItem('user'); localStorage.removeItem('user')
+2025-08-26 16:01:55,954 - adapters.analyzers.openrouter - INFO - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-26 16:01:55,956 - adapters.analyzers.openrouter - WARNING - ⚠️ LLM marked localstorage_implementation as: True
+2025-08-26 16:01:55,957 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-26 16:01:55,958 - adapters.analyzers.openrouter - INFO - Average of positive scores: 87.5% (from [95.0, 85.0, 80.0, 90.0])
+2025-08-26 16:01:55,960 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-26 16:01:55,961 - adapters.analyzers.openrouter - WARNING - ⚠️ Detected cookie usage instead of localStorage - marking requirement as not met
+2025-08-26 16:01:55,962 - adapters.analyzers.openrouter - WARNING - 📝 Added 20-point penalty for using cookies instead of localStorage
+2025-08-26 16:01:55,964 - adapters.analyzers.openrouter - INFO - Analysis successful with anthropic/claude-sonnet-4
+2025-08-26 16:01:55,965 - __main__ - INFO - Analysis complete for submission 64
+2025-08-26 16:01:55,998 - adapters.storage.sqlite - INFO - Created report 44 for submission 64
+2025-08-26 16:01:55,999 - __main__ - INFO - Created report 44
+2025-08-26 16:01:56,014 - adapters.storage.sqlite - INFO - Updated submission 64: status=SubmissionStatus.COMPLETED
+2025-08-26 16:01:57,779 - adapters.notifications.telegram - INFO - Analysis report sent for submission 64
+2025-08-26 16:01:57,984 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-26 16:20:17,153 - utils.logger - INFO - Logging system initialized successfully
+2025-08-26 16:20:18,966 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-26 16:20:18,967 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-26 16:20:19,773 - __main__ - INFO - Initializing adapters...
+2025-08-26 16:20:19,774 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 16:20:19,778 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 16:20:19,779 - __main__ - INFO - Storage adapter initialized
+2025-08-26 16:20:20,008 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 16:20:20,010 - __main__ - INFO - Repository adapter initialized
+2025-08-26 16:20:20,011 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 16:20:20,012 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 16:20:20,013 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 16:20:20,015 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 16:20:20,872 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-26 16:20:20,873 - __main__ - INFO - Notification adapter initialized
+2025-08-26 16:20:21,388 - __main__ - INFO - Cleared any existing webhooks
+2025-08-26 16:20:21,391 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-26 16:20:23,319 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 16:20:29,395 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/Talkhestani/digitaldekamond
+2025-08-26 16:20:29,396 - utils.validators - INFO - Successfully validated GitHub URL: Talkhestani/digitaldekamond
+2025-08-26 16:20:30,054 - __main__ - ERROR - Update Update(message=Message(channel_chat_created=False, chat=Chat(first_name='𝘴𝓲ꪀꪖ\u200b', id=***ID_MASKED***, type=<ChatType.PRIVATE>, username='Sinaam_00'), date=datetime.datetime(2025, 8, 26, 12, 50, 27, tzinfo=datetime.timezone.utc), delete_chat_photo=False, entities=(MessageEntity(length=46, offset=0, type=<MessageEntityType.URL>),), from_user=User(first_name='𝘴𝓲ꪀꪖ\u200b', id=***ID_MASKED***, is_bot=False, language_code='en', username='Sinaam_00'), group_chat_created=False, link_preview_options=LinkPreviewOptions(url='https://github.com/Talkhestani/digitaldekamond'), message_id=738, supergroup_chat_created=False, text='https://github.com/Talkhestani/digitaldekamond'), update_id=***ID_MASKED***) caused error httpx.ConnectError: 
+2025-08-26 16:20:33,965 - __main__ - ERROR - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1311, in process_update
+    await coroutine
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_handlers/conversationhandler.py", line 842, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 158, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 167, in receive_url
+    await update.message.reply_chat_action(ChatAction.TYPING)
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_message.py", line 3401, in reply_chat_action
+    return await self.get_bot().send_chat_action(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 2581, in send_chat_action
+    return await super().send_chat_action(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 3571, in send_chat_action
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+2025-08-26 16:20:37,540 - __main__ - INFO - Cancel command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 16:20:39,076 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 16:20:44,754 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/Talkhestani/digitaldekamond
+2025-08-26 16:20:44,755 - utils.validators - INFO - Successfully validated GitHub URL: Talkhestani/digitaldekamond
+2025-08-26 16:20:50,682 - __main__ - INFO - Starting analysis for https://github.com/Talkhestani/digitaldekamond as frontend
+2025-08-26 16:20:50,894 - __main__ - INFO - Found existing submission 63, removing it
+2025-08-26 16:20:50,920 - adapters.storage.sqlite - INFO - Deleted submission 63 and 1 associated reports
+2025-08-26 16:20:51,276 - adapters.storage.sqlite - INFO - Created submission 65 for user ***ID_MASKED***
+2025-08-26 16:20:51,277 - __main__ - INFO - Created submission 65
+2025-08-26 16:20:51,295 - adapters.storage.sqlite - INFO - Updated submission 65: status=SubmissionStatus.ANALYZING
+2025-08-26 16:20:51,486 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/Talkhestani/digitaldekamond for role: frontend
+2025-08-26 16:20:51,488 - adapters.repositories.github - INFO - Cloning repository: https://github.com/Talkhestani/digitaldekamond (attempt 1/3)
+2025-08-26 16:20:53,317 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-26 16:20:53,319 - adapters.repositories.github - INFO - Repository size: 0.12MB
+2025-08-26 16:20:53,321 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-26 16:20:53,342 - adapters.repositories.github - INFO - Extracted files - Critical: 25, Important: 0, Useful: 0, Total unique: 25
+2025-08-26 16:20:53,344 - adapters.repositories.github - INFO - Extracted 25 files using patterns
+2025-08-26 16:20:53,345 - adapters.repositories.github - INFO - Raw content: 8737 tokens
+2025-08-26 16:20:53,359 - adapters.repositories.github - INFO - Successfully processed repository: 25 files, 8737 tokens
+2025-08-26 16:20:53,360 - __main__ - INFO - Fetched repository: 25 files
+2025-08-26 16:20:53,555 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/Talkhestani/digitaldekamond)
+2025-08-26 16:20:53,556 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-26 16:20:53,557 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/app/login/page.tsx
+2025-08-26 16:20:53,558 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+2025-08-26 16:20:53,559 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-26 16:20:53,565 - utils.prompts - WARNING - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+2025-08-26 16:20:53,566 - adapters.analyzers.openrouter - INFO - Total content size: 36648 characters, 25 files
+2025-08-26 16:21:03,035 - adapters.analyzers.openrouter - INFO - LLM Response length: 6275 characters
+2025-08-26 16:21:03,037 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-26 16:21:03,038 - adapters.analyzers.openrouter - WARNING - 🔍 STORAGE METHOD CHECK: {'found_localStorage': True, 'found_cookies': False, 'found_sessionStorage': False, 'storage_details': 'Found localStorage.setItem and localStorage.getItem in src/app/login/page.tsx line 100 and src/app/dashboard/page.tsx line 20', 'evidence': "localStorage.setItem('user', JSON.stringify(data.results[0])); (src/app/login/page.tsx:100), const user = JSON.parse(localStorage.getItem('user') || '{}'); (src/app/dashboard/page.tsx:20)"}
+2025-08-26 16:21:03,039 - adapters.analyzers.openrouter - WARNING - 📝 EVIDENCE: localStorage.setItem('user', JSON.stringify(data.results[0])); (src/app/login/page.tsx:100), const user = JSON.parse(localStorage.getItem('user') || '{}'); (src/app/dashboard/page.tsx:20)
+2025-08-26 16:21:03,041 - adapters.analyzers.openrouter - INFO - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-26 16:21:03,042 - adapters.analyzers.openrouter - WARNING - ⚠️ LLM marked localstorage_implementation as: True
+2025-08-26 16:21:03,043 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-26 16:21:03,044 - adapters.analyzers.openrouter - INFO - Average of positive scores: 83.8% (from [95.0, 80.0, 75.0, 85.0])
+2025-08-26 16:21:03,045 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-26 16:21:03,046 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-26 16:21:03,047 - __main__ - INFO - Analysis complete for submission 65
+2025-08-26 16:21:03,079 - adapters.storage.sqlite - INFO - Created report 45 for submission 65
+2025-08-26 16:21:03,081 - __main__ - INFO - Created report 45
+2025-08-26 16:21:03,099 - adapters.storage.sqlite - INFO - Updated submission 65: status=SubmissionStatus.COMPLETED
+2025-08-26 16:21:04,845 - adapters.notifications.telegram - INFO - Analysis report sent for submission 65
+2025-08-26 16:21:05,353 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-26 16:21:37,831 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 16:21:40,849 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/behnamhsn/dekamond-auth-demo
+2025-08-26 16:21:40,851 - utils.validators - INFO - Successfully validated GitHub URL: behnamhsn/dekamond-auth-demo
+2025-08-26 16:21:42,867 - __main__ - INFO - Starting analysis for https://github.com/behnamhsn/dekamond-auth-demo as frontend
+2025-08-26 16:21:43,218 - adapters.storage.sqlite - INFO - Created submission 66 for user ***ID_MASKED***
+2025-08-26 16:21:43,219 - __main__ - INFO - Created submission 66
+2025-08-26 16:21:43,234 - adapters.storage.sqlite - INFO - Updated submission 66: status=SubmissionStatus.ANALYZING
+2025-08-26 16:21:43,427 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/behnamhsn/dekamond-auth-demo for role: frontend
+2025-08-26 16:21:43,430 - adapters.repositories.github - INFO - Cloning repository: https://github.com/behnamhsn/dekamond-auth-demo (attempt 1/3)
+2025-08-26 16:21:45,569 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-26 16:21:45,572 - adapters.repositories.github - INFO - Repository size: 0.14MB
+2025-08-26 16:21:45,573 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-26 16:21:45,585 - adapters.repositories.github - INFO - Extracted files - Critical: 22, Important: 0, Useful: 0, Total unique: 22
+2025-08-26 16:21:45,587 - adapters.repositories.github - INFO - Extracted 22 files using patterns
+2025-08-26 16:21:45,588 - adapters.repositories.github - INFO - Raw content: 4487 tokens
+2025-08-26 16:21:45,598 - adapters.repositories.github - INFO - Successfully processed repository: 22 files, 4487 tokens
+2025-08-26 16:21:45,600 - __main__ - INFO - Fetched repository: 22 files
+2025-08-26 16:21:45,839 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/behnamhsn/dekamond-auth-demo)
+2025-08-26 16:21:45,840 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-26 16:21:45,841 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/hooks/useAuthGuard.ts
+2025-08-26 16:21:45,842 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/lib/auth/storage.ts
+2025-08-26 16:21:45,843 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/lib/auth/AuthContext.tsx
+2025-08-26 16:21:45,844 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/lib/validation/auth.ts
+2025-08-26 16:21:45,845 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/app/auth/auth.module.scss
+2025-08-26 16:21:45,845 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/app/auth/page.tsx
+2025-08-26 16:21:45,846 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+2025-08-26 16:21:45,848 - utils.prompts - WARNING - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+2025-08-26 16:21:45,848 - adapters.analyzers.openrouter - INFO - Total content size: 18586 characters, 22 files
+2025-08-26 16:21:54,794 - adapters.analyzers.openrouter - INFO - LLM Response length: 5907 characters
+2025-08-26 16:21:54,796 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-26 16:21:54,799 - adapters.analyzers.openrouter - WARNING - 🔍 STORAGE METHOD CHECK: {'found_localStorage': True, 'found_cookies': False, 'found_sessionStorage': False, 'storage_details': 'Found localStorage.setItem and localStorage.getItem in src/app/login/page.tsx line 105 and src/app/dashboard/page.tsx line 22', 'evidence': "localStorage.setItem('user', JSON.stringify(data.results[0])); (src/app/login/page.tsx:105), localStorage.getItem('user'); (src/app/dashboard/page.tsx:22)"}
+2025-08-26 16:21:54,801 - adapters.analyzers.openrouter - WARNING - 📝 EVIDENCE: localStorage.setItem('user', JSON.stringify(data.results[0])); (src/app/login/page.tsx:105), localStorage.getItem('user'); (src/app/dashboard/page.tsx:22)
+2025-08-26 16:21:54,803 - adapters.analyzers.openrouter - INFO - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-26 16:21:54,804 - adapters.analyzers.openrouter - WARNING - ⚠️ LLM marked localstorage_implementation as: True
+2025-08-26 16:21:54,805 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-26 16:21:54,806 - adapters.analyzers.openrouter - INFO - Average of positive scores: 86.2% (from [95.0, 80.0, 85.0, 85.0])
+2025-08-26 16:21:54,807 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-26 16:21:54,809 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-26 16:21:54,810 - __main__ - INFO - Analysis complete for submission 66
+2025-08-26 16:21:54,840 - adapters.storage.sqlite - INFO - Created report 46 for submission 66
+2025-08-26 16:21:54,841 - __main__ - INFO - Created report 46
+2025-08-26 16:21:54,861 - adapters.storage.sqlite - INFO - Updated submission 66: status=SubmissionStatus.COMPLETED
+2025-08-26 16:21:56,284 - adapters.notifications.telegram - INFO - Analysis report sent for submission 66
+2025-08-26 16:21:56,481 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-26 16:32:27,941 - utils.logger - INFO - Logging system initialized successfully
+2025-08-26 16:32:29,757 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-26 16:32:29,757 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-26 16:32:30,611 - __main__ - INFO - Initializing adapters...
+2025-08-26 16:32:30,612 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 16:32:30,616 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 16:32:30,617 - __main__ - INFO - Storage adapter initialized
+2025-08-26 16:32:30,846 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 16:32:30,847 - __main__ - INFO - Repository adapter initialized
+2025-08-26 16:32:30,848 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 16:32:30,849 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 16:32:30,850 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 16:32:30,852 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 16:32:32,493 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-26 16:32:32,495 - __main__ - INFO - Notification adapter initialized
+2025-08-26 16:32:33,097 - __main__ - INFO - Cleared any existing webhooks
+2025-08-26 16:32:33,099 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-26 16:32:34,468 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 16:32:38,907 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/behnamhsn/dekamond-auth-demo
+2025-08-26 16:32:38,909 - utils.validators - INFO - Successfully validated GitHub URL: behnamhsn/dekamond-auth-demo
+2025-08-26 16:32:41,466 - __main__ - INFO - Starting analysis for https://github.com/behnamhsn/dekamond-auth-demo as frontend
+2025-08-26 16:32:41,835 - __main__ - INFO - Found existing submission 66, removing it
+2025-08-26 16:32:41,873 - adapters.storage.sqlite - INFO - Deleted submission 66 and 1 associated reports
+2025-08-26 16:32:42,127 - adapters.storage.sqlite - INFO - Created submission 66 for user ***ID_MASKED***
+2025-08-26 16:32:42,128 - __main__ - INFO - Created submission 66
+2025-08-26 16:32:42,149 - adapters.storage.sqlite - INFO - Updated submission 66: status=SubmissionStatus.ANALYZING
+2025-08-26 16:32:42,330 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/behnamhsn/dekamond-auth-demo for role: frontend
+2025-08-26 16:32:42,331 - adapters.repositories.github - INFO - Cloning repository: https://github.com/behnamhsn/dekamond-auth-demo (attempt 1/3)
+2025-08-26 16:32:43,846 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-26 16:32:43,848 - adapters.repositories.github - INFO - Repository size: 0.14MB
+2025-08-26 16:32:43,849 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-26 16:32:43,870 - adapters.repositories.github - INFO - Extracted files - Critical: 22, Important: 0, Useful: 0, Total unique: 22
+2025-08-26 16:32:43,871 - adapters.repositories.github - INFO - Extracted 22 files using patterns
+2025-08-26 16:32:43,872 - adapters.repositories.github - INFO - Raw content: 4487 tokens
+2025-08-26 16:32:43,882 - adapters.repositories.github - INFO - Successfully processed repository: 22 files, 4487 tokens
+2025-08-26 16:32:43,884 - __main__ - INFO - Fetched repository: 22 files
+2025-08-26 16:32:44,089 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/behnamhsn/dekamond-auth-demo)
+2025-08-26 16:32:44,090 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-26 16:32:44,091 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/hooks/useAuthGuard.ts
+2025-08-26 16:32:44,092 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/lib/auth/storage.ts
+2025-08-26 16:32:44,093 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/lib/auth/AuthContext.tsx
+2025-08-26 16:32:44,093 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/lib/validation/auth.ts
+2025-08-26 16:32:44,094 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/app/auth/auth.module.scss
+2025-08-26 16:32:44,095 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/app/auth/page.tsx
+2025-08-26 16:32:44,096 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+2025-08-26 16:32:44,097 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-26 16:32:44,102 - utils.prompts - WARNING - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+2025-08-26 16:32:44,103 - adapters.analyzers.openrouter - INFO - Total content size: 18586 characters, 22 files
+2025-08-26 16:32:45,898 - adapters.analyzers.openrouter - ERROR - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+2025-08-26 16:32:45,900 - adapters.analyzers.openrouter - INFO - Retrying in 1 seconds...
+2025-08-26 16:32:48,486 - adapters.analyzers.openrouter - ERROR - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+2025-08-26 16:32:48,488 - adapters.analyzers.openrouter - INFO - Retrying in 2 seconds...
+2025-08-26 16:32:52,399 - adapters.analyzers.openrouter - ERROR - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+2025-08-26 16:32:52,406 - adapters.analyzers.openrouter - WARNING - Model google/gemini-2.5-flash failed: AnalysisError: API call failed: 403 {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+2025-08-26 16:32:52,411 - adapters.analyzers.openrouter - INFO - Attempt 2/3: anthropic/claude-sonnet-4 (context: ***ID_MASKED*** tokens)
+2025-08-26 16:32:52,416 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/hooks/useAuthGuard.ts
+2025-08-26 16:32:52,418 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/lib/auth/storage.ts
+2025-08-26 16:32:52,420 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/lib/auth/AuthContext.tsx
+2025-08-26 16:32:52,421 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/lib/validation/auth.ts
+2025-08-26 16:32:52,423 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/app/auth/auth.module.scss
+2025-08-26 16:32:52,424 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/app/auth/page.tsx
+2025-08-26 16:32:52,425 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+2025-08-26 16:32:52,436 - utils.prompts - WARNING - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+2025-08-26 16:32:52,438 - adapters.analyzers.openrouter - INFO - Total content size: 18586 characters, 22 files
+2025-08-26 16:32:54,187 - adapters.analyzers.openrouter - ERROR - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+2025-08-26 16:32:54,189 - adapters.analyzers.openrouter - INFO - Retrying in 1 seconds...
+2025-08-26 16:32:57,050 - adapters.analyzers.openrouter - ERROR - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+2025-08-26 16:32:57,053 - adapters.analyzers.openrouter - INFO - Retrying in 2 seconds...
+2025-08-26 16:33:01,168 - adapters.analyzers.openrouter - ERROR - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+2025-08-26 16:33:01,171 - adapters.analyzers.openrouter - WARNING - Model anthropic/claude-sonnet-4 failed: AnalysisError: API call failed: 403 {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+2025-08-26 16:33:01,172 - adapters.analyzers.openrouter - INFO - Attempt 3/3: openai/gpt-3.5-turbo-16k (context: 16000 tokens)
+2025-08-26 16:33:01,173 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/hooks/useAuthGuard.ts
+2025-08-26 16:33:01,174 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/lib/auth/storage.ts
+2025-08-26 16:33:01,174 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/lib/auth/AuthContext.tsx
+2025-08-26 16:33:01,175 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/lib/validation/auth.ts
+2025-08-26 16:33:01,176 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/app/auth/auth.module.scss
+2025-08-26 16:33:01,177 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/app/auth/page.tsx
+2025-08-26 16:33:01,178 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+2025-08-26 16:33:01,179 - utils.prompts - WARNING - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+2025-08-26 16:33:01,180 - adapters.analyzers.openrouter - INFO - Total content size: 18586 characters, 22 files
+2025-08-26 16:33:02,896 - adapters.analyzers.openrouter - ERROR - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+2025-08-26 16:33:02,898 - adapters.analyzers.openrouter - INFO - Retrying in 1 seconds...
+2025-08-26 16:33:05,363 - adapters.analyzers.openrouter - ERROR - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+2025-08-26 16:33:05,367 - adapters.analyzers.openrouter - INFO - Retrying in 2 seconds...
+2025-08-26 16:33:08,730 - adapters.analyzers.openrouter - ERROR - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+2025-08-26 16:33:08,733 - adapters.analyzers.openrouter - WARNING - Model openai/gpt-3.5-turbo-16k failed: AnalysisError: API call failed: 403 {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+2025-08-26 16:33:08,734 - adapters.analyzers.openrouter - ERROR - All 3 models failed to analyze code
+2025-08-26 16:33:08,736 - __main__ - ERROR - Analysis failed for https://github.com/behnamhsn/dekamond-auth-demo: Analysis error: All 3 models failed to analyze code
+2025-08-26 16:33:08,737 - __main__ - ERROR - ERROR: Exception: Analysis error: All 3 models failed to analyze code | CONTEXT: url=https://github.com/behnamhsn/dekamond-auth-demo | role=frontend
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 367, in process_analysis
+    analysis_result = await analyzer_adapter.analyze_code(analysis_request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/adapters/analyzers/openrouter.py", line 190, in analyze_code
+    raise AnalysisError(
+core.exceptions.AnalysisError: All 3 models failed to analyze code
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 370, in process_analysis
+    raise Exception(f"Analysis error: {str(e)}")
+Exception: Analysis error: All 3 models failed to analyze code
+2025-08-26 16:33:09,432 - adapters.storage.sqlite - INFO - Updated submission 66: status=SubmissionStatus.FAILED
+2025-08-26 16:33:09,623 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-26 16:43:48,867 - utils.logger - INFO - Logging system initialized successfully
+2025-08-26 16:43:50,729 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-26 16:43:50,730 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-26 16:43:51,656 - __main__ - INFO - Initializing adapters...
+2025-08-26 16:43:51,657 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 16:43:51,661 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 16:43:51,662 - __main__ - INFO - Storage adapter initialized
+2025-08-26 16:43:51,856 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 16:43:51,857 - __main__ - INFO - Repository adapter initialized
+2025-08-26 16:43:51,858 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 16:43:51,859 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 16:43:51,860 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 16:43:51,861 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 16:43:52,731 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-26 16:43:52,732 - __main__ - INFO - Notification adapter initialized
+2025-08-26 16:43:53,238 - __main__ - INFO - Cleared any existing webhooks
+2025-08-26 16:43:53,239 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-26 16:46:04,273 - utils.logger - INFO - Logging system initialized successfully
+2025-08-26 16:46:05,804 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-26 16:46:05,804 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-26 16:46:06,660 - __main__ - INFO - Initializing adapters...
+2025-08-26 16:46:06,661 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 16:46:06,665 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 16:46:06,666 - __main__ - INFO - Storage adapter initialized
+2025-08-26 16:46:06,872 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 16:46:06,874 - __main__ - INFO - Repository adapter initialized
+2025-08-26 16:46:06,875 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 16:46:06,876 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 16:46:06,877 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 16:46:06,878 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 16:46:07,545 - adapters.notifications.telegram - ERROR - Failed to initialize Telegram bot: httpx.ConnectError: 
+2025-08-26 16:46:07,548 - __main__ - ERROR - Bot crashed with error: Failed to initialize Telegram bot: httpx.ConnectError: 
+2025-08-26 16:46:07,753 - __main__ - ERROR - Full traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 101, in handle_async_request
+    raise exc
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 156, in _connect
+    stream = await stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 67, in start_tls
+    with map_exceptions(exc_map):
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 273, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/adapters/notifications/telegram.py", line 125, in initialize
+    bot_info = await self.bot.get_me()
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 1981, in get_me
+    return await super().get_me(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 976, in get_me
+    result = await self._post(
+             ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: 
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 1284, in <module>
+    main()
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 1196, in main
+    loop.run_until_complete(initialize_adapters())
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 1154, in initialize_adapters
+    await notification_adapter.initialize()
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/adapters/notifications/telegram.py", line 132, in initialize
+    raise NotificationError(error_msg)
+core.exceptions.NotificationError: Failed to initialize Telegram bot: httpx.ConnectError: 
+
+2025-08-26 16:46:07,756 - __main__ - WARNING - Bot will restart in 5 seconds (attempt #2)...
+2025-08-26 16:46:07,757 - __main__ - WARNING - The bot will keep trying to recover automatically.
+2025-08-26 16:46:12,759 - __main__ - INFO - Attempting to restart bot...
+2025-08-26 16:46:12,761 - __main__ - INFO - Starting bot (attempt #2)...
+2025-08-26 16:46:12,762 - __main__ - INFO - Starting CV Review Bot...
+2025-08-26 16:46:13,016 - __main__ - INFO - Initializing adapters...
+2025-08-26 16:46:13,017 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 16:46:13,021 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 16:46:13,022 - __main__ - INFO - Storage adapter initialized
+2025-08-26 16:46:13,023 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 16:46:13,024 - __main__ - INFO - Repository adapter initialized
+2025-08-26 16:46:13,025 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 16:46:13,025 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 16:46:13,026 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 16:46:13,027 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 16:46:13,963 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-26 16:46:13,964 - __main__ - INFO - Notification adapter initialized
+2025-08-26 16:46:14,493 - __main__ - INFO - Cleared any existing webhooks
+2025-08-26 16:46:14,495 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-26 16:46:17,764 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 16:46:21,941 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/Talkhestani/digitaldekamond
+2025-08-26 16:46:21,942 - utils.validators - INFO - Successfully validated GitHub URL: Talkhestani/digitaldekamond
+2025-08-26 16:46:23,611 - __main__ - INFO - Starting analysis for https://github.com/Talkhestani/digitaldekamond as frontend
+2025-08-26 16:46:23,830 - __main__ - INFO - Found existing submission 65, removing it
+2025-08-26 16:46:23,870 - adapters.storage.sqlite - INFO - Deleted submission 65 and 1 associated reports
+2025-08-26 16:46:24,121 - adapters.storage.sqlite - INFO - Created submission 67 for user ***ID_MASKED***
+2025-08-26 16:46:24,123 - __main__ - INFO - Created submission 67
+2025-08-26 16:46:24,144 - adapters.storage.sqlite - INFO - Updated submission 67: status=SubmissionStatus.ANALYZING
+2025-08-26 16:46:24,343 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/Talkhestani/digitaldekamond for role: frontend
+2025-08-26 16:46:24,344 - adapters.repositories.github - INFO - Cloning repository: https://github.com/Talkhestani/digitaldekamond (attempt 1/3)
+2025-08-26 16:46:25,936 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-26 16:46:25,937 - adapters.repositories.github - INFO - Repository size: 0.12MB
+2025-08-26 16:46:25,938 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-26 16:46:25,962 - adapters.repositories.github - INFO - Extracted files - Critical: 25, Important: 0, Useful: 0, Total unique: 25
+2025-08-26 16:46:25,963 - adapters.repositories.github - INFO - Extracted 25 files using patterns
+2025-08-26 16:46:25,964 - adapters.repositories.github - INFO - Raw content: 8737 tokens
+2025-08-26 16:46:25,974 - adapters.repositories.github - INFO - Successfully processed repository: 25 files, 8737 tokens
+2025-08-26 16:46:25,975 - __main__ - INFO - Fetched repository: 25 files
+2025-08-26 16:46:26,182 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/Talkhestani/digitaldekamond)
+2025-08-26 16:46:26,183 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-26 16:46:26,184 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/app/login/page.tsx
+2025-08-26 16:46:26,184 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+2025-08-26 16:46:26,185 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-26 16:46:26,190 - utils.prompts - WARNING - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+2025-08-26 16:46:26,191 - adapters.analyzers.openrouter - INFO - Total content size: 36648 characters, 25 files
+2025-08-26 16:46:33,930 - adapters.analyzers.openrouter - INFO - LLM Response length: 4977 characters
+2025-08-26 16:46:33,931 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-26 16:46:33,932 - adapters.analyzers.openrouter - WARNING - 🔍 STORAGE METHOD CHECK: {'found_localStorage': True, 'found_cookies': False, 'found_sessionStorage': False, 'storage_details': 'Found localStorage usage in src/app/auth/page.tsx line 51 and src/app/dashboard/page.tsx line 19', 'evidence': "src/app/auth/page.tsx:51 - localStorage.setItem('user', JSON.stringify(data.results[0]));\nsrc/app/dashboard/page.tsx:19 - localStorage.removeItem('user');"}
+2025-08-26 16:46:33,933 - adapters.analyzers.openrouter - WARNING - 📝 EVIDENCE: src/app/auth/page.tsx:51 - localStorage.setItem('user', JSON.stringify(data.results[0]));
+src/app/dashboard/page.tsx:19 - localStorage.removeItem('user');
+2025-08-26 16:46:33,934 - adapters.analyzers.openrouter - INFO - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-26 16:46:33,935 - adapters.analyzers.openrouter - WARNING - ⚠️ LLM marked localstorage_implementation as: True
+2025-08-26 16:46:33,936 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-26 16:46:33,937 - adapters.analyzers.openrouter - INFO - Average of positive scores: 75.0% (from [90.0, 70.0, 65.0, 75.0])
+2025-08-26 16:46:33,938 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-26 16:46:33,939 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-26 16:46:33,940 - __main__ - INFO - Analysis complete for submission 67
+2025-08-26 16:46:33,963 - adapters.storage.sqlite - INFO - Created report 45 for submission 67
+2025-08-26 16:46:33,964 - __main__ - INFO - Created report 45
+2025-08-26 16:46:33,981 - adapters.storage.sqlite - INFO - Updated submission 67: status=SubmissionStatus.COMPLETED
+2025-08-26 16:46:36,394 - adapters.notifications.telegram - INFO - Analysis report sent for submission 67
+2025-08-26 16:46:36,620 - adapters.repositories.github - INFO - GitHub adapter cleanup completed

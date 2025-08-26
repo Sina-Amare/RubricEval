@@ -5217,3 +5217,1454 @@ fatal: unable to access 'https://github.com/rezadev8/otp-auth-golang.git/': gnut
 [2025-08-26T12:06:27.589054] [INFO] [sqlite:update_submission:281] - Updated submission 57: status=SubmissionStatus.COMPLETED
 [2025-08-26T12:06:29.186594] [INFO] [telegram:send_analysis_complete:279] - Analysis report sent for submission 57
 [2025-08-26T12:06:29.523434] [INFO] [github:cleanup:304] - GitHub adapter cleanup completed
+[2025-08-26T12:23:25.832774] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T12:23:29.793328] [INFO] [bot:<module>:1283] - Starting bot (attempt #1)...
+[2025-08-26T12:23:29.795202] [INFO] [bot:main:1160] - Starting CV Review Bot...
+[2025-08-26T12:23:31.706278] [INFO] [bot:initialize_adapters:1137] - Initializing adapters...
+[2025-08-26T12:23:31.707638] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-26T12:23:31.715881] [INFO] [sqlite:_init:724] - Database tables created/verified
+[2025-08-26T12:23:31.717388] [INFO] [bot:initialize_adapters:1142] - Storage adapter initialized
+[2025-08-26T12:23:32.045087] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-26T12:23:32.046299] [INFO] [bot:initialize_adapters:1146] - Repository adapter initialized
+[2025-08-26T12:23:32.047552] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T12:23:32.048959] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T12:23:32.050038] [INFO] [bot:initialize_adapters:1150] - Analyzer adapter initialized
+[2025-08-26T12:23:32.050951] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-26T12:23:33.301355] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-26T12:23:33.303580] [INFO] [bot:initialize_adapters:1155] - Notification adapter initialized
+[2025-08-26T12:23:33.898223] [INFO] [bot:main:1203] - Cleared any existing webhooks
+[2025-08-26T12:23:33.899717] [INFO] [bot:main:1214] - Bot is ready! Starting polling...
+[2025-08-26T12:23:35.420722] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-26T12:23:37.419474] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/arashgl/GoOTP
+[2025-08-26T12:23:37.421499] [INFO] [validators:validate_github_url:117] - Successfully validated GitHub URL: arashgl/GoOTP
+[2025-08-26T12:23:41.153232] [INFO] [bot:role_callback:245] - Starting analysis for https://github.com/arashgl/GoOTP as backend
+[2025-08-26T12:23:41.436306] [INFO] [sqlite:create_submission:109] - Created submission 58 for user ***ID_MASKED***
+[2025-08-26T12:23:41.437688] [INFO] [bot:process_analysis:316] - Created submission 58
+[2025-08-26T12:23:41.467037] [INFO] [sqlite:update_submission:281] - Updated submission 58: status=SubmissionStatus.ANALYZING
+[2025-08-26T12:23:41.699395] [INFO] [github:fetch_repository:141] - Fetching GitHub repository: https://github.com/arashgl/GoOTP for role: backend
+[2025-08-26T12:23:41.702188] [INFO] [github:_clone_repository:356] - Cloning repository: https://github.com/arashgl/GoOTP (attempt 1/3)
+[2025-08-26T12:23:43.602673] [INFO] [github:_clone_repository:375] - Repository cloned successfully
+[2025-08-26T12:23:43.604959] [INFO] [github:fetch_repository:160] - Repository size: 0.22MB
+[2025-08-26T12:23:43.605900] [INFO] [github:fetch_repository:167] - Extracting files based on patterns
+[2025-08-26T12:23:43.669076] [INFO] [github:_extract_files:502] - Extracted files - Critical: 38, Important: 0, Useful: 0, Total unique: 38
+[2025-08-26T12:23:43.670249] [INFO] [github:fetch_repository:169] - Extracted 38 files using patterns
+[2025-08-26T12:23:43.671960] [INFO] [github:fetch_repository:176] - Raw content: 42740 tokens
+[2025-08-26T12:23:43.684334] [INFO] [github:fetch_repository:199] - Successfully processed repository: 38 files, 42740 tokens
+[2025-08-26T12:23:43.685849] [INFO] [bot:process_analysis:333] - Fetched repository: 38 files
+[2025-08-26T12:23:43.895152] [INFO] [openrouter:analyze_code:124] - Starting code analysis for backend submission (repo: https://github.com/arashgl/GoOTP)
+[2025-08-26T12:23:43.896312] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-26T12:23:43.897861] [INFO] [openrouter:_build_user_prompt:624] - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+[2025-08-26T12:23:43.899453] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-26T12:23:43.910821] [INFO] [openrouter:_analyze_with_model:452] - Total content size: ***ID_MASKED*** characters, 38 files
+[2025-08-26T12:23:46.063780] [ERROR] [openrouter:_analyze_with_model:556] - HTTP client error: Cannot connect to host openrouter.ai:443 ssl:default [None]
+[2025-08-26T12:24:07.535259] [INFO] [openrouter:_analyze_with_model:496] - LLM Response length: 12897 characters
+[2025-08-26T12:24:07.537052] [INFO] [openrouter:_parse_llm_response:690] - Successfully recovered JSON from LLM response
+[2025-08-26T12:24:07.538312] [INFO] [openrouter:_parse_llm_response:696] - LLM requirements_implementation found with 10 items
+[2025-08-26T12:24:07.539684] [INFO] [openrouter:_normalize_requirements:741] - Converting requirements_implementation to requirements_met
+[2025-08-26T12:24:07.540735] [INFO] [openrouter:_normalize_requirements:791] - Normalized requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+[2025-08-26T12:24:07.542054] [INFO] [openrouter:_convert_to_analysis_result:1043] - Average of positive scores: 96.7% (from [100.0, 95.0, 95.0])
+[2025-08-26T12:24:07.543349] [INFO] [openrouter:_convert_to_analysis_result:1088] - Extracted requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+[2025-08-26T12:24:07.546628] [INFO] [openrouter:analyze_code:152] - Analysis successful with google/gemini-2.5-flash
+[2025-08-26T12:24:07.547781] [INFO] [bot:process_analysis:368] - Analysis complete for submission 58
+[2025-08-26T12:24:07.601447] [INFO] [sqlite:create_report:453] - Created report 39 for submission 58
+[2025-08-26T12:24:07.602814] [INFO] [bot:process_analysis:385] - Created report 39
+[2025-08-26T12:24:07.634256] [INFO] [sqlite:update_submission:281] - Updated submission 58: status=SubmissionStatus.COMPLETED
+[2025-08-26T12:24:10.434928] [INFO] [telegram:send_analysis_complete:279] - Analysis report sent for submission 58
+[2025-08-26T12:24:10.656202] [INFO] [github:cleanup:304] - GitHub adapter cleanup completed
+[2025-08-26T13:54:55.589845] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T13:54:59.572799] [INFO] [bot:<module>:1283] - Starting bot (attempt #1)...
+[2025-08-26T13:54:59.573475] [INFO] [bot:main:1160] - Starting CV Review Bot...
+[2025-08-26T13:55:00.509066] [INFO] [bot:initialize_adapters:1137] - Initializing adapters...
+[2025-08-26T13:55:00.509947] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-26T13:55:00.514502] [INFO] [sqlite:_init:724] - Database tables created/verified
+[2025-08-26T13:55:00.515412] [INFO] [bot:initialize_adapters:1142] - Storage adapter initialized
+[2025-08-26T13:55:00.728136] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-26T13:55:00.729569] [INFO] [bot:initialize_adapters:1146] - Repository adapter initialized
+[2025-08-26T13:55:00.731044] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T13:55:00.732394] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T13:55:00.733546] [INFO] [bot:initialize_adapters:1150] - Analyzer adapter initialized
+[2025-08-26T13:55:00.734926] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-26T13:55:01.566186] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-26T13:55:01.567268] [INFO] [bot:initialize_adapters:1155] - Notification adapter initialized
+[2025-08-26T13:55:03.192567] [INFO] [bot:main:1203] - Cleared any existing webhooks
+[2025-08-26T13:55:03.194690] [INFO] [bot:main:1214] - Bot is ready! Starting polling...
+[2025-08-26T13:55:10.898706] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-26T13:55:13.309223] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/DevineDecrypter/dekamond-task
+[2025-08-26T13:55:13.311272] [INFO] [validators:validate_github_url:117] - Successfully validated GitHub URL: DevineDecrypter/dekamond-task
+[2025-08-26T13:55:15.140570] [INFO] [bot:role_callback:245] - Starting analysis for https://github.com/DevineDecrypter/dekamond-task as frontend
+[2025-08-26T13:55:15.395985] [INFO] [sqlite:create_submission:109] - Created submission 59 for user ***ID_MASKED***
+[2025-08-26T13:55:15.396997] [INFO] [bot:process_analysis:316] - Created submission 59
+[2025-08-26T13:55:15.413824] [INFO] [sqlite:update_submission:281] - Updated submission 59: status=SubmissionStatus.ANALYZING
+[2025-08-26T13:55:15.609010] [INFO] [github:fetch_repository:141] - Fetching GitHub repository: https://github.com/DevineDecrypter/dekamond-task for role: frontend
+[2025-08-26T13:55:15.610488] [INFO] [github:_clone_repository:356] - Cloning repository: https://github.com/DevineDecrypter/dekamond-task (attempt 1/3)
+[2025-08-26T13:55:17.091066] [INFO] [github:_clone_repository:375] - Repository cloned successfully
+[2025-08-26T13:55:17.093405] [INFO] [github:fetch_repository:160] - Repository size: 0.39MB
+[2025-08-26T13:55:17.094793] [INFO] [github:fetch_repository:167] - Extracting files based on patterns
+[2025-08-26T13:55:17.123739] [INFO] [github:_extract_files:502] - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+[2025-08-26T13:55:17.125150] [INFO] [github:fetch_repository:169] - Extracted 30 files using patterns
+[2025-08-26T13:55:17.126524] [INFO] [github:fetch_repository:176] - Raw content: 9117 tokens
+[2025-08-26T13:55:17.134916] [INFO] [github:fetch_repository:199] - Successfully processed repository: 30 files, 9117 tokens
+[2025-08-26T13:55:17.136103] [INFO] [bot:process_analysis:333] - Fetched repository: 30 files
+[2025-08-26T13:55:17.357472] [INFO] [openrouter:analyze_code:124] - Starting code analysis for frontend submission (repo: https://github.com/DevineDecrypter/dekamond-task)
+[2025-08-26T13:55:17.358499] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-26T13:55:17.359876] [INFO] [openrouter:_build_user_prompt:624] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T13:55:17.361135] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-26T13:55:17.368407] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "requirements_met"'
+[2025-08-26T13:55:17.369684] [INFO] [openrouter:_analyze_with_model:452] - Total content size: 37259 characters, 30 files
+[2025-08-26T13:55:24.060866] [INFO] [openrouter:_analyze_with_model:496] - LLM Response length: 3146 characters
+[2025-08-26T13:55:24.063543] [WARNING] [openrouter:_parse_llm_response:712] - Recovered JSON lacks minimum required fields
+[2025-08-26T13:55:24.065946] [INFO] [openrouter:_normalize_requirements:791] - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T13:55:24.068009] [INFO] [openrouter:_convert_to_analysis_result:1043] - Average of positive scores: 87.5% (from [95.0, 85.0, 80.0, 90.0])
+[2025-08-26T13:55:24.069618] [INFO] [openrouter:_convert_to_analysis_result:1088] - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T13:55:24.071570] [INFO] [openrouter:analyze_code:152] - Analysis successful with google/gemini-2.5-flash
+[2025-08-26T13:55:24.072934] [INFO] [bot:process_analysis:368] - Analysis complete for submission 59
+[2025-08-26T13:55:24.108799] [INFO] [sqlite:create_report:453] - Created report 40 for submission 59
+[2025-08-26T13:55:24.109694] [INFO] [bot:process_analysis:385] - Created report 40
+[2025-08-26T13:55:24.124826] [INFO] [sqlite:update_submission:281] - Updated submission 59: status=SubmissionStatus.COMPLETED
+[2025-08-26T13:55:25.551073] [INFO] [telegram:send_analysis_complete:279] - Analysis report sent for submission 59
+[2025-08-26T13:55:25.798300] [INFO] [github:cleanup:304] - GitHub adapter cleanup completed
+[2025-08-26T14:16:08.661460] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T14:16:10.452872] [INFO] [bot:<module>:1283] - Starting bot (attempt #1)...
+[2025-08-26T14:16:10.453515] [INFO] [bot:main:1160] - Starting CV Review Bot...
+[2025-08-26T14:16:11.326705] [INFO] [bot:initialize_adapters:1137] - Initializing adapters...
+[2025-08-26T14:16:11.327467] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-26T14:16:11.331298] [INFO] [sqlite:_init:724] - Database tables created/verified
+[2025-08-26T14:16:11.332342] [INFO] [bot:initialize_adapters:1142] - Storage adapter initialized
+[2025-08-26T14:16:11.540088] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-26T14:16:11.541463] [INFO] [bot:initialize_adapters:1146] - Repository adapter initialized
+[2025-08-26T14:16:11.542675] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T14:16:11.543722] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T14:16:11.544824] [INFO] [bot:initialize_adapters:1150] - Analyzer adapter initialized
+[2025-08-26T14:16:11.545941] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-26T14:16:12.365163] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-26T14:16:12.366359] [INFO] [bot:initialize_adapters:1155] - Notification adapter initialized
+[2025-08-26T14:16:12.881792] [INFO] [bot:main:1203] - Cleared any existing webhooks
+[2025-08-26T14:16:12.883193] [INFO] [bot:main:1214] - Bot is ready! Starting polling...
+[2025-08-26T14:16:14.515397] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-26T14:16:16.771796] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/mortezakhademan/dekamond-sample
+[2025-08-26T14:16:16.774090] [INFO] [validators:validate_github_url:117] - Successfully validated GitHub URL: mortezakhademan/dekamond-sample
+[2025-08-26T14:16:18.565793] [INFO] [bot:role_callback:245] - Starting analysis for https://github.com/mortezakhademan/dekamond-sample as backend
+[2025-08-26T14:16:18.822077] [INFO] [sqlite:create_submission:109] - Created submission 60 for user ***ID_MASKED***
+[2025-08-26T14:16:18.823488] [INFO] [bot:process_analysis:316] - Created submission 60
+[2025-08-26T14:16:18.847766] [INFO] [sqlite:update_submission:281] - Updated submission 60: status=SubmissionStatus.ANALYZING
+[2025-08-26T14:16:19.049087] [INFO] [github:fetch_repository:141] - Fetching GitHub repository: https://github.com/mortezakhademan/dekamond-sample for role: backend
+[2025-08-26T14:16:19.051928] [INFO] [github:_clone_repository:356] - Cloning repository: https://github.com/mortezakhademan/dekamond-sample (attempt 1/3)
+[2025-08-26T14:16:55.817595] [INFO] [github:_clone_repository:375] - Repository cloned successfully
+[2025-08-26T14:16:55.885716] [INFO] [github:fetch_repository:160] - Repository size: 146.47MB
+[2025-08-26T14:16:55.886969] [WARNING] [github:fetch_repository:163] - Repository large: 146.47MB (max: 100MB)
+[2025-08-26T14:16:55.888219] [INFO] [github:fetch_repository:167] - Extracting files based on patterns
+[2025-08-26T14:16:56.072563] [WARNING] [github:_read_file_safely:575] - File too large (***ID_MASKED*** bytes), skipping: /tmp/repos/cv_review_github_px0w_wuf/services/proto/includes/googleapis/api-index-v1.json
+[2025-08-26T14:16:56.346844] [WARNING] [github:_read_file_safely:601] - Could not decode file with any encoding: /tmp/repos/cv_review_github_px0w_wuf/services/proto/includes/googleapis/.kokoro/.bazelrc
+[2025-08-26T14:16:56.419590] [WARNING] [github:_read_file_safely:601] - Could not decode file with any encoding: /tmp/repos/cv_review_github_px0w_wuf/services/proto/includes/googleapis/google/container/README.md
+[2025-08-26T14:16:56.422594] [WARNING] [github:_read_file_safely:601] - Could not decode file with any encoding: /tmp/repos/cv_review_github_px0w_wuf/services/proto/includes/googleapis/google/datastore/README.md
+[2025-08-26T14:16:58.774939] [WARNING] [github:_read_file_safely:575] - File too large (***ID_MASKED*** bytes), skipping: /tmp/repos/cv_review_github_px0w_wuf/services/proto/includes/googleapis/google/cloud/compute/v1/compute.proto
+[2025-08-26T14:16:58.776195] [WARNING] [github:_read_file_safely:575] - File too large (***ID_MASKED*** bytes), skipping: /tmp/repos/cv_review_github_px0w_wuf/services/proto/includes/googleapis/google/cloud/compute/v1/compute.v1.json
+[2025-08-26T14:17:04.515134] [INFO] [github:_extract_files:502] - Extracted files - Critical: 6951, Important: 0, Useful: 0, Total unique: 6951
+[2025-08-26T14:17:04.516819] [INFO] [github:fetch_repository:169] - Extracted 6951 files using patterns
+[2025-08-26T14:17:04.518667] [INFO] [github:fetch_repository:176] - Raw content: ***ID_MASKED*** tokens
+[2025-08-26T14:17:04.607641] [WARNING] [github:fetch_repository:195] - Repository exceeds token limit: ***ID_MASKED*** > ***ID_MASKED***
+[2025-08-26T14:17:04.612509] [INFO] [github:_optimize_content_for_limits:1046] - Optimizing content from ***ID_MASKED*** to max ***ID_MASKED*** tokens
+[2025-08-26T14:17:04.624972] [INFO] [github:_optimize_content_for_limits:1106] - Optimization complete: kept 2819 files, skipped 4132 files, using ***ID_MASKED*** tokens
+[2025-08-26T14:17:04.626334] [INFO] [github:fetch_repository:199] - Successfully processed repository: 2819 files, ***ID_MASKED*** tokens
+[2025-08-26T14:17:04.629446] [INFO] [bot:process_analysis:333] - Fetched repository: 2819 files
+[2025-08-26T14:17:05.424497] [INFO] [openrouter:analyze_code:124] - Starting code analysis for backend submission (repo: https://github.com/mortezakhademan/dekamond-sample)
+[2025-08-26T14:17:05.425382] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-26T14:17:05.435099] [WARNING] [openrouter:_prepare_content_for_model:405] - Content too large for google/gemini-2.5-flash, truncating...
+[2025-08-26T14:17:05.436111] [WARNING] [token_counter:truncate_to_fit:150] - Truncating text from ***ID_MASKED*** to ***ID_MASKED*** characters
+[2025-08-26T14:17:05.449549] [INFO] [openrouter:_build_user_prompt:624] - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+[2025-08-26T14:17:05.450975] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-26T14:17:05.461105] [INFO] [openrouter:_analyze_with_model:452] - Total content size: ***ID_MASKED*** characters, 2819 files
+[2025-08-26T14:18:40.274747] [INFO] [openrouter:_analyze_with_model:496] - LLM Response length: 12431 characters
+[2025-08-26T14:18:40.276387] [INFO] [openrouter:_parse_llm_response:690] - Successfully recovered JSON from LLM response
+[2025-08-26T14:18:40.277275] [INFO] [openrouter:_parse_llm_response:696] - LLM requirements_implementation found with 10 items
+[2025-08-26T14:18:40.278256] [INFO] [openrouter:_normalize_requirements:741] - Converting requirements_implementation to requirements_met
+[2025-08-26T14:18:40.279147] [INFO] [openrouter:_normalize_requirements:791] - Normalized requirements_met: {'otp_login_registration': False, 'rate_limiting': False, 'user_management': False, 'api_documentation': False, 'architectural_pattern': False, 'repository_pattern': False, 'service_layer': False, 'redis_implementation': False, 'database_implementation': True, 'dockerization': True}
+[2025-08-26T14:18:40.280063] [INFO] [openrouter:_convert_to_analysis_result:1050] - Average of positive scores: 0.0% (from [0.0, 0.0, 0.0])
+[2025-08-26T14:18:40.280842] [INFO] [openrouter:_convert_to_analysis_result:1095] - Extracted requirements_met: {'otp_login_registration': False, 'rate_limiting': False, 'user_management': False, 'api_documentation': False, 'architectural_pattern': False, 'repository_pattern': False, 'service_layer': False, 'redis_implementation': False, 'database_implementation': True, 'dockerization': True}
+[2025-08-26T14:18:40.282861] [INFO] [openrouter:analyze_code:152] - Analysis successful with google/gemini-2.5-flash
+[2025-08-26T14:18:40.284035] [INFO] [bot:process_analysis:368] - Analysis complete for submission 60
+[2025-08-26T14:18:40.315631] [INFO] [sqlite:create_report:453] - Created report 41 for submission 60
+[2025-08-26T14:18:40.316599] [INFO] [bot:process_analysis:385] - Created report 41
+[2025-08-26T14:18:40.333826] [INFO] [sqlite:update_submission:281] - Updated submission 60: status=SubmissionStatus.COMPLETED
+[2025-08-26T14:18:41.895453] [INFO] [telegram:send_analysis_complete:279] - Analysis report sent for submission 60
+[2025-08-26T14:18:42.427322] [INFO] [github:cleanup:304] - GitHub adapter cleanup completed
+[2025-08-26T14:23:38.638461] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T14:23:40.410375] [INFO] [bot:<module>:1283] - Starting bot (attempt #1)...
+[2025-08-26T14:23:40.411211] [INFO] [bot:main:1160] - Starting CV Review Bot...
+[2025-08-26T14:23:41.278150] [INFO] [bot:initialize_adapters:1137] - Initializing adapters...
+[2025-08-26T14:23:41.279097] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-26T14:23:41.284497] [INFO] [sqlite:_init:724] - Database tables created/verified
+[2025-08-26T14:23:41.291737] [INFO] [bot:initialize_adapters:1142] - Storage adapter initialized
+[2025-08-26T14:23:41.514983] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-26T14:23:41.516375] [INFO] [bot:initialize_adapters:1146] - Repository adapter initialized
+[2025-08-26T14:23:41.517474] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T14:23:41.518442] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T14:23:41.519357] [INFO] [bot:initialize_adapters:1150] - Analyzer adapter initialized
+[2025-08-26T14:23:41.520205] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-26T14:23:43.564243] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-26T14:23:43.565422] [INFO] [bot:initialize_adapters:1155] - Notification adapter initialized
+[2025-08-26T14:23:44.261850] [INFO] [bot:main:1203] - Cleared any existing webhooks
+[2025-08-26T14:23:44.262951] [INFO] [bot:main:1214] - Bot is ready! Starting polling...
+[2025-08-26T14:23:45.144536] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-26T14:23:47.175216] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/DevineDecrypter/dekamond-task
+[2025-08-26T14:23:47.176637] [INFO] [validators:validate_github_url:117] - Successfully validated GitHub URL: DevineDecrypter/dekamond-task
+[2025-08-26T14:23:49.633832] [INFO] [bot:role_callback:245] - Starting analysis for https://github.com/DevineDecrypter/dekamond-task as backend
+[2025-08-26T14:23:50.019060] [INFO] [sqlite:create_submission:109] - Created submission 61 for user ***ID_MASKED***
+[2025-08-26T14:23:50.020214] [INFO] [bot:process_analysis:316] - Created submission 61
+[2025-08-26T14:23:50.040281] [INFO] [sqlite:update_submission:281] - Updated submission 61: status=SubmissionStatus.ANALYZING
+[2025-08-26T14:23:50.278216] [INFO] [github:fetch_repository:141] - Fetching GitHub repository: https://github.com/DevineDecrypter/dekamond-task for role: backend
+[2025-08-26T14:23:50.279717] [INFO] [github:_clone_repository:356] - Cloning repository: https://github.com/DevineDecrypter/dekamond-task (attempt 1/3)
+[2025-08-26T14:23:55.193866] [INFO] [github:_clone_repository:375] - Repository cloned successfully
+[2025-08-26T14:23:55.195714] [INFO] [github:fetch_repository:160] - Repository size: 0.39MB
+[2025-08-26T14:23:55.196845] [INFO] [github:fetch_repository:167] - Extracting files based on patterns
+[2025-08-26T14:23:55.332771] [INFO] [github:_extract_files:502] - Extracted files - Critical: 36, Important: 0, Useful: 0, Total unique: 36
+[2025-08-26T14:23:55.334186] [INFO] [github:fetch_repository:169] - Extracted 36 files using patterns
+[2025-08-26T14:23:55.335471] [INFO] [github:fetch_repository:176] - Raw content: ***ID_MASKED*** tokens
+[2025-08-26T14:23:55.345308] [INFO] [github:fetch_repository:199] - Successfully processed repository: 36 files, ***ID_MASKED*** tokens
+[2025-08-26T14:23:55.346383] [INFO] [bot:process_analysis:333] - Fetched repository: 36 files
+[2025-08-26T14:23:55.350592] [INFO] [bot:cancel_command:600] - Cancel command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-26T14:23:56.476765] [INFO] [openrouter:analyze_code:124] - Starting code analysis for backend submission (repo: https://github.com/DevineDecrypter/dekamond-task)
+[2025-08-26T14:23:56.477949] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-26T14:23:56.479444] [INFO] [openrouter:_build_user_prompt:624] - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+[2025-08-26T14:23:56.480683] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-26T14:23:56.487335] [INFO] [openrouter:_analyze_with_model:452] - Total content size: ***ID_MASKED*** characters, 36 files
+[2025-08-26T14:24:12.174876] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T14:24:14.095017] [INFO] [bot:<module>:1283] - Starting bot (attempt #1)...
+[2025-08-26T14:24:14.095926] [INFO] [bot:main:1160] - Starting CV Review Bot...
+[2025-08-26T14:24:15.051553] [INFO] [bot:initialize_adapters:1137] - Initializing adapters...
+[2025-08-26T14:24:15.052410] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-26T14:24:15.056860] [INFO] [sqlite:_init:724] - Database tables created/verified
+[2025-08-26T14:24:15.057970] [INFO] [bot:initialize_adapters:1142] - Storage adapter initialized
+[2025-08-26T14:24:15.272870] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-26T14:24:15.274258] [INFO] [bot:initialize_adapters:1146] - Repository adapter initialized
+[2025-08-26T14:24:15.275561] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T14:24:15.276641] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T14:24:15.277769] [INFO] [bot:initialize_adapters:1150] - Analyzer adapter initialized
+[2025-08-26T14:24:15.278891] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-26T14:24:16.595239] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-26T14:24:16.596419] [INFO] [bot:initialize_adapters:1155] - Notification adapter initialized
+[2025-08-26T14:24:17.171183] [INFO] [bot:main:1203] - Cleared any existing webhooks
+[2025-08-26T14:24:17.172528] [INFO] [bot:main:1214] - Bot is ready! Starting polling...
+[2025-08-26T14:24:24.194553] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-26T14:24:27.594232] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/DevineDecrypter/dekamond-task
+[2025-08-26T14:24:27.596104] [INFO] [validators:validate_github_url:117] - Successfully validated GitHub URL: DevineDecrypter/dekamond-task
+[2025-08-26T14:24:29.732116] [INFO] [bot:role_callback:245] - Starting analysis for https://github.com/DevineDecrypter/dekamond-task as frontend
+[2025-08-26T14:24:29.941365] [INFO] [bot:process_analysis:297] - Found existing submission 59, removing it
+[2025-08-26T14:24:29.977318] [INFO] [sqlite:_delete:222] - Deleted submission 59 and 1 associated reports
+[2025-08-26T14:24:30.207208] [INFO] [sqlite:create_submission:109] - Created submission 62 for user ***ID_MASKED***
+[2025-08-26T14:24:30.208276] [INFO] [bot:process_analysis:316] - Created submission 62
+[2025-08-26T14:24:30.228814] [INFO] [sqlite:update_submission:281] - Updated submission 62: status=SubmissionStatus.ANALYZING
+[2025-08-26T14:24:30.422923] [INFO] [github:fetch_repository:141] - Fetching GitHub repository: https://github.com/DevineDecrypter/dekamond-task for role: frontend
+[2025-08-26T14:24:30.424396] [INFO] [github:_clone_repository:362] - Cloning repository: https://github.com/DevineDecrypter/dekamond-task (attempt 1/3)
+[2025-08-26T14:24:31.085200] [WARNING] [github:_clone_repository:390] - Network error during clone, retrying in 2s: Cmd('git') failed due to: exit code(128)
+  cmdline: git clone -v --depth=1 --single-branch -- https://github.com/DevineDecrypter/dekamond-task.git /tmp/repos/cv_review_github_cy5p1bhf
+  stderr: 'Cloning into '/tmp/repos/cv_review_github_cy5p1bhf'...
+fatal: unable to access 'https://github.com/DevineDecrypter/dekamond-task.git/': gnutls_handshake() failed: The TLS connection was non-properly terminated.
+'
+[2025-08-26T14:24:33.088959] [INFO] [github:_clone_repository:362] - Cloning repository: https://github.com/DevineDecrypter/dekamond-task (attempt 2/3)
+[2025-08-26T14:24:34.558960] [INFO] [github:_clone_repository:381] - Repository cloned successfully
+[2025-08-26T14:24:34.560668] [INFO] [github:fetch_repository:160] - Repository size: 0.39MB
+[2025-08-26T14:24:34.561853] [INFO] [github:fetch_repository:173] - Extracting files based on patterns
+[2025-08-26T14:24:34.585037] [INFO] [github:_extract_files:508] - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+[2025-08-26T14:24:34.586285] [INFO] [github:fetch_repository:175] - Extracted 30 files using patterns
+[2025-08-26T14:24:34.587546] [INFO] [github:fetch_repository:182] - Raw content: 9117 tokens
+[2025-08-26T14:24:34.595531] [INFO] [github:fetch_repository:205] - Successfully processed repository: 30 files, 9117 tokens
+[2025-08-26T14:24:34.597051] [INFO] [bot:process_analysis:333] - Fetched repository: 30 files
+[2025-08-26T14:24:34.801149] [INFO] [openrouter:analyze_code:124] - Starting code analysis for frontend submission (repo: https://github.com/DevineDecrypter/dekamond-task)
+[2025-08-26T14:24:34.802114] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-26T14:24:34.803148] [INFO] [openrouter:_build_user_prompt:624] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T14:24:34.803956] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-26T14:24:34.809536] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "requirements_met"'
+[2025-08-26T14:24:34.810203] [INFO] [openrouter:_analyze_with_model:452] - Total content size: 37259 characters, 30 files
+[2025-08-26T14:24:35.749970] [ERROR] [openrouter:_analyze_with_model:556] - HTTP client error: Cannot connect to host openrouter.ai:443 ssl:default [None]
+[2025-08-26T14:24:43.300471] [INFO] [openrouter:_analyze_with_model:496] - LLM Response length: 4899 characters
+[2025-08-26T14:24:43.302210] [INFO] [openrouter:_parse_llm_response:690] - Successfully recovered JSON from LLM response
+[2025-08-26T14:24:43.303429] [INFO] [openrouter:_parse_llm_response:694] - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T14:24:43.304956] [INFO] [openrouter:_normalize_requirements:791] - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T14:24:43.306195] [WARNING] [openrouter:validate_response:335] - Response validation failed: Recommendation must be one of: strong_yes, yes, maybe, no, strong_no
+[2025-08-26T14:24:43.307214] [WARNING] [openrouter:_analyze_with_model:511] - Response validation failed
+[2025-08-26T14:24:43.308438] [INFO] [openrouter:analyze_code:136] - Attempt 2/3: anthropic/claude-sonnet-4 (context: ***ID_MASKED*** tokens)
+[2025-08-26T14:24:43.309751] [INFO] [openrouter:_build_user_prompt:624] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T14:24:43.310553] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "requirements_met"'
+[2025-08-26T14:24:43.311282] [INFO] [openrouter:_analyze_with_model:452] - Total content size: 37259 characters, 30 files
+[2025-08-26T14:24:52.932858] [INFO] [openrouter:_analyze_with_model:496] - LLM Response length: 1381 characters
+[2025-08-26T14:24:52.942072] [INFO] [json_recovery:_save_failed_response:300] - Saved failed response to ./data/failed_responses/failed_response_***ID_MASKED***_***ID_MASKED***.txt for manual recovery
+[2025-08-26T14:24:52.943226] [ERROR] [openrouter:_parse_llm_response:717] - JSON recovery failed: All recovery strategies failed
+[2025-08-26T14:24:52.946029] [WARNING] [openrouter:_normalize_requirements:763] - Requirements all False or missing - attempting inference from feedback
+[2025-08-26T14:24:52.947110] [INFO] [openrouter:_normalize_requirements:791] - Normalized requirements_met: {}
+[2025-08-26T14:24:52.948253] [INFO] [openrouter:_convert_to_analysis_result:1050] - Average of positive scores: 0.0% (from [0.0, 0.0, 0.0, 0.0])
+[2025-08-26T14:24:52.949660] [INFO] [openrouter:_convert_to_analysis_result:1095] - Extracted requirements_met: {}
+[2025-08-26T14:24:52.950732] [WARNING] [openrouter:_convert_to_analysis_result:1099] - Requirements all False or missing - attempting inference from feedback
+[2025-08-26T14:24:52.952252] [INFO] [openrouter:analyze_code:152] - Analysis successful with anthropic/claude-sonnet-4
+[2025-08-26T14:24:52.953316] [INFO] [bot:process_analysis:368] - Analysis complete for submission 62
+[2025-08-26T14:24:52.992397] [INFO] [sqlite:create_report:453] - Created report 42 for submission 62
+[2025-08-26T14:24:52.993405] [INFO] [bot:process_analysis:385] - Created report 42
+[2025-08-26T14:24:53.010563] [INFO] [sqlite:update_submission:281] - Updated submission 62: status=SubmissionStatus.COMPLETED
+[2025-08-26T14:24:55.157382] [INFO] [telegram:send_analysis_complete:279] - Analysis report sent for submission 62
+[2025-08-26T14:24:55.411273] [INFO] [github:cleanup:310] - GitHub adapter cleanup completed
+[2025-08-26T14:36:31.806229] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T14:36:33.606873] [INFO] [bot:<module>:1283] - Starting bot (attempt #1)...
+[2025-08-26T14:36:33.607725] [INFO] [bot:main:1160] - Starting CV Review Bot...
+[2025-08-26T14:36:34.411373] [INFO] [bot:initialize_adapters:1137] - Initializing adapters...
+[2025-08-26T14:36:34.412168] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-26T14:36:34.416667] [INFO] [sqlite:_init:724] - Database tables created/verified
+[2025-08-26T14:36:34.417869] [INFO] [bot:initialize_adapters:1142] - Storage adapter initialized
+[2025-08-26T14:36:34.613750] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-26T14:36:34.614841] [INFO] [bot:initialize_adapters:1146] - Repository adapter initialized
+[2025-08-26T14:36:34.615973] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T14:36:34.617191] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T14:36:34.618448] [INFO] [bot:initialize_adapters:1150] - Analyzer adapter initialized
+[2025-08-26T14:36:34.619992] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-26T14:36:35.396451] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-26T14:36:35.397917] [INFO] [bot:initialize_adapters:1155] - Notification adapter initialized
+[2025-08-26T14:36:35.900919] [INFO] [bot:main:1203] - Cleared any existing webhooks
+[2025-08-26T14:36:35.902278] [INFO] [bot:main:1214] - Bot is ready! Starting polling...
+[2025-08-26T14:36:41.772566] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-26T14:36:48.311514] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/DevineDecrypter/dekamond-task
+[2025-08-26T14:36:48.313136] [INFO] [validators:validate_github_url:117] - Successfully validated GitHub URL: DevineDecrypter/dekamond-task
+[2025-08-26T14:36:50.494907] [INFO] [bot:role_callback:245] - Starting analysis for https://github.com/DevineDecrypter/dekamond-task as frontend
+[2025-08-26T14:36:50.717636] [INFO] [bot:process_analysis:297] - Found existing submission 62, removing it
+[2025-08-26T14:36:50.751631] [INFO] [sqlite:_delete:222] - Deleted submission 62 and 1 associated reports
+[2025-08-26T14:36:50.984349] [INFO] [sqlite:create_submission:109] - Created submission 62 for user ***ID_MASKED***
+[2025-08-26T14:36:50.985308] [INFO] [bot:process_analysis:316] - Created submission 62
+[2025-08-26T14:36:51.001079] [INFO] [sqlite:update_submission:281] - Updated submission 62: status=SubmissionStatus.ANALYZING
+[2025-08-26T14:36:51.213362] [INFO] [github:fetch_repository:141] - Fetching GitHub repository: https://github.com/DevineDecrypter/dekamond-task for role: frontend
+[2025-08-26T14:36:51.214760] [INFO] [github:_clone_repository:362] - Cloning repository: https://github.com/DevineDecrypter/dekamond-task (attempt 1/3)
+[2025-08-26T14:36:52.714199] [INFO] [github:_clone_repository:381] - Repository cloned successfully
+[2025-08-26T14:36:52.715962] [INFO] [github:fetch_repository:160] - Repository size: 0.39MB
+[2025-08-26T14:36:52.717030] [INFO] [github:fetch_repository:173] - Extracting files based on patterns
+[2025-08-26T14:36:52.742523] [INFO] [github:_extract_files:508] - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+[2025-08-26T14:36:52.744005] [INFO] [github:fetch_repository:175] - Extracted 30 files using patterns
+[2025-08-26T14:36:52.744953] [INFO] [github:fetch_repository:182] - Raw content: 9117 tokens
+[2025-08-26T14:36:52.754082] [INFO] [github:fetch_repository:205] - Successfully processed repository: 30 files, 9117 tokens
+[2025-08-26T14:36:52.755418] [INFO] [bot:process_analysis:333] - Fetched repository: 30 files
+[2025-08-26T14:36:53.020220] [INFO] [openrouter:analyze_code:124] - Starting code analysis for frontend submission (repo: https://github.com/DevineDecrypter/dekamond-task)
+[2025-08-26T14:36:53.021407] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-26T14:36:53.022434] [INFO] [openrouter:_build_user_prompt:624] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T14:36:53.023425] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-26T14:36:53.028508] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "requirements_met"'
+[2025-08-26T14:36:53.029379] [INFO] [openrouter:_analyze_with_model:452] - Total content size: 37259 characters, 30 files
+[2025-08-26T14:36:59.100112] [INFO] [openrouter:_analyze_with_model:496] - LLM Response length: 3660 characters
+[2025-08-26T14:36:59.101686] [INFO] [openrouter:_parse_llm_response:690] - Successfully recovered JSON from LLM response
+[2025-08-26T14:36:59.102987] [INFO] [openrouter:_parse_llm_response:694] - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T14:36:59.104425] [INFO] [openrouter:_normalize_requirements:791] - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T14:36:59.105699] [INFO] [openrouter:_convert_to_analysis_result:1042] - Average of positive scores: 83.8% (from [95.0, 80.0, 75.0, 85.0])
+[2025-08-26T14:36:59.106515] [INFO] [openrouter:_convert_to_analysis_result:1087] - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T14:36:59.108569] [INFO] [openrouter:analyze_code:152] - Analysis successful with google/gemini-2.5-flash
+[2025-08-26T14:36:59.109800] [INFO] [bot:process_analysis:368] - Analysis complete for submission 62
+[2025-08-26T14:36:59.148700] [INFO] [sqlite:create_report:453] - Created report 42 for submission 62
+[2025-08-26T14:36:59.149978] [INFO] [bot:process_analysis:385] - Created report 42
+[2025-08-26T14:36:59.170709] [INFO] [sqlite:update_submission:281] - Updated submission 62: status=SubmissionStatus.COMPLETED
+[2025-08-26T14:37:00.541274] [INFO] [telegram:send_analysis_complete:279] - Analysis report sent for submission 62
+[2025-08-26T14:37:00.759125] [INFO] [github:cleanup:310] - GitHub adapter cleanup completed
+[2025-08-26T14:56:15.956268] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T14:56:19.487339] [INFO] [bot:<module>:1283] - Starting bot (attempt #1)...
+[2025-08-26T14:56:19.488178] [INFO] [bot:main:1160] - Starting CV Review Bot...
+[2025-08-26T14:56:20.288772] [INFO] [bot:initialize_adapters:1137] - Initializing adapters...
+[2025-08-26T14:56:20.289767] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-26T14:56:20.294687] [INFO] [sqlite:_init:724] - Database tables created/verified
+[2025-08-26T14:56:20.295772] [INFO] [bot:initialize_adapters:1142] - Storage adapter initialized
+[2025-08-26T14:56:20.537969] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-26T14:56:20.539254] [INFO] [bot:initialize_adapters:1146] - Repository adapter initialized
+[2025-08-26T14:56:20.540335] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T14:56:20.541360] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T14:56:20.542461] [INFO] [bot:initialize_adapters:1150] - Analyzer adapter initialized
+[2025-08-26T14:56:20.543656] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-26T14:56:22.520523] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-26T14:56:22.522378] [INFO] [bot:initialize_adapters:1155] - Notification adapter initialized
+[2025-08-26T14:56:24.240099] [INFO] [bot:main:1203] - Cleared any existing webhooks
+[2025-08-26T14:56:24.241864] [INFO] [bot:main:1214] - Bot is ready! Starting polling...
+[2025-08-26T14:56:28.862820] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-26T14:56:37.438674] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/DevineDecrypter/dekamond-task
+[2025-08-26T14:56:37.440561] [INFO] [validators:validate_github_url:117] - Successfully validated GitHub URL: DevineDecrypter/dekamond-task
+[2025-08-26T14:56:44.818744] [INFO] [bot:role_callback:245] - Starting analysis for https://github.com/DevineDecrypter/dekamond-task as frontend
+[2025-08-26T14:56:45.351562] [INFO] [bot:process_analysis:297] - Found existing submission 62, removing it
+[2025-08-26T14:56:45.393254] [INFO] [sqlite:_delete:222] - Deleted submission 62 and 1 associated reports
+[2025-08-26T14:56:45.988317] [INFO] [sqlite:create_submission:109] - Created submission 62 for user ***ID_MASKED***
+[2025-08-26T14:56:45.989547] [INFO] [bot:process_analysis:316] - Created submission 62
+[2025-08-26T14:56:46.009620] [INFO] [sqlite:update_submission:281] - Updated submission 62: status=SubmissionStatus.ANALYZING
+[2025-08-26T14:56:46.599456] [INFO] [github:fetch_repository:141] - Fetching GitHub repository: https://github.com/DevineDecrypter/dekamond-task for role: frontend
+[2025-08-26T14:56:46.601190] [INFO] [github:_clone_repository:362] - Cloning repository: https://github.com/DevineDecrypter/dekamond-task (attempt 1/3)
+[2025-08-26T14:57:05.631915] [INFO] [github:_clone_repository:381] - Repository cloned successfully
+[2025-08-26T14:57:05.633574] [INFO] [github:fetch_repository:160] - Repository size: 0.39MB
+[2025-08-26T14:57:05.634495] [INFO] [github:fetch_repository:173] - Extracting files based on patterns
+[2025-08-26T14:57:05.655600] [INFO] [github:_extract_files:508] - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+[2025-08-26T14:57:05.656973] [INFO] [github:fetch_repository:175] - Extracted 30 files using patterns
+[2025-08-26T14:57:05.658607] [INFO] [github:fetch_repository:182] - Raw content: 9117 tokens
+[2025-08-26T14:57:05.666083] [INFO] [github:fetch_repository:205] - Successfully processed repository: 30 files, 9117 tokens
+[2025-08-26T14:57:05.667192] [INFO] [bot:process_analysis:333] - Fetched repository: 30 files
+[2025-08-26T14:57:06.171159] [INFO] [openrouter:analyze_code:124] - Starting code analysis for frontend submission (repo: https://github.com/DevineDecrypter/dekamond-task)
+[2025-08-26T14:57:06.171996] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-26T14:57:06.172910] [INFO] [openrouter:_build_user_prompt:624] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T14:57:06.173661] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-26T14:57:06.178258] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "requirements_met"'
+[2025-08-26T14:57:06.179268] [INFO] [openrouter:_analyze_with_model:452] - Total content size: 37259 characters, 30 files
+[2025-08-26T14:57:15.652433] [INFO] [openrouter:_analyze_with_model:496] - LLM Response length: 5344 characters
+[2025-08-26T14:57:15.654195] [INFO] [openrouter:_parse_llm_response:690] - Successfully recovered JSON from LLM response
+[2025-08-26T14:57:15.655487] [INFO] [openrouter:_parse_llm_response:694] - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T14:57:15.656845] [INFO] [openrouter:_normalize_requirements:791] - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T14:57:15.657989] [INFO] [openrouter:_convert_to_analysis_result:1042] - Average of positive scores: 80.0% (from [95.0, 75.0, 70.0, 80.0])
+[2025-08-26T14:57:15.659169] [INFO] [openrouter:_convert_to_analysis_result:1087] - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T14:57:15.660530] [INFO] [openrouter:analyze_code:152] - Analysis successful with google/gemini-2.5-flash
+[2025-08-26T14:57:15.661520] [INFO] [bot:process_analysis:368] - Analysis complete for submission 62
+[2025-08-26T14:57:15.692104] [INFO] [sqlite:create_report:453] - Created report 42 for submission 62
+[2025-08-26T14:57:15.692954] [INFO] [bot:process_analysis:385] - Created report 42
+[2025-08-26T14:57:15.707718] [INFO] [sqlite:update_submission:281] - Updated submission 62: status=SubmissionStatus.COMPLETED
+[2025-08-26T14:57:16.817813] [ERROR] [telegram:send_analysis_complete:283] - Failed to send analysis complete: httpx.ConnectError: 
+[2025-08-26T14:57:17.014901] [INFO] [github:cleanup:310] - GitHub adapter cleanup completed
+[2025-08-26T15:02:27.809047] [INFO] [bot:history_command:616] - History command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-26T15:05:40.790889] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T15:05:42.465509] [INFO] [bot:<module>:1283] - Starting bot (attempt #1)...
+[2025-08-26T15:05:42.466305] [INFO] [bot:main:1160] - Starting CV Review Bot...
+[2025-08-26T15:05:43.341937] [INFO] [bot:initialize_adapters:1137] - Initializing adapters...
+[2025-08-26T15:05:43.342739] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-26T15:05:43.346748] [INFO] [sqlite:_init:724] - Database tables created/verified
+[2025-08-26T15:05:43.347810] [INFO] [bot:initialize_adapters:1142] - Storage adapter initialized
+[2025-08-26T15:05:43.547258] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-26T15:05:43.548786] [INFO] [bot:initialize_adapters:1146] - Repository adapter initialized
+[2025-08-26T15:05:43.549946] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T15:05:43.551420] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T15:05:43.552751] [INFO] [bot:initialize_adapters:1150] - Analyzer adapter initialized
+[2025-08-26T15:05:43.554064] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-26T15:05:44.368954] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-26T15:05:44.370131] [INFO] [bot:initialize_adapters:1155] - Notification adapter initialized
+[2025-08-26T15:05:44.878567] [INFO] [bot:main:1203] - Cleared any existing webhooks
+[2025-08-26T15:05:44.880271] [INFO] [bot:main:1214] - Bot is ready! Starting polling...
+[2025-08-26T15:05:48.634729] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-26T15:05:57.488039] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/DevineDecrypter/dekamond-task
+[2025-08-26T15:05:57.489541] [INFO] [validators:validate_github_url:117] - Successfully validated GitHub URL: DevineDecrypter/dekamond-task
+[2025-08-26T15:05:59.640033] [INFO] [bot:role_callback:245] - Starting analysis for https://github.com/DevineDecrypter/dekamond-task as frontend
+[2025-08-26T15:05:59.844948] [INFO] [bot:process_analysis:297] - Found existing submission 62, removing it
+[2025-08-26T15:05:59.880897] [INFO] [sqlite:_delete:222] - Deleted submission 62 and 1 associated reports
+[2025-08-26T15:06:00.107764] [INFO] [sqlite:create_submission:109] - Created submission 62 for user ***ID_MASKED***
+[2025-08-26T15:06:00.108892] [INFO] [bot:process_analysis:316] - Created submission 62
+[2025-08-26T15:06:00.128450] [INFO] [sqlite:update_submission:281] - Updated submission 62: status=SubmissionStatus.ANALYZING
+[2025-08-26T15:06:00.327124] [INFO] [github:fetch_repository:141] - Fetching GitHub repository: https://github.com/DevineDecrypter/dekamond-task for role: frontend
+[2025-08-26T15:06:00.329418] [INFO] [github:_clone_repository:362] - Cloning repository: https://github.com/DevineDecrypter/dekamond-task (attempt 1/3)
+[2025-08-26T15:06:01.802206] [INFO] [github:_clone_repository:381] - Repository cloned successfully
+[2025-08-26T15:06:01.804274] [INFO] [github:fetch_repository:160] - Repository size: 0.39MB
+[2025-08-26T15:06:01.805297] [INFO] [github:fetch_repository:173] - Extracting files based on patterns
+[2025-08-26T15:06:01.825886] [INFO] [github:_extract_files:508] - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+[2025-08-26T15:06:01.827359] [INFO] [github:fetch_repository:175] - Extracted 30 files using patterns
+[2025-08-26T15:06:01.828716] [INFO] [github:fetch_repository:182] - Raw content: 9117 tokens
+[2025-08-26T15:06:01.838606] [INFO] [github:fetch_repository:205] - Successfully processed repository: 30 files, 9117 tokens
+[2025-08-26T15:06:01.840056] [INFO] [bot:process_analysis:333] - Fetched repository: 30 files
+[2025-08-26T15:06:02.040876] [INFO] [openrouter:analyze_code:124] - Starting code analysis for frontend submission (repo: https://github.com/DevineDecrypter/dekamond-task)
+[2025-08-26T15:06:02.041744] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-26T15:06:02.043109] [INFO] [openrouter:_build_user_prompt:624] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T15:06:02.044176] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-26T15:06:02.050811] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "requirements_met"'
+[2025-08-26T15:06:02.051845] [INFO] [openrouter:_analyze_with_model:452] - Total content size: 37259 characters, 30 files
+[2025-08-26T15:06:12.064932] [ERROR] [openrouter:_analyze_with_model:556] - HTTP client error: Cannot connect to host openrouter.ai:443 ssl:default [Temporary failure in name resolution]
+[2025-08-26T15:06:23.826816] [INFO] [openrouter:_analyze_with_model:496] - LLM Response length: 5769 characters
+[2025-08-26T15:06:23.828842] [INFO] [openrouter:_parse_llm_response:690] - Successfully recovered JSON from LLM response
+[2025-08-26T15:06:23.830519] [INFO] [openrouter:_parse_llm_response:694] - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:06:23.831763] [INFO] [openrouter:_normalize_requirements:791] - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:06:23.833023] [INFO] [openrouter:_convert_to_analysis_result:1042] - Average of positive scores: 87.0% (from [95.0, 85.0, 80.0, 88.0])
+[2025-08-26T15:06:23.834503] [INFO] [openrouter:_convert_to_analysis_result:1087] - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:06:23.835914] [INFO] [openrouter:analyze_code:152] - Analysis successful with google/gemini-2.5-flash
+[2025-08-26T15:06:23.836899] [INFO] [bot:process_analysis:368] - Analysis complete for submission 62
+[2025-08-26T15:06:23.872337] [INFO] [sqlite:create_report:453] - Created report 42 for submission 62
+[2025-08-26T15:06:23.873294] [INFO] [bot:process_analysis:385] - Created report 42
+[2025-08-26T15:06:23.891780] [INFO] [sqlite:update_submission:281] - Updated submission 62: status=SubmissionStatus.COMPLETED
+[2025-08-26T15:06:25.966245] [INFO] [telegram:send_analysis_complete:279] - Analysis report sent for submission 62
+[2025-08-26T15:06:26.169812] [INFO] [github:cleanup:310] - GitHub adapter cleanup completed
+[2025-08-26T15:14:49.859432] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T15:15:52.325323] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T15:16:17.831639] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T15:16:58.062774] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T15:17:06.356534] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T15:17:43.309489] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T15:17:43.380509] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T15:17:43.381300] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T15:18:11.244196] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T15:18:11.323643] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T15:18:11.324374] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T15:18:11.325597] [INFO] [openrouter:analyze_code:124] - Starting code analysis for frontend submission (repo: https://github.com/test/frontend-cookie-test)
+[2025-08-26T15:18:11.326340] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-26T15:18:11.327084] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/lib/cookies.ts
+[2025-08-26T15:18:11.328129] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/services/auth/login.ts
+[2025-08-26T15:18:11.328849] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/app/auth/page.tsx
+[2025-08-26T15:18:11.329554] [INFO] [openrouter:_build_user_prompt:628] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T15:18:11.330316] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-26T15:18:11.336540] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+[2025-08-26T15:18:11.337319] [INFO] [openrouter:_analyze_with_model:456] - Total content size: 1760 characters, 3 files
+[2025-08-26T15:18:19.197494] [INFO] [openrouter:_analyze_with_model:500] - LLM Response length: 5789 characters
+[2025-08-26T15:18:19.199136] [INFO] [openrouter:_parse_llm_response:694] - Successfully recovered JSON from LLM response
+[2025-08-26T15:18:19.200549] [WARNING] [openrouter:_parse_llm_response:699] - 🔍 STORAGE METHOD CHECK: {'found_localStorage': True, 'found_cookies': False, 'found_sessionStorage': False, 'storage_details': 'Found `localStorage.setItem` and `localStorage.getItem` calls within the `auth` and `dashboard` modules for storing user data.'}
+[2025-08-26T15:18:19.202105] [INFO] [openrouter:_parse_llm_response:710] - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:18:19.203121] [WARNING] [openrouter:_parse_llm_response:713] - ⚠️ LLM marked localstorage_implementation as: True
+[2025-08-26T15:18:19.204361] [INFO] [openrouter:_normalize_requirements:810] - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:18:19.205618] [INFO] [openrouter:_convert_to_analysis_result:1061] - Average of positive scores: 83.8% (from [95.0, 80.0, 75.0, 85.0])
+[2025-08-26T15:18:19.206486] [INFO] [openrouter:_convert_to_analysis_result:1106] - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:18:19.207937] [INFO] [openrouter:analyze_code:152] - Analysis successful with google/gemini-2.5-flash
+[2025-08-26T15:19:27.938931] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T15:19:28.019358] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T15:19:28.020094] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T15:19:28.022111] [INFO] [openrouter:analyze_code:124] - Starting code analysis for frontend submission (repo: https://github.com/test/frontend-cookie-test)
+[2025-08-26T15:19:28.022756] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-26T15:19:28.023328] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/lib/cookies.ts
+[2025-08-26T15:19:28.023952] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/services/auth/login.ts
+[2025-08-26T15:19:28.024508] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/app/auth/page.tsx
+[2025-08-26T15:19:28.025068] [INFO] [openrouter:_build_user_prompt:628] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T15:19:28.025605] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-26T15:19:28.030831] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+[2025-08-26T15:19:28.031623] [INFO] [openrouter:_analyze_with_model:456] - Total content size: 1760 characters, 3 files
+[2025-08-26T15:19:36.268775] [INFO] [openrouter:_analyze_with_model:500] - LLM Response length: 6026 characters
+[2025-08-26T15:19:36.270288] [INFO] [openrouter:_parse_llm_response:694] - Successfully recovered JSON from LLM response
+[2025-08-26T15:19:36.271293] [WARNING] [openrouter:_parse_llm_response:699] - 🔍 STORAGE METHOD CHECK: {'found_localStorage': True, 'found_cookies': False, 'found_sessionStorage': False, 'storage_details': 'Found localStorage usage in src/app/auth/page.tsx line 47, src/app/auth/page.tsx line 51, src/app/dashboard/page.tsx line 19, src/app/dashboard/page.tsx line 23', 'evidence': "localStorage.setItem('user', JSON.stringify(data.results[0]));\nlocalStorage.getItem('user');\nlocalStorage.removeItem('user');\nlocalStorage.clear();"}
+[2025-08-26T15:19:36.272176] [WARNING] [openrouter:_parse_llm_response:703] - 📝 EVIDENCE: localStorage.setItem('user', JSON.stringify(data.results[0]));
+localStorage.getItem('user');
+localStorage.removeItem('user');
+localStorage.clear();
+[2025-08-26T15:19:36.272814] [INFO] [openrouter:_parse_llm_response:714] - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': False, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:19:36.273535] [WARNING] [openrouter:_parse_llm_response:717] - ⚠️ LLM marked localstorage_implementation as: True
+[2025-08-26T15:19:36.274271] [INFO] [openrouter:_normalize_requirements:814] - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': False, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:19:36.275123] [INFO] [openrouter:_convert_to_analysis_result:1065] - Average of positive scores: 75.0% (from [90.0, 70.0, 65.0, 75.0])
+[2025-08-26T15:19:36.275797] [INFO] [openrouter:_convert_to_analysis_result:1110] - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': False, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:19:36.276833] [INFO] [openrouter:analyze_code:152] - Analysis successful with google/gemini-2.5-flash
+[2025-08-26T15:22:25.352016] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T15:22:25.419123] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T15:22:25.419926] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T15:22:25.421531] [INFO] [openrouter:analyze_code:124] - Starting code analysis for frontend submission (repo: https://github.com/test/frontend-cookie-test)
+[2025-08-26T15:22:25.422335] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-26T15:22:25.423075] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/lib/cookies.ts
+[2025-08-26T15:22:25.423720] [WARNING] [openrouter:_prepare_content_for_model:401] - ⚠️ DETECTED COOKIE USAGE in src/lib/cookies.ts
+[2025-08-26T15:22:25.424320] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/services/auth/login.ts
+[2025-08-26T15:22:25.424850] [WARNING] [openrouter:_prepare_content_for_model:401] - ⚠️ DETECTED COOKIE USAGE in src/services/auth/login.ts
+[2025-08-26T15:22:25.425400] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/app/auth/page.tsx
+[2025-08-26T15:22:25.425985] [INFO] [openrouter:_build_user_prompt:632] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T15:22:25.426640] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-26T15:22:25.431541] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+[2025-08-26T15:22:25.432224] [INFO] [openrouter:_analyze_with_model:460] - Total content size: 1760 characters, 3 files
+[2025-08-26T15:22:33.506388] [INFO] [openrouter:_analyze_with_model:504] - LLM Response length: 4662 characters
+[2025-08-26T15:22:33.507977] [INFO] [openrouter:_parse_llm_response:698] - Successfully recovered JSON from LLM response
+[2025-08-26T15:22:33.509042] [WARNING] [openrouter:_parse_llm_response:703] - 🔍 STORAGE METHOD CHECK: {'found_localStorage': True, 'found_cookies': False, 'found_sessionStorage': False, 'storage_details': 'Found localStorage.setItem and localStorage.getItem in src/app/auth/page.tsx and src/app/dashboard/page.tsx', 'evidence': "localStorage.setItem('user', JSON.stringify(data.results[0])); (src/app/auth/page.tsx:78), localStorage.getItem('user'); (src/app/dashboard/page.tsx:12)"}
+[2025-08-26T15:22:33.510285] [WARNING] [openrouter:_parse_llm_response:707] - 📝 EVIDENCE: localStorage.setItem('user', JSON.stringify(data.results[0])); (src/app/auth/page.tsx:78), localStorage.getItem('user'); (src/app/dashboard/page.tsx:12)
+[2025-08-26T15:22:33.511764] [INFO] [openrouter:_parse_llm_response:718] - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:22:33.513106] [WARNING] [openrouter:_parse_llm_response:721] - ⚠️ LLM marked localstorage_implementation as: True
+[2025-08-26T15:22:33.514380] [INFO] [openrouter:_normalize_requirements:818] - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:22:33.515497] [WARNING] [openrouter:_convert_to_analysis_result:986] - 🚨 OVERRIDE: Detected cookie usage in actual content, forcing localstorage_implementation to FALSE
+[2025-08-26T15:22:33.517091] [WARNING] [openrouter:analyze_code:177] - Model google/gemini-2.5-flash failed: UnboundLocalError: cannot access local variable 'requirements_met' where it is not associated with a value
+[2025-08-26T15:22:33.518064] [INFO] [openrouter:analyze_code:136] - Attempt 2/3: anthropic/claude-sonnet-4 (context: ***ID_MASKED*** tokens)
+[2025-08-26T15:22:33.518974] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/lib/cookies.ts
+[2025-08-26T15:22:33.519745] [WARNING] [openrouter:_prepare_content_for_model:401] - ⚠️ DETECTED COOKIE USAGE in src/lib/cookies.ts
+[2025-08-26T15:22:33.520487] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/services/auth/login.ts
+[2025-08-26T15:22:33.521238] [WARNING] [openrouter:_prepare_content_for_model:401] - ⚠️ DETECTED COOKIE USAGE in src/services/auth/login.ts
+[2025-08-26T15:22:33.521927] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/app/auth/page.tsx
+[2025-08-26T15:22:33.522783] [INFO] [openrouter:_build_user_prompt:632] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T15:22:33.523585] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+[2025-08-26T15:22:33.524278] [INFO] [openrouter:_analyze_with_model:460] - Total content size: 1760 characters, 3 files
+[2025-08-26T15:23:03.415023] [INFO] [openrouter:_analyze_with_model:504] - LLM Response length: 6010 characters
+[2025-08-26T15:23:03.416624] [INFO] [openrouter:_parse_llm_response:698] - Successfully recovered JSON from LLM response
+[2025-08-26T15:23:03.417623] [WARNING] [openrouter:_parse_llm_response:703] - 🔍 STORAGE METHOD CHECK: {'found_localStorage': True, 'found_cookies': False, 'found_sessionStorage': False, 'storage_details': 'Found localStorage.setItem in src/app/auth/page.tsx line 25, localStorage.getItem in src/app/dashboard/page.tsx line 8, localStorage.removeItem in src/components/LogoutButton.tsx line 6', 'evidence': "localStorage.setItem('user', JSON.stringify(userData)); localStorage.getItem('user'); localStorage.removeItem('user');"}
+[2025-08-26T15:23:03.418524] [WARNING] [openrouter:_parse_llm_response:707] - 📝 EVIDENCE: localStorage.setItem('user', JSON.stringify(userData)); localStorage.getItem('user'); localStorage.removeItem('user');
+[2025-08-26T15:23:03.419395] [INFO] [openrouter:_parse_llm_response:718] - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:23:03.420219] [WARNING] [openrouter:_parse_llm_response:721] - ⚠️ LLM marked localstorage_implementation as: True
+[2025-08-26T15:23:03.421019] [INFO] [openrouter:_normalize_requirements:818] - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:23:03.421901] [WARNING] [openrouter:_convert_to_analysis_result:986] - 🚨 OVERRIDE: Detected cookie usage in actual content, forcing localstorage_implementation to FALSE
+[2025-08-26T15:23:03.423020] [WARNING] [openrouter:analyze_code:177] - Model anthropic/claude-sonnet-4 failed: UnboundLocalError: cannot access local variable 'requirements_met' where it is not associated with a value
+[2025-08-26T15:23:03.423836] [INFO] [openrouter:analyze_code:136] - Attempt 3/3: openai/gpt-3.5-turbo-16k (context: 16000 tokens)
+[2025-08-26T15:23:03.424464] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/lib/cookies.ts
+[2025-08-26T15:23:03.425107] [WARNING] [openrouter:_prepare_content_for_model:401] - ⚠️ DETECTED COOKIE USAGE in src/lib/cookies.ts
+[2025-08-26T15:23:03.425802] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/services/auth/login.ts
+[2025-08-26T15:23:03.426434] [WARNING] [openrouter:_prepare_content_for_model:401] - ⚠️ DETECTED COOKIE USAGE in src/services/auth/login.ts
+[2025-08-26T15:23:03.427053] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/app/auth/page.tsx
+[2025-08-26T15:23:03.427683] [INFO] [openrouter:_build_user_prompt:632] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T15:23:03.428427] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+[2025-08-26T15:23:03.429198] [INFO] [openrouter:_analyze_with_model:460] - Total content size: 1760 characters, 3 files
+[2025-08-26T15:23:07.966280] [INFO] [openrouter:_analyze_with_model:504] - LLM Response length: 1884 characters
+[2025-08-26T15:23:07.967722] [INFO] [openrouter:_parse_llm_response:698] - Successfully recovered JSON from LLM response
+[2025-08-26T15:23:07.968962] [WARNING] [openrouter:_parse_llm_response:703] - 🔍 STORAGE METHOD CHECK: {'found_localStorage': True, 'found_cookies': False, 'found_sessionStorage': False, 'storage_details': 'No evidence found', 'evidence': 'No evidence found'}
+[2025-08-26T15:23:07.970077] [WARNING] [openrouter:_parse_llm_response:707] - 📝 EVIDENCE: No evidence found
+[2025-08-26T15:23:07.970957] [INFO] [openrouter:_parse_llm_response:718] - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:23:07.972031] [WARNING] [openrouter:_parse_llm_response:721] - ⚠️ LLM marked localstorage_implementation as: True
+[2025-08-26T15:23:07.973148] [INFO] [openrouter:_normalize_requirements:818] - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:23:07.974303] [WARNING] [openrouter:_convert_to_analysis_result:986] - 🚨 OVERRIDE: Detected cookie usage in actual content, forcing localstorage_implementation to FALSE
+[2025-08-26T15:23:07.975814] [WARNING] [openrouter:analyze_code:177] - Model openai/gpt-3.5-turbo-16k failed: UnboundLocalError: cannot access local variable 'requirements_met' where it is not associated with a value
+[2025-08-26T15:23:07.977161] [ERROR] [openrouter:analyze_code:185] - All 3 models failed to analyze code
+[2025-08-26T15:23:19.438271] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T15:23:19.518345] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T15:23:19.519305] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T15:23:19.520746] [INFO] [openrouter:analyze_code:124] - Starting code analysis for frontend submission (repo: https://github.com/test/frontend-cookie-test)
+[2025-08-26T15:23:19.521360] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-26T15:23:19.521909] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/lib/cookies.ts
+[2025-08-26T15:23:19.522928] [WARNING] [openrouter:_prepare_content_for_model:401] - ⚠️ DETECTED COOKIE USAGE in src/lib/cookies.ts
+[2025-08-26T15:23:19.523495] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/services/auth/login.ts
+[2025-08-26T15:23:19.524042] [WARNING] [openrouter:_prepare_content_for_model:401] - ⚠️ DETECTED COOKIE USAGE in src/services/auth/login.ts
+[2025-08-26T15:23:19.524606] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/app/auth/page.tsx
+[2025-08-26T15:23:19.525429] [INFO] [openrouter:_build_user_prompt:632] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T15:23:19.526444] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-26T15:23:19.533092] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+[2025-08-26T15:23:19.533927] [INFO] [openrouter:_analyze_with_model:460] - Total content size: 1760 characters, 3 files
+[2025-08-26T15:23:29.183435] [INFO] [openrouter:_analyze_with_model:504] - LLM Response length: 6230 characters
+[2025-08-26T15:23:29.184553] [INFO] [openrouter:_parse_llm_response:698] - Successfully recovered JSON from LLM response
+[2025-08-26T15:23:29.185336] [WARNING] [openrouter:_parse_llm_response:703] - 🔍 STORAGE METHOD CHECK: {'found_localStorage': True, 'found_cookies': False, 'found_sessionStorage': False, 'storage_details': 'Found localStorage.setItem and localStorage.getItem in src/app/auth/page.tsx and src/app/dashboard/page.tsx', 'evidence': "localStorage.setItem('user', JSON.stringify(data.results[0])); (src/app/auth/page.tsx:78), localStorage.getItem('user'); (src/app/dashboard/page.tsx:16)"}
+[2025-08-26T15:23:29.186131] [WARNING] [openrouter:_parse_llm_response:707] - 📝 EVIDENCE: localStorage.setItem('user', JSON.stringify(data.results[0])); (src/app/auth/page.tsx:78), localStorage.getItem('user'); (src/app/dashboard/page.tsx:16)
+[2025-08-26T15:23:29.186797] [INFO] [openrouter:_parse_llm_response:718] - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:23:29.187512] [WARNING] [openrouter:_parse_llm_response:721] - ⚠️ LLM marked localstorage_implementation as: True
+[2025-08-26T15:23:29.188107] [INFO] [openrouter:_normalize_requirements:818] - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:23:29.188694] [WARNING] [openrouter:_convert_to_analysis_result:986] - 🚨 OVERRIDE: Detected cookie usage in actual content, forcing localstorage_implementation to FALSE
+[2025-08-26T15:23:29.189665] [WARNING] [openrouter:analyze_code:177] - Model google/gemini-2.5-flash failed: UnboundLocalError: cannot access local variable 'requirements_met' where it is not associated with a value
+[2025-08-26T15:23:29.190326] [INFO] [openrouter:analyze_code:136] - Attempt 2/3: anthropic/claude-sonnet-4 (context: ***ID_MASKED*** tokens)
+[2025-08-26T15:23:29.190847] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/lib/cookies.ts
+[2025-08-26T15:23:29.191593] [WARNING] [openrouter:_prepare_content_for_model:401] - ⚠️ DETECTED COOKIE USAGE in src/lib/cookies.ts
+[2025-08-26T15:23:29.192253] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/services/auth/login.ts
+[2025-08-26T15:23:29.193080] [WARNING] [openrouter:_prepare_content_for_model:401] - ⚠️ DETECTED COOKIE USAGE in src/services/auth/login.ts
+[2025-08-26T15:23:29.193849] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/app/auth/page.tsx
+[2025-08-26T15:23:29.194515] [INFO] [openrouter:_build_user_prompt:632] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T15:23:29.195355] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+[2025-08-26T15:23:29.195911] [INFO] [openrouter:_analyze_with_model:460] - Total content size: 1760 characters, 3 files
+[2025-08-26T15:24:01.980887] [INFO] [openrouter:_analyze_with_model:504] - LLM Response length: 6443 characters
+[2025-08-26T15:24:01.982742] [INFO] [openrouter:_parse_llm_response:698] - Successfully recovered JSON from LLM response
+[2025-08-26T15:24:01.983854] [WARNING] [openrouter:_parse_llm_response:703] - 🔍 STORAGE METHOD CHECK: {'found_localStorage': True, 'found_cookies': False, 'found_sessionStorage': False, 'storage_details': 'Found localStorage.setItem in src/app/auth/page.tsx line 45, localStorage.getItem in src/app/dashboard/page.tsx line 12, localStorage.removeItem in src/components/LogoutButton.tsx line 8', 'evidence': "localStorage.setItem('user', JSON.stringify(userData)); localStorage.getItem('user'); localStorage.removeItem('user');"}
+[2025-08-26T15:24:01.985092] [WARNING] [openrouter:_parse_llm_response:707] - 📝 EVIDENCE: localStorage.setItem('user', JSON.stringify(userData)); localStorage.getItem('user'); localStorage.removeItem('user');
+[2025-08-26T15:24:01.986127] [INFO] [openrouter:_parse_llm_response:718] - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:24:01.987311] [WARNING] [openrouter:_parse_llm_response:721] - ⚠️ LLM marked localstorage_implementation as: True
+[2025-08-26T15:24:01.988346] [INFO] [openrouter:_normalize_requirements:818] - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:24:01.989430] [WARNING] [openrouter:_convert_to_analysis_result:986] - 🚨 OVERRIDE: Detected cookie usage in actual content, forcing localstorage_implementation to FALSE
+[2025-08-26T15:24:01.990569] [WARNING] [openrouter:analyze_code:177] - Model anthropic/claude-sonnet-4 failed: UnboundLocalError: cannot access local variable 'requirements_met' where it is not associated with a value
+[2025-08-26T15:24:01.991630] [INFO] [openrouter:analyze_code:136] - Attempt 3/3: openai/gpt-3.5-turbo-16k (context: 16000 tokens)
+[2025-08-26T15:24:01.992496] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/lib/cookies.ts
+[2025-08-26T15:24:01.993207] [WARNING] [openrouter:_prepare_content_for_model:401] - ⚠️ DETECTED COOKIE USAGE in src/lib/cookies.ts
+[2025-08-26T15:24:01.993832] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/services/auth/login.ts
+[2025-08-26T15:24:01.994544] [WARNING] [openrouter:_prepare_content_for_model:401] - ⚠️ DETECTED COOKIE USAGE in src/services/auth/login.ts
+[2025-08-26T15:24:01.995160] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/app/auth/page.tsx
+[2025-08-26T15:24:01.995682] [INFO] [openrouter:_build_user_prompt:632] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T15:24:01.996267] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+[2025-08-26T15:24:01.996783] [INFO] [openrouter:_analyze_with_model:460] - Total content size: 1760 characters, 3 files
+[2025-08-26T15:24:07.934130] [INFO] [openrouter:_analyze_with_model:504] - LLM Response length: 2080 characters
+[2025-08-26T15:24:07.935467] [INFO] [openrouter:_parse_llm_response:698] - Successfully recovered JSON from LLM response
+[2025-08-26T15:24:07.936538] [WARNING] [openrouter:_parse_llm_response:703] - 🔍 STORAGE METHOD CHECK: {'found_localStorage': True, 'found_cookies': False, 'found_sessionStorage': False, 'storage_details': 'Found localStorage.setItem and localStorage.getItem in src/utils/auth.ts', 'evidence': 'No evidence found'}
+[2025-08-26T15:24:07.937551] [WARNING] [openrouter:_parse_llm_response:707] - 📝 EVIDENCE: No evidence found
+[2025-08-26T15:24:07.938390] [INFO] [openrouter:_parse_llm_response:718] - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:24:07.939078] [WARNING] [openrouter:_parse_llm_response:721] - ⚠️ LLM marked localstorage_implementation as: True
+[2025-08-26T15:24:07.939810] [INFO] [openrouter:_normalize_requirements:818] - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:24:07.940657] [WARNING] [openrouter:_convert_to_analysis_result:986] - 🚨 OVERRIDE: Detected cookie usage in actual content, forcing localstorage_implementation to FALSE
+[2025-08-26T15:24:07.941582] [WARNING] [openrouter:analyze_code:177] - Model openai/gpt-3.5-turbo-16k failed: UnboundLocalError: cannot access local variable 'requirements_met' where it is not associated with a value
+[2025-08-26T15:24:07.942504] [ERROR] [openrouter:analyze_code:185] - All 3 models failed to analyze code
+[2025-08-26T15:25:27.451428] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T15:25:27.525527] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T15:25:27.526277] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T15:25:27.527639] [INFO] [openrouter:analyze_code:124] - Starting code analysis for frontend submission (repo: https://github.com/test/frontend-cookie-test)
+[2025-08-26T15:25:27.528311] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-26T15:25:27.528974] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/lib/cookies.ts
+[2025-08-26T15:25:27.529570] [WARNING] [openrouter:_prepare_content_for_model:401] - ⚠️ DETECTED COOKIE USAGE in src/lib/cookies.ts
+[2025-08-26T15:25:27.530174] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/services/auth/login.ts
+[2025-08-26T15:25:27.530788] [WARNING] [openrouter:_prepare_content_for_model:401] - ⚠️ DETECTED COOKIE USAGE in src/services/auth/login.ts
+[2025-08-26T15:25:27.531453] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/app/auth/page.tsx
+[2025-08-26T15:25:27.532060] [INFO] [openrouter:_build_user_prompt:632] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T15:25:27.532786] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-26T15:25:27.539042] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+[2025-08-26T15:25:27.539930] [INFO] [openrouter:_analyze_with_model:460] - Total content size: 1760 characters, 3 files
+[2025-08-26T15:25:35.952451] [INFO] [openrouter:_analyze_with_model:504] - LLM Response length: 5659 characters
+[2025-08-26T15:25:35.954105] [INFO] [openrouter:_parse_llm_response:698] - Successfully recovered JSON from LLM response
+[2025-08-26T15:25:35.954994] [WARNING] [openrouter:_parse_llm_response:703] - 🔍 STORAGE METHOD CHECK: {'found_localStorage': True, 'found_cookies': False, 'found_sessionStorage': False, 'storage_details': 'Found localStorage.setItem and localStorage.getItem in src/app/auth/page.tsx and src/app/dashboard/page.tsx', 'evidence': "localStorage.setItem('user', JSON.stringify(data.results[0])); (src/app/auth/page.tsx:78), const user = localStorage.getItem('user'); (src/app/dashboard/page.tsx:18)"}
+[2025-08-26T15:25:35.956112] [WARNING] [openrouter:_parse_llm_response:707] - 📝 EVIDENCE: localStorage.setItem('user', JSON.stringify(data.results[0])); (src/app/auth/page.tsx:78), const user = localStorage.getItem('user'); (src/app/dashboard/page.tsx:18)
+[2025-08-26T15:25:35.957066] [INFO] [openrouter:_parse_llm_response:718] - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:25:35.958118] [WARNING] [openrouter:_parse_llm_response:721] - ⚠️ LLM marked localstorage_implementation as: True
+[2025-08-26T15:25:35.959276] [INFO] [openrouter:_normalize_requirements:818] - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:25:35.960278] [INFO] [openrouter:_convert_to_analysis_result:1069] - Average of positive scores: 82.5% (from [95.0, 80.0, 70.0, 85.0])
+[2025-08-26T15:25:35.960897] [INFO] [openrouter:_convert_to_analysis_result:1114] - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:25:35.961480] [WARNING] [openrouter:_convert_to_analysis_result:1153] - 🚨 OVERRIDE: Detected cookie usage in actual content, forcing localstorage_implementation to FALSE
+[2025-08-26T15:25:35.962050] [WARNING] [openrouter:_convert_to_analysis_result:1158] - 🚨 localStorage requirement failed - forcing REJECT recommendation
+[2025-08-26T15:25:35.963150] [INFO] [openrouter:analyze_code:152] - Analysis successful with google/gemini-2.5-flash
+[2025-08-26T15:26:11.315669] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T15:26:11.384986] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T15:26:11.385680] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T15:26:11.386924] [INFO] [openrouter:analyze_code:124] - Starting code analysis for frontend submission (repo: https://github.com/test/frontend-cookie-test)
+[2025-08-26T15:26:11.387484] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-26T15:26:11.388081] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/lib/cookies.ts
+[2025-08-26T15:26:11.388741] [WARNING] [openrouter:_prepare_content_for_model:401] - ⚠️ DETECTED COOKIE USAGE in src/lib/cookies.ts
+[2025-08-26T15:26:11.389458] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/services/auth/login.ts
+[2025-08-26T15:26:11.390098] [WARNING] [openrouter:_prepare_content_for_model:401] - ⚠️ DETECTED COOKIE USAGE in src/services/auth/login.ts
+[2025-08-26T15:26:11.401031] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/app/auth/page.tsx
+[2025-08-26T15:26:11.401848] [INFO] [openrouter:_build_user_prompt:632] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T15:26:11.402735] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-26T15:26:11.408160] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+[2025-08-26T15:26:11.408765] [INFO] [openrouter:_analyze_with_model:460] - Total content size: 1760 characters, 3 files
+[2025-08-26T15:26:20.503859] [INFO] [openrouter:_analyze_with_model:504] - LLM Response length: 6095 characters
+[2025-08-26T15:26:20.505478] [INFO] [openrouter:_parse_llm_response:698] - Successfully recovered JSON from LLM response
+[2025-08-26T15:26:20.506648] [WARNING] [openrouter:_parse_llm_response:703] - 🔍 STORAGE METHOD CHECK: {'found_localStorage': True, 'found_cookies': False, 'found_sessionStorage': False, 'storage_details': 'Found localStorage.setItem and localStorage.getItem in src/app/auth/page.tsx and src/app/dashboard/page.tsx', 'evidence': "localStorage.setItem('user', JSON.stringify(data.results[0])); (src/app/auth/page.tsx:75), localStorage.getItem('user'); (src/app/dashboard/page.tsx:15)"}
+[2025-08-26T15:26:20.507677] [WARNING] [openrouter:_parse_llm_response:707] - 📝 EVIDENCE: localStorage.setItem('user', JSON.stringify(data.results[0])); (src/app/auth/page.tsx:75), localStorage.getItem('user'); (src/app/dashboard/page.tsx:15)
+[2025-08-26T15:26:20.508590] [INFO] [openrouter:_parse_llm_response:718] - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:26:20.509533] [WARNING] [openrouter:_parse_llm_response:721] - ⚠️ LLM marked localstorage_implementation as: True
+[2025-08-26T15:26:20.510248] [INFO] [openrouter:_normalize_requirements:818] - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:26:20.511068] [INFO] [openrouter:_convert_to_analysis_result:1069] - Average of positive scores: 77.5% (from [95.0, 70.0, 65.0, 80.0])
+[2025-08-26T15:26:20.511695] [INFO] [openrouter:_convert_to_analysis_result:1114] - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:26:20.512522] [WARNING] [openrouter:_convert_to_analysis_result:1153] - 🚨 OVERRIDE: Detected cookie usage in actual content, forcing localstorage_implementation to FALSE
+[2025-08-26T15:26:20.513202] [WARNING] [openrouter:_convert_to_analysis_result:1158] - 🚨 localStorage requirement failed - forcing REJECT recommendation
+[2025-08-26T15:26:20.514645] [INFO] [openrouter:analyze_code:152] - Analysis successful with google/gemini-2.5-flash
+[2025-08-26T15:31:46.353131] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T15:31:46.423373] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T15:31:46.424172] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T15:31:46.425543] [INFO] [openrouter:analyze_code:124] - Starting code analysis for frontend submission (repo: https://github.com/test/cookie-penalty-test)
+[2025-08-26T15:31:46.426193] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-26T15:31:46.426902] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/lib/cookies.ts
+[2025-08-26T15:31:46.427618] [WARNING] [openrouter:_prepare_content_for_model:401] - ⚠️ DETECTED COOKIE USAGE in src/lib/cookies.ts
+[2025-08-26T15:31:46.428329] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/app/auth/page.tsx
+[2025-08-26T15:31:46.428948] [WARNING] [openrouter:_prepare_content_for_model:401] - ⚠️ DETECTED COOKIE USAGE in src/app/auth/page.tsx
+[2025-08-26T15:31:46.429724] [INFO] [openrouter:_build_user_prompt:632] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T15:31:46.430284] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-26T15:31:46.434753] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+[2025-08-26T15:31:46.435388] [INFO] [openrouter:_analyze_with_model:460] - Total content size: 2690 characters, 4 files
+[2025-08-26T15:31:53.089001] [INFO] [openrouter:_analyze_with_model:504] - LLM Response length: 5033 characters
+[2025-08-26T15:31:53.090675] [INFO] [openrouter:_parse_llm_response:698] - Successfully recovered JSON from LLM response
+[2025-08-26T15:31:53.091765] [WARNING] [openrouter:_parse_llm_response:703] - 🔍 STORAGE METHOD CHECK: {'found_localStorage': True, 'found_cookies': False, 'found_sessionStorage': False, 'storage_details': 'Found localStorage.setItem and localStorage.getItem usage in src/app/auth/page.tsx and src/app/dashboard/page.tsx', 'evidence': "localStorage.setItem('user', JSON.stringify(user)); (src/app/auth/page.tsx:75), localStorage.getItem('user'); (src/app/dashboard/page.tsx:12)"}
+[2025-08-26T15:31:53.092914] [WARNING] [openrouter:_parse_llm_response:707] - 📝 EVIDENCE: localStorage.setItem('user', JSON.stringify(user)); (src/app/auth/page.tsx:75), localStorage.getItem('user'); (src/app/dashboard/page.tsx:12)
+[2025-08-26T15:31:53.093822] [INFO] [openrouter:_parse_llm_response:718] - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:31:53.094670] [WARNING] [openrouter:_parse_llm_response:721] - ⚠️ LLM marked localstorage_implementation as: True
+[2025-08-26T15:31:53.095626] [INFO] [openrouter:_normalize_requirements:818] - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:31:53.096606] [INFO] [openrouter:_convert_to_analysis_result:1069] - Average of positive scores: 82.5% (from [95.0, 80.0, 70.0, 85.0])
+[2025-08-26T15:31:53.097569] [INFO] [openrouter:_convert_to_analysis_result:1114] - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:31:53.098474] [WARNING] [openrouter:_convert_to_analysis_result:1153] - ⚠️ Detected cookie usage instead of localStorage - marking requirement as not met
+[2025-08-26T15:31:53.100613] [INFO] [openrouter:analyze_code:152] - Analysis successful with google/gemini-2.5-flash
+[2025-08-26T15:32:05.261481] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T15:32:05.324497] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T15:32:05.325228] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T15:32:05.326353] [INFO] [openrouter:analyze_code:124] - Starting code analysis for frontend submission (repo: https://github.com/test/cookie-penalty-test)
+[2025-08-26T15:32:05.326925] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-26T15:32:05.327468] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/lib/cookies.ts
+[2025-08-26T15:32:05.328079] [WARNING] [openrouter:_prepare_content_for_model:401] - ⚠️ DETECTED COOKIE USAGE in src/lib/cookies.ts
+[2025-08-26T15:32:05.328668] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/app/auth/page.tsx
+[2025-08-26T15:32:05.329483] [WARNING] [openrouter:_prepare_content_for_model:401] - ⚠️ DETECTED COOKIE USAGE in src/app/auth/page.tsx
+[2025-08-26T15:32:05.330094] [INFO] [openrouter:_build_user_prompt:632] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T15:32:05.330696] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-26T15:32:05.335078] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+[2025-08-26T15:32:05.335695] [INFO] [openrouter:_analyze_with_model:460] - Total content size: 2690 characters, 4 files
+[2025-08-26T15:32:14.855161] [INFO] [openrouter:_analyze_with_model:504] - LLM Response length: 5410 characters
+[2025-08-26T15:32:14.858839] [WARNING] [openrouter:_parse_llm_response:739] - Recovered JSON lacks minimum required fields
+[2025-08-26T15:32:14.859987] [WARNING] [openrouter:_normalize_requirements:790] - Requirements all False or missing - attempting inference from feedback
+[2025-08-26T15:32:14.861138] [INFO] [openrouter:_normalize_requirements:818] - Normalized requirements_met: {}
+[2025-08-26T15:32:14.862149] [INFO] [openrouter:_convert_to_analysis_result:1069] - Average of positive scores: 0.0% (from [0.0, 0.0, 0.0, 0.0])
+[2025-08-26T15:32:14.863093] [INFO] [openrouter:_convert_to_analysis_result:1114] - Extracted requirements_met: {}
+[2025-08-26T15:32:14.863886] [WARNING] [openrouter:_convert_to_analysis_result:1118] - Requirements all False or missing - attempting inference from feedback
+[2025-08-26T15:32:14.864583] [WARNING] [openrouter:_convert_to_analysis_result:1153] - ⚠️ Detected cookie usage instead of localStorage - marking requirement as not met
+[2025-08-26T15:32:14.865268] [WARNING] [openrouter:_convert_to_analysis_result:1179] - 📝 Added 20-point penalty for using cookies instead of localStorage
+[2025-08-26T15:32:14.866203] [INFO] [openrouter:analyze_code:152] - Analysis successful with google/gemini-2.5-flash
+[2025-08-26T15:32:52.409444] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T15:32:53.999323] [INFO] [bot:<module>:1283] - Starting bot (attempt #1)...
+[2025-08-26T15:32:54.000177] [INFO] [bot:main:1160] - Starting CV Review Bot...
+[2025-08-26T15:32:54.774784] [INFO] [bot:initialize_adapters:1137] - Initializing adapters...
+[2025-08-26T15:32:54.775590] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-26T15:32:54.779495] [INFO] [sqlite:_init:724] - Database tables created/verified
+[2025-08-26T15:32:54.780512] [INFO] [bot:initialize_adapters:1142] - Storage adapter initialized
+[2025-08-26T15:32:54.969930] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-26T15:32:54.971458] [INFO] [bot:initialize_adapters:1146] - Repository adapter initialized
+[2025-08-26T15:32:54.973200] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T15:32:54.974644] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T15:32:54.976145] [INFO] [bot:initialize_adapters:1150] - Analyzer adapter initialized
+[2025-08-26T15:32:54.977217] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-26T15:32:55.794552] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-26T15:32:55.796662] [INFO] [bot:initialize_adapters:1155] - Notification adapter initialized
+[2025-08-26T15:32:56.309169] [INFO] [bot:main:1203] - Cleared any existing webhooks
+[2025-08-26T15:32:56.311422] [INFO] [bot:main:1214] - Bot is ready! Starting polling...
+[2025-08-26T15:33:23.926957] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-26T15:33:31.842762] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/Talkhestani/digitaldekamond
+[2025-08-26T15:33:31.844460] [INFO] [validators:validate_github_url:117] - Successfully validated GitHub URL: Talkhestani/digitaldekamond
+[2025-08-26T15:33:37.113384] [INFO] [bot:role_callback:245] - Starting analysis for https://github.com/Talkhestani/digitaldekamond as frontend
+[2025-08-26T15:33:37.378691] [INFO] [sqlite:create_submission:109] - Created submission 63 for user ***ID_MASKED***
+[2025-08-26T15:33:37.379606] [INFO] [bot:process_analysis:316] - Created submission 63
+[2025-08-26T15:33:37.399159] [INFO] [sqlite:update_submission:281] - Updated submission 63: status=SubmissionStatus.ANALYZING
+[2025-08-26T15:33:37.627428] [INFO] [github:fetch_repository:141] - Fetching GitHub repository: https://github.com/Talkhestani/digitaldekamond for role: frontend
+[2025-08-26T15:33:37.628785] [INFO] [github:_clone_repository:362] - Cloning repository: https://github.com/Talkhestani/digitaldekamond (attempt 1/3)
+[2025-08-26T15:33:39.005972] [INFO] [github:_clone_repository:381] - Repository cloned successfully
+[2025-08-26T15:33:39.007822] [INFO] [github:fetch_repository:160] - Repository size: 0.12MB
+[2025-08-26T15:33:39.009054] [INFO] [github:fetch_repository:173] - Extracting files based on patterns
+[2025-08-26T15:33:39.031428] [INFO] [github:_extract_files:508] - Extracted files - Critical: 25, Important: 0, Useful: 0, Total unique: 25
+[2025-08-26T15:33:39.032656] [INFO] [github:fetch_repository:175] - Extracted 25 files using patterns
+[2025-08-26T15:33:39.033942] [INFO] [github:fetch_repository:182] - Raw content: 8790 tokens
+[2025-08-26T15:33:39.044533] [INFO] [github:fetch_repository:205] - Successfully processed repository: 25 files, 8790 tokens
+[2025-08-26T15:33:39.045972] [INFO] [bot:process_analysis:333] - Fetched repository: 25 files
+[2025-08-26T15:33:39.283540] [INFO] [openrouter:analyze_code:124] - Starting code analysis for frontend submission (repo: https://github.com/Talkhestani/digitaldekamond)
+[2025-08-26T15:33:39.284321] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-26T15:33:39.285177] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/app/login/page.tsx
+[2025-08-26T15:33:39.286052] [INFO] [openrouter:_build_user_prompt:632] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T15:33:39.286778] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-26T15:33:39.291028] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+[2025-08-26T15:33:39.291817] [INFO] [openrouter:_analyze_with_model:460] - Total content size: 37081 characters, 25 files
+[2025-08-26T15:33:47.880873] [INFO] [openrouter:_analyze_with_model:504] - LLM Response length: 5376 characters
+[2025-08-26T15:33:47.883825] [INFO] [openrouter:_parse_llm_response:698] - Successfully recovered JSON from LLM response
+[2025-08-26T15:33:47.885866] [WARNING] [openrouter:_parse_llm_response:703] - 🔍 STORAGE METHOD CHECK: {'found_localStorage': True, 'found_cookies': False, 'found_sessionStorage': False, 'storage_details': 'Found localStorage.setItem and localStorage.getItem in src/app/auth/page.tsx and src/app/dashboard/page.tsx', 'evidence': "localStorage.setItem('user', JSON.stringify(data.results[0])); (src/app/auth/page.tsx:75), localStorage.getItem('user'); (src/app/dashboard/page.tsx:12)"}
+[2025-08-26T15:33:47.887675] [WARNING] [openrouter:_parse_llm_response:707] - 📝 EVIDENCE: localStorage.setItem('user', JSON.stringify(data.results[0])); (src/app/auth/page.tsx:75), localStorage.getItem('user'); (src/app/dashboard/page.tsx:12)
+[2025-08-26T15:33:47.888641] [INFO] [openrouter:_parse_llm_response:718] - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:33:47.889431] [WARNING] [openrouter:_parse_llm_response:721] - ⚠️ LLM marked localstorage_implementation as: True
+[2025-08-26T15:33:47.890486] [INFO] [openrouter:_normalize_requirements:818] - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:33:47.891509] [INFO] [openrouter:_convert_to_analysis_result:1069] - Average of positive scores: 82.5% (from [95.0, 80.0, 70.0, 85.0])
+[2025-08-26T15:33:47.892298] [INFO] [openrouter:_convert_to_analysis_result:1114] - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:33:47.893819] [INFO] [openrouter:analyze_code:152] - Analysis successful with google/gemini-2.5-flash
+[2025-08-26T15:33:47.894575] [INFO] [bot:process_analysis:368] - Analysis complete for submission 63
+[2025-08-26T15:33:47.929407] [INFO] [sqlite:create_report:453] - Created report 43 for submission 63
+[2025-08-26T15:33:47.930646] [INFO] [bot:process_analysis:385] - Created report 43
+[2025-08-26T15:33:47.949285] [INFO] [sqlite:update_submission:281] - Updated submission 63: status=SubmissionStatus.COMPLETED
+[2025-08-26T15:33:49.290560] [INFO] [telegram:send_analysis_complete:279] - Analysis report sent for submission 63
+[2025-08-26T15:33:49.493250] [INFO] [github:cleanup:310] - GitHub adapter cleanup completed
+[2025-08-26T15:46:03.416848] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T15:46:05.440648] [INFO] [bot:<module>:1283] - Starting bot (attempt #1)...
+[2025-08-26T15:46:05.441424] [INFO] [bot:main:1160] - Starting CV Review Bot...
+[2025-08-26T15:46:06.381392] [INFO] [bot:initialize_adapters:1137] - Initializing adapters...
+[2025-08-26T15:46:06.382205] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-26T15:46:06.386197] [INFO] [sqlite:_init:724] - Database tables created/verified
+[2025-08-26T15:46:06.387311] [INFO] [bot:initialize_adapters:1142] - Storage adapter initialized
+[2025-08-26T15:46:06.607314] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-26T15:46:06.608890] [INFO] [bot:initialize_adapters:1146] - Repository adapter initialized
+[2025-08-26T15:46:06.610155] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T15:46:06.611278] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T15:46:06.612421] [INFO] [bot:initialize_adapters:1150] - Analyzer adapter initialized
+[2025-08-26T15:46:06.613570] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-26T15:46:07.749058] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-26T15:46:07.750415] [INFO] [bot:initialize_adapters:1155] - Notification adapter initialized
+[2025-08-26T15:46:08.315895] [INFO] [bot:main:1203] - Cleared any existing webhooks
+[2025-08-26T15:46:08.317256] [INFO] [bot:main:1214] - Bot is ready! Starting polling...
+[2025-08-26T15:46:10.411721] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-26T15:46:12.315521] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/Talkhestani/digitaldekamond
+[2025-08-26T15:46:12.317381] [INFO] [validators:validate_github_url:117] - Successfully validated GitHub URL: Talkhestani/digitaldekamond
+[2025-08-26T15:46:15.003497] [INFO] [bot:role_callback:245] - Starting analysis for https://github.com/Talkhestani/digitaldekamond as frontend
+[2025-08-26T15:46:15.227069] [INFO] [bot:process_analysis:297] - Found existing submission 63, removing it
+[2025-08-26T15:46:15.262127] [INFO] [sqlite:_delete:222] - Deleted submission 63 and 1 associated reports
+[2025-08-26T15:46:15.524889] [INFO] [sqlite:create_submission:109] - Created submission 63 for user ***ID_MASKED***
+[2025-08-26T15:46:15.526303] [INFO] [bot:process_analysis:316] - Created submission 63
+[2025-08-26T15:46:15.550637] [INFO] [sqlite:update_submission:281] - Updated submission 63: status=SubmissionStatus.ANALYZING
+[2025-08-26T15:46:15.767395] [INFO] [github:fetch_repository:141] - Fetching GitHub repository: https://github.com/Talkhestani/digitaldekamond for role: frontend
+[2025-08-26T15:46:15.769164] [INFO] [github:_clone_repository:362] - Cloning repository: https://github.com/Talkhestani/digitaldekamond (attempt 1/3)
+[2025-08-26T15:46:17.417387] [INFO] [github:_clone_repository:381] - Repository cloned successfully
+[2025-08-26T15:46:17.419533] [INFO] [github:fetch_repository:160] - Repository size: 0.12MB
+[2025-08-26T15:46:17.420503] [INFO] [github:fetch_repository:173] - Extracting files based on patterns
+[2025-08-26T15:46:17.443381] [INFO] [github:_extract_files:508] - Extracted files - Critical: 25, Important: 0, Useful: 0, Total unique: 25
+[2025-08-26T15:46:17.444866] [INFO] [github:fetch_repository:175] - Extracted 25 files using patterns
+[2025-08-26T15:46:17.446256] [INFO] [github:fetch_repository:182] - Raw content: 8737 tokens
+[2025-08-26T15:46:17.456788] [INFO] [github:fetch_repository:205] - Successfully processed repository: 25 files, 8737 tokens
+[2025-08-26T15:46:17.458155] [INFO] [bot:process_analysis:333] - Fetched repository: 25 files
+[2025-08-26T15:46:17.680238] [INFO] [openrouter:analyze_code:124] - Starting code analysis for frontend submission (repo: https://github.com/Talkhestani/digitaldekamond)
+[2025-08-26T15:46:17.681209] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-26T15:46:17.682101] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/app/login/page.tsx
+[2025-08-26T15:46:17.683201] [INFO] [openrouter:_build_user_prompt:632] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T15:46:17.684494] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-26T15:46:17.689744] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+[2025-08-26T15:46:17.690578] [INFO] [openrouter:_analyze_with_model:460] - Total content size: 36648 characters, 25 files
+[2025-08-26T15:46:26.522435] [INFO] [openrouter:_analyze_with_model:504] - LLM Response length: 5424 characters
+[2025-08-26T15:46:26.525400] [INFO] [openrouter:_parse_llm_response:698] - Successfully recovered JSON from LLM response
+[2025-08-26T15:46:26.527113] [WARNING] [openrouter:_parse_llm_response:703] - 🔍 STORAGE METHOD CHECK: {'found_localStorage': True, 'found_cookies': False, 'found_sessionStorage': False, 'storage_details': 'Found localStorage.setItem and localStorage.getItem in src/app/auth/page.tsx line 45 and src/app/dashboard/page.tsx line 15', 'evidence': "localStorage.setItem('user', JSON.stringify(data.results[0]));\nlocalStorage.getItem('user');"}
+[2025-08-26T15:46:26.528608] [WARNING] [openrouter:_parse_llm_response:707] - 📝 EVIDENCE: localStorage.setItem('user', JSON.stringify(data.results[0]));
+localStorage.getItem('user');
+[2025-08-26T15:46:26.529756] [INFO] [openrouter:_parse_llm_response:718] - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:46:26.530971] [WARNING] [openrouter:_parse_llm_response:721] - ⚠️ LLM marked localstorage_implementation as: True
+[2025-08-26T15:46:26.532367] [INFO] [openrouter:_normalize_requirements:818] - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:46:26.533804] [INFO] [openrouter:_convert_to_analysis_result:1069] - Average of positive scores: 82.5% (from [95.0, 80.0, 70.0, 85.0])
+[2025-08-26T15:46:26.534890] [INFO] [openrouter:_convert_to_analysis_result:1114] - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True}
+[2025-08-26T15:46:26.536309] [INFO] [openrouter:analyze_code:152] - Analysis successful with google/gemini-2.5-flash
+[2025-08-26T15:46:26.537281] [INFO] [bot:process_analysis:368] - Analysis complete for submission 63
+[2025-08-26T15:46:26.572491] [INFO] [sqlite:create_report:453] - Created report 43 for submission 63
+[2025-08-26T15:46:26.573674] [INFO] [bot:process_analysis:385] - Created report 43
+[2025-08-26T15:46:26.590840] [INFO] [sqlite:update_submission:281] - Updated submission 63: status=SubmissionStatus.COMPLETED
+[2025-08-26T15:46:28.076742] [INFO] [telegram:send_analysis_complete:279] - Analysis report sent for submission 63
+[2025-08-26T15:46:28.308757] [INFO] [github:cleanup:310] - GitHub adapter cleanup completed
+[2025-08-26T15:59:05.751938] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T15:59:05.835254] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T15:59:05.835902] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T15:59:05.837506] [INFO] [openrouter:analyze_code:124] - Starting code analysis for frontend submission (repo: https://github.com/test/complete-frontend-test)
+[2025-08-26T15:59:05.838345] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-26T15:59:05.839212] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/app/auth/page.tsx
+[2025-08-26T15:59:05.840055] [INFO] [openrouter:_build_user_prompt:632] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T15:59:05.840948] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-26T15:59:05.845769] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+[2025-08-26T15:59:05.846573] [INFO] [openrouter:_analyze_with_model:460] - Total content size: 5196 characters, 9 files
+[2025-08-26T15:59:15.418361] [INFO] [openrouter:_analyze_with_model:504] - LLM Response length: 4965 characters
+[2025-08-26T15:59:15.420015] [INFO] [openrouter:_parse_llm_response:698] - Successfully recovered JSON from LLM response
+[2025-08-26T15:59:15.421315] [WARNING] [openrouter:_parse_llm_response:703] - 🔍 STORAGE METHOD CHECK: {'found_localStorage': True, 'found_cookies': False, 'found_sessionStorage': False, 'storage_details': 'Found localStorage.setItem and localStorage.getItem in src/app/login/page.tsx line 100 and src/app/dashboard/page.tsx line 20', 'evidence': "localStorage.setItem('user', JSON.stringify(data.results[0])); (src/app/login/page.tsx:100), localStorage.getItem('user'); (src/app/dashboard/page.tsx:20)"}
+[2025-08-26T15:59:15.422785] [WARNING] [openrouter:_parse_llm_response:707] - 📝 EVIDENCE: localStorage.setItem('user', JSON.stringify(data.results[0])); (src/app/login/page.tsx:100), localStorage.getItem('user'); (src/app/dashboard/page.tsx:20)
+[2025-08-26T15:59:15.423513] [INFO] [openrouter:_parse_llm_response:718] - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+[2025-08-26T15:59:15.424178] [WARNING] [openrouter:_parse_llm_response:721] - ⚠️ LLM marked localstorage_implementation as: True
+[2025-08-26T15:59:15.424949] [INFO] [openrouter:_normalize_requirements:818] - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+[2025-08-26T15:59:15.426160] [WARNING] [openrouter:analyze_code:177] - Model google/gemini-2.5-flash failed: AttributeError: 'list' object has no attribute 'get'
+[2025-08-26T15:59:15.427051] [INFO] [openrouter:analyze_code:136] - Attempt 2/3: anthropic/claude-sonnet-4 (context: ***ID_MASKED*** tokens)
+[2025-08-26T15:59:15.428135] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/app/auth/page.tsx
+[2025-08-26T15:59:15.429069] [INFO] [openrouter:_build_user_prompt:632] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T15:59:15.430087] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+[2025-08-26T15:59:15.430907] [INFO] [openrouter:_analyze_with_model:460] - Total content size: 5196 characters, 9 files
+[2025-08-26T15:59:49.908884] [INFO] [openrouter:_analyze_with_model:504] - LLM Response length: 6947 characters
+[2025-08-26T15:59:49.910187] [INFO] [openrouter:_parse_llm_response:698] - Successfully recovered JSON from LLM response
+[2025-08-26T15:59:49.911212] [WARNING] [openrouter:_parse_llm_response:703] - 🔍 STORAGE METHOD CHECK: {'found_localStorage': True, 'found_cookies': False, 'found_sessionStorage': False, 'storage_details': 'Found localStorage usage in src/lib/auth.ts and src/hooks/useAuth.ts', 'evidence': "localStorage.setItem('user', JSON.stringify(userData)); and localStorage.getItem('user') found in src/lib/auth.ts lines 15 and 20"}
+[2025-08-26T15:59:49.912133] [WARNING] [openrouter:_parse_llm_response:707] - 📝 EVIDENCE: localStorage.setItem('user', JSON.stringify(userData)); and localStorage.getItem('user') found in src/lib/auth.ts lines 15 and 20
+[2025-08-26T15:59:49.912911] [INFO] [openrouter:_parse_llm_response:718] - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+[2025-08-26T15:59:49.913786] [WARNING] [openrouter:_parse_llm_response:721] - ⚠️ LLM marked localstorage_implementation as: True
+[2025-08-26T15:59:49.914682] [INFO] [openrouter:_normalize_requirements:818] - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+[2025-08-26T15:59:49.915544] [INFO] [openrouter:_convert_to_analysis_result:1069] - Average of positive scores: 87.5% (from [95.0, 85.0, 80.0, 90.0])
+[2025-08-26T15:59:49.916154] [INFO] [openrouter:_convert_to_analysis_result:1114] - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+[2025-08-26T15:59:49.917184] [INFO] [openrouter:analyze_code:152] - Analysis successful with anthropic/claude-sonnet-4
+[2025-08-26T16:00:55.203351] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T16:00:56.884111] [INFO] [bot:<module>:1283] - Starting bot (attempt #1)...
+[2025-08-26T16:00:56.885027] [INFO] [bot:main:1160] - Starting CV Review Bot...
+[2025-08-26T16:00:57.645782] [INFO] [bot:initialize_adapters:1137] - Initializing adapters...
+[2025-08-26T16:00:57.646916] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-26T16:00:57.652343] [INFO] [sqlite:_init:724] - Database tables created/verified
+[2025-08-26T16:00:57.653650] [INFO] [bot:initialize_adapters:1142] - Storage adapter initialized
+[2025-08-26T16:00:57.853536] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-26T16:00:57.855150] [INFO] [bot:initialize_adapters:1146] - Repository adapter initialized
+[2025-08-26T16:00:57.856385] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T16:00:57.857742] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T16:00:57.858997] [INFO] [bot:initialize_adapters:1150] - Analyzer adapter initialized
+[2025-08-26T16:00:57.860118] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-26T16:00:58.672004] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-26T16:00:58.673503] [INFO] [bot:initialize_adapters:1155] - Notification adapter initialized
+[2025-08-26T16:00:59.197758] [INFO] [bot:main:1203] - Cleared any existing webhooks
+[2025-08-26T16:00:59.199239] [INFO] [bot:main:1214] - Bot is ready! Starting polling...
+[2025-08-26T16:01:01.886717] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-26T16:01:10.210717] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/DevineDecrypter/dekamond-task
+[2025-08-26T16:01:10.212841] [INFO] [validators:validate_github_url:117] - Successfully validated GitHub URL: DevineDecrypter/dekamond-task
+[2025-08-26T16:01:12.676705] [INFO] [bot:role_callback:245] - Starting analysis for https://github.com/DevineDecrypter/dekamond-task as frontend
+[2025-08-26T16:01:12.878849] [INFO] [bot:process_analysis:297] - Found existing submission 62, removing it
+[2025-08-26T16:01:12.917189] [INFO] [sqlite:_delete:222] - Deleted submission 62 and 1 associated reports
+[2025-08-26T16:01:13.134707] [INFO] [sqlite:create_submission:109] - Created submission 64 for user ***ID_MASKED***
+[2025-08-26T16:01:13.135968] [INFO] [bot:process_analysis:316] - Created submission 64
+[2025-08-26T16:01:13.156377] [INFO] [sqlite:update_submission:281] - Updated submission 64: status=SubmissionStatus.ANALYZING
+[2025-08-26T16:01:13.385232] [INFO] [github:fetch_repository:141] - Fetching GitHub repository: https://github.com/DevineDecrypter/dekamond-task for role: frontend
+[2025-08-26T16:01:13.387228] [INFO] [github:_clone_repository:362] - Cloning repository: https://github.com/DevineDecrypter/dekamond-task (attempt 1/3)
+[2025-08-26T16:01:14.879818] [INFO] [github:_clone_repository:381] - Repository cloned successfully
+[2025-08-26T16:01:14.881553] [INFO] [github:fetch_repository:160] - Repository size: 0.39MB
+[2025-08-26T16:01:14.882613] [INFO] [github:fetch_repository:173] - Extracting files based on patterns
+[2025-08-26T16:01:14.904264] [INFO] [github:_extract_files:508] - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+[2025-08-26T16:01:14.905469] [INFO] [github:fetch_repository:175] - Extracted 30 files using patterns
+[2025-08-26T16:01:14.906510] [INFO] [github:fetch_repository:182] - Raw content: 9117 tokens
+[2025-08-26T16:01:14.915773] [INFO] [github:fetch_repository:205] - Successfully processed repository: 30 files, 9117 tokens
+[2025-08-26T16:01:14.917174] [INFO] [bot:process_analysis:333] - Fetched repository: 30 files
+[2025-08-26T16:01:15.112560] [INFO] [openrouter:analyze_code:124] - Starting code analysis for frontend submission (repo: https://github.com/DevineDecrypter/dekamond-task)
+[2025-08-26T16:01:15.113995] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-26T16:01:15.115043] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/lib/cookies.ts
+[2025-08-26T16:01:15.115828] [WARNING] [openrouter:_prepare_content_for_model:401] - ⚠️ DETECTED COOKIE USAGE in src/lib/cookies.ts
+[2025-08-26T16:01:15.116539] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/services/auth/login.ts
+[2025-08-26T16:01:15.117236] [WARNING] [openrouter:_prepare_content_for_model:401] - ⚠️ DETECTED COOKIE USAGE in src/services/auth/login.ts
+[2025-08-26T16:01:15.118015] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/lib/utils/authUtils.ts
+[2025-08-26T16:01:15.118864] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/app/login/page.tsx
+[2025-08-26T16:01:15.119680] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/components/auth/LoginForm.tsx
+[2025-08-26T16:01:15.120610] [INFO] [openrouter:_build_user_prompt:632] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T16:01:15.121412] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-26T16:01:15.126279] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+[2025-08-26T16:01:15.127150] [INFO] [openrouter:_analyze_with_model:460] - Total content size: 37259 characters, 30 files
+[2025-08-26T16:01:22.490180] [INFO] [openrouter:_analyze_with_model:504] - LLM Response length: 5596 characters
+[2025-08-26T16:01:22.492815] [INFO] [openrouter:_parse_llm_response:698] - Successfully recovered JSON from LLM response
+[2025-08-26T16:01:22.494764] [WARNING] [openrouter:_parse_llm_response:703] - 🔍 STORAGE METHOD CHECK: {'found_localStorage': True, 'found_cookies': False, 'found_sessionStorage': False, 'storage_details': 'Found localStorage.setItem and localStorage.getItem in src/app/auth/page.tsx and src/lib/auth.ts', 'evidence': "localStorage.setItem('user', JSON.stringify(user)); (src/app/auth/page.tsx:50), localStorage.getItem('user'); (src/lib/auth.ts:5)"}
+[2025-08-26T16:01:22.496456] [WARNING] [openrouter:_parse_llm_response:707] - 📝 EVIDENCE: localStorage.setItem('user', JSON.stringify(user)); (src/app/auth/page.tsx:50), localStorage.getItem('user'); (src/lib/auth.ts:5)
+[2025-08-26T16:01:22.497965] [INFO] [openrouter:_parse_llm_response:718] - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+[2025-08-26T16:01:22.499207] [WARNING] [openrouter:_parse_llm_response:721] - ⚠️ LLM marked localstorage_implementation as: True
+[2025-08-26T16:01:22.500245] [INFO] [openrouter:_normalize_requirements:818] - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+[2025-08-26T16:01:22.501716] [WARNING] [openrouter:analyze_code:177] - Model google/gemini-2.5-flash failed: AttributeError: 'list' object has no attribute 'get'
+[2025-08-26T16:01:22.502772] [INFO] [openrouter:analyze_code:136] - Attempt 2/3: anthropic/claude-sonnet-4 (context: ***ID_MASKED*** tokens)
+[2025-08-26T16:01:22.503723] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/lib/cookies.ts
+[2025-08-26T16:01:22.504702] [WARNING] [openrouter:_prepare_content_for_model:401] - ⚠️ DETECTED COOKIE USAGE in src/lib/cookies.ts
+[2025-08-26T16:01:22.505613] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/services/auth/login.ts
+[2025-08-26T16:01:22.506631] [WARNING] [openrouter:_prepare_content_for_model:401] - ⚠️ DETECTED COOKIE USAGE in src/services/auth/login.ts
+[2025-08-26T16:01:22.507596] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/lib/utils/authUtils.ts
+[2025-08-26T16:01:22.508614] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/app/login/page.tsx
+[2025-08-26T16:01:22.509453] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/components/auth/LoginForm.tsx
+[2025-08-26T16:01:22.510474] [INFO] [openrouter:_build_user_prompt:632] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T16:01:22.511359] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+[2025-08-26T16:01:22.512320] [INFO] [openrouter:_analyze_with_model:460] - Total content size: 37259 characters, 30 files
+[2025-08-26T16:01:55.949399] [INFO] [openrouter:_analyze_with_model:504] - LLM Response length: 6423 characters
+[2025-08-26T16:01:55.950943] [INFO] [openrouter:_parse_llm_response:698] - Successfully recovered JSON from LLM response
+[2025-08-26T16:01:55.952058] [WARNING] [openrouter:_parse_llm_response:703] - 🔍 STORAGE METHOD CHECK: {'found_localStorage': True, 'found_cookies': False, 'found_sessionStorage': False, 'storage_details': 'Found localStorage.setItem in src/lib/auth.ts line 15 and localStorage.getItem in src/lib/auth.ts line 8, localStorage.removeItem in src/components/LogoutButton.tsx line 12', 'evidence': "localStorage.setItem('user', JSON.stringify(userData)); localStorage.getItem('user'); localStorage.removeItem('user')"}
+[2025-08-26T16:01:55.953218] [WARNING] [openrouter:_parse_llm_response:707] - 📝 EVIDENCE: localStorage.setItem('user', JSON.stringify(userData)); localStorage.getItem('user'); localStorage.removeItem('user')
+[2025-08-26T16:01:55.954813] [INFO] [openrouter:_parse_llm_response:718] - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+[2025-08-26T16:01:55.956180] [WARNING] [openrouter:_parse_llm_response:721] - ⚠️ LLM marked localstorage_implementation as: True
+[2025-08-26T16:01:55.957414] [INFO] [openrouter:_normalize_requirements:818] - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+[2025-08-26T16:01:55.958968] [INFO] [openrouter:_convert_to_analysis_result:1069] - Average of positive scores: 87.5% (from [95.0, 85.0, 80.0, 90.0])
+[2025-08-26T16:01:55.960085] [INFO] [openrouter:_convert_to_analysis_result:1114] - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+[2025-08-26T16:01:55.961508] [WARNING] [openrouter:_convert_to_analysis_result:1153] - ⚠️ Detected cookie usage instead of localStorage - marking requirement as not met
+[2025-08-26T16:01:55.962597] [WARNING] [openrouter:_convert_to_analysis_result:1179] - 📝 Added 20-point penalty for using cookies instead of localStorage
+[2025-08-26T16:01:55.964105] [INFO] [openrouter:analyze_code:152] - Analysis successful with anthropic/claude-sonnet-4
+[2025-08-26T16:01:55.965185] [INFO] [bot:process_analysis:368] - Analysis complete for submission 64
+[2025-08-26T16:01:55.998115] [INFO] [sqlite:create_report:453] - Created report 44 for submission 64
+[2025-08-26T16:01:55.999181] [INFO] [bot:process_analysis:385] - Created report 44
+[2025-08-26T16:01:56.014073] [INFO] [sqlite:update_submission:281] - Updated submission 64: status=SubmissionStatus.COMPLETED
+[2025-08-26T16:01:57.779192] [INFO] [telegram:send_analysis_complete:279] - Analysis report sent for submission 64
+[2025-08-26T16:01:57.984038] [INFO] [github:cleanup:310] - GitHub adapter cleanup completed
+[2025-08-26T16:18:48.064645] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T16:18:48.147605] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T16:18:48.148505] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T16:18:48.150361] [INFO] [openrouter:analyze_code:124] - Starting code analysis for frontend submission (repo: https://github.com/test/definitive-fix-test)
+[2025-08-26T16:18:48.151220] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-26T16:18:48.152140] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/app/auth/page.tsx
+[2025-08-26T16:18:48.152917] [WARNING] [openrouter:_prepare_content_for_model:401] - ⚠️ DETECTED COOKIE USAGE in src/app/auth/page.tsx
+[2025-08-26T16:18:48.153719] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/lib/cookies.ts
+[2025-08-26T16:18:48.154524] [WARNING] [openrouter:_prepare_content_for_model:401] - ⚠️ DETECTED COOKIE USAGE in src/lib/cookies.ts
+[2025-08-26T16:18:48.155109] [INFO] [openrouter:_build_user_prompt:632] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T16:18:48.155700] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-26T16:18:48.161757] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+[2025-08-26T16:18:48.162551] [INFO] [openrouter:_analyze_with_model:460] - Total content size: 2159 characters, 6 files
+[2025-08-26T16:18:57.290361] [INFO] [openrouter:_analyze_with_model:504] - LLM Response length: 5890 characters
+[2025-08-26T16:18:57.291853] [INFO] [openrouter:_parse_llm_response:698] - Successfully recovered JSON from LLM response
+[2025-08-26T16:18:57.292878] [WARNING] [openrouter:_parse_llm_response:703] - 🔍 STORAGE METHOD CHECK: {'found_localStorage': True, 'found_cookies': False, 'found_sessionStorage': False, 'storage_details': 'Found localStorage.setItem and localStorage.getItem in src/app/login/page.tsx and src/app/dashboard/page.tsx', 'evidence': "localStorage.setItem('user', JSON.stringify(data.results[0])); (src/app/login/page.tsx)\nlocalStorage.getItem('user'); (src/app/dashboard/page.tsx)"}
+[2025-08-26T16:18:57.293654] [WARNING] [openrouter:_parse_llm_response:707] - 📝 EVIDENCE: localStorage.setItem('user', JSON.stringify(data.results[0])); (src/app/login/page.tsx)
+localStorage.getItem('user'); (src/app/dashboard/page.tsx)
+[2025-08-26T16:18:57.294336] [INFO] [openrouter:_parse_llm_response:718] - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+[2025-08-26T16:18:57.295037] [WARNING] [openrouter:_parse_llm_response:721] - ⚠️ LLM marked localstorage_implementation as: True
+[2025-08-26T16:18:57.295819] [INFO] [openrouter:_normalize_requirements:818] - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+[2025-08-26T16:18:57.296585] [INFO] [openrouter:_convert_to_analysis_result:1069] - Average of positive scores: 80.0% (from [95.0, 75.0, 70.0, 80.0])
+[2025-08-26T16:18:57.297208] [INFO] [openrouter:_convert_to_analysis_result:1114] - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+[2025-08-26T16:18:57.297863] [WARNING] [openrouter:_convert_to_analysis_result:1153] - ⚠️ Detected cookie usage instead of localStorage - applying penalty but keeping requirement as met
+[2025-08-26T16:18:57.299169] [INFO] [openrouter:analyze_code:152] - Analysis successful with google/gemini-2.5-flash
+[2025-08-26T16:20:17.153234] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T16:20:18.966488] [INFO] [bot:<module>:1283] - Starting bot (attempt #1)...
+[2025-08-26T16:20:18.967345] [INFO] [bot:main:1160] - Starting CV Review Bot...
+[2025-08-26T16:20:19.773724] [INFO] [bot:initialize_adapters:1137] - Initializing adapters...
+[2025-08-26T16:20:19.774658] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-26T16:20:19.778595] [INFO] [sqlite:_init:724] - Database tables created/verified
+[2025-08-26T16:20:19.779655] [INFO] [bot:initialize_adapters:1142] - Storage adapter initialized
+[2025-08-26T16:20:20.008568] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-26T16:20:20.010040] [INFO] [bot:initialize_adapters:1146] - Repository adapter initialized
+[2025-08-26T16:20:20.011517] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T16:20:20.012634] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T16:20:20.013782] [INFO] [bot:initialize_adapters:1150] - Analyzer adapter initialized
+[2025-08-26T16:20:20.015167] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-26T16:20:20.872347] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-26T16:20:20.873642] [INFO] [bot:initialize_adapters:1155] - Notification adapter initialized
+[2025-08-26T16:20:21.388975] [INFO] [bot:main:1203] - Cleared any existing webhooks
+[2025-08-26T16:20:21.391329] [INFO] [bot:main:1214] - Bot is ready! Starting polling...
+[2025-08-26T16:20:23.319368] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-26T16:20:29.395392] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/Talkhestani/digitaldekamond
+[2025-08-26T16:20:29.396915] [INFO] [validators:validate_github_url:117] - Successfully validated GitHub URL: Talkhestani/digitaldekamond
+[2025-08-26T16:20:30.054766] [ERROR] [bot:error_handler:1103] - Update Update(message=Message(channel_chat_created=False, chat=Chat(first_name='𝘴𝓲ꪀꪖ\u200b', id=***ID_MASKED***, type=<ChatType.PRIVATE>, username='Sinaam_00'), date=datetime.datetime(2025, 8, 26, 12, 50, 27, tzinfo=datetime.timezone.utc), delete_chat_photo=False, entities=(MessageEntity(length=46, offset=0, type=<MessageEntityType.URL>),), from_user=User(first_name='𝘴𝓲ꪀꪖ\u200b', id=***ID_MASKED***, is_bot=False, language_code='en', username='Sinaam_00'), group_chat_created=False, link_preview_options=LinkPreviewOptions(url='https://github.com/Talkhestani/digitaldekamond'), message_id=738, supergroup_chat_created=False, text='https://github.com/Talkhestani/digitaldekamond'), update_id=***ID_MASKED***) caused error httpx.ConnectError: 
+[2025-08-26T16:20:33.965301] [ERROR] [bot:error_handler:1126] - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1311, in process_update
+    await coroutine
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_handlers/conversationhandler.py", line 842, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 158, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 167, in receive_url
+    await update.message.reply_chat_action(ChatAction.TYPING)
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_message.py", line 3401, in reply_chat_action
+    return await self.get_bot().send_chat_action(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 2581, in send_chat_action
+    return await super().send_chat_action(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 3571, in send_chat_action
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+[2025-08-26T16:20:37.540301] [INFO] [bot:cancel_command:600] - Cancel command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-26T16:20:39.076874] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-26T16:20:44.754312] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/Talkhestani/digitaldekamond
+[2025-08-26T16:20:44.755565] [INFO] [validators:validate_github_url:117] - Successfully validated GitHub URL: Talkhestani/digitaldekamond
+[2025-08-26T16:20:50.682761] [INFO] [bot:role_callback:245] - Starting analysis for https://github.com/Talkhestani/digitaldekamond as frontend
+[2025-08-26T16:20:50.894763] [INFO] [bot:process_analysis:297] - Found existing submission 63, removing it
+[2025-08-26T16:20:50.920928] [INFO] [sqlite:_delete:222] - Deleted submission 63 and 1 associated reports
+[2025-08-26T16:20:51.276387] [INFO] [sqlite:create_submission:109] - Created submission 65 for user ***ID_MASKED***
+[2025-08-26T16:20:51.277378] [INFO] [bot:process_analysis:316] - Created submission 65
+[2025-08-26T16:20:51.295953] [INFO] [sqlite:update_submission:281] - Updated submission 65: status=SubmissionStatus.ANALYZING
+[2025-08-26T16:20:51.486696] [INFO] [github:fetch_repository:141] - Fetching GitHub repository: https://github.com/Talkhestani/digitaldekamond for role: frontend
+[2025-08-26T16:20:51.488403] [INFO] [github:_clone_repository:362] - Cloning repository: https://github.com/Talkhestani/digitaldekamond (attempt 1/3)
+[2025-08-26T16:20:53.317858] [INFO] [github:_clone_repository:381] - Repository cloned successfully
+[2025-08-26T16:20:53.319900] [INFO] [github:fetch_repository:160] - Repository size: 0.12MB
+[2025-08-26T16:20:53.321229] [INFO] [github:fetch_repository:173] - Extracting files based on patterns
+[2025-08-26T16:20:53.342623] [INFO] [github:_extract_files:508] - Extracted files - Critical: 25, Important: 0, Useful: 0, Total unique: 25
+[2025-08-26T16:20:53.344015] [INFO] [github:fetch_repository:175] - Extracted 25 files using patterns
+[2025-08-26T16:20:53.345688] [INFO] [github:fetch_repository:182] - Raw content: 8737 tokens
+[2025-08-26T16:20:53.359318] [INFO] [github:fetch_repository:205] - Successfully processed repository: 25 files, 8737 tokens
+[2025-08-26T16:20:53.360995] [INFO] [bot:process_analysis:333] - Fetched repository: 25 files
+[2025-08-26T16:20:53.555521] [INFO] [openrouter:analyze_code:124] - Starting code analysis for frontend submission (repo: https://github.com/Talkhestani/digitaldekamond)
+[2025-08-26T16:20:53.556731] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-26T16:20:53.557643] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/app/login/page.tsx
+[2025-08-26T16:20:53.558809] [INFO] [openrouter:_build_user_prompt:632] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T16:20:53.559729] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-26T16:20:53.565732] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+[2025-08-26T16:20:53.566679] [INFO] [openrouter:_analyze_with_model:460] - Total content size: 36648 characters, 25 files
+[2025-08-26T16:21:03.035363] [INFO] [openrouter:_analyze_with_model:504] - LLM Response length: 6275 characters
+[2025-08-26T16:21:03.037388] [INFO] [openrouter:_parse_llm_response:698] - Successfully recovered JSON from LLM response
+[2025-08-26T16:21:03.038615] [WARNING] [openrouter:_parse_llm_response:703] - 🔍 STORAGE METHOD CHECK: {'found_localStorage': True, 'found_cookies': False, 'found_sessionStorage': False, 'storage_details': 'Found localStorage.setItem and localStorage.getItem in src/app/login/page.tsx line 100 and src/app/dashboard/page.tsx line 20', 'evidence': "localStorage.setItem('user', JSON.stringify(data.results[0])); (src/app/login/page.tsx:100), const user = JSON.parse(localStorage.getItem('user') || '{}'); (src/app/dashboard/page.tsx:20)"}
+[2025-08-26T16:21:03.039891] [WARNING] [openrouter:_parse_llm_response:707] - 📝 EVIDENCE: localStorage.setItem('user', JSON.stringify(data.results[0])); (src/app/login/page.tsx:100), const user = JSON.parse(localStorage.getItem('user') || '{}'); (src/app/dashboard/page.tsx:20)
+[2025-08-26T16:21:03.041430] [INFO] [openrouter:_parse_llm_response:718] - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+[2025-08-26T16:21:03.042755] [WARNING] [openrouter:_parse_llm_response:721] - ⚠️ LLM marked localstorage_implementation as: True
+[2025-08-26T16:21:03.043811] [INFO] [openrouter:_normalize_requirements:818] - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+[2025-08-26T16:21:03.044730] [INFO] [openrouter:_convert_to_analysis_result:1069] - Average of positive scores: 83.8% (from [95.0, 80.0, 75.0, 85.0])
+[2025-08-26T16:21:03.045473] [INFO] [openrouter:_convert_to_analysis_result:1114] - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+[2025-08-26T16:21:03.046769] [INFO] [openrouter:analyze_code:152] - Analysis successful with google/gemini-2.5-flash
+[2025-08-26T16:21:03.047670] [INFO] [bot:process_analysis:368] - Analysis complete for submission 65
+[2025-08-26T16:21:03.079766] [INFO] [sqlite:create_report:453] - Created report 45 for submission 65
+[2025-08-26T16:21:03.081067] [INFO] [bot:process_analysis:385] - Created report 45
+[2025-08-26T16:21:03.099006] [INFO] [sqlite:update_submission:281] - Updated submission 65: status=SubmissionStatus.COMPLETED
+[2025-08-26T16:21:04.845275] [INFO] [telegram:send_analysis_complete:279] - Analysis report sent for submission 65
+[2025-08-26T16:21:05.353206] [INFO] [github:cleanup:310] - GitHub adapter cleanup completed
+[2025-08-26T16:21:37.831806] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-26T16:21:40.849681] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/behnamhsn/dekamond-auth-demo
+[2025-08-26T16:21:40.851157] [INFO] [validators:validate_github_url:117] - Successfully validated GitHub URL: behnamhsn/dekamond-auth-demo
+[2025-08-26T16:21:42.867877] [INFO] [bot:role_callback:245] - Starting analysis for https://github.com/behnamhsn/dekamond-auth-demo as frontend
+[2025-08-26T16:21:43.218092] [INFO] [sqlite:create_submission:109] - Created submission 66 for user ***ID_MASKED***
+[2025-08-26T16:21:43.219261] [INFO] [bot:process_analysis:316] - Created submission 66
+[2025-08-26T16:21:43.234031] [INFO] [sqlite:update_submission:281] - Updated submission 66: status=SubmissionStatus.ANALYZING
+[2025-08-26T16:21:43.427289] [INFO] [github:fetch_repository:141] - Fetching GitHub repository: https://github.com/behnamhsn/dekamond-auth-demo for role: frontend
+[2025-08-26T16:21:43.430011] [INFO] [github:_clone_repository:362] - Cloning repository: https://github.com/behnamhsn/dekamond-auth-demo (attempt 1/3)
+[2025-08-26T16:21:45.569940] [INFO] [github:_clone_repository:381] - Repository cloned successfully
+[2025-08-26T16:21:45.572716] [INFO] [github:fetch_repository:160] - Repository size: 0.14MB
+[2025-08-26T16:21:45.573854] [INFO] [github:fetch_repository:173] - Extracting files based on patterns
+[2025-08-26T16:21:45.585750] [INFO] [github:_extract_files:508] - Extracted files - Critical: 22, Important: 0, Useful: 0, Total unique: 22
+[2025-08-26T16:21:45.587127] [INFO] [github:fetch_repository:175] - Extracted 22 files using patterns
+[2025-08-26T16:21:45.588352] [INFO] [github:fetch_repository:182] - Raw content: 4487 tokens
+[2025-08-26T16:21:45.598613] [INFO] [github:fetch_repository:205] - Successfully processed repository: 22 files, 4487 tokens
+[2025-08-26T16:21:45.600091] [INFO] [bot:process_analysis:333] - Fetched repository: 22 files
+[2025-08-26T16:21:45.839441] [INFO] [openrouter:analyze_code:124] - Starting code analysis for frontend submission (repo: https://github.com/behnamhsn/dekamond-auth-demo)
+[2025-08-26T16:21:45.840579] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-26T16:21:45.841565] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/hooks/useAuthGuard.ts
+[2025-08-26T16:21:45.842601] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/lib/auth/storage.ts
+[2025-08-26T16:21:45.843458] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/lib/auth/AuthContext.tsx
+[2025-08-26T16:21:45.844265] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/lib/validation/auth.ts
+[2025-08-26T16:21:45.845032] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/app/auth/auth.module.scss
+[2025-08-26T16:21:45.845906] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/app/auth/page.tsx
+[2025-08-26T16:21:45.846960] [INFO] [openrouter:_build_user_prompt:632] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T16:21:45.848040] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+[2025-08-26T16:21:45.848897] [INFO] [openrouter:_analyze_with_model:460] - Total content size: 18586 characters, 22 files
+[2025-08-26T16:21:54.794225] [INFO] [openrouter:_analyze_with_model:504] - LLM Response length: 5907 characters
+[2025-08-26T16:21:54.796924] [INFO] [openrouter:_parse_llm_response:698] - Successfully recovered JSON from LLM response
+[2025-08-26T16:21:54.799108] [WARNING] [openrouter:_parse_llm_response:703] - 🔍 STORAGE METHOD CHECK: {'found_localStorage': True, 'found_cookies': False, 'found_sessionStorage': False, 'storage_details': 'Found localStorage.setItem and localStorage.getItem in src/app/login/page.tsx line 105 and src/app/dashboard/page.tsx line 22', 'evidence': "localStorage.setItem('user', JSON.stringify(data.results[0])); (src/app/login/page.tsx:105), localStorage.getItem('user'); (src/app/dashboard/page.tsx:22)"}
+[2025-08-26T16:21:54.801296] [WARNING] [openrouter:_parse_llm_response:707] - 📝 EVIDENCE: localStorage.setItem('user', JSON.stringify(data.results[0])); (src/app/login/page.tsx:105), localStorage.getItem('user'); (src/app/dashboard/page.tsx:22)
+[2025-08-26T16:21:54.803070] [INFO] [openrouter:_parse_llm_response:718] - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+[2025-08-26T16:21:54.804532] [WARNING] [openrouter:_parse_llm_response:721] - ⚠️ LLM marked localstorage_implementation as: True
+[2025-08-26T16:21:54.805677] [INFO] [openrouter:_normalize_requirements:818] - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+[2025-08-26T16:21:54.806829] [INFO] [openrouter:_convert_to_analysis_result:1069] - Average of positive scores: 86.2% (from [95.0, 80.0, 85.0, 85.0])
+[2025-08-26T16:21:54.807856] [INFO] [openrouter:_convert_to_analysis_result:1114] - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+[2025-08-26T16:21:54.809129] [INFO] [openrouter:analyze_code:152] - Analysis successful with google/gemini-2.5-flash
+[2025-08-26T16:21:54.810157] [INFO] [bot:process_analysis:368] - Analysis complete for submission 66
+[2025-08-26T16:21:54.840039] [INFO] [sqlite:create_report:453] - Created report 46 for submission 66
+[2025-08-26T16:21:54.841203] [INFO] [bot:process_analysis:385] - Created report 46
+[2025-08-26T16:21:54.861200] [INFO] [sqlite:update_submission:281] - Updated submission 66: status=SubmissionStatus.COMPLETED
+[2025-08-26T16:21:56.284333] [INFO] [telegram:send_analysis_complete:279] - Analysis report sent for submission 66
+[2025-08-26T16:21:56.481089] [INFO] [github:cleanup:310] - GitHub adapter cleanup completed
+[2025-08-26T16:32:27.941371] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T16:32:29.757028] [INFO] [bot:<module>:1283] - Starting bot (attempt #1)...
+[2025-08-26T16:32:29.757758] [INFO] [bot:main:1160] - Starting CV Review Bot...
+[2025-08-26T16:32:30.611466] [INFO] [bot:initialize_adapters:1137] - Initializing adapters...
+[2025-08-26T16:32:30.612225] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-26T16:32:30.616329] [INFO] [sqlite:_init:724] - Database tables created/verified
+[2025-08-26T16:32:30.617711] [INFO] [bot:initialize_adapters:1142] - Storage adapter initialized
+[2025-08-26T16:32:30.846132] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-26T16:32:30.847367] [INFO] [bot:initialize_adapters:1146] - Repository adapter initialized
+[2025-08-26T16:32:30.848465] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T16:32:30.849684] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T16:32:30.850965] [INFO] [bot:initialize_adapters:1150] - Analyzer adapter initialized
+[2025-08-26T16:32:30.852099] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-26T16:32:32.493817] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-26T16:32:32.495040] [INFO] [bot:initialize_adapters:1155] - Notification adapter initialized
+[2025-08-26T16:32:33.097836] [INFO] [bot:main:1203] - Cleared any existing webhooks
+[2025-08-26T16:32:33.099389] [INFO] [bot:main:1214] - Bot is ready! Starting polling...
+[2025-08-26T16:32:34.468359] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-26T16:32:38.907902] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/behnamhsn/dekamond-auth-demo
+[2025-08-26T16:32:38.909301] [INFO] [validators:validate_github_url:117] - Successfully validated GitHub URL: behnamhsn/dekamond-auth-demo
+[2025-08-26T16:32:41.466516] [INFO] [bot:role_callback:245] - Starting analysis for https://github.com/behnamhsn/dekamond-auth-demo as frontend
+[2025-08-26T16:32:41.835590] [INFO] [bot:process_analysis:297] - Found existing submission 66, removing it
+[2025-08-26T16:32:41.873337] [INFO] [sqlite:_delete:222] - Deleted submission 66 and 1 associated reports
+[2025-08-26T16:32:42.127579] [INFO] [sqlite:create_submission:109] - Created submission 66 for user ***ID_MASKED***
+[2025-08-26T16:32:42.128520] [INFO] [bot:process_analysis:316] - Created submission 66
+[2025-08-26T16:32:42.149315] [INFO] [sqlite:update_submission:281] - Updated submission 66: status=SubmissionStatus.ANALYZING
+[2025-08-26T16:32:42.330032] [INFO] [github:fetch_repository:141] - Fetching GitHub repository: https://github.com/behnamhsn/dekamond-auth-demo for role: frontend
+[2025-08-26T16:32:42.331147] [INFO] [github:_clone_repository:362] - Cloning repository: https://github.com/behnamhsn/dekamond-auth-demo (attempt 1/3)
+[2025-08-26T16:32:43.846466] [INFO] [github:_clone_repository:381] - Repository cloned successfully
+[2025-08-26T16:32:43.848624] [INFO] [github:fetch_repository:160] - Repository size: 0.14MB
+[2025-08-26T16:32:43.849683] [INFO] [github:fetch_repository:173] - Extracting files based on patterns
+[2025-08-26T16:32:43.870432] [INFO] [github:_extract_files:508] - Extracted files - Critical: 22, Important: 0, Useful: 0, Total unique: 22
+[2025-08-26T16:32:43.871625] [INFO] [github:fetch_repository:175] - Extracted 22 files using patterns
+[2025-08-26T16:32:43.872766] [INFO] [github:fetch_repository:182] - Raw content: 4487 tokens
+[2025-08-26T16:32:43.882767] [INFO] [github:fetch_repository:205] - Successfully processed repository: 22 files, 4487 tokens
+[2025-08-26T16:32:43.884105] [INFO] [bot:process_analysis:333] - Fetched repository: 22 files
+[2025-08-26T16:32:44.089945] [INFO] [openrouter:analyze_code:124] - Starting code analysis for frontend submission (repo: https://github.com/behnamhsn/dekamond-auth-demo)
+[2025-08-26T16:32:44.090725] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-26T16:32:44.091537] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/hooks/useAuthGuard.ts
+[2025-08-26T16:32:44.092366] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/lib/auth/storage.ts
+[2025-08-26T16:32:44.093180] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/lib/auth/AuthContext.tsx
+[2025-08-26T16:32:44.093894] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/lib/validation/auth.ts
+[2025-08-26T16:32:44.094679] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/app/auth/auth.module.scss
+[2025-08-26T16:32:44.095381] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/app/auth/page.tsx
+[2025-08-26T16:32:44.096368] [INFO] [openrouter:_build_user_prompt:632] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T16:32:44.097277] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-26T16:32:44.102995] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+[2025-08-26T16:32:44.103938] [INFO] [openrouter:_analyze_with_model:460] - Total content size: 18586 characters, 22 files
+[2025-08-26T16:32:45.898458] [ERROR] [openrouter:_analyze_with_model:531] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-26T16:32:45.900934] [INFO] [openrouter:_analyze_with_model:542] - Retrying in 1 seconds...
+[2025-08-26T16:32:48.486364] [ERROR] [openrouter:_analyze_with_model:531] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-26T16:32:48.488651] [INFO] [openrouter:_analyze_with_model:542] - Retrying in 2 seconds...
+[2025-08-26T16:32:52.399970] [ERROR] [openrouter:_analyze_with_model:531] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-26T16:32:52.406622] [WARNING] [openrouter:analyze_code:177] - Model google/gemini-2.5-flash failed: AnalysisError: API call failed: 403 {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-26T16:32:52.411648] [INFO] [openrouter:analyze_code:136] - Attempt 2/3: anthropic/claude-sonnet-4 (context: ***ID_MASKED*** tokens)
+[2025-08-26T16:32:52.416276] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/hooks/useAuthGuard.ts
+[2025-08-26T16:32:52.418572] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/lib/auth/storage.ts
+[2025-08-26T16:32:52.420362] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/lib/auth/AuthContext.tsx
+[2025-08-26T16:32:52.421627] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/lib/validation/auth.ts
+[2025-08-26T16:32:52.423109] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/app/auth/auth.module.scss
+[2025-08-26T16:32:52.424151] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/app/auth/page.tsx
+[2025-08-26T16:32:52.425291] [INFO] [openrouter:_build_user_prompt:632] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T16:32:52.436164] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+[2025-08-26T16:32:52.438339] [INFO] [openrouter:_analyze_with_model:460] - Total content size: 18586 characters, 22 files
+[2025-08-26T16:32:54.187577] [ERROR] [openrouter:_analyze_with_model:531] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-26T16:32:54.189962] [INFO] [openrouter:_analyze_with_model:542] - Retrying in 1 seconds...
+[2025-08-26T16:32:57.050649] [ERROR] [openrouter:_analyze_with_model:531] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-26T16:32:57.053009] [INFO] [openrouter:_analyze_with_model:542] - Retrying in 2 seconds...
+[2025-08-26T16:33:01.168855] [ERROR] [openrouter:_analyze_with_model:531] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-26T16:33:01.171079] [WARNING] [openrouter:analyze_code:177] - Model anthropic/claude-sonnet-4 failed: AnalysisError: API call failed: 403 {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-26T16:33:01.172217] [INFO] [openrouter:analyze_code:136] - Attempt 3/3: openai/gpt-3.5-turbo-16k (context: 16000 tokens)
+[2025-08-26T16:33:01.173254] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/hooks/useAuthGuard.ts
+[2025-08-26T16:33:01.174057] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/lib/auth/storage.ts
+[2025-08-26T16:33:01.174800] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/lib/auth/AuthContext.tsx
+[2025-08-26T16:33:01.175791] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/lib/validation/auth.ts
+[2025-08-26T16:33:01.176883] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/app/auth/auth.module.scss
+[2025-08-26T16:33:01.177725] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/app/auth/page.tsx
+[2025-08-26T16:33:01.178545] [INFO] [openrouter:_build_user_prompt:632] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T16:33:01.179330] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+[2025-08-26T16:33:01.180026] [INFO] [openrouter:_analyze_with_model:460] - Total content size: 18586 characters, 22 files
+[2025-08-26T16:33:02.896586] [ERROR] [openrouter:_analyze_with_model:531] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-26T16:33:02.898138] [INFO] [openrouter:_analyze_with_model:542] - Retrying in 1 seconds...
+[2025-08-26T16:33:05.363850] [ERROR] [openrouter:_analyze_with_model:531] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-26T16:33:05.367029] [INFO] [openrouter:_analyze_with_model:542] - Retrying in 2 seconds...
+[2025-08-26T16:33:08.730137] [ERROR] [openrouter:_analyze_with_model:531] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-26T16:33:08.733147] [WARNING] [openrouter:analyze_code:177] - Model openai/gpt-3.5-turbo-16k failed: AnalysisError: API call failed: 403 {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-26T16:33:08.734587] [ERROR] [openrouter:analyze_code:185] - All 3 models failed to analyze code
+[2025-08-26T16:33:08.736079] [ERROR] [bot:process_analysis:419] - Analysis failed for https://github.com/behnamhsn/dekamond-auth-demo: Analysis error: All 3 models failed to analyze code
+[2025-08-26T16:33:08.737744] [ERROR] [logger:log_error_with_context:361] - ERROR: Exception: Analysis error: All 3 models failed to analyze code | CONTEXT: url=https://github.com/behnamhsn/dekamond-auth-demo | role=frontend
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 367, in process_analysis
+    analysis_result = await analyzer_adapter.analyze_code(analysis_request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/adapters/analyzers/openrouter.py", line 190, in analyze_code
+    raise AnalysisError(
+core.exceptions.AnalysisError: All 3 models failed to analyze code
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 370, in process_analysis
+    raise Exception(f"Analysis error: {str(e)}")
+Exception: Analysis error: All 3 models failed to analyze code
+[2025-08-26T16:33:09.432589] [INFO] [sqlite:update_submission:281] - Updated submission 66: status=SubmissionStatus.FAILED
+[2025-08-26T16:33:09.623465] [INFO] [github:cleanup:310] - GitHub adapter cleanup completed
+[2025-08-26T16:38:10.624372] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T16:38:50.977899] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T16:38:52.319510] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-26T16:38:52.341371] [INFO] [sqlite:close:794] - SQLite adapter closed
+[2025-08-26T16:40:06.274001] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T16:40:25.397677] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T16:40:27.784904] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-26T16:41:11.040642] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T16:41:12.209958] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-26T16:41:12.230709] [INFO] [sqlite:close:794] - SQLite adapter closed
+[2025-08-26T16:42:16.405537] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T16:42:19.552819] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-26T16:42:19.553538] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-26T16:42:19.573818] [INFO] [sqlite:close:794] - SQLite adapter closed
+[2025-08-26T16:43:48.867796] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T16:43:50.729200] [INFO] [bot:<module>:1283] - Starting bot (attempt #1)...
+[2025-08-26T16:43:50.730191] [INFO] [bot:main:1160] - Starting CV Review Bot...
+[2025-08-26T16:43:51.656246] [INFO] [bot:initialize_adapters:1137] - Initializing adapters...
+[2025-08-26T16:43:51.657189] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-26T16:43:51.661556] [INFO] [sqlite:_init:724] - Database tables created/verified
+[2025-08-26T16:43:51.662634] [INFO] [bot:initialize_adapters:1142] - Storage adapter initialized
+[2025-08-26T16:43:51.856436] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-26T16:43:51.857572] [INFO] [bot:initialize_adapters:1146] - Repository adapter initialized
+[2025-08-26T16:43:51.858430] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T16:43:51.859364] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T16:43:51.860141] [INFO] [bot:initialize_adapters:1150] - Analyzer adapter initialized
+[2025-08-26T16:43:51.861010] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-26T16:43:52.731531] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-26T16:43:52.732733] [INFO] [bot:initialize_adapters:1155] - Notification adapter initialized
+[2025-08-26T16:43:53.238461] [INFO] [bot:main:1203] - Cleared any existing webhooks
+[2025-08-26T16:43:53.239687] [INFO] [bot:main:1214] - Bot is ready! Starting polling...
+[2025-08-26T16:43:55.384695] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T16:43:56.192944] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-26T16:46:04.273399] [INFO] [logger:<module>:370] - Logging system initialized successfully
+[2025-08-26T16:46:05.804221] [INFO] [bot:<module>:1283] - Starting bot (attempt #1)...
+[2025-08-26T16:46:05.804950] [INFO] [bot:main:1160] - Starting CV Review Bot...
+[2025-08-26T16:46:06.660960] [INFO] [bot:initialize_adapters:1137] - Initializing adapters...
+[2025-08-26T16:46:06.661896] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-26T16:46:06.665603] [INFO] [sqlite:_init:724] - Database tables created/verified
+[2025-08-26T16:46:06.666630] [INFO] [bot:initialize_adapters:1142] - Storage adapter initialized
+[2025-08-26T16:46:06.872569] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-26T16:46:06.874014] [INFO] [bot:initialize_adapters:1146] - Repository adapter initialized
+[2025-08-26T16:46:06.875217] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T16:46:06.876558] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T16:46:06.877623] [INFO] [bot:initialize_adapters:1150] - Analyzer adapter initialized
+[2025-08-26T16:46:06.878641] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-26T16:46:07.545505] [ERROR] [telegram:initialize:131] - Failed to initialize Telegram bot: httpx.ConnectError: 
+[2025-08-26T16:46:07.548027] [ERROR] [bot:<module>:1298] - Bot crashed with error: Failed to initialize Telegram bot: httpx.ConnectError: 
+[2025-08-26T16:46:07.753198] [ERROR] [bot:<module>:1299] - Full traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 101, in handle_async_request
+    raise exc
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 156, in _connect
+    stream = await stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 67, in start_tls
+    with map_exceptions(exc_map):
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 273, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/adapters/notifications/telegram.py", line 125, in initialize
+    bot_info = await self.bot.get_me()
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 1981, in get_me
+    return await super().get_me(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 976, in get_me
+    result = await self._post(
+             ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: 
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 1284, in <module>
+    main()
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 1196, in main
+    loop.run_until_complete(initialize_adapters())
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 1154, in initialize_adapters
+    await notification_adapter.initialize()
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/adapters/notifications/telegram.py", line 132, in initialize
+    raise NotificationError(error_msg)
+core.exceptions.NotificationError: Failed to initialize Telegram bot: httpx.ConnectError: 
+
+[2025-08-26T16:46:07.756631] [WARNING] [bot:<module>:1305] - Bot will restart in 5 seconds (attempt #2)...
+[2025-08-26T16:46:07.757471] [WARNING] [bot:<module>:1306] - The bot will keep trying to recover automatically.
+[2025-08-26T16:46:12.759025] [INFO] [bot:<module>:1314] - Attempting to restart bot...
+[2025-08-26T16:46:12.761210] [INFO] [bot:<module>:1283] - Starting bot (attempt #2)...
+[2025-08-26T16:46:12.762655] [INFO] [bot:main:1160] - Starting CV Review Bot...
+[2025-08-26T16:46:13.016403] [INFO] [bot:initialize_adapters:1137] - Initializing adapters...
+[2025-08-26T16:46:13.017252] [INFO] [sqlite:__init__:67] - SQLite adapter initialized
+[2025-08-26T16:46:13.021520] [INFO] [sqlite:_init:724] - Database tables created/verified
+[2025-08-26T16:46:13.022713] [INFO] [bot:initialize_adapters:1142] - Storage adapter initialized
+[2025-08-26T16:46:13.023468] [INFO] [github:__init__:85] - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+[2025-08-26T16:46:13.024338] [INFO] [bot:initialize_adapters:1146] - Repository adapter initialized
+[2025-08-26T16:46:13.025057] [INFO] [openrouter:__init__:99] - OpenRouter adapter initialized with 3 models
+[2025-08-26T16:46:13.025750] [INFO] [openrouter:__init__:100] - Primary model: google/gemini-2.5-flash
+[2025-08-26T16:46:13.026447] [INFO] [bot:initialize_adapters:1150] - Analyzer adapter initialized
+[2025-08-26T16:46:13.027138] [INFO] [telegram:__init__:115] - Telegram adapter initialized
+[2025-08-26T16:46:13.963320] [INFO] [telegram:initialize:126] - Bot initialized: @TaskEvaluator_bot
+[2025-08-26T16:46:13.964628] [INFO] [bot:initialize_adapters:1155] - Notification adapter initialized
+[2025-08-26T16:46:14.493051] [INFO] [bot:main:1203] - Cleared any existing webhooks
+[2025-08-26T16:46:14.495011] [INFO] [bot:main:1214] - Bot is ready! Starting polling...
+[2025-08-26T16:46:17.764575] [INFO] [bot:analyze_command:98] - Analyze command from user Sinaam_00 (***ID_MASKED***)
+[2025-08-26T16:46:21.941174] [INFO] [bot:receive_url:129] - Received URL from Sinaam_00: https://github.com/Talkhestani/digitaldekamond
+[2025-08-26T16:46:21.942671] [INFO] [validators:validate_github_url:117] - Successfully validated GitHub URL: Talkhestani/digitaldekamond
+[2025-08-26T16:46:23.611135] [INFO] [bot:role_callback:245] - Starting analysis for https://github.com/Talkhestani/digitaldekamond as frontend
+[2025-08-26T16:46:23.830600] [INFO] [bot:process_analysis:297] - Found existing submission 65, removing it
+[2025-08-26T16:46:23.870187] [INFO] [sqlite:_delete:222] - Deleted submission 65 and 1 associated reports
+[2025-08-26T16:46:24.121896] [INFO] [sqlite:create_submission:109] - Created submission 67 for user ***ID_MASKED***
+[2025-08-26T16:46:24.123126] [INFO] [bot:process_analysis:316] - Created submission 67
+[2025-08-26T16:46:24.144737] [INFO] [sqlite:update_submission:281] - Updated submission 67: status=SubmissionStatus.ANALYZING
+[2025-08-26T16:46:24.343106] [INFO] [github:fetch_repository:141] - Fetching GitHub repository: https://github.com/Talkhestani/digitaldekamond for role: frontend
+[2025-08-26T16:46:24.344956] [INFO] [github:_clone_repository:362] - Cloning repository: https://github.com/Talkhestani/digitaldekamond (attempt 1/3)
+[2025-08-26T16:46:25.936345] [INFO] [github:_clone_repository:381] - Repository cloned successfully
+[2025-08-26T16:46:25.937976] [INFO] [github:fetch_repository:160] - Repository size: 0.12MB
+[2025-08-26T16:46:25.938696] [INFO] [github:fetch_repository:173] - Extracting files based on patterns
+[2025-08-26T16:46:25.962845] [INFO] [github:_extract_files:508] - Extracted files - Critical: 25, Important: 0, Useful: 0, Total unique: 25
+[2025-08-26T16:46:25.963942] [INFO] [github:fetch_repository:175] - Extracted 25 files using patterns
+[2025-08-26T16:46:25.964866] [INFO] [github:fetch_repository:182] - Raw content: 8737 tokens
+[2025-08-26T16:46:25.974411] [INFO] [github:fetch_repository:205] - Successfully processed repository: 25 files, 8737 tokens
+[2025-08-26T16:46:25.975521] [INFO] [bot:process_analysis:333] - Fetched repository: 25 files
+[2025-08-26T16:46:26.182316] [INFO] [openrouter:analyze_code:124] - Starting code analysis for frontend submission (repo: https://github.com/Talkhestani/digitaldekamond)
+[2025-08-26T16:46:26.183222] [INFO] [openrouter:analyze_code:136] - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+[2025-08-26T16:46:26.184038] [INFO] [openrouter:_prepare_content_for_model:397] - Including critical file for frontend: src/app/login/page.tsx
+[2025-08-26T16:46:26.184925] [INFO] [openrouter:_build_user_prompt:632] - Using prompt: analysis/senior_frontend_analysis.md for frontend analysis
+[2025-08-26T16:46:26.185802] [INFO] [prompts:__init__:36] - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+[2025-08-26T16:46:26.190294] [WARNING] [prompts:format_prompt:105] - Some template variables not provided for analysis/senior_frontend_analysis.md: '\n  "storage_method_check"'
+[2025-08-26T16:46:26.191129] [INFO] [openrouter:_analyze_with_model:460] - Total content size: 36648 characters, 25 files
+[2025-08-26T16:46:33.930036] [INFO] [openrouter:_analyze_with_model:504] - LLM Response length: 4977 characters
+[2025-08-26T16:46:33.931361] [INFO] [openrouter:_parse_llm_response:698] - Successfully recovered JSON from LLM response
+[2025-08-26T16:46:33.932409] [WARNING] [openrouter:_parse_llm_response:703] - 🔍 STORAGE METHOD CHECK: {'found_localStorage': True, 'found_cookies': False, 'found_sessionStorage': False, 'storage_details': 'Found localStorage usage in src/app/auth/page.tsx line 51 and src/app/dashboard/page.tsx line 19', 'evidence': "src/app/auth/page.tsx:51 - localStorage.setItem('user', JSON.stringify(data.results[0]));\nsrc/app/dashboard/page.tsx:19 - localStorage.removeItem('user');"}
+[2025-08-26T16:46:33.933457] [WARNING] [openrouter:_parse_llm_response:707] - 📝 EVIDENCE: src/app/auth/page.tsx:51 - localStorage.setItem('user', JSON.stringify(data.results[0]));
+src/app/dashboard/page.tsx:19 - localStorage.removeItem('user');
+[2025-08-26T16:46:33.934669] [INFO] [openrouter:_parse_llm_response:718] - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+[2025-08-26T16:46:33.935585] [WARNING] [openrouter:_parse_llm_response:721] - ⚠️ LLM marked localstorage_implementation as: True
+[2025-08-26T16:46:33.936429] [INFO] [openrouter:_normalize_requirements:818] - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+[2025-08-26T16:46:33.937358] [INFO] [openrouter:_convert_to_analysis_result:1069] - Average of positive scores: 75.0% (from [90.0, 70.0, 65.0, 75.0])
+[2025-08-26T16:46:33.938057] [INFO] [openrouter:_convert_to_analysis_result:1114] - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+[2025-08-26T16:46:33.939706] [INFO] [openrouter:analyze_code:152] - Analysis successful with google/gemini-2.5-flash
+[2025-08-26T16:46:33.940576] [INFO] [bot:process_analysis:368] - Analysis complete for submission 67
+[2025-08-26T16:46:33.963404] [INFO] [sqlite:create_report:453] - Created report 45 for submission 67
+[2025-08-26T16:46:33.964481] [INFO] [bot:process_analysis:385] - Created report 45
+[2025-08-26T16:46:33.981444] [INFO] [sqlite:update_submission:281] - Updated submission 67: status=SubmissionStatus.COMPLETED
+[2025-08-26T16:46:36.394120] [INFO] [telegram:send_analysis_complete:279] - Analysis report sent for submission 67
+[2025-08-26T16:46:36.620806] [INFO] [github:cleanup:310] - GitHub adapter cleanup completed

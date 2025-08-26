@@ -1,86 +1,66 @@
-# Senior Frontend Developer - Technical Assessment
+# Frontend Developer - Technical Assessment
 
-## 🧾 Task: Build an Authentication Page and Redirect to Dashboard (Next.js + TypeScript + SCSS Modules)
+## 🚀 Goal
 
-## 🎯 Objective
-Implement a simple responsive authentication flow with two pages:
-- `/auth` → Login page
-- `/dashboard` → Dashboard page with a welcome message
+Implement a login flow with two pages:
+- 📱 Login page with mobile number input (Iran format only) + "Login" button
+- 🏠 Dashboard page that welcomes the user
 
-## 📌 Overview
-You are required to create a simple login page. When the user clicks the "Login" button, the app should:
-- Send a GET request to: `https://randomuser.me/api/?results=1&nat=us`
-- Store the user data (in localStorage or via Context API)
-- Redirect the user to the dashboard page
+## 📋 Details
 
-Custom reusable components must be created for input and button elements.
+### 🔑 Login Page
+- 📝 Form with a single input for Iranian mobile numbers
+- ✅ Client-side validation required (valid formats:
+  - 09xxxxxxxxx
+  - +989xxxxxxxxx
+  - 00989xxxxxxxxx)
+- ▶️ On "Login" button click:
+  - 🔗 Send GET request → https://randomuser.me/api/?results=1&nat=us
+  - 📥 Retrieve user data (name, email, picture) → store in localStorage
+  - 🔀 Redirect → Dashboard page
 
-## 📂 Pages & Routes
-- `/auth` → Login form
-- `/dashboard` → Simple page with a welcome message
+### 🖥 Dashboard Page
+- 👋 Show welcome message with user's name
+- 🚪 Logout button → clears localStorage + redirects to Login page
+- 🔒 If no user data in localStorage → redirect to Login page
 
-## 🛠 Tech Stack
-- Next.js (App Router)
-- TypeScript
-- SCSS Modules (with nesting support)
+## 🎨 UI Components (Tailwind)
+- ✍️ Input: label, error state, focus style, validation
+- 🔘 Button: primary, disabled, loading states
 
-## 📋 Technical Requirements
+## ⚙️ Technical Requirements
+- ⚛️ Next.js App Router + TypeScript
+- 🎨 Styling → Tailwind CSS only
+- 📂 Clean, modular folder structure (UI components, lib for utils)
+- 📱 Responsive design (mobile-first)
+- 📐 Next.js best practices (layout, metadata, client components)
+- 💾 User state/session → handled client-side with localStorage
 
-### ✅ /auth Page:
-- Includes a phone number input field for Iranian mobile numbers (for validation practice only, does not affect login)
-  - Must validate: 11-digit number starting with "09"
-- Includes a "Login" button
-- On button click:
-  - Fetch user from `https://randomuser.me/api/?results=1&nat=us`
-  - Store user data in localStorage or Context (if using SSR)
-  - Redirect to `/dashboard`
-- Form must include validation (preferably schema-based, not inline)
+## 🌟 Quality Expectations
+- 🧹 Clean & readable code
+- 🔤 Clear & consistent naming conventions
+- ♿️ Accessibility (ARIA attributes, focus-visible states)
+- 💬 Concise comments where needed
+- 📘 README with setup + run instructions
 
-### ✅ /dashboard Page:
-- Displays a welcome message like "Welcome to the Dashboard"
-- If no user data exists (e.g., localStorage is empty), the user should be redirected to `/auth`
+## 🔄 Flow
+1. 👤 User opens Login page → enters valid Iranian phone → clicks Login
+2. 🌐 API called → data saved in localStorage → redirect to Dashboard
+3. 🙌 Dashboard shows Welcome + user's name
+4. 🚪 Logout → clear storage → redirect back to Login
 
-## 🎨 Styling
-- Use SCSS Modules (`.module.scss`)
-- Utilize proper nesting for CSS class selectors
-
-## ⚙️ Additional Front-End Requirements
-- React can be used freely
-- Use `forwardRef` where applicable (e.g., for controlled inputs)
-- Use React Hooks for auth logic and state management
-- Ensure high-level TypeScript safety with proper types or interfaces
-- Build reusable components — no duplicated UI logic
-- Codebase must be scalable and maintainable
-- Apply proper naming conventions and folder structures
-- Form validation must be dynamic and decoupled from input components (e.g., using a schema like Zod or Yup)
+## 🔍 Evaluation Criteria
+- ✨ Code Quality → clean, modular, maintainable
+- 🧑‍💻 TypeScript Usage → strong types, no any
+- 🎨 UI/UX → responsive, clean Tailwind design
+- 🔧 Logic → validation, API handling, redirect, auth state
+- 📈 Scalability → reusable components & structure
 
 ## ⏰ Deadline
-Please complete the task within 48 hours after receiving it.
+⚡️ Complete within 48 hours
 
-## Evaluation Criteria
+## 📦 Deliverables
+- 🔗 GitHub repo link (codebase)
 
-Your submission will be evaluated based on:
-
-1. **Functionality** (40%)
-   - Authentication flow works correctly
-   - Phone number validation is accurate
-   - User data is properly stored and retrieved
-   - Redirects work as expected
-
-2. **Code Quality** (30%)
-   - Clean, maintainable TypeScript code
-   - Proper use of React patterns and hooks
-   - Reusable component architecture
-   - Schema-based validation implementation
-
-3. **UI/UX & Styling** (20%)
-   - Responsive design
-   - Proper SCSS module usage with nesting
-   - Clean and intuitive interface
-   - Proper error handling and user feedback
-
-4. **Best Practices** (10%)
-   - TypeScript type safety
-   - Proper folder structure
-   - Use of forwardRef where appropriate
-   - Scalable architecture
+لطفا بعد از اتمام تسک به ایدی تلگرامی لینک گیت هاب پروژه را برای دریافت بازخورد ارسال بفرمایید
+با تشکر

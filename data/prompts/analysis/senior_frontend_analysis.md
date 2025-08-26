@@ -1,424 +1,379 @@
-# Frontend Developer (React/Next.js) - Enterprise Standards Evaluation
-
-You are evaluating a **Frontend Developer** candidate for a mid-to-senior level position (3-5+ years). Your evaluation should be based on enterprise standards while being fair to the specific task requirements.
-
-## EVALUATION METHODOLOGY
-
-1. **First**: Understand enterprise/senior developer standards
-2. **Second**: Identify what the task ACTUALLY requires
-3. **Third**: Evaluate ONLY based on task requirements + critical issues
-4. **Important**: Don't penalize for missing features not requested (e.g., if tests weren't required, don't mark down for no tests)
-
-## SECTION 1: ENTERPRISE STANDARDS FOR SENIOR FRONTEND DEVELOPERS
-
-### Core Technical Standards (2024-2025)
-
-**TypeScript Excellence:**
-
-- Strict mode configuration (`"strict": true`)
-- Proper type inference without excessive `any`
-- Interface/type definitions for all data structures
-- Generic types where appropriate
-
-**React/Next.js Patterns:**
-
-- Server Components vs Client Components understanding
-- Proper data fetching patterns (SSR/SSG when appropriate)
-- Performance optimization (React.memo, useMemo, useCallback when needed)
-- Error boundaries for production resilience
-
-**Code Architecture:**
-
-- Clear separation of concerns (not everything in components)
-- Custom hooks for business logic
-- Service layer for API calls (when complexity justifies it)
-- Consistent file/folder structure
-
-**Security Awareness:**
-
-- XSS prevention (sanitizing user input)
-- Secure authentication patterns
-- Proper handling of sensitive data
-- CORS understanding
-
-**Production Readiness:**
-
-- Error handling with user-friendly messages
-- Loading states for async operations
-- Responsive design considerations
-- Accessibility basics (semantic HTML, ARIA when needed)
-
-### What Distinguishes Senior from Mid-Level
-
-**Senior Developers typically:**
-
-- Think about scalability and maintainability first
-- Handle edge cases without being asked
-- Write self-documenting code
-- Consider performance implications
-- Implement proper error recovery
-- Structure code for testability (even if tests aren't written)
-
-**Mid-Level Developers often:**
-
-- Focus on making it work first
-- May miss edge cases
-- Need guidance on architecture decisions
-- Implement basic error handling
-- May not consider performance initially
-
-## SECTION 2: TASK REQUIREMENTS ANALYSIS
-
-### Analyzing the Given Task
-
-{task_requirements}
-
-### What This Task REQUIRES vs NICE-TO-HAVE
-
-**Identify from the task:**
-
-1. **Explicit Requirements** - What was directly asked for
-2. **Implicit Requirements** - What's necessary for the explicit requirements to work
-3. **Not Required** - What would be nice but wasn't asked for
-
-**Example Analysis:**
-
-- If task says "create login page" → Required: form, validation, API call
-- Implicit: error handling, loading state
-- Not Required: forgot password, remember me, OAuth (unless specified)
-
-## SECTION 3: CODE EVALUATION
-
-### The Repository
-
-- **URL**: {github_url}
-- **Files**: {file_count}
-- **Tokens**: {total_tokens}
-
-### Repository Architecture
-
-```
-{repository_structure}
-```
-
-### MANDATORY ARCHITECTURE CHECK
-
-**CRITICAL**: You MUST identify the architecture/structure pattern used in the codebase.
-
-**Common Frontend Architecture Patterns to Look For:**
-- **Component-Based Architecture**: Reusable components with clear hierarchy
-- **MVC/MVP/MVVM**: Model-View patterns with separation of concerns
-- **Flux/Redux Pattern**: Unidirectional data flow with stores/actions/reducers
-- **Atomic Design**: Atoms, molecules, organisms, templates, pages
-- **Feature-Based Structure**: Organized by features/modules rather than file types
-- **Domain-Driven Structure**: Organized by business domains
-- **Layered Architecture**: Presentation, business logic, data layers
-- **Micro-Frontend**: Independent, deployable frontend modules
-- **Simple Modular**: At minimum, logical separation (components, utils, services)
-
-**Architecture Evaluation Rules:**
-
-1. **NO IDENTIFIABLE ARCHITECTURE PATTERN = AUTOMATIC REJECTION**
-   - Just having component folders is NOT an architecture → Add 50+ penalty points
-   - Must implement a SPECIFIC architectural pattern → Not just "components in folders"
-   - If you cannot name the specific pattern used → Add 50+ penalty points
-   - Examples of NOT ACCEPTABLE:
-     - "Just components in folders"
-     - "Basic React structure"
-     - "Simple component organization"
-   - MUST BE one of: MVC/MVP/MVVM, Flux/Redux, Atomic Design, Feature-Based, Domain-Driven, Container/Presenter, etc.
-
-2. **Minimum Acceptable Architecture**
-   - MUST implement at least ONE clear architectural pattern
-   - Even if basic, must be recognized (e.g., basic MVC, Container/Presenter pattern)
-   - Score: 60-70 on architecture metric
-
-3. **Good Architecture**
-   - Well-implemented architectural pattern (e.g., proper Feature-Based with clear boundaries)
-   - Data flow follows the pattern's principles
-   - Clear separation of concerns beyond just folders
-   - Score: 70-85 on architecture metric
-
-4. **Excellent Architecture**
-   - Advanced pattern implementation (Flux/Redux, Atomic Design, etc.)
-   - Clear architectural boundaries
-   - Proper state management architecture
-   - Separation of business logic from presentation
-   - Score: 85-100 on architecture metric
-
-**CRITICAL EVALUATION QUESTION:**
-"What SPECIFIC architectural pattern does this code implement?"
-- If answer is "none" or "just React components" → REJECT (50+ penalty)
-- Must be able to identify: "This implements [PATTERN NAME] architecture"
-
-**Evaluate the architecture:**
-
-- Is the folder structure following React/Next.js conventions?
-- Are components, hooks, utils, and services properly separated?
-- Does the structure indicate understanding of frontend organization?
-- For simple tasks: Is the structure appropriately simple?
-- For complex tasks: Does it show proper separation of concerns?
-
-### The Code
-
-```
-{code_content}
-```
-
-## SECTION 4: STANDARDS-BASED EVALUATION
-
-### A. Critical Issues (Always Check)
-
-These are enterprise standards that should ALWAYS be followed:
-
-1. **Security Vulnerabilities**
-
-   - SQL/NoSQL injection possibilities
-   - XSS vulnerabilities
-   - Exposed sensitive data
-   - Insecure authentication
-
-2. **Code Breaking Issues**
-
-   - Syntax errors
-   - Runtime errors
-   - Infinite loops
-   - Memory leaks
-
-3. **Fundamental Misunderstandings**
-   - Wrong framework usage
-   - Incorrect async handling
-   - State management errors
-
-### B. Task-Specific Evaluation
-
-**CRITICAL RULE FOR EXPLICIT REQUIREMENTS:**
-When the task explicitly states "implement X", "add Y", or "include Z", these are NOT optional.
-Missing an explicit requirement = MAJOR penalty (+25-30 points per missing item).
-Examples of explicit requirements:
-- "Create responsive design" → Missing = +30 points
-- "Add unit tests" → Missing = +30 points
-- "Implement dark mode toggle" → Missing = +30 points
-- "Include loading states" → Missing = +30 points
-
-Evaluate ONLY what was asked for:
-
-**For each requirement:**
-
-1. Was it implemented?
-2. Does it work correctly?
-3. Is the implementation reasonable for the task scope?
-
-**Patterns to recognize:**
-
-```typescript
-// ACCEPTABLE for simple tasks
-function LoginPage() {{
-  const handleSubmit = async () => {{
-    const res = await fetch('/api/login')
-    // Direct fetch is OK for simple demos
-  }}
-}}
-
-// EXPECTED for complex applications
-// services/auth.service.ts
-export const authService = {{
-  login: async (credentials) => {{
-    // Abstracted service layer
-  }}
-}}
-```
-
-### C. Seniority Indicators (Context-Aware)
-
-**Strong Senior Signals:**
-
-- Handled edge cases without being asked
-- Clean, readable code structure
-- Thoughtful error handling
-- Performance considerations
-- Security awareness
-
-**Acceptable Mid-Level Patterns:**
-
-- Core functionality works
-- Basic error handling
-- Reasonable code organization
-- Some missed edge cases
-
-**Concerning Patterns (Need Context):**
-
-- No error handling (unless very simple task)
-- Poor code organization (unless time-constrained)
-- Security issues (always concerning)
-
-## MANDATORY PENALTY CALCULATION
-
-**CRITICAL: The penalty_breakdown field is REQUIRED and MUST be populated with ALL issues found.**
-
-Before scoring, you MUST identify ALL issues and calculate penalties:
-
-1. **Check Explicit Requirements** (from task description):
-   - Missing required UI components? → +30 points MINIMUM
-   - Missing responsive design (if required)? → +30 points MINIMUM
-   - Missing required features? → +30 points MINIMUM
-   - Missing tests (if required)? → +30 points MINIMUM
-   - Missing documentation (if required)? → +30 points MINIMUM
-
-2. **Check Architecture (MANDATORY)**:
-   - Cannot identify a SPECIFIC architectural pattern? → +50 points (AUTO-REJECT)
-   - Just components in folders without actual architecture? → +50 points (AUTO-REJECT)
-   - No clear architectural pattern (MVC, Flux, Atomic, Feature-Based, etc.)? → +50 points
-   - Example penalty reasons:
-     - "Has components folder but no architectural pattern" → +50 points
-     - "Cannot identify if this is MVC, Flux, or any pattern" → +50 points
-     - "Just basic React structure, not an architecture" → +50 points
-
-3. **Check Security Issues**:
-   - XSS vulnerabilities? → +45 points
-   - Exposed API keys/secrets? → +45 points
-   - SQL/NoSQL injection? → +45 points
-   - Sensitive data in logs? → +40 points
-   - Hardcoded credentials? → +45 points
-
-4. **List EVERY Issue in penalty_breakdown**:
-   Example:
-   ```
-   "penalty_breakdown": {{
-     "issues_found": [
-       {{"issue": "XSS vulnerability in user input", "severity": "critical", "penalty": 45}},
-       {{"issue": "Missing responsive design", "severity": "major", "penalty": 30}}
-     ],
-     "total_penalty": 75
-   }}
-   ```
-
-5. **Ensure Consistency**:
-   - penalty_breakdown.total_penalty MUST equal sum of all penalties
-   - critical_issues_penalty score MUST equal penalty_breakdown.total_penalty
-   - If total ≥ 50 → MUST recommend NO_HIRE
-
-## OUTPUT FORMAT
+# Senior Frontend Developer Analysis Prompt
+
+You are evaluating a Next.js frontend application for a senior developer position. Be STRICT but FAIR - evaluate based on what was actually requested in the task, not on theoretical perfection.
+
+## ⚠️ BANNED PHRASES - DO NOT USE THESE ⚠️
+- "could benefit from" → Instead say: "Missing X in file:line"
+- "might improve" → Instead say: "Incorrect implementation in file:line"
+- "consider adding" → Instead say: "Required X not found"
+- "somewhat lacking" → Instead say: "Failed to implement X"
+- "generally good" → Instead say: "Correctly implements X, Y, Z"
+- "mostly works" → Instead say: "Works except for specific issue in file:line"
+
+BE SPECIFIC. BE DECISIVE. PROVIDE EVIDENCE.
+
+## 🚨 STOP! READ THIS FIRST! 🚨
+
+### MANDATORY PRE-CHECK: List Files That Contain Storage Code
+Before ANY analysis, scan ALL files and list which ones contain storage-related code:
+
+1. **Files with Cookie Code** (search for: js-cookie, setCookie, getCookie, Cookies., document.cookie):
+   - File: __________ (Line: ___) (Exact code: __________)
+   
+2. **Files with localStorage Code** (search for: localStorage.setItem, localStorage.getItem, window.localStorage):  
+   - File: __________ (Line: ___) (Exact code: __________)
+
+3. **Files with sessionStorage Code** (search for: sessionStorage.setItem, sessionStorage.getItem):
+   - File: __________ (Line: ___) (Exact code: __________)
+
+### THE GOLDEN RULE:
+- **If you find "js-cookie" or "setCookie" or "document.cookie" → localstorage_implementation = FALSE** ❌
+- **If you find "localStorage.setItem" → localstorage_implementation = TRUE** ✅
+- **If you find "sessionStorage" → localstorage_implementation = FALSE** ❌
+- **YOU MUST QUOTE THE EXACT LINE OF CODE AS EVIDENCE!**
+- **DO NOT MAKE UP CODE THAT DOESN'T EXIST!**
+
+### ⚠️ IMPORTANT NOTE ⚠️
+**DO NOT HALLUCINATE!** If the repository uses cookies (js-cookie, setCookie, etc.), you MUST mark localstorage_implementation as FALSE. While cookies are a valid (and often more secure) choice for authentication, the task explicitly requested localStorage. This will incur a 20-point penalty for not following requirements exactly.
+
+## CRITICAL: Two-Phase Evaluation System
+
+### PHASE 1: Mandatory Requirements Gate (Pass/Fail)
+Check if ALL these requirements are implemented. Missing ANY single requirement = immediate NO_HIRE:
+
+1. **login_page_implementation**: Login page at /auth or /login with Iranian phone input
+2. **phone_validation**: Iranian phone validation (09xxx, +989xxx, 00989xxx formats)
+3. **api_integration**: Fetch from https://randomuser.me/api/?results=1&nat=us on login
+4. **localstorage_implementation**: User data stored in localStorage after login
+   - MUST use `localStorage.setItem()` and `localStorage.getItem()`
+   - Using cookies (js-cookie, setCookie, etc.) = FALSE ❌ (20-point penalty)
+   - Using sessionStorage = FALSE ❌
+   - Note: While cookies are often more secure for auth, the task explicitly requires localStorage
+5. **dashboard_page**: Dashboard page showing user welcome message
+6. **logout_functionality**: Logout button that clears localStorage and redirects
+7. **nextjs_app_router**: Using Next.js App Router (NOT Pages Router)
+8. **typescript_strict**: TypeScript with strict mode enabled
+9. **tailwind_only**: Tailwind CSS only (no CSS modules, styled-components, etc.)
+10. **responsive_design**: Mobile-first responsive implementation
+11. **folder_structure**: Clean, modular folder structure with proper organization
+   - Components in `/components` or `/ui` directory
+   - Utils/helpers in `/lib` directory
+   - Proper separation of concerns
+   - Reusable component architecture
+
+### PHASE 2: Quality Assessment (Only if Phase 1 passes)
+If ALL mandatory requirements pass, evaluate quality based on the sections below.
+
+**Final Decision Logic:**
+1. If ANY of the 11 mandatory requirements is missing: Set recommendation = "no"
+2. Else if critical_issues_penalty >= 50: Set recommendation = "no" 
+3. Else if average score >= 70%: Set recommendation = "yes"
+4. Else: Set recommendation = "no"
+
+**Note:** Average score = mean of (task_completion, code_quality, seniority_indicators, nextjs_expertise)
+
+**Confidence Level:**
+- Use 0.9 for clear decisions (all requirements met/missed)
+- Use 0.7 for moderate confidence (some edge cases)
+- Use 0.5 for low confidence (ambiguous quality)
+
+## Next.js App Router Standards (STRICT ENFORCEMENT)
+
+### File Convention Compliance
+Check for proper implementation of:
+- `app/layout.tsx` - Root layout with proper children typing
+- `app/page.tsx` - Home page component
+- `app/loading.tsx` - Loading UI component
+- `app/error.tsx` - Error boundary with reset functionality
+- `app/not-found.tsx` - 404 page handling
+- Proper route organization (e.g., `app/auth/page.tsx`, `app/dashboard/page.tsx`)
+
+### Server vs Client Components
+**CRITICAL VIOLATIONS (25+ penalty each):**
+- Using `useState`, `useEffect` in Server Components
+- Using `onClick`, `onChange` handlers in Server Components
+- Missing "use client" directive when needed
+- Using "use client" unnecessarily on Server Components
+- Fetching data in Client Components when it should be in Server Components
+- Not using async/await in Server Components for data fetching
+
+### TypeScript Violations
+**PENALTIES (MUST show evidence with file:line format):**
+- Each `any` type: 10 points per occurrence (max 30 total) - MUST list as "file.ts:42 - const data: any"
+- Using `@ts-ignore` or `@ts-nocheck`: 20 points - MUST show as "file.ts:23 - // @ts-ignore"
+- No TypeScript at all: IMMEDIATE REJECTION
+- TypeScript not in strict mode: 25 points
+- **EVIDENCE FORMAT**: Always use "filename.ts:lineNumber - exact code snippet"
+
+### Architecture Violations
+**MAJOR ISSUES:**
+- Using Pages Router (`pages/` directory): IMMEDIATE REJECTION
+- Not using Tailwind CSS: IMMEDIATE REJECTION
+- Using CSS modules or styled-components instead of Tailwind: IMMEDIATE REJECTION
+- Direct DOM manipulation (getElementById, querySelector): 30 points
+- Using jQuery: 40 points
+- Excessive inline styles (more than 3 instances): 20 points total
+
+### Folder Structure Analysis (MANDATORY)
+**Check for the following structure requirements:**
+- **Components Directory**: Must have `/components` or `/ui` directory with reusable components
+- **Lib Directory**: Must have `/lib` directory for utilities and helpers
+- **Separation of Concerns**: Components, pages, and utilities properly separated
+- **Component Organization**: Related components grouped logically
+
+**PENALTIES:**
+- No components directory or poorly organized components: 25 points
+- No lib directory or utilities mixed with components: 20 points  
+- All code in pages directory with no modular structure: 35 points
+- Poor separation of concerns (e.g., API calls directly in components): 15 points
+
+### Code Quality Issues
+**PENALTIES (MUST provide specific evidence):**
+- No loading states for async operations: 15 points - SPECIFY: "No loading state in login.tsx:45 during API call"
+- No error handling for API calls: 20 points - SPECIFY: "No try-catch in dashboard.tsx:67 for fetch"
+- Very poor code organization: 20 points - SPECIFY: "All logic in page.tsx:1-500 with no separation"
+- Completely unreadable code: 25 points - SPECIFY exact problematic sections with line numbers
+
+### Security Issues
+**CRITICAL PENALTIES:**
+- Clear XSS vulnerabilities: 35 points
+- Exposed API keys or secrets in code: 45 points
+- No input validation for phone number: 20 points
+
+### Requirements Deviation
+**MEDIUM PENALTIES:**
+- Using cookies instead of localStorage (when task requires localStorage): 20 points
+  - Note: This is about following requirements, not security best practices
+
+### Best Practices Violations
+**MINOR PENALTIES (be lenient):**
+- Very poor naming conventions: 10 points
+- No component reusability at all: 10 points
+- Complete lack of code organization: 15 points
+
+## Positive Scoring Metrics
+
+### task_completion (0-100)
+- All features working correctly: 90-100
+- Most features working with minor issues: 75-90
+- Core features working but some issues: 60-75
+- Some features working: 40-60
+- Minimal functionality: 0-40
+
+### code_quality (0-100)
+Evaluate based on:
+- Clean, readable code
+- Proper abstractions
+- DRY principles
+- SOLID principles
+- Consistent coding style
+- Proper error handling
+- Comments where necessary
+
+### seniority_indicators (0-100)
+Look for:
+- Advanced Next.js patterns (parallel routes, intercepting routes)
+- Proper TypeScript generics usage
+- Custom hooks for logic reuse
+- Performance optimizations
+- Security considerations
+- Scalable architecture
+- Testing setup (even if not required)
+- CI/CD configuration
+- Documentation quality
+
+### nextjs_expertise (0-100)
+SPECIFICALLY evaluate:
+- Proper use of App Router features
+- Server/Client component boundaries
+- Data fetching patterns (server-side)
+- Route handlers implementation
+- Middleware usage
+- Metadata API usage
+- Font optimization
+- Image optimization
+- Static/dynamic rendering choices
+
+## Special Rules for Frontend
+
+1. **App Router is MANDATORY** - Using Pages Router = automatic rejection
+2. **TypeScript is MANDATORY** - No TypeScript = automatic rejection
+3. **Tailwind CSS is MANDATORY** - CSS modules/styled-components = automatic rejection
+4. **Responsive design is MANDATORY** - Not mobile-friendly = automatic rejection
+5. **All 10 requirements MANDATORY** - Missing any = automatic rejection
+
+## Acceptable Quality Levels
+
+**HIRE Decision Guidelines:**
+- All 11 mandatory requirements: ✓ implemented (INCLUDING folder_structure)
+- Total penalty: < 50 points
+- Average quality score: ≥ 70%
+- Shows understanding of Next.js App Router
+- Clean, maintainable code
+- Proper TypeScript usage (some `any` is ok if limited)
+
+**What constitutes "good enough":**
+- Working authentication flow
+- Proper phone validation
+- API integration works
+- localStorage properly used (NOT cookies or sessionStorage)
+- Dashboard shows user data
+- Logout clears state
+- Uses App Router structure
+- TypeScript throughout (even if not perfect)
+- Tailwind for styling
+- Mobile responsive
+- Clean folder structure with components and lib directories
+
+Don't expect perfection - expect competence and ability to deliver requirements.
+
+## Output Format
+
+**IMPORTANT**: Before generating the JSON below, you MUST have completed the STORAGE METHOD DETECTION checklist at the beginning of this prompt!
 
 ```json
-{{
-  "task_analysis": {{
-    "explicit_requirements": ["List what was directly asked"],
-    "implicit_requirements": ["What's needed for explicit to work"],
-    "not_required": ["What wasn't asked for"],
-    "task_complexity": "simple|moderate|complex"
-  }},
-  "requirements_implementation": {{
-    "requirement_name": {{
-      "requested": true/false,
-      "implemented": true/false,
-      "quality": "not_done|basic|good|excellent",
-      "notes": "Specific observations"
-    }}
-    // ... for each requirement
-  }},
-  "critical_issues": [
-    "List any security vulnerabilities",
-    "List any code-breaking problems",
-    "List fundamental misunderstandings"
-  ],
-  "seniority_assessment": {{
-    "level_demonstrated": "junior|mid|senior",
-    "strengths": ["What they did well"],
-    "growth_areas": ["What could improve"],
-    "evidence": ["Specific examples from code"]
-  }},
-  "code_quality": {{
-    "readability": "poor|fair|good|excellent",
-    "organization": "poor|fair|good|excellent",
-    "error_handling": "none|basic|good|comprehensive",
-    "performance_awareness": true/false,
-    "security_awareness": true/false
-  }},
-  "penalty_breakdown": {{
+{
+  "storage_method_check": {
+    "found_localStorage": boolean,
+    "found_cookies": boolean,
+    "found_sessionStorage": boolean,
+    "storage_details": "MUST include file path and line number if found (e.g., 'Found js-cookie import in src/lib/cookies.ts line 1' or 'No localStorage usage found')",
+    "evidence": "Quote the EXACT line of code where you found storage usage, or state 'No evidence found'"
+  },
+  "requirements_met": {
+    "login_page_implementation": boolean,
+    "phone_validation": boolean,
+    "api_integration": boolean,
+    "localstorage_implementation": boolean,
+    "dashboard_page": boolean,
+    "logout_functionality": boolean,
+    "nextjs_app_router": boolean,
+    "typescript_strict": boolean,
+    "tailwind_only": boolean,
+    "responsive_design": boolean,
+    "folder_structure": boolean
+  },
+  "architecture_analysis": {
+    "uses_app_router": boolean,
+    "file_conventions_followed": boolean,
+    "server_client_boundaries_correct": boolean,
+    "routing_structure": "description of routing patterns used",
+    "component_organization": "description of component folder structure",
+    "folder_structure_analysis": {
+      "has_components_directory": boolean,
+      "has_lib_directory": boolean,
+      "components_properly_organized": boolean,
+      "utils_properly_separated": boolean,
+      "overall_structure_quality": "excellent|good|fair|poor"
+    }
+  },
+  "penalty_breakdown": {
     "issues_found": [
-      {{"issue": "Description", "severity": "minor|moderate|major|critical", "penalty": number}}
+      {
+        "category": "typescript|architecture|security|performance|nextjs",
+        "issue": "specific description with evidence (e.g., 'any type in file.ts line 23')",
+        "severity": "critical|high|medium|low",
+        "penalty": number,
+        "evidence": "exact code snippet or file location"
+      }
     ],
-    "total_penalty": "Sum of all penalties"
-  }},
-  "scores": {{
-    "task_completion": 0-100,  // Did they do what was asked?
-    "code_quality": 0-100,      // Is it well-written?
-    "seniority_indicators": 0-100,  // Do they show experience?
-    "critical_issues_penalty": 0-50  // MUST equal penalty_breakdown.total_penalty
-  }},
-  "recommendation": "strong_yes|yes|no|strong_no",
-  "confidence": 0.0-1.0,
-  "hiring_decision": {{
-    "decision": "HIRE|NO_HIRE",
-    "primary_reason": "Clear, specific reason based on task and standards",
-    "is_task_appropriate": "Did they deliver what was asked for?",
-    "is_production_ready": "Could this go to production with minor tweaks?"
-  }},
-  "detailed_feedback": "Provide balanced feedback focusing on: 1) Did they complete the task as requested? 2) Any critical issues found? 3) Does the code demonstrate the seniority level expected? Remember to be fair - if the task was simple, don't expect complex architecture. If tests weren't required, don't penalize for missing tests. Focus on what WAS asked and whether it was delivered with appropriate quality."
-}}
+    "total_penalty": number
+  },
+  "scores": {
+    "task_completion": number,
+    "code_quality": number,
+    "seniority_indicators": number,
+    "nextjs_expertise": number,
+    "critical_issues_penalty": number
+  },
+  "recommendation": "yes|no",
+  "confidence": 0.9,
+  "strengths": ["string"],
+  "weaknesses": ["string"],
+  "detailed_feedback": "SPECIFIC analysis with file:line references. NO GENERIC PHRASES like 'could benefit from', 'might improve', 'consider adding'. BE DECISIVE: either it's good or it needs fixing. Example: 'app/login/page.tsx:45 - Missing error handling for API call. dashboard/page.tsx:23 - Using any type for user data.' Every claim MUST have evidence."
+}
 ```
 
-## DECISION FRAMEWORK
 
-### Scoring Rules:
+## DO NOT PENALIZE FOR (CRITICAL - READ THIS):
 
-- **Average of positive metrics** (task_completion, code_quality, seniority_indicators) must be **≥70%** for HIRE
-- **critical_issues_penalty ≥ 50** = automatic NO_HIRE regardless of other scores
-- Focus on what was delivered, not what's missing (unless it was required)
+**Features NOT requested in the task:**
+- Tests or test coverage (not asked)
+- CI/CD pipelines (not asked)
+- Docker configuration (not asked)
+- Next.js Image component (no images in the task)
+- Suspense boundaries (not specifically requested)
+- Code splitting optimizations (not asked)
+- Bundle size optimization (not asked)
+- CSRF protection (not asked)
+- Advanced accessibility features beyond basics (not required)
+- Error boundaries (good to have but not mandatory)
+- SEO optimizations (not asked)
+- Internationalization (not asked)
+- PWA features (not asked)
+- Analytics integration (not asked)
+- Advanced caching strategies (not asked)
 
-### HIRE Indicators:
+**Acceptable alternatives:**
+- Using Context API instead of Zustand for state
+- Using fetch instead of axios for API calls
+- localStorage for client-side state (as specified in task)
+- Basic folder structure (doesn't need to be enterprise-level)
+- Simple component organization
+- Comments in code (unless excessive)
+- Any Tailwind-compatible UI library
+- Any deployment platform or no deployment (deployment verified separately)
 
-- Average of positive metrics ≥ 70%
-- Critical issues penalty < 50
-- Completed the required functionality
-- No critical security issues (XSS, exposed secrets)
-- Code quality appropriate for task complexity
-- Shows understanding of React/Next.js concepts
-- Demonstrates problem-solving ability
+**Focus on what WAS asked:**
+1. Login page with Iranian phone validation
+2. API call to randomuser.me
+3. localStorage for user data
+4. Dashboard with welcome message
+5. Logout functionality
+6. Next.js App Router (critical)
+7. TypeScript (critical)
+8. Tailwind CSS (critical)
+9. Responsive design
+10. Clean, readable code
 
-### NO HIRE Indicators:
+## CRITICAL VERIFICATION STEPS (MUST DO THESE FIRST!)
 
-- Average of positive metrics < 70% OR
-- Critical issues penalty ≥ 50
-- Failed to implement core requirements
-- Critical security vulnerabilities (XSS = 40-50 penalty each)
-- Fundamental misunderstandings of React/framework
-- Code that wouldn't work in production
-- Quality far below expected seniority level
+1. **localStorage Check - EXTREMELY IMPORTANT**: 
+   - Search for `localStorage.setItem` and `localStorage.getItem`
+   - If you find `setCookie`, `js-cookie`, `Cookies.set` or ANY cookie usage = **localstorage_implementation: FALSE**
+   - If you find `sessionStorage` instead = **localstorage_implementation: FALSE**
+   - ONLY mark TRUE if actually using localStorage API
+   
+2. **App Router Check**: 
+   - Must have `/app` directory with page.tsx files
+   - If `/pages` directory exists instead = **nextjs_app_router: FALSE**
+   
+3. **TypeScript any Check**: 
+   - Count EXACT occurrences with file and line numbers
+   - If no `any` types found, penalty should be 0
+   
+4. **Every Penalty MUST Have Evidence**:
+   - Include exact file path and line number
+   - Show the actual problematic code
+   
+5. **CRITICAL ERROR**: If you mark a requirement TRUE when it's actually FALSE, this is a severe evaluation failure
 
-### Penalty Examples (Cumulative):
+## IMPORTANT REMINDERS
 
-- Minor issues (+5-10 each):
-  - Missing PropTypes/TypeScript in some places
-  - Inconsistent code formatting
-  - No loading states for minor operations
-  
-- Moderate issues (+15-20 each):
-  - Poor state management patterns
-  - No error boundaries
-  - Missing responsive design
-  
-- Major issues (+25-30 each):
-  - Missing EXPLICITLY REQUIRED features/components
-  - Missing required API integration
-  - No authentication implementation
-  - Broken core functionality
-  - Ignoring explicit task requirements
-  
-- Critical issues (+40-50 each):
-  - XSS vulnerabilities
-  - Hardcoded API keys/secrets in frontend
-  - Exposed sensitive user data
-  - SQL/NoSQL injection possibilities
+1. **Be strict but FAIR** - Require evidence for all penalties
+2. **Check storage method** - localStorage specifically, not cookies
+3. **Check App Router** - /app directory, not /pages
+4. **Count any types** - With specific locations
+5. **If all 10 requirements TRULY met + penalty < 50 + average ≥ 70%** = yes
+6. **If ANY requirement false** = no (regardless of quality)
 
-Note: Multiple issues accumulate - e.g., poor state (20) + missing required feature (30) = 50 total → rejection
+Remember: The goal is to identify competent senior developers who can deliver what's asked, not to find perfection. If they meet ALL 10 mandatory requirements and write decent code, they should have a chance to be hired.
 
-IMPORTANT: If the task EXPLICITLY asks for something (e.g., "implement dark mode", "add responsive design", "include tests"),
-missing it is a MAJOR issue (+25-30 points). Don't treat explicit requirements as optional.
+## ⚠️ FINAL DOUBLE-CHECK BEFORE SUBMITTING ⚠️
+Before you submit your JSON response, ask yourself:
+1. Did I actually search for `localStorage.setItem` and `localStorage.getItem` in the code?
+2. Did I check for `js-cookie` or other cookie libraries?
+3. Is my `localstorage_implementation` value based on what I ACTUALLY found in the code, not what I assume?
+4. If I found cookies instead of localStorage, did I mark `localstorage_implementation` as FALSE?
 
-### Remember:
-
-- **Be Practical**: Focus on what was asked, not what could be added
-- **Be Thorough**: Always check for security and breaking issues
-- **Be Contextual**: Consider time constraints and task scope
+**REMEMBER**: The task explicitly requires localStorage. If the developer used cookies instead, that's an automatic failure on this requirement!

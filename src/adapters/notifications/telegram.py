@@ -487,9 +487,58 @@ Recommendations:
                 return text
             return text.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
         
-        # Only check architecture for backend role
+        # Different architecture checks for frontend vs backend
+        if role.value == 'frontend':
+            # Frontend-specific architecture checks
+            # Handle both dict and object formats
+            architecture_analysis = None
+            if isinstance(result, dict):
+                architecture_analysis = result.get('architecture_analysis', None)
+            elif hasattr(result, 'architecture_analysis'):
+                architecture_analysis = result.architecture_analysis
+            
+            if architecture_analysis:
+                checks_text = ""
+                
+                # Check App Router
+                uses_app_router = architecture_analysis.get('uses_app_router', False)
+                checks_text += f"{'✅' if uses_app_router else '❌'} <b>Next.js App Router:</b> {'Yes' if uses_app_router else 'No (Pages Router or missing)'}\n"
+                
+                # Check File Conventions
+                file_conventions = architecture_analysis.get('file_conventions_followed', False)
+                checks_text += f"{'✅' if file_conventions else '❌'} <b>File Conventions:</b> {'Followed' if file_conventions else 'Not followed'}\n"
+                
+                # Check Server/Client Boundaries
+                boundaries_correct = architecture_analysis.get('server_client_boundaries_correct', False)
+                checks_text += f"{'✅' if boundaries_correct else '❌'} <b>Server/Client Components:</b> {'Correct' if boundaries_correct else 'Incorrect usage'}\n"
+                
+                # Check Routing Structure
+                routing = architecture_analysis.get('routing_structure', 'Not analyzed')
+                checks_text += f"📁 <b>Routing Structure:</b> {escape_html(routing)}\n"
+                
+                # Check Component Organization
+                organization = architecture_analysis.get('component_organization', 'Not analyzed')
+                checks_text += f"📦 <b>Component Organization:</b> {escape_html(organization)}\n"
+                
+                # Add Folder Structure Analysis if available
+                folder_analysis = architecture_analysis.get('folder_structure_analysis', {})
+                if folder_analysis:
+                    checks_text += "\n<b>📂 Folder Structure Analysis:</b>\n"
+                    checks_text += f"  • Components directory: {'✅' if folder_analysis.get('has_components_directory', False) else '❌'}\n"
+                    checks_text += f"  • Lib/utils directory: {'✅' if folder_analysis.get('has_lib_directory', False) else '❌'}\n"
+                    checks_text += f"  • Component organization: {'✅' if folder_analysis.get('components_properly_organized', False) else '❌'}\n"
+                    checks_text += f"  • Utils separation: {'✅' if folder_analysis.get('utils_properly_separated', False) else '❌'}\n"
+                    quality = folder_analysis.get('overall_structure_quality', 'unknown')
+                    quality_emoji = {'excellent': '🌟', 'good': '✅', 'fair': '⚠️', 'poor': '❌'}.get(quality, '❓')
+                    checks_text += f"  • Overall quality: {quality_emoji} {quality.upper()}"
+                
+                return checks_text
+            else:
+                return "Frontend architecture analysis not available"
+        
+        # Backend architecture checks (existing code continues below)
         if role.value != 'backend':
-            return "N/A (Frontend role - different architecture requirements apply)"
+            return "Architecture checks not implemented for this role"
         
         # Extract architecture checks from feedback and penalty breakdown
         # Handle both dict and object formats
@@ -665,13 +714,27 @@ Recommendations:
                 return text
             return text.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
         
-        # Format requirements check
+        # Format requirements check with penalty information
         requirements_text = ""
         # Handle both dict and object formats
         requirements_met = result.get('requirements_met', {}) if isinstance(result, dict) else result.requirements_met
+        penalty_breakdown = result.get('penalty_breakdown') if isinstance(result, dict) else getattr(result, 'penalty_breakdown', None)
+        
         for req, met in requirements_met.items():
             symbol = "✓" if met else "✗"
-            requirements_text += f"{symbol} {escape_html(req)}\n"
+            req_line = f"{symbol} {escape_html(req)}"
+            
+            # Check for penalties related to this requirement
+            if penalty_breakdown and met:  # Only show penalties for met requirements
+                issues = penalty_breakdown.get('issues_found', []) if isinstance(penalty_breakdown, dict) else []
+                for issue in issues:
+                    if isinstance(issue, dict) and req in issue.get('issue', '').lower():
+                        penalty_points = issue.get('penalty', 0)
+                        if penalty_points > 0:
+                            req_line += f" <i>(−{penalty_points}pts penalty)</i>"
+                        break
+            
+            requirements_text += f"{req_line}\n"
         
         # Format strengths and weaknesses with escaped HTML
         # Handle both dict and object formats

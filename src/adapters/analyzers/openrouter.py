@@ -391,6 +391,14 @@ class OpenRouterAdapter(AnalyzerAdapter):
             content_parts.append(f"Language: {file_info.language or 'Unknown'}")
             content_parts.append(f"Priority: {file_info.priority}")
             content_parts.append(f"\n```\n{file_info.content}\n```\n")
+            
+            # Debug log for critical files
+            if 'cookie' in file_info.path.lower() or 'auth' in file_info.path.lower() or 'login' in file_info.path.lower():
+                logger.info(f"Including critical file for frontend: {file_info.path}")
+                
+                # Check for cookie usage patterns in the content
+                if any(pattern in file_info.content for pattern in ['js-cookie', 'setCookie', 'getCookie', 'Cookies.set', 'Cookies.get']):
+                    logger.warning(f"⚠️ DETECTED COOKIE USAGE in {file_info.path}")
         
         full_content = "\n".join(content_parts)
         
@@ -506,7 +514,7 @@ class OpenRouterAdapter(AnalyzerAdapter):
                             self._ensure_penalty_breakdown(parsed_result)
                             
                             if await self.validate_response(parsed_result):
-                                return self._convert_to_analysis_result(parsed_result)
+                                return self._convert_to_analysis_result(parsed_result, request.role.value, content)
                             else:
                                 logger.warning("Response validation failed")
                                 return None
@@ -689,9 +697,28 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
             if JSONRecovery.validate_recovered_json(recovered_json):
                 logger.info("Successfully recovered JSON from LLM response")
                 
-                # CRITICAL: Log what requirements_met the LLM actually returned
+                # CRITICAL: Log storage method check first
+                if 'storage_method_check' in recovered_json:
+                    storage_check = recovered_json['storage_method_check']
+                    logger.warning(f"🔍 STORAGE METHOD CHECK: {storage_check}")
+                    
+                    # Log evidence specifically
+                    if 'evidence' in storage_check:
+                        logger.warning(f"📝 EVIDENCE: {storage_check['evidence']}")
+                    
+                    # Override localstorage_implementation based on what was actually found
+                    if storage_check.get('found_cookies') and not storage_check.get('found_localStorage'):
+                        logger.warning("⚠️ Found cookies but no localStorage - forcing localstorage_implementation to FALSE")
+                        if 'requirements_met' not in recovered_json:
+                            recovered_json['requirements_met'] = {}
+                        recovered_json['requirements_met']['localstorage_implementation'] = False
+                
+                # Log what requirements_met the LLM actually returned
                 if 'requirements_met' in recovered_json:
                     logger.info(f"LLM requirements_met: {recovered_json['requirements_met']}")
+                    # Specifically log localStorage implementation
+                    if 'localstorage_implementation' in recovered_json.get('requirements_met', {}):
+                        logger.warning(f"⚠️ LLM marked localstorage_implementation as: {recovered_json['requirements_met']['localstorage_implementation']}")
                 elif 'requirements_implementation' in recovered_json:
                     logger.info(f"LLM requirements_implementation found with {len(recovered_json['requirements_implementation'])} items")
                     # Log a sample of the implementation data
@@ -930,7 +957,7 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
             parsed_response['scores'] = {}
         parsed_response['scores']['critical_issues_penalty'] = total
     
-    def _convert_to_analysis_result(self, parsed_response: Dict[str, Any]) -> AnalysisResult:
+    def _convert_to_analysis_result(self, parsed_response: Dict[str, Any], role: str = "backend", content: str = None) -> AnalysisResult:
         """
         Convert parsed LLM response to structured AnalysisResult.
         
@@ -944,9 +971,7 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
         # Do NOT call _validate_and_adjust_penalty again here!
         
         # Map LLM recommendation string to enum
-        # LLM should return: strong_yes, yes, maybe, no, strong_no
-        # But sometimes returns: strongly_accept, accept, review_required, reject, strongly_reject
-        # Default to 'maybe' to give candidates benefit of doubt
+        # Both backend and frontend use 'recommendation' field with yes/no format
         recommendation_str = parsed_response.get('recommendation', 'maybe').lower().strip()
         
         # Handle both formats - NO MAYBE unless exceptional case
@@ -1020,6 +1045,7 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
         # Convert confidence to 0-1 scale if it's 0-100
         # Default to moderate confidence (0.6) if not provided
         confidence = parsed_response.get('confidence', 0.6)
+        
         if isinstance(confidence, (int, float)) and confidence > 1:
             confidence = confidence / 100.0
         
@@ -1115,6 +1141,44 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
                 requirements_met['dockerization'] = True
                 logger.info("Inferred dockerization=True from feedback")
         
+        # For frontend, double-check cookie usage in actual content
+        if role == "frontend" and content:
+            cookie_patterns = ['js-cookie', 'setCookie', 'getCookie', 'Cookies.set', 'Cookies.get', 'removeCookie']
+            localStorage_patterns = ['localStorage.setItem', 'localStorage.getItem', 'localStorage.removeItem', 'localStorage.clear']
+            
+            has_cookies = any(pattern in content for pattern in cookie_patterns)
+            has_localStorage = any(pattern in content for pattern in localStorage_patterns)
+            
+            if has_cookies and not has_localStorage:
+                logger.warning("⚠️ Detected cookie usage instead of localStorage - applying penalty but keeping requirement as met")
+                # NOTE: Don't mark requirement as False - it's technically implemented, just with a different method
+                # requirements_met['localstorage_implementation'] stays True, but we add penalty
+                
+                # Add a 20-point penalty for not following the exact requirement
+                if 'penalty_breakdown' not in parsed_response:
+                    parsed_response['penalty_breakdown'] = {'issues_found': [], 'total_penalty': 0}
+                
+                # Check if penalty already exists to avoid duplication
+                existing_issues = parsed_response['penalty_breakdown'].get('issues_found', [])
+                has_storage_penalty = any('localStorage' in str(issue.get('issue', '')) for issue in existing_issues)
+                
+                if not has_storage_penalty:
+                    storage_penalty = {
+                        'category': 'requirements',
+                        'issue': 'Used cookies instead of localStorage (task explicitly required localStorage)',
+                        'severity': 'medium',
+                        'penalty': 20,
+                        'evidence': 'Found js-cookie or setCookie functions instead of localStorage API'
+                    }
+                    parsed_response['penalty_breakdown']['issues_found'].append(storage_penalty)
+                    parsed_response['penalty_breakdown']['total_penalty'] = parsed_response['penalty_breakdown'].get('total_penalty', 0) + 20
+                    
+                    # Update scores if they exist
+                    if 'scores' in parsed_response:
+                        parsed_response['scores']['critical_issues_penalty'] = parsed_response['penalty_breakdown']['total_penalty']
+                    
+                    logger.warning("📝 Added 20-point penalty for using cookies instead of localStorage")
+        
         # Extract strengths and weaknesses from different possible locations
         strengths = parsed_response.get('strengths', [])
         weaknesses = parsed_response.get('weaknesses', [])
@@ -1122,8 +1186,12 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
         # Try to extract from seniority_assessment if not found
         if not strengths and 'seniority_assessment' in parsed_response:
             seniority = parsed_response['seniority_assessment']
-            strengths = seniority.get('strengths', [])
-            weaknesses = seniority.get('growth_areas', weaknesses)
+            # Handle case where seniority_assessment might be a list instead of dict
+            if isinstance(seniority, dict):
+                strengths = seniority.get('strengths', [])
+                weaknesses = seniority.get('growth_areas', weaknesses)
+            else:
+                logger.warning(f"seniority_assessment is not a dict, got: {type(seniority)}")
         
         # Add default values if empty
         if not strengths:
@@ -1170,9 +1238,11 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
         suggestions = parsed_response.get('suggestions', [])
         if not suggestions and 'seniority_assessment' in parsed_response:
             # Try to use growth areas as suggestions
-            growth_areas = parsed_response['seniority_assessment'].get('growth_areas', [])
-            if growth_areas:
-                suggestions = [f"Consider improving: {area}" for area in growth_areas[:3]]
+            seniority_for_suggestions = parsed_response['seniority_assessment']
+            if isinstance(seniority_for_suggestions, dict):
+                growth_areas = seniority_for_suggestions.get('growth_areas', [])
+                if growth_areas:
+                    suggestions = [f"Consider improving: {area}" for area in growth_areas[:3]]
         
         # Extract hiring decision if present
         hiring_decision = parsed_response.get('hiring_decision', {})
@@ -1181,19 +1251,34 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
         penalty = normalized_scores.get('critical_issues_penalty', 0)
         avg_positive = avg_score  # Already calculated above
         
-        # Define the 10 mandatory requirements
-        mandatory_requirements = [
-            'otp_login_registration',
-            'rate_limiting', 
-            'user_management',
-            'api_documentation',
-            'architectural_pattern',
-            'repository_pattern',
-            'service_layer',
-            'redis_implementation',
-            'database_implementation',
-            'dockerization'
-        ]
+        # Define the mandatory requirements based on role
+        if role == "frontend":
+            mandatory_requirements = [
+                'login_page_implementation',
+                'phone_validation',
+                'api_integration',
+                'localstorage_implementation',
+                'dashboard_page',
+                'logout_functionality',
+                'nextjs_app_router',
+                'typescript_strict',
+                'tailwind_only',
+                'responsive_design',
+                'folder_structure'
+            ]
+        else:  # backend
+            mandatory_requirements = [
+                'otp_login_registration',
+                'rate_limiting', 
+                'user_management',
+                'api_documentation',
+                'architectural_pattern',
+                'repository_pattern',
+                'service_layer',
+                'redis_implementation',
+                'database_implementation',
+                'dockerization'
+            ]
         
         # Phase 1: Check if ALL mandatory requirements are met
         missing_requirements = []
@@ -1223,6 +1308,39 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
             hiring_decision['primary_reason'] = f"All requirements met but quality at {avg_positive:.1f}% (below 70%)"
             hiring_decision['phase_1_pass'] = True
         
+        # Extract architecture analysis for frontend (required field)
+        architecture_analysis = parsed_response.get('architecture_analysis', None)
+        if role == "frontend" and not architecture_analysis:
+            # Log error but don't generate fake data
+            logger.error("Frontend analysis missing required architecture_analysis field")
+            # Add a marker that it was missing
+            parsed_response['missing_architecture_analysis'] = True
+        
+        # Validate response quality for frontend
+        if role == "frontend":
+            detailed_feedback = parsed_response.get('detailed_feedback', '')
+            
+            # Check for banned vague phrases
+            vague_phrases = [
+                'could benefit from', 'might improve', 'consider adding',
+                'somewhat lacking', 'generally good', 'mostly works',
+                'may need', 'should consider', 'would be better'
+            ]
+            
+            has_vague_language = any(phrase in detailed_feedback.lower() for phrase in vague_phrases)
+            if has_vague_language:
+                logger.warning("Frontend analysis contains vague language - may need re-analysis")
+            
+            # Check for specific evidence (file:line format)
+            has_specific_evidence = bool(re.search(r'\w+\.\w+:\d+', detailed_feedback))
+            if not has_specific_evidence:
+                logger.warning("Frontend analysis lacks specific file:line evidence")
+            
+            # Validate localStorage detection evidence
+            storage_check = parsed_response.get('storage_method_check', {})
+            if not storage_check.get('evidence') or storage_check.get('evidence') == 'No evidence found':
+                logger.warning("Frontend analysis missing localStorage detection evidence")
+
         return AnalysisResult(
             requirements_met=requirements_met,
             scores=normalized_scores,
@@ -1233,7 +1351,8 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
             detailed_feedback=parsed_response.get('detailed_feedback', ''),
             suggestions=suggestions,
             hiring_decision=hiring_decision,
-            penalty_breakdown=parsed_response.get('penalty_breakdown', None)
+            penalty_breakdown=parsed_response.get('penalty_breakdown', None),
+            architecture_analysis=architecture_analysis
         )
     
     def _create_error_result(self, error_message: str) -> Dict[str, Any]:

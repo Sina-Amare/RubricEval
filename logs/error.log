@@ -1064,3 +1064,181 @@ Traceback (most recent call last):
 core.exceptions.NotificationError: Failed to initialize Telegram bot: httpx.ConnectError: 
 
 [2025-08-26T12:01:16.619863] [ERROR] [openrouter:_analyze_with_model:556] - HTTP client error: Cannot connect to host openrouter.ai:443 ssl:default [None]
+[2025-08-26T12:23:46.063780] [ERROR] [openrouter:_analyze_with_model:556] - HTTP client error: Cannot connect to host openrouter.ai:443 ssl:default [None]
+[2025-08-26T14:24:35.749970] [ERROR] [openrouter:_analyze_with_model:556] - HTTP client error: Cannot connect to host openrouter.ai:443 ssl:default [None]
+[2025-08-26T14:24:52.943226] [ERROR] [openrouter:_parse_llm_response:717] - JSON recovery failed: All recovery strategies failed
+[2025-08-26T14:57:16.817813] [ERROR] [telegram:send_analysis_complete:283] - Failed to send analysis complete: httpx.ConnectError: 
+[2025-08-26T15:06:12.064932] [ERROR] [openrouter:_analyze_with_model:556] - HTTP client error: Cannot connect to host openrouter.ai:443 ssl:default [Temporary failure in name resolution]
+[2025-08-26T15:23:07.977161] [ERROR] [openrouter:analyze_code:185] - All 3 models failed to analyze code
+[2025-08-26T15:24:07.942504] [ERROR] [openrouter:analyze_code:185] - All 3 models failed to analyze code
+[2025-08-26T16:20:30.054766] [ERROR] [bot:error_handler:1103] - Update Update(message=Message(channel_chat_created=False, chat=Chat(first_name='𝘴𝓲ꪀꪖ\u200b', id=***ID_MASKED***, type=<ChatType.PRIVATE>, username='Sinaam_00'), date=datetime.datetime(2025, 8, 26, 12, 50, 27, tzinfo=datetime.timezone.utc), delete_chat_photo=False, entities=(MessageEntity(length=46, offset=0, type=<MessageEntityType.URL>),), from_user=User(first_name='𝘴𝓲ꪀꪖ\u200b', id=***ID_MASKED***, is_bot=False, language_code='en', username='Sinaam_00'), group_chat_created=False, link_preview_options=LinkPreviewOptions(url='https://github.com/Talkhestani/digitaldekamond'), message_id=738, supergroup_chat_created=False, text='https://github.com/Talkhestani/digitaldekamond'), update_id=***ID_MASKED***) caused error httpx.ConnectError: 
+[2025-08-26T16:20:33.965301] [ERROR] [bot:error_handler:1126] - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1311, in process_update
+    await coroutine
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_handlers/conversationhandler.py", line 842, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 158, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 167, in receive_url
+    await update.message.reply_chat_action(ChatAction.TYPING)
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_message.py", line 3401, in reply_chat_action
+    return await self.get_bot().send_chat_action(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 2581, in send_chat_action
+    return await super().send_chat_action(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 3571, in send_chat_action
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+
+[2025-08-26T16:32:45.898458] [ERROR] [openrouter:_analyze_with_model:531] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-26T16:32:48.486364] [ERROR] [openrouter:_analyze_with_model:531] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-26T16:32:52.399970] [ERROR] [openrouter:_analyze_with_model:531] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-26T16:32:54.187577] [ERROR] [openrouter:_analyze_with_model:531] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-26T16:32:57.050649] [ERROR] [openrouter:_analyze_with_model:531] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-26T16:33:01.168855] [ERROR] [openrouter:_analyze_with_model:531] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-26T16:33:02.896586] [ERROR] [openrouter:_analyze_with_model:531] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-26T16:33:05.363850] [ERROR] [openrouter:_analyze_with_model:531] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-26T16:33:08.730137] [ERROR] [openrouter:_analyze_with_model:531] - API error 403: {"error":{"message":"Key limit exceeded. Manage it using https://openrouter.ai/settings/keys","code":403}}
+[2025-08-26T16:33:08.734587] [ERROR] [openrouter:analyze_code:185] - All 3 models failed to analyze code
+[2025-08-26T16:33:08.736079] [ERROR] [bot:process_analysis:419] - Analysis failed for https://github.com/behnamhsn/dekamond-auth-demo: Analysis error: All 3 models failed to analyze code
+[2025-08-26T16:33:08.737744] [ERROR] [logger:log_error_with_context:361] - ERROR: Exception: Analysis error: All 3 models failed to analyze code | CONTEXT: url=https://github.com/behnamhsn/dekamond-auth-demo | role=frontend
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 367, in process_analysis
+    analysis_result = await analyzer_adapter.analyze_code(analysis_request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/adapters/analyzers/openrouter.py", line 190, in analyze_code
+    raise AnalysisError(
+core.exceptions.AnalysisError: All 3 models failed to analyze code
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 370, in process_analysis
+    raise Exception(f"Analysis error: {str(e)}")
+Exception: Analysis error: All 3 models failed to analyze code
+[2025-08-26T16:46:07.545505] [ERROR] [telegram:initialize:131] - Failed to initialize Telegram bot: httpx.ConnectError: 
+[2025-08-26T16:46:07.548027] [ERROR] [bot:<module>:1298] - Bot crashed with error: Failed to initialize Telegram bot: httpx.ConnectError: 
+[2025-08-26T16:46:07.753198] [ERROR] [bot:<module>:1299] - Full traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 101, in handle_async_request
+    raise exc
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 156, in _connect
+    stream = await stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 67, in start_tls
+    with map_exceptions(exc_map):
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 273, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/adapters/notifications/telegram.py", line 125, in initialize
+    bot_info = await self.bot.get_me()
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 1981, in get_me
+    return await super().get_me(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 976, in get_me
+    result = await self._post(
+             ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: 
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 1284, in <module>
+    main()
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 1196, in main
+    loop.run_until_complete(initialize_adapters())
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 1154, in initialize_adapters
+    await notification_adapter.initialize()
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/adapters/notifications/telegram.py", line 132, in initialize
+    raise NotificationError(error_msg)
+core.exceptions.NotificationError: Failed to initialize Telegram bot: httpx.ConnectError: 
+

@@ -138,7 +138,7 @@ BACKEND_PATTERNS = {
 }
 
 FRONTEND_PATTERNS = {
-    'critical': ['**/*'],  # Get all files
+    'critical': ['**/*'],  # Get all files, same as backend
     'important': [],
     'useful': [],
     'exclude': [

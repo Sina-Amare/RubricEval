@@ -159,9 +159,15 @@ class GitHubAdapter(RepositoryAdapter):
             size_mb = repo_size / (1024 * 1024)
             logger.info(f"Repository size: {size_mb:.2f}MB")
             
-            if repo_size > MAX_REPO_SIZE_MB * 1024 * 1024:
-                logger.warning(f"Repository large: {size_mb:.2f}MB (max: {MAX_REPO_SIZE_MB}MB)")
-                # Continue with processing but log warning
+            # Reject repositories over 10MB immediately (senior's requirement)
+            MAX_ALLOWED_SIZE_MB = 10
+            if size_mb > MAX_ALLOWED_SIZE_MB:
+                logger.error(f"Repository too large: {size_mb:.2f}MB (max allowed: {MAX_ALLOWED_SIZE_MB}MB)")
+                raise RepositoryError(
+                    f"Repository exceeds maximum size limit of {MAX_ALLOWED_SIZE_MB}MB (actual: {size_mb:.2f}MB). "
+                    f"This indicates poor practices such as committing dependencies, binaries, or build artifacts. "
+                    f"Please clean your repository and resubmit."
+                )
             
             # Use pattern-based file extraction (no LLM needed)
             logger.info("Extracting files based on patterns")
