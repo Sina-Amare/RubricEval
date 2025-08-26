@@ -311,44 +311,43 @@ func (h *AuthHandler) Login(w http.ResponseWriter, r *http.Request) {{
 - No tests (OK if not required)
 - Simple architecture (OK for simple requirements)
 
-## MANDATORY PENALTY CALCULATION
+## TWO-PHASE EVALUATION FRAMEWORK
 
-**CRITICAL: The penalty_breakdown field is REQUIRED and MUST be populated with ALL issues found.**
+### PHASE 1: MANDATORY REQUIREMENTS CHECK
+**ALL 10 requirements MUST be present. Missing ANY = AUTOMATIC REJECTION**
 
-Before scoring, you MUST identify ALL issues and calculate penalties:
+1. **otp_login_registration**: Full OTP flow (generate, store with expiry, validate)
+2. **rate_limiting**: Max 3 OTP requests per phone in 10 minutes  
+3. **user_management**: User endpoints with pagination & search
+4. **api_documentation**: Swagger/OpenAPI documentation
+5. **architectural_pattern**: MUST use recognized pattern (Layered, Clean, MVC, Hexagonal, etc.)
+6. **repository_pattern**: Data access through repository interfaces
+7. **service_layer**: Business logic separated from handlers
+8. **redis_implementation**: Redis for OTP/rate limiting (NOT just in-memory Go maps)
+9. **database_implementation**: Real database (PostgreSQL/MySQL/MongoDB - NOT in-memory storage)
+10. **dockerization**: Dockerfile + docker-compose with all services
 
-1. **Check Explicit Requirements** (from task description):
-   - Missing Swagger/OpenAPI documentation? → +35 points MINIMUM
-   - Missing required endpoints? → +35 points MINIMUM  
-   - Missing rate limiting (if required)? → +35 points MINIMUM
-   - Missing authentication (if required)? → +35 points MINIMUM
-   - Missing tests (if required)? → +35 points MINIMUM
+### PHASE 2: QUALITY & SECURITY EVALUATION
+**Only evaluated if ALL Phase 1 requirements are met**
 
-2. **Check Architecture (MANDATORY)**:
-   - Cannot identify a SPECIFIC architectural pattern? → +50 points (AUTO-REJECT)
-   - Just folders without actual architecture? → +50 points (AUTO-REJECT)
-   - No clear architectural pattern (MVC, Layered, Clean, etc.)? → +50 points
-   - Example penalty reasons:
-     - "Code has folders but no architectural pattern" → +50 points
-     - "Cannot identify if this is MVC, Layered, or any pattern" → +50 points
-     - "Just basic code organization, not an architecture" → +50 points
+**Critical Security Issues (Auto-reject even if requirements met):**
+- SQL injection vulnerabilities → REJECT
+- Plain text password storage → REJECT  
+- No authentication on protected endpoints → REJECT
 
-3. **Check Senior-Level Requirements (MANDATORY)**:
-   - Missing repository pattern? → +50 points (AUTO-REJECT)
-   - Missing service layer? → +50 points (AUTO-REJECT)
-   - Using only in-memory storage (no Redis/DB)? → +50 points (AUTO-REJECT)
-   - Missing Redis implementation? → +40 points
-   - Missing proper database? → +40 points
-   - Missing Dockerfile? → +40 points
-   - Missing docker-compose.yml? → +40 points
-   - Incomplete docker-compose (no Redis/DB services)? → +30 points
+**Major Security Issues (Penalties but not auto-reject):**
+- math/rand for security (OTP, tokens) → 20 points MAX
+- Hardcoded JWT secrets → 15 points MAX
+- Weak error messages exposing internals → 10 points
 
-4. **Check Security Issues**:
-   - Plain text passwords? → +45 points
-   - SQL injection vulnerability? → +45 points
-   - math/rand for security (OTP, tokens)? → +20 points (MAXIMUM)
-   - Hardcoded secrets/keys? → +45 points
-   - JWT with weak/default secret? → +20 points
+**DO NOT PENALIZE FOR:**
+- Missing tests (unless explicitly required in task)
+- Missing CI/CD pipelines
+- Missing graceful shutdown
+- Missing logging/monitoring
+- Error wrapping patterns
+- Configuration management libraries
+- Any feature NOT mentioned in the task requirements
 
 5. **List EVERY Issue in penalty_breakdown**:
    Example:
@@ -494,9 +493,24 @@ Before scoring, you MUST identify ALL issues and calculate penalties:
 
 ## DECISION FRAMEWORK
 
-### Scoring Rules:
+### Evaluation Logic:
+```
+if ANY of the 10 mandatory requirements is missing:
+    → NO_HIRE (Failed Phase 1: Missing [requirement name])
+else if critical security issue exists:
+    → NO_HIRE (Critical security vulnerability)
+else:
+    calculate average_quality from (task_completion + code_quality + seniority_indicators) / 3
+    if average_quality >= 70:
+        → HIRE
+    else:
+        → REVIEW_REQUIRED
+```
 
-- **Average of positive metrics** (task_completion, code_quality, seniority_indicators) must be **≥70%** for HIRE
+### Important Notes:
+- ALL 10 requirements are MANDATORY - missing any one = rejection
+- Focus on whether requirements are PRESENT, not perfect
+- In-memory storage for users is NOT acceptable (task requires persistence)
 - **critical_issues_penalty ≥ 50** = automatic NO_HIRE regardless of other scores
 - Focus on what was delivered, not what's missing (unless it was required)
 

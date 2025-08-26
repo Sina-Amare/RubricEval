@@ -3730,3 +3730,141 @@ core.exceptions.NotificationError: Failed to initialize Telegram bot: httpx.Conn
 2025-08-26 01:17:26,657 - adapters.storage.sqlite - INFO - Updated submission 55: status=SubmissionStatus.COMPLETED
 2025-08-26 01:17:28,772 - adapters.notifications.telegram - INFO - Analysis report sent for submission 55
 2025-08-26 01:17:28,969 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-26 12:00:55,746 - utils.logger - INFO - Logging system initialized successfully
+2025-08-26 12:01:01,925 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-26 12:01:01,926 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-26 12:01:03,663 - __main__ - INFO - Initializing adapters...
+2025-08-26 12:01:03,665 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-26 12:01:03,674 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-26 12:01:03,675 - __main__ - INFO - Storage adapter initialized
+2025-08-26 12:01:04,078 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-26 12:01:04,079 - __main__ - INFO - Repository adapter initialized
+2025-08-26 12:01:04,080 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-26 12:01:04,082 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-26 12:01:04,083 - __main__ - INFO - Analyzer adapter initialized
+2025-08-26 12:01:04,084 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-26 12:01:05,366 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-26 12:01:05,369 - __main__ - INFO - Notification adapter initialized
+2025-08-26 12:01:05,900 - __main__ - INFO - Cleared any existing webhooks
+2025-08-26 12:01:05,904 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-26 12:01:07,847 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 12:01:10,376 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/majidbl/aaa
+2025-08-26 12:01:10,379 - utils.validators - INFO - Successfully validated GitHub URL: majidbl/aaa
+2025-08-26 12:01:12,885 - __main__ - INFO - Starting analysis for https://github.com/majidbl/aaa as backend
+2025-08-26 12:01:13,093 - __main__ - INFO - Found existing submission 55, removing it
+2025-08-26 12:01:13,142 - adapters.storage.sqlite - INFO - Deleted submission 55 and 1 associated reports
+2025-08-26 12:01:13,395 - adapters.storage.sqlite - INFO - Created submission 55 for user ***ID_MASKED***
+2025-08-26 12:01:13,396 - __main__ - INFO - Created submission 55
+2025-08-26 12:01:13,426 - adapters.storage.sqlite - INFO - Updated submission 55: status=SubmissionStatus.ANALYZING
+2025-08-26 12:01:13,645 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/majidbl/aaa for role: backend
+2025-08-26 12:01:13,659 - adapters.repositories.github - INFO - Cloning repository: https://github.com/majidbl/aaa (attempt 1/3)
+2025-08-26 12:01:15,349 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-26 12:01:15,351 - adapters.repositories.github - INFO - Repository size: 0.17MB
+2025-08-26 12:01:15,352 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-26 12:01:15,401 - adapters.repositories.github - INFO - Extracted files - Critical: 30, Important: 0, Useful: 0, Total unique: 30
+2025-08-26 12:01:15,403 - adapters.repositories.github - INFO - Extracted 30 files using patterns
+2025-08-26 12:01:15,405 - adapters.repositories.github - INFO - Raw content: 33481 tokens
+2025-08-26 12:01:15,417 - adapters.repositories.github - INFO - Successfully processed repository: 30 files, 33481 tokens
+2025-08-26 12:01:15,418 - __main__ - INFO - Fetched repository: 30 files
+2025-08-26 12:01:15,626 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/majidbl/aaa)
+2025-08-26 12:01:15,628 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-26 12:01:15,630 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-26 12:01:15,631 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-26 12:01:15,642 - adapters.analyzers.openrouter - INFO - Total content size: ***ID_MASKED*** characters, 30 files
+2025-08-26 12:01:16,619 - adapters.analyzers.openrouter - ERROR - HTTP client error: Cannot connect to host openrouter.ai:443 ssl:default [None]
+2025-08-26 12:01:37,230 - adapters.analyzers.openrouter - INFO - LLM Response length: 12051 characters
+2025-08-26 12:01:37,234 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-26 12:01:37,238 - adapters.analyzers.openrouter - INFO - LLM requirements_implementation found with 10 items
+2025-08-26 12:01:37,240 - adapters.analyzers.openrouter - INFO - Converting requirements_implementation to requirements_met
+2025-08-26 12:01:37,242 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+2025-08-26 12:01:37,244 - adapters.analyzers.openrouter - INFO - Average of positive scores: 93.3% (from [100.0, 90.0, 90.0])
+2025-08-26 12:01:37,246 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': True, 'redis_implementation': True, 'database_implementation': True, 'dockerization': True}
+2025-08-26 12:01:37,248 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-26 12:01:37,249 - __main__ - INFO - Analysis complete for submission 55
+2025-08-26 12:01:37,299 - adapters.storage.sqlite - INFO - Created report 36 for submission 55
+2025-08-26 12:01:37,300 - __main__ - INFO - Created report 36
+2025-08-26 12:01:37,327 - adapters.storage.sqlite - INFO - Updated submission 55: status=SubmissionStatus.COMPLETED
+2025-08-26 12:01:39,349 - adapters.notifications.telegram - INFO - Analysis report sent for submission 55
+2025-08-26 12:01:39,538 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-26 12:01:55,552 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 12:01:58,481 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/rezadev8/otp-auth-golang
+2025-08-26 12:01:58,482 - utils.validators - INFO - Successfully validated GitHub URL: rezadev8/otp-auth-golang
+2025-08-26 12:02:00,595 - __main__ - INFO - Starting analysis for https://github.com/rezadev8/otp-auth-golang as backend
+2025-08-26 12:02:00,789 - __main__ - INFO - Found existing submission 54, removing it
+2025-08-26 12:02:00,840 - adapters.storage.sqlite - INFO - Deleted submission 54 and 1 associated reports
+2025-08-26 12:02:01,108 - adapters.storage.sqlite - INFO - Created submission 56 for user ***ID_MASKED***
+2025-08-26 12:02:01,110 - __main__ - INFO - Created submission 56
+2025-08-26 12:02:01,137 - adapters.storage.sqlite - INFO - Updated submission 56: status=SubmissionStatus.ANALYZING
+2025-08-26 12:02:01,322 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/rezadev8/otp-auth-golang for role: backend
+2025-08-26 12:02:01,325 - adapters.repositories.github - INFO - Cloning repository: https://github.com/rezadev8/otp-auth-golang (attempt 1/3)
+2025-08-26 12:02:01,950 - adapters.repositories.github - WARNING - Network error during clone, retrying in 2s: Cmd('git') failed due to: exit code(128)
+  cmdline: git clone -v --depth=1 --single-branch -- https://github.com/rezadev8/otp-auth-golang.git /tmp/repos/cv_review_github_2ks5xcbu
+  stderr: 'Cloning into '/tmp/repos/cv_review_github_2ks5xcbu'...
+fatal: unable to access 'https://github.com/rezadev8/otp-auth-golang.git/': gnutls_handshake() failed: The TLS connection was non-properly terminated.
+'
+2025-08-26 12:02:03,955 - adapters.repositories.github - INFO - Cloning repository: https://github.com/rezadev8/otp-auth-golang (attempt 2/3)
+2025-08-26 12:02:06,238 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-26 12:02:06,240 - adapters.repositories.github - INFO - Repository size: 0.12MB
+2025-08-26 12:02:06,242 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-26 12:02:06,263 - adapters.repositories.github - INFO - Extracted files - Critical: 21, Important: 0, Useful: 0, Total unique: 21
+2025-08-26 12:02:06,265 - adapters.repositories.github - INFO - Extracted 21 files using patterns
+2025-08-26 12:02:06,266 - adapters.repositories.github - INFO - Raw content: 20847 tokens
+2025-08-26 12:02:06,290 - adapters.repositories.github - INFO - Successfully processed repository: 21 files, 20847 tokens
+2025-08-26 12:02:06,314 - __main__ - INFO - Fetched repository: 21 files
+2025-08-26 12:02:06,515 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/rezadev8/otp-auth-golang)
+2025-08-26 12:02:06,518 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-26 12:02:06,521 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-26 12:02:06,523 - adapters.analyzers.openrouter - INFO - Total content size: 75012 characters, 21 files
+2025-08-26 12:02:26,701 - adapters.analyzers.openrouter - INFO - LLM Response length: 12324 characters
+2025-08-26 12:02:26,703 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-26 12:02:26,705 - adapters.analyzers.openrouter - INFO - LLM requirements_implementation found with 10 items
+2025-08-26 12:02:26,707 - adapters.analyzers.openrouter - INFO - Converting requirements_implementation to requirements_met
+2025-08-26 12:02:26,709 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': False, 'service_layer': True, 'redis_implementation': False, 'database_implementation': False, 'dockerization': True}
+2025-08-26 12:02:26,710 - adapters.analyzers.openrouter - INFO - Average of positive scores: 61.7% (from [80.0, 75.0, 30.0])
+2025-08-26 12:02:26,712 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': False, 'service_layer': True, 'redis_implementation': False, 'database_implementation': False, 'dockerization': True}
+2025-08-26 12:02:26,714 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-26 12:02:26,715 - __main__ - INFO - Analysis complete for submission 56
+2025-08-26 12:02:26,761 - adapters.storage.sqlite - INFO - Created report 37 for submission 56
+2025-08-26 12:02:26,763 - __main__ - INFO - Created report 37
+2025-08-26 12:02:26,799 - adapters.storage.sqlite - INFO - Updated submission 56: status=SubmissionStatus.COMPLETED
+2025-08-26 12:02:28,269 - adapters.notifications.telegram - INFO - Analysis report sent for submission 56
+2025-08-26 12:02:28,484 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-26 12:06:05,988 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-26 12:06:08,382 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/TheAmirMohammad/golang-otp.git
+2025-08-26 12:06:08,383 - utils.validators - INFO - Successfully validated GitHub URL: TheAmirMohammad/golang-otp
+2025-08-26 12:06:10,521 - __main__ - INFO - Starting analysis for https://github.com/TheAmirMohammad/golang-otp.git as backend
+2025-08-26 12:06:10,722 - __main__ - INFO - Found existing submission 51, removing it
+2025-08-26 12:06:10,770 - adapters.storage.sqlite - INFO - Deleted submission 51 and 1 associated reports
+2025-08-26 12:06:11,006 - adapters.storage.sqlite - INFO - Created submission 57 for user ***ID_MASKED***
+2025-08-26 12:06:11,007 - __main__ - INFO - Created submission 57
+2025-08-26 12:06:11,034 - adapters.storage.sqlite - INFO - Updated submission 57: status=SubmissionStatus.ANALYZING
+2025-08-26 12:06:11,227 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/TheAmirMohammad/golang-otp.git for role: backend
+2025-08-26 12:06:11,230 - adapters.repositories.github - INFO - Cloning repository: https://github.com/TheAmirMohammad/golang-otp.git (attempt 1/3)
+2025-08-26 12:06:12,823 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-26 12:06:12,826 - adapters.repositories.github - INFO - Repository size: 0.08MB
+2025-08-26 12:06:12,828 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-26 12:06:12,844 - adapters.repositories.github - INFO - Extracted files - Critical: 17, Important: 0, Useful: 0, Total unique: 17
+2025-08-26 12:06:12,847 - adapters.repositories.github - INFO - Extracted 17 files using patterns
+2025-08-26 12:06:12,848 - adapters.repositories.github - INFO - Raw content: 8748 tokens
+2025-08-26 12:06:12,858 - adapters.repositories.github - INFO - Successfully processed repository: 17 files, 8748 tokens
+2025-08-26 12:06:12,860 - __main__ - INFO - Fetched repository: 17 files
+2025-08-26 12:06:13,066 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/TheAmirMohammad/golang-otp.git)
+2025-08-26 12:06:13,068 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-26 12:06:13,070 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-26 12:06:13,071 - adapters.analyzers.openrouter - INFO - Total content size: 40591 characters, 17 files
+2025-08-26 12:06:27,497 - adapters.analyzers.openrouter - INFO - LLM Response length: 11065 characters
+2025-08-26 12:06:27,499 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-26 12:06:27,501 - adapters.analyzers.openrouter - INFO - LLM requirements_implementation found with 10 items
+2025-08-26 12:06:27,504 - adapters.analyzers.openrouter - INFO - Converting requirements_implementation to requirements_met
+2025-08-26 12:06:27,506 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': False, 'service_layer': False, 'redis_implementation': False, 'database_implementation': True, 'dockerization': True}
+2025-08-26 12:06:27,507 - adapters.analyzers.openrouter - INFO - Average of positive scores: 58.3% (from [70.0, 75.0, 30.0])
+2025-08-26 12:06:27,508 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': False, 'service_layer': False, 'redis_implementation': False, 'database_implementation': True, 'dockerization': True}
+2025-08-26 12:06:27,510 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-26 12:06:27,511 - __main__ - INFO - Analysis complete for submission 57
+2025-08-26 12:06:27,556 - adapters.storage.sqlite - INFO - Created report 38 for submission 57
+2025-08-26 12:06:27,557 - __main__ - INFO - Created report 38
+2025-08-26 12:06:27,589 - adapters.storage.sqlite - INFO - Updated submission 57: status=SubmissionStatus.COMPLETED
+2025-08-26 12:06:29,186 - adapters.notifications.telegram - INFO - Analysis report sent for submission 57
+2025-08-26 12:06:29,523 - adapters.repositories.github - INFO - GitHub adapter cleanup completed

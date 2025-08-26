@@ -1063,3 +1063,4 @@ Traceback (most recent call last):
     raise NotificationError(error_msg)
 core.exceptions.NotificationError: Failed to initialize Telegram bot: httpx.ConnectError: 
 
+[2025-08-26T12:01:16.619863] [ERROR] [openrouter:_analyze_with_model:556] - HTTP client error: Cannot connect to host openrouter.ai:443 ssl:default [None]
