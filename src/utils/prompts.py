@@ -8,6 +8,7 @@ and format them with dynamic values.
 import os
 from pathlib import Path
 from typing import Dict, Any, Optional
+from string import Template
 from utils.logger import setup_logger
 
 logger = setup_logger(__name__)
@@ -93,10 +94,13 @@ class PromptLoader:
             ...     file_count=10
             ... )
         """
-        template = self.load_prompt(prompt_path)
+        template_str = self.load_prompt(prompt_path)
         
         try:
-            formatted = template.format(**kwargs)
+            # Use Python's Template class which uses $variable syntax
+            # This avoids conflicts with JSON braces in our prompts
+            template = Template(template_str)
+            formatted = template.safe_substitute(**kwargs)
             logger.debug(f"Formatted prompt {prompt_path} with {len(kwargs)} parameters")
             return formatted
             
@@ -104,7 +108,7 @@ class PromptLoader:
             # Don't fail entirely - just return template with unfilled variables
             logger.warning(f"Some template variables not provided for {prompt_path}: {e}")
             # Return the template as-is, the LLM will figure it out
-            return template
+            return template_str
         except Exception as e:
             error_msg = f"Failed to format prompt {prompt_path}: {str(e)}"
             logger.error(error_msg)

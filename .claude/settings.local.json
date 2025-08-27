@@ -29,7 +29,8 @@
       "WebSearch",
       "Bash(export:*)",
       "Bash(git clone:*)",
-      "Bash(echo:*)"
+      "Bash(echo:*)",
+      "Bash(./run_bot.sh:*)"
     ],
     "deny": [],
     "ask": [],

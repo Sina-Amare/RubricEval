@@ -1234,3 +1234,1743 @@ fatal: unable to access 'https://github.com/mehransobhani/dekamond.git/': gnutls
 2025-08-27 00:15:16,314 - adapters.storage.sqlite - INFO - Updated submission 90: status=SubmissionStatus.COMPLETED
 2025-08-27 00:15:18,507 - adapters.notifications.telegram - INFO - Analysis report sent for submission 90
 2025-08-27 00:15:18,792 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-27 12:21:55,416 - utils.logger - INFO - Logging system initialized successfully
+2025-08-27 12:21:58,802 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-27 12:21:58,803 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-27 12:21:59,612 - __main__ - INFO - Initializing adapters...
+2025-08-27 12:21:59,613 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-27 12:21:59,619 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-27 12:21:59,620 - __main__ - INFO - Storage adapter initialized
+2025-08-27 12:21:59,865 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-27 12:21:59,866 - __main__ - INFO - Repository adapter initialized
+2025-08-27 12:21:59,867 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-27 12:21:59,868 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-27 12:21:59,869 - __main__ - INFO - Analyzer adapter initialized
+2025-08-27 12:21:59,870 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-27 12:22:00,995 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-27 12:22:00,997 - __main__ - INFO - Notification adapter initialized
+2025-08-27 12:22:01,760 - __main__ - INFO - Cleared any existing webhooks
+2025-08-27 12:22:01,762 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-27 12:22:03,925 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-27 12:22:06,813 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/mahbodmo/dekamond_auth_project
+2025-08-27 12:22:06,819 - utils.validators - INFO - Successfully validated GitHub URL: mahbodmo/dekamond_auth_project
+2025-08-27 12:22:08,806 - __main__ - INFO - Starting analysis for https://github.com/mahbodmo/dekamond_auth_project as frontend
+2025-08-27 12:22:09,089 - adapters.storage.sqlite - INFO - Created submission 91 for user ***ID_MASKED***
+2025-08-27 12:22:09,090 - __main__ - INFO - Created submission 91
+2025-08-27 12:22:09,112 - adapters.storage.sqlite - INFO - Updated submission 91: status=SubmissionStatus.ANALYZING
+2025-08-27 12:22:09,389 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/mahbodmo/dekamond_auth_project for role: frontend
+2025-08-27 12:22:09,392 - adapters.repositories.github - INFO - Cloning repository: https://github.com/mahbodmo/dekamond_auth_project (attempt 1/3)
+2025-08-27 12:22:11,575 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-27 12:22:11,577 - adapters.repositories.github - INFO - Repository size: 0.43MB
+2025-08-27 12:22:11,579 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-27 12:22:11,612 - adapters.repositories.github - INFO - Extracted files - Critical: 41, Important: 0, Useful: 0, Total unique: 41
+2025-08-27 12:22:11,613 - adapters.repositories.github - INFO - Extracted 41 files using patterns
+2025-08-27 12:22:11,614 - adapters.repositories.github - INFO - Raw content: 14134 tokens
+2025-08-27 12:22:11,631 - adapters.repositories.github - INFO - Successfully processed repository: 41 files, 14134 tokens
+2025-08-27 12:22:11,632 - __main__ - INFO - Fetched repository: 41 files
+2025-08-27 12:22:11,939 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/mahbodmo/dekamond_auth_project)
+2025-08-27 12:22:11,941 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-27 12:22:11,943 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: app/store/auth-slice.ts
+2025-08-27 12:22:11,944 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: app/hooks/use-auth.ts
+2025-08-27 12:22:11,946 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: app/(pages)/login/page.tsx
+2025-08-27 12:22:11,947 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: app/(pages)/login/components/login-form.tsx
+2025-08-27 12:22:11,948 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis_enterprise.md for frontend analysis
+2025-08-27 12:22:11,949 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-27 12:22:11,956 - adapters.analyzers.openrouter - INFO - Total content size: 60983 characters, 41 files
+2025-08-27 12:22:20,266 - adapters.analyzers.openrouter - INFO - LLM Response length: 6220 characters
+2025-08-27 12:22:20,268 - adapters.analyzers.openrouter - INFO - === RAW LLM RESPONSE (first 1500 chars) ===
+2025-08-27 12:22:20,269 - adapters.analyzers.openrouter - INFO - ```json
+{
+  "requirements_met": {
+    "login_page_implementation": true,
+    "phone_validation": true,
+    "api_integration": true,
+    "localstorage_implementation": true,
+    "dashboard_page": true,
+    "logout_functionality": true,
+    "nextjs_app_router": true,
+    "typescript_strict": false,
+    "tailwind_only": true,
+    "responsive_design": true,
+    "folder_structure": true
+  },
+  "architecture_analysis": {
+    "uses_app_router": true,
+    "file_conventions_followed": true,
+    "client_components_well_structured": true,
+    "routing_structure": "The routing structure uses Next.js App Router conventions with route groups for organization (e.g., `app/(pages)/login`, `app/(pages)/profile`). This is a good approach for segmenting different sections of the application.",
+    "component_organization": "Components are well-organized, with `components/ui` for Shadcn UI components, `app/shared/components` for shared application components, and page-specific components within their respective route folders (e.g., `app/(pages)/login/components`). Hooks and types are also separated into their own directories."
+  },
+  "penalty_breakdown": {
+    "issues_found": [
+      {
+        "category": "typescript",
+        "issue": "The `eslint.config.mjs` explicitly disables `@typescript-eslint/no-explicit-any` and `@typescript-eslint/no-require-imports`, which goes against the 'no any' requirement and general TypeScript best practices for strictness. While no direct `any` types were found i
+2025-08-27 12:22:20,271 - adapters.analyzers.openrouter - INFO - === END RAW RESPONSE ===
+2025-08-27 12:22:20,274 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-27 12:22:20,275 - adapters.analyzers.openrouter - INFO - JSON response parsed successfully
+2025-08-27 12:22:20,276 - adapters.analyzers.openrouter - INFO - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': False, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 12:22:20,277 - adapters.analyzers.openrouter - WARNING - ⚠️ LLM marked localstorage_implementation as: True
+2025-08-27 12:22:20,278 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': False, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 12:22:20,280 - adapters.analyzers.openrouter - INFO - Average of positive scores: 85.0% (from [90.0, 80.0, 85.0, 85.0])
+2025-08-27 12:22:20,280 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': False, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 12:22:20,283 - adapters.analyzers.openrouter - WARNING - Frontend analysis lacks specific file:line evidence
+2025-08-27 12:22:20,284 - adapters.analyzers.openrouter - WARNING - Frontend analysis missing localStorage detection evidence
+2025-08-27 12:22:20,285 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-27 12:22:20,286 - __main__ - INFO - Analysis complete for submission 91
+2025-08-27 12:22:20,326 - adapters.storage.sqlite - INFO - Created report 69 for submission 91
+2025-08-27 12:22:20,327 - __main__ - INFO - Created report 69
+2025-08-27 12:22:20,351 - adapters.storage.sqlite - INFO - Updated submission 91: status=SubmissionStatus.COMPLETED
+2025-08-27 12:22:22,745 - adapters.notifications.telegram - INFO - Analysis report sent for submission 91
+2025-08-27 12:22:23,136 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-27 12:22:55,725 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-27 12:22:58,599 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/Ete4rs/Dekamond-otp
+2025-08-27 12:22:58,601 - utils.validators - INFO - Successfully validated GitHub URL: Ete4rs/Dekamond-otp
+2025-08-27 12:23:01,090 - __main__ - INFO - Starting analysis for https://github.com/Ete4rs/Dekamond-otp as frontend
+2025-08-27 12:23:01,364 - adapters.storage.sqlite - INFO - Created submission 92 for user ***ID_MASKED***
+2025-08-27 12:23:01,365 - __main__ - INFO - Created submission 92
+2025-08-27 12:23:01,383 - adapters.storage.sqlite - INFO - Updated submission 92: status=SubmissionStatus.ANALYZING
+2025-08-27 12:23:01,713 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/Ete4rs/Dekamond-otp for role: frontend
+2025-08-27 12:23:01,717 - adapters.repositories.github - INFO - Cloning repository: https://github.com/Ete4rs/Dekamond-otp (attempt 1/3)
+2025-08-27 12:23:03,282 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-27 12:23:03,283 - adapters.repositories.github - INFO - Repository size: 0.06MB
+2025-08-27 12:23:03,284 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-27 12:23:03,289 - adapters.repositories.github - INFO - Extracted files - Critical: 0, Important: 0, Useful: 0, Total unique: 0
+2025-08-27 12:23:03,290 - adapters.repositories.github - INFO - Extracted 0 files using patterns
+2025-08-27 12:23:03,291 - __main__ - ERROR - Analysis failed for https://github.com/Ete4rs/Dekamond-otp: Repository error: No relevant files found in repository: https://github.com/Ete4rs/Dekamond-otp
+2025-08-27 12:23:03,293 - __main__ - ERROR - ERROR: Exception: Repository error: No relevant files found in repository: https://github.com/Ete4rs/Dekamond-otp | CONTEXT: url=https://github.com/Ete4rs/Dekamond-otp | role=frontend
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 332, in process_analysis
+    repo_content = await repo_adapter.fetch_repository(github_url, role)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/adapters/repositories/github.py", line 178, in fetch_repository
+    raise RepositoryError(f"No relevant files found in repository: {url}")
+core.exceptions.RepositoryError: No relevant files found in repository: https://github.com/Ete4rs/Dekamond-otp
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 335, in process_analysis
+    raise Exception(f"Repository error: {str(e)}")
+Exception: Repository error: No relevant files found in repository: https://github.com/Ete4rs/Dekamond-otp
+2025-08-27 12:23:03,652 - adapters.storage.sqlite - INFO - Updated submission 92: status=SubmissionStatus.FAILED
+2025-08-27 12:23:03,965 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-27 12:23:20,170 - __main__ - INFO - Cancel command from user Sinaam_00 (***ID_MASKED***)
+2025-08-27 12:23:22,254 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-27 12:23:25,445 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/Ete4rs/Dekamond-otp
+2025-08-27 12:23:25,447 - utils.validators - INFO - Successfully validated GitHub URL: Ete4rs/Dekamond-otp
+2025-08-27 12:23:50,304 - __main__ - ERROR - Update Update(callback_query=CallbackQuery(chat_instance='-***ID_MASKED***', data='role_backend', from_user=User(first_name='𝘴𝓲ꪀꪖ\u200b', id=***ID_MASKED***, is_bot=False, language_code='en', username='Sinaam_00'), id='***ID_MASKED***', message=Message(channel_chat_created=False, chat=Chat(first_name='𝘴𝓲ꪀꪖ\u200b', id=***ID_MASKED***, type=<ChatType.PRIVATE>, username='Sinaam_00'), date=datetime.datetime(2025, 8, 27, 8, 53, 24, tzinfo=datetime.timezone.utc), delete_chat_photo=False, entities=(MessageEntity(length=19, offset=20, type=<MessageEntityType.CODE>),), from_user=User(first_name='Decamond', id=***ID_MASKED***, is_bot=True, username='TaskEvaluator_bot'), group_chat_created=False, message_id=1121, reply_markup=InlineKeyboardMarkup(inline_keyboard=((InlineKeyboardButton(callback_data='role_backend', text='👨\u200d💻 Backend Developer'), InlineKeyboardButton(callback_data='role_frontend', text='🎨 Frontend Developer')),)), supergroup_chat_created=False, text='✅ Repository found: Ete4rs/Dekamond-otp\n\nWhich position is this candidate applying for?')), update_id=***ID_MASKED***) caused error Timed out
+2025-08-27 12:23:51,453 - __main__ - ERROR - Full traceback:
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1311, in process_update
+    await coroutine
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_handlers/conversationhandler.py", line 842, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 158, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 230, in role_callback
+    await query.answer()
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_callbackquery.py", line 187, in answer
+    return await self.get_bot().answer_callback_query(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 960, in answer_callback_query
+    return await super().answer_callback_query(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4191, in answer_callback_query
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 290, in do_request
+    raise TimedOut from err
+
+2025-08-27 12:24:04,793 - __main__ - INFO - Cancel command from user Sinaam_00 (***ID_MASKED***)
+2025-08-27 12:24:07,056 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-27 12:24:10,548 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/Ete4rs/Dekamond-otp
+2025-08-27 12:24:10,552 - utils.validators - INFO - Successfully validated GitHub URL: Ete4rs/Dekamond-otp
+2025-08-27 12:24:13,486 - __main__ - INFO - Starting analysis for https://github.com/Ete4rs/Dekamond-otp as backend
+2025-08-27 12:24:13,903 - adapters.storage.sqlite - INFO - Created submission 93 for user ***ID_MASKED***
+2025-08-27 12:24:13,904 - __main__ - INFO - Created submission 93
+2025-08-27 12:24:13,920 - adapters.storage.sqlite - INFO - Updated submission 93: status=SubmissionStatus.ANALYZING
+2025-08-27 12:24:14,217 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/Ete4rs/Dekamond-otp for role: backend
+2025-08-27 12:24:14,225 - adapters.repositories.github - INFO - Cloning repository: https://github.com/Ete4rs/Dekamond-otp (attempt 1/3)
+2025-08-27 12:24:15,975 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-27 12:24:15,976 - adapters.repositories.github - INFO - Repository size: 0.06MB
+2025-08-27 12:24:15,978 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-27 12:24:15,983 - adapters.repositories.github - INFO - Extracted files - Critical: 0, Important: 0, Useful: 0, Total unique: 0
+2025-08-27 12:24:15,984 - adapters.repositories.github - INFO - Extracted 0 files using patterns
+2025-08-27 12:24:15,985 - __main__ - ERROR - Analysis failed for https://github.com/Ete4rs/Dekamond-otp: Repository error: No relevant files found in repository: https://github.com/Ete4rs/Dekamond-otp
+2025-08-27 12:24:15,987 - __main__ - ERROR - ERROR: Exception: Repository error: No relevant files found in repository: https://github.com/Ete4rs/Dekamond-otp | CONTEXT: url=https://github.com/Ete4rs/Dekamond-otp | role=backend
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 332, in process_analysis
+    repo_content = await repo_adapter.fetch_repository(github_url, role)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/adapters/repositories/github.py", line 178, in fetch_repository
+    raise RepositoryError(f"No relevant files found in repository: {url}")
+core.exceptions.RepositoryError: No relevant files found in repository: https://github.com/Ete4rs/Dekamond-otp
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 335, in process_analysis
+    raise Exception(f"Repository error: {str(e)}")
+Exception: Repository error: No relevant files found in repository: https://github.com/Ete4rs/Dekamond-otp
+2025-08-27 12:24:16,322 - adapters.storage.sqlite - INFO - Updated submission 93: status=SubmissionStatus.FAILED
+2025-08-27 12:24:16,583 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-27 12:24:28,883 - __main__ - INFO - Cancel command from user Sinaam_00 (***ID_MASKED***)
+2025-08-27 12:24:31,265 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-27 12:25:06,622 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/mo-lab/jobv
+2025-08-27 12:25:06,628 - utils.validators - INFO - Successfully validated GitHub URL: mo-lab/jobv
+2025-08-27 12:25:10,089 - __main__ - INFO - Starting analysis for https://github.com/mo-lab/jobv as backend
+2025-08-27 12:25:10,409 - adapters.storage.sqlite - INFO - Created submission 94 for user ***ID_MASKED***
+2025-08-27 12:25:10,411 - __main__ - INFO - Created submission 94
+2025-08-27 12:25:10,435 - adapters.storage.sqlite - INFO - Updated submission 94: status=SubmissionStatus.ANALYZING
+2025-08-27 12:25:10,673 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/mo-lab/jobv for role: backend
+2025-08-27 12:25:10,676 - adapters.repositories.github - INFO - Cloning repository: https://github.com/mo-lab/jobv (attempt 1/3)
+2025-08-27 12:25:13,531 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-27 12:25:13,543 - adapters.repositories.github - INFO - Repository size: 8.30MB
+2025-08-27 12:25:13,545 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-27 12:25:13,641 - adapters.repositories.github - INFO - Extracted files - Critical: 22, Important: 0, Useful: 0, Total unique: 22
+2025-08-27 12:25:13,643 - adapters.repositories.github - INFO - Extracted 22 files using patterns
+2025-08-27 12:25:13,644 - adapters.repositories.github - INFO - Raw content: 9601 tokens
+2025-08-27 12:25:13,665 - adapters.repositories.github - INFO - Successfully processed repository: 22 files, 9601 tokens
+2025-08-27 12:25:13,667 - __main__ - INFO - Fetched repository: 22 files
+2025-08-27 12:25:13,956 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/mo-lab/jobv)
+2025-08-27 12:25:13,958 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-27 12:25:13,960 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: internal/models/auth.go
+2025-08-27 12:25:13,963 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-27 12:25:13,976 - adapters.analyzers.openrouter - INFO - Total content size: 33185 characters, 22 files
+2025-08-27 12:25:29,062 - adapters.analyzers.openrouter - INFO - LLM Response length: 12171 characters
+2025-08-27 12:25:29,065 - adapters.analyzers.openrouter - INFO - === RAW LLM RESPONSE (first 1500 chars) ===
+2025-08-27 12:25:29,068 - adapters.analyzers.openrouter - INFO - ```json
+{
+  "task_analysis": {
+    "explicit_requirements": [
+      "OTP Login & Registration (generate, store temporarily, expire, verify, return JWT)",
+      "Rate Limiting (max 3 requests per phone within 10 minutes for OTP)",
+      "User Management (retrieve single user, list users with pagination/search by phone/other fields)",
+      "User data must store: Phone number, Registration date",
+      "Database (any type allowed, explain choice, Docker Compose setup if using DB, else in-memory)",
+      "API Documentation (Swagger/OpenAPI)",
+      "Architecture & Best Practices (clean, maintainable, separation of responsibilities)",
+      "Containerization (Application Dockerized, DB in docker-compose)",
+      "Deliverables (Source code, Documentation: how to run locally/Docker, example API requests/responses, DB choice justification)"
+    ],
+    "implicit_requirements": [
+      "Secure random generation for OTP (not math/rand)",
+      "Proper time handling for OTP expiration and rate limiting",
+      "JWT token generation and validation",
+      "Error handling for API endpoints and database operations",
+      "Concurrency safety for in-memory storage and rate limiter",
+      "Graceful shutdown (though not explicitly required, good practice for senior level)",
+      "Environment variable usage for sensitive data (JWT secret, DB URI)"
+    ],
+    "not_required": [
+      "SMS sending for OTP",
+      "Advanced logging/monitoring",
+      "Unit/Integration tests (though good practice
+2025-08-27 12:25:29,072 - adapters.analyzers.openrouter - INFO - === END RAW RESPONSE ===
+2025-08-27 12:25:29,075 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-27 12:25:29,080 - adapters.analyzers.openrouter - INFO - JSON response parsed successfully
+2025-08-27 12:25:29,084 - adapters.analyzers.openrouter - INFO - LLM requirements_implementation found with 10 items
+2025-08-27 12:25:29,087 - adapters.analyzers.openrouter - INFO - Converting requirements_implementation to requirements_met
+2025-08-27 12:25:29,091 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': False, 'redis_implementation': False, 'database_implementation': True, 'dockerization': True}
+2025-08-27 12:25:29,094 - adapters.analyzers.openrouter - INFO - Average of positive scores: 58.3% (from [60.0, 65.0, 50.0])
+2025-08-27 12:25:29,099 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'otp_login_registration': True, 'rate_limiting': True, 'user_management': True, 'api_documentation': True, 'architectural_pattern': True, 'repository_pattern': True, 'service_layer': False, 'redis_implementation': False, 'database_implementation': True, 'dockerization': True}
+2025-08-27 12:25:29,102 - adapters.analyzers.openrouter - WARNING - ⚠️ LLM did not provide candidate_explanation - this is a required field!
+2025-08-27 12:25:29,104 - adapters.analyzers.openrouter - INFO - Using detailed_feedback as candidate_explanation: 503 chars
+2025-08-27 12:25:29,108 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-27 12:25:29,111 - __main__ - INFO - Analysis complete for submission 94
+2025-08-27 12:25:29,166 - adapters.storage.sqlite - INFO - Created report 70 for submission 94
+2025-08-27 12:25:29,168 - __main__ - INFO - Created report 70
+2025-08-27 12:25:29,196 - adapters.storage.sqlite - INFO - Updated submission 94: status=SubmissionStatus.COMPLETED
+2025-08-27 12:25:31,841 - adapters.notifications.telegram - INFO - Analysis report sent for submission 94
+2025-08-27 12:25:32,182 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-27 12:26:06,910 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-27 12:26:10,474 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/Kiomaku/dekavand
+2025-08-27 12:26:10,477 - utils.validators - INFO - Successfully validated GitHub URL: Kiomaku/dekavand
+2025-08-27 12:26:12,773 - __main__ - INFO - Starting analysis for https://github.com/Kiomaku/dekavand as frontend
+2025-08-27 12:26:13,059 - __main__ - INFO - Found existing submission 78, removing it
+2025-08-27 12:26:13,084 - adapters.storage.sqlite - INFO - Deleted submission 78 and 1 associated reports
+2025-08-27 12:26:13,355 - adapters.storage.sqlite - INFO - Created submission 95 for user ***ID_MASKED***
+2025-08-27 12:26:13,356 - __main__ - INFO - Created submission 95
+2025-08-27 12:26:13,376 - adapters.storage.sqlite - INFO - Updated submission 95: status=SubmissionStatus.ANALYZING
+2025-08-27 12:26:13,632 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/Kiomaku/dekavand for role: frontend
+2025-08-27 12:26:13,636 - adapters.repositories.github - INFO - Cloning repository: https://github.com/Kiomaku/dekavand (attempt 1/3)
+2025-08-27 12:26:15,331 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-27 12:26:15,335 - adapters.repositories.github - INFO - Repository size: 0.26MB
+2025-08-27 12:26:15,339 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-27 12:26:15,377 - adapters.repositories.github - INFO - Extracted files - Critical: 21, Important: 0, Useful: 0, Total unique: 21
+2025-08-27 12:26:15,379 - adapters.repositories.github - INFO - Extracted 21 files using patterns
+2025-08-27 12:26:15,380 - adapters.repositories.github - INFO - Raw content: 12445 tokens
+2025-08-27 12:26:15,394 - adapters.repositories.github - INFO - Successfully processed repository: 21 files, 12445 tokens
+2025-08-27 12:26:15,395 - __main__ - INFO - Fetched repository: 21 files
+2025-08-27 12:26:15,656 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/Kiomaku/dekavand)
+2025-08-27 12:26:15,659 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-27 12:26:15,663 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/lib/auth.ts
+2025-08-27 12:26:15,667 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/app/login/page.tsx
+2025-08-27 12:26:15,673 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis_enterprise.md for frontend analysis
+2025-08-27 12:26:15,675 - adapters.analyzers.openrouter - INFO - Total content size: 44638 characters, 21 files
+2025-08-27 12:26:25,080 - adapters.analyzers.openrouter - INFO - LLM Response length: 6151 characters
+2025-08-27 12:26:25,082 - adapters.analyzers.openrouter - INFO - === RAW LLM RESPONSE (first 1500 chars) ===
+2025-08-27 12:26:25,085 - adapters.analyzers.openrouter - INFO - ```json
+{
+  "requirements_met": {
+    "login_page_implementation": true,
+    "phone_validation": true,
+    "api_integration": true,
+    "localstorage_implementation": true,
+    "dashboard_page": true,
+    "logout_functionality": true,
+    "nextjs_app_router": true,
+    "typescript_strict": true,
+    "tailwind_only": true,
+    "responsive_design": true,
+    "folder_structure": true
+  },
+  "architecture_analysis": {
+    "uses_app_router": true,
+    "file_conventions_followed": true,
+    "client_components_well_structured": true,
+    "routing_structure": "The application uses the Next.js App Router with a clear and logical routing structure, separating login and dashboard pages into their own directories. The root page handles initial redirection based on authentication status.",
+    "component_organization": "Components are well-organized into `src/components/ui` for reusable UI elements and `src/lib` for utility functions (auth, validation, utils). Contexts are placed in `src/contexts`. This modular approach promotes reusability and maintainability."
+  },
+  "penalty_breakdown": {
+    "issues_found": [
+      {
+        "category": "typescript",
+        "issue": "The `User` interface in `src/lib/auth.ts` includes a `phone` property, but the `saveUser` function's `userData` parameter is typed as `Omit<User, 'phone'> & { phone: string }`. This `Omit` is redundant as `phone` is already part of `User` and then immediately re-added, making the type more complex than necessary.",
+     
+2025-08-27 12:26:25,088 - adapters.analyzers.openrouter - INFO - === END RAW RESPONSE ===
+2025-08-27 12:26:25,091 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-27 12:26:25,093 - adapters.analyzers.openrouter - INFO - JSON response parsed successfully
+2025-08-27 12:26:25,096 - adapters.analyzers.openrouter - INFO - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 12:26:25,098 - adapters.analyzers.openrouter - WARNING - ⚠️ LLM marked localstorage_implementation as: True
+2025-08-27 12:26:25,099 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 12:26:25,100 - adapters.analyzers.openrouter - INFO - Average of positive scores: 91.2% (from [95.0, 90.0, 90.0, 90.0])
+2025-08-27 12:26:25,101 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 12:26:25,103 - adapters.analyzers.openrouter - WARNING - Frontend analysis lacks specific file:line evidence
+2025-08-27 12:26:25,105 - adapters.analyzers.openrouter - WARNING - Frontend analysis missing localStorage detection evidence
+2025-08-27 12:26:25,108 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-27 12:26:25,110 - __main__ - INFO - Analysis complete for submission 95
+2025-08-27 12:26:25,127 - adapters.storage.sqlite - INFO - Created report 71 for submission 95
+2025-08-27 12:26:25,128 - __main__ - INFO - Created report 71
+2025-08-27 12:26:25,145 - adapters.storage.sqlite - INFO - Updated submission 95: status=SubmissionStatus.COMPLETED
+2025-08-27 12:26:27,400 - adapters.notifications.telegram - INFO - Analysis report sent for submission 95
+2025-08-27 12:26:27,657 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-27 12:27:02,904 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-27 12:27:06,654 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/tannaz97shr/mini-login
+2025-08-27 12:27:06,656 - utils.validators - INFO - Successfully validated GitHub URL: tannaz97shr/mini-login
+2025-08-27 12:27:09,726 - __main__ - INFO - Starting analysis for https://github.com/tannaz97shr/mini-login as frontend
+2025-08-27 12:27:08,910 - adapters.storage.sqlite - INFO - Created submission 96 for user ***ID_MASKED***
+2025-08-27 12:27:08,912 - __main__ - INFO - Created submission 96
+2025-08-27 12:27:08,936 - adapters.storage.sqlite - INFO - Updated submission 96: status=SubmissionStatus.ANALYZING
+2025-08-27 12:27:09,224 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/tannaz97shr/mini-login for role: frontend
+2025-08-27 12:27:09,230 - adapters.repositories.github - INFO - Cloning repository: https://github.com/tannaz97shr/mini-login (attempt 1/3)
+2025-08-27 12:27:11,219 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-27 12:27:11,222 - adapters.repositories.github - INFO - Repository size: 0.33MB
+2025-08-27 12:27:11,224 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-27 12:27:11,253 - adapters.repositories.github - INFO - Extracted files - Critical: 20, Important: 0, Useful: 0, Total unique: 20
+2025-08-27 12:27:11,255 - adapters.repositories.github - INFO - Extracted 20 files using patterns
+2025-08-27 12:27:11,257 - adapters.repositories.github - INFO - Raw content: 4185 tokens
+2025-08-27 12:27:11,278 - adapters.repositories.github - INFO - Successfully processed repository: 20 files, 4185 tokens
+2025-08-27 12:27:11,280 - __main__ - INFO - Fetched repository: 20 files
+2025-08-27 12:27:11,591 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/tannaz97shr/mini-login)
+2025-08-27 12:27:11,593 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-27 12:27:11,594 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/app/(auth)/login/page.tsx
+2025-08-27 12:27:11,596 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis_enterprise.md for frontend analysis
+2025-08-27 12:27:11,598 - adapters.analyzers.openrouter - INFO - Total content size: 19451 characters, 20 files
+2025-08-27 12:27:19,533 - adapters.analyzers.openrouter - INFO - LLM Response length: 5292 characters
+2025-08-27 12:27:19,536 - adapters.analyzers.openrouter - INFO - === RAW LLM RESPONSE (first 1500 chars) ===
+2025-08-27 12:27:19,540 - adapters.analyzers.openrouter - INFO - ```json
+{
+  "requirements_met": {
+    "login_page_implementation": true,
+    "phone_validation": true,
+    "api_integration": true,
+    "localstorage_implementation": true,
+    "dashboard_page": true,
+    "logout_functionality": true,
+    "nextjs_app_router": true,
+    "typescript_strict": false,
+    "tailwind_only": true,
+    "responsive_design": true,
+    "folder_structure": true
+  },
+  "architecture_analysis": {
+    "uses_app_router": true,
+    "file_conventions_followed": true,
+    "client_components_well_structured": true,
+    "routing_structure": "The application uses Next.js App Router with a root layout and a separate route group for authentication (`(auth)/login`). The main dashboard is at the root (`/`). This is a standard and effective approach for organizing routes.",
+    "component_organization": "Components are well-organized into `src/components/ui` for reusable UI elements and `src/lib` for utility functions and session management. Types are defined in `src/types`. This modular structure promotes reusability and maintainability."
+  },
+  "penalty_breakdown": {
+    "issues_found": [
+      {
+        "category": "typescript",
+        "issue": "Uses `any` type in API response handling on the login page.",
+        "severity": "medium",
+        "penalty": 10,
+        "evidence": "src/app/(auth)/login/page.tsx: `const data = (await res.json()) as any;`"
+      },
+      {
+        "category": "best_practices",
+        "issue": "The `README.md` mentions `next-themes` and 
+2025-08-27 12:27:19,544 - adapters.analyzers.openrouter - INFO - === END RAW RESPONSE ===
+2025-08-27 12:27:19,547 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-27 12:27:19,550 - adapters.analyzers.openrouter - INFO - JSON response parsed successfully
+2025-08-27 12:27:19,552 - adapters.analyzers.openrouter - INFO - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': False, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 12:27:19,556 - adapters.analyzers.openrouter - WARNING - ⚠️ LLM marked localstorage_implementation as: True
+2025-08-27 12:27:19,559 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': False, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 12:27:19,561 - adapters.analyzers.openrouter - INFO - Average of positive scores: 85.0% (from [90.0, 85.0, 80.0, 85.0])
+2025-08-27 12:27:19,563 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': False, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 12:27:19,565 - adapters.analyzers.openrouter - WARNING - Frontend analysis lacks specific file:line evidence
+2025-08-27 12:27:19,566 - adapters.analyzers.openrouter - WARNING - Frontend analysis missing localStorage detection evidence
+2025-08-27 12:27:19,568 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-27 12:27:19,569 - __main__ - INFO - Analysis complete for submission 96
+2025-08-27 12:27:19,602 - adapters.storage.sqlite - INFO - Created report 72 for submission 96
+2025-08-27 12:27:19,603 - __main__ - INFO - Created report 72
+2025-08-27 12:27:19,623 - adapters.storage.sqlite - INFO - Updated submission 96: status=SubmissionStatus.COMPLETED
+2025-08-27 12:27:25,451 - adapters.notifications.telegram - ERROR - Failed to send analysis complete: Timed out
+2025-08-27 12:27:26,335 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-27 12:27:36,872 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-27 12:27:39,931 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/tannaz97shr/mini-login
+2025-08-27 12:27:39,934 - utils.validators - INFO - Successfully validated GitHub URL: tannaz97shr/mini-login
+2025-08-27 12:27:41,014 - __main__ - INFO - Starting analysis for https://github.com/tannaz97shr/mini-login as frontend
+2025-08-27 12:27:41,277 - __main__ - INFO - Found existing submission 96, removing it
+2025-08-27 12:27:41,330 - adapters.storage.sqlite - INFO - Deleted submission 96 and 1 associated reports
+2025-08-27 12:27:41,646 - adapters.storage.sqlite - INFO - Created submission 96 for user ***ID_MASKED***
+2025-08-27 12:27:41,649 - __main__ - INFO - Created submission 96
+2025-08-27 12:27:41,671 - adapters.storage.sqlite - INFO - Updated submission 96: status=SubmissionStatus.ANALYZING
+2025-08-27 12:27:41,929 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/tannaz97shr/mini-login for role: frontend
+2025-08-27 12:27:41,930 - adapters.repositories.github - INFO - Cloning repository: https://github.com/tannaz97shr/mini-login (attempt 1/3)
+2025-08-27 12:27:50,239 - adapters.repositories.github - WARNING - Network error during clone, retrying in 2s: Cmd('git') failed due to: exit code(128)
+  cmdline: git clone -v --depth=1 --single-branch -- https://github.com/tannaz97shr/mini-login.git /tmp/repos/cv_review_github_dem7lgi8
+  stderr: 'Cloning into '/tmp/repos/cv_review_github_dem7lgi8'...
+fatal: unable to access 'https://github.com/tannaz97shr/mini-login.git/': gnutls_handshake() failed: The TLS connection was non-properly terminated.
+'
+2025-08-27 12:27:52,253 - adapters.repositories.github - INFO - Cloning repository: https://github.com/tannaz97shr/mini-login (attempt 2/3)
+2025-08-27 12:27:54,482 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-27 12:27:54,484 - adapters.repositories.github - INFO - Repository size: 0.33MB
+2025-08-27 12:27:54,486 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-27 12:27:54,506 - adapters.repositories.github - INFO - Extracted files - Critical: 20, Important: 0, Useful: 0, Total unique: 20
+2025-08-27 12:27:54,507 - adapters.repositories.github - INFO - Extracted 20 files using patterns
+2025-08-27 12:27:54,509 - adapters.repositories.github - INFO - Raw content: 4185 tokens
+2025-08-27 12:27:54,520 - adapters.repositories.github - INFO - Successfully processed repository: 20 files, 4185 tokens
+2025-08-27 12:27:54,521 - __main__ - INFO - Fetched repository: 20 files
+2025-08-27 12:27:55,877 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/tannaz97shr/mini-login)
+2025-08-27 12:27:55,878 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-27 12:27:55,881 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/app/(auth)/login/page.tsx
+2025-08-27 12:27:55,882 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis_enterprise.md for frontend analysis
+2025-08-27 12:27:55,883 - adapters.analyzers.openrouter - INFO - Total content size: 19451 characters, 20 files
+2025-08-27 12:28:04,074 - adapters.analyzers.openrouter - INFO - LLM Response length: 4535 characters
+2025-08-27 12:28:04,077 - adapters.analyzers.openrouter - INFO - === RAW LLM RESPONSE (first 1500 chars) ===
+2025-08-27 12:28:04,080 - adapters.analyzers.openrouter - INFO - ```json
+{
+  "requirements_met": {
+    "login_page_implementation": true,
+    "phone_validation": true,
+    "api_integration": true,
+    "localstorage_implementation": true,
+    "dashboard_page": true,
+    "logout_functionality": true,
+    "nextjs_app_router": true,
+    "typescript_strict": false,
+    "tailwind_only": true,
+    "responsive_design": true,
+    "folder_structure": true
+  },
+  "architecture_analysis": {
+    "uses_app_router": true,
+    "file_conventions_followed": true,
+    "client_components_well_structured": true,
+    "routing_structure": "The application uses Next.js App Router with a root layout and a separate route group for authentication (`(auth)/login`). This is a good practice for organizing routes.",
+    "component_organization": "Components are well-organized into `src/components/ui` for reusable UI elements and `src/lib` for utility functions and session management. Types are also separated into `src/types`."
+  },
+  "penalty_breakdown": {
+    "issues_found": [
+      {
+        "category": "typescript",
+        "issue": "Usage of `any` type in API response handling.",
+        "severity": "medium",
+        "penalty": 10,
+        "evidence": "src/app/(auth)/login/page.tsx: `const data = (await res.json()) as any;`"
+      },
+      {
+        "category": "best_practices",
+        "issue": "The `README.md` mentions `next-themes` and theme switching, but this functionality is not implemented in the code.",
+        "severity": "low",
+        "penalty": 5,
+      
+2025-08-27 12:28:04,084 - adapters.analyzers.openrouter - INFO - === END RAW RESPONSE ===
+2025-08-27 12:28:04,086 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-27 12:28:04,088 - adapters.analyzers.openrouter - INFO - JSON response parsed successfully
+2025-08-27 12:28:04,091 - adapters.analyzers.openrouter - INFO - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': False, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 12:28:04,093 - adapters.analyzers.openrouter - WARNING - ⚠️ LLM marked localstorage_implementation as: True
+2025-08-27 12:28:04,096 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': False, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 12:28:04,098 - adapters.analyzers.openrouter - INFO - Average of positive scores: 87.5% (from [95.0, 85.0, 80.0, 90.0])
+2025-08-27 12:28:04,100 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': False, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 12:28:04,103 - adapters.analyzers.openrouter - WARNING - Frontend analysis lacks specific file:line evidence
+2025-08-27 12:28:04,106 - adapters.analyzers.openrouter - WARNING - Frontend analysis missing localStorage detection evidence
+2025-08-27 12:28:04,111 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-27 12:28:04,113 - __main__ - INFO - Analysis complete for submission 96
+2025-08-27 12:28:04,173 - adapters.storage.sqlite - INFO - Created report 72 for submission 96
+2025-08-27 12:28:04,175 - __main__ - INFO - Created report 72
+2025-08-27 12:28:04,208 - adapters.storage.sqlite - INFO - Updated submission 96: status=SubmissionStatus.COMPLETED
+2025-08-27 12:28:05,869 - adapters.notifications.telegram - INFO - Analysis report sent for submission 96
+2025-08-27 12:28:06,131 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-27 12:31:28,447 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-27 12:31:33,424 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/tannaz97shr/mini-login
+2025-08-27 12:31:33,429 - utils.validators - INFO - Successfully validated GitHub URL: tannaz97shr/mini-login
+2025-08-27 12:31:37,189 - __main__ - INFO - Starting analysis for https://github.com/tannaz97shr/mini-login as frontend
+2025-08-27 12:31:37,426 - __main__ - INFO - Found existing submission 96, removing it
+2025-08-27 12:31:37,474 - adapters.storage.sqlite - INFO - Deleted submission 96 and 1 associated reports
+2025-08-27 12:31:37,792 - adapters.storage.sqlite - INFO - Created submission 96 for user ***ID_MASKED***
+2025-08-27 12:31:37,793 - __main__ - INFO - Created submission 96
+2025-08-27 12:31:37,816 - adapters.storage.sqlite - INFO - Updated submission 96: status=SubmissionStatus.ANALYZING
+2025-08-27 12:31:38,116 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/tannaz97shr/mini-login for role: frontend
+2025-08-27 12:31:38,117 - adapters.repositories.github - INFO - Cloning repository: https://github.com/tannaz97shr/mini-login (attempt 1/3)
+2025-08-27 12:31:39,767 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-27 12:31:39,769 - adapters.repositories.github - INFO - Repository size: 0.33MB
+2025-08-27 12:31:39,770 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-27 12:31:39,787 - adapters.repositories.github - INFO - Extracted files - Critical: 20, Important: 0, Useful: 0, Total unique: 20
+2025-08-27 12:31:39,790 - adapters.repositories.github - INFO - Extracted 20 files using patterns
+2025-08-27 12:31:39,791 - adapters.repositories.github - INFO - Raw content: 4185 tokens
+2025-08-27 12:31:39,805 - adapters.repositories.github - INFO - Successfully processed repository: 20 files, 4185 tokens
+2025-08-27 12:31:39,806 - __main__ - INFO - Fetched repository: 20 files
+2025-08-27 12:31:40,143 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/tannaz97shr/mini-login)
+2025-08-27 12:31:40,144 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-27 12:31:40,145 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/app/(auth)/login/page.tsx
+2025-08-27 12:31:40,146 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis_enterprise.md for frontend analysis
+2025-08-27 12:31:40,147 - adapters.analyzers.openrouter - INFO - Total content size: 19451 characters, 20 files
+2025-08-27 12:31:49,165 - adapters.analyzers.openrouter - INFO - LLM Response length: 4275 characters
+2025-08-27 12:31:49,166 - adapters.analyzers.openrouter - INFO - === RAW LLM RESPONSE (first 1500 chars) ===
+2025-08-27 12:31:49,167 - adapters.analyzers.openrouter - INFO - ```json
+{
+  "requirements_met": {
+    "login_page_implementation": true,
+    "phone_validation": true,
+    "api_integration": true,
+    "localstorage_implementation": true,
+    "dashboard_page": true,
+    "logout_functionality": true,
+    "nextjs_app_router": true,
+    "typescript_strict": false,
+    "tailwind_only": true,
+    "responsive_design": true,
+    "folder_structure": true
+  },
+  "architecture_analysis": {
+    "uses_app_router": true,
+    "file_conventions_followed": true,
+    "client_components_well_structured": true,
+    "routing_structure": "The application uses Next.js App Router with a root layout and a separate route group for authentication (`(auth)/login`). This is a good practice for organizing routes.",
+    "component_organization": "Components are organized into a `components/ui` directory for reusable UI elements (Button, Input, Label, Spinner). Utility functions and session management are in `lib`, and types are in `types`. This demonstrates a clean and modular folder structure."
+  },
+  "penalty_breakdown": {
+    "issues_found": [
+      {
+        "category": "typescript",
+        "issue": "Usage of `any` type in API response handling.",
+        "severity": "medium",
+        "penalty": 10,
+        "evidence": "src/app/(auth)/login/page.tsx: `const data = (await res.json()) as any;`"
+      },
+      {
+        "category": "error_handling",
+        "issue": "Console.error used for error handling instead of more robust user feedback for API errors.",
+        "
+2025-08-27 12:31:49,168 - adapters.analyzers.openrouter - INFO - === END RAW RESPONSE ===
+2025-08-27 12:31:49,170 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-27 12:31:49,171 - adapters.analyzers.openrouter - INFO - JSON response parsed successfully
+2025-08-27 12:31:49,172 - adapters.analyzers.openrouter - INFO - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': False, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 12:31:49,174 - adapters.analyzers.openrouter - WARNING - ⚠️ LLM marked localstorage_implementation as: True
+2025-08-27 12:31:49,175 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': False, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 12:31:49,176 - adapters.analyzers.openrouter - INFO - Average of positive scores: 92.5% (from [95.0, 90.0, 90.0, 95.0])
+2025-08-27 12:31:49,177 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': False, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 12:31:49,179 - adapters.analyzers.openrouter - WARNING - Frontend analysis lacks specific file:line evidence
+2025-08-27 12:31:49,180 - adapters.analyzers.openrouter - WARNING - Frontend analysis missing localStorage detection evidence
+2025-08-27 12:31:49,181 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-27 12:31:49,182 - __main__ - INFO - Analysis complete for submission 96
+2025-08-27 12:31:49,218 - adapters.storage.sqlite - INFO - Created report 72 for submission 96
+2025-08-27 12:31:49,219 - __main__ - INFO - Created report 72
+2025-08-27 12:31:49,234 - adapters.storage.sqlite - INFO - Updated submission 96: status=SubmissionStatus.COMPLETED
+2025-08-27 12:31:51,207 - adapters.notifications.telegram - INFO - Analysis report sent for submission 96
+2025-08-27 12:31:51,531 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-27 12:49:52,029 - utils.logger - INFO - Logging system initialized successfully
+2025-08-27 12:49:54,271 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-27 12:49:54,272 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-27 12:49:55,356 - __main__ - INFO - Initializing adapters...
+2025-08-27 12:49:55,357 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-27 12:49:55,364 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-27 12:49:55,368 - __main__ - INFO - Storage adapter initialized
+2025-08-27 12:49:55,693 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-27 12:49:55,694 - __main__ - INFO - Repository adapter initialized
+2025-08-27 12:49:55,696 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-27 12:49:55,697 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-27 12:49:55,698 - __main__ - INFO - Analyzer adapter initialized
+2025-08-27 12:49:55,698 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-27 12:49:57,578 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-27 12:49:57,579 - __main__ - INFO - Notification adapter initialized
+2025-08-27 12:50:02,597 - __main__ - WARNING - Failed to delete webhook (attempt 1/3): Timed out
+2025-08-27 12:50:05,340 - __main__ - INFO - Cleared any existing webhooks
+2025-08-27 12:50:05,341 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-27 12:50:07,389 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-27 12:50:09,736 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/mahbodmo/dekamond_auth_project
+2025-08-27 12:50:09,739 - utils.validators - INFO - Successfully validated GitHub URL: mahbodmo/dekamond_auth_project
+2025-08-27 12:50:11,761 - __main__ - INFO - Starting analysis for https://github.com/mahbodmo/dekamond_auth_project as frontend
+2025-08-27 12:50:12,026 - __main__ - INFO - Found existing submission 91, removing it
+2025-08-27 12:50:12,047 - adapters.storage.sqlite - INFO - Deleted submission 91 and 1 associated reports
+2025-08-27 12:50:12,344 - adapters.storage.sqlite - INFO - Created submission 97 for user ***ID_MASKED***
+2025-08-27 12:50:12,345 - __main__ - INFO - Created submission 97
+2025-08-27 12:50:12,373 - adapters.storage.sqlite - INFO - Updated submission 97: status=SubmissionStatus.ANALYZING
+2025-08-27 12:50:12,635 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/mahbodmo/dekamond_auth_project for role: frontend
+2025-08-27 12:50:12,636 - adapters.repositories.github - INFO - Cloning repository: https://github.com/mahbodmo/dekamond_auth_project (attempt 1/3)
+2025-08-27 12:50:21,053 - adapters.repositories.github - WARNING - Network error during clone, retrying in 2s: Cmd('git') failed due to: exit code(128)
+  cmdline: git clone -v --depth=1 --single-branch -- https://github.com/mahbodmo/dekamond_auth_project.git /tmp/repos/cv_review_github_jckqfkc5
+  stderr: 'Cloning into '/tmp/repos/cv_review_github_jckqfkc5'...
+fatal: unable to access 'https://github.com/mahbodmo/dekamond_auth_project.git/': gnutls_handshake() failed: The TLS connection was non-properly terminated.
+'
+2025-08-27 12:50:23,057 - adapters.repositories.github - INFO - Cloning repository: https://github.com/mahbodmo/dekamond_auth_project (attempt 2/3)
+2025-08-27 12:50:29,882 - adapters.repositories.github - WARNING - Network error during clone, retrying in 4s: Cmd('git') failed due to: exit code(128)
+  cmdline: git clone -v --depth=1 --single-branch -- https://github.com/mahbodmo/dekamond_auth_project.git /tmp/repos/cv_review_github_jckqfkc5
+  stderr: 'Cloning into '/tmp/repos/cv_review_github_jckqfkc5'...
+fatal: unable to access 'https://github.com/mahbodmo/dekamond_auth_project.git/': gnutls_handshake() failed: The TLS connection was non-properly terminated.
+'
+2025-08-27 12:50:33,888 - adapters.repositories.github - INFO - Cloning repository: https://github.com/mahbodmo/dekamond_auth_project (attempt 3/3)
+2025-08-27 12:50:35,993 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-27 12:50:35,995 - adapters.repositories.github - INFO - Repository size: 0.43MB
+2025-08-27 12:50:35,996 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-27 12:50:36,041 - adapters.repositories.github - INFO - Extracted files - Critical: 41, Important: 0, Useful: 0, Total unique: 41
+2025-08-27 12:50:36,042 - adapters.repositories.github - INFO - Extracted 41 files using patterns
+2025-08-27 12:50:36,043 - adapters.repositories.github - INFO - Raw content: 14134 tokens
+2025-08-27 12:50:36,057 - adapters.repositories.github - INFO - Successfully processed repository: 41 files, 14134 tokens
+2025-08-27 12:50:36,059 - __main__ - INFO - Fetched repository: 41 files
+2025-08-27 12:50:37,308 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/mahbodmo/dekamond_auth_project)
+2025-08-27 12:50:37,308 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-27 12:50:37,309 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: app/store/auth-slice.ts
+2025-08-27 12:50:37,311 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: app/hooks/use-auth.ts
+2025-08-27 12:50:37,312 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: app/(pages)/login/page.tsx
+2025-08-27 12:50:37,316 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: app/(pages)/login/components/login-form.tsx
+2025-08-27 12:50:37,317 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis_enterprise.md for frontend analysis
+2025-08-27 12:50:37,318 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-27 12:50:37,325 - utils.prompts - ERROR - Failed to format prompt analysis/senior_frontend_analysis_enterprise.md: Replacement index 0 out of range for positional args tuple
+2025-08-27 12:50:37,326 - adapters.analyzers.openrouter - WARNING - Failed to load external prompt, using fallback: Failed to format prompt analysis/senior_frontend_analysis_enterprise.md: Replacement index 0 out of range for positional args tuple
+2025-08-27 12:50:37,327 - adapters.analyzers.openrouter - INFO - Total content size: 60983 characters, 41 files
+2025-08-27 12:50:54,822 - adapters.analyzers.openrouter - INFO - LLM Response length: 5586 characters
+2025-08-27 12:50:54,823 - adapters.analyzers.openrouter - INFO - === RAW LLM RESPONSE (first 1500 chars) ===
+2025-08-27 12:50:54,824 - adapters.analyzers.openrouter - INFO - ```json
+{
+  "requirements_met": {
+    "login_page_mobile_input": true,
+    "login_page_iran_format_validation": true,
+    "login_page_get_request": true,
+    "login_page_store_user_data_localstorage": true,
+    "login_page_redirect_dashboard": true,
+    "dashboard_welcome_message": true,
+    "dashboard_logout_button": true,
+    "dashboard_clear_localstorage": true,
+    "dashboard_redirect_login_no_data": true,
+    "ui_tailwind_input": true,
+    "ui_tailwind_button": true,
+    "nextjs_app_router_typescript": true,
+    "styling_tailwind_only": true,
+    "clean_modular_folder_structure": true,
+    "responsive_design_mobile_first": true,
+    "nextjs_best_practices": true,
+    "user_state_localstorage": true,
+    "clean_readable_code": true,
+    "clear_consistent_naming": true,
+    "accessibility_aria_focus": true,
+    "concise_comments": false,
+    "readme_setup_run_instructions": true
+  },
+  "scores": {
+    "completeness": 95,
+    "quality": 85,
+    "architecture": 80,
+    "testing": 0
+  },
+  "strengths": [
+    "Comprehensive UI Component Library: The use of `shadcn/ui` components (Button, Input, Card, DropdownMenu, etc.) demonstrates a strong understanding of building reusable and accessible UI elements with Tailwind CSS. This significantly enhances code quality and maintainability.",
+    "Effective State Management with Redux Toolkit and Redux Persist: The implementation of Redux Toolkit for authentication state management, combined with Redux Persist for localStorage integrat
+2025-08-27 12:50:54,826 - adapters.analyzers.openrouter - INFO - === END RAW RESPONSE ===
+2025-08-27 12:50:54,827 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-27 12:50:54,827 - adapters.analyzers.openrouter - INFO - JSON response parsed successfully
+2025-08-27 12:50:54,828 - adapters.analyzers.openrouter - INFO - LLM requirements_met: {'login_page_mobile_input': True, 'login_page_iran_format_validation': True, 'login_page_get_request': True, 'login_page_store_user_data_localstorage': True, 'login_page_redirect_dashboard': True, 'dashboard_welcome_message': True, 'dashboard_logout_button': True, 'dashboard_clear_localstorage': True, 'dashboard_redirect_login_no_data': True, 'ui_tailwind_input': True, 'ui_tailwind_button': True, 'nextjs_app_router_typescript': True, 'styling_tailwind_only': True, 'clean_modular_folder_structure': True, 'responsive_design_mobile_first': True, 'nextjs_best_practices': True, 'user_state_localstorage': True, 'clean_readable_code': True, 'clear_consistent_naming': True, 'accessibility_aria_focus': True, 'concise_comments': False, 'readme_setup_run_instructions': True}
+2025-08-27 12:50:54,829 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'login_page_mobile_input': True, 'login_page_iran_format_validation': True, 'login_page_get_request': True, 'login_page_store_user_data_localstorage': True, 'login_page_redirect_dashboard': True, 'dashboard_welcome_message': True, 'dashboard_logout_button': True, 'dashboard_clear_localstorage': True, 'dashboard_redirect_login_no_data': True, 'ui_tailwind_input': True, 'ui_tailwind_button': True, 'nextjs_app_router_typescript': True, 'styling_tailwind_only': True, 'clean_modular_folder_structure': True, 'responsive_design_mobile_first': True, 'nextjs_best_practices': True, 'user_state_localstorage': True, 'clean_readable_code': True, 'clear_consistent_naming': True, 'accessibility_aria_focus': True, 'concise_comments': False, 'readme_setup_run_instructions': True}
+2025-08-27 12:50:54,830 - adapters.analyzers.openrouter - INFO - Average of positive scores: 65.0% (from [95.0, 85.0, 80.0, 0.0])
+2025-08-27 12:50:54,831 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'login_page_mobile_input': True, 'login_page_iran_format_validation': True, 'login_page_get_request': True, 'login_page_store_user_data_localstorage': True, 'login_page_redirect_dashboard': True, 'dashboard_welcome_message': True, 'dashboard_logout_button': True, 'dashboard_clear_localstorage': True, 'dashboard_redirect_login_no_data': True, 'ui_tailwind_input': True, 'ui_tailwind_button': True, 'nextjs_app_router_typescript': True, 'styling_tailwind_only': True, 'clean_modular_folder_structure': True, 'responsive_design_mobile_first': True, 'nextjs_best_practices': True, 'user_state_localstorage': True, 'clean_readable_code': True, 'clear_consistent_naming': True, 'accessibility_aria_focus': True, 'concise_comments': False, 'readme_setup_run_instructions': True}
+2025-08-27 12:50:54,832 - adapters.analyzers.openrouter - ERROR - Frontend analysis missing required architecture_analysis field
+2025-08-27 12:50:54,833 - adapters.analyzers.openrouter - WARNING - Frontend analysis lacks specific file:line evidence
+2025-08-27 12:50:54,833 - adapters.analyzers.openrouter - WARNING - Frontend analysis missing localStorage detection evidence
+2025-08-27 12:50:54,834 - adapters.analyzers.openrouter - WARNING - ⚠️ LLM did not provide candidate_explanation - this is a required field!
+2025-08-27 12:50:54,835 - adapters.analyzers.openrouter - INFO - Using detailed_feedback as candidate_explanation: 503 chars
+2025-08-27 12:50:54,835 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-27 12:50:54,836 - __main__ - INFO - Analysis complete for submission 97
+2025-08-27 12:50:54,889 - adapters.storage.sqlite - INFO - Created report 73 for submission 97
+2025-08-27 12:50:54,890 - __main__ - INFO - Created report 73
+2025-08-27 12:50:54,919 - adapters.storage.sqlite - INFO - Updated submission 97: status=SubmissionStatus.COMPLETED
+2025-08-27 12:50:59,259 - adapters.notifications.telegram - INFO - Analysis report sent for submission 97
+2025-08-27 12:50:59,556 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-27 12:51:59,886 - utils.logger - INFO - Logging system initialized successfully
+2025-08-27 12:52:01,714 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-27 12:52:01,715 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-27 12:52:02,596 - __main__ - INFO - Initializing adapters...
+2025-08-27 12:52:02,597 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-27 12:52:02,601 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-27 12:52:02,602 - __main__ - INFO - Storage adapter initialized
+2025-08-27 12:52:02,819 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-27 12:52:02,822 - __main__ - INFO - Repository adapter initialized
+2025-08-27 12:52:02,824 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-27 12:52:02,826 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-27 12:52:02,827 - __main__ - INFO - Analyzer adapter initialized
+2025-08-27 12:52:02,828 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-27 12:52:03,936 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-27 12:52:03,939 - __main__ - INFO - Notification adapter initialized
+2025-08-27 12:52:04,661 - __main__ - INFO - Cleared any existing webhooks
+2025-08-27 12:52:04,663 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-27 12:52:06,957 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-27 12:52:09,235 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/mahbodmo/dekamond_auth_project
+2025-08-27 12:52:09,240 - utils.validators - INFO - Successfully validated GitHub URL: mahbodmo/dekamond_auth_project
+2025-08-27 12:52:12,846 - __main__ - INFO - Starting analysis for https://github.com/mahbodmo/dekamond_auth_project as frontend
+2025-08-27 12:52:13,219 - __main__ - INFO - Found existing submission 97, removing it
+2025-08-27 12:52:13,278 - adapters.storage.sqlite - INFO - Deleted submission 97 and 1 associated reports
+2025-08-27 12:52:13,656 - adapters.storage.sqlite - INFO - Created submission 97 for user ***ID_MASKED***
+2025-08-27 12:52:13,657 - __main__ - INFO - Created submission 97
+2025-08-27 12:52:13,680 - adapters.storage.sqlite - INFO - Updated submission 97: status=SubmissionStatus.ANALYZING
+2025-08-27 12:52:14,177 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/mahbodmo/dekamond_auth_project for role: frontend
+2025-08-27 12:52:14,183 - adapters.repositories.github - INFO - Cloning repository: https://github.com/mahbodmo/dekamond_auth_project (attempt 1/3)
+2025-08-27 12:52:20,489 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-27 12:52:20,492 - adapters.repositories.github - INFO - Repository size: 0.43MB
+2025-08-27 12:52:20,494 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-27 12:52:20,535 - adapters.repositories.github - INFO - Extracted files - Critical: 41, Important: 0, Useful: 0, Total unique: 41
+2025-08-27 12:52:20,537 - adapters.repositories.github - INFO - Extracted 41 files using patterns
+2025-08-27 12:52:20,538 - adapters.repositories.github - INFO - Raw content: 14134 tokens
+2025-08-27 12:52:20,553 - adapters.repositories.github - INFO - Successfully processed repository: 41 files, 14134 tokens
+2025-08-27 12:52:20,554 - __main__ - INFO - Fetched repository: 41 files
+2025-08-27 12:52:21,341 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/mahbodmo/dekamond_auth_project)
+2025-08-27 12:52:21,344 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-27 12:52:21,346 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: app/store/auth-slice.ts
+2025-08-27 12:52:21,348 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: app/hooks/use-auth.ts
+2025-08-27 12:52:21,349 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: app/(pages)/login/page.tsx
+2025-08-27 12:52:21,354 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: app/(pages)/login/components/login-form.tsx
+2025-08-27 12:52:21,357 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis_enterprise.md for frontend analysis
+2025-08-27 12:52:21,359 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-27 12:52:21,367 - utils.prompts - ERROR - Failed to format prompt analysis/senior_frontend_analysis_enterprise.md: Replacement index 0 out of range for positional args tuple
+2025-08-27 12:52:21,369 - adapters.analyzers.openrouter - WARNING - Failed to load external prompt, using fallback: Failed to format prompt analysis/senior_frontend_analysis_enterprise.md: Replacement index 0 out of range for positional args tuple
+2025-08-27 12:52:21,371 - adapters.analyzers.openrouter - INFO - Total content size: 60983 characters, 41 files
+2025-08-27 12:52:29,220 - adapters.analyzers.openrouter - INFO - LLM Response length: 4804 characters
+2025-08-27 12:52:29,222 - adapters.analyzers.openrouter - INFO - === RAW LLM RESPONSE (first 1500 chars) ===
+2025-08-27 12:52:29,224 - adapters.analyzers.openrouter - INFO - ```json
+{
+  "requirements_met": {
+    "login_page_mobile_input": true,
+    "login_page_iran_format_validation": true,
+    "login_page_api_call_on_login": true,
+    "login_page_store_user_data_localstorage": true,
+    "login_page_redirect_dashboard": true,
+    "dashboard_welcome_message": true,
+    "dashboard_logout_button": true,
+    "dashboard_clear_localstorage": true,
+    "dashboard_redirect_login_no_data": true,
+    "ui_components_tailwind": true,
+    "ui_input_label_error_focus_validation": true,
+    "ui_button_primary_disabled_loading": false,
+    "tech_nextjs_app_router_typescript": true,
+    "tech_tailwind_only": true,
+    "tech_clean_modular_folder_structure": true,
+    "tech_responsive_design": true,
+    "tech_nextjs_best_practices": true,
+    "tech_user_state_localstorage": true,
+    "quality_clean_readable_code": true,
+    "quality_clear_consistent_naming": true,
+    "quality_accessibility": false,
+    "quality_concise_comments": false,
+    "quality_readme_setup_run_instructions": true
+  },
+  "scores": {
+    "completeness": 90,
+    "quality": 80,
+    "architecture": 85,
+    "testing": 0
+  },
+  "strengths": [
+    "Excellent use of Next.js App Router with TypeScript, demonstrating strong foundational knowledge of the framework and language. The project structure aligns well with Next.js conventions.",
+    "Effective implementation of client-side state management using Redux Toolkit with `redux-persist` for localStorage integration. This is a robust solution for mana
+2025-08-27 12:52:29,227 - adapters.analyzers.openrouter - INFO - === END RAW RESPONSE ===
+2025-08-27 12:52:29,232 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-27 12:52:29,234 - adapters.analyzers.openrouter - INFO - JSON response parsed successfully
+2025-08-27 12:52:29,235 - adapters.analyzers.openrouter - INFO - LLM requirements_met: {'login_page_mobile_input': True, 'login_page_iran_format_validation': True, 'login_page_api_call_on_login': True, 'login_page_store_user_data_localstorage': True, 'login_page_redirect_dashboard': True, 'dashboard_welcome_message': True, 'dashboard_logout_button': True, 'dashboard_clear_localstorage': True, 'dashboard_redirect_login_no_data': True, 'ui_components_tailwind': True, 'ui_input_label_error_focus_validation': True, 'ui_button_primary_disabled_loading': False, 'tech_nextjs_app_router_typescript': True, 'tech_tailwind_only': True, 'tech_clean_modular_folder_structure': True, 'tech_responsive_design': True, 'tech_nextjs_best_practices': True, 'tech_user_state_localstorage': True, 'quality_clean_readable_code': True, 'quality_clear_consistent_naming': True, 'quality_accessibility': False, 'quality_concise_comments': False, 'quality_readme_setup_run_instructions': True}
+2025-08-27 12:52:29,238 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'login_page_mobile_input': True, 'login_page_iran_format_validation': True, 'login_page_api_call_on_login': True, 'login_page_store_user_data_localstorage': True, 'login_page_redirect_dashboard': True, 'dashboard_welcome_message': True, 'dashboard_logout_button': True, 'dashboard_clear_localstorage': True, 'dashboard_redirect_login_no_data': True, 'ui_components_tailwind': True, 'ui_input_label_error_focus_validation': True, 'ui_button_primary_disabled_loading': False, 'tech_nextjs_app_router_typescript': True, 'tech_tailwind_only': True, 'tech_clean_modular_folder_structure': True, 'tech_responsive_design': True, 'tech_nextjs_best_practices': True, 'tech_user_state_localstorage': True, 'quality_clean_readable_code': True, 'quality_clear_consistent_naming': True, 'quality_accessibility': False, 'quality_concise_comments': False, 'quality_readme_setup_run_instructions': True}
+2025-08-27 12:52:29,240 - adapters.analyzers.openrouter - INFO - Average of positive scores: 63.8% (from [90.0, 80.0, 85.0, 0.0])
+2025-08-27 12:52:29,241 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'login_page_mobile_input': True, 'login_page_iran_format_validation': True, 'login_page_api_call_on_login': True, 'login_page_store_user_data_localstorage': True, 'login_page_redirect_dashboard': True, 'dashboard_welcome_message': True, 'dashboard_logout_button': True, 'dashboard_clear_localstorage': True, 'dashboard_redirect_login_no_data': True, 'ui_components_tailwind': True, 'ui_input_label_error_focus_validation': True, 'ui_button_primary_disabled_loading': False, 'tech_nextjs_app_router_typescript': True, 'tech_tailwind_only': True, 'tech_clean_modular_folder_structure': True, 'tech_responsive_design': True, 'tech_nextjs_best_practices': True, 'tech_user_state_localstorage': True, 'quality_clean_readable_code': True, 'quality_clear_consistent_naming': True, 'quality_accessibility': False, 'quality_concise_comments': False, 'quality_readme_setup_run_instructions': True}
+2025-08-27 12:52:29,243 - adapters.analyzers.openrouter - ERROR - Frontend analysis missing required architecture_analysis field
+2025-08-27 12:52:29,246 - adapters.analyzers.openrouter - WARNING - Frontend analysis lacks specific file:line evidence
+2025-08-27 12:52:29,247 - adapters.analyzers.openrouter - WARNING - Frontend analysis missing localStorage detection evidence
+2025-08-27 12:52:29,249 - adapters.analyzers.openrouter - WARNING - ⚠️ LLM did not provide candidate_explanation - this is a required field!
+2025-08-27 12:52:29,250 - adapters.analyzers.openrouter - INFO - Using detailed_feedback as candidate_explanation: 503 chars
+2025-08-27 12:52:29,252 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-27 12:52:29,254 - __main__ - INFO - Analysis complete for submission 97
+2025-08-27 12:52:29,294 - adapters.storage.sqlite - INFO - Created report 73 for submission 97
+2025-08-27 12:52:29,294 - __main__ - INFO - Created report 73
+2025-08-27 12:52:29,314 - adapters.storage.sqlite - INFO - Updated submission 97: status=SubmissionStatus.COMPLETED
+2025-08-27 12:52:31,477 - adapters.notifications.telegram - INFO - Analysis report sent for submission 97
+2025-08-27 12:52:31,793 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-27 12:56:52,248 - utils.logger - INFO - Logging system initialized successfully
+2025-08-27 12:58:21,604 - utils.logger - INFO - Logging system initialized successfully
+2025-08-27 12:58:23,411 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-27 12:58:23,412 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-27 12:58:24,284 - __main__ - INFO - Initializing adapters...
+2025-08-27 12:58:24,285 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-27 12:58:24,288 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-27 12:58:24,289 - __main__ - INFO - Storage adapter initialized
+2025-08-27 12:58:24,477 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-27 12:58:24,479 - __main__ - INFO - Repository adapter initialized
+2025-08-27 12:58:24,481 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-27 12:58:24,482 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-27 12:58:24,483 - __main__ - INFO - Analyzer adapter initialized
+2025-08-27 12:58:24,484 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-27 12:58:25,607 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-27 12:58:25,612 - __main__ - INFO - Notification adapter initialized
+2025-08-27 12:58:26,418 - __main__ - INFO - Cleared any existing webhooks
+2025-08-27 12:58:26,419 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-27 12:58:52,794 - __main__ - INFO - Bot exited normally
+2025-08-27 12:59:04,130 - utils.logger - INFO - Logging system initialized successfully
+2025-08-27 12:59:05,964 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-27 12:59:05,965 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-27 12:59:06,725 - __main__ - INFO - Initializing adapters...
+2025-08-27 12:59:06,726 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-27 12:59:06,729 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-27 12:59:06,729 - __main__ - INFO - Storage adapter initialized
+2025-08-27 12:59:06,924 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-27 12:59:06,926 - __main__ - INFO - Repository adapter initialized
+2025-08-27 12:59:06,927 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-27 12:59:06,929 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-27 12:59:06,930 - __main__ - INFO - Analyzer adapter initialized
+2025-08-27 12:59:06,930 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-27 12:59:11,331 - adapters.notifications.telegram - ERROR - Failed to initialize Telegram bot: Timed out
+2025-08-27 12:59:11,339 - __main__ - ERROR - Bot crashed with error: Failed to initialize Telegram bot: Timed out
+2025-08-27 12:59:11,424 - __main__ - ERROR - Full traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 101, in handle_async_request
+    raise exc
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 156, in _connect
+    stream = await stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 67, in start_tls
+    with map_exceptions(exc_map):
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 273, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/adapters/notifications/telegram.py", line 125, in initialize
+    bot_info = await self.bot.get_me()
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 1981, in get_me
+    return await super().get_me(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 976, in get_me
+    result = await self._post(
+             ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 290, in do_request
+    raise TimedOut from err
+telegram.error.TimedOut: Timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 1284, in <module>
+    main()
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 1196, in main
+    loop.run_until_complete(initialize_adapters())
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 1154, in initialize_adapters
+    await notification_adapter.initialize()
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/adapters/notifications/telegram.py", line 132, in initialize
+    raise NotificationError(error_msg)
+core.exceptions.NotificationError: Failed to initialize Telegram bot: Timed out
+
+2025-08-27 12:59:11,426 - __main__ - WARNING - Bot will restart in 5 seconds (attempt #2)...
+2025-08-27 12:59:11,427 - __main__ - WARNING - The bot will keep trying to recover automatically.
+2025-08-27 12:59:16,430 - __main__ - INFO - Attempting to restart bot...
+2025-08-27 12:59:16,432 - __main__ - INFO - Starting bot (attempt #2)...
+2025-08-27 12:59:16,435 - __main__ - INFO - Starting CV Review Bot...
+2025-08-27 12:59:16,708 - __main__ - INFO - Initializing adapters...
+2025-08-27 12:59:16,709 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-27 12:59:16,712 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-27 12:59:16,713 - __main__ - INFO - Storage adapter initialized
+2025-08-27 12:59:16,715 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-27 12:59:16,715 - __main__ - INFO - Repository adapter initialized
+2025-08-27 12:59:16,716 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-27 12:59:16,717 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-27 12:59:16,717 - __main__ - INFO - Analyzer adapter initialized
+2025-08-27 12:59:16,718 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-27 12:59:18,121 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-27 12:59:18,127 - __main__ - INFO - Notification adapter initialized
+2025-08-27 12:59:18,806 - __main__ - INFO - Cleared any existing webhooks
+2025-08-27 12:59:18,808 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-27 12:59:21,365 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-27 12:59:24,431 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/Sorooshmlv/dekamond-test
+2025-08-27 12:59:24,438 - utils.validators - INFO - Successfully validated GitHub URL: Sorooshmlv/dekamond-test
+2025-08-27 12:59:26,680 - __main__ - INFO - Starting analysis for https://github.com/Sorooshmlv/dekamond-test as frontend
+2025-08-27 12:59:27,163 - adapters.storage.sqlite - INFO - Created submission 98 for user ***ID_MASKED***
+2025-08-27 12:59:27,164 - __main__ - INFO - Created submission 98
+2025-08-27 12:59:27,197 - adapters.storage.sqlite - INFO - Updated submission 98: status=SubmissionStatus.ANALYZING
+2025-08-27 12:59:27,490 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/Sorooshmlv/dekamond-test for role: frontend
+2025-08-27 12:59:27,492 - adapters.repositories.github - INFO - Cloning repository: https://github.com/Sorooshmlv/dekamond-test (attempt 1/3)
+2025-08-27 12:59:29,969 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-27 12:59:29,972 - adapters.repositories.github - INFO - Repository size: 0.39MB
+2025-08-27 12:59:29,974 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-27 12:59:30,003 - adapters.repositories.github - INFO - Extracted files - Critical: 22, Important: 0, Useful: 0, Total unique: 22
+2025-08-27 12:59:30,005 - adapters.repositories.github - INFO - Extracted 22 files using patterns
+2025-08-27 12:59:30,006 - adapters.repositories.github - INFO - Raw content: 7512 tokens
+2025-08-27 12:59:30,024 - adapters.repositories.github - INFO - Successfully processed repository: 22 files, 7512 tokens
+2025-08-27 12:59:30,026 - __main__ - INFO - Fetched repository: 22 files
+2025-08-27 12:59:30,275 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/Sorooshmlv/dekamond-test)
+2025-08-27 12:59:30,278 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-27 12:59:30,281 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis_enterprise.md for frontend analysis
+2025-08-27 12:59:30,284 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-27 12:59:30,293 - utils.prompts - ERROR - Failed to format prompt analysis/senior_frontend_analysis_enterprise.md: Replacement index 0 out of range for positional args tuple
+2025-08-27 12:59:30,297 - adapters.analyzers.openrouter - WARNING - Failed to load external prompt, using fallback: Failed to format prompt analysis/senior_frontend_analysis_enterprise.md: Replacement index 0 out of range for positional args tuple
+2025-08-27 12:59:30,298 - adapters.analyzers.openrouter - INFO - Total content size: 26847 characters, 22 files
+2025-08-27 13:04:54,548 - utils.logger - INFO - Logging system initialized successfully
+2025-08-27 13:04:55,857 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-27 13:04:55,857 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-27 13:04:56,510 - __main__ - INFO - Initializing adapters...
+2025-08-27 13:04:56,511 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-27 13:04:56,514 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-27 13:04:56,514 - __main__ - INFO - Storage adapter initialized
+2025-08-27 13:04:56,666 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-27 13:04:56,668 - __main__ - INFO - Repository adapter initialized
+2025-08-27 13:04:56,669 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-27 13:04:56,670 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-27 13:04:56,670 - __main__ - INFO - Analyzer adapter initialized
+2025-08-27 13:04:56,671 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-27 13:04:58,339 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-27 13:04:58,342 - __main__ - INFO - Notification adapter initialized
+2025-08-27 13:04:59,127 - __main__ - INFO - Cleared any existing webhooks
+2025-08-27 13:04:59,130 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-27 13:05:35,983 - __main__ - INFO - Bot exited normally
+2025-08-27 13:05:44,541 - utils.logger - INFO - Logging system initialized successfully
+2025-08-27 13:05:45,927 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-27 13:05:45,928 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-27 13:05:46,570 - __main__ - INFO - Initializing adapters...
+2025-08-27 13:05:46,570 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-27 13:05:46,573 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-27 13:05:46,574 - __main__ - INFO - Storage adapter initialized
+2025-08-27 13:05:46,731 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-27 13:05:46,732 - __main__ - INFO - Repository adapter initialized
+2025-08-27 13:05:46,734 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-27 13:05:46,735 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-27 13:05:46,736 - __main__ - INFO - Analyzer adapter initialized
+2025-08-27 13:05:46,737 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-27 13:05:48,040 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-27 13:05:48,042 - __main__ - INFO - Notification adapter initialized
+2025-08-27 13:05:48,964 - __main__ - INFO - Cleared any existing webhooks
+2025-08-27 13:05:48,966 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-27 13:05:50,450 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-27 13:05:52,810 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/Sorooshmlv/dekamond-test
+2025-08-27 13:05:52,813 - utils.validators - INFO - Successfully validated GitHub URL: Sorooshmlv/dekamond-test
+2025-08-27 13:05:54,231 - __main__ - INFO - Starting analysis for https://github.com/Sorooshmlv/dekamond-test as frontend
+2025-08-27 13:05:54,582 - __main__ - INFO - Found existing submission 98, removing it
+2025-08-27 13:05:54,604 - adapters.storage.sqlite - INFO - Deleted submission 98 and 0 associated reports
+2025-08-27 13:05:54,980 - adapters.storage.sqlite - INFO - Created submission 98 for user ***ID_MASKED***
+2025-08-27 13:05:54,980 - __main__ - INFO - Created submission 98
+2025-08-27 13:05:54,997 - adapters.storage.sqlite - INFO - Updated submission 98: status=SubmissionStatus.ANALYZING
+2025-08-27 13:05:55,291 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/Sorooshmlv/dekamond-test for role: frontend
+2025-08-27 13:05:55,294 - adapters.repositories.github - INFO - Cloning repository: https://github.com/Sorooshmlv/dekamond-test (attempt 1/3)
+2025-08-27 13:05:57,809 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-27 13:05:57,812 - adapters.repositories.github - INFO - Repository size: 0.39MB
+2025-08-27 13:05:57,814 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-27 13:05:57,830 - adapters.repositories.github - INFO - Extracted files - Critical: 22, Important: 0, Useful: 0, Total unique: 22
+2025-08-27 13:05:57,832 - adapters.repositories.github - INFO - Extracted 22 files using patterns
+2025-08-27 13:05:57,833 - adapters.repositories.github - INFO - Raw content: 7512 tokens
+2025-08-27 13:05:57,843 - adapters.repositories.github - INFO - Successfully processed repository: 22 files, 7512 tokens
+2025-08-27 13:05:57,844 - __main__ - INFO - Fetched repository: 22 files
+2025-08-27 13:05:58,120 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/Sorooshmlv/dekamond-test)
+2025-08-27 13:05:58,122 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-27 13:05:58,123 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis_enterprise.md for frontend analysis
+2025-08-27 13:05:58,124 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-27 13:05:58,129 - utils.prompts - ERROR - Failed to format prompt analysis/senior_frontend_analysis_enterprise.md: Replacement index 0 out of range for positional args tuple
+2025-08-27 13:05:58,130 - adapters.analyzers.openrouter - WARNING - Failed to load external prompt, using fallback: Failed to format prompt analysis/senior_frontend_analysis_enterprise.md: Replacement index 0 out of range for positional args tuple
+2025-08-27 13:05:58,130 - adapters.analyzers.openrouter - INFO - Total content size: 26847 characters, 22 files
+2025-08-27 13:14:31,994 - utils.logger - INFO - Logging system initialized successfully
+2025-08-27 13:14:33,495 - __main__ - INFO - Starting bot (attempt #1)...
+2025-08-27 13:14:33,496 - __main__ - INFO - Starting CV Review Bot...
+/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py:1166: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+2025-08-27 13:14:34,257 - __main__ - INFO - Initializing adapters...
+2025-08-27 13:14:34,258 - adapters.storage.sqlite - INFO - SQLite adapter initialized
+2025-08-27 13:14:34,262 - adapters.storage.sqlite - INFO - Database tables created/verified
+2025-08-27 13:14:34,262 - __main__ - INFO - Storage adapter initialized
+2025-08-27 13:14:34,439 - adapters.repositories.github - INFO - GitHubAdapter initialized with max_tokens=***ID_MASKED***
+2025-08-27 13:14:34,440 - __main__ - INFO - Repository adapter initialized
+2025-08-27 13:14:34,441 - adapters.analyzers.openrouter - INFO - OpenRouter adapter initialized with 3 models
+2025-08-27 13:14:34,442 - adapters.analyzers.openrouter - INFO - Primary model: google/gemini-2.5-flash
+2025-08-27 13:14:34,444 - __main__ - INFO - Analyzer adapter initialized
+2025-08-27 13:14:34,445 - adapters.notifications.telegram - INFO - Telegram adapter initialized
+2025-08-27 13:14:35,504 - adapters.notifications.telegram - INFO - Bot initialized: @TaskEvaluator_bot
+2025-08-27 13:14:35,508 - __main__ - INFO - Notification adapter initialized
+2025-08-27 13:14:36,281 - __main__ - INFO - Cleared any existing webhooks
+2025-08-27 13:14:36,286 - __main__ - INFO - Bot is ready! Starting polling...
+2025-08-27 13:14:37,568 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-27 13:14:43,045 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/Sorooshmlv/dekamond-test
+2025-08-27 13:14:43,047 - utils.validators - INFO - Successfully validated GitHub URL: Sorooshmlv/dekamond-test
+2025-08-27 13:14:49,934 - __main__ - INFO - Starting analysis for https://github.com/Sorooshmlv/dekamond-test as frontend
+2025-08-27 13:14:50,234 - __main__ - INFO - Found existing submission 98, removing it
+2025-08-27 13:14:50,258 - adapters.storage.sqlite - INFO - Deleted submission 98 and 0 associated reports
+2025-08-27 13:14:50,539 - adapters.storage.sqlite - INFO - Created submission 98 for user ***ID_MASKED***
+2025-08-27 13:14:50,539 - __main__ - INFO - Created submission 98
+2025-08-27 13:14:50,558 - adapters.storage.sqlite - INFO - Updated submission 98: status=SubmissionStatus.ANALYZING
+2025-08-27 13:14:50,848 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/Sorooshmlv/dekamond-test for role: frontend
+2025-08-27 13:14:50,853 - adapters.repositories.github - INFO - Cloning repository: https://github.com/Sorooshmlv/dekamond-test (attempt 1/3)
+2025-08-27 13:14:52,179 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-27 13:14:52,181 - adapters.repositories.github - INFO - Repository size: 0.39MB
+2025-08-27 13:14:52,182 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-27 13:14:52,202 - adapters.repositories.github - INFO - Extracted files - Critical: 22, Important: 0, Useful: 0, Total unique: 22
+2025-08-27 13:14:52,203 - adapters.repositories.github - INFO - Extracted 22 files using patterns
+2025-08-27 13:14:52,204 - adapters.repositories.github - INFO - Raw content: 7512 tokens
+2025-08-27 13:14:52,216 - adapters.repositories.github - INFO - Successfully processed repository: 22 files, 7512 tokens
+2025-08-27 13:14:52,217 - __main__ - INFO - Fetched repository: 22 files
+2025-08-27 13:14:52,483 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/Sorooshmlv/dekamond-test)
+2025-08-27 13:14:52,484 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-27 13:14:52,485 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis_enterprise.md for frontend analysis
+2025-08-27 13:14:52,487 - utils.prompts - INFO - PromptLoader initialized with directory: /mnt/c/Users/sinaa/Desktop/cv_review/data/prompts
+2025-08-27 13:14:52,493 - adapters.analyzers.openrouter - INFO - Total content size: 26847 characters, 22 files
+2025-08-27 13:15:12,431 - adapters.analyzers.openrouter - INFO - LLM Response length: 7406 characters
+2025-08-27 13:15:12,436 - adapters.analyzers.openrouter - INFO - === RAW LLM RESPONSE (first 1500 chars) ===
+2025-08-27 13:15:12,439 - adapters.analyzers.openrouter - INFO - ```json
+{
+  "requirements_met": {
+    "login_page_implementation": true,
+    "phone_validation": true,
+    "api_integration": true,
+    "localstorage_implementation": true,
+    "dashboard_page": true,
+    "logout_functionality": true,
+    "nextjs_app_router": true,
+    "typescript_strict": true,
+    "tailwind_only": true,
+    "responsive_design": true,
+    "folder_structure": true
+  },
+  "architecture_analysis": {
+    "uses_app_router": true,
+    "file_conventions_followed": true,
+    "client_components_well_structured": true,
+    "routing_structure": "The routing structure correctly uses `app/page.tsx` for the login page and `app/dashboard/page.tsx` for the dashboard, adhering to Next.js App Router conventions without unnecessary route groups.",
+    "component_organization": "Components are well-organized into `components/ui` for Shadcn UI components and `components` for custom components like `form-message.tsx`. Utility functions, API calls, storage, types, and validation are logically separated into the `lib` directory, demonstrating a clean and modular approach."
+  },
+  "penalty_breakdown": {
+    "issues_found": [
+      {
+        "category": "typescript",
+        "issue": "The `tsconfig.json` explicitly sets `\"strict\": true`, but the `eslint.config.mjs` does not include `@typescript-eslint/no-explicit-any` rule, which is a common practice to enforce strict TypeScript usage and prevent `any`.",
+        "severity": "low",
+        "penalty": 5,
+        "evidence": "tsconfi
+2025-08-27 13:15:12,444 - adapters.analyzers.openrouter - INFO - === END RAW RESPONSE ===
+2025-08-27 13:15:12,448 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-27 13:15:12,451 - adapters.analyzers.openrouter - INFO - JSON response parsed successfully
+2025-08-27 13:15:12,453 - adapters.analyzers.openrouter - INFO - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 13:15:12,455 - adapters.analyzers.openrouter - WARNING - ⚠️ LLM marked localstorage_implementation as: True
+2025-08-27 13:15:12,456 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 13:15:12,458 - adapters.analyzers.openrouter - INFO - Average of positive scores: 91.2% (from [95.0, 90.0, 90.0, 90.0])
+2025-08-27 13:15:12,459 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 13:15:12,460 - adapters.analyzers.openrouter - WARNING - Frontend analysis lacks specific file:line evidence
+2025-08-27 13:15:12,462 - adapters.analyzers.openrouter - WARNING - Frontend analysis missing localStorage detection evidence
+2025-08-27 13:15:12,463 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-27 13:15:12,465 - __main__ - INFO - Analysis complete for submission 98
+2025-08-27 13:15:12,495 - adapters.storage.sqlite - INFO - Created report 74 for submission 98
+2025-08-27 13:15:12,496 - __main__ - INFO - Created report 74
+2025-08-27 13:15:12,509 - adapters.storage.sqlite - INFO - Updated submission 98: status=SubmissionStatus.COMPLETED
+2025-08-27 13:15:14,891 - adapters.notifications.telegram - INFO - Analysis report sent for submission 98
+2025-08-27 13:15:15,269 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-27 13:16:06,958 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-27 13:16:10,716 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/mahbodmo/dekamond_auth_project
+2025-08-27 13:16:10,717 - utils.validators - INFO - Successfully validated GitHub URL: mahbodmo/dekamond_auth_project
+2025-08-27 13:16:12,811 - __main__ - INFO - Starting analysis for https://github.com/mahbodmo/dekamond_auth_project as frontend
+2025-08-27 13:16:13,111 - __main__ - INFO - Found existing submission 97, removing it
+2025-08-27 13:16:13,131 - adapters.storage.sqlite - INFO - Deleted submission 97 and 1 associated reports
+2025-08-27 13:16:13,693 - adapters.storage.sqlite - INFO - Created submission 99 for user ***ID_MASKED***
+2025-08-27 13:16:13,693 - __main__ - INFO - Created submission 99
+2025-08-27 13:16:13,709 - adapters.storage.sqlite - INFO - Updated submission 99: status=SubmissionStatus.ANALYZING
+2025-08-27 13:16:13,972 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/mahbodmo/dekamond_auth_project for role: frontend
+2025-08-27 13:16:13,976 - adapters.repositories.github - INFO - Cloning repository: https://github.com/mahbodmo/dekamond_auth_project (attempt 1/3)
+2025-08-27 13:16:16,239 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-27 13:16:16,241 - adapters.repositories.github - INFO - Repository size: 0.43MB
+2025-08-27 13:16:16,242 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-27 13:16:16,259 - adapters.repositories.github - INFO - Extracted files - Critical: 41, Important: 0, Useful: 0, Total unique: 41
+2025-08-27 13:16:16,260 - adapters.repositories.github - INFO - Extracted 41 files using patterns
+2025-08-27 13:16:16,261 - adapters.repositories.github - INFO - Raw content: 14134 tokens
+2025-08-27 13:16:16,270 - adapters.repositories.github - INFO - Successfully processed repository: 41 files, 14134 tokens
+2025-08-27 13:16:16,270 - __main__ - INFO - Fetched repository: 41 files
+2025-08-27 13:16:16,539 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/mahbodmo/dekamond_auth_project)
+2025-08-27 13:16:16,540 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-27 13:16:16,541 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: app/store/auth-slice.ts
+2025-08-27 13:16:16,541 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: app/hooks/use-auth.ts
+2025-08-27 13:16:16,542 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: app/(pages)/login/page.tsx
+2025-08-27 13:16:16,543 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: app/(pages)/login/components/login-form.tsx
+2025-08-27 13:16:16,543 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis_enterprise.md for frontend analysis
+2025-08-27 13:16:16,544 - adapters.analyzers.openrouter - INFO - Total content size: 60983 characters, 41 files
+2025-08-27 13:16:27,953 - adapters.analyzers.openrouter - INFO - LLM Response length: 7441 characters
+2025-08-27 13:16:27,956 - adapters.analyzers.openrouter - INFO - === RAW LLM RESPONSE (first 1500 chars) ===
+2025-08-27 13:16:27,959 - adapters.analyzers.openrouter - INFO - ```json
+{
+  "requirements_met": {
+    "login_page_implementation": true,
+    "phone_validation": true,
+    "api_integration": true,
+    "localstorage_implementation": true,
+    "dashboard_page": true,
+    "logout_functionality": true,
+    "nextjs_app_router": true,
+    "typescript_strict": false,
+    "tailwind_only": true,
+    "responsive_design": true,
+    "folder_structure": true
+  },
+  "architecture_analysis": {
+    "uses_app_router": true,
+    "file_conventions_followed": true,
+    "client_components_well_structured": true,
+    "routing_structure": "Uses route groups `(pages)` which is an unnecessary abstraction for this project's scope, but otherwise follows Next.js App Router conventions for page and layout files.",
+    "component_organization": "Good separation of UI components (shadcn/ui), shared components, and page-specific components. Hooks and store are also well-organized."
+  },
+  "penalty_breakdown": {
+    "issues_found": [
+      {
+        "category": "typescript",
+        "issue": "Uses `any` type in `lib/utils.ts` for `urlWithQueryParams` function parameter and in `eslint.config.mjs` for disabling `no-explicit-any` rule.",
+        "severity": "critical",
+        "penalty": 100,
+        "evidence": "lib/utils.ts (line 12), eslint.config.mjs (line 22)"
+      },
+      {
+        "category": "architecture",
+        "issue": "Incorrect use of route groups `(pages)` which creates an unnecessary segment in the URL structure and is not ideal for simple page organizatio
+2025-08-27 13:16:27,962 - adapters.analyzers.openrouter - INFO - === END RAW RESPONSE ===
+2025-08-27 13:16:27,965 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-27 13:16:27,966 - adapters.analyzers.openrouter - INFO - JSON response parsed successfully
+2025-08-27 13:16:27,968 - adapters.analyzers.openrouter - INFO - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': False, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 13:16:27,969 - adapters.analyzers.openrouter - WARNING - ⚠️ LLM marked localstorage_implementation as: True
+2025-08-27 13:16:27,970 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': False, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 13:16:27,971 - adapters.analyzers.openrouter - INFO - Average of positive scores: 61.2% (from [70.0, 60.0, 50.0, 65.0])
+2025-08-27 13:16:27,971 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': False, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 13:16:27,974 - adapters.analyzers.openrouter - WARNING - Frontend analysis lacks specific file:line evidence
+2025-08-27 13:16:27,975 - adapters.analyzers.openrouter - WARNING - Frontend analysis missing localStorage detection evidence
+2025-08-27 13:16:27,976 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-27 13:16:27,976 - __main__ - INFO - Analysis complete for submission 99
+2025-08-27 13:16:28,004 - adapters.storage.sqlite - INFO - Created report 75 for submission 99
+2025-08-27 13:16:28,005 - __main__ - INFO - Created report 75
+2025-08-27 13:16:28,018 - adapters.storage.sqlite - INFO - Updated submission 99: status=SubmissionStatus.COMPLETED
+2025-08-27 13:16:30,643 - adapters.notifications.telegram - INFO - Analysis report sent for submission 99
+2025-08-27 13:16:30,917 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-27 13:17:26,076 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-27 13:17:29,022 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/Ete4rs/Dekamond-otp
+2025-08-27 13:17:29,025 - utils.validators - INFO - Successfully validated GitHub URL: Ete4rs/Dekamond-otp
+2025-08-27 13:17:31,166 - __main__ - INFO - Starting analysis for https://github.com/Ete4rs/Dekamond-otp as backend
+2025-08-27 13:17:31,412 - __main__ - INFO - Found existing submission 93, removing it
+2025-08-27 13:17:31,437 - adapters.storage.sqlite - INFO - Deleted submission 93 and 0 associated reports
+2025-08-27 13:17:31,748 - adapters.storage.sqlite - INFO - Created submission 100 for user ***ID_MASKED***
+2025-08-27 13:17:31,749 - __main__ - INFO - Created submission 100
+2025-08-27 13:17:31,762 - adapters.storage.sqlite - INFO - Updated submission 100: status=SubmissionStatus.ANALYZING
+2025-08-27 13:17:32,037 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/Ete4rs/Dekamond-otp for role: backend
+2025-08-27 13:17:32,040 - adapters.repositories.github - INFO - Cloning repository: https://github.com/Ete4rs/Dekamond-otp (attempt 1/3)
+2025-08-27 13:17:34,088 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-27 13:17:34,090 - adapters.repositories.github - INFO - Repository size: 0.06MB
+2025-08-27 13:17:34,090 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-27 13:17:34,094 - adapters.repositories.github - INFO - Extracted files - Critical: 0, Important: 0, Useful: 0, Total unique: 0
+2025-08-27 13:17:34,095 - adapters.repositories.github - INFO - Extracted 0 files using patterns
+2025-08-27 13:17:34,096 - __main__ - ERROR - Analysis failed for https://github.com/Ete4rs/Dekamond-otp: Repository error: No relevant files found in repository: https://github.com/Ete4rs/Dekamond-otp
+2025-08-27 13:17:34,097 - __main__ - ERROR - ERROR: Exception: Repository error: No relevant files found in repository: https://github.com/Ete4rs/Dekamond-otp | CONTEXT: url=https://github.com/Ete4rs/Dekamond-otp | role=backend
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 332, in process_analysis
+    repo_content = await repo_adapter.fetch_repository(github_url, role)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/adapters/repositories/github.py", line 178, in fetch_repository
+    raise RepositoryError(f"No relevant files found in repository: {url}")
+core.exceptions.RepositoryError: No relevant files found in repository: https://github.com/Ete4rs/Dekamond-otp
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/sinaa/Desktop/cv_review/src/bot.py", line 335, in process_analysis
+    raise Exception(f"Repository error: {str(e)}")
+Exception: Repository error: No relevant files found in repository: https://github.com/Ete4rs/Dekamond-otp
+2025-08-27 13:17:34,339 - adapters.storage.sqlite - INFO - Updated submission 100: status=SubmissionStatus.FAILED
+2025-08-27 13:17:34,630 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-27 13:18:00,070 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-27 13:18:02,463 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/mo-lab/jobv
+2025-08-27 13:18:02,466 - utils.validators - INFO - Successfully validated GitHub URL: mo-lab/jobv
+2025-08-27 13:18:04,613 - __main__ - INFO - Starting analysis for https://github.com/mo-lab/jobv as backend
+2025-08-27 13:18:04,888 - __main__ - INFO - Found existing submission 94, removing it
+2025-08-27 13:18:04,967 - adapters.storage.sqlite - INFO - Deleted submission 94 and 1 associated reports
+2025-08-27 13:18:05,280 - adapters.storage.sqlite - INFO - Created submission 101 for user ***ID_MASKED***
+2025-08-27 13:18:05,281 - __main__ - INFO - Created submission 101
+2025-08-27 13:18:05,293 - adapters.storage.sqlite - INFO - Updated submission 101: status=SubmissionStatus.ANALYZING
+2025-08-27 13:18:05,571 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/mo-lab/jobv for role: backend
+2025-08-27 13:18:05,573 - adapters.repositories.github - INFO - Cloning repository: https://github.com/mo-lab/jobv (attempt 1/3)
+2025-08-27 13:18:09,712 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-27 13:18:09,721 - adapters.repositories.github - INFO - Repository size: 8.30MB
+2025-08-27 13:18:09,722 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-27 13:18:09,785 - adapters.repositories.github - INFO - Extracted files - Critical: 22, Important: 0, Useful: 0, Total unique: 22
+2025-08-27 13:18:09,787 - adapters.repositories.github - INFO - Extracted 22 files using patterns
+2025-08-27 13:18:09,788 - adapters.repositories.github - INFO - Raw content: 9601 tokens
+2025-08-27 13:18:09,802 - adapters.repositories.github - INFO - Successfully processed repository: 22 files, 9601 tokens
+2025-08-27 13:18:09,804 - __main__ - INFO - Fetched repository: 22 files
+2025-08-27 13:18:10,216 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/mo-lab/jobv)
+2025-08-27 13:18:10,217 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-27 13:18:10,218 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: internal/models/auth.go
+2025-08-27 13:18:10,219 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-27 13:18:10,223 - adapters.analyzers.openrouter - INFO - Total content size: 33185 characters, 22 files
+2025-08-27 13:18:20,772 - adapters.analyzers.openrouter - INFO - LLM Response length: 9593 characters
+2025-08-27 13:18:20,775 - adapters.analyzers.openrouter - INFO - === RAW LLM RESPONSE (first 1500 chars) ===
+2025-08-27 13:18:20,778 - adapters.analyzers.openrouter - INFO - ```json
+{
+  "task_analysis": {
+    "explicit_requirements": [
+      "Full OTP flow (generate, store with expiry, validate)",
+      "Rate limiting: Max 3 OTP requests per phone in 10 minutes",
+      "User endpoints with pagination & search",
+      "Swagger/OpenAPI documentation"
+    ],
+    "implicit_requirements": [
+      "Secure random generation for OTP",
+      "Time handling for OTP expiry and rate limiting",
+      "Data persistence for users and OTPs",
+      "API for user management (create, read, update, delete)",
+      "Proper HTTP status codes and error responses",
+      "Configuration management (e.g., for database connection, Redis, JWT secret)",
+      "Dependency management for external libraries"
+    ],
+    "not_required": [
+      "Advanced logging/monitoring solutions",
+      "CI/CD pipelines",
+      "Graceful shutdown",
+      "Extensive unit/integration tests (unless explicitly stated)",
+      "Advanced authentication mechanisms beyond OTP (e.g., JWT for session management, though implied for user management)",
+      "Specific deployment strategies (e.g., Kubernetes manifests)"
+    ],
+    "task_complexity": "moderate"
+  },
+  "requirements_implementation": {
+    "otp_login_registration": {
+      "requested": true,
+      "implemented": false,
+      "quality": "not_done",
+      "notes": "The core OTP login/registration flow is not implemented. There are no endpoints for generating or validating OTPs, nor is there a mechanism to store them with expiry."
+    },
+    "ra
+2025-08-27 13:18:20,780 - adapters.analyzers.openrouter - INFO - === END RAW RESPONSE ===
+2025-08-27 13:18:20,784 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-27 13:18:20,785 - adapters.analyzers.openrouter - INFO - JSON response parsed successfully
+2025-08-27 13:18:20,787 - adapters.analyzers.openrouter - INFO - LLM requirements_implementation found with 10 items
+2025-08-27 13:18:20,788 - adapters.analyzers.openrouter - INFO - Converting requirements_implementation to requirements_met
+2025-08-27 13:18:20,789 - adapters.analyzers.openrouter - WARNING - Requirements all False or missing - accepting LLM's analysis as-is
+2025-08-27 13:18:20,790 - adapters.analyzers.openrouter - INFO - No inference will be attempted - trusting direct LLM response
+2025-08-27 13:18:20,790 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'otp_login_registration': False, 'rate_limiting': False, 'user_management': False, 'api_documentation': False, 'architectural_pattern': False, 'repository_pattern': False, 'service_layer': False, 'redis_implementation': False, 'database_implementation': False, 'dockerization': False}
+2025-08-27 13:18:20,791 - adapters.analyzers.openrouter - INFO - Average of positive scores: 6.7% (from [0.0, 20.0, 0.0])
+2025-08-27 13:18:20,792 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'otp_login_registration': False, 'rate_limiting': False, 'user_management': False, 'api_documentation': False, 'architectural_pattern': False, 'repository_pattern': False, 'service_layer': False, 'redis_implementation': False, 'database_implementation': False, 'dockerization': False}
+2025-08-27 13:18:20,792 - adapters.analyzers.openrouter - WARNING - Requirements all False or missing in _convert - trusting LLM's direct analysis
+2025-08-27 13:18:20,793 - adapters.analyzers.openrouter - INFO - No inference attempted - using LLM response as-is
+2025-08-27 13:18:20,794 - adapters.analyzers.openrouter - WARNING - ⚠️ LLM did not provide candidate_explanation - this is a required field!
+2025-08-27 13:18:20,795 - adapters.analyzers.openrouter - INFO - Using detailed_feedback as candidate_explanation: 503 chars
+2025-08-27 13:18:20,796 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-27 13:18:20,796 - __main__ - INFO - Analysis complete for submission 101
+2025-08-27 13:18:20,823 - adapters.storage.sqlite - INFO - Created report 76 for submission 101
+2025-08-27 13:18:20,823 - __main__ - INFO - Created report 76
+2025-08-27 13:18:20,836 - adapters.storage.sqlite - INFO - Updated submission 101: status=SubmissionStatus.COMPLETED
+2025-08-27 13:18:22,809 - adapters.notifications.telegram - INFO - Analysis report sent for submission 101
+2025-08-27 13:18:23,133 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-27 13:18:48,467 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-27 13:18:51,000 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/Kiomaku/dekavand
+2025-08-27 13:18:51,003 - utils.validators - INFO - Successfully validated GitHub URL: Kiomaku/dekavand
+2025-08-27 13:18:53,032 - __main__ - INFO - Starting analysis for https://github.com/Kiomaku/dekavand as backend
+2025-08-27 13:18:53,325 - adapters.storage.sqlite - INFO - Created submission 102 for user ***ID_MASKED***
+2025-08-27 13:18:53,325 - __main__ - INFO - Created submission 102
+2025-08-27 13:18:53,338 - adapters.storage.sqlite - INFO - Updated submission 102: status=SubmissionStatus.ANALYZING
+2025-08-27 13:18:53,582 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/Kiomaku/dekavand for role: backend
+2025-08-27 13:18:53,586 - adapters.repositories.github - INFO - Cloning repository: https://github.com/Kiomaku/dekavand (attempt 1/3)
+2025-08-27 13:18:55,899 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-27 13:18:55,903 - adapters.repositories.github - INFO - Repository size: 0.26MB
+2025-08-27 13:18:55,906 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-27 13:18:55,964 - adapters.repositories.github - INFO - Extracted files - Critical: 27, Important: 0, Useful: 0, Total unique: 27
+2025-08-27 13:18:55,966 - adapters.repositories.github - INFO - Extracted 27 files using patterns
+2025-08-27 13:18:55,967 - adapters.repositories.github - INFO - Raw content: 78541 tokens
+2025-08-27 13:18:55,976 - adapters.repositories.github - INFO - Successfully processed repository: 27 files, 78541 tokens
+2025-08-27 13:18:55,977 - __main__ - INFO - Fetched repository: 27 files
+2025-08-27 13:18:56,279 - adapters.analyzers.openrouter - INFO - Starting code analysis for backend submission (repo: https://github.com/Kiomaku/dekavand)
+2025-08-27 13:18:56,281 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-27 13:18:56,284 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/lib/auth.ts
+2025-08-27 13:18:56,285 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/app/login/page.tsx
+2025-08-27 13:18:56,288 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_backend_analysis.md for backend analysis
+2025-08-27 13:18:56,290 - adapters.analyzers.openrouter - INFO - Total content size: ***ID_MASKED*** characters, 27 files
+2025-08-27 13:18:57,478 - __main__ - INFO - Cancel command from user Sinaam_00 (***ID_MASKED***)
+2025-08-27 13:19:00,079 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-27 13:19:06,571 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/Kiomaku/dekavand
+2025-08-27 13:19:06,573 - utils.validators - INFO - Successfully validated GitHub URL: Kiomaku/dekavand
+2025-08-27 13:19:09,179 - __main__ - INFO - Starting analysis for https://github.com/Kiomaku/dekavand as frontend
+2025-08-27 13:19:09,483 - __main__ - INFO - Found existing submission 95, removing it
+2025-08-27 13:19:09,508 - adapters.storage.sqlite - INFO - Deleted submission 95 and 1 associated reports
+2025-08-27 13:19:09,859 - adapters.storage.sqlite - INFO - Created submission 103 for user ***ID_MASKED***
+2025-08-27 13:19:09,861 - __main__ - INFO - Created submission 103
+2025-08-27 13:19:09,875 - adapters.storage.sqlite - INFO - Updated submission 103: status=SubmissionStatus.ANALYZING
+2025-08-27 13:19:10,198 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/Kiomaku/dekavand for role: frontend
+2025-08-27 13:19:10,200 - adapters.repositories.github - INFO - Cloning repository: https://github.com/Kiomaku/dekavand (attempt 1/3)
+2025-08-27 13:19:11,981 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-27 13:19:11,983 - adapters.repositories.github - INFO - Repository size: 0.26MB
+2025-08-27 13:19:11,985 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-27 13:19:11,998 - adapters.repositories.github - INFO - Extracted files - Critical: 21, Important: 0, Useful: 0, Total unique: 21
+2025-08-27 13:19:12,000 - adapters.repositories.github - INFO - Extracted 21 files using patterns
+2025-08-27 13:19:12,001 - adapters.repositories.github - INFO - Raw content: 12445 tokens
+2025-08-27 13:19:12,014 - adapters.repositories.github - INFO - Successfully processed repository: 21 files, 12445 tokens
+2025-08-27 13:19:12,015 - __main__ - INFO - Fetched repository: 21 files
+2025-08-27 13:19:12,017 - adapters.analyzers.openrouter - INFO - LLM Response length: 11730 characters
+2025-08-27 13:19:12,019 - adapters.analyzers.openrouter - INFO - === RAW LLM RESPONSE (first 1500 chars) ===
+2025-08-27 13:19:12,020 - adapters.analyzers.openrouter - INFO - ```json
+{
+  "task_analysis": {
+    "explicit_requirements": [
+      "Full OTP flow (generate, store with expiry, validate)",
+      "Rate limiting: Max 3 OTP requests per phone in 10 minutes",
+      "User endpoints with pagination & search",
+      "Swagger/OpenAPI documentation"
+    ],
+    "implicit_requirements": [
+      "Secure random generation for OTP",
+      "Time handling for OTP expiry and rate limiting",
+      "Database persistence for users and OTPs",
+      "Caching/storage for rate limiting (e.g., Redis)",
+      "API endpoints for OTP generation, validation, user registration, user listing, user search",
+      "Error handling for API responses",
+      "Input validation for requests",
+      "Proper HTTP status codes"
+    ],
+    "not_required": [
+      "Email/SMS delivery for OTP",
+      "Advanced authentication (e.g., JWT for user sessions beyond OTP login)",
+      "Complex authorization roles",
+      "Unit/integration tests (unless specified in a separate context)",
+      "CI/CD pipelines",
+      "Graceful shutdown",
+      "Logging/monitoring solutions",
+      "Advanced configuration management libraries"
+    ],
+    "task_complexity": "moderate"
+  },
+  "requirements_implementation": {
+    "otp_login_registration": {
+      "requested": true,
+      "implemented": false,
+      "quality": "not_done",
+      "notes": "The provided code does not implement an OTP login/registration flow. There are no endpoints or logic for generating, storing, or validating OTPs. The 'login'
+2025-08-27 13:19:12,021 - adapters.analyzers.openrouter - INFO - === END RAW RESPONSE ===
+2025-08-27 13:19:12,022 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-27 13:19:12,023 - adapters.analyzers.openrouter - INFO - JSON response parsed successfully
+2025-08-27 13:19:12,023 - adapters.analyzers.openrouter - INFO - LLM requirements_implementation found with 10 items
+2025-08-27 13:19:12,024 - adapters.analyzers.openrouter - INFO - Converting requirements_implementation to requirements_met
+2025-08-27 13:19:12,024 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'otp_login_registration': False, 'rate_limiting': False, 'user_management': False, 'api_documentation': False, 'architectural_pattern': True, 'repository_pattern': False, 'service_layer': False, 'redis_implementation': False, 'database_implementation': False, 'dockerization': False}
+2025-08-27 13:19:12,025 - adapters.analyzers.openrouter - INFO - Average of positive scores: 6.7% (from [0.0, 20.0, 0.0])
+2025-08-27 13:19:12,025 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'otp_login_registration': False, 'rate_limiting': False, 'user_management': False, 'api_documentation': False, 'architectural_pattern': True, 'repository_pattern': False, 'service_layer': False, 'redis_implementation': False, 'database_implementation': False, 'dockerization': False}
+2025-08-27 13:19:12,026 - adapters.analyzers.openrouter - WARNING - ⚠️ LLM did not provide candidate_explanation - this is a required field!
+2025-08-27 13:19:12,027 - adapters.analyzers.openrouter - INFO - Using detailed_feedback as candidate_explanation: 503 chars
+2025-08-27 13:19:12,028 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-27 13:19:12,029 - __main__ - INFO - Analysis complete for submission 102
+2025-08-27 13:19:12,044 - adapters.storage.sqlite - INFO - Created report 77 for submission 102
+2025-08-27 13:19:12,045 - __main__ - INFO - Created report 77
+2025-08-27 13:19:12,058 - adapters.storage.sqlite - INFO - Updated submission 102: status=SubmissionStatus.COMPLETED
+2025-08-27 13:19:12,300 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/Kiomaku/dekavand)
+2025-08-27 13:19:12,303 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-27 13:19:12,306 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/lib/auth.ts
+2025-08-27 13:19:12,309 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/app/login/page.tsx
+2025-08-27 13:19:12,313 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis_enterprise.md for frontend analysis
+2025-08-27 13:19:12,317 - adapters.analyzers.openrouter - INFO - Total content size: 44638 characters, 21 files
+2025-08-27 13:19:13,728 - adapters.notifications.telegram - INFO - Analysis report sent for submission 102
+2025-08-27 13:19:14,047 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-27 13:19:22,207 - adapters.analyzers.openrouter - INFO - LLM Response length: 6824 characters
+2025-08-27 13:19:22,210 - adapters.analyzers.openrouter - INFO - === RAW LLM RESPONSE (first 1500 chars) ===
+2025-08-27 13:19:22,213 - adapters.analyzers.openrouter - INFO - ```json
+{
+  "requirements_met": {
+    "login_page_implementation": true,
+    "phone_validation": true,
+    "api_integration": true,
+    "localstorage_implementation": true,
+    "dashboard_page": true,
+    "logout_functionality": true,
+    "nextjs_app_router": true,
+    "typescript_strict": true,
+    "tailwind_only": true,
+    "responsive_design": true,
+    "folder_structure": true
+  },
+  "architecture_analysis": {
+    "uses_app_router": true,
+    "file_conventions_followed": true,
+    "client_components_well_structured": true,
+    "routing_structure": "The routing structure correctly uses the App Router conventions with dedicated /login and /dashboard pages. The root page handles initial redirection based on authentication status.",
+    "component_organization": "The project has a clean and modular folder structure, separating UI components, utility functions (lib), and context providers. This promotes reusability and maintainability."
+  },
+  "penalty_breakdown": {
+    "issues_found": [
+      {
+        "category": "best_practices",
+        "issue": "The `ClientBody.tsx` component sets `document.body.className` in a `useEffect`. While functional, this is generally not the recommended way to apply global styles in Next.js with Tailwind, as `globals.css` and `layout.tsx` should handle most of this. The `antialiased` class is already applied in `layout.tsx`.",
+        "severity": "low",
+        "penalty": 5,
+        "evidence": "src/app/ClientBody.tsx"
+      },
+      {
+        "c
+2025-08-27 13:19:22,216 - adapters.analyzers.openrouter - INFO - === END RAW RESPONSE ===
+2025-08-27 13:19:22,219 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-27 13:19:22,223 - adapters.analyzers.openrouter - INFO - JSON response parsed successfully
+2025-08-27 13:19:22,226 - adapters.analyzers.openrouter - INFO - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 13:19:22,230 - adapters.analyzers.openrouter - WARNING - ⚠️ LLM marked localstorage_implementation as: True
+2025-08-27 13:19:22,233 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 13:19:22,235 - adapters.analyzers.openrouter - INFO - Average of positive scores: 89.5% (from [95.0, 85.0, 88.0, 90.0])
+2025-08-27 13:19:22,239 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 13:19:22,243 - adapters.analyzers.openrouter - WARNING - Frontend analysis lacks specific file:line evidence
+2025-08-27 13:19:22,245 - adapters.analyzers.openrouter - WARNING - Frontend analysis missing localStorage detection evidence
+2025-08-27 13:19:22,248 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-27 13:19:22,249 - __main__ - INFO - Analysis complete for submission 103
+2025-08-27 13:19:22,277 - adapters.storage.sqlite - INFO - Created report 78 for submission 103
+2025-08-27 13:19:22,278 - __main__ - INFO - Created report 78
+2025-08-27 13:19:22,290 - adapters.storage.sqlite - INFO - Updated submission 103: status=SubmissionStatus.COMPLETED
+2025-08-27 13:19:24,487 - adapters.notifications.telegram - INFO - Analysis report sent for submission 103
+2025-08-27 13:19:24,754 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-27 13:19:55,722 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-27 13:20:16,283 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/tannaz97shr/mini-login
+2025-08-27 13:20:16,287 - utils.validators - INFO - Successfully validated GitHub URL: tannaz97shr/mini-login
+2025-08-27 13:20:19,184 - __main__ - INFO - Starting analysis for https://github.com/tannaz97shr/mini-login as frontend
+2025-08-27 13:20:19,574 - __main__ - INFO - Found existing submission 96, removing it
+2025-08-27 13:20:19,603 - adapters.storage.sqlite - INFO - Deleted submission 96 and 1 associated reports
+2025-08-27 13:20:19,921 - adapters.storage.sqlite - INFO - Created submission 104 for user ***ID_MASKED***
+2025-08-27 13:20:19,922 - __main__ - INFO - Created submission 104
+2025-08-27 13:20:19,934 - adapters.storage.sqlite - INFO - Updated submission 104: status=SubmissionStatus.ANALYZING
+2025-08-27 13:20:20,251 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/tannaz97shr/mini-login for role: frontend
+2025-08-27 13:20:20,254 - adapters.repositories.github - INFO - Cloning repository: https://github.com/tannaz97shr/mini-login (attempt 1/3)
+2025-08-27 13:20:22,314 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-27 13:20:22,316 - adapters.repositories.github - INFO - Repository size: 0.33MB
+2025-08-27 13:20:22,317 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-27 13:20:22,327 - adapters.repositories.github - INFO - Extracted files - Critical: 20, Important: 0, Useful: 0, Total unique: 20
+2025-08-27 13:20:22,329 - adapters.repositories.github - INFO - Extracted 20 files using patterns
+2025-08-27 13:20:22,330 - adapters.repositories.github - INFO - Raw content: 4185 tokens
+2025-08-27 13:20:22,339 - adapters.repositories.github - INFO - Successfully processed repository: 20 files, 4185 tokens
+2025-08-27 13:20:22,340 - __main__ - INFO - Fetched repository: 20 files
+2025-08-27 13:20:22,665 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/tannaz97shr/mini-login)
+2025-08-27 13:20:22,667 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-27 13:20:22,670 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: src/app/(auth)/login/page.tsx
+2025-08-27 13:20:22,672 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis_enterprise.md for frontend analysis
+2025-08-27 13:20:22,673 - adapters.analyzers.openrouter - INFO - Total content size: 19451 characters, 20 files
+2025-08-27 13:20:28,220 - adapters.analyzers.openrouter - INFO - LLM Response length: 4738 characters
+2025-08-27 13:20:28,223 - adapters.analyzers.openrouter - INFO - === RAW LLM RESPONSE (first 1500 chars) ===
+2025-08-27 13:20:28,226 - adapters.analyzers.openrouter - INFO - ```json
+{
+  "requirements_met": {
+    "login_page_implementation": true,
+    "phone_validation": true,
+    "api_integration": true,
+    "localstorage_implementation": true,
+    "dashboard_page": true,
+    "logout_functionality": true,
+    "nextjs_app_router": true,
+    "typescript_strict": false,
+    "tailwind_only": true,
+    "responsive_design": true,
+    "folder_structure": true
+  },
+  "architecture_analysis": {
+    "uses_app_router": true,
+    "file_conventions_followed": true,
+    "client_components_well_structured": true,
+    "routing_structure": "The routing structure uses a route group `(auth)/login` which is unnecessary and creates a slightly less direct URL structure than `app/login/page.tsx` would. However, it still functions correctly and does not break the application.",
+    "component_organization": "Components are well-organized into `components/ui` for reusable UI elements and `lib` for utility functions and session management. Types are also separated into a `types` directory. This demonstrates a clean and modular approach."
+  },
+  "penalty_breakdown": {
+    "issues_found": [
+      {
+        "category": "typescript",
+        "issue": "Uses `any` type in API response handling.",
+        "severity": "critical",
+        "penalty": 100,
+        "evidence": "src/app/(auth)/login/page.tsx: `const data = (await res.json()) as any;`"
+      },
+      {
+        "category": "architecture",
+        "issue": "Unnecessary route group for login page.",
+        "severity": "m
+2025-08-27 13:20:28,229 - adapters.analyzers.openrouter - INFO - === END RAW RESPONSE ===
+2025-08-27 13:20:28,232 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-27 13:20:28,234 - adapters.analyzers.openrouter - INFO - JSON response parsed successfully
+2025-08-27 13:20:28,237 - adapters.analyzers.openrouter - INFO - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': False, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 13:20:28,240 - adapters.analyzers.openrouter - WARNING - ⚠️ LLM marked localstorage_implementation as: True
+2025-08-27 13:20:28,243 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': False, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 13:20:28,246 - adapters.analyzers.openrouter - INFO - Average of positive scores: 76.2% (from [90.0, 75.0, 60.0, 80.0])
+2025-08-27 13:20:28,249 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': False, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 13:20:28,252 - adapters.analyzers.openrouter - WARNING - Frontend analysis lacks specific file:line evidence
+2025-08-27 13:20:28,255 - adapters.analyzers.openrouter - WARNING - Frontend analysis missing localStorage detection evidence
+2025-08-27 13:20:28,259 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-27 13:20:28,261 - __main__ - INFO - Analysis complete for submission 104
+2025-08-27 13:20:28,287 - adapters.storage.sqlite - INFO - Created report 79 for submission 104
+2025-08-27 13:20:28,288 - __main__ - INFO - Created report 79
+2025-08-27 13:20:28,300 - adapters.storage.sqlite - INFO - Updated submission 104: status=SubmissionStatus.COMPLETED
+2025-08-27 13:20:34,450 - adapters.notifications.telegram - INFO - Analysis report sent for submission 104
+2025-08-27 13:20:35,385 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-27 13:21:19,925 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-27 13:21:23,017 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/kimiafarshadnia/dekamondChallenge
+2025-08-27 13:21:23,020 - utils.validators - INFO - Successfully validated GitHub URL: kimiafarshadnia/dekamondChallenge
+2025-08-27 13:21:30,444 - __main__ - INFO - Starting analysis for https://github.com/kimiafarshadnia/dekamondChallenge as frontend
+2025-08-27 13:21:30,774 - adapters.storage.sqlite - INFO - Created submission 105 for user ***ID_MASKED***
+2025-08-27 13:21:30,775 - __main__ - INFO - Created submission 105
+2025-08-27 13:21:30,793 - adapters.storage.sqlite - INFO - Updated submission 105: status=SubmissionStatus.ANALYZING
+2025-08-27 13:21:31,194 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/kimiafarshadnia/dekamondChallenge for role: frontend
+2025-08-27 13:21:31,197 - adapters.repositories.github - INFO - Cloning repository: https://github.com/kimiafarshadnia/dekamondChallenge (attempt 1/3)
+2025-08-27 13:21:32,989 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-27 13:21:32,991 - adapters.repositories.github - INFO - Repository size: 0.41MB
+2025-08-27 13:21:32,992 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-27 13:21:33,008 - adapters.repositories.github - INFO - Extracted files - Critical: 29, Important: 0, Useful: 0, Total unique: 29
+2025-08-27 13:21:33,009 - adapters.repositories.github - INFO - Extracted 29 files using patterns
+2025-08-27 13:21:33,011 - adapters.repositories.github - INFO - Raw content: 13201 tokens
+2025-08-27 13:21:33,023 - adapters.repositories.github - INFO - Successfully processed repository: 29 files, 13201 tokens
+2025-08-27 13:21:33,024 - __main__ - INFO - Fetched repository: 29 files
+2025-08-27 13:21:33,335 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/kimiafarshadnia/dekamondChallenge)
+2025-08-27 13:21:33,337 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-27 13:21:33,338 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: lib/auth.ts
+2025-08-27 13:21:33,340 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: hooks/useAuth.ts
+2025-08-27 13:21:33,341 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis_enterprise.md for frontend analysis
+2025-08-27 13:21:33,342 - adapters.analyzers.openrouter - INFO - Total content size: 54364 characters, 29 files
+2025-08-27 13:21:41,670 - adapters.analyzers.openrouter - INFO - LLM Response length: 5083 characters
+2025-08-27 13:21:41,673 - adapters.analyzers.openrouter - INFO - === RAW LLM RESPONSE (first 1500 chars) ===
+2025-08-27 13:21:41,676 - adapters.analyzers.openrouter - INFO - ```json
+{
+  "requirements_met": {
+    "login_page_implementation": true,
+    "phone_validation": true,
+    "api_integration": true,
+    "localstorage_implementation": true,
+    "dashboard_page": true,
+    "logout_functionality": true,
+    "nextjs_app_router": true,
+    "typescript_strict": true,
+    "tailwind_only": true,
+    "responsive_design": true,
+    "folder_structure": true
+  },
+  "architecture_analysis": {
+    "uses_app_router": true,
+    "file_conventions_followed": true,
+    "client_components_well_structured": true,
+    "routing_structure": "The routing structure correctly uses the App Router conventions with `app/page.tsx` for login and `app/dashboard/page.tsx` for the dashboard. No incorrect route groups were used.",
+    "component_organization": "Components are well-organized into `components/ui` for reusable UI elements, `hooks` for custom hooks, `lib` for utilities and auth, and `services` for API calls. This demonstrates a clean separation of concerns."
+  },
+  "penalty_breakdown": {
+    "issues_found": [
+      {
+        "category": "best_practices",
+        "issue": "The `useRouter` hook is imported from `next/navigation` but `router.replace('/')` is used in `app/dashboard/page.tsx` for unauthenticated users. While functional, `redirect('/')` from `next/navigation` is generally preferred for server components or when a hard redirect is needed, but `router.replace` is acceptable for client-side protection. However, the `router.replace` is called inside `useEff
+2025-08-27 13:21:41,679 - adapters.analyzers.openrouter - INFO - === END RAW RESPONSE ===
+2025-08-27 13:21:41,682 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-27 13:21:41,685 - adapters.analyzers.openrouter - INFO - JSON response parsed successfully
+2025-08-27 13:21:41,688 - adapters.analyzers.openrouter - INFO - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 13:21:41,691 - adapters.analyzers.openrouter - WARNING - ⚠️ LLM marked localstorage_implementation as: True
+2025-08-27 13:21:41,694 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 13:21:41,695 - adapters.analyzers.openrouter - INFO - Average of positive scores: 91.2% (from [95.0, 90.0, 90.0, 90.0])
+2025-08-27 13:21:41,696 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 13:21:41,698 - adapters.analyzers.openrouter - WARNING - Frontend analysis lacks specific file:line evidence
+2025-08-27 13:21:41,698 - adapters.analyzers.openrouter - WARNING - Frontend analysis missing localStorage detection evidence
+2025-08-27 13:21:41,700 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-27 13:21:41,700 - __main__ - INFO - Analysis complete for submission 105
+2025-08-27 13:21:41,727 - adapters.storage.sqlite - INFO - Created report 80 for submission 105
+2025-08-27 13:21:41,728 - __main__ - INFO - Created report 80
+2025-08-27 13:21:41,741 - adapters.storage.sqlite - INFO - Updated submission 105: status=SubmissionStatus.COMPLETED
+2025-08-27 13:21:47,632 - adapters.notifications.telegram - ERROR - Failed to send analysis complete: Timed out
+2025-08-27 13:21:48,909 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-27 13:21:58,205 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-27 13:22:01,104 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/kimiafarshadnia/dekamondChallenge
+2025-08-27 13:22:01,105 - utils.validators - INFO - Successfully validated GitHub URL: kimiafarshadnia/dekamondChallenge
+2025-08-27 13:22:03,134 - __main__ - INFO - Starting analysis for https://github.com/kimiafarshadnia/dekamondChallenge as frontend
+2025-08-27 13:22:03,398 - __main__ - INFO - Found existing submission 105, removing it
+2025-08-27 13:22:03,426 - adapters.storage.sqlite - INFO - Deleted submission 105 and 1 associated reports
+2025-08-27 13:22:03,715 - adapters.storage.sqlite - INFO - Created submission 105 for user ***ID_MASKED***
+2025-08-27 13:22:03,715 - __main__ - INFO - Created submission 105
+2025-08-27 13:22:03,729 - adapters.storage.sqlite - INFO - Updated submission 105: status=SubmissionStatus.ANALYZING
+2025-08-27 13:22:03,975 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/kimiafarshadnia/dekamondChallenge for role: frontend
+2025-08-27 13:22:03,977 - adapters.repositories.github - INFO - Cloning repository: https://github.com/kimiafarshadnia/dekamondChallenge (attempt 1/3)
+2025-08-27 13:22:05,987 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-27 13:22:05,989 - adapters.repositories.github - INFO - Repository size: 0.41MB
+2025-08-27 13:22:05,990 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-27 13:22:06,005 - adapters.repositories.github - INFO - Extracted files - Critical: 29, Important: 0, Useful: 0, Total unique: 29
+2025-08-27 13:22:06,006 - adapters.repositories.github - INFO - Extracted 29 files using patterns
+2025-08-27 13:22:06,008 - adapters.repositories.github - INFO - Raw content: 13201 tokens
+2025-08-27 13:22:06,019 - adapters.repositories.github - INFO - Successfully processed repository: 29 files, 13201 tokens
+2025-08-27 13:22:06,020 - __main__ - INFO - Fetched repository: 29 files
+2025-08-27 13:22:06,339 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/kimiafarshadnia/dekamondChallenge)
+2025-08-27 13:22:06,339 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-27 13:22:06,340 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: lib/auth.ts
+2025-08-27 13:22:06,340 - adapters.analyzers.openrouter - INFO - Including critical file for frontend: hooks/useAuth.ts
+2025-08-27 13:22:06,341 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis_enterprise.md for frontend analysis
+2025-08-27 13:22:06,342 - adapters.analyzers.openrouter - INFO - Total content size: 54364 characters, 29 files
+2025-08-27 13:22:15,061 - adapters.analyzers.openrouter - INFO - LLM Response length: 5671 characters
+2025-08-27 13:22:15,064 - adapters.analyzers.openrouter - INFO - === RAW LLM RESPONSE (first 1500 chars) ===
+2025-08-27 13:22:15,067 - adapters.analyzers.openrouter - INFO - ```json
+{
+  "requirements_met": {
+    "login_page_implementation": true,
+    "phone_validation": true,
+    "api_integration": true,
+    "localstorage_implementation": true,
+    "dashboard_page": true,
+    "logout_functionality": true,
+    "nextjs_app_router": true,
+    "typescript_strict": true,
+    "tailwind_only": true,
+    "responsive_design": true,
+    "folder_structure": true
+  },
+  "architecture_analysis": {
+    "uses_app_router": true,
+    "file_conventions_followed": true,
+    "client_components_well_structured": true,
+    "routing_structure": "The routing structure correctly uses the App Router conventions with `app/page.tsx` for login and `app/dashboard/page.tsx` for the dashboard. No incorrect route groups were used.",
+    "component_organization": "Components are well-organized into `components/ui` for reusable UI elements, `hooks` for custom hooks, `lib` for utilities and auth, `services` for API calls, and `types` for type definitions. This demonstrates a clean separation of concerns."
+  },
+  "penalty_breakdown": {
+    "issues_found": [
+      {
+        "category": "best_practices",
+        "issue": "The `useRouter` hook is imported from `next/navigation` but `router.replace('/')` is used in `app/dashboard/page.tsx` for redirection when `redirect()` from `next/navigation` should be used in server components or `router.push()` for client-side navigation. While `router.replace` works, `router.push` is generally preferred for navigation that adds to history, or `red
+2025-08-27 13:22:15,070 - adapters.analyzers.openrouter - INFO - === END RAW RESPONSE ===
+2025-08-27 13:22:15,073 - adapters.analyzers.openrouter - INFO - Successfully recovered JSON from LLM response
+2025-08-27 13:22:15,076 - adapters.analyzers.openrouter - INFO - JSON response parsed successfully
+2025-08-27 13:22:15,079 - adapters.analyzers.openrouter - INFO - LLM requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 13:22:15,081 - adapters.analyzers.openrouter - WARNING - ⚠️ LLM marked localstorage_implementation as: True
+2025-08-27 13:22:15,084 - adapters.analyzers.openrouter - INFO - Normalized requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 13:22:15,087 - adapters.analyzers.openrouter - INFO - Average of positive scores: 91.2% (from [95.0, 90.0, 90.0, 90.0])
+2025-08-27 13:22:15,089 - adapters.analyzers.openrouter - INFO - Extracted requirements_met: {'login_page_implementation': True, 'phone_validation': True, 'api_integration': True, 'localstorage_implementation': True, 'dashboard_page': True, 'logout_functionality': True, 'nextjs_app_router': True, 'typescript_strict': True, 'tailwind_only': True, 'responsive_design': True, 'folder_structure': True}
+2025-08-27 13:22:15,093 - adapters.analyzers.openrouter - WARNING - Frontend analysis lacks specific file:line evidence
+2025-08-27 13:22:15,095 - adapters.analyzers.openrouter - WARNING - Frontend analysis missing localStorage detection evidence
+2025-08-27 13:22:15,099 - adapters.analyzers.openrouter - INFO - Analysis successful with google/gemini-2.5-flash
+2025-08-27 13:22:15,101 - __main__ - INFO - Analysis complete for submission 105
+2025-08-27 13:22:15,134 - adapters.storage.sqlite - INFO - Created report 80 for submission 105
+2025-08-27 13:22:15,135 - __main__ - INFO - Created report 80
+2025-08-27 13:22:15,146 - adapters.storage.sqlite - INFO - Updated submission 105: status=SubmissionStatus.COMPLETED
+2025-08-27 13:22:17,372 - adapters.notifications.telegram - INFO - Analysis report sent for submission 105
+2025-08-27 13:22:17,692 - adapters.repositories.github - INFO - GitHub adapter cleanup completed
+2025-08-27 13:23:05,455 - __main__ - INFO - Analyze command from user Sinaam_00 (***ID_MASKED***)
+2025-08-27 13:23:07,980 - __main__ - INFO - Received URL from Sinaam_00: https://github.com/Sorooshmlv/dekamond-test
+2025-08-27 13:23:07,982 - utils.validators - INFO - Successfully validated GitHub URL: Sorooshmlv/dekamond-test
+2025-08-27 13:23:10,281 - __main__ - INFO - Starting analysis for https://github.com/Sorooshmlv/dekamond-test as frontend
+2025-08-27 13:23:10,743 - __main__ - INFO - Found existing submission 98, removing it
+2025-08-27 13:23:10,772 - adapters.storage.sqlite - INFO - Deleted submission 98 and 1 associated reports
+2025-08-27 13:23:11,122 - adapters.storage.sqlite - INFO - Created submission 106 for user ***ID_MASKED***
+2025-08-27 13:23:11,122 - __main__ - INFO - Created submission 106
+2025-08-27 13:23:11,135 - adapters.storage.sqlite - INFO - Updated submission 106: status=SubmissionStatus.ANALYZING
+2025-08-27 13:23:11,365 - adapters.repositories.github - INFO - Fetching GitHub repository: https://github.com/Sorooshmlv/dekamond-test for role: frontend
+2025-08-27 13:23:11,367 - adapters.repositories.github - INFO - Cloning repository: https://github.com/Sorooshmlv/dekamond-test (attempt 1/3)
+2025-08-27 13:23:13,405 - adapters.repositories.github - INFO - Repository cloned successfully
+2025-08-27 13:23:13,407 - adapters.repositories.github - INFO - Repository size: 0.39MB
+2025-08-27 13:23:13,407 - adapters.repositories.github - INFO - Extracting files based on patterns
+2025-08-27 13:23:13,419 - adapters.repositories.github - INFO - Extracted files - Critical: 22, Important: 0, Useful: 0, Total unique: 22
+2025-08-27 13:23:13,420 - adapters.repositories.github - INFO - Extracted 22 files using patterns
+2025-08-27 13:23:13,423 - adapters.repositories.github - INFO - Raw content: 7512 tokens
+2025-08-27 13:23:13,433 - adapters.repositories.github - INFO - Successfully processed repository: 22 files, 7512 tokens
+2025-08-27 13:23:13,433 - __main__ - INFO - Fetched repository: 22 files
+2025-08-27 13:23:13,726 - adapters.analyzers.openrouter - INFO - Starting code analysis for frontend submission (repo: https://github.com/Sorooshmlv/dekamond-test)
+2025-08-27 13:23:13,728 - adapters.analyzers.openrouter - INFO - Attempt 1/3: google/gemini-2.5-flash (context: ***ID_MASKED*** tokens)
+2025-08-27 13:23:13,730 - adapters.analyzers.openrouter - INFO - Using prompt: analysis/senior_frontend_analysis_enterprise.md for frontend analysis
+2025-08-27 13:23:13,732 - adapters.analyzers.openrouter - INFO - Total content size: 26847 characters, 22 files

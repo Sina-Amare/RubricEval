@@ -4,23 +4,23 @@ You are evaluating a **Frontend Developer** candidate for a senior position. Foc
 
 ## Task Requirements
 
-{task_requirements}
+$task_requirements
 
 ## Repository Information
-- **URL**: {github_url}  
-- **Files**: {file_count}
-- **Tokens**: {total_tokens}
+- **URL**: $github_url  
+- **Files**: $file_count
+- **Tokens**: $total_tokens
 
 ## Repository Structure
 
 ```
-{repository_structure}
+$repository_structure
 ```
 
 ## The Code
 
 ```
-{code_content}
+$code_content
 ```
 
 ## SECTION 1: MANDATORY TASK COMPLIANCE
@@ -52,15 +52,15 @@ You are evaluating a **Frontend Developer** candidate for a senior position. Foc
 - Dynamic routes with `[param]` folders
 - Proper use of `"use client"` directive only where needed
 
-**2. Client vs Server Components**
-- Server Components by default (no "use client" unless needed)
-- "use client" ONLY for:
+**2. Client Components Best Practices**
+- Proper use of "use client" directive when needed for:
   - Interactive elements (onClick, onChange, etc.)
   - Browser APIs (localStorage, window, document)
   - React hooks (useState, useEffect, etc.)
   - Third-party client-only libraries
-- Data fetching should happen in Server Components when possible
-- Form actions can use Server Actions (preferred over API routes for mutations)
+- Clean component structure and organization
+- Proper state management within client components
+- Efficient re-rendering patterns
 
 **3. Next.js Navigation Best Practices**
 - Use `useRouter` from `next/navigation` (NOT `next/router`)
@@ -96,9 +96,61 @@ You are evaluating a **Frontend Developer** candidate for a senior position. Foc
 
 ## SECTION 3: CRITICAL ISSUE DETECTION
 
+### Common Rejection Patterns (EDUCATIONAL EXAMPLES)
+
+These are real examples from rejected submissions to help identify similar issues:
+
+**Example 1: TypeScript `any` Usage (AUTO-REJECT)**
+```typescript
+// ❌ REJECTED: Using any type with eslint-disable
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const data = (await res.json()) as any;
+
+// ❌ REJECTED: Function parameter with any type
+export function urlWithQueryParams(url: string, object: any = {}) {
+```
+
+**Example 2: Wrong Routing Structure (AUTO-REJECT)**
+```
+❌ REJECTED Structure:
+app/(pages)/login/page.tsx     // Wrong: creates /(pages)/login URL
+app/(auth)/login/page.tsx      // Wrong: unnecessary route group
+
+✅ CORRECT Structure:
+app/login/page.tsx              // Correct: creates /login route
+app/dashboard/page.tsx          // Correct: creates /dashboard route
+```
+
+**Example 3: Missing Required Routes (AUTO-REJECT)**
+```
+❌ REJECTED: No login functionality at all
+app/page.tsx (no login)        // Wrong: main page without login
+app/dashboard/page.tsx         // Has dashboard but no login anywhere
+
+✅ CORRECT: Login and dashboard both exist
+app/page.tsx (with login)      // OK: login in main page
+app/dashboard/page.tsx         // OK: dashboard route
+-- OR --
+app/login/page.tsx             // OK: dedicated login route
+app/dashboard/page.tsx         // OK: dashboard route
+```
+
 ### Auto-Rejection Triggers
 
 Check for these critical issues that demonstrate lack of senior-level expertise:
+
+**TypeScript `any` Type (AUTO-REJECT)**
+- ANY usage of `any` type in application code = AUTO-REJECT
+- This includes: `as any`, `: any`, `<any>`, `any[]`, etc.
+- Even with eslint-disable comments, using `any` = REJECT
+- Example violations that MUST cause rejection:
+  ```typescript
+  // REJECT: Using any type
+  const data = (await res.json()) as any;
+  function urlWithQueryParams(url: string, object: any = {})
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const data = (await res.json()) as any;  // Still REJECT
+  ```
 
 **Styling Violations (AUTO-REJECT)**
 - Using CSS Modules (*.module.css, *.module.scss)
@@ -106,8 +158,20 @@ Check for these critical issues that demonstrate lack of senior-level expertise:
 - Using plain CSS files for component styling
 - Not using Tailwind when explicitly required
 
+**Routing Issues (AUTO-REJECT)**
+- Missing `/dashboard` route entirely
+- Using route groups incorrectly: `(auth)/login` or `(pages)/login` instead of just `login`
+- No login functionality anywhere (neither in main page nor dedicated route)
+- Examples of INCORRECT routing that must be rejected:
+  ```
+  ❌ app/(pages)/login/page.tsx  // Creates wrong URL structure
+  ❌ app/(auth)/login/page.tsx   // Unnecessary route group
+  ✅ app/login/page.tsx          // Correct: dedicated login route
+  ✅ app/page.tsx (with login)    // Also OK: login in main page
+  ```
+
 **Poor Error Handling (Major Penalty)**
-- Empty catch blocks: `catch {{}}`  or `catch(e) {{}}`
+- Empty catch blocks: `catch {}` or `catch(e) {}`
 - Swallowing errors without user feedback
 - No error state management
 - Console.log instead of proper error handling
@@ -116,11 +180,6 @@ Check for these critical issues that demonstrate lack of senior-level expertise:
 - Dashboard returns `null` instead of redirecting
 - No protection mechanism for authenticated routes
 - localStorage checks not implemented properly
-
-**TypeScript Anti-Patterns (Penalty)**
-- Using `any` type
-- Using `@ts-ignore` or `@ts-nocheck`
-- Missing type definitions for key data
 
 ## SECTION 3: SENIOR-LEVEL INDICATORS
 
@@ -151,14 +210,14 @@ Check for these critical issues that demonstrate lack of senior-level expertise:
 ### Severity Levels
 
 **Low (5 points each)**
-- Minor TypeScript issues
+- Minor TypeScript issues (not including `any`)
 - Inconsistent naming
 - Missing comments where needed
 
 **Medium (10 points each)**
 - Missing loading states
 - Poor error messages
-- TypeScript type issues (not any)
+- TypeScript type issues (not `any`)
 - Minor auth protection issues
 
 **High (15 points each)**
@@ -169,21 +228,23 @@ Check for these critical issues that demonstrate lack of senior-level expertise:
 
 **Very High (25-30 points each)**
 - Empty catch blocks: 30 points
-- Using any types extensively: 25 points
 - No auth protection at all: 25 points
 
-**Critical (AUTO-REJECT)**
-- Using CSS modules when Tailwind required
-- No error handling at all
-- Completely broken functionality
+**Critical (AUTO-REJECT - 100+ points)**
+- Using `any` type ANYWHERE in code: AUTO-REJECT (100 points)
+- Using CSS modules when Tailwind required: AUTO-REJECT (100 points)
+- Missing required `/login` or `/dashboard` routes: AUTO-REJECT (100 points)
+- Wrong routing structure (e.g., `(auth)/login`): AUTO-REJECT (100 points)
+- No error handling at all: AUTO-REJECT (100 points)
+- Completely broken functionality: AUTO-REJECT (100 points)
 
 ## Output Format
 
 Return a JSON object with this EXACT structure:
 
 ```json
-{{
-  "requirements_met": {{
+{
+  "requirements_met": {
     "login_page_implementation": boolean,
     "phone_validation": boolean,
     "api_integration": boolean,
@@ -195,68 +256,83 @@ Return a JSON object with this EXACT structure:
     "tailwind_only": boolean,
     "responsive_design": boolean,
     "folder_structure": boolean
-  }},
-  "architecture_analysis": {{
+  },
+  "architecture_analysis": {
     "uses_app_router": boolean,
     "file_conventions_followed": boolean,
-    "server_client_boundaries_correct": boolean,
+    "client_components_well_structured": boolean,
     "routing_structure": "description",
     "component_organization": "description"
-  }},
-  "penalty_breakdown": {{
+  },
+  "penalty_breakdown": {
     "issues_found": [
-      {{
+      {
         "category": "critical_violation|error_handling|typescript|architecture",
         "issue": "Specific description (e.g., 'Uses CSS modules instead of Tailwind only')",
         "severity": "critical|high|medium|low",
         "penalty": number,
         "evidence": "Where you found this issue"
-      }}
+      }
     ],
     "total_penalty": number
-  }},
-  "scores": {{
+  },
+  "scores": {
     "task_completion": 0-100,
     "code_quality": 0-100,
     "seniority_indicators": 0-100,
     "nextjs_expertise": 0-100
-  }},
+  },
   "recommendation": "accept|reject",
   "confidence": 0.0-1.0,
   "strengths": ["List at least 3 strengths"],
   "weaknesses": ["List at least 3 weaknesses"],
   "detailed_feedback": "Comprehensive analysis of the submission",
   "candidate_explanation": "REQUIRED FIELD - MUST NOT BE EMPTY. A professional, constructive explanation for the candidate about why their submission was accepted or rejected. This should be educational and help them understand the decision. Be specific about what they did well and what needs improvement. If rejected, provide actionable feedback on how to meet senior-level standards. Write 4-6 sentences that the candidate will find helpful and encouraging. DO NOT leave this field empty or undefined."
-}}
+}
 ```
 
 ## Decision Logic
 
 CRITICAL: Check these in order:
 
-1. **If `tailwind_only` is FALSE → recommendation = "reject"**
+1. **If ANY `any` type found in code → recommendation = "reject"**
+   - Search for: `as any`, `: any`, `<any>`, `any[]`, etc.
+   - Even with eslint-disable comments = REJECT
+   - Add penalty: 100 points for "Uses TypeScript `any` type"
+   - Set `typescript_strict` to FALSE
+
+2. **If `tailwind_only` is FALSE → recommendation = "reject"**
    - Using CSS modules, styled-components, or any non-Tailwind styling = REJECT
    - Add penalty: 100 points for "Uses CSS modules instead of Tailwind only"
 
-2. **If empty catch blocks exist → add major penalty**
+3. **If routing structure is wrong → recommendation = "reject"**
+   - Missing `/dashboard` route = REJECT
+   - Using `(auth)/login` or `(pages)/login` = REJECT  
+   - No login functionality anywhere (check both app/login/page.tsx and app/page.tsx) = REJECT
+   - Add penalty: 100 points for routing issues
+   - Note: Login can be either at app/login/page.tsx OR in app/page.tsx (main page)
+
+4. **If empty catch blocks exist → add major penalty**
    - Empty error handling = 30 penalty points
    - Shows lack of senior-level expertise
 
-3. **Calculate total penalty carefully**
+5. **Calculate total penalty carefully**
    - Sum all penalties but be fair about severity
    - Minor issues that still work shouldn't accumulate to rejection
 
-4. **If total_penalty >= 60 → recommendation = "reject"**
+6. **If total_penalty > 60 → recommendation = "reject"**
 
-5. **If less than 9/11 requirements_met → recommendation = "reject"**
+7. **If less than 9/11 requirements_met → recommendation = "reject"**
    - Must have at least 9 out of 11 requirements to be considered
 
-6. **Otherwise → recommendation = "accept"**
-   - If penalty < 60 AND requirements >= 9/11 → ACCEPT
+8. **Otherwise → recommendation = "accept"**
+   - If penalty ≤ 60 AND requirements >= 9/11 → ACCEPT
    - Focus on core functionality over perfect implementation
-   - Consider that redirect() in client component still works even if not best practice
 
-IMPORTANT: Be strict about Tailwind-only requirement. Finding any .module.css or .module.scss files means automatic rejection.
+IMPORTANT: 
+- ANY usage of `any` type = automatic rejection
+- Wrong routing structure = automatic rejection
+- CSS modules instead of Tailwind = automatic rejection
 
 ## Candidate Explanation Guidelines
 

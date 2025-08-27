@@ -508,9 +508,11 @@ Recommendations:
                 file_conventions = architecture_analysis.get('file_conventions_followed', False)
                 checks_text += f"{'✅' if file_conventions else '❌'} <b>File Conventions:</b> {'Followed' if file_conventions else 'Not followed'}\n"
                 
-                # Check Server/Client Boundaries
-                boundaries_correct = architecture_analysis.get('server_client_boundaries_correct', False)
-                checks_text += f"{'✅' if boundaries_correct else '❌'} <b>Server/Client Components:</b> {'Correct' if boundaries_correct else 'Incorrect usage'}\n"
+                # Check Client Components Implementation
+                # Support both old and new field names
+                client_components_ok = architecture_analysis.get('client_components_well_structured', 
+                                                                architecture_analysis.get('server_client_boundaries_correct', False))
+                checks_text += f"{'✅' if client_components_ok else '❌'} <b>Client Components:</b> {'Well-structured' if client_components_ok else 'Needs improvement'}\n"
                 
                 # Check Routing Structure
                 routing = architecture_analysis.get('routing_structure', 'Not analyzed')
@@ -876,7 +878,7 @@ Recommendations:
                         report_text += f"   Severity: {severity.upper()} | Penalty: +{penalty} points\n"
                 
                 report_text += f"\n<b>Total Penalty: {total} points</b>"
-                if total >= 50:
+                if total > 60:
                     report_text += " <b>(AUTO-REJECT THRESHOLD)</b>"
         
         # Add senior-level architecture requirements section

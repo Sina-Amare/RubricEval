@@ -798,8 +798,19 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
                         logger.warning(f"❌ Evidence references non-existent file: {file_ref}")
                         invalid_references.append(file_ref)
         
-        # Check penalty_breakdown evidence
+        # Fix penalty_breakdown format if needed
         if 'penalty_breakdown' in parsed_response:
+            penalty_data = parsed_response['penalty_breakdown']
+            
+            # If it's a list, convert to proper format
+            if isinstance(penalty_data, list):
+                logger.warning("Converting penalty_breakdown from list to proper dict format")
+                parsed_response['penalty_breakdown'] = {
+                    'issues_found': penalty_data,
+                    'total_penalty': sum(issue.get('penalty', 0) for issue in penalty_data if isinstance(issue, dict))
+                }
+            
+            # Now safely get issues
             issues = parsed_response['penalty_breakdown'].get('issues_found', [])
             for issue in issues:
                 evidence = issue.get('evidence', '')
@@ -911,6 +922,12 @@ Be thorough but fair. Focus on demonstrating technical competency for the {reque
         
         # Check penalty evidence for hallucinations
         if 'penalty_breakdown' in parsed_response:
+            # Ensure proper format (handled earlier but double-check)
+            if isinstance(parsed_response['penalty_breakdown'], list):
+                parsed_response['penalty_breakdown'] = {
+                    'issues_found': parsed_response['penalty_breakdown'],
+                    'total_penalty': sum(issue.get('penalty', 0) for issue in parsed_response['penalty_breakdown'] if isinstance(issue, dict))
+                }
             issues = parsed_response['penalty_breakdown'].get('issues_found', [])
             for issue in issues:
                 evidence_text = issue.get('evidence', '')
