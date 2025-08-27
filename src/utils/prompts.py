@@ -9,7 +9,7 @@ import os
 from pathlib import Path
 from typing import Dict, Any, Optional
 from string import Template
-from utils.logger import setup_logger
+from .logger import setup_logger
 
 logger = setup_logger(__name__)
 

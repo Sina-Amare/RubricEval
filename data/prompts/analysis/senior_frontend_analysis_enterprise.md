@@ -152,6 +152,24 @@ Check for these critical issues that demonstrate lack of senior-level expertise:
   const data = (await res.json()) as any;  // Still REJECT
   ```
 
+**Direct Fetch in View Layer (AUTO-REJECT)**
+- Using `fetch()` directly inside React components = AUTO-REJECT
+- No service layer or API abstraction = AUTO-REJECT  
+- Violates Layered Architecture principles
+- Example violations that MUST cause rejection:
+  ```typescript
+  // REJECT: Direct fetch in component
+  const handleLogin = async () => {
+    const res = await fetch('/api/auth', {...})  // AUTO-REJECT
+  }
+  
+  // CORRECT: Service layer abstraction
+  import { authService } from '@/services/auth'
+  const handleLogin = async () => {
+    const res = await authService.login(...)  // CORRECT
+  }
+  ```
+
 **Styling Violations (AUTO-REJECT)**
 - Using CSS Modules (*.module.css, *.module.scss)
 - Using styled-components or emotion
@@ -232,6 +250,7 @@ Check for these critical issues that demonstrate lack of senior-level expertise:
 
 **Critical (AUTO-REJECT - 100+ points)**
 - Using `any` type ANYWHERE in code: AUTO-REJECT (100 points)
+- Direct fetch() in components without service layer: AUTO-REJECT (100 points)
 - Using CSS modules when Tailwind required: AUTO-REJECT (100 points)
 - Missing required `/login` or `/dashboard` routes: AUTO-REJECT (100 points)
 - Wrong routing structure (e.g., `(auth)/login`): AUTO-REJECT (100 points)
@@ -254,6 +273,7 @@ Return a JSON object with this EXACT structure:
     "nextjs_app_router": boolean,
     "typescript_strict": boolean,
     "tailwind_only": boolean,
+    "service_layer": boolean,  // NO direct fetch in components
     "responsive_design": boolean,
     "folder_structure": boolean
   },
@@ -322,15 +342,16 @@ CRITICAL: Check these in order:
 
 6. **If total_penalty > 60 → recommendation = "reject"**
 
-7. **If less than 9/11 requirements_met → recommendation = "reject"**
-   - Must have at least 9 out of 11 requirements to be considered
+7. **If less than 9/12 requirements_met → recommendation = "reject"**
+   - Must have at least 9 out of 12 requirements to be considered
 
 8. **Otherwise → recommendation = "accept"**
-   - If penalty ≤ 60 AND requirements >= 9/11 → ACCEPT
+   - If penalty ≤ 60 AND requirements >= 9/12 → ACCEPT
    - Focus on core functionality over perfect implementation
 
 IMPORTANT: 
 - ANY usage of `any` type = automatic rejection
+- Direct fetch() in components without service layer = automatic rejection
 - Wrong routing structure = automatic rejection
 - CSS modules instead of Tailwind = automatic rejection
 

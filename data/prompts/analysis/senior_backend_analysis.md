@@ -76,7 +76,7 @@ You are evaluating a **Backend Developer** candidate for a mid-to-senior level p
 
 ### Analyzing the Given Task
 
-{task_requirements}
+$task_requirements
 
 ### What This Task REQUIRES vs NICE-TO-HAVE
 
@@ -96,14 +96,14 @@ You are evaluating a **Backend Developer** candidate for a mid-to-senior level p
 
 ### The Repository
 
-- **URL**: {github_url}
-- **Files**: {file_count}
-- **Tokens**: {total_tokens}
+- **URL**: $github_url
+- **Files**: $file_count
+- **Tokens**: $total_tokens
 
 ### Repository Architecture
 
 ```
-{repository_structure}
+$repository_structure
 ```
 
 ### MANDATORY ARCHITECTURE CHECK
@@ -165,7 +165,7 @@ You are evaluating a **Backend Developer** candidate for a mid-to-senior level p
 ### The Code
 
 ```
-{code_content}
+$code_content
 ```
 
 ## SECTION 4: MANDATORY SENIOR-LEVEL REQUIREMENTS
@@ -270,20 +270,20 @@ Evaluate ONLY what was asked for:
 
 ```go
 // ACCEPTABLE for simple tasks
-func main() {{
+func main() {
     http.HandleFunc("/api/login", loginHandler)
     // Direct handler is OK for simple demos
-}}
+}
 
 // EXPECTED for production systems
 // handlers/auth.go
-type AuthHandler struct {{
+type AuthHandler struct {
     service AuthService
-}}
+}
 
-func (h *AuthHandler) Login(w http.ResponseWriter, r *http.Request) {{
+func (h *AuthHandler) Login(w http.ResponseWriter, r *http.Request) {
     // Proper separation of concerns
-}}
+}
 ```
 
 ### C. Seniority Indicators (Context-Aware)
@@ -352,13 +352,13 @@ func (h *AuthHandler) Login(w http.ResponseWriter, r *http.Request) {{
 5. **List EVERY Issue in penalty_breakdown**:
    Example:
    ```
-   "penalty_breakdown": {{
+   "penalty_breakdown": {
      "issues_found": [
-       {{"issue": "Using math/rand for OTP generation", "severity": "moderate", "penalty": 20}},
-       {{"issue": "Missing Swagger documentation", "severity": "major", "penalty": 35}}
+       {"issue": "Using math/rand for OTP generation", "severity": "moderate", "penalty": 20},
+       {"issue": "Missing Swagger documentation", "severity": "major", "penalty": 35}
      ],
      "total_penalty": 55
-   }}
+   }
    ```
 
 6. **Ensure Consistency**:
@@ -369,126 +369,122 @@ func (h *AuthHandler) Login(w http.ResponseWriter, r *http.Request) {{
 ## OUTPUT FORMAT
 
 ```json
-{{
-  "task_analysis": {{
+{
+  "task_analysis": {
     "explicit_requirements": ["List what was directly asked"],
     "implicit_requirements": ["What's needed for explicit to work"],
     "not_required": ["What wasn't asked for"],
     "task_complexity": "simple|moderate|complex"
-  }},
-  "requirements_implementation": {{
-    // Task Requirements
-    "otp_login_registration": {{
+  },
+  "requirements_implementation": {
+    "otp_login_registration": {
       "requested": true,
       "implemented": true/false,
       "quality": "not_done|basic|good|excellent",
       "notes": "Specific observations"
-    }},
-    "rate_limiting": {{
+    },
+    "rate_limiting": {
       "requested": true,
       "implemented": true/false,
       "quality": "not_done|basic|good|excellent",
       "notes": "Specific observations"
-    }},
-    "user_management": {{
+    },
+    "user_management": {
       "requested": true,
       "implemented": true/false,
       "quality": "not_done|basic|good|excellent",
       "notes": "Specific observations"
-    }},
-    "api_documentation": {{
+    },
+    "api_documentation": {
       "requested": true,
       "implemented": true/false,
       "quality": "not_done|basic|good|excellent",
       "notes": "Swagger/OpenAPI implementation"
-    }},
-    
-    // Senior-Level Architecture Requirements (MANDATORY)
-    "architectural_pattern": {{
+    },
+    "architectural_pattern": {
       "requested": true,
       "implemented": true/false,
       "quality": "not_done|basic|good|excellent",
       "notes": "Specify which pattern: Layered/Clean/Hexagonal/MVC/etc"
-    }},
-    "repository_pattern": {{
+    },
+    "repository_pattern": {
       "requested": true,
       "implemented": true/false,
       "quality": "not_done|basic|good|excellent",
       "notes": "Check for repository layer abstracting data access"
-    }},
-    "service_layer": {{
+    },
+    "service_layer": {
       "requested": true,
       "implemented": true/false,
       "quality": "not_done|basic|good|excellent",
       "notes": "Business logic separation from handlers"
-    }},
-    "redis_implementation": {{
+    },
+    "redis_implementation": {
       "requested": true,
       "implemented": true/false,
       "quality": "not_done|basic|good|excellent",
       "notes": "Used for caching/rate limiting/sessions"
-    }},
-    "database_implementation": {{
+    },
+    "database_implementation": {
       "requested": true,
       "implemented": true/false,
       "quality": "not_done|basic|good|excellent",
       "notes": "PostgreSQL/MySQL/MongoDB - not just in-memory"
-    }},
-    "dockerization": {{
+    },
+    "dockerization": {
       "requested": true,
       "implemented": true/false,
       "quality": "not_done|basic|good|excellent",
       "notes": "Dockerfile + docker-compose with all services"
-    }}
-    // ... any other requirements
-  }},
+    }
+  },
   "critical_issues": [
     "List any security vulnerabilities",
     "List any code-breaking problems",
     "List fundamental Go mistakes"
   ],
-  "go_specific_evaluation": {{
+  "go_specific_evaluation": {
     "error_handling": "ignored|basic|good|excellent",
     "concurrency_safety": "unsafe|basic|good|excellent",
     "package_structure": "monolithic|basic|clean|excellent",
     "idiomatic_go": true/false,
     "security_implementation": "poor|basic|good|excellent"
-  }},
-  "seniority_assessment": {{
+  },
+  "seniority_assessment": {
     "level_demonstrated": "junior|mid|senior",
     "strengths": ["What they did well"],
     "growth_areas": ["What could improve"],
     "evidence": ["Specific examples from code"]
-  }},
-  "code_quality": {{
+  },
+  "code_quality": {
     "readability": "poor|fair|good|excellent",
     "organization": "poor|fair|good|excellent",
     "error_handling": "none|basic|good|comprehensive",
     "performance_awareness": true/false,
     "security_awareness": true/false
-  }},
-  "penalty_breakdown": {{
+  },
+  "penalty_breakdown": {
     "issues_found": [
-      {{"issue": "Description", "severity": "minor|moderate|major|critical", "penalty": number}}
+      {"issue": "Description", "severity": "minor|moderate|major|critical", "penalty": number}
     ],
     "total_penalty": "Sum of all penalties"
-  }},
-  "scores": {{
-    "task_completion": 0-100,  // Did they do what was asked?
-    "code_quality": 0-100,      // Is it well-written Go?
-    "seniority_indicators": 0-100,  // Do they show experience?
-    "critical_issues_penalty": 0-50  // MUST equal penalty_breakdown.total_penalty
-  }},
+  },
+  "scores": {
+    "task_completion": 0-100,
+    "code_quality": 0-100,
+    "seniority_indicators": 0-100,
+    "critical_issues_penalty": 0-50
+  },
   "recommendation": "strong_yes|yes|no|strong_no",
   "confidence": 0.0-1.0,
-  "hiring_decision": {{
+  "hiring_decision": {
     "decision": "HIRE|NO_HIRE",
     "primary_reason": "Clear, specific reason based on task and standards",
     "is_task_appropriate": "Did they deliver what was asked for?",
     "is_production_ready": "Could this go to production with minor tweaks?"
-  }},
+  },
   "detailed_feedback": "Provide balanced feedback focusing on: 1) Did they complete the task as requested? 2) Any critical Go/security issues found? 3) Does the code demonstrate the seniority level expected? Be specific about Go patterns observed. Remember to be fair - if the task was simple, don't expect complex architecture. If Docker/tests weren't required, don't penalize for missing them. Focus on what WAS asked and whether it was delivered with appropriate Go quality."
-}}
+}
 ```
 
 ## DECISION FRAMEWORK
