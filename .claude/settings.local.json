@@ -30,7 +30,15 @@
       "Bash(export:*)",
       "Bash(git clone:*)",
       "Bash(echo:*)",
-      "Bash(./run_bot.sh:*)"
+      "Bash(./run_bot.sh:*)",
+      "Bash(rm:*)",
+      "Bash(ls:*)",
+      "Bash(git pull:*)",
+      "Bash(unzip:*)",
+      "Bash(cat:*)",
+      "Bash(git config:*)",
+      "Bash(GIT_CURL_VERBOSE=1 git clone --depth 1 https://github.com/MohammadNikfallah/Go-OTP-Login.git mohammad-check)",
+      "WebFetch(domain:github.com)"
     ],
     "deny": [],
     "ask": [],
