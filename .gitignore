@@ -5,14 +5,28 @@ __pycache__/
 *.so
 .Python
 venv/
+.venv/
+
+# Environment and secrets
 .env
-# IDE (optional - you may want to keep these)
+.env.*
+!.env.example
+
+# Logs and runtime data
+logs/
+*.log
+data/failed_responses/
+
+# IDE / editor
 .vscode/
 .idea/
+.cursor/
 *.swp
 *.swo
 *~
 .DS_Store
+Thumbs.db
+desktop.ini
 
 # Testing
 .pytest_cache/
@@ -25,3 +39,25 @@ dist/
 build/
 *.egg-info/
 .eggs/
+
+# AI coding assistants (local workspaces — not product code)
+.claude/
+.cline/
+.windsurf/
+.continue/
+.aider*
+.kilo/
+.codex/
+.antigravitycli/
+.gemini/
+.opencode/
+
+# AI/private planning artifacts
+AGENTS.md
+Agents.md
+agents.md
+CLAUDE.md
+claude.md
+RTK.md
+plan.md
+*_plan.md
