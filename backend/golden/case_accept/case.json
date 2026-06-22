@@ -1,0 +1,12 @@
+{
+  "criteria": [
+    {"key": "has_docs", "title": "Has documentation", "type": "gate",
+     "gate_policy": "must_pass", "instructions": "Project includes `documentation`."},
+    {"key": "has_tests", "title": "Has tests", "type": "scored", "weight": 60,
+     "instructions": "Includes automated `test` functions."},
+    {"key": "has_add", "title": "Implements add", "type": "scored", "weight": 40,
+     "instructions": "Implements an `add` function."}
+  ],
+  "decision_config": {"accept_at": 70, "review_at": 50},
+  "expected_decision": "accept"
+}

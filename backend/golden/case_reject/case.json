@@ -1,0 +1,10 @@
+{
+  "criteria": [
+    {"key": "has_k8s", "title": "Kubernetes manifests", "type": "gate",
+     "gate_policy": "must_pass", "instructions": "Must include `kubernetes` manifests."},
+    {"key": "has_add", "title": "Implements add", "type": "scored", "weight": 100,
+     "instructions": "Implements an `add` function."}
+  ],
+  "decision_config": {"accept_at": 70, "review_at": 50},
+  "expected_decision": "reject"
+}

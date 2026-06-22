@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------ */
+/* Design tokens                                                       */
+/* ------------------------------------------------------------------ */
+:root {
+  /* light theme (default-safe) */
+  --bg: 247 248 251;
+  --surface: 255 255 255;
+  --surface-2: 244 246 250;
+  --border-c: rgb(17 24 39 / 0.09);
+  --text: 17 20 34;
+  --muted: 92 100 122;
+  --primary: 99 70 245;
+  --primary-fg: 255 255 255;
+  --accent-2: 8 131 167;
+  --good: 4 150 105;
+  --warn: 176 116 6;
+  --bad: 220 56 84;
+  --shadow-soft: 0 1px 2px rgb(17 24 39 / 0.05);
+  --shadow-card: 0 1px 3px rgb(17 24 39 / 0.06), 0 8px 24px -16px rgb(17 24 39 / 0.18);
+  --grid: rgb(17 24 39 / 0.025);
+}
+
+.dark {
+  --bg: 9 10 14;
+  --surface: 18 20 27;
+  --surface-2: 24 27 37;
+  --border-c: rgb(255 255 255 / 0.08);
+  --text: 233 235 242;
+  --muted: 150 156 172;
+  --primary: 130 100 255;
+  --primary-fg: 255 255 255;
+  --accent-2: 34 211 238;
+  --good: 52 211 153;
+  --warn: 251 191 36;
+  --bad: 251 113 133;
+  --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.3), 0 18px 40px -24px rgb(0 0 0 / 0.7);
+  --grid: rgb(255 255 255 / 0.02);
+}
+
+/* ------------------------------------------------------------------ */
+/* Base                                                                */
+/* ------------------------------------------------------------------ */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  @apply bg-bg text-fg antialiased;
+  font-feature-settings: "cv11", "ss01";
+  background-image:
+    radial-gradient(800px 480px at 8% -8%, rgb(var(--primary) / 0.10), transparent 60%),
+    radial-gradient(720px 460px at 100% 0%, rgb(var(--accent-2) / 0.07), transparent 55%),
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 44px 44px, 44px 44px;
+  background-attachment: fixed;
+}
+
+* {
+  border-color: var(--border-c);
+}
+
+/* smooth theme transition */
+body,
+.card,
+.btn,
+.input,
+.chip {
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.2s ease;
+}
+
+::selection {
+  background: rgb(var(--primary) / 0.25);
+}
+
+/* ------------------------------------------------------------------ */
+/* Components                                                          */
+/* ------------------------------------------------------------------ */
+@layer components {
+  .card {
+    @apply rounded-2xl border bg-surface shadow-card;
+  }
+  .card-hover {
+    @apply transition hover:-translate-y-0.5 hover:border-primary/40;
+  }
+  .card-2 {
+    @apply rounded-xl border bg-surface2;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5
+      text-sm font-medium transition-all duration-150 active:scale-[0.98]
+      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40
+      disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-primary {
+    @apply btn text-primary-fg shadow-glow;
+    background-image: linear-gradient(
+      180deg,
+      rgb(var(--primary) / 1),
+      rgb(var(--primary) / 0.85)
+    );
+  }
+  .btn-primary:hover {
+    filter: brightness(1.08);
+  }
+  .btn-ghost {
+    @apply btn border bg-surface2 text-fg hover:border-primary/40;
+  }
+  .btn-danger {
+    @apply btn border border-bad/40 bg-bad/10 text-bad hover:bg-bad/20;
+  }
+
+  .input {
+    @apply w-full rounded-lg border bg-surface px-3.5 py-2.5 text-sm text-fg
+      placeholder:text-muted/70 outline-none transition
+      focus:border-primary/60 focus:ring-2 focus:ring-primary/15;
+  }
+  .label {
+    @apply mb-1.5 block text-xs font-medium uppercase tracking-wider text-muted;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5
+      text-xs font-medium;
+  }
+
+  .skeleton {
+    @apply relative overflow-hidden rounded-md bg-surface2;
+  }
+  .skeleton::after {
+    content: "";
+    @apply absolute inset-0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgb(var(--text) / 0.06),
+      transparent
+    );
+    transform: translateX(-100%);
+    animation: shimmer 1.5s infinite;
+  }
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+}
+
+/* thin, theme-aware scrollbars */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgb(var(--text) / 0.16);
+  border-radius: 10px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--text) / 0.26);
+}

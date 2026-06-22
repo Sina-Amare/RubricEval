@@ -16,6 +16,9 @@ venv/
 logs/
 *.log
 data/failed_responses/
+data/app.db
+.dev-pids
+node_modules/
 
 # IDE / editor
 .vscode/

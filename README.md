@@ -1,227 +1,107 @@
-# راهنمای کامل سیستم خودکار بررسی استعداد‌های برنامه‌نویسی
-
-<div dir="rtl">
-
-## 🎯 این سیستم چیست؟
-
-این سیستم یک دستیار هوشمند است که به شما کمک می‌کند تا به صورت خودکار و دقیق مهارت‌های برنامه‌نویسی کاندیداهای استخدام را بررسی کنید. بجای اینکه ساعت‌ها وقت صرف بررسی دستی کدها کنید، کافی است لینک پروژه GitHub کاندیدا را ارسال کنید و در عرض چند دقیقه گزارش کاملی دریافت کنید.
-
-## 🔄 فرآیند کار چگونه است؟
-
-### مرحله اول: شروع بررسی
-
-شما از طریق ربات تلگرام دستور بررسی جدید می‌دهید. سیستم از شما لینک پروژه GitHub کاندیدا را می‌خواهد.
-
-### مرحله دوم: مشخص کردن نوع شغل
-
-سیستم از شما می‌پرسد که این کاندیدا برای چه سمتی است:
-
-- **توسعه‌دهنده Front-end**: کسانی که رابط کاربری و ظاهر وب‌سایت را می‌سازند
-- **توسعه‌دهنده Back-end**: کسانی که بخش پشت صحنه و سرور را می‌سازند
-
-### مرحله سوم: دانلود و بررسی پروژه
-
-سیستم به صورت خودکار:
-
-- پروژه کاندیدا را از GitHub دانلود می‌کند
-- فقط فایل‌های برنامه‌نویسی را نگه می‌دارد (فایل‌های غیرضروری مثل تصاویر و پکیج‌ها را حذف می‌کند)
-- تمام کدهای نوشته شده توسط کاندیدا را جمع‌آوری می‌کند
-
-### مرحله چهارم: تحلیل توسط هوش مصنوعی
-
-سیستم تمام کدها را به همراه معیارهای ارزیابی خاص برای هر سمت به یک سیستم هوش مصنوعی پیشرفته ارسال می‌کند. این هوش مصنوعی مثل یک متخصص برنامه‌نویسی با سال‌ها تجربه عمل می‌کند و کدها را بررسی می‌کند.
-
-### مرحله پنجم: تولید گزارش
-
-پس از تحلیل، سیستم گزارش کاملی تولید می‌کند که شامل:
-
-- امتیاز کلی (از 0 تا 100 درصد)
-- توصیه نهایی (استخدام، رد، یا نیاز به بررسی بیشتر)
-- نقاط قوت کاندیدا
-- نقاط ضعف و کمبودها
-- سطح تجربه تخمینی
-- توضیحات تفصیلی
-
-### مرحله ششم: ذخیره و ارسال
-
-گزارش در دیتابیس ذخیره می‌شود تا بتوانید بعداً به آن مراجعه کنید و سپس برای شما در تلگرام ارسال می‌شود.
-
-## 🤖 هوش مصنوعی چگونه تحلیل می‌کند؟
-
-### برای توسعه‌دهندگان Front-end:
-
-هوش مصنوعی مانند یک متخصص ارشد front-end با این ذهنیت کار می‌کند:
-
-- "من صدها پروژه دیده‌ام و می‌خواهم فقط 5 درصد برترها را انتخاب کنم"
-- "این شخص باید قادر باشد تیم را رهبری کند، نه فقط کد بنویسد"
-- "کدهای او باید قابل نگهداری و توسعه باشد"
-
-**معیارهای بررسی:**
-
-1. **معماری و ساختار کد**
-
-   - آیا کامپوننت‌ها به درستی طراحی شده‌اند؟
-   - آیا کدها قابل استفاده مجدد هستند؟
-   - آیا ساختار پروژه منطقی است؟
-
-2. **مدیریت اطلاعات**
-
-   - چگونه اطلاعات در برنامه جابجا می‌شود؟
-   - آیا از روش‌های مدرن استفاده شده؟
-   - آیا از بهترین شیوه‌ها پیروی شده؟
-
-3. **کیفیت کدنویسی**
-
-   - آیا کدها تمیز و خوانا هستند؟
-   - آیا نام‌گذاری‌ها مناسب است؟
-   - آیا از TypeScript به درستی استفاده شده؟
-
-4. **مدیریت خطاها**
-
-   - آیا برنامه در مواقع بروز مشکل به درستی رفتار می‌کند؟
-   - آیا پیام‌های خطا کاربرپسند هستند؟
-
-5. **امنیت**
-   - آیا آسیب‌پذیری‌های امنیتی وجود دارد؟
-   - آیا اطلاعات کاربران محافظت می‌شوند؟
-
-**سطح‌بندی:**
-
-- **عالی (5% برتر)**: استخدام فوری - این شخص تیم شما را تقویت می‌کند
-- **خوب (20% برتر)**: استخدام قوی - کاندیدای مناسب
-- **متوسط (40% متوسط)**: نیاز به بررسی بیشتر - پتانسیل دارد اما نیاز به آموزش
-- **ضعیف (40% پایین)**: برای سطح ارشد مناسب نیست
-- **خیلی ضعیف (20% پایین)**: رد کامل
-
-### برای توسعه‌دهندگان Back-end:
-
-هوش مصنوعی با ذهنیت یک معمار سیستم‌های بزرگ کار می‌کند:
-
-- "آیا این کد می‌تواند میلیون‌ها کاربر را پشتیبانی کند؟"
-- "آیا این شخص امنیت را جدی می‌گیرد؟"
-- "آیا می‌تواند سیستم‌های پیچیده طراحی کند؟"
-
-**معیارهای بررسی:**
-
-1. **امنیت**
-
-   - آیا رمزهای عبور به درستی ذخیره می‌شوند؟
-   - آیا سیستم در برابر حملات محافظت شده؟
-   - آیا اطلاعات حساس محرمانه نگه داشته می‌شوند؟
-
-2. **مقیاس‌پذیری**
-
-   - آیا سیستم می‌تواند با افزایش کاربران کار کند؟
-   - آیا پایگاه داده بهینه طراحی شده؟
-   - آیا از الگوهای مناسب استفاده شده؟
-
-3. **کیفیت معماری**
-
-   - آیا کدها به خوبی سازماندهی شده‌اند؟
-   - آیا بخش‌های مختلف به درستی از هم جدا شده‌اند؟
-   - آیا قابل تست و نگهداری است؟
-
-4. **مدیریت خطا**
-
-   - آیا خطاهای احتمالی پیش‌بینی شده؟
-   - آیا سیستم در مواقع بحرانی کار می‌کند؟
-
-5. **عملکرد**
-   - آیا سیستم سریع است؟
-   - آیا منابع به بهینه‌ترین شکل استفاده می‌شوند؟
-
-## 📊 نحوه خواندن گزارش
-
-هر گزارش شامل این بخش‌هاست:
-
-### امتیازات (از 100)
-
-- **تکمیل پروژه**: آیا تمام قسمت‌های درخواست شده پیاده‌سازی شده؟
-- **کیفیت کد**: تمیزی، خوانایی و استاندارد بودن کد
-- **معماری**: ساختار کلی و طراحی سیستم
-- **سطح ارشد بودن**: نشانه‌های تجربه و تخصص
-
-### توصیه نهایی
-
-- **استخدام قطعی**: کاندیدای عالی
-- **استخدام**: کاندیدای خوب
-- **نیاز به بررسی**: پتانسیل دارد اما نیاز به مصاحبه بیشتر
-- **عدم استخدام**: مناسب نیست
-- **رد قطعی**: کیفیت پایین
-
-### میزان اطمینان
-
-درصدی که نشان می‌دهد سیستم تا چه حد به نظر خود مطمئن است.
-
-### نقاط قوت
-
-فهرست کارهایی که کاندیدا به خوبی انجام داده است.
-
-### نقاط ضعف
-
-فهرست مسائلی که باید بهبود یابد.
-
-### توضیحات تفصیلی
-
-تحلیل کامل و دقیق از تمام جنبه‌های پروژه.
-
-## 🎯 چگونه از نتایج استفاده کنیم؟
-
-### اگر امتیاز بالای 80 است:
-
-- کاندیدای قوی است
-- می‌توان مستقیماً دعوت به مصاحبه کرد
-- احتمال موفقیت بالا
-
-### اگر امتیاز 60-80 است:
-
-- نیاز به بررسی بیشتر
-- روی نقاط ضعف در مصاحبه تمرکز کنید
-- ممکن است با آموزش مناسب شود
-
-### اگر امتیاز زیر 60 است:
-
-- احتمالاً مناسب نیست
-- مگر اینکه در مصاحبه نکات جبرانی داشته باشد
-
-## ⚡ مزایای این سیستم
-
-### برای مدیران:
-
-- **صرفه‌جویی زمان**: بررسی خودکار بجای ساعت‌ها کار دستی
-- **یکسان‌سازی**: همه کاندیداها با معیار یکسان بررسی می‌شوند
-- **دقت بالا**: کمتر احتمال اشتباه در ارزیابی
-- **مستندسازی**: تمام گزارش‌ها ذخیره و قابل مراجعه
-
-### برای کاندیداها:
-
-- **عدالت**: ارزیابی بر اساس مهارت واقعی، نه تعصبات
-- **سرعت**: نتیجه سریع بجای انتظار طولانی
-
-## 🔍 محدودیت‌ها
-
-- فقط پروژه‌های عمومی GitHub قابل بررسی است
-- پروژه نباید بیش از 100 مگابایت حجم داشته باشد
-- تحلیل بین 2 تا 5 دقیقه زمان می‌برد
-- هوش مصنوعی ممکن است جنبه‌های انسانی مانند کار تیمی را کامل درنظر نگیرد
-
-## 📱 نحوه استفاده
-
-1. ربات تلگرام را باز کنید
-2. دستور `/analyze` را بفرستید
-3. لینک GitHub پروژه کاندیدا را ارسال کنید
-4. نوع شغل (Front-end یا Back-end) را انتخاب کنید
-5. صبر کنید تا گزارش آماده شود
-6. گزارش را مطالعه کنید و تصمیم بگیرید
-
-## 🎉 نتیجه‌گیری
-
-این سیستم ابزار قدرتمندی است که فرآیند استخدام را سرعت بخشیده و دقیق‌تر می‌کند. با استفاده از آن می‌توانید:
-
-- زمان بیشتری روی مصاحبه و ارزیابی مهارت‌های نرم متمرکز شوید
-- اطمینان بیشتری از انتخاب خود داشته باشید
-- فرآیند استخدام عادلانه‌تری داشته باشید
-
-به یاد داشته باشید که این سیستم یک ابزار کمکی است و تصمیم نهایی همیشه با شماست!
-
-</div>
+# RubricEval — rubric-driven evaluation platform
+
+Define a **rubric** of weighted criteria and gates, submit a GitHub repo or a
+ZIP, watch a **live** per-criterion evaluation, and get an **accept / review /
+reject** decision backed by **verified evidence** mapped to the real code.
+
+The LLM grades each criterion independently with citations; a **deterministic
+policy** in code makes the final decision (the model never decides). Every
+review stores the rubric version, model id, and prompt version, so results are
+reproducible.
+
+---
+
+## Why it's built this way
+
+The three things most "AI reviewers" tangle together are kept separate:
+
+| Concern | Where it lives |
+|---|---|
+| **What** to evaluate | A versioned, content-hashed **rubric** (data, not code) |
+| **How** to judge | The LLM grades one criterion at a time → `{verdict, score, confidence, evidence[]}` |
+| **Decide** | A pure, unit-tested **policy** function (weights + gates + thresholds) |
+
+So adding a task is data, not code, and one prompt tweak can never silently
+flip every result. Evidence citations are **verified against the real files**
+(path + line + quote); unverifiable citations are flagged, never trusted.
+
+## Architecture
+
+```
+backend/  FastAPI + async SQLAlchemy 2.0 (Postgres or SQLite) + Alembic
+  app/core        domain enums + exceptions
+  app/db          ORM models, repositories, async engine
+  app/ingestion   GitHub (off-thread clone) + ZIP (zip-slip/zip-bomb safe) -> NormalizedFileSet
+  app/engine      grader · evidence verifier · deterministic policy · runner
+  app/llm         LiteLLM client (BYOK) + deterministic FakeLLM
+  app/jobs        durable leased queue + worker (Postgres SKIP LOCKED / SQLite serialized)
+  app/events      append-only event log + in-proc bus -> SSE
+  app/eval        golden-set harness + CLI (regression gate)
+  app/notify      optional Telegram thin client
+frontend/  Next.js (App Router) + TypeScript + Tailwind + Monaco + TanStack Query
+```
+
+Reviews run asynchronously on a durable queue; the browser watches progress
+over **SSE** (replayable via `Last-Event-ID`), then the report viewer highlights
+cited lines in **Monaco**.
+
+## Run it — Docker
+
+```bash
+cp .env.example .env          # set OPERATOR_TOKEN, APP_SECRET_KEY, OPENROUTER_API_KEY
+docker compose up --build
+# web → http://localhost:3000   api → http://localhost:8000/api/health
+```
+
+Brings up Postgres + API + worker + web. Sign in with your `OPERATOR_TOKEN`.
+
+## Run it — without Docker
+
+Backend (Python 3.11+) and frontend (Node 18+) in two terminals:
+
+```bash
+# backend  (SQLite, embedded worker, auto-migrate)
+python -m venv backend/.venv
+backend/.venv/Scripts/pip install -e "./backend[dev]"      # *nix: backend/.venv/bin/pip
+backend/.venv/Scripts/python -m uvicorn app.main:app --app-dir backend --port 8000
+
+# frontend
+cd frontend && npm install && npm run dev                  # http://localhost:3000
+```
+
+Configure the LLM in `backend/.env` (git-ignored):
+
+```
+LLM_BACKEND=litellm
+OPENROUTER_API_KEY=sk-or-v1-...
+DEFAULT_MODEL=openrouter/openai/gpt-oss-120b:free
+OPERATOR_TOKEN=change-me
+```
+
+BYOK is also configurable in-app (keys are Fernet-encrypted at rest, never
+returned or logged). Set `LLM_BACKEND=fake` for a fully offline, deterministic
+run.
+
+## Test
+
+```bash
+cd backend && .venv/Scripts/python -m pytest tests       # unit + integration (mocked LLM)
+cd backend && .venv/Scripts/python -m app.eval.cli run --golden golden   # eval harness
+cd frontend && npx playwright test                        # browser E2E (FakeLLM backend on :8000)
+```
+
+- **Unit:** decision policy (exhaustive), evidence verifier, rubric versioning,
+  ingestion (zip-slip/caps), JSON recovery, crypto/log-masking, LiteLLM client.
+- **Integration (real DB + HTTP):** task/rubric API, submissions (real ZIP
+  upload), full engine run, durable jobs, SSE replay, orphan reclaim, BYOK.
+- **Real E2E:** `python -m scripts.real_e2e <base_url> <token>` drives a running
+  server against the **real** model end-to-end.
+
+## Reliability & security highlights
+
+- Durable, idempotent jobs with boot-time orphan reclaim; per-job temp isolation
+  and off-event-loop clones (fixes the classic shared-state/blocking bugs).
+- Operator-token auth on every route except `/health`; default-deny.
+- Untrusted input: zip-slip + zip-bomb guards, size/file-count caps, no execution.
+- Reproducibility: rubric content hash + model id + prompt version stored per review.
+```

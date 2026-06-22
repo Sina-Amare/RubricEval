@@ -1,55 +1,64 @@
-version: '3.8'
-
 services:
-  cv-review-bot:
-    build: .
-    container_name: cv-review-bot
-    restart: unless-stopped
-    
-    # Environment variables from .env file
-    env_file:
-      - .env
-    
-    # Volume mappings for persistent data
+  postgres:
+    image: postgres:16-alpine
+    container_name: rubric-postgres
+    environment:
+      POSTGRES_USER: rubric
+      POSTGRES_PASSWORD: rubric
+      POSTGRES_DB: rubric
     volumes:
-      # Data directory persistence (includes database)
-      - ./data:/app/data
-      
-      # Logs persistence
-      - ./logs:/app/logs
-      
-      # Temporary files and PID management
-      - ./tmp:/tmp
-    
-    # Network configuration
-    networks:
-      - bot-network
-    
-    # Resource limits
-    deploy:
-      resources:
-        limits:
-          cpus: '2.0'
-          memory: 2G
-        reservations:
-          cpus: '0.5'
-          memory: 512M
-    
-    # Health check - verify bot process is running
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
     healthcheck:
-      test: ["CMD", "sh", "-c", "test -f /tmp/cv_review_bot.pid && kill -0 $(cat /tmp/cv_review_bot.pid) || exit 1"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 60s
-    
-    # Logging configuration - prevent unbounded growth
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
+      test: ["CMD-SHELL", "pg_isready -U rubric"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
 
-networks:
-  bot-network:
-    driver: bridge
+  api:
+    build:
+      context: ./backend
+    container_name: rubric-api
+    environment:
+      DATABASE_URL: postgresql+asyncpg://rubric:rubric@postgres:5432/rubric
+      AUTO_MIGRATE: "true"
+      EMBEDDED_WORKER: "true"
+      OPERATOR_TOKEN: ${OPERATOR_TOKEN:-dev-operator-token}
+      APP_SECRET_KEY: ${APP_SECRET_KEY:-dev-insecure-secret-change-me}
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:-}
+      DEFAULT_MODEL: ${DEFAULT_MODEL:-openrouter/openai/gpt-oss-120b:free}
+      LLM_BACKEND: ${LLM_BACKEND:-litellm}
+      CORS_ORIGINS: '["http://localhost:3000"]'
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    volumes:
+      - appdata:/app/data
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8000/api/health').status==200 else 1)\""]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+
+  web:
+    build:
+      context: ./frontend
+    container_name: rubric-web
+    environment:
+      # Server-side calls from the Next.js container reach the api service by name.
+      API_BASE_URL: http://api:8000
+      # Browser-side calls go through the host-published port.
+      NEXT_PUBLIC_API_BASE_URL: http://localhost:8000
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+
+volumes:
+  pgdata: {}
+  appdata: {}
