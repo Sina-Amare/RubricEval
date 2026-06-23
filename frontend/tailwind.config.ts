@@ -15,6 +15,7 @@ const config: Config = {
   content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
   theme: {
     extend: {
+      screens: { xs: "440px" },
       colors: {
         bg: v("--bg"),
         surface: v("--surface"),
@@ -40,7 +41,7 @@ const config: Config = {
         ],
         mono: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
       },
-      borderRadius: { xl: "0.9rem", "2xl": "1.1rem" },
+      borderRadius: { lg: "0.6rem", xl: "0.72rem", "2xl": "0.9rem" },
       boxShadow: {
         soft: "var(--shadow-soft)",
         card: "var(--shadow-card)",

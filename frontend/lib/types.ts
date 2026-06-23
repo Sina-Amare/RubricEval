@@ -136,3 +136,10 @@ export interface ProviderConfig {
   is_default: boolean;
   created_at: string;
 }
+
+export interface ProviderTestResult {
+  ok: boolean;
+  latency_ms: number;
+  message: string;
+  model_id: string | null;
+}

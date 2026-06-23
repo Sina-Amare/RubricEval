@@ -60,9 +60,11 @@ export function ScoreBar({ value }: { value: number }) {
 }
 
 export function Spinner({ className = "" }: { className?: string }) {
+  // Uses currentColor so it stays visible on any background (incl. the citron button).
   return (
     <span
-      className={`inline-block h-4 w-4 animate-spin rounded-full border-2 border-primary/25 border-t-primary ${className}`}
+      className={`inline-block h-4 w-4 animate-spin rounded-full opacity-90 ${className}`}
+      style={{ border: "2px solid currentColor", borderTopColor: "transparent" }}
     />
   );
 }

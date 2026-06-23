@@ -1,6 +1,7 @@
 import type {
   Health,
   ProviderConfig,
+  ProviderTestResult,
   RubricDraft,
   Review,
   ReviewSummary,
@@ -81,6 +82,13 @@ export const api = {
     req<ProviderConfig>(`/provider-configs/${id}/default`, { method: "POST" }),
   deleteProvider: (id: string) =>
     req<void>(`/provider-configs/${id}`, { method: "DELETE" }),
+  testProvider: (body: { provider: string; model_id: string; api_key: string }) =>
+    req<ProviderTestResult>("/provider-configs/test", {
+      method: "POST",
+      body: JSON.stringify(body),
+    }),
+  testSavedProvider: (id: string) =>
+    req<ProviderTestResult>(`/provider-configs/${id}/test`, { method: "POST" }),
 
   // tasks
   listTasks: () => req<Task[]>("/tasks"),

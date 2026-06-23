@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+import { useToast } from "@/components/Toast";
 import { CardSkeleton, DecisionBadge, Empty, Spinner } from "@/components/ui";
 import { api } from "@/lib/api";
 
@@ -17,6 +18,7 @@ const STEPS = [
 export default function Dashboard() {
   const qc = useQueryClient();
   const router = useRouter();
+  const toast = useToast();
   const [name, setName] = useState("");
 
   const tasks = useQuery({ queryKey: ["tasks"], queryFn: api.listTasks });
@@ -30,6 +32,8 @@ export default function Dashboard() {
       qc.invalidateQueries({ queryKey: ["tasks"] });
       router.push(`/tasks/${t.id}/edit`);
     },
+    onError: (e: any) =>
+      toast.push({ kind: "error", title: "Couldn't create task", desc: e.message }),
   });
   const del = useMutation({
     mutationFn: (id: string) => api.deleteTask(id),
@@ -37,7 +41,10 @@ export default function Dashboard() {
       setConfirmId(null);
       qc.invalidateQueries({ queryKey: ["tasks"] });
       qc.invalidateQueries({ queryKey: ["reviews"] });
+      toast.push({ kind: "info", title: "Task deleted" });
     },
+    onError: (e: any) =>
+      toast.push({ kind: "error", title: "Couldn't delete task", desc: e.message }),
   });
 
   return (
@@ -103,7 +110,13 @@ export default function Dashboard() {
             <CardSkeleton />
           </div>
         ) : !tasks.data?.length ? (
-          <Empty title="No tasks yet" hint="Create your first evaluation task above." />
+          <Empty
+            title="No tasks yet"
+            hint="Create your first evaluation task above to define a rubric."
+            icon={
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></svg>
+            }
+          />
         ) : (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {tasks.data.map((t) => (
@@ -181,7 +194,13 @@ export default function Dashboard() {
             ))}
           </div>
         ) : !reviews.data?.length ? (
-          <Empty title="No reviews yet" hint="Run a task to see results here." />
+          <Empty
+            title="No reviews yet"
+            hint="Run a task to see evidence-backed verdicts here."
+            icon={
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M9 11l3 3 8-8" /><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" /></svg>
+            }
+          />
         ) : (
           <div className="card divide-y overflow-hidden">
             {reviews.data.map((r) => (

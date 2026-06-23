@@ -69,8 +69,13 @@ export default function LivePage({ params }: { params: { id: string } }) {
                 <div className="min-w-0">
                   <div className="truncate font-medium">{c.title || key}</div>
                   <div className="text-xs text-muted">
-                    {c.type === "gate" ? "gate" : `weight ${c.weight}`}
-                    {c.evidence ? ` · ${verified}/${c.evidence.length} evidence verified` : ""}
+                    {c.status === "running"
+                      ? "evaluating…"
+                      : `${c.type === "gate" ? "gate" : `weight ${c.weight ?? "—"}`}${
+                          c.evidence
+                            ? ` · ${verified}/${c.evidence.length} evidence verified`
+                            : ""
+                        }`}
                   </div>
                 </div>
               </div>

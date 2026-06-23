@@ -2,49 +2,54 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ------------------------------------------------------------------ */
-/* Design tokens                                                       */
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
+/* "Carbon Glass" — graphite frosted glass + a sharp citron accent.    */
+/* Verdict colors stay semantic (emerald / amber / rose).             */
+/* ================================================================== */
 :root {
-  /* light theme (default-safe) */
-  --bg: 247 248 251;
+  /* light ("paper glass") */
+  --bg: 244 245 243;
   --surface: 255 255 255;
-  --surface-2: 244 246 250;
-  --border-c: rgb(17 24 39 / 0.09);
-  --text: 17 20 34;
-  --muted: 92 100 122;
-  --primary: 99 70 245;
-  --primary-fg: 255 255 255;
-  --accent-2: 8 131 167;
+  --surface-2: 236 238 235;
+  --border-c: rgb(15 20 14 / 0.10);
+  --border-strong: rgb(15 20 14 / 0.18);
+  --text: 17 20 16;
+  --muted: 92 99 92;
+  --primary: 154 203 38;       /* brighter citron-lime, still dark-text readable */
+  --primary-fg: 19 24 9;
+  --accent-2: 13 158 142;      /* teal */
   --good: 4 150 105;
-  --warn: 176 116 6;
-  --bad: 220 56 84;
-  --shadow-soft: 0 1px 2px rgb(17 24 39 / 0.05);
-  --shadow-card: 0 1px 3px rgb(17 24 39 / 0.06), 0 8px 24px -16px rgb(17 24 39 / 0.18);
-  --grid: rgb(17 24 39 / 0.025);
+  --warn: 176 110 8;
+  --bad: 220 38 70;
+  --hi: rgb(255 255 255 / 0.85);
+  --shadow-card: 0 1px 2px rgb(15 20 14 / 0.05), 0 14px 34px -20px rgb(15 20 14 / 0.22);
+  --glow: 0 8px 26px -10px rgb(154 203 38 / 0.5);
+  --blur: 18px;
 }
 
 .dark {
-  --bg: 9 10 14;
-  --surface: 18 20 27;
-  --surface-2: 24 27 37;
-  --border-c: rgb(255 255 255 / 0.08);
-  --text: 233 235 242;
-  --muted: 150 156 172;
-  --primary: 130 100 255;
-  --primary-fg: 255 255 255;
-  --accent-2: 34 211 238;
+  --bg: 9 11 10;
+  --surface: 24 28 27;
+  --surface-2: 32 37 35;
+  --border-c: rgb(220 255 200 / 0.10);
+  --border-strong: rgb(220 255 200 / 0.20);
+  --text: 234 238 232;
+  --muted: 138 147 142;
+  --primary: 200 240 78;       /* citron-lime */
+  --primary-fg: 12 16 8;
+  --accent-2: 45 227 200;      /* electric teal */
   --good: 52 211 153;
   --warn: 251 191 36;
   --bad: 251 113 133;
-  --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.4);
-  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.3), 0 18px 40px -24px rgb(0 0 0 / 0.7);
-  --grid: rgb(255 255 255 / 0.02);
+  --hi: rgb(220 255 200 / 0.07);
+  --shadow-card: 0 1px 1px rgb(0 0 0 / 0.5), 0 26px 50px -30px rgb(0 0 0 / 0.85);
+  --glow: 0 10px 34px -12px rgb(200 240 78 / 0.4);
+  --blur: 20px;
 }
 
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
 /* Base                                                                */
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
 html,
 body {
   height: 100%;
@@ -52,13 +57,11 @@ body {
 
 body {
   @apply bg-bg text-fg antialiased;
-  font-feature-settings: "cv11", "ss01";
+  font-feature-settings: "cv11", "ss01", "cv02";
   background-image:
-    radial-gradient(800px 480px at 8% -8%, rgb(var(--primary) / 0.10), transparent 60%),
-    radial-gradient(720px 460px at 100% 0%, rgb(var(--accent-2) / 0.07), transparent 55%),
-    linear-gradient(var(--grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 100% 100%, 100% 100%, 44px 44px, 44px 44px;
+    radial-gradient(680px 460px at 4% -12%, rgb(var(--primary) / 0.14), transparent 60%),
+    radial-gradient(620px 520px at 100% -4%, rgb(var(--accent-2) / 0.12), transparent 58%),
+    radial-gradient(700px 600px at 60% 116%, rgb(var(--accent-2) / 0.06), transparent 62%);
   background-attachment: fixed;
 }
 
@@ -66,87 +69,114 @@ body {
   border-color: var(--border-c);
 }
 
-/* smooth theme transition */
 body,
 .card,
 .btn,
 .input,
 .chip {
   transition:
-    background-color 0.25s ease,
-    border-color 0.25s ease,
-    color 0.2s ease;
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.16s ease,
+    box-shadow 0.2s ease;
 }
 
 ::selection {
-  background: rgb(var(--primary) / 0.25);
+  background: rgb(var(--primary) / 0.3);
+  color: rgb(var(--primary-fg));
 }
 
-/* ------------------------------------------------------------------ */
-/* Components                                                          */
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
+/* Components — frosted glass + sharp edges                            */
+/* ================================================================== */
 @layer components {
   .card {
-    @apply rounded-2xl border bg-surface shadow-card;
+    @apply border;
+    border-radius: 14px;
+    background: rgb(var(--surface) / 0.62);
+    backdrop-filter: blur(var(--blur)) saturate(150%);
+    -webkit-backdrop-filter: blur(var(--blur)) saturate(150%);
+    box-shadow: var(--shadow-card), inset 0 1px 0 0 var(--hi);
   }
   .card-hover {
-    @apply transition hover:-translate-y-0.5 hover:border-primary/40;
+    @apply transition duration-200;
+  }
+  .card-hover:hover {
+    transform: translateY(-2px);
+    border-color: rgb(var(--primary) / 0.5);
+    box-shadow: var(--shadow-card), inset 0 1px 0 0 var(--hi), var(--glow);
   }
   .card-2 {
-    @apply rounded-xl border bg-surface2;
+    @apply border;
+    border-radius: 11px;
+    background: rgb(var(--surface-2) / 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .glass-bar {
+    background: rgb(var(--bg) / 0.55);
+    backdrop-filter: blur(22px) saturate(150%);
+    -webkit-backdrop-filter: blur(22px) saturate(150%);
   }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5
-      text-sm font-medium transition-all duration-150 active:scale-[0.98]
-      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40
-      disabled:opacity-50 disabled:pointer-events-none;
+    @apply inline-flex items-center justify-center gap-2 text-sm font-medium
+      transition-all duration-150 active:scale-[0.985]
+      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50
+      focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
+    border-radius: 10px;
+    padding: 0.6rem 1rem;
+    --tw-ring-offset-color: rgb(var(--bg));
   }
   .btn-primary {
-    @apply btn text-primary-fg shadow-glow;
-    background-image: linear-gradient(
-      180deg,
-      rgb(var(--primary) / 1),
-      rgb(var(--primary) / 0.85)
-    );
+    @apply btn font-semibold;
+    color: rgb(var(--primary-fg));
+    background: linear-gradient(180deg, rgb(var(--primary)), rgb(var(--primary) / 0.88));
+    box-shadow: var(--glow), inset 0 1px 0 0 rgb(255 255 255 / 0.25);
   }
   .btn-primary:hover {
-    filter: brightness(1.08);
+    filter: brightness(1.05);
   }
   .btn-ghost {
-    @apply btn border bg-surface2 text-fg hover:border-primary/40;
+    @apply btn border text-fg;
+    background: rgb(var(--surface-2) / 0.6);
+    backdrop-filter: blur(8px);
+  }
+  .btn-ghost:hover {
+    border-color: var(--border-strong);
+    background: rgb(var(--text) / 0.05);
   }
   .btn-danger {
-    @apply btn border border-bad/40 bg-bad/10 text-bad hover:bg-bad/20;
+    @apply btn border border-bad/40 text-bad hover:bg-bad/10;
+    background: rgb(var(--bad) / 0.08);
   }
 
   .input {
-    @apply w-full rounded-lg border bg-surface px-3.5 py-2.5 text-sm text-fg
-      placeholder:text-muted/70 outline-none transition
-      focus:border-primary/60 focus:ring-2 focus:ring-primary/15;
+    @apply w-full border text-sm text-fg placeholder:text-muted/60 outline-none
+      transition focus:border-primary/60 focus:ring-4 focus:ring-primary/10;
+    border-radius: 10px;
+    padding: 0.6rem 0.85rem;
+    background: rgb(var(--surface) / 0.55);
+    backdrop-filter: blur(8px);
   }
   .label {
-    @apply mb-1.5 block text-xs font-medium uppercase tracking-wider text-muted;
+    @apply mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.09em] text-muted;
   }
   .chip {
-    @apply inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5
-      text-xs font-medium;
+    @apply inline-flex items-center gap-1.5 border px-2 py-0.5 text-xs font-medium;
+    border-radius: 6px;
   }
 
   .skeleton {
-    @apply relative overflow-hidden rounded-md bg-surface2;
+    @apply relative overflow-hidden bg-surface2;
+    border-radius: 8px;
   }
   .skeleton::after {
     content: "";
     @apply absolute inset-0;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgb(var(--text) / 0.06),
-      transparent
-    );
+    background: linear-gradient(90deg, transparent, rgb(var(--text) / 0.06), transparent);
     transform: translateX(-100%);
-    animation: shimmer 1.5s infinite;
+    animation: shimmer 1.6s infinite;
   }
   @keyframes shimmer {
     100% {
@@ -155,15 +185,14 @@ body,
   }
 }
 
-/* thin, theme-aware scrollbars */
 *::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 *::-webkit-scrollbar-thumb {
-  background: rgb(var(--text) / 0.16);
-  border-radius: 10px;
+  background: rgb(var(--text) / 0.14);
+  border-radius: 8px;
 }
 *::-webkit-scrollbar-thumb:hover {
-  background: rgb(var(--text) / 0.26);
+  background: rgb(var(--text) / 0.24);
 }

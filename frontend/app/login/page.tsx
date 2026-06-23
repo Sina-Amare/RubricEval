@@ -22,7 +22,7 @@ export default function LoginPage() {
     <div className="grid min-h-[70vh] place-items-center">
       <div className="w-full max-w-sm animate-fade-up">
         <div className="mb-6 flex items-center justify-center gap-2.5">
-          <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-primary to-accent2 text-base font-black text-white shadow-glow">
+          <span className="grid h-9 w-9 place-items-center rounded-lg bg-gradient-to-br from-primary to-accent2 text-base font-black text-primary-fg shadow-glow">
             R
           </span>
           <span className="text-lg font-semibold tracking-tight">

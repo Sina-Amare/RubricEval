@@ -4,6 +4,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+import { useToast } from "@/components/Toast";
 import { BackLink, Spinner } from "@/components/ui";
 import { api } from "@/lib/api";
 import type { CriterionIn, CriterionType, RubricDraft } from "@/lib/types";
@@ -27,6 +28,7 @@ function slug(s: string): string {
 export default function EditTaskPage({ params }: { params: { id: string } }) {
   const id = params.id;
   const qc = useQueryClient();
+  const toast = useToast();
   const task = useQuery({ queryKey: ["task", id], queryFn: () => api.getTask(id) });
   const [draft, setDraft] = useState<RubricDraft | null>(null);
   const [msg, setMsg] = useState("");
@@ -37,7 +39,12 @@ export default function EditTaskPage({ params }: { params: { id: string } }) {
 
   const save = useMutation({
     mutationFn: () => api.saveRubric(id, draft!),
-    onSuccess: () => setMsg("Draft saved"),
+    onSuccess: () => {
+      setMsg("Draft saved");
+      toast.push({ kind: "success", title: "Draft saved" });
+    },
+    onError: (e: any) =>
+      toast.push({ kind: "error", title: "Couldn't save draft", desc: e.message }),
   });
   const publish = useMutation({
     mutationFn: async () => {
@@ -47,8 +54,16 @@ export default function EditTaskPage({ params }: { params: { id: string } }) {
     onSuccess: (r) => {
       setMsg(`Published v${r.version_number} · ${r.content_hash.slice(0, 10)}…`);
       qc.invalidateQueries({ queryKey: ["task", id] });
+      toast.push({
+        kind: "success",
+        title: `Published v${r.version_number}`,
+        desc: `Rubric ${r.content_hash.slice(0, 10)}… — ready to evaluate.`,
+      });
     },
-    onError: (e: any) => setMsg(e.message || "Publish failed"),
+    onError: (e: any) => {
+      setMsg(e.message || "Publish failed");
+      toast.push({ kind: "error", title: "Publish failed", desc: e.message });
+    },
   });
 
   if (task.isLoading || draft === null) {
@@ -86,8 +101,8 @@ export default function EditTaskPage({ params }: { params: { id: string } }) {
               : "Unpublished draft"}
           </p>
         </div>
-        <div className="flex items-center gap-2.5">
-          {msg && <span className="text-sm text-muted">{msg}</span>}
+        <div className="flex flex-wrap items-center gap-2.5">
+          {msg && <span className="w-full text-sm text-muted sm:w-auto">{msg}</span>}
           <button className="btn-ghost" onClick={() => save.mutate()} disabled={save.isPending}>
             {save.isPending ? <Spinner /> : "Save draft"}
           </button>
@@ -117,7 +132,7 @@ export default function EditTaskPage({ params }: { params: { id: string } }) {
           <div key={i} className="card p-5" data-testid="criterion-row">
             <div className="flex flex-wrap items-center gap-3">
               <input
-                className="input min-w-[220px] flex-1"
+                className="input w-full sm:w-auto sm:min-w-[200px] sm:flex-1"
                 placeholder="Criterion title (e.g. Has automated tests)"
                 value={c.title}
                 onChange={(e) =>

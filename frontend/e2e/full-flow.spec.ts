@@ -93,6 +93,24 @@ test("settings shows the active model", async ({ page }) => {
   await expect(page.getByText(/via (litellm|fake)/)).toBeVisible();
 });
 
+test("settings: test connection reports success", async ({ page }) => {
+  await page.goto("/settings");
+  await page.getByTestId("provider-key").fill("sk-or-test-key-1234");
+  await page.getByTestId("test-connection").click();
+  await expect(page.getByText(/Connection successful|Connected/).first()).toBeVisible();
+});
+
+test("mobile (390px): nav works and tasks render", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  // Nav is reachable on mobile (the old layout hid it).
+  const settingsLink = page.getByRole("link", { name: "Settings" });
+  await expect(settingsLink).toBeVisible();
+  await settingsLink.click();
+  await expect(page).toHaveURL(/\/settings/);
+  await expect(page.getByText("Active model")).toBeVisible();
+});
+
 test("dashboard shows the evaluate action on a task", async ({ page }) => {
   await page.goto("/");
   await page.getByTestId("new-task-name").fill("Discoverability");

@@ -2,7 +2,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { EvidenceViewer } from "@/components/EvidenceViewer";
 import {
@@ -27,6 +27,18 @@ export default function ReportPage({ params }: { params: { id: string } }) {
     },
   });
   const [active, setActive] = useState<Evidence | null>(null);
+
+  // Auto-open the first verified evidence so the viewer isn't empty.
+  useEffect(() => {
+    if (active || !q.data) return;
+    for (const res of q.data.results || []) {
+      const v = res.evidence.find((e) => e.verified === "verified");
+      if (v) {
+        setActive(v);
+        break;
+      }
+    }
+  }, [q.data, active]);
 
   if (q.isLoading || !q.data) {
     return (
@@ -91,11 +103,11 @@ export default function ReportPage({ params }: { params: { id: string } }) {
           <div className="mt-6 space-y-2.5">
             {contributions.map((c) => (
               <div key={c.key} className="flex items-center gap-3 text-sm">
-                <span className="w-44 truncate text-muted">{c.key}</span>
+                <span className="w-24 truncate text-muted sm:w-44">{c.key}</span>
                 <div className="flex-1">
                   <ScoreBar value={c.score} />
                 </div>
-                <span className="w-24 text-right tabular-nums text-muted">
+                <span className="w-20 whitespace-nowrap text-right tabular-nums text-muted sm:w-24">
                   {c.score.toFixed(0)}% × {c.weight}
                 </span>
               </div>
