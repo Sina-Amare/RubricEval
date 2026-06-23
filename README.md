@@ -9,6 +9,11 @@ policy** in code makes the final decision (the model never decides). Every
 review stores the rubric version, model id, and prompt version, so results are
 reproducible.
 
+<p align="center">
+  <img src="docs/screenshots/live-evaluation.png" width="880"
+       alt="Live evaluation streaming each criterion to an accept decision, with per-criterion evidence-verified counts">
+</p>
+
 ---
 
 ## Why it's built this way
@@ -24,6 +29,29 @@ The three things most "AI reviewers" tangle together are kept separate:
 So adding a task is data, not code, and one prompt tweak can never silently
 flip every result. Evidence citations are **verified against the real files**
 (path + line + quote); unverifiable citations are flagged, never trusted.
+
+## Screenshots
+
+**Final report** — every verdict carries evidence, and each citation jumps to
+the exact lines in **Monaco**, verified against the real file.
+
+![Final report with verified evidence and Monaco code highlighting](docs/screenshots/report.png)
+
+| Dashboard — tasks &amp; recent verdicts | Task builder — weighted criteria &amp; gates, as data |
+|:--:|:--:|
+| ![Dashboard](docs/screenshots/dashboard.png) | ![Task builder](docs/screenshots/task-builder.png) |
+| **Submit** — a GitHub repo or a ZIP | **Settings** — BYOK provider + live connection test |
+| ![Submit a repo or ZIP](docs/screenshots/submit.png) | ![Provider settings](docs/screenshots/settings.png) |
+
+<sub>Light &amp; dark themes, responsive down to mobile:</sub>
+
+<p>
+  <img src="docs/screenshots/report-light.png" width="430" align="top"
+       alt="Final report in the light theme" />
+  &nbsp;
+  <img src="docs/screenshots/live-mobile.png" width="165" align="top"
+       alt="Live evaluation on a mobile viewport" />
+</p>
 
 ## Architecture
 

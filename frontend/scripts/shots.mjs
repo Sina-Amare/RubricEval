@@ -20,13 +20,21 @@ async function getJson(path) {
 
 const tasks = (await getJson("/api/tasks")) || [];
 const reviews = (await getJson("/api/reviews")) || [];
-const taskId = tasks[0]?.id;
-const reviewId = (reviews.find((r) => r.status === "completed") || reviews[0])?.id;
+// Prefer the richest task (most criteria) and an accepted, completed review so
+// the builder, report, and live views look fully populated in the README.
+const taskId = tasks
+  .slice()
+  .sort((a, b) => (b.draft?.criteria?.length || 0) - (a.draft?.criteria?.length || 0))[0]?.id;
+const reviewId = (
+  reviews.find((r) => r.status === "completed" && r.decision === "accept") ||
+  reviews.find((r) => r.status === "completed") ||
+  reviews[0]
+)?.id;
 
 function targets() {
   const t = [["dashboard", "/"], ["settings", "/settings"]];
   if (taskId) t.push(["edit", `/tasks/${taskId}/edit`], ["submit", `/tasks/${taskId}/submit`]);
-  if (reviewId) t.push(["report", `/reviews/${reviewId}`]);
+  if (reviewId) t.push(["live", `/reviews/${reviewId}/live`], ["report", `/reviews/${reviewId}`]);
   return t;
 }
 
@@ -47,7 +55,10 @@ async function capture(prefix, viewport, themes) {
       try {
         await page.goto(BASE + path, { waitUntil: "networkidle", timeout: 20000 });
         await page.waitForTimeout(1300);
-        await page.screenshot({ path: `${OUT}/${prefix}-${theme}-${name}.png`, fullPage: true });
+        // live/report read best as a clean above-the-fold crop; pages with
+        // content below the fold (dashboard, builder) use full-page.
+        const fullPage = !["report", "live"].includes(name);
+        await page.screenshot({ path: `${OUT}/${prefix}-${theme}-${name}.png`, fullPage });
         console.log(`shot ${prefix}-${theme}-${name}`);
       } catch (e) {
         console.log(`FAIL ${prefix}-${theme}-${name}: ${e.message}`);
