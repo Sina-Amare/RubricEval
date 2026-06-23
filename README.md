@@ -32,7 +32,7 @@ backend/  FastAPI + async SQLAlchemy 2.0 (Postgres or SQLite) + Alembic
   app/core        domain enums + exceptions
   app/db          ORM models, repositories, async engine
   app/ingestion   GitHub (off-thread clone) + ZIP (zip-slip/zip-bomb safe) -> NormalizedFileSet
-  app/engine      grader · evidence verifier · deterministic policy · runner
+  app/engine      relevance file selection · grader · evidence verifier · deterministic policy · runner
   app/llm         LiteLLM client (BYOK) + deterministic FakeLLM
   app/jobs        durable leased queue + worker (Postgres SKIP LOCKED / SQLite serialized)
   app/events      append-only event log + in-proc bus -> SSE
@@ -69,18 +69,32 @@ backend/.venv/Scripts/python -m uvicorn app.main:app --app-dir backend --port 80
 cd frontend && npm install && npm run dev                  # http://localhost:3000
 ```
 
-Configure the LLM in `backend/.env` (git-ignored):
+Configure the LLM in `backend/.env` (git-ignored). The provider is inferred
+from the model id prefix (`openrouter/…`, `gemini/…`, `groq/…`), so you only
+set the keys for the providers you use. Keys may be **comma-separated** to
+rotate across them on rate-limits:
 
 ```
 LLM_BACKEND=litellm
-OPENROUTER_API_KEY=sk-or-v1-...
-DEFAULT_MODEL=openrouter/openai/gpt-oss-120b:free
+DEFAULT_MODEL=gemini/gemini-flash-latest
+FALLBACK_MODEL=openrouter/openai/gpt-oss-120b:free   # tried if the default fails
+OPENROUTER_API_KEY=sk-or-v1-...,sk-or-v1-...         # optional 2nd key = rotation
+GEMINI is read from GOOGLE_API_KEY=...
+GROQ_API_KEY=...
 OPERATOR_TOKEN=change-me
 ```
 
-BYOK is also configurable in-app (keys are Fernet-encrypted at rest, never
-returned or logged). Set `LLM_BACKEND=fake` for a fully offline, deterministic
-run.
+The client tries the default model (across its keys), then each `FALLBACK_MODEL`
+in turn, so one provider's quota or outage doesn't fail a review. BYOK is also
+configurable in-app (keys are Fernet-encrypted at rest, never returned or
+logged). Set `LLM_BACKEND=fake` for a fully offline, deterministic run.
+
+**Scales to large repos.** A repository has far more code than fits in one
+prompt, so for each criterion the grader sends a compact project-structure
+overview plus only the **most relevant files** (scored by structural role +
+the criterion's signal terms), bounded by a file-count and char budget. This
+keeps every call well under free-tier token limits and means the model grades
+real application code — not whatever happens to sort first.
 
 ## Test
 
