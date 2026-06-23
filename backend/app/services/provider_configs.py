@@ -38,6 +38,26 @@ async def create_provider_config(
     return await repo.create(config)
 
 
+async def test_credentials(model_id: str, api_key: Optional[str]) -> dict:
+    """Live connection check against the active LLM backend (never raises)."""
+    from app.llm import get_llm
+
+    return await get_llm().ping(model_id=model_id, api_key=api_key)
+
+
+async def test_saved_config(session: AsyncSession, config_id: str) -> Optional[dict]:
+    cfg = await ProviderConfigRepository(session).get(config_id)
+    if cfg is None:
+        return None
+    try:
+        key = decrypt(cfg.key_ciphertext) if cfg.key_ciphertext else None
+    except Exception:  # noqa: BLE001
+        key = None
+    result = await test_credentials(cfg.model_id, key)
+    result["model_id"] = cfg.model_id
+    return result
+
+
 async def resolve_credentials(session: AsyncSession) -> tuple[str, Optional[str]]:
     """Return ``(model_id, api_key)`` from the default provider config, else env."""
     default = await ProviderConfigRepository(session).get_default()
@@ -49,5 +69,6 @@ async def resolve_credentials(session: AsyncSession) -> tuple[str, Optional[str]
             key = None
         if key:
             return default.model_id, key
-    settings = get_settings()
-    return settings.default_model, settings.openrouter_api_key
+    # No BYOK config: the LiteLLM client selects the provider key (and rotates
+    # comma-separated keys) based on the model id, so return key=None here.
+    return get_settings().default_model, None

@@ -54,6 +54,7 @@ async def run_review(
     try:
         review.status = ReviewStatus.RUNNING
         review.started_at = _now()
+        review.error_message = None  # clear any prior failure on re-run
         review.engine_version = settings.engine_version
         review.prompt_template_version = PROMPT_TEMPLATE_VERSION
         await session.commit()

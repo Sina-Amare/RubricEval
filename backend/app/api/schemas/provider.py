@@ -15,6 +15,19 @@ class ProviderConfigIn(BaseModel):
     is_default: bool = False
 
 
+class ProviderTestIn(BaseModel):
+    provider: str = "openrouter"
+    model_id: str = Field(min_length=1, max_length=200)
+    api_key: str = Field(min_length=1)
+
+
+class ProviderTestResult(BaseModel):
+    ok: bool
+    latency_ms: int
+    message: str
+    model_id: str | None = None
+
+
 class ProviderConfigOut(BaseModel):
     id: str
     name: str

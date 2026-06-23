@@ -59,3 +59,40 @@ async def test_set_default_switches(client, auth_headers):
     async with get_sessionmaker()() as session:
         model, _ = await resolve_credentials(session)
     assert model == "m/b"
+
+
+async def test_connection_test_endpoint(client, auth_headers):
+    resp = await client.post(
+        "/api/provider-configs/test",
+        headers=auth_headers,
+        json={"provider": "openrouter", "model_id": "openrouter/x", "api_key": "sk-or-t"},
+    )
+    assert resp.status_code == 200, resp.text
+    body = resp.json()
+    assert body["ok"] is True  # FakeLLM ping succeeds offline
+    assert "latency_ms" in body
+    assert body["model_id"] == "openrouter/x"
+
+
+async def test_test_endpoint_requires_auth(client):
+    resp = await client.post(
+        "/api/provider-configs/test",
+        json={"model_id": "m", "api_key": "k"},
+    )
+    assert resp.status_code == 401
+
+
+async def test_saved_config_test_and_404(client, auth_headers):
+    r = await client.post(
+        "/api/provider-configs",
+        headers=auth_headers,
+        json={"name": "a", "model_id": "m/x", "api_key": "sk-a", "is_default": True},
+    )
+    cid = r.json()["id"]
+    resp = await client.post(f"/api/provider-configs/{cid}/test", headers=auth_headers)
+    assert resp.status_code == 200
+    assert resp.json()["ok"] is True
+    assert resp.json()["model_id"] == "m/x"
+
+    missing = await client.post("/api/provider-configs/nope/test", headers=auth_headers)
+    assert missing.status_code == 404

@@ -28,10 +28,54 @@ def extract_json(text: str) -> Optional[dict[str, Any]]:
         _from_markdown,
         _from_boundaries,
         _fixed_boundaries,
+        _balanced,
     ):
         result = strategy(text)
         if isinstance(result, dict):
             return result
+    return None
+
+
+def _balanced(text: str) -> Optional[dict]:
+    """Last resort: salvage a TRUNCATED object by closing open brackets in order.
+
+    Walks the text tracking string state + a bracket stack, then appends the
+    correct closers in reverse. Safe because the caller validates the result
+    against a Pydantic schema, so a mis-recovery just fails validation (-> error
+    verdict), never a silent wrong value.
+    """
+    start = text.find("{")
+    if start == -1:
+        return None
+    s = text[start:]
+    stack: list[str] = []
+    in_str = esc = False
+    for ch in s:
+        if in_str:
+            if esc:
+                esc = False
+            elif ch == "\\":
+                esc = True
+            elif ch == '"':
+                in_str = False
+            continue
+        if ch == '"':
+            in_str = True
+        elif ch in "{[":
+            stack.append(ch)
+        elif ch == "}" and stack and stack[-1] == "{":
+            stack.pop()
+        elif ch == "]" and stack and stack[-1] == "[":
+            stack.pop()
+
+    body = s + ('"' if in_str else "")
+    body = re.sub(r",\s*$", "", body.rstrip())
+    closer = "".join("}" if c == "{" else "]" for c in reversed(stack))
+    for candidate in (body + closer, _fix_json_string(body + closer)):
+        try:
+            return json.loads(candidate)
+        except json.JSONDecodeError:
+            continue
     return None
 
 

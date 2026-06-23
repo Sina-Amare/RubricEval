@@ -54,9 +54,11 @@ def verify_evidence(
             continue
 
         status = EvidenceVerification.VERIFIED
-        quote = e.quote.strip()
+        # Whitespace-tolerant: models reflow indentation/line-wraps when quoting,
+        # so compare with all runs of whitespace collapsed to a single space.
+        quote = " ".join(e.quote.split())
         if quote:
-            snippet = "\n".join(lines[e.start_line - 1 : e.end_line]).strip()
+            snippet = " ".join("\n".join(lines[e.start_line - 1 : e.end_line]).split())
             if quote not in snippet and snippet not in quote:
                 status = EvidenceVerification.UNVERIFIED_QUOTE
         out.append(

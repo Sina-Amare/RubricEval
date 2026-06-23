@@ -6,10 +6,19 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import get_session, require_operator
-from app.api.schemas.provider import ProviderConfigIn, ProviderConfigOut
+from app.api.schemas.provider import (
+    ProviderConfigIn,
+    ProviderConfigOut,
+    ProviderTestIn,
+    ProviderTestResult,
+)
 from app.db.models import ProviderConfig
 from app.db.repositories.provider_configs import ProviderConfigRepository
-from app.services.provider_configs import create_provider_config
+from app.services.provider_configs import (
+    create_provider_config,
+    test_credentials,
+    test_saved_config,
+)
 
 router = APIRouter(
     prefix="/provider-configs",
@@ -43,6 +52,23 @@ async def create(
         is_default=body.is_default,
     )
     return _out(config)
+
+
+@router.post("/test", response_model=ProviderTestResult)
+async def test_connection(body: ProviderTestIn) -> ProviderTestResult:
+    """Live connection test for a model + key the operator is about to save."""
+    result = await test_credentials(body.model_id, body.api_key)
+    return ProviderTestResult(model_id=body.model_id, **result)
+
+
+@router.post("/{config_id}/test", response_model=ProviderTestResult)
+async def test_saved(
+    config_id: str, session: AsyncSession = Depends(get_session)
+) -> ProviderTestResult:
+    result = await test_saved_config(session, config_id)
+    if result is None:
+        raise HTTPException(status_code=404, detail="Provider config not found")
+    return ProviderTestResult(**result)
 
 
 @router.get("", response_model=list[ProviderConfigOut])

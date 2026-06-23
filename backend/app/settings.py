@@ -42,13 +42,29 @@ class Settings(BaseSettings):
     # --- LLM ---------------------------------------------------------------
     llm_backend: str = "litellm"           # "litellm" | "fake"
     default_model: str = "openrouter/openai/gpt-oss-120b:free"
+    # Provider keys (comma-separated = rotated across calls / on rate-limit).
     openrouter_api_key: str | None = None  # BYOK default (also configurable in-app)
+    groq_api_key: str | None = None
+    google_api_key: str | None = None
+    # Model chain: try default first, then these (comma-separated) on rate-limit
+    # / failure. Only used on the env-key path (BYOK configs use their own model).
+    fallback_model: str = (
+        "gemini/gemini-2.0-flash,openrouter/openai/gpt-oss-120b:free"
+    )
     llm_concurrency: int = 1               # keep at 1 for free, rate-limited models
     llm_call_timeout: float = 60.0
     llm_max_attempts: int = 4
+    llm_max_output_tokens: int = 1500      # judgments are small; keep TPM low
     llm_temperature: float = 0.0
     review_deadline_seconds: int = 600
     grading_mode: str = "per_criterion"    # "per_criterion" | "batched"
+
+    # --- Grader prompt budgets (relevance-selected files per criterion) -----
+    # Keep the per-call prompt well under free-tier token-per-minute limits.
+    grader_files_budget_chars: int = 34000   # ~8.5k tokens of selected files
+    grader_per_file_chars: int = 6000        # head-truncate any single huge file
+    grader_max_files: int = 24               # bounded file count, every project
+    grader_tree_budget_chars: int = 3000     # compact structure overview
 
     # --- Ingestion caps ----------------------------------------------------
     max_total_mb: int = 10

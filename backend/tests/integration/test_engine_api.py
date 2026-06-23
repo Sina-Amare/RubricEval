@@ -81,7 +81,7 @@ async def test_review_accept_with_verified_evidence(client, auth_headers):
     assert review["decision"] == "accept"
     assert review["final_score"] == 85.0
     assert review["gate_failed"] is False
-    assert review["prompt_template_version"] == "grade@v1"
+    assert review["prompt_template_version"] == "grade@v2"
     assert len(review["rubric_content_hash"]) == 64
     assert review["model_id"] and review["engine_version"]
 

@@ -46,7 +46,21 @@ async def grade_criterion(
     messages = build_messages(criterion, files, schema=schema)
 
     start = time.monotonic()
-    raw = await llm.complete_json(messages, schema=schema, model_id=model_id, api_key=api_key)
+    try:
+        raw = await llm.complete_json(
+            messages, schema=schema, model_id=model_id, api_key=api_key
+        )
+    except Exception as exc:  # noqa: BLE001 - one flaky criterion must not crash the review
+        return GradeOutcome(
+            verdict=Verdict.ERROR,
+            score=None,
+            confidence=0.0,
+            rationale=f"Grading this criterion failed: {str(exc)[:200]}",
+            evidence=[],
+            raw={"error": str(exc)[:500]},
+            model_id=model_id,
+            latency_ms=int((time.monotonic() - start) * 1000),
+        )
     latency_ms = int((time.monotonic() - start) * 1000)
 
     repaired = bool(isinstance(raw, dict) and raw.pop("_repaired", False))
