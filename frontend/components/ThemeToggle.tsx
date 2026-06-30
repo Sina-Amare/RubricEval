@@ -28,7 +28,7 @@ export function ThemeToggle() {
       aria-label="Toggle theme"
       title="Toggle light / dark"
       data-testid="theme-toggle"
-      className="grid h-9 w-9 place-items-center rounded-lg border bg-surface2 text-muted transition hover:text-fg hover:border-primary/40"
+      className="focus-ring grid h-9 w-9 place-items-center border bg-surface2 text-muted transition hover:text-fg hover:border-primary/40"
     >
       {theme === "dark" ? (
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

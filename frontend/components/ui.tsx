@@ -115,3 +115,33 @@ export function BackLink({ href, children }: { href: string; children: React.Rea
     </Link>
   );
 }
+
+export function ErrorCard({
+  title = "Something went wrong",
+  message,
+  onRetry,
+}: {
+  title?: string;
+  message?: string;
+  onRetry?: () => void;
+}) {
+  return (
+    <div
+      className="card flex flex-col items-center justify-center gap-3 p-10 text-center"
+      role="alert"
+    >
+      <div className="grid h-11 w-11 place-items-center rounded-full bg-bad/12 text-bad">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z" /><path d="M12 9v4M12 17h.01" /></svg>
+      </div>
+      <div>
+        <div className="font-medium">{title}</div>
+        {message && <div className="mt-1 max-w-md text-sm text-muted">{message}</div>}
+      </div>
+      {onRetry && (
+        <button onClick={onRetry} className="btn-ghost mt-1" type="button">
+          Try again
+        </button>
+      )}
+    </div>
+  );
+}

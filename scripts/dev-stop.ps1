@@ -1,5 +1,7 @@
-# Stop the RubricEval stack. Only touches our PIDs + our two ports (8090, 3000).
-# Never affects other projects (e.g. scrapegpt on 8000/5050).
+# Stop the RubricEval stack: our tracked PIDs plus the two dev ports.
+# Usage:  .\scripts\dev-stop.ps1            (frees 8000 + 3000)
+#         .\scripts\dev-stop.ps1 -Port 8090 (if you started with -Port 8090)
+param([int]$Port = 8000)
 $root = Split-Path -Parent $PSScriptRoot
 $pidFile = Join-Path $root ".dev-pids"
 if (Test-Path $pidFile) {
@@ -10,12 +12,12 @@ if (Test-Path $pidFile) {
   }
   Remove-Item $pidFile -ErrorAction SilentlyContinue
 }
-# Also free our two ports in case a child (node) was orphaned by the cmd wrapper.
-foreach ($port in 8090, 3000) {
+# Also free our ports in case a child (node) was orphaned by the cmd wrapper.
+foreach ($p in $Port, 3000) {
   try {
-    $owners = (Get-NetTCPConnection -LocalPort $port -State Listen -ErrorAction Stop).OwningProcess |
+    $owners = (Get-NetTCPConnection -LocalPort $p -State Listen -ErrorAction Stop).OwningProcess |
       Select-Object -Unique
     foreach ($o in $owners) { if ($o -gt 0) { Stop-Process -Id ([int]$o) -Force -ErrorAction SilentlyContinue } }
   } catch {}
 }
-Write-Host "RubricEval stopped (PIDs + ports 8090/3000 freed)."
+Write-Host "RubricEval stopped (PIDs + ports $Port/3000 freed)."

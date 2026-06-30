@@ -1,5 +1,10 @@
 # RubricEval — rubric-driven evaluation platform
 
+[![CI](https://github.com/Sina-Amare/RubricEval/actions/workflows/ci.yml/badge.svg)](https://github.com/Sina-Amare/RubricEval/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+![Python 3.11+](https://img.shields.io/badge/python-3.11+-3776AB.svg?logo=python&logoColor=white)
+![Next.js 14](https://img.shields.io/badge/Next.js-14-000000.svg?logo=next.js)
+
 Define a **rubric** of weighted criteria and gates, submit a GitHub repo or a
 ZIP, watch a **live** per-criterion evaluation, and get an **accept / review /
 reject** decision backed by **verified evidence** mapped to the real code.
@@ -51,6 +56,9 @@ the exact lines in **Monaco**, verified against the real file.
   &nbsp;
   <img src="docs/screenshots/live-mobile.png" width="165" align="top"
        alt="Live evaluation on a mobile viewport" />
+  &nbsp;
+  <img src="docs/screenshots/report-mobile.png" width="165" align="top"
+       alt="Final report on a mobile viewport — evidence viewer stacks above the criteria" />
 </p>
 
 ## Architecture
@@ -72,6 +80,12 @@ frontend/  Next.js (App Router) + TypeScript + Tailwind + Monaco + TanStack Quer
 Reviews run asynchronously on a durable queue; the browser watches progress
 over **SSE** (replayable via `Last-Event-ID`), then the report viewer highlights
 cited lines in **Monaco**.
+
+> **No API key? Try it offline.** Set `LLM_BACKEND=fake` in `.env` for a fully
+> deterministic run — live evaluation, evidence verification, and the report all
+> work end-to-end against a built-in fake model, so you can demo the whole flow
+> with zero credentials. Optionally seed two ready-made rubrics first with
+> `python -m scripts.seed_demo` (from `backend/`, once the API is up).
 
 ## Run it — Docker
 
@@ -104,11 +118,11 @@ rotate across them on rate-limits:
 
 ```
 LLM_BACKEND=litellm
-DEFAULT_MODEL=gemini/gemini-flash-latest
-FALLBACK_MODEL=openrouter/openai/gpt-oss-120b:free   # tried if the default fails
-OPENROUTER_API_KEY=sk-or-v1-...,sk-or-v1-...         # optional 2nd key = rotation
-GEMINI is read from GOOGLE_API_KEY=...
-GROQ_API_KEY=...
+DEFAULT_MODEL=openrouter/openai/gpt-oss-120b:free
+FALLBACK_MODEL=gemini/gemini-flash-latest            # tried if the default fails
+OPENROUTER_API_KEY=sk-or-v1-...,sk-or-v1-...         # for openrouter/* (2nd key = rotation)
+GOOGLE_API_KEY=...                                   # for gemini/* models
+GROQ_API_KEY=...                                     # for groq/* models
 OPERATOR_TOKEN=change-me
 ```
 
@@ -129,7 +143,8 @@ real application code — not whatever happens to sort first.
 ```bash
 cd backend && .venv/Scripts/python -m pytest tests       # unit + integration (mocked LLM)
 cd backend && .venv/Scripts/python -m app.eval.cli run --golden golden   # eval harness
-cd frontend && npx playwright test                        # browser E2E (FakeLLM backend on :8000)
+cd frontend && npx playwright test                        # browser E2E — needs the API up with LLM_BACKEND=fake
+# one-command (Windows): ./scripts/e2e.ps1                 # spins up a FakeLLM API, then runs Playwright
 ```
 
 - **Unit:** decision policy (exhaustive), evidence verifier, rubric versioning,
@@ -147,3 +162,7 @@ cd frontend && npx playwright test                        # browser E2E (FakeLLM
 - Untrusted input: zip-slip + zip-bomb guards, size/file-count caps, no execution.
 - Reproducibility: rubric content hash + model id + prompt version stored per review.
 ```
+
+## License
+
+MIT — see [LICENSE](LICENSE).

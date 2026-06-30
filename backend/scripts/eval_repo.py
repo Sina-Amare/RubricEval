@@ -15,7 +15,7 @@ from dotenv import load_dotenv
 load_dotenv(".env")
 URL = sys.argv[1]
 TASK_NAME = sys.argv[2] if len(sys.argv) > 2 else "Senior Python Service"
-BASE = sys.argv[3] if len(sys.argv) > 3 else "http://localhost:8090"
+BASE = sys.argv[3] if len(sys.argv) > 3 else "http://localhost:8000"
 H = {"Authorization": f"Bearer {os.environ.get('OPERATOR_TOKEN', '')}"}
 
 

@@ -4,13 +4,21 @@ import Link from "next/link";
 
 import { BackLink, DecisionBadge, ScoreBar, Spinner, VerdictChip } from "@/components/ui";
 import { useReviewStream } from "@/lib/useReviewStream";
+import type { Verdict } from "@/lib/types";
 
 export default function LivePage({ params }: { params: { id: string } }) {
   const id = params.id;
   const s = useReviewStream(id);
   const done = s.status === "completed" || s.status === "failed";
+  const failed = s.status === "failed";
   const doneCount = s.order.filter((k) => s.criteria[k]?.status === "done").length;
   const pct = s.total ? Math.round((doneCount / s.total) * 100) : 0;
+
+  const statusText = failed
+    ? "Stream interrupted"
+    : s.status === "connecting"
+      ? "Connecting…"
+      : `${doneCount} / ${s.total || "?"} criteria`;
 
   return (
     <div className="animate-fade-up space-y-6">
@@ -31,16 +39,17 @@ export default function LivePage({ params }: { params: { id: string } }) {
             <DecisionBadge decision={s.decision} size="lg" />
           </div>
         </div>
-        <div className="mt-5">
+        <div className="mt-5" role="status" aria-live="polite">
           <div className="mb-1.5 flex justify-between text-xs text-muted">
-            <span>
-              {s.status === "connecting"
-                ? "Connecting…"
-                : `${doneCount} / ${s.total || "?"} criteria`}
-            </span>
+            <span className={failed ? "text-bad" : undefined}>{statusText}</span>
             <span className="font-mono">{s.modelId}</span>
           </div>
-          <ScoreBar value={pct} />
+          <ScoreBar value={failed ? 100 : pct} />
+          {done && (
+            <span className="sr-only">
+              Evaluation {failed ? "failed" : "complete"}.
+            </span>
+          )}
         </div>
       </div>
 
@@ -64,7 +73,7 @@ export default function LivePage({ params }: { params: { id: string } }) {
                 {c.status === "running" ? (
                   <Spinner />
                 ) : (
-                  <VerdictChip verdict={c.verdict as any} />
+                  <VerdictChip verdict={c.verdict as Verdict | undefined} />
                 )}
                 <div className="min-w-0">
                   <div className="truncate font-medium">{c.title || key}</div>
@@ -93,15 +102,22 @@ export default function LivePage({ params }: { params: { id: string } }) {
       </div>
 
       {done && (
-        <div className="card flex flex-wrap items-center justify-between gap-4 p-6 animate-fade-up">
-          <div>
-            <div className="text-sm text-muted">
-              {s.status === "failed" ? "Evaluation failed" : "Evaluation complete"}
-            </div>
-            <div className="text-xl font-semibold">
-              {s.status === "failed"
-                ? s.error
-                : `${s.decision?.toUpperCase()} · ${s.finalScore?.toFixed(0)}%`}
+        <div
+          className={`card flex flex-wrap items-center justify-between gap-4 p-6 animate-fade-up ${
+            failed ? "border-bad/40" : ""
+          }`}
+        >
+          <div className="flex items-center gap-4">
+            {!failed && <DecisionBadge decision={s.decision} size="lg" />}
+            <div>
+              <div className="text-sm text-muted">
+                {failed ? "Evaluation failed" : "Evaluation complete"}
+              </div>
+              <div className={`text-xl font-semibold ${failed ? "text-bad" : ""}`}>
+                {failed
+                  ? s.error || "The evaluation stream was interrupted."
+                  : `${s.decision?.toUpperCase()} · ${s.finalScore?.toFixed(0)}%`}
+              </div>
             </div>
           </div>
           {s.status === "completed" && (

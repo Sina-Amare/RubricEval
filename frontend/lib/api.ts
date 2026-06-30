@@ -18,7 +18,7 @@ export interface ProviderConfigInput {
 }
 
 export const API_BASE =
-  process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8090";
+  process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000";
 
 const TOKEN_KEY = "operator_token";
 
@@ -39,6 +39,14 @@ export class ApiError extends Error {
   constructor(public status: number, message: string) {
     super(message);
   }
+}
+
+/** Narrow an unknown thrown value to a human-readable message for the UI. */
+export function errorMessage(e: unknown): string {
+  if (e instanceof ApiError) return e.message;
+  if (e instanceof Error) return e.message;
+  if (typeof e === "string") return e;
+  return "Something went wrong. Please try again.";
 }
 
 async function req<T>(path: string, init: RequestInit = {}): Promise<T> {

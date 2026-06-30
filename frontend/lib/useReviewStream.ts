@@ -95,7 +95,35 @@ export function useReviewStream(reviewId: string): LiveState {
   useEffect(() => {
     const es = new EventSource(streamUrl(reviewId));
     esRef.current = es;
+    let opened = false;
+
+    // Fail only if the stream never OPENS (bad token / API down). A stream that
+    // has opened but is still queued behind the worker is healthy — the backend
+    // sends keep-alive SSE comments that fire no event, so "no event yet" must
+    // NOT be treated as a failure.
+    const connectTimer = setTimeout(() => {
+      if (!opened) {
+        setState((prev) =>
+          prev.status === "connecting"
+            ? {
+                ...prev,
+                status: "failed",
+                error:
+                  "Couldn't reach the evaluation stream. Check that the API is running and that you're signed in.",
+              }
+            : prev,
+        );
+      }
+    }, 8000);
+
+    // A successful SSE handshake proves liveness even before the first event.
+    es.onopen = () => {
+      opened = true;
+      clearTimeout(connectTimer);
+    };
+
     const handler = (type: string) => (e: MessageEvent) => {
+      opened = true;
       let payload: any = {};
       try {
         payload = JSON.parse(e.data);
@@ -103,10 +131,34 @@ export function useReviewStream(reviewId: string): LiveState {
         return;
       }
       setState((prev) => reduce(prev, type, payload));
-      if (TERMINAL.has(type)) es.close();
+      if (TERMINAL.has(type)) {
+        clearTimeout(connectTimer);
+        es.close();
+      }
     };
     EVENT_TYPES.forEach((t) => es.addEventListener(t, handler(t)));
-    return () => es.close();
+
+    es.onerror = () => {
+      // The browser auto-reconnects on transient blips (readyState CONNECTING);
+      // only a CLOSED stream is a terminal failure worth surfacing.
+      if (es.readyState === EventSource.CLOSED) {
+        clearTimeout(connectTimer);
+        setState((prev) =>
+          prev.status === "completed"
+            ? prev
+            : {
+                ...prev,
+                status: "failed",
+                error: prev.error || "The evaluation stream was interrupted.",
+              },
+        );
+      }
+    };
+
+    return () => {
+      clearTimeout(connectTimer);
+      es.close();
+    };
   }, [reviewId]);
 
   return state;

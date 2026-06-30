@@ -4,8 +4,12 @@ import fs from "fs";
 import { chromium } from "playwright";
 
 const BASE = process.env.WEB || "http://localhost:3000";
-const API = process.env.API || "http://localhost:8090";
-const TOKEN = process.env.TOKEN || "SINA0994";
+const API = process.env.API || "http://localhost:8000";
+const TOKEN = process.env.TOKEN;
+if (!TOKEN) {
+  console.error("Set TOKEN=<your OPERATOR_TOKEN> (optionally WEB=, API=) and re-run.");
+  process.exit(1);
+}
 const OUT = "shots";
 fs.mkdirSync(OUT, { recursive: true });
 

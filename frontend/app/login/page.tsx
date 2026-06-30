@@ -36,8 +36,11 @@ export default function LoginPage() {
           </p>
           <form onSubmit={submit} className="space-y-4">
             <div>
-              <label className="label">Operator token</label>
+              <label htmlFor="operator-token" className="label">
+                Operator token
+              </label>
               <input
+                id="operator-token"
                 className="input"
                 type="password"
                 placeholder="OPERATOR_TOKEN"
@@ -47,7 +50,12 @@ export default function LoginPage() {
                 autoFocus
               />
             </div>
-            <button className="btn-primary w-full" type="submit" data-testid="login-btn">
+            <button
+              className="btn-primary w-full"
+              type="submit"
+              disabled={!token.trim() || busy}
+              data-testid="login-btn"
+            >
               {busy ? <Spinner /> : "Sign in"}
             </button>
           </form>

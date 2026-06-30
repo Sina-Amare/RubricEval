@@ -19,6 +19,10 @@ function useIsDark() {
   return dark;
 }
 
+// Responsive height: a comfortable pane on desktop, viewport-bounded on mobile
+// so the cited code is reachable without scrolling past every criterion.
+const PANE_HEIGHT = "h-[44vh] min-h-[300px] lg:h-[440px]";
+
 export function EvidenceViewer({
   submissionId,
   evidence,
@@ -28,6 +32,7 @@ export function EvidenceViewer({
 }) {
   const [content, setContent] = useState("");
   const [language, setLanguage] = useState<string | undefined>(undefined);
+  const [error, setError] = useState(false);
   const dark = useIsDark();
   const editorRef = useRef<any>(null);
   const monacoRef = useRef<any>(null);
@@ -36,6 +41,7 @@ export function EvidenceViewer({
   useEffect(() => {
     if (!evidence) return;
     let cancelled = false;
+    setError(false);
     api
       .fileContent(submissionId, evidence.path)
       .then((r) => {
@@ -43,10 +49,14 @@ export function EvidenceViewer({
         setContent(r.content);
         setLanguage(r.language || undefined);
       })
-      .catch(() => setContent("// Could not load file content"));
+      .catch(() => {
+        if (!cancelled) setError(true);
+      });
     return () => {
       cancelled = true;
     };
+    // Deliberately keyed on path only — re-fetch on a new file, not on line moves.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [submissionId, evidence?.path]);
 
   function applyHighlight() {
@@ -75,8 +85,24 @@ export function EvidenceViewer({
 
   if (!evidence) {
     return (
-      <div className="card-2 grid h-[440px] place-items-center p-6 text-center text-sm text-muted">
+      <div
+        className={`card-2 grid ${PANE_HEIGHT} place-items-center p-6 text-center text-sm text-muted`}
+      >
         Select a verified evidence item to view the cited code.
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div
+        className={`card-2 grid ${PANE_HEIGHT} place-items-center p-6 text-center`}
+        role="alert"
+      >
+        <div>
+          <div className="font-medium text-fg">Couldn&apos;t load this file</div>
+          <div className="mt-1 font-mono text-xs text-muted">{evidence.path}</div>
+        </div>
       </div>
     );
   }
@@ -85,30 +111,32 @@ export function EvidenceViewer({
     <div className="overflow-hidden rounded-2xl border">
       <div className="flex items-center justify-between border-b bg-surface2 px-3.5 py-2.5 font-mono text-xs text-muted">
         <span className="truncate">{evidence.path}</span>
-        <span>
+        <span className="shrink-0 pl-2">
           L{evidence.start_line}–{evidence.end_line}
         </span>
       </div>
-      <Editor
-        height="440px"
-        theme={dark ? "vs-dark" : "light"}
-        language={language}
-        value={content}
-        onMount={(editor, monaco) => {
-          editorRef.current = editor;
-          monacoRef.current = monaco;
-          applyHighlight();
-        }}
-        options={{
-          readOnly: true,
-          minimap: { enabled: false },
-          fontSize: 12,
-          lineNumbers: "on",
-          scrollBeyondLastLine: false,
-          renderLineHighlight: "none",
-          padding: { top: 10 },
-        }}
-      />
+      <div className={PANE_HEIGHT}>
+        <Editor
+          height="100%"
+          theme={dark ? "vs-dark" : "light"}
+          language={language}
+          value={content}
+          onMount={(editor, monaco) => {
+            editorRef.current = editor;
+            monacoRef.current = monaco;
+            applyHighlight();
+          }}
+          options={{
+            readOnly: true,
+            minimap: { enabled: false },
+            fontSize: 12,
+            lineNumbers: "on",
+            scrollBeyondLastLine: false,
+            renderLineHighlight: "none",
+            padding: { top: 10 },
+          }}
+        />
+      </div>
       <style jsx global>{`
         .evidence-line {
           background: rgb(var(--primary) / 0.16);

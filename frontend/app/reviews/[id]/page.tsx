@@ -8,13 +8,19 @@ import { EvidenceViewer } from "@/components/EvidenceViewer";
 import {
   BackLink,
   DecisionBadge,
+  ErrorCard,
   ScoreBar,
-  Spinner,
   VerdictChip,
   VerifiedBadge,
 } from "@/components/ui";
-import { api } from "@/lib/api";
+import { api, errorMessage } from "@/lib/api";
 import type { CriterionResult, Evidence } from "@/lib/types";
+
+interface Contribution {
+  key: string;
+  score: number;
+  weight: number;
+}
 
 export default function ReportPage({ params }: { params: { id: string } }) {
   const id = params.id;
@@ -40,6 +46,19 @@ export default function ReportPage({ params }: { params: { id: string } }) {
     }
   }, [q.data, active]);
 
+  if (q.isError) {
+    return (
+      <div className="animate-fade-up space-y-4">
+        <BackLink href="/">Back to tasks</BackLink>
+        <ErrorCard
+          title="Couldn't load this review"
+          message={errorMessage(q.error)}
+          onRetry={() => q.refetch()}
+        />
+      </div>
+    );
+  }
+
   if (q.isLoading || !q.data) {
     return (
       <div className="space-y-4">
@@ -51,23 +70,34 @@ export default function ReportPage({ params }: { params: { id: string } }) {
   const r = q.data;
 
   if (r.status !== "completed") {
+    const failed = r.status === "failed";
     return (
       <div className="animate-fade-up space-y-4">
-        <BackLink href="/">Back</BackLink>
-        <div className="card flex items-center justify-between gap-4 p-6">
-          <div>
-            <div className="text-sm text-muted">This review is {r.status}</div>
-            {r.error_message && <div className="mt-1 text-bad">{r.error_message}</div>}
+        <BackLink href="/">Back to tasks</BackLink>
+        <div className="card flex flex-wrap items-center justify-between gap-4 p-6">
+          <div className="min-w-0">
+            <div className="text-sm text-muted">
+              {failed ? "This evaluation failed" : `This review is ${r.status}`}
+            </div>
+            {failed && r.error_message ? (
+              <div className="mt-1 break-words text-bad">{r.error_message}</div>
+            ) : (
+              !failed && (
+                <div className="mt-1 text-fg">It’s still running — follow it live.</div>
+              )
+            )}
           </div>
-          <Link href={`/reviews/${id}/live`} className="btn-primary">
-            Watch live →
-          </Link>
+          {!failed && (
+            <Link href={`/reviews/${id}/live`} className="btn-primary">
+              Watch live →
+            </Link>
+          )}
         </div>
       </div>
     );
   }
 
-  const contributions: any[] = r.decision_breakdown?.contributions ?? [];
+  const contributions = (r.decision_breakdown?.contributions ?? []) as Contribution[];
 
   return (
     <div className="animate-fade-up space-y-6">
@@ -75,7 +105,7 @@ export default function ReportPage({ params }: { params: { id: string } }) {
 
       {/* verdict header */}
       <div className="card overflow-hidden p-6">
-        <div className="flex flex-wrap items-center justify-between gap-5">
+        <div className="flex flex-wrap items-start justify-between gap-5">
           <div className="flex items-center gap-5">
             <DecisionBadge decision={r.decision} size="lg" />
             <div>
@@ -86,16 +116,19 @@ export default function ReportPage({ params }: { params: { id: string } }) {
               <div className="text-xs text-muted">overall score</div>
             </div>
           </div>
-          <div className="text-right text-xs text-muted">
-            <div className="font-mono">{r.model_id}</div>
-            <div className="font-mono">
+          <div className="min-w-0 max-w-full break-all text-left font-mono text-xs leading-relaxed text-muted sm:text-right">
+            <div>{r.model_id}</div>
+            <div>
               rubric {r.rubric_content_hash.slice(0, 10)}… · {r.prompt_template_version}
             </div>
-            <div className="font-mono">engine {r.engine_version}</div>
+            <div>engine {r.engine_version}</div>
           </div>
         </div>
         {r.gate_failed && (
-          <div className="mt-5 rounded-lg border border-bad/40 bg-bad/10 px-3.5 py-2.5 text-sm text-bad">
+          <div
+            className="mt-5 rounded-lg border border-bad/40 bg-bad/10 px-3.5 py-2.5 text-sm text-bad"
+            role="alert"
+          >
             A required gate failed — decision forced to reject.
           </div>
         )}
@@ -103,7 +136,9 @@ export default function ReportPage({ params }: { params: { id: string } }) {
           <div className="mt-6 space-y-2.5">
             {contributions.map((c) => (
               <div key={c.key} className="flex items-center gap-3 text-sm">
-                <span className="w-24 truncate text-muted sm:w-44">{c.key}</span>
+                <span className="w-28 shrink-0 break-words font-mono text-xs text-muted sm:w-48 sm:text-sm">
+                  {c.key}
+                </span>
                 <div className="flex-1">
                   <ScoreBar value={c.score} />
                 </div>
@@ -118,15 +153,19 @@ export default function ReportPage({ params }: { params: { id: string } }) {
 
       {/* criteria + evidence viewer */}
       <div className="grid gap-6 lg:grid-cols-2">
+        <div className="order-first self-start sticky top-16 z-10 lg:order-last lg:top-20">
+          <EvidenceViewer submissionId={r.submission_id} evidence={active} />
+        </div>
+
         <div className="space-y-3">
           {[...r.results].map((res: CriterionResult) => (
             <details key={res.criterion_id} className="card group p-4" open>
-              <summary className="flex cursor-pointer list-none items-center justify-between">
-                <span className="flex items-center gap-2 font-medium">
+              <summary className="focus-ring flex cursor-pointer list-none items-center justify-between gap-3 rounded-md">
+                <span className="flex min-w-0 items-center gap-2 font-medium">
                   <VerdictChip verdict={res.verdict} />
-                  {res.criterion_key}
+                  <span className="break-words">{res.criterion_key}</span>
                 </span>
-                <span className="text-sm tabular-nums text-muted">
+                <span className="shrink-0 text-sm tabular-nums text-muted">
                   {res.score != null ? `${res.score.toFixed(0)}%` : "gate"}
                 </span>
               </summary>
@@ -137,11 +176,12 @@ export default function ReportPage({ params }: { params: { id: string } }) {
                   return (
                     <button
                       key={i}
+                      type="button"
                       disabled={!verified}
                       onClick={() => setActive(ev)}
                       data-testid="evidence-item"
-                      className={`w-full rounded-lg border bg-surface2 p-2.5 text-left text-xs transition ${
-                        verified ? "hover:border-primary/50" : "opacity-70"
+                      className={`focus-ring w-full rounded-lg border bg-surface2 p-2.5 text-left text-xs transition ${
+                        verified ? "hover:border-primary/50" : "cursor-not-allowed opacity-70"
                       } ${active === ev ? "border-primary/60" : ""}`}
                     >
                       <div className="flex items-center justify-between gap-2">
@@ -165,10 +205,6 @@ export default function ReportPage({ params }: { params: { id: string } }) {
               </div>
             </details>
           ))}
-        </div>
-
-        <div className="lg:sticky lg:top-20 lg:self-start">
-          <EvidenceViewer submissionId={r.submission_id} evidence={active} />
         </div>
       </div>
     </div>

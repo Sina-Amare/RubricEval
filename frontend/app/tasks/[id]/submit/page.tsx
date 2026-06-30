@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { BackLink, Spinner } from "@/components/ui";
-import { api } from "@/lib/api";
+import { api, errorMessage } from "@/lib/api";
 import type { Submission } from "@/lib/types";
 
 export default function SubmitPage({ params }: { params: { id: string } }) {
@@ -23,12 +23,12 @@ export default function SubmitPage({ params }: { params: { id: string } }) {
       setSub(s);
       setErr("");
     },
-    onError: (e: any) => setErr(e.message || "Ingestion failed"),
+    onError: (e: unknown) => setErr(errorMessage(e)),
   });
   const run = useMutation({
     mutationFn: () => api.createReview(id, sub!.id),
     onSuccess: (r) => router.push(`/reviews/${r.id}/live`),
-    onError: (e: any) => setErr(e.message || "Could not start review"),
+    onError: (e: unknown) => setErr(errorMessage(e)),
   });
 
   return (
@@ -46,6 +46,7 @@ export default function SubmitPage({ params }: { params: { id: string } }) {
         <div
           className="rounded-xl border border-bad/40 bg-bad/10 p-3 text-sm text-bad"
           data-testid="submit-error"
+          role="alert"
         >
           {err}
         </div>
@@ -58,8 +59,11 @@ export default function SubmitPage({ params }: { params: { id: string } }) {
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 8.8 21.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.300-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 12 2z" /></svg>
             From GitHub
           </div>
-          <label className="label">Repository URL</label>
+          <label htmlFor="github-url" className="label">
+            Repository URL
+          </label>
           <input
+            id="github-url"
             className="input"
             placeholder="https://github.com/user/repo"
             value={url}
@@ -140,6 +144,19 @@ export default function SubmitPage({ params }: { params: { id: string } }) {
           <span className="text-xs text-muted">Load files first, then start.</span>
         )}
       </div>
+
+      {ingest.isPending && !sub && (
+        <div className="card animate-fade-up p-5" aria-busy="true">
+          <div className="mb-3 flex items-center gap-2 text-sm text-muted">
+            <Spinner /> {file ? "Reading the archive…" : "Cloning repository…"}
+          </div>
+          <div className="space-y-2">
+            <div className="h-4 w-2/3 skeleton" />
+            <div className="h-4 w-1/2 skeleton" />
+            <div className="h-4 w-3/5 skeleton" />
+          </div>
+        </div>
+      )}
 
       {sub && (
         <div className="card animate-fade-up p-5" data-testid="submission-summary">

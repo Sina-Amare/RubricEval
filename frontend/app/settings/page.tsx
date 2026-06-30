@@ -4,16 +4,21 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 
 import { useToast } from "@/components/Toast";
-import { BackLink, Spinner } from "@/components/ui";
-import { api } from "@/lib/api";
+import { BackLink, ErrorCard, Spinner } from "@/components/ui";
+import { api, errorMessage } from "@/lib/api";
 import type { ProviderTestResult } from "@/lib/types";
 
 const PRESETS = [
   "openrouter/openai/gpt-oss-120b:free",
+  "gemini/gemini-flash-latest",
   "openrouter/anthropic/claude-3.5-sonnet",
   "openrouter/openai/gpt-4o-mini",
-  "openrouter/google/gemini-2.0-flash-001",
 ];
+
+/** The provider is inferred from the model-id prefix (LiteLLM convention). */
+function providerFromModel(model: string): string {
+  return model.split("/")[0]?.toLowerCase() || "openrouter";
+}
 
 function TestPill({ r }: { r: ProviderTestResult }) {
   return (
@@ -47,7 +52,11 @@ export default function SettingsPage() {
 
   const test = useMutation({
     mutationFn: () =>
-      api.testProvider({ provider: "openrouter", model_id: model.trim(), api_key: apiKey.trim() }),
+      api.testProvider({
+        provider: providerFromModel(model.trim()),
+        model_id: model.trim(),
+        api_key: apiKey.trim(),
+      }),
     onSuccess: (r) => {
       setFormTest(r);
       toast.push({
@@ -56,14 +65,14 @@ export default function SettingsPage() {
         desc: r.ok ? `${r.model_id} · ${r.latency_ms}ms` : r.message,
       });
     },
-    onError: (e: any) => toast.push({ kind: "error", title: "Test failed", desc: e.message }),
+    onError: (e: unknown) => toast.push({ kind: "error", title: "Test failed", desc: errorMessage(e) }),
   });
 
   const create = useMutation({
     mutationFn: () =>
       api.createProvider({
-        name: name.trim() || "OpenRouter",
-        provider: "openrouter",
+        name: name.trim() || providerFromModel(model.trim()),
+        provider: providerFromModel(model.trim()),
         model_id: model.trim(),
         api_key: apiKey.trim(),
         is_default: true,
@@ -75,7 +84,8 @@ export default function SettingsPage() {
       refresh();
       toast.push({ kind: "success", title: "Key saved", desc: "Set as the default model." });
     },
-    onError: (e: any) => toast.push({ kind: "error", title: "Couldn't save key", desc: e.message }),
+    onError: (e: unknown) =>
+      toast.push({ kind: "error", title: "Couldn't save key", desc: errorMessage(e) }),
   });
   const setDefault = useMutation({
     mutationFn: (id: string) => api.setDefaultProvider(id),
@@ -83,6 +93,8 @@ export default function SettingsPage() {
       refresh();
       toast.push({ kind: "success", title: "Default updated" });
     },
+    onError: (e: unknown) =>
+      toast.push({ kind: "error", title: "Couldn't update default", desc: errorMessage(e) }),
   });
   const del = useMutation({
     mutationFn: (id: string) => api.deleteProvider(id),
@@ -90,6 +102,8 @@ export default function SettingsPage() {
       refresh();
       toast.push({ kind: "info", title: "Key deleted" });
     },
+    onError: (e: unknown) =>
+      toast.push({ kind: "error", title: "Couldn't delete key", desc: errorMessage(e) }),
   });
   const testSaved = useMutation({
     mutationFn: (id: string) => api.testSavedProvider(id),
@@ -101,6 +115,7 @@ export default function SettingsPage() {
         desc: r.ok ? `${r.latency_ms}ms` : r.message,
       });
     },
+    onError: (e: unknown) => toast.push({ kind: "error", title: "Test failed", desc: errorMessage(e) }),
   });
 
   const hasDefaultProvider = providers.data?.some((p) => p.is_default);
@@ -133,8 +148,11 @@ export default function SettingsPage() {
         <div className="mb-4 text-sm font-medium">Add a model key (BYOK)</div>
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
-            <label className="label">Label</label>
+            <label htmlFor="key-label" className="label">
+              Label
+            </label>
             <input
+              id="key-label"
               className="input"
               placeholder="My OpenRouter key"
               value={name}
@@ -142,8 +160,11 @@ export default function SettingsPage() {
             />
           </div>
           <div>
-            <label className="label">Model</label>
+            <label htmlFor="key-model" className="label">
+              Model
+            </label>
             <input
+              id="key-model"
               className="input font-mono text-xs"
               list="model-presets"
               value={model}
@@ -157,8 +178,11 @@ export default function SettingsPage() {
           </div>
         </div>
         <div className="mt-4">
-          <label className="label">API key — encrypted at rest, never shown again</label>
+          <label htmlFor="key-secret" className="label">
+            API key — encrypted at rest, never shown again
+          </label>
           <input
+            id="key-secret"
             className="input font-mono"
             type="password"
             placeholder="sk-or-v1-…"
@@ -169,6 +193,7 @@ export default function SettingsPage() {
         </div>
         <div className="mt-5 flex flex-wrap items-center gap-3">
           <button
+            type="button"
             className="btn-ghost"
             onClick={() => test.mutate()}
             disabled={!canTest || test.isPending}
@@ -177,6 +202,7 @@ export default function SettingsPage() {
             {test.isPending ? <Spinner /> : "Test connection"}
           </button>
           <button
+            type="button"
             className="btn-primary"
             onClick={() => create.mutate()}
             disabled={!canTest || create.isPending}
@@ -194,6 +220,12 @@ export default function SettingsPage() {
             <div className="h-12 skeleton" />
             <div className="h-12 skeleton" />
           </div>
+        ) : providers.isError ? (
+          <ErrorCard
+            title="Couldn't load saved keys"
+            message={errorMessage(providers.error)}
+            onRetry={() => providers.refetch()}
+          />
         ) : !providers.data?.length ? (
           <div className="text-sm text-muted">
             No keys saved — the server&apos;s configured key is in use.
@@ -216,6 +248,7 @@ export default function SettingsPage() {
                 </div>
                 <div className="flex shrink-0 items-center gap-2">
                   <button
+                    type="button"
                     className="btn-ghost"
                     onClick={() => testSaved.mutate(p.id)}
                     disabled={testSaved.isPending}
@@ -223,11 +256,11 @@ export default function SettingsPage() {
                     {testSaved.isPending && testSaved.variables === p.id ? <Spinner /> : "Test"}
                   </button>
                   {!p.is_default && (
-                    <button className="btn-ghost" onClick={() => setDefault.mutate(p.id)}>
+                    <button type="button" className="btn-ghost" onClick={() => setDefault.mutate(p.id)}>
                       Make default
                     </button>
                   )}
-                  <button className="btn-danger" onClick={() => del.mutate(p.id)}>
+                  <button type="button" className="btn-danger" onClick={() => del.mutate(p.id)}>
                     Delete
                   </button>
                 </div>

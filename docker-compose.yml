@@ -27,8 +27,12 @@ services:
       OPERATOR_TOKEN: ${OPERATOR_TOKEN:-dev-operator-token}
       APP_SECRET_KEY: ${APP_SECRET_KEY:-dev-insecure-secret-change-me}
       OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:-}
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
+      GROQ_API_KEY: ${GROQ_API_KEY:-}
       DEFAULT_MODEL: ${DEFAULT_MODEL:-openrouter/openai/gpt-oss-120b:free}
+      FALLBACK_MODEL: ${FALLBACK_MODEL:-gemini/gemini-flash-latest,openrouter/openai/gpt-oss-120b:free}
       LLM_BACKEND: ${LLM_BACKEND:-litellm}
+      LLM_CONCURRENCY: ${LLM_CONCURRENCY:-1}
       CORS_ORIGINS: '["http://localhost:3000"]'
     depends_on:
       postgres:
@@ -47,6 +51,9 @@ services:
   web:
     build:
       context: ./frontend
+      args:
+        # Baked into the client bundle at build time (Next.js inlines NEXT_PUBLIC_*).
+        NEXT_PUBLIC_API_BASE_URL: http://localhost:8000
     container_name: rubric-web
     environment:
       # Server-side calls from the Next.js container reach the api service by name.

@@ -12,11 +12,12 @@ venv/
 .env.*
 !.env.example
 
-# Logs and runtime data
+# Logs and runtime data (keep the data/ dir, ignore everything it holds:
+# SQLite db, cloned blobs, failed-response dumps, etc.)
 logs/
 *.log
-data/failed_responses/
-data/app.db
+/data/*
+!/data/.gitkeep
 .dev-pids
 node_modules/
 

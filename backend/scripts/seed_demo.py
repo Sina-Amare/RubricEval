@@ -15,7 +15,7 @@ import httpx
 from dotenv import load_dotenv
 
 load_dotenv(".env")
-BASE = sys.argv[1] if len(sys.argv) > 1 else "http://localhost:8090"
+BASE = sys.argv[1] if len(sys.argv) > 1 else "http://localhost:8000"
 H = {"Authorization": f"Bearer {os.environ.get('OPERATOR_TOKEN', '')}"}
 
 TASKS = [

@@ -5,9 +5,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { useToast } from "@/components/Toast";
-import { BackLink, Spinner } from "@/components/ui";
-import { api } from "@/lib/api";
-import type { CriterionIn, CriterionType, RubricDraft } from "@/lib/types";
+import { BackLink, ErrorCard, Spinner } from "@/components/ui";
+import { api, errorMessage } from "@/lib/api";
+import type { CriterionIn, CriterionType, GatePolicy, RubricDraft } from "@/lib/types";
 
 function emptyCriterion(): CriterionIn {
   return {
@@ -43,8 +43,8 @@ export default function EditTaskPage({ params }: { params: { id: string } }) {
       setMsg("Draft saved");
       toast.push({ kind: "success", title: "Draft saved" });
     },
-    onError: (e: any) =>
-      toast.push({ kind: "error", title: "Couldn't save draft", desc: e.message }),
+    onError: (e: unknown) =>
+      toast.push({ kind: "error", title: "Couldn't save draft", desc: errorMessage(e) }),
   });
   const publish = useMutation({
     mutationFn: async () => {
@@ -60,11 +60,25 @@ export default function EditTaskPage({ params }: { params: { id: string } }) {
         desc: `Rubric ${r.content_hash.slice(0, 10)}… — ready to evaluate.`,
       });
     },
-    onError: (e: any) => {
-      setMsg(e.message || "Publish failed");
-      toast.push({ kind: "error", title: "Publish failed", desc: e.message });
+    onError: (e: unknown) => {
+      const m = errorMessage(e);
+      setMsg(m);
+      toast.push({ kind: "error", title: "Publish failed", desc: m });
     },
   });
+
+  if (task.isError) {
+    return (
+      <div className="animate-fade-up space-y-4">
+        <BackLink href="/">Back to tasks</BackLink>
+        <ErrorCard
+          title="Couldn't load this task"
+          message={errorMessage(task.error)}
+          onRetry={() => task.refetch()}
+        />
+      </div>
+    );
+  }
 
   if (task.isLoading || draft === null) {
     return (
@@ -102,11 +116,21 @@ export default function EditTaskPage({ params }: { params: { id: string } }) {
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2.5">
-          {msg && <span className="w-full text-sm text-muted sm:w-auto">{msg}</span>}
-          <button className="btn-ghost" onClick={() => save.mutate()} disabled={save.isPending}>
+          {msg && (
+            <span className="w-full text-sm text-muted sm:w-auto" aria-live="polite">
+              {msg}
+            </span>
+          )}
+          <button
+            type="button"
+            className="btn-ghost"
+            onClick={() => save.mutate()}
+            disabled={save.isPending}
+          >
             {save.isPending ? <Spinner /> : "Save draft"}
           </button>
           <button
+            type="button"
             className="btn-ghost"
             onClick={() => publish.mutate()}
             disabled={publish.isPending}
@@ -134,6 +158,7 @@ export default function EditTaskPage({ params }: { params: { id: string } }) {
               <input
                 className="input w-full sm:w-auto sm:min-w-[200px] sm:flex-1"
                 placeholder="Criterion title (e.g. Has automated tests)"
+                aria-label={`Criterion ${i + 1} title`}
                 value={c.title}
                 onChange={(e) =>
                   update(i, { title: e.target.value, key: c.key || slug(e.target.value) })
@@ -141,6 +166,7 @@ export default function EditTaskPage({ params }: { params: { id: string } }) {
               />
               <select
                 className="input w-36"
+                aria-label={`Criterion ${i + 1} type`}
                 value={c.type}
                 onChange={(e) => {
                   const type = e.target.value as CriterionType;
@@ -157,8 +183,9 @@ export default function EditTaskPage({ params }: { params: { id: string } }) {
               {c.type === "gate" ? (
                 <select
                   className="input w-40"
+                  aria-label={`Criterion ${i + 1} gate policy`}
                   value={c.gate_policy ?? "must_pass"}
-                  onChange={(e) => update(i, { gate_policy: e.target.value as any })}
+                  onChange={(e) => update(i, { gate_policy: e.target.value as GatePolicy })}
                 >
                   <option value="must_pass">Must pass</option>
                   <option value="force_reject">Force reject</option>
@@ -173,14 +200,17 @@ export default function EditTaskPage({ params }: { params: { id: string } }) {
                     onChange={(e) => update(i, { weight: Number(e.target.value) })}
                     style={{ accentColor: "rgb(var(--primary))" }}
                     className="flex-1"
+                    aria-label={`Weight for ${c.title || `criterion ${i + 1}`}`}
+                    aria-valuetext={`${c.weight} percent`}
                   />
                   <span className="w-9 text-right text-sm tabular-nums text-muted">{c.weight}</span>
                 </div>
               )}
               <button
+                type="button"
                 onClick={() => remove(i)}
-                className="rounded-lg border px-3 py-2.5 text-sm text-muted transition hover:border-bad/40 hover:text-bad"
-                aria-label="Remove criterion"
+                className="focus-ring rounded-lg border px-3 py-2.5 text-sm text-muted transition hover:border-bad/40 hover:text-bad"
+                aria-label={`Remove criterion ${i + 1}`}
               >
                 Remove
               </button>
@@ -188,6 +218,7 @@ export default function EditTaskPage({ params }: { params: { id: string } }) {
             <textarea
               className="input mt-3 min-h-[68px] resize-y"
               placeholder="Instructions for the grader — what to look for. Wrap key signals in `backticks`."
+              aria-label={`Criterion ${i + 1} instructions`}
               value={c.instructions}
               onChange={(e) => update(i, { instructions: e.target.value })}
             />
@@ -199,6 +230,7 @@ export default function EditTaskPage({ params }: { params: { id: string } }) {
           </div>
         ))}
         <button
+          type="button"
           className="btn-ghost w-full border-dashed py-3"
           onClick={add}
           data-testid="add-criterion"
@@ -211,8 +243,11 @@ export default function EditTaskPage({ params }: { params: { id: string } }) {
         <div className="mb-3 font-medium">Decision thresholds</div>
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
-            <label className="label">Accept at ≥ (score)</label>
+            <label htmlFor="accept-at" className="label">
+              Accept at ≥ (score)
+            </label>
             <input
+              id="accept-at"
               type="number"
               className="input"
               value={draft.decision_config.accept_at}
@@ -226,8 +261,11 @@ export default function EditTaskPage({ params }: { params: { id: string } }) {
             />
           </div>
           <div>
-            <label className="label">Review at ≥ (score)</label>
+            <label htmlFor="review-at" className="label">
+              Review at ≥ (score)
+            </label>
             <input
+              id="review-at"
               type="number"
               className="input"
               value={draft.decision_config.review_at}

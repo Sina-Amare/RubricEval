@@ -49,7 +49,7 @@ class Settings(BaseSettings):
     # Model chain: try default first, then these (comma-separated) on rate-limit
     # / failure. Only used on the env-key path (BYOK configs use their own model).
     fallback_model: str = (
-        "gemini/gemini-2.0-flash,openrouter/openai/gpt-oss-120b:free"
+        "gemini/gemini-flash-latest,openrouter/openai/gpt-oss-120b:free"
     )
     llm_concurrency: int = 1               # keep at 1 for free, rate-limited models
     llm_call_timeout: float = 60.0
